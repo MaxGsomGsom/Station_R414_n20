@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<namespace name="uRandomMethods">
+  <function name="GetRandomTuneValue" visibility="public">
+    <parameters>
+      <retval type="Byte" />
+    </parameters>
+  </function>
+  <function name="GetRandomWaveValue" visibility="public">
+    <parameters>
+      <retval type="Byte" />
+    </parameters>
+  </function>
+  <function name="GetRandomCableState" visibility="public">
+    <parameters>
+      <retval type="Byte" />
+    </parameters>
+  </function>
+  <function name="GetRandomSwitcherState" visibility="public">
+    <parameters>
+      <retval type="Byte" />
+    </parameters>
+  </function>
+  <function name="GetRandomButtonState" visibility="public">
+    <parameters>
+      <retval type="Byte" />
+    </parameters>
+  </function>
+</namespace>

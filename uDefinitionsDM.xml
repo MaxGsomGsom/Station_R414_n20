@@ -1,0 +1,688 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<namespace name="uDefinitionsDM">
+  <const name="nmLocalNet" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="nmStandalone" type="Integer">
+    <value>
+      $0
+    </value>
+  </const>
+  <const name="nmWeb" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="PName" type="string">
+    <value>
+      Радиорелейная станция P-414
+    </value>
+  </const>
+  <const name="Pversion" type="string">
+    <value>
+      1.0.2.2 beta
+    </value>
+  </const>
+  <const name="WebHost" type="string">
+    <value>
+      uvc.ispu.ru
+    </value>
+  </const>
+  <const name="WebPort" type="Integer">
+    <value>
+      $50
+    </value>
+  </const>
+  <const name="DataScript" type="string">
+    <value>
+      data.php
+    </value>
+  </const>
+  <const name="DefaultNetWorkMode" type="Integer">
+    <value>
+      $0
+    </value>
+  </const>
+  <const name="menuFormsOffset" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="BlocksCount" type="Integer">
+    <value>
+      $1B
+    </value>
+  </const>
+  <const name="NoOperations" type="Integer">
+    <value>
+      $0
+    </value>
+  </const>
+  <const name="ttCommon" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="ttTask" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="ttFree" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="VerticalSwitcherUpPosition" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="VerticalSwitcherDownPosition" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="HorisontalSwitcherRightPosition" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="HorisontalSwitcherLeftPosition" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="Switcher1" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="Switcher2" type="Integer">
+    <value>
+      $5
+    </value>
+  </const>
+  <const name="sfMain" type="Integer">
+    <value>
+      $0
+    </value>
+  </const>
+  <const name="sfOverview" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="AllowToCloseNotTunedUnit" type="Boolean" visibility="public" />
+  <const name="stTaskPassed" type="string">
+    <value>
+      Выполнено
+    </value>
+  </const>
+  <const name="stTaskOpened" type="string">
+    <value>
+      Не выполнено
+    </value>
+  </const>
+  <const name="gtGeterodinTuned" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="gtGeterodinNotTuned" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="BaseFileName" type="string">
+    <value>
+      base.db
+    </value>
+  </const>
+  <const name="sttpUdPrm" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="sttpUd2Prm" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="sttpAbonentPrm" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="sttpChannelD" type="Integer">
+    <value>
+      $5
+    </value>
+  </const>
+  <const name="sttpUdPrd" type="Integer">
+    <value>
+      $6
+    </value>
+  </const>
+  <const name="sttpUd2Prd" type="Integer">
+    <value>
+      $7
+    </value>
+  </const>
+  <const name="sttpAbonentPrd" type="Integer">
+    <value>
+      $8
+    </value>
+  </const>
+  <const name="sttpChannelM" type="Integer">
+    <value>
+      $9
+    </value>
+  </const>
+  <const name="mrYes" type="Integer">
+    <value>
+      $6
+    </value>
+  </const>
+  <const name="mrCancel" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="cmdPing" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="cmdPong" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="stGeneral" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="stPassive" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="CloseLabelXAxesOffset" type="Integer">
+    <value>
+      $19
+    </value>
+  </const>
+  <const name="CloseLabelYAxesOffset" type="Integer">
+    <value>
+      $96
+    </value>
+  </const>
+  <const name="MessageDelemiter" type="string">
+    <value>
+      &#13;&#10;
+    </value>
+  </const>
+  <const name="stcblGenerator" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="stcblInputYY" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="stcblUdlinitel1ST1" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="stcblUdlinitel1ST2" type="Integer">
+    <value>
+      $5
+    </value>
+  </const>
+  <const name="stcblUdlinitel2ST1" type="Integer">
+    <value>
+      $6
+    </value>
+  </const>
+  <const name="stcblUdlinitel2ST2" type="Integer">
+    <value>
+      $7
+    </value>
+  </const>
+  <const name="cell_PVU_PRD" type="Integer">
+    <value>
+      $167
+    </value>
+  </const>
+  <const name="cell_PVU_PRM" type="Integer">
+    <value>
+      $166
+    </value>
+  </const>
+  <const name="ScroolValue" type="Integer">
+    <value>
+      $96
+    </value>
+  </const>
+  <const name="MaxTuneValue" type="Integer">
+    <value>
+      $20
+    </value>
+  </const>
+  <const name="MaxErrorsAllowedWhileTesting" type="Integer">
+    <value>
+      $3E8
+    </value>
+  </const>
+  <struct name="pUdlinitelKonez" packed="true">
+    <field name="stKonez" type="Integer" visibility="public" />
+    <field name="offsetLeft" type="Integer" visibility="public" />
+    <field name="offsetTop" type="Integer" visibility="public" />
+  </struct>
+  <struct name="pUdlinitelCable" packed="true">
+    <field name="stKonez1" type="pUdlinitelKonez" visibility="public" />
+    <field name="stKonez2" type="pUdlinitelKonez" visibility="public" />
+  </struct>
+  <struct name="pErrors" packed="true">
+    <field name="ErrInRack" type="Integer" visibility="public" />
+    <field name="ErrDescription" type="string" visibility="public" />
+  </struct>
+  <struct name="pCurUser" packed="true">
+    <field name="Name" type="string" visibility="public" />
+    <field name="Surname" type="string" visibility="public" />
+    <field name="Patronomyc" type="string" visibility="public" />
+    <field name="Vzvod" type="Integer" visibility="public" />
+    <field name="Kurs" type="Integer" visibility="public" />
+    <field name="ID" type="Integer" visibility="public" />
+    <field name="AccessLevelStudy" type="Byte" visibility="public" />
+    <field name="AccessLevelTrening" type="Byte" visibility="public" />
+  </struct>
+  <struct name="pHelpImages" packed="true">
+    <field name="HelpImage" type="TImage" visibility="public" />
+    <field name="HelpLabel" type="TLabel" visibility="public" />
+  </struct>
+  <struct name="pDeviation" packed="true">
+    <field name="Rack1200A_PRD" type="Byte" visibility="public" />
+    <field name="Rack1200A_PRM" type="Byte" visibility="public" />
+    <field name="Rack1200B_PRD" type="Byte" visibility="public" />
+    <field name="Rack1200B_PRM" type="Byte" visibility="public" />
+  </struct>
+  <struct name="pChannelStateEx" packed="true">
+    <field name="State" type="Byte" visibility="public" />
+  </struct>
+  <struct name="pChannelState" packed="true">
+    <field name="ChannelA" visibility="public">
+      <array name="ChannelA" visibility="public" low="1" high="21">
+        <element type="pChannelStateEx" />
+      </array>
+    </field>
+    <field name="ChannelB" visibility="public">
+      <array name="ChannelB" visibility="public" low="1" high="21">
+        <element type="pChannelStateEx" />
+      </array>
+    </field>
+  </struct>
+  <struct name="pCallPassed" packed="true">
+    <field name="TwoChannelMode" type="pChannelState" visibility="public" />
+    <field name="FourChannelMode" type="pChannelState" visibility="public" />
+  </struct>
+  <function name="CreateUser" visibility="public" callconv="cdecl">
+    <parameters>
+      <parameter name="Name" type="AnsiString" />
+      <parameter name="Surname" type="AnsiString" />
+      <parameter name="Patronomyc" type="AnsiString" />
+      <parameter name="Vzvod" type="Integer" />
+      <parameter name="Kurs" type="Integer" />
+      <parameter name="Password" type="AnsiString" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <function name="IsUserExists" visibility="public" callconv="cdecl">
+    <parameters>
+      <parameter name="Name" type="AnsiString" />
+      <parameter name="Surname" type="AnsiString" />
+      <parameter name="Patronomyc" type="AnsiString" />
+      <parameter name="Password" type="AnsiString" />
+      <parameter name="Vzvod" type="Integer" />
+      <parameter name="Kurs" type="Integer" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <procedure name="DeleteUserById" visibility="public" callconv="cdecl">
+    <parameters>
+      <parameter name="UserId" type="Integer" />
+    </parameters>
+  </procedure>
+  <procedure name="UpdateUser" visibility="public" callconv="cdecl">
+    <parameters>
+      <parameter name="UserId" type="Integer" />
+      <parameter name="Name" type="AnsiString" />
+      <parameter name="Surname" type="AnsiString" />
+      <parameter name="Patronomyc" type="AnsiString" />
+      <parameter name="Vzvod" type="Integer" />
+      <parameter name="Kurs" type="Integer" />
+    </parameters>
+  </procedure>
+  <procedure name="PutLog" visibility="public" callconv="cdecl">
+    <parameters>
+      <parameter name="USER_ID" type="Integer" />
+      <parameter name="VALUE" type="AnsiString" />
+    </parameters>
+  </procedure>
+  <procedure name="ClearLog" visibility="public" callconv="cdecl">
+  </procedure>
+  <procedure name="AddAchieve" visibility="public" callconv="cdecl">
+    <parameters>
+      <parameter name="USER_ID" type="Integer" />
+      <parameter name="OZENKA" type="Real" />
+      <parameter name="SecondsPassed" type="Integer" />
+      <parameter name="TASK_ID" type="Integer" />
+      <parameter name="TASK_TYPE" type="Integer" />
+    </parameters>
+  </procedure>
+  <procedure name="ClearAchieveForUser" visibility="public" callconv="cdecl">
+    <parameters>
+      <parameter name="USER_ID" type="Integer" />
+    </parameters>
+  </procedure>
+  <procedure name="ClearAllAchieve" visibility="public" callconv="cdecl">
+  </procedure>
+  <procedure name="GetAchieve" visibility="public" callconv="cdecl">
+    <parameters>
+      <parameter name="USER_ID" type="Integer" />
+      <parameter name="DataList" type="TListView" paramflags="var" />
+    </parameters>
+  </procedure>
+  <procedure name="GetUserLog" visibility="public" callconv="cdecl">
+    <parameters>
+      <parameter name="USER_ID" type="Integer" />
+      <parameter name="VALUE" type="TStringList" paramflags="var" />
+      <parameter name="DATA" type="TStringList" paramflags="var" />
+    </parameters>
+  </procedure>
+  <procedure name="GetLog" visibility="public" callconv="cdecl">
+    <parameters>
+      <parameter name="LogList" type="TStringList" paramflags="var" />
+      <parameter name="DataList" type="TStringList" paramflags="var" />
+    </parameters>
+  </procedure>
+  <function name="GetUserId" visibility="public" callconv="cdecl">
+    <parameters>
+      <parameter name="Name" type="AnsiString" />
+      <parameter name="Surname" type="AnsiString" />
+      <parameter name="Patronomyc" type="AnsiString" />
+      <parameter name="Vzvod" type="Integer" />
+      <parameter name="Kurs" type="Integer" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="GetHost" visibility="public" callconv="cdecl">
+    <parameters>
+      <retval type="PAnsiChar" />
+    </parameters>
+  </function>
+  <function name="GetPort" visibility="public" callconv="cdecl">
+    <parameters>
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="GetNetWorkMode" visibility="public" callconv="cdecl">
+    <parameters>
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <procedure name="SetHost" visibility="public" callconv="cdecl">
+    <parameters>
+      <parameter name="Host" type="AnsiString" />
+    </parameters>
+  </procedure>
+  <procedure name="SetPort" visibility="public" callconv="cdecl">
+    <parameters>
+      <parameter name="Port" type="Integer" />
+    </parameters>
+  </procedure>
+  <procedure name="SetNetworkMode" visibility="public" callconv="cdecl">
+    <parameters>
+      <parameter name="NetWorkMode" type="Byte" />
+    </parameters>
+  </procedure>
+  <function name="GetUserAccessLevelStudy" visibility="public" callconv="cdecl">
+    <parameters>
+      <parameter name="UserID" type="Integer" />
+      <retval type="Byte" />
+    </parameters>
+  </function>
+  <procedure name="SetUserAccessLevelStudy" visibility="public" callconv="cdecl">
+    <parameters>
+      <parameter name="UserID" type="Integer" />
+      <parameter name="AccessLevel" type="Byte" />
+    </parameters>
+  </procedure>
+  <function name="GetUserAccessLevelTrening" visibility="public" callconv="cdecl">
+    <parameters>
+      <parameter name="UserID" type="Integer" />
+      <retval type="Byte" />
+    </parameters>
+  </function>
+  <procedure name="SetUserAccessLevelTrening" visibility="public" callconv="cdecl">
+    <parameters>
+      <parameter name="UserID" type="Integer" />
+      <parameter name="AccessLevel" type="Byte" />
+    </parameters>
+  </procedure>
+  <variable name="HelpImages" type=":1" />
+  <variable name="ModulatorPlacesA" />
+  <variable name="ModulatorPlacesB" />
+  <variable name="DeModulatorPlacesA" />
+  <variable name="DeModulatorPlacesB" />
+  <variable name="stDeviation" type="pDeviation" />
+  <variable name="stCallPassed" type="pCallPassed" />
+  <variable name="CountAvailableHints" type="Integer" />
+  <variable name="NeedToCountTime" type="Boolean" />
+  <variable name="PassedSeconds" type="Integer" />
+  <variable name="JmpFormId" type="Byte" visibility="public" />
+  <variable name="PassedLevelId" type="Byte" />
+  <variable name="ErrorForLevelGiven" />
+  <variable name="ExamErrors" type=":2" />
+  <variable name="Errors" type=":2" />
+  <variable name="CurUser" type="pCurUser" />
+  <variable name="CurBlockSelected" type="Byte" />
+  <variable name="CurTaskId" type="Byte" />
+  <procedure name="AddExamError" visibility="public">
+    <parameters>
+      <parameter name="ErrInRack" type="Byte" />
+      <parameter name="ErrDescription" type="string" />
+    </parameters>
+  </procedure>
+  <procedure name="Initialise" visibility="public">
+    <devnotes>
+       <summary>
+         Инициализирует систему при создании нового задания
+       </summary>
+    </devnotes>
+  </procedure>
+  <procedure name="SendMyStationParams" visibility="public">
+  </procedure>
+  <function name="GetPolukomplektCodeByCableKonez" visibility="public">
+    <parameters>
+      <parameter name="CabelKonez" type="pUdlinitelKonez" />
+      <retval type="Byte" />
+    </parameters>
+  </function>
+  <procedure name="SpawnTrubka" visibility="public">
+    <parameters>
+      <parameter name="MKT_ID" type="Byte" />
+    </parameters>
+  </procedure>
+  <function name="GetTransmitBlockTunedValue" visibility="public">
+    <devnotes>
+       <summary>
+         Возвращает необходимое значение подстройки канала (при котором канал настроен)
+       </summary>
+    </devnotes>
+    <parameters>
+      <retval type="Byte" />
+    </parameters>
+  </function>
+  <function name="IsNeedToTuneChannelBlocksA" visibility="public">
+    <parameters>
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <function name="IsNeedToTuneChannelBlocksB" visibility="public">
+    <parameters>
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <function name="BoolToByteInv" visibility="public">
+    <parameters>
+      <parameter name="tmpBool" type="Boolean" />
+      <retval type="Byte" />
+    </parameters>
+  </function>
+  <function name="IsReadyToSoprajenie" visibility="public">
+    <parameters>
+      <retval type="Byte" />
+    </parameters>
+  </function>
+  <function name="NotByte" visibility="public">
+    <parameters>
+      <parameter name="InputByte" type="Byte" />
+      <retval type="Byte" />
+    </parameters>
+  </function>
+  <function name="IsReallyNedeedToSpawnThisRack" visibility="public">
+    <devnotes>
+       <summary>
+         Проверяет, нужно ли открывать окно стойки в режиме обучения
+       </summary>
+    </devnotes>
+    <parameters>
+      <parameter name="btSpawnedRackId" type="Byte" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <procedure name="DisplayHint" visibility="public">
+    <parameters>
+      <parameter name="ShowHint" type="Boolean">
+        <value>
+          True
+        </value>
+      </parameter>
+    </parameters>
+  </procedure>
+  <procedure name="DisplayVideoHelpInTreningMode" visibility="public">
+    <devnotes>
+       <summary>
+       Показывает видео-подсказку
+       </summary>
+       <param name="HelpTaskId"></param>
+    </devnotes>
+    <parameters>
+      <parameter name="HelpTaskId" type="Byte" />
+    </parameters>
+  </procedure>
+  <function name="ShowVideoHelpInLearningMode" visibility="public">
+    <parameters>
+      <parameter name="HelpTaskId" type="Byte" />
+      <parameter name="Error" type="Boolean" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <procedure name="ReturnFromRack" visibility="public">
+    <devnotes>
+       <summary>
+         Проверяет, открыта ли хоть одна форма стойки
+       </summary>
+      /  for btA := 0 to Length(FormsArr) - 1 do
+      /    if FormsArr[btA].Showing then
+      /    begin
+      /      Result := True;
+      /      Break;
+      /    end;
+    </devnotes>
+  </procedure>
+  <function name="IsUdlinitelCableKonezConnectedAtModulator" visibility="public">
+    <parameters>
+      <parameter name="tmpUdlinitel" type="pUdlinitelCable" />
+      <parameter name="KonezId" type="Byte" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <function name="IsUdlinitelCableKonezConnectedAtDeModulator" visibility="public">
+    <parameters>
+      <parameter name="tmpUdlinitel" type="pUdlinitelCable" />
+      <parameter name="KonezId" type="Byte" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <function name="IsUdlinitelCableKonezConnectedAtReserveLineCell" visibility="public">
+    <parameters>
+      <parameter name="tmpUdlinitel" type="pUdlinitelCable" />
+      <parameter name="KonezId" type="Byte" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <function name="IsUdlinitelCableConnectedAtReserveLineCell" visibility="public">
+    <parameters>
+      <parameter name="tmpUdlinitel" type="pUdlinitelCable" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <function name="IsUdlinitelCableKonezConnectedAtHighOhmInputCell" visibility="public">
+    <parameters>
+      <parameter name="tmpUdlinitel" type="pUdlinitelCable" />
+      <parameter name="KonezId" type="Byte" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <function name="IsUdlinitelCableConnectedAtHighOhmInputCell" visibility="public">
+    <parameters>
+      <parameter name="tmpUdlinitel" type="pUdlinitelCable" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <function name="GetReserveLineCellIdByUdlinitelCableId" visibility="public">
+    <parameters>
+      <parameter name="tmpUdlinitel" type="pUdlinitelCable" />
+      <retval type="Byte" />
+    </parameters>
+  </function>
+  <function name="IsUdlinitelCableConnectedAtModulator" visibility="public">
+    <parameters>
+      <parameter name="tmpUdlinitel" type="pUdlinitelCable" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <function name="GetChannelIdByCellId" visibility="public">
+    <parameters>
+      <parameter name="tmpCellId" type="Integer" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="IsUdlinitelCableConnectedAtDeModulator" visibility="public">
+    <parameters>
+      <parameter name="tmpUdlinitel" type="pUdlinitelCable" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <function name="CompareStations" visibility="public">
+    <devnotes>
+       <summary>
+         Сравнивает две станций и возвращает Истину, если станции эквивалентны
+       </summary>
+    </devnotes>
+    <parameters>
+      <parameter name="Station1" type="TStation" />
+      <parameter name="Station2" type="TStation" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+</namespace>

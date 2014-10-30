@@ -1,0 +1,409 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<namespace name="SQLite3">
+  <const name="SQLiteDLL" type="string">
+    <value>
+      sqlite3.dll
+    </value>
+  </const>
+  <const name="SQLITE_OK" type="Integer">
+    <value>
+      $0
+    </value>
+  </const>
+  <const name="SQLITE_ERROR" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="SQLITE_INTERNAL" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="SQLITE_PERM" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="SQLITE_ABORT" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="SQLITE_BUSY" type="Integer">
+    <value>
+      $5
+    </value>
+  </const>
+  <const name="SQLITE_LOCKED" type="Integer">
+    <value>
+      $6
+    </value>
+  </const>
+  <const name="SQLITE_NOMEM" type="Integer">
+    <value>
+      $7
+    </value>
+  </const>
+  <const name="SQLITE_READONLY" type="Integer">
+    <value>
+      $8
+    </value>
+  </const>
+  <const name="SQLITE_INTERRUPT" type="Integer">
+    <value>
+      $9
+    </value>
+  </const>
+  <const name="SQLITE_IOERR" type="Integer">
+    <value>
+      $A
+    </value>
+  </const>
+  <const name="SQLITE_CORRUPT" type="Integer">
+    <value>
+      $B
+    </value>
+  </const>
+  <const name="SQLITE_NOTFOUND" type="Integer">
+    <value>
+      $C
+    </value>
+  </const>
+  <const name="SQLITE_FULL" type="Integer">
+    <value>
+      $D
+    </value>
+  </const>
+  <const name="SQLITE_CANTOPEN" type="Integer">
+    <value>
+      $E
+    </value>
+  </const>
+  <const name="SQLITE_PROTOCOL" type="Integer">
+    <value>
+      $F
+    </value>
+  </const>
+  <const name="SQLITE_EMPTY" type="Integer">
+    <value>
+      $10
+    </value>
+  </const>
+  <const name="SQLITE_SCHEMA" type="Integer">
+    <value>
+      $11
+    </value>
+  </const>
+  <const name="SQLITE_TOOBIG" type="Integer">
+    <value>
+      $12
+    </value>
+  </const>
+  <const name="SQLITE_CONSTRAINT" type="Integer">
+    <value>
+      $13
+    </value>
+  </const>
+  <const name="SQLITE_MISMATCH" type="Integer">
+    <value>
+      $14
+    </value>
+  </const>
+  <const name="SQLITE_MISUSE" type="Integer">
+    <value>
+      $15
+    </value>
+  </const>
+  <const name="SQLITE_NOLFS" type="Integer">
+    <value>
+      $16
+    </value>
+  </const>
+  <const name="SQLITE_AUTH" type="Integer">
+    <value>
+      $17
+    </value>
+  </const>
+  <const name="SQLITE_FORMAT" type="Integer">
+    <value>
+      $18
+    </value>
+  </const>
+  <const name="SQLITE_RANGE" type="Integer">
+    <value>
+      $19
+    </value>
+  </const>
+  <const name="SQLITE_NOTADB" type="Integer">
+    <value>
+      $1A
+    </value>
+  </const>
+  <const name="SQLITE_ROW" type="Integer">
+    <value>
+      $64
+    </value>
+  </const>
+  <const name="SQLITE_DONE" type="Integer">
+    <value>
+      $65
+    </value>
+  </const>
+  <const name="SQLITE_INTEGER" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="SQLITE_FLOAT" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="SQLITE_TEXT" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="SQLITE_BLOB" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="SQLITE_NULL" type="Integer">
+    <value>
+      $5
+    </value>
+  </const>
+  <pointer name="TSQLiteDB" alias="System.Pointer" type="Pointer" indircnt="1" />
+  <pointer name="TSQLiteResult" type="PWideChar" indircnt="1" />
+  <pointer name="TSQLiteStmt" alias="System.Pointer" type="Pointer" indircnt="1" />
+  <function name="SQLite3_Open" visibility="public" callconv="cdecl">
+    <parameters>
+      <parameter name="dbname" type="PWideChar" />
+      <parameter name="db" type="Pointer" paramflags="var" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="SQLite3_Close" visibility="public" callconv="cdecl">
+    <parameters>
+      <parameter name="db" type="Pointer" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="SQLite3_Exec" visibility="public" callconv="cdecl">
+    <parameters>
+      <parameter name="db" type="Pointer" />
+      <parameter name="SQLStatement" type="PWideChar" />
+      <parameter name="CallbackPtr" type="Pointer" />
+      <parameter name="Sender" type="TObject" />
+      <parameter name="ErrMsg" type="PWideChar" paramflags="var" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="SQLite3_Version" visibility="public" callconv="cdecl">
+    <parameters>
+      <retval type="PWideChar" />
+    </parameters>
+  </function>
+  <function name="SQLite3_ErrMsg" visibility="public" callconv="cdecl">
+    <parameters>
+      <parameter name="db" type="Pointer" />
+      <retval type="PWideChar" />
+    </parameters>
+  </function>
+  <function name="SQLite3_ErrCode" visibility="public" callconv="cdecl">
+    <parameters>
+      <parameter name="db" type="Pointer" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <procedure name="SQlite3_Free" visibility="public" callconv="cdecl">
+    <parameters>
+      <parameter name="P" type="PWideChar" />
+    </parameters>
+  </procedure>
+  <function name="SQLite3_GetTable" visibility="public" callconv="cdecl">
+    <parameters>
+      <parameter name="db" type="Pointer" />
+      <parameter name="SQLStatement" type="PWideChar" />
+      <parameter name="ResultPtr" type="TSQLiteResult" paramflags="var" />
+      <parameter name="RowCount" type="Cardinal" paramflags="var" />
+      <parameter name="ColCount" type="Cardinal" paramflags="var" />
+      <parameter name="ErrMsg" type="PWideChar" paramflags="var" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <procedure name="SQLite3_FreeTable" visibility="public" callconv="cdecl">
+    <parameters>
+      <parameter name="Table" type="TSQLiteResult" />
+    </parameters>
+  </procedure>
+  <function name="SQLite3_Complete" visibility="public" callconv="cdecl">
+    <parameters>
+      <parameter name="P" type="PWideChar" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <function name="SQLite3_LastInsertRowID" visibility="public" callconv="cdecl">
+    <parameters>
+      <parameter name="db" type="Pointer" />
+      <retval type="Int64" />
+    </parameters>
+  </function>
+  <procedure name="SQLite3_Interrupt" visibility="public" callconv="cdecl">
+    <parameters>
+      <parameter name="db" type="Pointer" />
+    </parameters>
+  </procedure>
+  <procedure name="SQLite3_BusyHandler" visibility="public" callconv="cdecl">
+    <parameters>
+      <parameter name="db" type="Pointer" />
+      <parameter name="CallbackPtr" type="Pointer" />
+      <parameter name="Sender" type="TObject" />
+    </parameters>
+  </procedure>
+  <procedure name="SQLite3_BusyTimeout" visibility="public" callconv="cdecl">
+    <parameters>
+      <parameter name="db" type="Pointer" />
+      <parameter name="TimeOut" type="Integer" />
+    </parameters>
+  </procedure>
+  <function name="SQLite3_Changes" visibility="public" callconv="cdecl">
+    <parameters>
+      <parameter name="db" type="Pointer" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="SQLite3_TotalChanges" visibility="public" callconv="cdecl">
+    <parameters>
+      <parameter name="db" type="Pointer" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="SQLite3_Prepare" visibility="public" callconv="cdecl">
+    <parameters>
+      <parameter name="db" type="Pointer" />
+      <parameter name="SQLStatement" type="PWideChar" />
+      <parameter name="nBytes" type="Integer" />
+      <parameter name="hStmt" type="Pointer" paramflags="var" />
+      <parameter name="pzTail" type="PWideChar" paramflags="var" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="SQLite3_ColumnCount" visibility="public" callconv="cdecl">
+    <parameters>
+      <parameter name="hStmt" type="Pointer" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="Sqlite3_ColumnName" visibility="public" callconv="cdecl">
+    <parameters>
+      <parameter name="hStmt" type="Pointer" />
+      <parameter name="ColNum" type="Integer" />
+      <retval type="PWideChar" />
+    </parameters>
+  </function>
+  <function name="Sqlite3_ColumnDeclType" visibility="public" callconv="cdecl">
+    <parameters>
+      <parameter name="hStmt" type="Pointer" />
+      <parameter name="ColNum" type="Integer" />
+      <retval type="PWideChar" />
+    </parameters>
+  </function>
+  <function name="Sqlite3_Step" visibility="public" callconv="cdecl">
+    <parameters>
+      <parameter name="hStmt" type="Pointer" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="SQLite3_DataCount" visibility="public" callconv="cdecl">
+    <parameters>
+      <parameter name="hStmt" type="Pointer" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="Sqlite3_ColumnBlob" visibility="public" callconv="cdecl">
+    <parameters>
+      <parameter name="hStmt" type="Pointer" />
+      <parameter name="ColNum" type="Integer" />
+      <retval type="Pointer" />
+    </parameters>
+  </function>
+  <function name="Sqlite3_ColumnBytes" visibility="public" callconv="cdecl">
+    <parameters>
+      <parameter name="hStmt" type="Pointer" />
+      <parameter name="ColNum" type="Integer" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="Sqlite3_ColumnDouble" visibility="public" callconv="cdecl">
+    <parameters>
+      <parameter name="hStmt" type="Pointer" />
+      <parameter name="ColNum" type="Integer" />
+      <retval type="Double" />
+    </parameters>
+  </function>
+  <function name="Sqlite3_ColumnInt" visibility="public" callconv="cdecl">
+    <parameters>
+      <parameter name="hStmt" type="Pointer" />
+      <parameter name="ColNum" type="Integer" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="Sqlite3_ColumnText" visibility="public" callconv="cdecl">
+    <parameters>
+      <parameter name="hStmt" type="Pointer" />
+      <parameter name="ColNum" type="Integer" />
+      <retval type="PWideChar" />
+    </parameters>
+  </function>
+  <function name="Sqlite3_ColumnType" visibility="public" callconv="cdecl">
+    <parameters>
+      <parameter name="hStmt" type="Pointer" />
+      <parameter name="ColNum" type="Integer" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="Sqlite3_ColumnInt64" visibility="public" callconv="cdecl">
+    <parameters>
+      <parameter name="hStmt" type="Pointer" />
+      <parameter name="ColNum" type="Integer" />
+      <retval type="Int64" />
+    </parameters>
+  </function>
+  <function name="SQLite3_Finalize" visibility="public" callconv="cdecl">
+    <parameters>
+      <parameter name="hStmt" type="Pointer" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="SQLite3_Reset" visibility="public" callconv="cdecl">
+    <parameters>
+      <parameter name="hStmt" type="Pointer" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="SQLite3_BindBlob" visibility="public" callconv="cdecl">
+    <parameters>
+      <parameter name="hStmt" type="Pointer" />
+      <parameter name="ParamNum" type="Integer" />
+      <parameter name="ptrData" type="Pointer" />
+      <parameter name="numBytes" type="Integer" />
+      <parameter name="ptrDestructor" type="Pointer" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="SQLiteFieldType" visibility="public">
+    <parameters>
+      <parameter name="SQLiteFieldTypeCode" type="Integer" />
+      <retval type="AnsiString" />
+    </parameters>
+  </function>
+  <function name="SQLiteErrorStr" visibility="public">
+    <parameters>
+      <parameter name="SQLiteErrorCode" type="Integer" />
+      <retval type="AnsiString" />
+    </parameters>
+  </function>
+</namespace>

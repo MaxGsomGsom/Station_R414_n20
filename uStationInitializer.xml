@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<namespace name="uStationInitializer">
+  <class name="TStationInitializer">
+    <devnotes>
+       <summary>
+         Настраивает станцию перед началом какого-либо задания
+       </summary>
+    </devnotes>
+    <ancestor name="TObject" namespace="System">
+      <methodref name="Create" visibility="public" procflags="constructor">
+      </methodref>
+      <methodref name="Free" visibility="public">
+      </methodref>
+      <methodref name="InitInstance" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="CleanupInstance" visibility="public">
+      </methodref>
+      <methodref name="ClassType" visibility="public">
+      </methodref>
+      <methodref name="ClassName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassNameIs" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassParent" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassInfo" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="InstanceSize" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="InheritsFrom" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="MethodName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="GetInterface" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceEntry" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="GetInterfaceTable" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="UnitName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="Equals" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="GetHashCode" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="ToString" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="SafeCallException" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="AfterConstruction" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="BeforeDestruction" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="Dispatch" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="DefaultHandler" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="NewInstance" visibility="public" procflags="class virtual">
+      </methodref>
+      <methodref name="FreeInstance" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="Destroy" visibility="public" procflags="destructor virtual">
+      </methodref>
+    </ancestor>
+    <members>
+      <field name="FStation" type="TStation" visibility="private" />
+      <procedure name="GenerateRandomWaves" visibility="private">
+        <devnotes>
+           <summary>
+             Генерирует случайным образом значения волн приёма/передачи
+             для обоих полукомплектов и применяет их к станции
+           </summary>
+        </devnotes>
+      </procedure>
+      <procedure name="CommonInit" visibility="private">
+        <devnotes>
+           <summary>
+             Выполняет общую первоначальную инициализацию станции
+           </summary>
+        </devnotes>
+      </procedure>
+      <procedure name="InitForPowerOnTask" visibility="private">
+        <devnotes>
+           <summary>
+             Настраивает параметры станции для выполнения задания PowerOn
+           </summary>
+        </devnotes>
+      </procedure>
+      <procedure name="InitForReceiveAndTransmitTracksSetupTask" visibility="private">
+        <devnotes>
+           <summary>
+             Настраивает параметры станции для выполнения задания
+             ReceiveAndTransmitTracksSetup
+           </summary>
+        </devnotes>
+      </procedure>
+      <procedure name="InitForWorkWithLowFrequencyTask" visibility="private">
+        <devnotes>
+           <summary>
+             Настраивает параметры станции для выполнения задания WorkWithLowFrequency
+           </summary>
+        </devnotes>
+      </procedure>
+      <property name="Station" visibility="public" read="FStation" write="FStation" type="TStation" />
+      <constructor name="Create" visibility="public">
+        <parameters>
+          <parameter name="Station" type="TStation" />
+        </parameters>
+      </constructor>
+      <procedure name="InitForStartParametersSetupTask" visibility="public">
+        <devnotes>
+           <summary>
+             Настраивает параметры станции для выполнения задания StartParametersSetup
+           </summary>
+        </devnotes>
+      </procedure>
+      <procedure name="SetStationTo2ChannelMode" visibility="public">
+        <devnotes>
+           <summary>
+             Переводит станцию в 2-х проводный режим
+           </summary>
+        </devnotes>
+      </procedure>
+      <procedure name="SetStationTo4ChannelMode" visibility="public">
+        <devnotes>
+           <summary>
+             Переводит станцию в 4-х проводный режим
+           </summary>
+        </devnotes>
+      </procedure>
+      <procedure name="InitStationByTaskID" visibility="public">
+        <devnotes>
+           <summary>
+             Выставляет параметры станции для выполнения задания
+           <param name="TaskID">ID задания, для которого требутся
+             подготовить станцию<param>
+           </summary>
+        </devnotes>
+        <parameters>
+          <parameter name="TaskID" type="TTaskType" />
+        </parameters>
+      </procedure>
+      <procedure name="InitStationByTask" visibility="public">
+        <devnotes>
+           <summary>
+             Выставляет параметры станции для выполнения задания
+           <param name="TaskType">Задание, для которого требутся
+             подготовить станцию<param>
+           </summary>
+        </devnotes>
+        <parameters>
+          <parameter name="TaskType" type="TTaskType" />
+        </parameters>
+      </procedure>
+    </members>
+  </class>
+</namespace>

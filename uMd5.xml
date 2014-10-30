@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<namespace name="uMd5">
+  <function name="md5" visibility="public">
+    <parameters>
+      <parameter name="buf" type="string" />
+      <retval type="string" />
+    </parameters>
+  </function>
+</namespace>

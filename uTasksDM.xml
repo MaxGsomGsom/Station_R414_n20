@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<namespace name="uTasksDM">
+  <const name="COUNT_PROBLEMS_IN_TASK_1" type="Integer">
+    <value>
+      $1C
+    </value>
+  </const>
+  <const name="COUNT_PROBLEMS_IN_TASK_2" type="Integer">
+    <value>
+      $14
+    </value>
+  </const>
+  <const name="COUNT_PROBLEMS_IN_TASK_3" type="Integer">
+    <value>
+      $7
+    </value>
+  </const>
+  <const name="COUNT_PROBLEMS_IN_TASK_4" type="Integer">
+    <value>
+      $6
+    </value>
+  </const>
+  <const name="COUNT_PROBLEMS_IN_TASK_5" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="COUNT_PROBLEMS_IN_TASK_6" type="Integer">
+    <value>
+      $5
+    </value>
+  </const>
+  <const name="COUNT_TASKS" type="TTaskType">
+    <value>
+      ttTransferToTerminalMode
+    </value>
+  </const>
+  <const name="Task1Description" type="string">
+    <value>
+      Занятие №1. Проведение внешнего осмотра.&#13;&#10;Для выполнения занятия требуется проверить:&#13;&#10;- крепление блоков в стойках;&#13;&#10;- крепление соединительных кабелей;&#13;&#10;- наличие и целостность встроенных измерительных приборов;&#13;&#10;- крепление шин заземления;&#13;&#10;Пояснение: в ходе занятия требуется открыть и закрыть каждую стойку.
+    </value>
+  </const>
+  <const name="Task2Description" type="string">
+    <value>
+      Занятие №2. Установка органов управления в исходное положение.
+    </value>
+  </const>
+  <const name="Task3Description" type="string">
+    <value>
+      Занятие №3. Включение питания.
+    </value>
+  </const>
+  <const name="Task4Description" type="string">
+    <value>
+      Занятие №4. Настройка приемного и передающего трактов.
+    </value>
+  </const>
+  <const name="Task5Description" type="string">
+    <value>
+      Занятие №5. Работа с низкочастотным оборудованием.
+    </value>
+  </const>
+  <variable name="UnitsNames">
+    <array low="0" high="31" generated="true">
+      <element type="string" />
+    </array>
+  </variable>
+  <variable name="Task2Arr">
+    <array low="1" high="20" generated="true">
+      <element type="string" />
+    </array>
+  </variable>
+  <variable name="Task3Arr">
+    <array low="1" high="7" generated="true">
+      <element type="string" />
+    </array>
+  </variable>
+  <variable name="Task4Arr">
+    <array low="1" high="6" generated="true">
+      <element type="string" />
+    </array>
+  </variable>
+  <variable name="Task5Arr">
+    <array low="1" high="2" generated="true">
+      <element type="string" />
+    </array>
+  </variable>
+  <variable name="Task6Arr">
+    <array low="1" high="5" generated="true">
+      <element type="string" />
+    </array>
+  </variable>
+  <variable name="Task1RackCodeArr" />
+  <variable name="Task2RackCodeArr" />
+  <variable name="Task3RackCodeArr" />
+  <variable name="Task4RackCodeArr" />
+  <variable name="Task5RackCodeArr" />
+  <variable name="Task6RackCodeArr" />
+  <variable name="Task1Passed" />
+  <variable name="Task2Passed" />
+  <variable name="Task3Passed" />
+  <variable name="Task4Passed" />
+  <variable name="Task5Passed" />
+  <variable name="Task6Passed" />
+  <variable name="Task1PassTime">
+    <array low="0" high="27" generated="true">
+      <element type="string" />
+    </array>
+  </variable>
+  <variable name="Task2PassTime">
+    <array low="1" high="20" generated="true">
+      <element type="string" />
+    </array>
+  </variable>
+  <variable name="Task3PassTime">
+    <array low="1" high="7" generated="true">
+      <element type="string" />
+    </array>
+  </variable>
+  <variable name="Task4PassTime">
+    <array low="1" high="6" generated="true">
+      <element type="string" />
+    </array>
+  </variable>
+  <variable name="Task5PassTime">
+    <array low="1" high="2" generated="true">
+      <element type="string" />
+    </array>
+  </variable>
+  <variable name="Task6PassTime">
+    <array low="1" high="5" generated="true">
+      <element type="string" />
+    </array>
+  </variable>
+  <procedure name="ClearPassedTasksLists" visibility="public">
+    <devnotes>
+       <summary>
+       Очищает массивы, в которых помечаются выполненные задания
+       </summary>
+    </devnotes>
+  </procedure>
+</namespace>

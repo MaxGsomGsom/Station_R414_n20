@@ -1,0 +1,840 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<namespace name="uStationStateDM">
+  <const name="butPositionUp" type="Integer">
+    <value>
+      $0
+    </value>
+  </const>
+  <const name="butPositionDown" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="butPositionLeft" type="Integer">
+    <value>
+      $0
+    </value>
+  </const>
+  <const name="butPositionRight" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="swOff" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="swOn" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <struct name="pGenerator" packed="true">
+  </struct>
+  <struct name="pLittleNoisyAmplifier" packed="true">
+    <field name="butMshu" type="Byte" visibility="public" />
+    <field name="swWave" type="Byte" visibility="public" />
+    <field name="butNet" type="Byte" visibility="public" />
+    <field name="butNet2" type="Byte" visibility="public" />
+  </struct>
+  <struct name="pDuplexer" packed="true">
+    <field name="waveTransmit" type="Byte" visibility="public" />
+    <field name="waveReceive" type="Byte" visibility="public" />
+    <field name="cbSh1" type="Byte" visibility="public" />
+    <field name="cb1840" type="Byte" visibility="public" />
+    <field name="cbSh2" type="Byte" visibility="public" />
+  </struct>
+  <struct name="pRack1500" packed="true">
+    <field name="swModeControl" type="Byte" visibility="public" />
+    <field name="btnAutomatic" type="Byte" visibility="public" />
+    <field name="butMode_R" type="Byte" visibility="public" />
+    <field name="swPhaseMover" type="Byte" visibility="public" />
+    <field name="swWave1610_0" type="Byte" visibility="public" />
+    <field name="swWave1500" type="Byte" visibility="public" />
+    <field name="swWave161_R" type="Byte" visibility="public" />
+    <field name="SelectedMd" type="Byte" visibility="public" />
+    <field name="SelectedRetr" type="Byte" visibility="public" />
+    <field name="DropError" type="Boolean" visibility="public" />
+    <field name="CableMdMainState" type="Byte" visibility="public" />
+    <field name="CableMdReservState" type="Byte" visibility="public" />
+    <field name="GeterodinTunedMain" type="Boolean" visibility="public" />
+    <field name="GeterodinTunedReserve" type="Boolean" visibility="public" />
+    <field name="GeterodinIntMain" type="Byte" visibility="public" />
+    <field name="GeterodinFloatMain" type="Byte" visibility="public" />
+    <field name="GeterodinIntReserve" type="Byte" visibility="public" />
+    <field name="GeterodinFloatReserve" type="Byte" visibility="public" />
+    <field name="stCableNoName" type="Byte" visibility="public" />
+    <field name="stCableSh1" type="Byte" visibility="public" />
+  </struct>
+  <struct name="pRack1920" packed="true">
+    <field name="swAddInput" type="Byte" visibility="public" />
+    <field name="butPower" type="Byte" visibility="public" />
+    <field name="swAddInput2" type="Byte" visibility="public" />
+    <field name="butPower2" type="Byte" visibility="public" />
+    <field name="but1910" type="Byte" visibility="public" />
+    <field name="but1910A" type="Byte" visibility="public" />
+    <field name="but1930" type="Byte" visibility="public" />
+    <field name="but1960_1" type="Byte" visibility="public" />
+    <field name="butHighOn" type="Byte" visibility="public" />
+    <field name="butHighOff" type="Byte" visibility="public" />
+    <field name="butHighOn2" type="Byte" visibility="public" />
+    <field name="butHighOff2" type="Byte" visibility="public" />
+    <field name="butCurrent5MA" type="Byte" visibility="public" />
+    <field name="butCurrent5MA2" type="Byte" visibility="public" />
+    <field name="stZamedleniePodano_LVB1" type="Boolean" visibility="public" />
+    <field name="stZamedleniePodano_LVB2" type="Boolean" visibility="public" />
+    <field name="stLBV1_TurnedOn" type="Boolean" visibility="public" />
+    <field name="stLBV2_TurnedOn" type="Boolean" visibility="public" />
+  </struct>
+  <struct name="pRack1600" packed="true">
+    <field name="GeterodinTunedMain" type="Boolean" visibility="public" />
+    <field name="GeterodinTunedReserve" type="Boolean" visibility="public" />
+    <field name="GeterodinIntMain" type="Byte" visibility="public" />
+    <field name="GeterodinFloatMain" type="Byte" visibility="public" />
+    <field name="GeterodinIntReserve" type="Byte" visibility="public" />
+    <field name="GeterodinFloatReserve" type="Byte" visibility="public" />
+    <field name="CableMdMainState" type="Byte" visibility="public" />
+    <field name="CableMdReservState" type="Byte" visibility="public" />
+    <field name="SelectedMd" type="Byte" visibility="public" />
+    <field name="SelectedUpch" type="Byte" visibility="public" />
+    <field name="SelectedDmch" type="Byte" visibility="public" />
+    <field name="butAutomatic" type="Byte" visibility="public" />
+    <field name="butDmch" type="Byte" visibility="public" />
+    <field name="butChannelControl" type="Byte" visibility="public" />
+    <field name="swChannelControl" type="Byte" visibility="public" />
+    <field name="wave1610_0" type="Byte" visibility="public" />
+    <field name="wave1610_R" type="Byte" visibility="public" />
+    <field name="wave1600" type="Byte" visibility="public" />
+    <field name="DropError" type="Boolean" visibility="public" />
+    <field name="stMoshnost" type="Boolean" visibility="public" />
+    <field name="stDmchTuneValue" type="Byte" visibility="public" />
+  </struct>
+  <struct name="pWaveMeter" packed="true">
+    <field name="Int" type="Byte" visibility="public" />
+    <field name="Float" type="Byte" visibility="public" />
+  </struct>
+  <struct name="pRack1200_PRD" packed="true">
+    <field name="CableOscillographLineInput" type="Byte" visibility="public" />
+    <field name="CableUzlovoiInput" type="Byte" visibility="public" />
+    <field name="But1270Main" type="Byte" visibility="public" />
+    <field name="But1220AMMain" type="Byte" visibility="public" />
+    <field name="But1230AMain" type="Byte" visibility="public" />
+    <field name="But1210AMain" type="Byte" visibility="public" />
+    <field name="but1210ARetrMain" type="Byte" visibility="public" />
+    <field name="But1270Reserve" type="Byte" visibility="public" />
+    <field name="But1220AMReserve" type="Byte" visibility="public" />
+    <field name="But1230AReserve" type="Byte" visibility="public" />
+    <field name="But1210AReserve" type="Byte" visibility="public" />
+    <field name="but1210ARetrReserve" type="Byte" visibility="public" />
+    <field name="But1240V" type="Byte" visibility="public" />
+    <field name="Sw1240V" type="Byte" visibility="public" />
+    <field name="st1240V_Zaglushka_4PDC" type="Byte" visibility="public" />
+    <field name="st1240V_Zaglushka_KDC" type="Byte" visibility="public" />
+    <field name="But1240V2" type="Byte" visibility="public" />
+    <field name="Sw1240V2" type="Byte" visibility="public" />
+    <field name="st1240V2_Zaglushka_4PDC" type="Byte" visibility="public" />
+    <field name="st1240V2_Zaglushka_KDC" type="Byte" visibility="public" />
+    <field name="But1240V3" type="Byte" visibility="public" />
+    <field name="Sw1240V3" type="Byte" visibility="public" />
+    <field name="st1240V3_Zaglushka_4PDC" type="Byte" visibility="public" />
+    <field name="st1240V3_Zaglushka_KDC" type="Byte" visibility="public" />
+    <field name="But1240G" type="Byte" visibility="public" />
+    <field name="But1240G1" type="Byte" visibility="public" />
+    <field name="But1240G2" type="Byte" visibility="public" />
+    <field name="But1240G3" type="Byte" visibility="public" />
+    <field name="But1240G4" type="Byte" visibility="public" />
+    <field name="But1240G5" type="Byte" visibility="public" />
+    <field name="But1240G6" type="Byte" visibility="public" />
+    <field name="But1240G7" type="Byte" visibility="public" />
+    <field name="But1240G8" type="Byte" visibility="public" />
+    <field name="But1290Power" type="Byte" visibility="public" />
+    <field name="sw1290Power" type="Byte" visibility="public" />
+    <field name="sw1240V1Tune" type="Byte" visibility="public" />
+    <field name="sw1240V2Tune" type="Byte" visibility="public" />
+    <field name="sw1240V3Tune" type="Byte" visibility="public" />
+    <field name="sw1240GTune" type="Byte" visibility="public" />
+    <field name="sw1240G1Tune" type="Byte" visibility="public" />
+    <field name="sw1240G2Tune" type="Byte" visibility="public" />
+    <field name="sw1240G3Tune" type="Byte" visibility="public" />
+    <field name="sw1240G4Tune" type="Byte" visibility="public" />
+    <field name="sw1240G5Tune" type="Byte" visibility="public" />
+    <field name="sw1240G6Tune" type="Byte" visibility="public" />
+    <field name="sw1240G7Tune" type="Byte" visibility="public" />
+    <field name="sw1240G8Tune" type="Byte" visibility="public" />
+    <field name="sw1240V1TunedValue" type="Byte" visibility="public" />
+    <field name="sw1240V2TunedValue" type="Byte" visibility="public" />
+    <field name="sw1240V3TunedValue" type="Byte" visibility="public" />
+    <field name="sw1240GTunedValue" type="Byte" visibility="public" />
+    <field name="sw1240G1TunedValue" type="Byte" visibility="public" />
+    <field name="sw1240G2TunedValue" type="Byte" visibility="public" />
+    <field name="sw1240G3TunedValue" type="Byte" visibility="public" />
+    <field name="sw1240G4TunedValue" type="Byte" visibility="public" />
+    <field name="sw1240G5TunedValue" type="Byte" visibility="public" />
+    <field name="sw1240G6TunedValue" type="Byte" visibility="public" />
+    <field name="sw1240G7TunedValue" type="Byte" visibility="public" />
+    <field name="sw1240G8TunedValue" type="Byte" visibility="public" />
+  </struct>
+  <struct name="pRack1200_PRM" packed="true">
+    <field name="butChannelControl" type="Byte" visibility="public" />
+    <field name="but1220ADMain" type="Byte" visibility="public" />
+    <field name="but1230AMain" type="Byte" visibility="public" />
+    <field name="Sw1240K" type="Byte" visibility="public" />
+    <field name="SwNumberOfUchastok" type="Byte" visibility="public" />
+    <field name="SwNumberOfStantion" type="Byte" visibility="public" />
+    <field name="but1240K" type="Byte" visibility="public" />
+    <field name="but1220ADReserve" type="Byte" visibility="public" />
+    <field name="but1230AReserve" type="Byte" visibility="public" />
+    <field name="But1240GMain" type="Byte" visibility="public" />
+    <field name="But1240GMain2" type="Byte" visibility="public" />
+    <field name="but1240GPrmPrd" type="Byte" visibility="public" />
+    <field name="but1240GOneTwo" type="Byte" visibility="public" />
+    <field name="but1240G" type="Byte" visibility="public" />
+    <field name="but1240V" type="Byte" visibility="public" />
+    <field name="Sw1240V" type="Byte" visibility="public" />
+    <field name="but1240V2" type="Byte" visibility="public" />
+    <field name="Sw1240V2" type="Byte" visibility="public" />
+    <field name="but1240G1" type="Byte" visibility="public" />
+    <field name="but1240G2" type="Byte" visibility="public" />
+    <field name="but1240G3" type="Byte" visibility="public" />
+    <field name="but1240G4" type="Byte" visibility="public" />
+    <field name="but1240G5" type="Byte" visibility="public" />
+    <field name="but1240G6" type="Byte" visibility="public" />
+    <field name="but1240G7" type="Byte" visibility="public" />
+    <field name="but1240G8" type="Byte" visibility="public" />
+    <field name="but1290Power" type="Byte" visibility="public" />
+    <field name="Sw1290" type="Byte" visibility="public" />
+    <field name="CableVhodPrm" type="Byte" visibility="public" />
+    <field name="CableSinusOscill" type="Byte" visibility="public" />
+    <field name="st1240G_ports" type="Byte" visibility="public" />
+    <field name="st1240V1_4PDC_1_ports" type="Byte" visibility="public" />
+    <field name="st1240V1_4PDC_2_ports" type="Byte" visibility="public" />
+    <field name="st1240V2_4PDC_1_ports" type="Byte" visibility="public" />
+    <field name="st1240V2_4PDC_2_ports" type="Byte" visibility="public" />
+    <field name="sw1240GMainTune" type="Byte" visibility="public" />
+    <field name="sw1240GMain2Tune" type="Byte" visibility="public" />
+    <field name="sw1240GTune" type="Byte" visibility="public" />
+    <field name="sw1240GPrmPrdTune" type="Byte" visibility="public" />
+    <field name="sw1240V2Tune" type="Byte" visibility="public" />
+    <field name="sw1240VTune" type="Byte" visibility="public" />
+    <field name="sw1240G1Tune" type="Byte" visibility="public" />
+    <field name="sw1240G2Tune" type="Byte" visibility="public" />
+    <field name="sw1240G3Tune" type="Byte" visibility="public" />
+    <field name="sw1240G4Tune" type="Byte" visibility="public" />
+    <field name="sw1240G5Tune" type="Byte" visibility="public" />
+    <field name="sw1240G6Tune" type="Byte" visibility="public" />
+    <field name="sw1240G7Tune" type="Byte" visibility="public" />
+    <field name="sw1240G8Tune" type="Byte" visibility="public" />
+    <field name="sw1240GTunedValue" type="Byte" visibility="public" />
+    <field name="sw1240GPrmPrdTunedValue" type="Byte" visibility="public" />
+    <field name="sw1240V2TunedValue" type="Byte" visibility="public" />
+    <field name="sw1240VTunedValue" type="Byte" visibility="public" />
+    <field name="sw1240G1TunedValue" type="Byte" visibility="public" />
+    <field name="sw1240G2TunedValue" type="Byte" visibility="public" />
+    <field name="sw1240G3TunedValue" type="Byte" visibility="public" />
+    <field name="sw1240G4TunedValue" type="Byte" visibility="public" />
+    <field name="sw1240G5TunedValue" type="Byte" visibility="public" />
+    <field name="sw1240G6TunedValue" type="Byte" visibility="public" />
+    <field name="sw1240G7TunedValue" type="Byte" visibility="public" />
+    <field name="sw1240G8TunedValue" type="Byte" visibility="public" />
+  </struct>
+  <struct name="pP321" packed="true">
+    <field name="butPower" type="Byte" visibility="public" />
+    <field name="butMeasure" type="Byte" visibility="public" />
+    <field name="but600Ohm" type="Byte" visibility="public" />
+    <field name="swNepGen" type="Byte" visibility="public" />
+    <field name="swFrequency" type="Byte" visibility="public" />
+    <field name="swNepGenYY" type="Byte" visibility="public" />
+    <field name="cblVihGen" type="Byte" visibility="public" />
+    <field name="cblVhYY" type="Byte" visibility="public" />
+    <field name="swGradPit" type="Byte" visibility="public" />
+    <field name="swGradGen" type="Byte" visibility="public" />
+    <field name="swGradYY" type="Byte" visibility="public" />
+  </struct>
+  <struct name="pRack1710" packed="true">
+    <field name="butPower" type="Byte" visibility="public" />
+    <field name="swKukushka" type="Byte" visibility="public" />
+    <field name="swWorkMode" type="Byte" visibility="public" />
+    <field name="butAutomat" type="Byte" visibility="public" />
+    <field name="butEmergencyLine1" type="Byte" visibility="public" />
+    <field name="butEmergencyLine2" type="Byte" visibility="public" />
+    <field name="but1220AD" type="Byte" visibility="public" />
+    <field name="but1230AD" type="Byte" visibility="public" />
+    <field name="but1290" type="Byte" visibility="public" />
+    <field name="but1220AM" type="Byte" visibility="public" />
+    <field name="but1230AM" type="Byte" visibility="public" />
+    <field name="but1210A" type="Byte" visibility="public" />
+    <field name="but1270" type="Byte" visibility="public" />
+    <field name="but1220AD_2" type="Byte" visibility="public" />
+    <field name="but1230AD_2" type="Byte" visibility="public" />
+    <field name="but1290_2" type="Byte" visibility="public" />
+    <field name="but1220AM_2" type="Byte" visibility="public" />
+    <field name="but1230AM_2" type="Byte" visibility="public" />
+    <field name="but1210A_2" type="Byte" visibility="public" />
+    <field name="but1270_2" type="Byte" visibility="public" />
+    <field name="swReductorCurrent" type="Byte" visibility="public" />
+    <field name="butExternalUplotnenieA" type="Byte" visibility="public" />
+    <field name="butExternalUplotnenieB" type="Byte" visibility="public" />
+    <field name="butSpeaker" type="Byte" visibility="public" />
+  </struct>
+  <struct name="pChannel" packed="true">
+    <field name="stChannelState" type="Byte" visibility="public" />
+  </struct>
+  <struct name="pCross" packed="true">
+    <field name="AbonentPRD" type="pChannel" visibility="public" />
+    <field name="AbonentPRM" type="pChannel" visibility="public" />
+    <field name="ChannelM" type="pChannel" visibility="public" />
+    <field name="ChannelD" type="pChannel" visibility="public" />
+    <field name="UdPRD" type="pChannel" visibility="public" />
+    <field name="UdPRM" type="pChannel" visibility="public" />
+    <field name="Ud2PRD" type="pChannel" visibility="public" />
+    <field name="Ud2PRM" type="pChannel" visibility="public" />
+  </struct>
+  <struct name="pChannelsEx" packed="true">
+    <field name="State" type="Byte" visibility="public" />
+  </struct>
+  <struct name="pChannels" packed="true">
+    <field name="A" visibility="public">
+      <array name="A" visibility="public" low="1" high="21">
+        <element type="pChannelsEx" />
+      </array>
+    </field>
+    <field name="B" visibility="public">
+      <array name="B" visibility="public" low="1" high="21">
+        <element type="pChannelsEx" />
+      </array>
+    </field>
+  </struct>
+  <struct name="pRemoteController" packed="true">
+    <field name="SwPVU" type="Byte" visibility="public" />
+    <field name="butCall1" type="Byte" visibility="public" />
+    <field name="butCall2" type="Byte" visibility="public" />
+    <field name="butCall3" type="Byte" visibility="public" />
+    <field name="butCall4" type="Byte" visibility="public" />
+    <field name="butForceMachine" type="Byte" visibility="public" />
+    <field name="stGeneratorCableConnectedAtPortA" type="Byte" visibility="public" />
+    <field name="stInputYYCableConnectedAtPortA" type="Byte" visibility="public" />
+    <field name="stGeneratorCableConnectedAtPortB" type="Byte" visibility="public" />
+    <field name="stInputYYCableConnectedAtPortB" type="Byte" visibility="public" />
+    <field name="stGeneratorCableAType" type="Byte" visibility="public" />
+    <field name="stGeneratorCableBType" type="Byte" visibility="public" />
+    <field name="stInputYYCableAType" type="Byte" visibility="public" />
+    <field name="stInputYYCableBType" type="Byte" visibility="public" />
+    <field name="indCallLineVisible" visibility="public">
+      <array name="indCallLineVisible" visibility="public" low="1" high="9">
+        <element type="Boolean" />
+      </array>
+    </field>
+    <field name="CrossA" visibility="public">
+      <array name="CrossA" visibility="public" low="1" high="21">
+        <element type="pCross" />
+      </array>
+    </field>
+    <field name="CrossB" visibility="public">
+      <array name="CrossB" visibility="public" low="1" high="21">
+        <element type="pCross" />
+      </array>
+    </field>
+    <field name="Channels" type="pChannels" visibility="public" />
+  </struct>
+  <struct name="pOscillograph" packed="true">
+    <field name="swRazvertka" type="Byte" visibility="public" />
+    <field name="swRazvertkaShortTune" type="Byte" visibility="public" />
+    <field name="butDirectOrAlternative" type="Byte" visibility="public" />
+    <field name="swSyncType" type="Byte" visibility="public" />
+    <field name="butLevelPosition" type="Byte" visibility="public" />
+    <field name="cblCabelSyncState" type="Byte" visibility="public" />
+    <field name="cblCabelSyncConnectedTo" type="Byte" visibility="public" />
+    <field name="swCalibrator" type="Byte" visibility="public" />
+    <field name="but1Khz" type="Byte" visibility="public" />
+    <field name="swHz" type="Byte" visibility="public" />
+    <field name="swVvsDel" type="Byte" visibility="public" />
+    <field name="swPowerType" type="Byte" visibility="public" />
+    <field name="cblCableUsilitelState" type="Byte" visibility="public" />
+    <field name="cblCableUsilitelConnectedTo" type="Byte" visibility="public" />
+  </struct>
+  <struct name="pPowerSuply" packed="true">
+  </struct>
+  <struct name="pRack1400" packed="true">
+    <field name="butPower" type="Byte" visibility="public" />
+    <field name="swKukushka" type="Byte" visibility="public" />
+  </struct>
+  <struct name="pRack1500_back" packed="true">
+    <field name="but1622_1" type="Byte" visibility="public" />
+    <field name="but1622_2" type="Byte" visibility="public" />
+    <field name="butMdOsn_1" type="Byte" visibility="public" />
+    <field name="butMdOsn_2" type="Byte" visibility="public" />
+    <field name="butMdOsn_3" type="Byte" visibility="public" />
+  </struct>
+  <struct name="pPowerPanel" packed="true">
+    <field name="swPhase" type="Byte" visibility="public" />
+    <field name="swNet" type="Byte" visibility="public" />
+    <field name="butRetranslator" type="Byte" visibility="public" />
+    <field name="sw1700Power" type="Byte" visibility="public" />
+    <field name="butRetranslator2" type="Byte" visibility="public" />
+    <field name="sw1900Power" type="Byte" visibility="public" />
+    <field name="swHeat5A" type="Byte" visibility="public" />
+    <field name="sw1900Power_2" type="Byte" visibility="public" />
+    <field name="sw1200Power" type="Byte" visibility="public" />
+    <field name="sw1400" type="Byte" visibility="public" />
+    <field name="sw1200Power_2" type="Byte" visibility="public" />
+    <field name="butVent1" type="Byte" visibility="public" />
+    <field name="butUnitBK" type="Byte" visibility="public" />
+    <field name="butVipriamit4V" type="Byte" visibility="public" />
+    <field name="butVent1_2" type="Byte" visibility="public" />
+    <field name="butVent3" type="Byte" visibility="public" />
+  </struct>
+  <struct name="pRack1600_back" packed="true">
+    <field name="but1622Main" type="Byte" visibility="public" />
+    <field name="but1622Reserve" type="Byte" visibility="public" />
+    <field name="swUGS" type="Byte" visibility="public" />
+    <field name="swUGS2" type="Byte" visibility="public" />
+    <field name="butUPT" type="Byte" visibility="public" />
+    <field name="butUPT2" type="Byte" visibility="public" />
+    <field name="swKukushka" type="Byte" visibility="public" />
+    <field name="but1621Main" type="Byte" visibility="public" />
+    <field name="but1621Reserve" type="Byte" visibility="public" />
+  </struct>
+  <struct name="pP321Cables" packed="true">
+    <field name="stConnectedToPlaceId" type="Integer" visibility="public" />
+    <field name="offsetLeft" type="Integer" visibility="public" />
+    <field name="offsetTop" type="Integer" visibility="public" />
+  </struct>
+  <class name="THalfSet">
+    <devnotes>
+       <summary>
+         Полукомплект станции Р414
+       </summary>
+    </devnotes>
+    <ancestor name="TObject" namespace="System">
+      <methodref name="Create" visibility="public" procflags="constructor">
+      </methodref>
+      <methodref name="Free" visibility="public">
+      </methodref>
+      <methodref name="InitInstance" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="CleanupInstance" visibility="public">
+      </methodref>
+      <methodref name="ClassType" visibility="public">
+      </methodref>
+      <methodref name="ClassName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassNameIs" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassParent" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassInfo" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="InstanceSize" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="InheritsFrom" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="MethodName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="GetInterface" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceEntry" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="GetInterfaceTable" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="UnitName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="Equals" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="GetHashCode" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="ToString" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="SafeCallException" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="AfterConstruction" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="BeforeDestruction" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="Dispatch" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="DefaultHandler" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="NewInstance" visibility="public" procflags="class virtual">
+      </methodref>
+      <methodref name="FreeInstance" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="Destroy" visibility="public" procflags="destructor virtual">
+      </methodref>
+    </ancestor>
+    <members>
+      <field name="Generator" type="pGenerator" visibility="public" />
+      <field name="LittleNoisyAmplifier" type="pLittleNoisyAmplifier" visibility="public" />
+      <field name="Duplexer" type="pDuplexer" visibility="public" />
+      <field name="Rack1500" type="pRack1500" visibility="public" />
+      <field name="Rack1500B" type="pRack1500_back" visibility="public" />
+      <field name="Rack1920" type="pRack1920" visibility="public" />
+      <field name="Rack1600" type="pRack1600" visibility="public" />
+      <field name="Rack1600B" type="pRack1600_back" visibility="public" />
+      <field name="Rack1200Left" type="pRack1200_PRM" visibility="public" />
+      <field name="Rack1200Right" type="pRack1200_PRD" visibility="public" />
+      <field name="P321" type="pP321" visibility="public" />
+      <function name="IsTunedFor2ChannelMode" visibility="public">
+        <devnotes>
+           <summary>
+             Проверяет, настроен ли полукомплект для 2-х проводного режима
+           </summary>
+        </devnotes>
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="IsTunedFor4ChannelMode" visibility="public">
+        <devnotes>
+           <summary>
+             Проверяет, настроен ли полукомплект для 4-х проводного режима
+           </summary>
+        </devnotes>
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="IsTunedOK" visibility="public">
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="Is1500Transmited" visibility="public">
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="IsTuned" visibility="public">
+        <devnotes>
+           <summary>
+             Проверяет, настроен ли полукомплект в соответствии с указанными волнами
+           </summary>
+        </devnotes>
+        <parameters>
+          <parameter name="RequiredWaveTransmit" type="Integer" />
+          <parameter name="RequiredWaveReceive" type="Integer" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <procedure name="CheckPower" visibility="public">
+        <devnotes>
+           <summary>
+             Проверяет мощность (не известно, что за мощость)) )
+           <param name="RequiredWaveReceive">Значение волны приёма, данное в задании</param>
+           <param name="OtherHalfSetTransmited">Показывает, осуществляется ли
+             передача другим полукомплектом</param>
+           </summary>
+        </devnotes>
+        <parameters>
+          <parameter name="RequiredWaveReceive" type="Integer" />
+          <parameter name="OtherHalfSetTransmited" type="Boolean" />
+        </parameters>
+      </procedure>
+    </members>
+  </class>
+  <class name="TStation">
+    <devnotes>
+       <summary>
+         Станция Р414 (блоки и настроенные состояния)
+       </summary>
+    </devnotes>
+    <ancestor name="TObject" namespace="System">
+      <methodref name="Create" visibility="public" procflags="constructor">
+      </methodref>
+      <methodref name="Free" visibility="public">
+      </methodref>
+      <methodref name="InitInstance" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="CleanupInstance" visibility="public">
+      </methodref>
+      <methodref name="ClassType" visibility="public">
+      </methodref>
+      <methodref name="ClassName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassNameIs" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassParent" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassInfo" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="InstanceSize" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="InheritsFrom" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="MethodName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="GetInterface" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceEntry" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="GetInterfaceTable" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="UnitName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="Equals" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="GetHashCode" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="ToString" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="SafeCallException" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="AfterConstruction" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="BeforeDestruction" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="Dispatch" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="DefaultHandler" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="NewInstance" visibility="public" procflags="class virtual">
+      </methodref>
+      <methodref name="FreeInstance" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="Destroy" visibility="public" procflags="destructor virtual">
+      </methodref>
+    </ancestor>
+    <members>
+      <field name="FHalfSetA" type="THalfSet" visibility="private" />
+      <field name="FHalfSetB" type="THalfSet" visibility="private" />
+      <procedure name="Initialise" visibility="private">
+      </procedure>
+      <field name="Rack1710" type="pRack1710" visibility="public" />
+      <field name="Rack1400" type="pRack1400" visibility="public" />
+      <field name="RemoteController" type="pRemoteController" visibility="public" />
+      <field name="P321C" type="pP321" visibility="public" />
+      <field name="Oscillograph" type="pOscillograph" visibility="public" />
+      <field name="PowerSuply" type="pPowerSuply" visibility="public" />
+      <field name="WaveMeter" type="pWaveMeter" visibility="public" />
+      <field name="PowerPanel" type="pPowerPanel" visibility="public" />
+      <field name="cbGenerator" type="pP321Cables" visibility="public" />
+      <field name="cbInputYY" type="pP321Cables" visibility="public" />
+      <field name="WaveTransmitA" type="Byte" visibility="public" />
+      <field name="WaveReceiveA" type="Byte" visibility="public" />
+      <field name="WaveTransmitB" type="Byte" visibility="public" />
+      <field name="WaveReceiveB" type="Byte" visibility="public" />
+      <field name="Soprajenie" type="Byte" visibility="public" />
+      <field name="WorkMode" type="Byte" visibility="public" />
+      <field name="WorkType" type="Byte" visibility="public" />
+      <field name="NetWorkMode" type="Byte" visibility="public" />
+      <field name="Nick" type="string" visibility="public" />
+      <property name="HalfSetA" visibility="public" read="FHalfSetA" write="FHalfSetA" type="THalfSet" />
+      <property name="HalfSetB" visibility="public" read="FHalfSetB" write="FHalfSetB" type="THalfSet" />
+      <constructor name="Create" visibility="public">
+        <parameters>
+        </parameters>
+      </constructor>
+      <destructor name="Destroy" visibility="public">
+        <parameters>
+        </parameters>
+      </destructor>
+      <function name="IsOscillographShuntsConnected" visibility="public">
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="IsChannelTuned" visibility="public">
+        <devnotes>
+           <summary>
+             Проверяет, настроен ли канал
+           <param name="ChannelId">ID проверяемого канала</param>
+           </summary>
+        </devnotes>
+        <parameters>
+          <parameter name="ChannelId" type="Byte" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="GetTransmitBlockTune" visibility="public">
+        <devnotes>
+           <summary>
+             Возвращает текущее значение подстройки канала
+           </summary>
+        </devnotes>
+        <parameters>
+          <retval type="Byte" />
+        </parameters>
+      </function>
+      <function name="Is1500ATransmited" visibility="public">
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="Is1500BTransmited" visibility="public">
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="IsP321ReadyToMeasure" visibility="public">
+        <devnotes>
+           <summary>
+             Проверяет, настроен ли прибор П321 для того, чтоб начать измерения
+           </summary>
+        </devnotes>
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="IsChannelBlocksTunedAt4ChannelMode" visibility="public">
+        <devnotes>
+           <summary>
+             Проверяет, настроены ли блоки на 4-х проводный режим
+           </summary>
+        </devnotes>
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="IsChannelBlocksTunedAt2ChannelMode" visibility="public">
+        <devnotes>
+           <summary>
+             Проверяет, настроены ли блоки на 2-х проводный режим
+           </summary>
+        </devnotes>
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="IsPolukomplektATunedOK" visibility="public">
+        <devnotes>
+           <summary>
+           Проверяет, настроен ли полукомплект А на оконечный режим работы
+           </summary>
+        </devnotes>
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="IsPolukomplektBTunedOK" visibility="public">
+        <devnotes>
+           <summary>
+           Проверяет, настроен ли полукомплект Б на оконечный режим работы
+           </summary>
+        </devnotes>
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="IsTunedOK" visibility="public">
+        <devnotes>
+           <summary>
+             Проверяет, настроена ли станция в оконечном режиме
+           </summary>
+        </devnotes>
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="IsPowerPanelPoweredOn" visibility="public">
+        <devnotes>
+           <summary>
+             Определяет, включено ли питание на распределительном щите
+           </summary>
+        </devnotes>
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="IsPluggedIn" visibility="public">
+        <devnotes>
+           <summary>
+             Возвращает значение, включено ли питание станции
+           </summary>
+        </devnotes>
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="Is1920A1ReadyToTurnHighON" visibility="public">
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="Is1920A2ReadyToTurnHighON" visibility="public">
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="Is1920B1ReadyToTurnHighON" visibility="public">
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="Is1920B2ReadyToTurnHighON" visibility="public">
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="Is1920A1PluggedIn" visibility="public">
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="Is1920A2PluggedIn" visibility="public">
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="Is1920B1PluggedIn" visibility="public">
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="Is1920B2PluggedIn" visibility="public">
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="IsPolukomplektATuned" visibility="public">
+        <devnotes>
+           <summary>
+             Проверяет, настроен ли полукомплект А (при замыкании станции на себя?)
+           </summary>
+        </devnotes>
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="IsPolukomplektBTuned" visibility="public">
+        <devnotes>
+           <summary>
+             Проверяет, настроен ли полукомплект Б (при замыкании станции на себя?)
+           </summary>
+        </devnotes>
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <procedure name="CheckMoshnostA" visibility="public">
+      </procedure>
+      <procedure name="CheckMoshnostB" visibility="public">
+      </procedure>
+      <function name="IsP321ShuntsConnectedAt2ChannelMode" visibility="public">
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="IsP321ShuntsConnectedAt4ChannelMode" visibility="public">
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+    </members>
+  </class>
+</namespace>
