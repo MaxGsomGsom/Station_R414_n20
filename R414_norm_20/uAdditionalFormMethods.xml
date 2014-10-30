@@ -1,0 +1,364 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<namespace name="uAdditionalFormMethods">
+  <const name="Generator_A" type="TRacksEnum">
+    <value>
+      Generator_A
+    </value>
+  </const>
+  <const name="Mshu_A" type="TRacksEnum">
+    <value>
+      Mshu_A
+    </value>
+  </const>
+  <const name="Duplexer_A" type="TRacksEnum">
+    <value>
+      Duplexer_A
+    </value>
+  </const>
+  <const name="Rack_1500_A" type="TRacksEnum">
+    <value>
+      Rack_1500_A
+    </value>
+  </const>
+  <const name="Rack_1920_A" type="TRacksEnum">
+    <value>
+      Rack_1920_A
+    </value>
+  </const>
+  <const name="Rack_1600_A" type="TRacksEnum">
+    <value>
+      Rack_1600_A
+    </value>
+  </const>
+  <const name="Rack_1200_reciever_A" type="TRacksEnum">
+    <value>
+      Rack_1200_reciever_A
+    </value>
+  </const>
+  <const name="Rack_1200_broadcaster_A" type="TRacksEnum">
+    <value>
+      Rack_1200_broadcaster_A
+    </value>
+  </const>
+  <const name="Wavemeter_A" type="TRacksEnum">
+    <value>
+      Wavemeter_A
+    </value>
+  </const>
+  <const name="P321_A" type="TRacksEnum">
+    <value>
+      P321_A
+    </value>
+  </const>
+  <const name="Generator_B" type="TRacksEnum">
+    <value>
+      Generator_B
+    </value>
+  </const>
+  <const name="Mshu_B" type="TRacksEnum">
+    <value>
+      Mshu_B
+    </value>
+  </const>
+  <const name="Duplexer_B" type="TRacksEnum">
+    <value>
+      Duplexer_B
+    </value>
+  </const>
+  <const name="Rack_1500_B" type="TRacksEnum">
+    <value>
+      Rack_1500_B
+    </value>
+  </const>
+  <const name="Rack_1920_B" type="TRacksEnum">
+    <value>
+      Rack_1920_B
+    </value>
+  </const>
+  <const name="Rack_1600_B" type="TRacksEnum">
+    <value>
+      Rack_1600_B
+    </value>
+  </const>
+  <const name="Rack_1200_reciever_B" type="TRacksEnum">
+    <value>
+      Rack_1200_reciever_B
+    </value>
+  </const>
+  <const name="Rack_1200_broadcaster_B" type="TRacksEnum">
+    <value>
+      Rack_1200_broadcaster_B
+    </value>
+  </const>
+  <const name="Wavemeter_B" type="TRacksEnum">
+    <value>
+      Wavemeter_B
+    </value>
+  </const>
+  <const name="P321_B" type="TRacksEnum">
+    <value>
+      P321_B
+    </value>
+  </const>
+  <const name="Rack_1710" type="TRacksEnum">
+    <value>
+      Rack_1710
+    </value>
+  </const>
+  <const name="Rack_1400" type="TRacksEnum">
+    <value>
+      Rack_1400
+    </value>
+  </const>
+  <const name="Oscillograph_rack" type="TRacksEnum">
+    <value>
+      Oscillograph_rack
+    </value>
+  </const>
+  <const name="P321_C" type="TRacksEnum">
+    <value>
+      P321_C
+    </value>
+  </const>
+  <const name="Console_A" type="TRacksEnum">
+    <value>
+      Console_A
+    </value>
+  </const>
+  <const name="Console_B" type="TRacksEnum">
+    <value>
+      Console_B
+    </value>
+  </const>
+  <const name="Power_panel" type="TRacksEnum">
+    <value>
+      Power_panel
+    </value>
+  </const>
+  <const name="power_supply" type="TRacksEnum">
+    <value>
+      power_supply
+    </value>
+  </const>
+  <const name="Rack_1500_back_A" type="TRacksEnum">
+    <value>
+      Rack_1500_back_A
+    </value>
+  </const>
+  <const name="Rack_1500_back_B" type="TRacksEnum">
+    <value>
+      Rack_1500_back_B
+    </value>
+  </const>
+  <const name="Rack_1600_back_A" type="TRacksEnum">
+    <value>
+      Rack_1600_back_A
+    </value>
+  </const>
+  <const name="Rack_1600_back_B" type="TRacksEnum">
+    <value>
+      Rack_1600_back_B
+    </value>
+  </const>
+  <const name="none" type="TRacksEnum">
+    <value>
+      none
+    </value>
+  </const>
+  <enum name="TRacksEnum">
+    <element name="Generator_A" />
+    <element name="Mshu_A" />
+    <element name="Duplexer_A" />
+    <element name="Rack_1500_A" />
+    <element name="Rack_1920_A" />
+    <element name="Rack_1600_A" />
+    <element name="Rack_1200_reciever_A" />
+    <element name="Rack_1200_broadcaster_A" />
+    <element name="Wavemeter_A" />
+    <element name="P321_A" />
+    <element name="Generator_B" />
+    <element name="Mshu_B" />
+    <element name="Duplexer_B" />
+    <element name="Rack_1500_B" />
+    <element name="Rack_1920_B" />
+    <element name="Rack_1600_B" />
+    <element name="Rack_1200_reciever_B" />
+    <element name="Rack_1200_broadcaster_B" />
+    <element name="Wavemeter_B" />
+    <element name="P321_B" />
+    <element name="Rack_1710" />
+    <element name="Rack_1400" />
+    <element name="Oscillograph_rack" />
+    <element name="P321_C" />
+    <element name="Console_A" />
+    <element name="Console_B" />
+    <element name="Power_panel" />
+    <element name="power_supply" />
+    <element name="Rack_1500_back_A" />
+    <element name="Rack_1500_back_B" />
+    <element name="Rack_1600_back_A" />
+    <element name="Rack_1600_back_B" />
+    <element name="none" />
+  </enum>
+  <class name="TForms_executer">
+    <ancestor name="TObject" namespace="System">
+      <methodref name="Create" visibility="public" procflags="constructor">
+      </methodref>
+      <methodref name="Free" visibility="public">
+      </methodref>
+      <methodref name="InitInstance" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="CleanupInstance" visibility="public">
+      </methodref>
+      <methodref name="ClassType" visibility="public">
+      </methodref>
+      <methodref name="ClassName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassNameIs" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassParent" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassInfo" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="InstanceSize" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="InheritsFrom" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="MethodName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="GetInterface" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceEntry" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="GetInterfaceTable" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="UnitName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="Equals" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="GetHashCode" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="ToString" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="SafeCallException" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="AfterConstruction" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="BeforeDestruction" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="Dispatch" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="DefaultHandler" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="NewInstance" visibility="public" procflags="class virtual">
+      </methodref>
+      <methodref name="FreeInstance" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="Destroy" visibility="public" procflags="destructor virtual">
+      </methodref>
+    </ancestor>
+    <members>
+      <procedure name="CloseForm" visibility="public">
+        <devnotes>
+           <summary>
+           Закрывает указанную форму
+           </summary>
+           <param name="Rack">Форма, которую требуется закрыть</param>
+           <param name="withParent">Закрыть форму вместе с родительской</param>
+        </devnotes>
+        <parameters>
+          <parameter name="Rack" type="TRacksEnum" />
+          <parameter name="withParent" type="Boolean">
+            <value>
+              True
+            </value>
+          </parameter>
+        </parameters>
+      </procedure>
+      <procedure name="CloseAllRacks" visibility="public">
+        <devnotes>
+           <summary>
+           Закрывает все стойки
+           </summary>
+        </devnotes>
+      </procedure>
+      <procedure name="CloseAllMiniRacks" visibility="public">
+        <devnotes>
+           <summary>
+           Закрывает все миниизображения стоек
+           </summary>
+        </devnotes>
+      </procedure>
+      <procedure name="CloseAllInformationForms" visibility="public">
+        <devnotes>
+           <summary>
+           Закрывает формы со вспомоательной информацией
+           </summary>
+        </devnotes>
+      </procedure>
+      <procedure name="HideAllRacks" visibility="public">
+        <devnotes>
+           <summary>
+           Сворачивает все формы стоек
+           </summary>
+        </devnotes>
+      </procedure>
+    </members>
+  </class>
+  <const name="R414miniFormWidth" type="Integer">
+    <value>
+      $20C
+    </value>
+  </const>
+  <const name="R414miniFormHeight" type="Integer">
+    <value>
+      $8C
+    </value>
+  </const>
+  <const name="frequencyTCurrentTaskFormWidth" type="Integer">
+    <value>
+      $E4
+    </value>
+  </const>
+  <procedure name="MoveFormInScreenCenter" visibility="public">
+    <devnotes>
+       <summary>
+       Перемещает форму в центр экрана так, чтобы она не перекрывала другие формы
+       </summary>
+       <param name="form">Указатель на форму</param>
+    </devnotes>
+    <parameters>
+      <parameter name="form" type="TForm" />
+    </parameters>
+  </procedure>
+  <function name="GetTaskBarHeight" visibility="public">
+    <devnotes>
+       <summary>
+       Получает высоту панели задач
+       </summary>
+       <returns>Высота панели задач</returns>
+    </devnotes>
+    <parameters>
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="GetCountOpenedWindows" visibility="public">
+    <devnotes>
+       <summary>
+       Возвращает количество видимых окон
+       </summary>
+       <returns></returns>
+    </devnotes>
+    <parameters>
+      <retval type="Integer" />
+    </parameters>
+  </function>
+</namespace>

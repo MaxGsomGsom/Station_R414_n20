@@ -1,0 +1,35 @@
+unit loader;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ExtCtrls, pngimage, ComCtrls, Sockets;
+
+type
+  T_loader = class(TForm)
+    Image1: TImage;
+    ProgressBar1: TProgressBar;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+const
+  ssActive = 1;
+  ssNotActive = 2;
+
+var
+  _loader: T_loader;
+
+implementation
+
+{$R *.dfm}
+
+uses st1600b, st1600b_2, uDefinitinos, Pitanie, MSHU_2, UnitDuplexerRight, MSHUpod_2, o1500_2,
+  st1920_2, o1500, st1600_2, Volnomer_2, st1200P_2, st1200L_2, P321, st1400, Ost, Pult,
+  PodPultom, st1710, st1200P, st1200L, st1600, Volnomer, st1920,
+  UnitDuplexerLeft, MSHU, MSHUpod, b1500, b1500_2;
+
+end.

@@ -1,0 +1,800 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<namespace name="uConstantsDM">
+  <const name="wmFree" type="TWorkMode">
+    <value>
+      wmFree
+    </value>
+  </const>
+  <const name="wmLearning" type="TWorkMode">
+    <value>
+      wmLearning
+    </value>
+  </const>
+  <const name="wmTraining" type="TWorkMode">
+    <value>
+      wmTraining
+    </value>
+  </const>
+  <const name="wmExam" type="TWorkMode">
+    <value>
+      wmExam
+    </value>
+  </const>
+  <enum name="TWorkMode">
+    <element name="wmFree" />
+    <element name="wmLearning" />
+    <element name="wmTraining" />
+    <element name="wmExam" />
+  </enum>
+  <const name="ttNull" type="TTaskType">
+    <value>
+      ttNull
+    </value>
+  </const>
+  <const name="ttNone" type="TTaskType">
+    <value>
+      ttNone
+    </value>
+  </const>
+  <const name="ttPowerOn" type="TTaskType">
+    <value>
+      ttPowerOn
+    </value>
+  </const>
+  <const name="ttCheckStationInStandaloneControlMode" type="TTaskType">
+    <value>
+      ttCheckStationInStandaloneControlMode
+    </value>
+  </const>
+  <const name="ttSetConnectionWithCross" type="TTaskType">
+    <value>
+      ttSetConnectionWithCross
+    </value>
+  </const>
+  <const name="ttTransferToTerminalMode" type="TTaskType">
+    <value>
+      ttTransferToTerminalMode
+    </value>
+  </const>
+  <enum name="TTaskType">
+    <element name="ttNull" />
+    <element name="ttNone" />
+    <element name="ttPowerOn" />
+    <element name="ttCheckStationInStandaloneControlMode" />
+    <element name="ttSetConnectionWithCross" />
+    <element name="ttTransferToTerminalMode" />
+  </enum>
+  <const name="COUNT_WORK_MODES" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="wtFree" type="Integer">
+    <value>
+      $0
+    </value>
+  </const>
+  <const name="wtLearn" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="wtTrening" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="wtExam" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="MM_SETTEXT" type="Integer">
+    <value>
+      $464
+    </value>
+  </const>
+  <const name="MM_CLICK_BUTTON" type="Integer">
+    <value>
+      $465
+    </value>
+  </const>
+  <const name="MM_RACK_WAS_CLOSED" type="Integer">
+    <value>
+      $466
+    </value>
+  </const>
+  <const name="StationR414FormminiClassName" type="string">
+    <value>
+      TStationR414MinForm
+    </value>
+  </const>
+  <const name="StationR414FormminiObjectName" type="string">
+    <value>
+      StationR414MinForm
+    </value>
+  </const>
+  <const name="useSounds" type="Boolean">
+    <value>
+      False
+    </value>
+  </const>
+  <const name="useBackground" type="Boolean">
+    <value>
+      True
+    </value>
+  </const>
+  <const name="stMainMenuModern" type="Boolean">
+    <value>
+      True
+    </value>
+  </const>
+  <const name="Debug" type="Boolean">
+    <value>
+      True
+    </value>
+  </const>
+  <const name="mdExternalView" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="mdStartParametersSetup" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="mdPowerOn" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="mdReceiveAndTransmitTracksSetup" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="mdWorkWithLowFrequency" type="Integer">
+    <value>
+      $5
+    </value>
+  </const>
+  <const name="mdTransferToTerminalMode" type="Integer">
+    <value>
+      $6
+    </value>
+  </const>
+  <const name="idMshuA" type="Integer">
+    <value>
+      $0
+    </value>
+  </const>
+  <const name="idGeneratorA" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="idDuplexerA" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="idRack1500A" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="idRack1920A" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="idRack1600A" type="Integer">
+    <value>
+      $5
+    </value>
+  </const>
+  <const name="idWaveMeterA" type="Integer">
+    <value>
+      $6
+    </value>
+  </const>
+  <const name="idRack1200A1" type="Integer">
+    <value>
+      $7
+    </value>
+  </const>
+  <const name="idRack1200A2" type="Integer">
+    <value>
+      $8
+    </value>
+  </const>
+  <const name="idP321A" type="Integer">
+    <value>
+      $9
+    </value>
+  </const>
+  <const name="idRack1710A" type="Integer">
+    <value>
+      $A
+    </value>
+  </const>
+  <const name="idPultA" type="Integer">
+    <value>
+      $B
+    </value>
+  </const>
+  <const name="idPultB" type="Integer">
+    <value>
+      $C
+    </value>
+  </const>
+  <const name="idP321C" type="Integer">
+    <value>
+      $D
+    </value>
+  </const>
+  <const name="idOscillographC" type="Integer">
+    <value>
+      $E
+    </value>
+  </const>
+  <const name="idPowerC" type="Integer">
+    <value>
+      $F
+    </value>
+  </const>
+  <const name="idRack1400B" type="Integer">
+    <value>
+      $10
+    </value>
+  </const>
+  <const name="idRack1200B1" type="Integer">
+    <value>
+      $11
+    </value>
+  </const>
+  <const name="idRack1200B2" type="Integer">
+    <value>
+      $12
+    </value>
+  </const>
+  <const name="idP321B" type="Integer">
+    <value>
+      $13
+    </value>
+  </const>
+  <const name="idRack1600B" type="Integer">
+    <value>
+      $14
+    </value>
+  </const>
+  <const name="idWaveMeterB" type="Integer">
+    <value>
+      $15
+    </value>
+  </const>
+  <const name="idRack1920B" type="Integer">
+    <value>
+      $16
+    </value>
+  </const>
+  <const name="idRack1500B" type="Integer">
+    <value>
+      $17
+    </value>
+  </const>
+  <const name="idDuplexerB" type="Integer">
+    <value>
+      $18
+    </value>
+  </const>
+  <const name="idMshuB" type="Integer">
+    <value>
+      $1A
+    </value>
+  </const>
+  <const name="idGeneratorB" type="Integer">
+    <value>
+      $19
+    </value>
+  </const>
+  <const name="idShield" type="Integer">
+    <value>
+      $1B
+    </value>
+  </const>
+  <const name="idRack1500Aback" type="Integer">
+    <value>
+      $1C
+    </value>
+  </const>
+  <const name="idRack1500Bback" type="Integer">
+    <value>
+      $1D
+    </value>
+  </const>
+  <const name="idRack1600Aback" type="Integer">
+    <value>
+      $1E
+    </value>
+  </const>
+  <const name="idRack1600Bback" type="Integer">
+    <value>
+      $1F
+    </value>
+  </const>
+  <const name="TotalRacksCount" type="Integer">
+    <value>
+      $1F
+    </value>
+  </const>
+  <const name="NotSelected" type="Integer">
+    <value>
+      $FF
+    </value>
+  </const>
+  <const name="NotHint" type="Integer">
+    <value>
+      $FE
+    </value>
+  </const>
+  <const name="InitialTimeString" type="string">
+    <value>
+      00:00:00
+    </value>
+  </const>
+  <const name="stPassed" type="Byte" visibility="public" />
+  <const name="stNotPassed" type="Byte" visibility="public" />
+  <const name="MAX_WAVE_VALUE" type="Integer">
+    <value>
+      $2E
+    </value>
+  </const>
+  <const name="MIN_WAVE_VALUE" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="MIN_WAVE_DIFFERENCE" type="Integer">
+    <value>
+      $6
+    </value>
+  </const>
+  <const name="COUNT_CHANNELS" type="Integer">
+    <value>
+      $15
+    </value>
+  </const>
+  <const name="stPluggedOff" type="Integer">
+    <value>
+      $0
+    </value>
+  </const>
+  <const name="stPluggedIn" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="stPluggedInCross" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="stDisconnected" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="stCableGenConnected" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="stCableInputYYConnected" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="stChannelTuned" type="Integer">
+    <value>
+      $5
+    </value>
+  </const>
+  <const name="stChannelNotTuned" type="Integer">
+    <value>
+      $6
+    </value>
+  </const>
+  <const name="butMain" type="Integer">
+    <value>
+      $0
+    </value>
+  </const>
+  <const name="butReserve" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="smdMain" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="smdRetr" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="sRetrMain" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="sRetrReserv" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="sUpchMain" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="sUpchReserve" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="sDmchMain" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="sDmchReserve" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="csDisconected" type="Integer">
+    <value>
+      $0
+    </value>
+  </const>
+  <const name="csConnected" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="csConnectedAtDuplexeLeft" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="csConnectedAtDuplexeRight" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="csConnectedAtSync" type="Integer">
+    <value>
+      $5
+    </value>
+  </const>
+  <const name="csConnectedAtPower" type="Integer">
+    <value>
+      $6
+    </value>
+  </const>
+  <const name="csConnectedAtPRD" type="Integer">
+    <value>
+      $7
+    </value>
+  </const>
+  <const name="csConnectedAtPRM" type="Integer">
+    <value>
+      $8
+    </value>
+  </const>
+  <const name="csConnectedTo1200A1PRM" type="Integer">
+    <value>
+      $9
+    </value>
+  </const>
+  <const name="csConnectedTo1200A1Sync" type="Integer">
+    <value>
+      $A
+    </value>
+  </const>
+  <const name="csConnectedTo1200B1PRM" type="Integer">
+    <value>
+      $B
+    </value>
+  </const>
+  <const name="csConnectedTo1200B1Sync" type="Integer">
+    <value>
+      $C
+    </value>
+  </const>
+  <const name="csConnectedTo1200A2PRD" type="Integer">
+    <value>
+      $D
+    </value>
+  </const>
+  <const name="csConnectedTo1200A2PRM" type="Integer">
+    <value>
+      $E
+    </value>
+  </const>
+  <const name="csConnectedTo1200A2Sync" type="Integer">
+    <value>
+      $F
+    </value>
+  </const>
+  <const name="csConnectedTo1200B2PRD" type="Integer">
+    <value>
+      $10
+    </value>
+  </const>
+  <const name="csConnectedTo1200B2PRM" type="Integer">
+    <value>
+      $11
+    </value>
+  </const>
+  <const name="csConnectedTo1200B2Sync" type="Integer">
+    <value>
+      $12
+    </value>
+  </const>
+  <const name="csConnectedAtPultPVU_PRD" type="Integer">
+    <value>
+      $13
+    </value>
+  </const>
+  <const name="csConnectedAtPultPVU_PRM" type="Integer">
+    <value>
+      $14
+    </value>
+  </const>
+  <const name="csConnectedAtPultHighOhmInput1" type="Integer">
+    <value>
+      $15
+    </value>
+  </const>
+  <const name="csConnectedAtPultHighOhmInput2" type="Integer">
+    <value>
+      $16
+    </value>
+  </const>
+  <const name="csConnectedAtPultHighOhmInput3" type="Integer">
+    <value>
+      $17
+    </value>
+  </const>
+  <const name="csConnectedAtPultHighOhmInput4" type="Integer">
+    <value>
+      $18
+    </value>
+  </const>
+  <const name="csConnectedAtPultHighOhmInput5" type="Integer">
+    <value>
+      $19
+    </value>
+  </const>
+  <const name="csConnectedAtPultHighOhmInput6" type="Integer">
+    <value>
+      $1A
+    </value>
+  </const>
+  <const name="csConnectedAtPultHighOhmInput7" type="Integer">
+    <value>
+      $1B
+    </value>
+  </const>
+  <const name="csConnectedAtPultHighOhmInput8" type="Integer">
+    <value>
+      $1C
+    </value>
+  </const>
+  <const name="csConnectedAtRezerveLine1" type="Integer">
+    <value>
+      $1D
+    </value>
+  </const>
+  <const name="csConnectedAtRezerveLine2" type="Integer">
+    <value>
+      $1E
+    </value>
+  </const>
+  <const name="csConnectedAtRezerveLine3" type="Integer">
+    <value>
+      $1F
+    </value>
+  </const>
+  <const name="csConnectedAtRezerveLine4" type="Integer">
+    <value>
+      $20
+    </value>
+  </const>
+  <const name="csConnectedAtRezerveLine5" type="Integer">
+    <value>
+      $21
+    </value>
+  </const>
+  <const name="csConnectedAtRezerveLine6" type="Integer">
+    <value>
+      $22
+    </value>
+  </const>
+  <const name="csConnectedAtRezerveLine7" type="Integer">
+    <value>
+      $23
+    </value>
+  </const>
+  <const name="csConnectedAtRezerveLine8" type="Integer">
+    <value>
+      $24
+    </value>
+  </const>
+  <const name="csConnectedAtRezerveLine9" type="Integer">
+    <value>
+      $25
+    </value>
+  </const>
+  <const name="csConnectedAtRezerveLine10" type="Integer">
+    <value>
+      $26
+    </value>
+  </const>
+  <const name="csConnectedAtRezerveLine11" type="Integer">
+    <value>
+      $27
+    </value>
+  </const>
+  <const name="csConnectedAtRezerveLine12" type="Integer">
+    <value>
+      $28
+    </value>
+  </const>
+  <const name="csConnectedAtRezerveLine13" type="Integer">
+    <value>
+      $29
+    </value>
+  </const>
+  <const name="csConnectedAtRezerveLine14" type="Integer">
+    <value>
+      $2A
+    </value>
+  </const>
+  <const name="csConnectedAtVihUKSH_NP" type="Integer">
+    <value>
+      $2B
+    </value>
+  </const>
+  <const name="csConnectedAtVihUKSH_UD" type="Integer">
+    <value>
+      $2C
+    </value>
+  </const>
+  <const name="csConnectedAtVihUKSH_UD2" type="Integer">
+    <value>
+      $2D
+    </value>
+  </const>
+  <const name="csConnectedAtChannelUD" type="Integer">
+    <value>
+      $2E
+    </value>
+  </const>
+  <const name="csConnectedAtChannelUD_2" type="Integer">
+    <value>
+      $2F
+    </value>
+  </const>
+  <const name="csConnectedAtChannelUD_3" type="Integer">
+    <value>
+      $30
+    </value>
+  </const>
+  <const name="csConnectedAtChannelUD_4" type="Integer">
+    <value>
+      $31
+    </value>
+  </const>
+  <const name="csConnectedAt1ChannelUD_4PRM_PRD2" type="Integer">
+    <value>
+      $33
+    </value>
+  </const>
+  <const name="csConnectedAt1ChannelUD_4PRM_PRD" type="Integer">
+    <value>
+      $32
+    </value>
+  </const>
+  <const name="csConnectedAtVihUKSH2_NP" type="Integer">
+    <value>
+      $34
+    </value>
+  </const>
+  <const name="csConnectedAtVihUKSH2_UD" type="Integer">
+    <value>
+      $35
+    </value>
+  </const>
+  <const name="csConnectedAtVihUKSH2_UD2" type="Integer">
+    <value>
+      $36
+    </value>
+  </const>
+  <const name="csConnectedAtChannelUD2" type="Integer">
+    <value>
+      $37
+    </value>
+  </const>
+  <const name="csConnectedAtChannelUD2_2" type="Integer">
+    <value>
+      $38
+    </value>
+  </const>
+  <const name="csConnectedAtChannelUD2_3" type="Integer">
+    <value>
+      $39
+    </value>
+  </const>
+  <const name="csConnectedAtChannelUD2_4" type="Integer">
+    <value>
+      $3A
+    </value>
+  </const>
+  <const name="csConnectedAt1ChannelUD2_4PRM_PRD2" type="Integer">
+    <value>
+      $3C
+    </value>
+  </const>
+  <const name="csConnectedAt1ChannelUD2_4PRM_PRD" type="Integer">
+    <value>
+      $3B
+    </value>
+  </const>
+  <const name="csConnectedAtMashTehObesp1" type="Integer">
+    <value>
+      $3D
+    </value>
+  </const>
+  <const name="csConnectedAtMashTehObesp2" type="Integer">
+    <value>
+      $3E
+    </value>
+  </const>
+  <const name="csConnectedAtRack1500NoName" type="Integer">
+    <value>
+      $3F
+    </value>
+  </const>
+  <const name="csConnectedAtRack1500Sh1" type="Integer">
+    <value>
+      $40
+    </value>
+  </const>
+  <const name="cb1500Nagruzka" type="Integer">
+    <value>
+      $41
+    </value>
+  </const>
+  <const name="cb1500Sa37" type="Integer">
+    <value>
+      $42
+    </value>
+  </const>
+  <function name="GetWorkModeTitle" visibility="public">
+    <devnotes>
+       <summary>
+         Возвращает название режима работы
+       </summary>
+    </devnotes>
+    <parameters>
+      <parameter name="WorkMode" type="TWorkMode" />
+      <retval type="string" />
+    </parameters>
+  </function>
+</namespace>

@@ -1,0 +1,309 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{A64617D3-C814-4218-9943-4DD5F7E62AC0}</ProjectGuid>
+			<MainSource>StationR414.dpr</MainSource>
+			<Config Condition="'$(Config)'==''">Debug</Config>
+			<DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
+			<ProjectVersion>12.0</ProjectVersion>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_1)'!=''">
+			<Cfg_1>true</Cfg_1>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_2)'!=''">
+			<Cfg_2>true</Cfg_2>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='n bj' or '$(Cfg_3)'!=''">
+			<Cfg_3>true</Cfg_3>
+			<CfgParent>Cfg_2</CfgParent>
+			<Cfg_2>true</Cfg_2>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Base)'!=''">
+			<DCC_Optimize>false</DCC_Optimize>
+			<DCC_OutputXMLDocumentation>true</DCC_OutputXMLDocumentation>
+			<DCC_GenerateStackFrames>true</DCC_GenerateStackFrames>
+			<DCC_UsePackage>vcl;rtl;vclx;vclimg;vclactnband;dbrtl;vcldb;vcldbx;bdertl;vcltouch;xmlrtl;dsnap;dsnapcon;TeeUI;TeeDB;Tee;vclib;ibxpress;adortl;IndyCore;IndySystem;IndyProtocols;inet;intrawebdb_100_140;Intraweb_100_140;VclSmp;vclie;websnap;webdsnap;inetdb;inetdbbde;inetdbxpress;soaprtl;vclribbon;dbexpress;DbxCommonDriver;DataSnapIndy10ServerTransport;DataSnapProviderClient;DbxClientDriver;DataSnapServer;DBXInterBaseDriver;DBXMySQLDriver;dbxcds;DBXFirebirdDriver;DBXSybaseASEDriver;DBXSybaseASADriver;DBXOracleDriver;DBXMSSQLDriver;DBXInformixDriver;DBXDb2Driver</DCC_UsePackage>
+			<DCC_PentiumSafeDivide>true</DCC_PentiumSafeDivide>
+			<DCC_IntegerOverflowCheck>true</DCC_IntegerOverflowCheck>
+			<DCC_Hints>false</DCC_Hints>
+			<DCC_USE_BEFORE_DEF>false</DCC_USE_BEFORE_DEF>
+			<DCC_RangeChecking>true</DCC_RangeChecking>
+			<ImageDebugInfo>true</ImageDebugInfo>
+			<DCC_DebugInfoInExe>true</DCC_DebugInfoInExe>
+			<DCC_RemoteDebug>true</DCC_RemoteDebug>
+			<DCC_ImageBase>00400000</DCC_ImageBase>
+			<DCC_SymbolReferenceInfo>1</DCC_SymbolReferenceInfo>
+			<DCC_DependencyCheckOutputName>StationR414.exe</DCC_DependencyCheckOutputName>
+			<DCC_UnitAlias>WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;$(DCC_UnitAlias)</DCC_UnitAlias>
+			<DCC_Platform>x86</DCC_Platform>
+			<DCC_N>true</DCC_N>
+			<DCC_S>false</DCC_S>
+			<DCC_K>false</DCC_K>
+			<DCC_E>false</DCC_E>
+			<DCC_F>false</DCC_F>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_1)'!=''">
+			<DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
+			<DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
+			<DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+			<DCC_DebugInformation>false</DCC_DebugInformation>
+		</PropertyGroup>
+		<Import Project="main.optset" Condition="'$(Cfg_2)'!='' And Exists('main.optset')"/>
+		<PropertyGroup Condition="'$(Cfg_2)'!=''">
+			<DCC_DebugDCUs>true</DCC_DebugDCUs>
+			<DCC_SymbolReferenceInfo>2</DCC_SymbolReferenceInfo>
+			<DCC_MapFile>3</DCC_MapFile>
+			<CfgDependentOn>main.optset</CfgDependentOn>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_3)'!=''"/>
+		<ItemGroup>
+			<DelphiCompile Include="StationR414.dpr">
+				<MainSource>MainSource</MainSource>
+			</DelphiCompile>
+			<DCCReference Include="uStationR414Form.pas">
+				<Form>StationR414Form</Form>
+			</DCCReference>
+			<DCCReference Include="uRack1500bForm.pas">
+				<Form>Rack1500bForm</Form>
+			</DCCReference>
+			<DCCReference Include="uBlockPowerSupplyForm.pas">
+				<Form>BlockPowerSupplyForm</Form>
+			</DCCReference>
+			<DCCReference Include="uBlockRemoteControllerForm.pas">
+				<Form>_Pult</Form>
+			</DCCReference>
+			<DCCReference Include="uBlockOscillographForm.pas">
+				<Form>BlockOscillographForm</Form>
+			</DCCReference>
+			<DCCReference Include="uBlockPowerPanelForm.pas">
+				<Form>BlockPowerPanelForm</Form>
+			</DCCReference>
+			<DCCReference Include="uRack1500Form.pas">
+				<Form>Rack1500Form</Form>
+			</DCCReference>
+			<DCCReference Include="uRack1600Form.pas">
+				<Form>Rack1600Form</Form>
+			</DCCReference>
+			<DCCReference Include="uRack1600BForm.pas">
+				<Form>Rack1600BForm</Form>
+			</DCCReference>
+			<DCCReference Include="uRack1920Form.pas">
+				<Form>Rack1920Form</Form>
+			</DCCReference>
+			<DCCReference Include="uBlockWaveMeterForm.pas">
+				<Form>BlockWaveMeterForm</Form>
+			</DCCReference>
+			<DCCReference Include="uRackP321Form.pas">
+				<Form>RackP321Form</Form>
+			</DCCReference>
+			<DCCReference Include="uEducationForm.pas">
+				<Form>EducationForm</Form>
+			</DCCReference>
+			<DCCReference Include="uBlockGeneratorForm.pas">
+				<Form>BlockGeneratorForm</Form>
+			</DCCReference>
+			<DCCReference Include="uBlockLittleNoisyAmplifierForm.pas">
+				<Form>_MSHUpod</Form>
+			</DCCReference>
+			<DCCReference Include="uRack1710Form.pas">
+				<Form>Rack1710Form</Form>
+			</DCCReference>
+			<DCCReference Include="uRack1400Form.pas">
+				<Form>Rack1400Form</Form>
+			</DCCReference>
+			<DCCReference Include="uReportForm.pas">
+				<Form>ReportForm</Form>
+			</DCCReference>
+			<DCCReference Include="uRack1200LeftForm.pas">
+				<Form>Rack1200LeftForm</Form>
+			</DCCReference>
+			<DCCReference Include="uRack1200RightForm.pas">
+				<Form>Rack1200RightForm</Form>
+			</DCCReference>
+			<DCCReference Include="uWaveMeterPanelForm.pas">
+				<Form>WaveMeterPanelForm</Form>
+			</DCCReference>
+			<DCCReference Include="uRack1500MinForm.pas">
+				<Form>Rack1500MinForm</Form>
+			</DCCReference>
+			<DCCReference Include="uUsersForm.pas">
+				<Form>UsersForm</Form>
+			</DCCReference>
+			<DCCReference Include="uCreateUsersForm.pas">
+				<Form>CreateUsersForm</Form>
+			</DCCReference>
+			<DCCReference Include="uRegistrationForm.pas">
+				<Form>RegistrationForm</Form>
+			</DCCReference>
+			<DCCReference Include="uHandsetForm.pas">
+				<Form>HandsetForm</Form>
+			</DCCReference>
+			<DCCReference Include="uDefinitionsDM.pas"/>
+			<DCCReference Include="uStatisticForm.pas">
+				<Form>StatisticForm</Form>
+			</DCCReference>
+			<DCCReference Include="uSettingsForm.pas">
+				<Form>SettingsForm</Form>
+			</DCCReference>
+			<DCCReference Include="uAboutStationForm.pas">
+				<Form>AboutStationForm</Form>
+			</DCCReference>
+			<DCCReference Include="uAboutProgramForm.pas">
+				<Form>AboutProgramForm</Form>
+			</DCCReference>
+			<DCCReference Include="uPassWordForm.pas">
+				<Form>PassWordForm</Form>
+			</DCCReference>
+			<DCCReference Include="uBlockDuplexerForm.pas">
+				<Form>BlockDuplexerForm</Form>
+			</DCCReference>
+			<DCCReference Include="uRackP321MinForm.pas">
+				<Form>RackP321MinForm</Form>
+			</DCCReference>
+			<DCCReference Include="uBlockOscillographMinForm.pas">
+				<Form>BlockOscillographMinForm</Form>
+			</DCCReference>
+			<DCCReference Include="uP321DisplayForm.pas">
+				<Form>P321DisplayForm</Form>
+			</DCCReference>
+			<DCCReference Include="uVideoHelpForm.pas">
+				<Form>VideoHelpForm</Form>
+			</DCCReference>
+			<DCCReference Include="uFilterForm.pas">
+				<Form>FilterForm</Form>
+			</DCCReference>
+			<DCCReference Include="uStationR414MinForm.pas">
+				<Form>StationR414MinForm</Form>
+			</DCCReference>
+			<DCCReference Include="uAdditionalFormMethods.pas"/>
+			<DCCReference Include="uCurrentTaskForm.pas">
+				<Form>CurrentTaskForm</Form>
+			</DCCReference>
+			<DCCReference Include="uBackgroundForm.pas">
+				<Form>BackgroundForm</Form>
+			</DCCReference>
+			<DCCReference Include="uConstantsDM.pas"/>
+			<DCCReference Include="uButtonBackForm.pas">
+				<Form>ButtonBackForm</Form>
+			</DCCReference>
+			<DCCReference Include="uTasksDM.pas"/>
+			<DCCReference Include="uStationStateDM.pas"/>
+			<DCCReference Include="uMd5.pas"/>
+			<DCCReference Include="uImageRotator.pas"/>
+			<DCCReference Include="uMainMenuModernForm.pas">
+				<Form>MainMenuModernForm</Form>
+			</DCCReference>
+			<DCCReference Include="uNetWorkerDM.pas"/>
+			<DCCReference Include="uPreparationToWorkForm.pas">
+				<Form>PreparationToWorkForm</Form>
+			</DCCReference>
+			<DCCReference Include="uClientStateDM.pas"/>
+			<DCCReference Include="uConnectToServerForm.pas">
+				<Form>ConnectToServerForm</Form>
+			</DCCReference>
+			<DCCReference Include="uKeyValueDM.pas"/>
+			<DCCReference Include="uRequestDM.pas"/>
+			<DCCReference Include="uResponseListenerDM.pas"/>
+			<DCCReference Include="uSettingsDM.pas"/>
+			<DCCReference Include="uNetworkSenderDM.pas"/>
+			<DCCReference Include="uRandomMethods.pas"/>
+			<DCCReference Include="uTaskControllerDM.pas"/>
+			<DCCReference Include="uStationInitializer.pas"/>
+			<None Include="ModelSupport_StationR414\default.txaPackage"/>
+			<None Include="ModelSupport_StationR414\default.txvpck"/>
+			<None Include="ModelSupport_StationR414\StationR414\default.txvpck"/>
+			<None Include="ModelSupport_StationR414\StationR414\default.txaPackage"/>
+			<None Include="ModelSupport_StationR414\uConstantsDM\default.txvpck"/>
+			<None Include="ModelSupport_StationR414\uMainMenuModern\default.txaPackage"/>
+			<None Include="ModelSupport_StationR414\uMainMenuModernForm\default.txaPackage"/>
+			<None Include="ModelSupport_StationR414\uStationStateDM\default.txvpck"/>
+			<None Include="ModelSupport_StationR414\uDefinitionsDM\default.txvpck"/>
+			<None Include="ModelSupport_StationR414\uMainMenuForm\default.txvpck"/>
+			<None Include="ModelSupport_StationR414\uRackP321Form\default.txvpck"/>
+			<None Include="ModelSupport_StationR414\uStationR414Form\default.txvpck"/>
+			<None Include="ModelSupport_StationR414\uBlockOscillographMinForm\default.txvpck"/>
+			<None Include="ModelSupport_StationR414\uRandomMethods\default.txaPackage"/>
+			<None Include="ModelSupport_StationR414\uTaskControllerDM\default.txaPackage"/>
+			<None Include="ModelSupport_StationR414\uStationInitializer\default.txaPackage"/>
+			<None Include="ModelSupport_StationR414\uBlockRemoteControllerForm\default.txvpck"/>
+			<None Include="ModelSupport_StationR414\uPreparationToWorkForm\default.txvpck"/>
+			<None Include="ModelSupport_StationR414\uStationInitializer\default.txvpck"/>
+			<None Include="ModelSupport_StationR414\uUsersForm\default.txvpck"/>
+			<None Include="ModelSupport_StationR414\uTaskControllerDM\default.txvpck"/>
+			<None Include="ModelSupport_StationR414\uClientStateDM\default.txaPackage"/>
+			<None Include="ModelSupport_StationR414\uPreparationToWorkForm\default.txaPackage"/>
+			<None Include="ModelSupport_StationR414\uNetWorkerDM\default.txaPackage"/>
+			<None Include="ModelSupport_StationR414\uNetworkSenderDM\default.txaPackage"/>
+			<None Include="D:\T_Stantion_PK12_Picture_Data.raw"/>
+			<BuildConfiguration Include="Base">
+				<Key>Base</Key>
+			</BuildConfiguration>
+			<BuildConfiguration Include="n bj">
+				<Key>Cfg_3</Key>
+				<CfgParent>Cfg_2</CfgParent>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Release">
+				<Key>Cfg_1</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Debug">
+				<Key>Cfg_2</Key>
+				<CfgParent>Base</CfgParent>
+				<DependentOn>main.optset</DependentOn>
+			</BuildConfiguration>
+		</ItemGroup>
+		<Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')"/>
+		<ProjectExtensions>
+			<Borland.Personality>Delphi.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Delphi.Personality>
+					<Source>
+						<Source Name="MainSource">StationR414.dpr</Source>
+					</Source>
+					<Parameters>
+						<Parameters Name="UseLauncher">False</Parameters>
+						<Parameters Name="LoadAllSymbols">True</Parameters>
+						<Parameters Name="LoadUnspecifiedSymbols">False</Parameters>
+					</Parameters>
+					<VersionInfo>
+						<VersionInfo Name="IncludeVerInfo">True</VersionInfo>
+						<VersionInfo Name="AutoIncBuild">False</VersionInfo>
+						<VersionInfo Name="MajorVer">1</VersionInfo>
+						<VersionInfo Name="MinorVer">0</VersionInfo>
+						<VersionInfo Name="Release">0</VersionInfo>
+						<VersionInfo Name="Build">0</VersionInfo>
+						<VersionInfo Name="Debug">False</VersionInfo>
+						<VersionInfo Name="PreRelease">False</VersionInfo>
+						<VersionInfo Name="Special">False</VersionInfo>
+						<VersionInfo Name="Private">False</VersionInfo>
+						<VersionInfo Name="DLL">False</VersionInfo>
+						<VersionInfo Name="Locale">1033</VersionInfo>
+						<VersionInfo Name="CodePage">1252</VersionInfo>
+					</VersionInfo>
+					<VersionInfoKeys>
+						<VersionInfoKeys Name="CompanyName"/>
+						<VersionInfoKeys Name="FileDescription"/>
+						<VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="InternalName"/>
+						<VersionInfoKeys Name="LegalCopyright"/>
+						<VersionInfoKeys Name="LegalTrademarks"/>
+						<VersionInfoKeys Name="OriginalFilename"/>
+						<VersionInfoKeys Name="ProductName"/>
+						<VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="Comments"/>
+					</VersionInfoKeys>
+					<Excluded_Packages/>
+				</Delphi.Personality>
+				<ModelSupport>True</ModelSupport>
+			</BorlandProject>
+			<ProjectFileVersion>12</ProjectFileVersion>
+		</ProjectExtensions>
+	</Project>

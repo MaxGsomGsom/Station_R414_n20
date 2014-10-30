@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<namespace name="uClientStateDM">
+  <class name="TClientState">
+    <ancestor name="TObject" namespace="System">
+      <methodref name="Create" visibility="public" procflags="constructor">
+      </methodref>
+      <methodref name="Free" visibility="public">
+      </methodref>
+      <methodref name="InitInstance" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="CleanupInstance" visibility="public">
+      </methodref>
+      <methodref name="ClassType" visibility="public">
+      </methodref>
+      <methodref name="ClassName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassNameIs" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassParent" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassInfo" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="InstanceSize" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="InheritsFrom" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="MethodName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="GetInterface" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceEntry" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="GetInterfaceTable" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="UnitName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="Equals" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="GetHashCode" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="ToString" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="SafeCallException" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="AfterConstruction" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="BeforeDestruction" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="Dispatch" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="DefaultHandler" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="NewInstance" visibility="public" procflags="class virtual">
+      </methodref>
+      <methodref name="FreeInstance" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="Destroy" visibility="public" procflags="destructor virtual">
+      </methodref>
+    </ancestor>
+    <members>
+      <field name="FConnected" type="Boolean" visibility="private" />
+      <field name="FLinkedR414Connected" type="Boolean" visibility="private" />
+      <field name="FR415Connected" type="Boolean" visibility="private" />
+      <field name="FCrossConnected" type="Boolean" visibility="private" />
+      <field name="FUserName" type="string" visibility="private" />
+      <field name="FLinkedR414UserName" type="string" visibility="private" />
+      <field name="FMainStation" type="Boolean" visibility="private" />
+      <field name="FWorkMode" type="TWorkMode" visibility="private" />
+      <field name="FTaskID" type="TTaskType" visibility="private" />
+      <field name="FTransmitterWaveA" type="Integer" visibility="private" />
+      <field name="FTransmitterWaveB" type="Integer" visibility="private" />
+      <field name="FReceiverWaveA" type="Integer" visibility="private" />
+      <field name="FReceiverWaveB" type="Integer" visibility="private" />
+      <procedure name="SetTaskID" visibility="private">
+        <parameters>
+          <parameter name="Value" type="TTaskType" paramflags="const" />
+        </parameters>
+      </procedure>
+      <procedure name="SetTransmitterWaveA" visibility="private">
+        <parameters>
+          <parameter name="Value" type="Integer" paramflags="const" />
+        </parameters>
+      </procedure>
+      <procedure name="SetTransmitterWaveB" visibility="private">
+        <parameters>
+          <parameter name="Value" type="Integer" paramflags="const" />
+        </parameters>
+      </procedure>
+      <procedure name="SetReceiverWaveA" visibility="private">
+        <parameters>
+          <parameter name="Value" type="Integer" paramflags="const" />
+        </parameters>
+      </procedure>
+      <procedure name="SetReceiverWaveB" visibility="private">
+        <parameters>
+          <parameter name="Value" type="Integer" paramflags="const" />
+        </parameters>
+      </procedure>
+      <function name="CheckWaves" visibility="private">
+        <devnotes>
+           <summary>
+             Проверяет волны ПРМ и ПРД на допустимось и возвращает текст ошибки
+           <param name = "transmitterWave"> Значение волны передачи </param>
+           <param name = "receiverWave"> Значение волны приёма </param>
+           </summary>
+        </devnotes>
+        <parameters>
+          <parameter name="transmitterWave" type="Integer" paramflags="const" />
+          <parameter name="receiverWave" type="Integer" paramflags="const" />
+          <retval type="string" />
+        </parameters>
+      </function>
+      <constructor name="Create" visibility="public">
+        <parameters>
+        </parameters>
+      </constructor>
+      <function name="TrySetWaves" visibility="public">
+        <devnotes>
+           <summary>
+             Пробует установить указанные значения волн и в случае неудачи
+             возвращает текст ошибки
+           </summary>
+        </devnotes>
+        <parameters>
+          <parameter name="WaveTA" type="Integer" paramflags="const" />
+          <parameter name="WaveTB" type="Integer" paramflags="const" />
+          <parameter name="WaveRA" type="Integer" paramflags="const" />
+          <parameter name="WaveRB" type="Integer" paramflags="const" />
+          <retval type="string" />
+        </parameters>
+      </function>
+      <function name="IsWavesTuned" visibility="public">
+        <devnotes>
+           <summary>
+             Возвращает значение, правильно ли настроены волны
+           </summary>
+        </devnotes>
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="IsMainStation" visibility="public">
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="IsTaskSelected" visibility="public">
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="IsReadyToWork" visibility="public">
+        <devnotes>
+           <summary>
+             Проверяет, настроены ли все параметры и подключены ли все другие клиенты,
+             для того, чтоб начать работу
+           </summary>
+        </devnotes>
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="IsAllClientsConnected" visibility="public">
+        <devnotes>
+           <summary>
+             Проверяет, все ли необходимые клиенты подключены
+           </summary>
+        </devnotes>
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <property name="MainStation" visibility="public" write="FMainStation" type="Boolean" />
+      <property name="Connected" visibility="public" read="FConnected" write="FConnected" type="Boolean" />
+      <property name="LinkedR414Connected" visibility="public" read="FLinkedR414Connected" write="FLinkedR414Connected" type="Boolean" />
+      <property name="R415Connected" visibility="public" read="FR415Connected" write="FR415Connected" type="Boolean" />
+      <property name="CrossConnected" visibility="public" read="FCrossConnected" write="FCrossConnected" type="Boolean" />
+      <property name="UserName" visibility="public" read="FUserName" write="FUserName" type="string" />
+      <property name="LinkedR414UserName" visibility="public" read="FLinkedR414UserName" write="FLinkedR414UserName" type="string" />
+      <property name="WorkMode" visibility="public" read="FWorkMode" write="FWorkMode" type="TWorkMode" />
+      <property name="TaskID" visibility="public" read="FTaskID" write="SetTaskID" type="TTaskType" />
+      <property name="TransmitterWaveA" visibility="public" read="FTransmitterWaveA" write="SetTransmitterWaveA" type="Integer" />
+      <property name="TransmitterWaveB" visibility="public" read="FTransmitterWaveB" write="SetTransmitterWaveB" type="Integer" />
+      <property name="ReceiverWaveA" visibility="public" read="FReceiverWaveA" write="SetReceiverWaveA" type="Integer" />
+      <property name="ReceiverWaveB" visibility="public" read="FReceiverWaveB" write="SetReceiverWaveB" type="Integer" />
+    </members>
+  </class>
+</namespace>

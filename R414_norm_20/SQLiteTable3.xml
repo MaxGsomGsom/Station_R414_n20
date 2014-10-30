@@ -1,0 +1,496 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<namespace name="SQLiteTable3">
+  <const name="dtInt" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="dtNumeric" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="dtStr" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="dtBlob" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="dtNull" type="Integer">
+    <value>
+      $5
+    </value>
+  </const>
+  <class name="ESQLiteException">
+    <ancestor name="Exception" namespace="SysUtils">
+      <methodref name="Create@" visibility="class private" procflags="class constructor noself">
+      </methodref>
+      <methodref name="Destroy@" visibility="class private" procflags="class destructor noself">
+      </methodref>
+      <methodref name="SetInnerException" visibility="protected">
+      </methodref>
+      <methodref name="SetStackInfo" visibility="protected">
+      </methodref>
+      <methodref name="GetStackTrace" visibility="protected">
+      </methodref>
+      <methodref name="RaisingException" visibility="protected" procflags="virtual">
+      </methodref>
+      <methodref name="Create" visibility="public" procflags="constructor">
+      </methodref>
+      <methodref name="CreateFmt" visibility="public" procflags="constructor">
+      </methodref>
+      <methodref name="CreateRes" visibility="public" procflags="constructor overload">
+      </methodref>
+      <methodref name="CreateRes" visibility="public" procflags="constructor overload">
+      </methodref>
+      <methodref name="CreateResFmt" visibility="public" procflags="constructor overload">
+      </methodref>
+      <methodref name="CreateResFmt" visibility="public" procflags="constructor overload">
+      </methodref>
+      <methodref name="CreateHelp" visibility="public" procflags="constructor">
+      </methodref>
+      <methodref name="CreateFmtHelp" visibility="public" procflags="constructor">
+      </methodref>
+      <methodref name="CreateResHelp" visibility="public" procflags="constructor overload">
+      </methodref>
+      <methodref name="CreateResHelp" visibility="public" procflags="constructor overload">
+      </methodref>
+      <methodref name="CreateResFmtHelp" visibility="public" procflags="constructor overload">
+      </methodref>
+      <methodref name="CreateResFmtHelp" visibility="public" procflags="constructor overload">
+      </methodref>
+      <methodref name="Destroy" visibility="public" procflags="destructor override">
+      </methodref>
+      <methodref name="GetBaseException" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="ToString" visibility="public" procflags="override">
+      </methodref>
+      <propertyref name="BaseException" visibility="public">
+      </propertyref>
+      <propertyref name="HelpContext" visibility="public">
+      </propertyref>
+      <propertyref name="InnerException" visibility="public">
+      </propertyref>
+      <propertyref name="Message" visibility="public">
+      </propertyref>
+      <propertyref name="StackTrace" visibility="public">
+      </propertyref>
+      <propertyref name="StackInfo" visibility="public">
+      </propertyref>
+      <methodref name="RaiseOuterException" visibility="public" procflags="static">
+      </methodref>
+      <methodref name="ThrowOuterException" visibility="public" procflags="static">
+      </methodref>
+      <ancestor name="TObject" namespace="System">
+        <methodref name="Create" visibility="public" procflags="constructor">
+        </methodref>
+        <methodref name="Free" visibility="public">
+        </methodref>
+        <methodref name="InitInstance" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="CleanupInstance" visibility="public">
+        </methodref>
+        <methodref name="ClassType" visibility="public">
+        </methodref>
+        <methodref name="ClassName" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="ClassNameIs" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="ClassParent" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="ClassInfo" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="InstanceSize" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="InheritsFrom" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="MethodAddress" visibility="public" procflags="class overload">
+        </methodref>
+        <methodref name="MethodAddress" visibility="public" procflags="class overload">
+        </methodref>
+        <methodref name="MethodName" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="FieldAddress" visibility="public" procflags="overload">
+        </methodref>
+        <methodref name="FieldAddress" visibility="public" procflags="overload">
+        </methodref>
+        <methodref name="GetInterface" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceEntry" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="GetInterfaceTable" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="UnitName" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="Equals" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="GetHashCode" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="ToString" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="SafeCallException" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="AfterConstruction" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="BeforeDestruction" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="Dispatch" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="DefaultHandler" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="NewInstance" visibility="public" procflags="class virtual">
+        </methodref>
+        <methodref name="FreeInstance" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="Destroy" visibility="public" procflags="destructor virtual">
+        </methodref>
+      </ancestor>
+    </ancestor>
+  </class>
+  <class name="TSQLiteDatabase">
+    <ancestor name="TObject" namespace="System">
+      <methodref name="Create" visibility="public" procflags="constructor">
+      </methodref>
+      <methodref name="Free" visibility="public">
+      </methodref>
+      <methodref name="InitInstance" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="CleanupInstance" visibility="public">
+      </methodref>
+      <methodref name="ClassType" visibility="public">
+      </methodref>
+      <methodref name="ClassName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassNameIs" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassParent" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassInfo" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="InstanceSize" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="InheritsFrom" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="MethodName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="GetInterface" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceEntry" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="GetInterfaceTable" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="UnitName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="Equals" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="GetHashCode" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="ToString" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="SafeCallException" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="AfterConstruction" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="BeforeDestruction" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="Dispatch" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="DefaultHandler" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="NewInstance" visibility="public" procflags="class virtual">
+      </methodref>
+      <methodref name="FreeInstance" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="Destroy" visibility="public" procflags="destructor virtual">
+      </methodref>
+    </ancestor>
+    <members>
+      <field name="fDB" type="Pointer" visibility="private" />
+      <field name="fInTrans" type="Boolean" visibility="private" />
+      <procedure name="RaiseError" visibility="private">
+        <parameters>
+          <parameter name="s" type="string" />
+          <parameter name="SQL" type="string" />
+        </parameters>
+      </procedure>
+      <constructor name="Create" visibility="public">
+        <parameters>
+          <parameter name="FileName" type="string" paramflags="const" />
+        </parameters>
+      </constructor>
+      <destructor name="Destroy" visibility="public">
+        <parameters>
+        </parameters>
+      </destructor>
+      <function name="GetTable" visibility="public">
+        <parameters>
+          <parameter name="SQL" type="string" paramflags="const" />
+          <retval type="TSQLiteTable" />
+        </parameters>
+      </function>
+      <procedure name="ExecSQL" visibility="public">
+        <parameters>
+          <parameter name="SQL" type="string" paramflags="const" />
+        </parameters>
+      </procedure>
+      <function name="GetTableValue" visibility="public">
+        <parameters>
+          <parameter name="SQL" type="string" paramflags="const" />
+          <retval type="Int64" />
+        </parameters>
+      </function>
+      <function name="GetTableString" visibility="public">
+        <parameters>
+          <parameter name="SQL" type="string" paramflags="const" />
+          <retval type="string" />
+        </parameters>
+      </function>
+      <procedure name="UpdateBlob" visibility="public">
+        <parameters>
+          <parameter name="SQL" type="string" paramflags="const" />
+          <parameter name="BlobData" type="TStream" />
+        </parameters>
+      </procedure>
+      <procedure name="BeginTransaction" visibility="public">
+      </procedure>
+      <procedure name="Commit" visibility="public">
+      </procedure>
+      <procedure name="Rollback" visibility="public">
+      </procedure>
+      <function name="TableExists" visibility="public">
+        <parameters>
+          <parameter name="TableName" type="string" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="GetLastInsertRowID" visibility="public">
+        <parameters>
+          <retval type="Int64" />
+        </parameters>
+      </function>
+      <procedure name="SetTimeout" visibility="public">
+        <parameters>
+          <parameter name="Value" type="Integer" />
+        </parameters>
+      </procedure>
+      <function name="version" visibility="public">
+        <parameters>
+          <retval type="string" />
+        </parameters>
+      </function>
+      <property name="isTransactionOpen" visibility="public" read="fInTrans" type="Boolean" />
+    </members>
+  </class>
+  <class name="TSQLiteTable">
+    <ancestor name="TObject" namespace="System">
+      <methodref name="Create" visibility="public" procflags="constructor">
+      </methodref>
+      <methodref name="Free" visibility="public">
+      </methodref>
+      <methodref name="InitInstance" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="CleanupInstance" visibility="public">
+      </methodref>
+      <methodref name="ClassType" visibility="public">
+      </methodref>
+      <methodref name="ClassName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassNameIs" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassParent" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassInfo" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="InstanceSize" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="InheritsFrom" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="MethodName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="GetInterface" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceEntry" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="GetInterfaceTable" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="UnitName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="Equals" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="GetHashCode" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="ToString" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="SafeCallException" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="AfterConstruction" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="BeforeDestruction" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="Dispatch" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="DefaultHandler" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="NewInstance" visibility="public" procflags="class virtual">
+      </methodref>
+      <methodref name="FreeInstance" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="Destroy" visibility="public" procflags="destructor virtual">
+      </methodref>
+    </ancestor>
+    <members>
+      <field name="fResults" type="TList" visibility="private" />
+      <field name="fRowCount" type="Cardinal" visibility="private" />
+      <field name="fColCount" type="Cardinal" visibility="private" />
+      <field name="fCols" type="TStringList" visibility="private" />
+      <field name="fColTypes" type="TList" visibility="private" />
+      <field name="fRow" type="Cardinal" visibility="private" />
+      <function name="GetFields" visibility="private">
+        <parameters>
+          <parameter name="I" type="Cardinal" />
+          <retval type="string" />
+        </parameters>
+      </function>
+      <function name="GetEOF" visibility="private">
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="GetBOF" visibility="private">
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="GetColumns" visibility="private">
+        <parameters>
+          <parameter name="I" type="Integer" />
+          <retval type="string" />
+        </parameters>
+      </function>
+      <function name="GetFieldByName" visibility="private">
+        <parameters>
+          <parameter name="FieldName" type="string" />
+          <retval type="string" />
+        </parameters>
+      </function>
+      <function name="GetFieldIndex" visibility="private">
+        <parameters>
+          <parameter name="FieldName" type="string" />
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <function name="GetCount" visibility="private">
+        <parameters>
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <function name="GetCountResult" visibility="private">
+        <parameters>
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <constructor name="Create" visibility="public">
+        <parameters>
+          <parameter name="DB" type="TSQLiteDatabase" />
+          <parameter name="SQL" type="string" paramflags="const" />
+        </parameters>
+      </constructor>
+      <destructor name="Destroy" visibility="public">
+        <parameters>
+        </parameters>
+      </destructor>
+      <function name="FieldAsInteger" visibility="public">
+        <parameters>
+          <parameter name="I" type="Cardinal" />
+          <retval type="Int64" />
+        </parameters>
+      </function>
+      <function name="FieldAsBlob" visibility="public">
+        <parameters>
+          <parameter name="I" type="Cardinal" />
+          <retval type="TMemoryStream" />
+        </parameters>
+      </function>
+      <function name="FieldAsBlobText" visibility="public">
+        <parameters>
+          <parameter name="I" type="Cardinal" />
+          <retval type="string" />
+        </parameters>
+      </function>
+      <function name="FieldIsNull" visibility="public">
+        <parameters>
+          <parameter name="I" type="Cardinal" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="FieldAsString" visibility="public">
+        <parameters>
+          <parameter name="I" type="Cardinal" />
+          <retval type="string" />
+        </parameters>
+      </function>
+      <function name="FieldAsDouble" visibility="public">
+        <parameters>
+          <parameter name="I" type="Cardinal" />
+          <retval type="Double" />
+        </parameters>
+      </function>
+      <function name="Next" visibility="public">
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="Previous" visibility="public">
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <property name="EOF" visibility="public" read="GetEOF" type="Boolean" />
+      <property name="BOF" visibility="public" read="GetBOF" type="Boolean" />
+      <property name="Fields" visibility="public" read="GetFields" type="string" />
+      <property name="FieldByName" visibility="public" read="GetFieldByName" type="string" />
+      <property name="FieldIndex" visibility="public" read="GetFieldIndex" type="Integer" />
+      <property name="Columns" visibility="public" read="GetColumns" type="string" />
+      <property name="ColCount" visibility="public" read="fColCount" type="Cardinal" />
+      <property name="RowCount" visibility="public" read="fRowCount" type="Cardinal" />
+      <property name="Row" visibility="public" read="fRow" type="Cardinal" />
+      <function name="MoveFirst" visibility="public">
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="MoveLast" visibility="public">
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <property name="Count" visibility="public" read="GetCount" type="Integer" />
+      <property name="CountResult" visibility="public" read="GetCountResult" type="Integer" />
+    </members>
+  </class>
+  <procedure name="DisposePointer" visibility="public" callconv="cdecl">
+    <parameters>
+      <parameter name="ptr" type="Pointer" />
+    </parameters>
+  </procedure>
+</namespace>

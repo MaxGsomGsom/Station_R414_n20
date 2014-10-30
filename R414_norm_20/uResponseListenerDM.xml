@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<namespace name="uResponseListenerDM">
+  <class name="TResponseListener">
+    <ancestor name="TThread" namespace="Classes">
+      <methodref name="Create@" visibility="class private" procflags="class constructor noself">
+      </methodref>
+      <methodref name="Destroy@" visibility="class private" procflags="class destructor noself">
+      </methodref>
+      <methodref name="CallOnTerminate" visibility="private">
+      </methodref>
+      <methodref name="Synchronize" visibility="private" procflags="class overload">
+      </methodref>
+      <methodref name="GetCurrentThread" visibility="private" procflags="static">
+      </methodref>
+      <methodref name="InternalStart" visibility="private">
+      </methodref>
+      <methodref name="GetPriority" visibility="private">
+      </methodref>
+      <methodref name="SetPriority" visibility="private">
+      </methodref>
+      <methodref name="SetSuspended" visibility="private">
+      </methodref>
+      <methodref name="CheckThreadError" visibility="protected" procflags="overload">
+      </methodref>
+      <methodref name="CheckThreadError" visibility="protected" procflags="overload">
+      </methodref>
+      <methodref name="DoTerminate" visibility="protected" procflags="virtual">
+      </methodref>
+      <methodref name="Execute" visibility="protected" procflags="abstract virtual">
+      </methodref>
+      <methodref name="Queue" visibility="protected" procflags="overload">
+      </methodref>
+      <methodref name="Synchronize" visibility="protected" procflags="overload">
+      </methodref>
+      <methodref name="Queue" visibility="protected" procflags="overload">
+      </methodref>
+      <methodref name="Synchronize" visibility="protected" procflags="overload">
+      </methodref>
+      <propertyref name="ReturnValue" visibility="protected">
+      </propertyref>
+      <propertyref name="Terminated" visibility="protected">
+      </propertyref>
+      <methodref name="Create" visibility="public" procflags="constructor">
+      </methodref>
+      <methodref name="Destroy" visibility="public" procflags="destructor override">
+      </methodref>
+      <methodref name="AfterConstruction" visibility="public" procflags="override">
+      </methodref>
+      <methodref name="Resume" visibility="public" symflags="deprecated">
+      </methodref>
+      <methodref name="Start" visibility="public">
+      </methodref>
+      <methodref name="Suspend" visibility="public" symflags="deprecated">
+      </methodref>
+      <methodref name="Terminate" visibility="public">
+      </methodref>
+      <methodref name="WaitFor" visibility="public">
+      </methodref>
+      <methodref name="Queue" visibility="public" procflags="static overload">
+      </methodref>
+      <methodref name="RemoveQueuedEvents" visibility="public" procflags="static overload">
+      </methodref>
+      <methodref name="StaticQueue" visibility="public" procflags="static" symflags="deprecated">
+      </methodref>
+      <methodref name="Synchronize" visibility="public" procflags="static overload">
+      </methodref>
+      <methodref name="StaticSynchronize" visibility="public" procflags="static" symflags="deprecated">
+      </methodref>
+      <methodref name="Queue" visibility="public" procflags="static overload">
+      </methodref>
+      <methodref name="Synchronize" visibility="public" procflags="static overload">
+      </methodref>
+      <methodref name="RemoveQueuedEvents" visibility="public" procflags="static overload">
+      </methodref>
+      <methodref name="RemoveQueuedEvents" visibility="public" procflags="static overload">
+      </methodref>
+      <methodref name="NameThreadForDebugging" visibility="public" procflags="static">
+      </methodref>
+      <methodref name="SpinWait" visibility="public" procflags="static">
+      </methodref>
+      <propertyref name="ExternalThread" visibility="public">
+      </propertyref>
+      <propertyref name="FatalException" visibility="public">
+      </propertyref>
+      <propertyref name="FreeOnTerminate" visibility="public">
+      </propertyref>
+      <propertyref name="Finished" visibility="public">
+      </propertyref>
+      <propertyref name="Handle" visibility="public">
+      </propertyref>
+      <propertyref name="Priority" visibility="public">
+      </propertyref>
+      <propertyref name="Suspended" visibility="public">
+      </propertyref>
+      <propertyref name="ThreadID" visibility="public">
+      </propertyref>
+      <eventref name="OnTerminate" visibility="public">
+      </eventref>
+      <propertyref name="CurrentThread" visibility="public">
+      </propertyref>
+      <ancestor name="TObject" namespace="System">
+        <methodref name="Create" visibility="public" procflags="constructor">
+        </methodref>
+        <methodref name="Free" visibility="public">
+        </methodref>
+        <methodref name="InitInstance" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="CleanupInstance" visibility="public">
+        </methodref>
+        <methodref name="ClassType" visibility="public">
+        </methodref>
+        <methodref name="ClassName" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="ClassNameIs" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="ClassParent" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="ClassInfo" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="InstanceSize" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="InheritsFrom" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="MethodAddress" visibility="public" procflags="class overload">
+        </methodref>
+        <methodref name="MethodAddress" visibility="public" procflags="class overload">
+        </methodref>
+        <methodref name="MethodName" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="FieldAddress" visibility="public" procflags="overload">
+        </methodref>
+        <methodref name="FieldAddress" visibility="public" procflags="overload">
+        </methodref>
+        <methodref name="GetInterface" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceEntry" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="GetInterfaceTable" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="UnitName" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="Equals" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="GetHashCode" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="ToString" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="SafeCallException" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="AfterConstruction" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="BeforeDestruction" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="Dispatch" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="DefaultHandler" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="NewInstance" visibility="public" procflags="class virtual">
+        </methodref>
+        <methodref name="FreeInstance" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="Destroy" visibility="public" procflags="destructor virtual">
+        </methodref>
+      </ancestor>
+    </ancestor>
+    <members>
+      <field name="TCPClient" type="TIdTCPClient" visibility="private" />
+      <field name="FResponseEvent" type="TResponseEvent" visibility="private" />
+      <field name="FResponse" type="string" visibility="private" />
+      <procedure name="DoResponseEvent" visibility="private">
+        <devnotes>
+           <summary>
+             Вызывается в родительском потоке и генерирует событие
+           </summary>
+        </devnotes>
+      </procedure>
+      <procedure name="Execute" visibility="private" procflags="override">
+        <devnotes>
+           <summary>
+             Прослушивает сокет для получения ответа сервера
+             и инициирует соответствующее событие
+           </summary>
+        </devnotes>
+      </procedure>
+      <constructor name="Create" visibility="public">
+        <parameters>
+          <parameter name="TCPClient" type="TIdTCPClient" />
+        </parameters>
+      </constructor>
+      <destructor name="Destroy" visibility="public">
+        <parameters>
+        </parameters>
+      </destructor>
+      <event name="ResponseEvent" visibility="public" read="FResponseEvent" write="FResponseEvent" type="TResponseEvent" />
+    </members>
+  </class>
+</namespace>
