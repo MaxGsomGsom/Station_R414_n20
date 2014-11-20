@@ -90,6 +90,8 @@ begin
   Inherited Create(AOwner);
 
   CurFormId:=Half;
+  if (Half=1) then begin Self.Caption:='льс ю'; end
+  else Self.Caption:='льс а';
   Station:=Station0;
   TaskController:=TaskController0;
   TaskController.Subscribe(self);

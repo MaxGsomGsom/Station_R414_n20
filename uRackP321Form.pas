@@ -178,6 +178,10 @@ begin
 //  idP321A:=1;
 //  idP321B:=2;
 //  idP321C:=3;
+if (Half=1) then begin Self.Caption:='Ï-321 À'; end;
+if (Half=2) then begin Self.Caption:='Ï-321 Á'; end
+  else Self.Caption:='Ï-321 Ñ';
+
   CurFormId:=Half;
   Station:=Station0;
   TaskController:=TaskController0;

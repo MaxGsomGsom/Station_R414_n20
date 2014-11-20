@@ -171,6 +171,8 @@ begin
   //idRack1920A:=1;
   //idRack1920B:=2;
   CurFormId:=Half;
+  if (Half=1) then begin Self.Caption:='1920 À'; end
+  else Self.Caption:='1920 Á';
   ButtonBackForm:= TButtonBackForm.Create(self);
   ButtonBackForm.Show;
 end;
@@ -564,9 +566,9 @@ begin
           imgHighOff2.BringToFront;
         imgHighOff2Clicked.Visible := Boolean(station.HalfSetA.Rack1920.butHighOff2 = butPositionDown);
         if imgHighOff2Clicked.Visible then
-          imgHighOff2Clicked.BringToFront;          
+          imgHighOff2Clicked.BringToFront;
 
-        if (Station.WorkMode = mdPowerOn) and (Station.WorkType = wtLearn) then
+        if (TaskController.WorkMode = wmLearning) then
         begin
           Image35.Visible := Boolean(Station.HalfSetA.Rack1920.but1930 = butPositionDown);
           Label2.Visible := Boolean(Station.HalfSetA.Rack1920.but1930 = butPositionDown);
@@ -792,7 +794,7 @@ begin
         if imgHighOff2Clicked.Visible then
           imgHighOff2Clicked.BringToFront;
 
-        if (Station.WorkMode = mdPowerOn) and (Station.WorkType = wtLearn) then
+        if (TaskController.WorkMode = wmLearning) then
         begin
           Image35.Visible :=
             Boolean(Station.HalfSetB.Rack1920.but1930 = butPositionDown);
@@ -933,7 +935,7 @@ begin
           Boolean(Station.HalfSetB.Rack1920.butCurrent5MA = butPositionDown);
         imgCurrent5MA.Visible :=
           Boolean(Station.HalfSetB.Rack1920.butCurrent5MA = butPositionUp);
-  
+
         imgCurrent5MA2Clicked.Visible :=
           Boolean(Station.HalfSetB.Rack1920.butCurrent5MA2 = butPositionDown);
         imgCurrent5MA2.Visible :=
@@ -1783,7 +1785,7 @@ begin
   HelpImages[4].HelpLabel := Label7;
   HelpImages[5].HelpImage := Image33;
   HelpImages[5].HelpLabel := Label8;
-  if Station.WorkMode = mdPowerOn then
+  if TaskController.WorkMode = wmLearning then
   begin
     for btA := 0 to Length(HelpImages) - 1 do
     begin

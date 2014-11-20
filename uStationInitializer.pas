@@ -33,7 +33,7 @@ type TStationInitializer = class
     procedure InitForStartParametersSetupTask;      //перенести в приватные
     procedure SetStationTo2ChannelMode;
     procedure SetStationTo4ChannelMode;
-    procedure InitStationByTaskID(TaskID: TTaskType);
+    //procedure InitStationByTaskID(TaskID: TTaskType);
     procedure InitStationByTask(TaskType: TTaskType);
 end;
 
@@ -192,16 +192,16 @@ end;
 /// <param name='TaskID'>ID задания, для которого требутся
 ///   подготовить станцию<param>
 /// </summary>
-procedure TStationInitializer.InitStationByTaskID(TaskID: TTaskType);
-var
-  TaskType: TTaskType;
-begin
-  //TaskType :=  TTaskController.GetTaskType(TaskID);
-
-  if TaskType <> ttNone then
-    //InitStationByTask(TaskType);
-    InitStationByTask(TaskID);
-end;
+//procedure TStationInitializer.InitStationByTaskID(TaskID: TTaskType);
+//var
+//  TaskType: TTaskType;
+//begin
+//  //TaskType :=  TTaskController.GetTaskType(TaskID);
+//
+//  if TaskType <> ttNone then
+//    //InitStationByTask(TaskType);
+//    InitStationByTask(TaskID);
+//end;
 
 /// <summary>
 ///   Выставляет параметры станции для выполнения задания
@@ -852,7 +852,7 @@ begin
   Station.HalfSetA.Rack1200Left.Sw1240K := 1;
   Station.HalfSetA.Rack1200Left.SwNumberOfUchastok := 1;
   Station.HalfSetA.Rack1200Left.SwNumberOfStantion := 1;
-  Station.HalfSetA.Rack1200Left.but1240K := butPositionUp;
+  Station.HalfSetA.Rack1200Left.but1240K := butPositionDown;
   Station.HalfSetA.Rack1200Left.but1220ADReserve := butPositionUp;
   Station.HalfSetA.Rack1200Left.but1230AReserve := butPositionUp;
   Station.HalfSetA.Rack1200Left.But1240GMain := butPositionUp;
@@ -902,8 +902,8 @@ begin
   Station.HalfSetB.Rack1200Left.Sw1240K := 1;
   Station.HalfSetB.Rack1200Left.SwNumberOfUchastok := 1;
   Station.HalfSetB.Rack1200Left.SwNumberOfStantion := 1;
-  Station.HalfSetB.Rack1200Left.but1240K := butPositionUp;
-  Station.HalfSetB.Rack1200Left.but1220ADReserve := butPositionUp;
+  Station.HalfSetB.Rack1200Left.but1240K := butPositionDown;
+  Station.HalfSetB.Rack1200Left.but1220ADReserve := butPositionDown;
   Station.HalfSetB.Rack1200Left.but1230AReserve := butPositionUp;
   Station.HalfSetB.Rack1200Left.But1240GMain := butPositionUp;
   Station.HalfSetB.Rack1200Left.But1240GMain2 := butPositionUp;

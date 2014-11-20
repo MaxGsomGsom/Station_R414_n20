@@ -64,7 +64,8 @@ uses
   uNetworkSenderDM in 'uNetworkSenderDM.pas',
   uRandomMethods in 'uRandomMethods.pas',
   uTaskControllerDM in 'uTaskControllerDM.pas',
-  uStationInitializer in 'uStationInitializer.pas';
+  uStationInitializer in 'uStationInitializer.pas',
+  uTasks20 in 'uTasks20.pas';
 
 {$R *.res}
 

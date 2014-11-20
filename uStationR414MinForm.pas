@@ -121,7 +121,7 @@ type
     {$REGION 'public elements'}
                                //Сохраняем ссылку на StationR414Form, чтобы получить
                                //доступ к его методам
-    constructor Create(Sender1: TComponent);
+    constructor Create(Sender1: TComponent); reintroduce;
 
     procedure Show(); overload; //Перегружаем метод Show
 

@@ -216,6 +216,7 @@
 			<DCCReference Include="uRandomMethods.pas"/>
 			<DCCReference Include="uTaskControllerDM.pas"/>
 			<DCCReference Include="uStationInitializer.pas"/>
+			<DCCReference Include="uTasks20.pas"/>
 			<None Include="ModelSupport_StationR414\default.txaPackage"/>
 			<None Include="ModelSupport_StationR414\default.txvpck"/>
 			<None Include="ModelSupport_StationR414\StationR414\default.txvpck"/>
@@ -241,7 +242,6 @@
 			<None Include="ModelSupport_StationR414\uPreparationToWorkForm\default.txaPackage"/>
 			<None Include="ModelSupport_StationR414\uNetWorkerDM\default.txaPackage"/>
 			<None Include="ModelSupport_StationR414\uNetworkSenderDM\default.txaPackage"/>
-			<None Include="D:\T_Stantion_PK12_Picture_Data.raw"/>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>
