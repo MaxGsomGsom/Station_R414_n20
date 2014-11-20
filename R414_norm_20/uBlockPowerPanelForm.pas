@@ -236,6 +236,7 @@ begin
   Reload;
 end;
 
+
 procedure TBlockPowerPanelForm.imgSwPhaseMouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin

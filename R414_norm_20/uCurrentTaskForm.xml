@@ -2309,20 +2309,14 @@
            </summary>
         </devnotes>
       </procedure>
-      <procedure name="setTextHandler" visibility="private" procflags="message">
-        <parameters>
-          <parameter name="Msg" type="TMessage" paramflags="var" />
-        </parameters>
-      </procedure>
-      <procedure name="SetMyText" visibility="private">
+      <procedure name="SetMyText" visibility="public">
         <devnotes>
            <summary>
            Устанавливает текст отображаемого задания
            </summary>
-           <param name="str">Текст задания</param>
         </devnotes>
         <parameters>
-          <parameter name="str" type="string" />
+          <parameter name="Text" type="string" />
         </parameters>
       </procedure>
       <constructor name="Create" visibility="public">
@@ -2334,4 +2328,5 @@
     </members>
   </class>
   <variable name="Station" type="TStation" />
+  <variable name="TaskController" type="TTaskController" />
 </namespace>

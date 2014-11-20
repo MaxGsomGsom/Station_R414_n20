@@ -169,11 +169,7 @@ begin
 
     Station := TStation.Create;                   // Станция
     StationInitializer := TStationInitializer.Create(Station);
-    StationInitializer.InitStationByTaskID(
-      NetWorker.ClientState.TaskID);              // Инициализируем станцию
-
-    StationInitializer.InitForStartParametersSetupTask; //временно
-
+    StationInitializer.InitStationByTask(NetWorker.ClientState.TaskID);              // Инициализируем станцию
 
                                                   // в соответствии с заданием
     StationInitializer.Free;

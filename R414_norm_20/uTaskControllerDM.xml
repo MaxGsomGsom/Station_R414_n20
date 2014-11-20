@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <namespace name="uTaskControllerDM">
-  <class name="TSubTask">
+  <class name="TTaskController">
     <devnotes>
        <summary>
          Реализует контроль заданий, проверку ошибок и прочее,
@@ -74,337 +74,10 @@
       </methodref>
     </ancestor>
     <members>
-      <function name="CheckSubTask" visibility="public" procflags="abstract virtual">
-        <parameters>
-          <retval type="Boolean" />
-        </parameters>
-      </function>
-      <constructor name="Create" visibility="public">
-        <parameters>
-        </parameters>
-      </constructor>
-      <field name="EventType" type="TComponentName" visibility="public" />
-      <field name="Text" type="string" visibility="public" />
-      <field name="Name" type="string" visibility="public" />
-      <field name="Time" type="string" visibility="public" />
-      <field name="IsComplete" type="Boolean" visibility="public" />
-    </members>
-  </class>
-  <class name="TTask">
-    <ancestor name="TObject" namespace="System">
-      <methodref name="Create" visibility="public" procflags="constructor">
-      </methodref>
-      <methodref name="Free" visibility="public">
-      </methodref>
-      <methodref name="InitInstance" visibility="public" procflags="class">
-      </methodref>
-      <methodref name="CleanupInstance" visibility="public">
-      </methodref>
-      <methodref name="ClassType" visibility="public">
-      </methodref>
-      <methodref name="ClassName" visibility="public" procflags="class">
-      </methodref>
-      <methodref name="ClassNameIs" visibility="public" procflags="class">
-      </methodref>
-      <methodref name="ClassParent" visibility="public" procflags="class">
-      </methodref>
-      <methodref name="ClassInfo" visibility="public" procflags="class">
-      </methodref>
-      <methodref name="InstanceSize" visibility="public" procflags="class">
-      </methodref>
-      <methodref name="InheritsFrom" visibility="public" procflags="class">
-      </methodref>
-      <methodref name="MethodAddress" visibility="public" procflags="class overload">
-      </methodref>
-      <methodref name="MethodAddress" visibility="public" procflags="class overload">
-      </methodref>
-      <methodref name="MethodName" visibility="public" procflags="class">
-      </methodref>
-      <methodref name="FieldAddress" visibility="public" procflags="overload">
-      </methodref>
-      <methodref name="FieldAddress" visibility="public" procflags="overload">
-      </methodref>
-      <methodref name="GetInterface" visibility="public">
-      </methodref>
-      <methodref name="GetInterfaceEntry" visibility="public" procflags="class">
-      </methodref>
-      <methodref name="GetInterfaceTable" visibility="public" procflags="class">
-      </methodref>
-      <methodref name="UnitName" visibility="public" procflags="class">
-      </methodref>
-      <methodref name="Equals" visibility="public" procflags="virtual">
-      </methodref>
-      <methodref name="GetHashCode" visibility="public" procflags="virtual">
-      </methodref>
-      <methodref name="ToString" visibility="public" procflags="virtual">
-      </methodref>
-      <methodref name="SafeCallException" visibility="public" procflags="virtual">
-      </methodref>
-      <methodref name="AfterConstruction" visibility="public" procflags="virtual">
-      </methodref>
-      <methodref name="BeforeDestruction" visibility="public" procflags="virtual">
-      </methodref>
-      <methodref name="Dispatch" visibility="public" procflags="virtual">
-      </methodref>
-      <methodref name="DefaultHandler" visibility="public" procflags="virtual">
-      </methodref>
-      <methodref name="NewInstance" visibility="public" procflags="class virtual">
-      </methodref>
-      <methodref name="FreeInstance" visibility="public" procflags="virtual">
-      </methodref>
-      <methodref name="Destroy" visibility="public" procflags="destructor virtual">
-      </methodref>
-    </ancestor>
-    <members>
+      <field name="FStation" type="TStation" visibility="private" />
       <field name="FSubTaskComplete" type="TNotifyEvent" visibility="private" />
       <field name="FTaskComplete" type="TNotifyEvent" visibility="private" />
-      <field name="TimeStart" type="TDateTime" visibility="private" />
-      <field name="Name" type="string" visibility="public" />
-      <event name="OnSubTaskComplete" visibility="public" read="FSubTaskComplete" write="FSubTaskComplete" type="TNotifyEvent" />
-      <event name="OnTaskComplete" visibility="public" read="FTaskComplete" write="FTaskComplete" type="TNotifyEvent" />
-      <procedure name="CheckTask" visibility="public">
-        <parameters>
-          <parameter name="Sender0" type="TObject" />
-          <parameter name="Button" type="TMouseButton" />
-          <parameter name="Shift" type="TShiftState" />
-          <parameter name="X" type="Integer" />
-          <parameter name="Y" type="Integer" />
-        </parameters>
-      </procedure>
-      <constructor name="Create" visibility="public">
-        <parameters>
-        </parameters>
-      </constructor>
-      <field name="SubTasks" type=":TTask.:1" visibility="public" />
-      <field name="CurrentSubTask" type="Integer" visibility="public" />
-    </members>
-  </class>
-  <class name="TTaskNone">
-    <ancestor name="TTask" namespace="uTaskControllerDM">
-      <eventref name="OnSubTaskComplete" visibility="public" />
-      <eventref name="OnTaskComplete" visibility="public" />
-      <methodref name="CheckTask" visibility="public" />
-      <methodref name="Create" visibility="public" procflags="constructor virtual" />
-      <ancestor name="TObject" namespace="System">
-        <methodref name="Create" visibility="public" procflags="constructor">
-        </methodref>
-        <methodref name="Free" visibility="public">
-        </methodref>
-        <methodref name="InitInstance" visibility="public" procflags="class">
-        </methodref>
-        <methodref name="CleanupInstance" visibility="public">
-        </methodref>
-        <methodref name="ClassType" visibility="public">
-        </methodref>
-        <methodref name="ClassName" visibility="public" procflags="class">
-        </methodref>
-        <methodref name="ClassNameIs" visibility="public" procflags="class">
-        </methodref>
-        <methodref name="ClassParent" visibility="public" procflags="class">
-        </methodref>
-        <methodref name="ClassInfo" visibility="public" procflags="class">
-        </methodref>
-        <methodref name="InstanceSize" visibility="public" procflags="class">
-        </methodref>
-        <methodref name="InheritsFrom" visibility="public" procflags="class">
-        </methodref>
-        <methodref name="MethodAddress" visibility="public" procflags="class overload">
-        </methodref>
-        <methodref name="MethodAddress" visibility="public" procflags="class overload">
-        </methodref>
-        <methodref name="MethodName" visibility="public" procflags="class">
-        </methodref>
-        <methodref name="FieldAddress" visibility="public" procflags="overload">
-        </methodref>
-        <methodref name="FieldAddress" visibility="public" procflags="overload">
-        </methodref>
-        <methodref name="GetInterface" visibility="public">
-        </methodref>
-        <methodref name="GetInterfaceEntry" visibility="public" procflags="class">
-        </methodref>
-        <methodref name="GetInterfaceTable" visibility="public" procflags="class">
-        </methodref>
-        <methodref name="UnitName" visibility="public" procflags="class">
-        </methodref>
-        <methodref name="Equals" visibility="public" procflags="virtual">
-        </methodref>
-        <methodref name="GetHashCode" visibility="public" procflags="virtual">
-        </methodref>
-        <methodref name="ToString" visibility="public" procflags="virtual">
-        </methodref>
-        <methodref name="SafeCallException" visibility="public" procflags="virtual">
-        </methodref>
-        <methodref name="AfterConstruction" visibility="public" procflags="virtual">
-        </methodref>
-        <methodref name="BeforeDestruction" visibility="public" procflags="virtual">
-        </methodref>
-        <methodref name="Dispatch" visibility="public" procflags="virtual">
-        </methodref>
-        <methodref name="DefaultHandler" visibility="public" procflags="virtual">
-        </methodref>
-        <methodref name="NewInstance" visibility="public" procflags="class virtual">
-        </methodref>
-        <methodref name="FreeInstance" visibility="public" procflags="virtual">
-        </methodref>
-        <methodref name="Destroy" visibility="public" procflags="destructor virtual">
-        </methodref>
-      </ancestor>
-    </ancestor>
-    <members>
-      <constructor name="Create" visibility="public">
-        <parameters>
-        </parameters>
-      </constructor>
-    </members>
-  </class>
-  <class name="TTaskNoneSubTask1">
-    <ancestor name="TSubTask" namespace="uTaskControllerDM">
-      <methodref name="CheckSubTask" visibility="public" procflags="abstract virtual" />
-      <methodref name="Create" visibility="public" procflags="constructor virtual" />
-      <ancestor name="TObject" namespace="System">
-        <methodref name="Create" visibility="public" procflags="constructor">
-        </methodref>
-        <methodref name="Free" visibility="public">
-        </methodref>
-        <methodref name="InitInstance" visibility="public" procflags="class">
-        </methodref>
-        <methodref name="CleanupInstance" visibility="public">
-        </methodref>
-        <methodref name="ClassType" visibility="public">
-        </methodref>
-        <methodref name="ClassName" visibility="public" procflags="class">
-        </methodref>
-        <methodref name="ClassNameIs" visibility="public" procflags="class">
-        </methodref>
-        <methodref name="ClassParent" visibility="public" procflags="class">
-        </methodref>
-        <methodref name="ClassInfo" visibility="public" procflags="class">
-        </methodref>
-        <methodref name="InstanceSize" visibility="public" procflags="class">
-        </methodref>
-        <methodref name="InheritsFrom" visibility="public" procflags="class">
-        </methodref>
-        <methodref name="MethodAddress" visibility="public" procflags="class overload">
-        </methodref>
-        <methodref name="MethodAddress" visibility="public" procflags="class overload">
-        </methodref>
-        <methodref name="MethodName" visibility="public" procflags="class">
-        </methodref>
-        <methodref name="FieldAddress" visibility="public" procflags="overload">
-        </methodref>
-        <methodref name="FieldAddress" visibility="public" procflags="overload">
-        </methodref>
-        <methodref name="GetInterface" visibility="public">
-        </methodref>
-        <methodref name="GetInterfaceEntry" visibility="public" procflags="class">
-        </methodref>
-        <methodref name="GetInterfaceTable" visibility="public" procflags="class">
-        </methodref>
-        <methodref name="UnitName" visibility="public" procflags="class">
-        </methodref>
-        <methodref name="Equals" visibility="public" procflags="virtual">
-        </methodref>
-        <methodref name="GetHashCode" visibility="public" procflags="virtual">
-        </methodref>
-        <methodref name="ToString" visibility="public" procflags="virtual">
-        </methodref>
-        <methodref name="SafeCallException" visibility="public" procflags="virtual">
-        </methodref>
-        <methodref name="AfterConstruction" visibility="public" procflags="virtual">
-        </methodref>
-        <methodref name="BeforeDestruction" visibility="public" procflags="virtual">
-        </methodref>
-        <methodref name="Dispatch" visibility="public" procflags="virtual">
-        </methodref>
-        <methodref name="DefaultHandler" visibility="public" procflags="virtual">
-        </methodref>
-        <methodref name="NewInstance" visibility="public" procflags="class virtual">
-        </methodref>
-        <methodref name="FreeInstance" visibility="public" procflags="virtual">
-        </methodref>
-        <methodref name="Destroy" visibility="public" procflags="destructor virtual">
-        </methodref>
-      </ancestor>
-    </ancestor>
-    <members>
-      <function name="CheckSubTask" visibility="public" procflags="override">
-        <parameters>
-          <retval type="Boolean" />
-        </parameters>
-      </function>
-      <constructor name="Create" visibility="public">
-        <parameters>
-        </parameters>
-      </constructor>
-    </members>
-  </class>
-  <class name="TTaskController">
-    <ancestor name="TObject" namespace="System">
-      <methodref name="Create" visibility="public" procflags="constructor">
-      </methodref>
-      <methodref name="Free" visibility="public">
-      </methodref>
-      <methodref name="InitInstance" visibility="public" procflags="class">
-      </methodref>
-      <methodref name="CleanupInstance" visibility="public">
-      </methodref>
-      <methodref name="ClassType" visibility="public">
-      </methodref>
-      <methodref name="ClassName" visibility="public" procflags="class">
-      </methodref>
-      <methodref name="ClassNameIs" visibility="public" procflags="class">
-      </methodref>
-      <methodref name="ClassParent" visibility="public" procflags="class">
-      </methodref>
-      <methodref name="ClassInfo" visibility="public" procflags="class">
-      </methodref>
-      <methodref name="InstanceSize" visibility="public" procflags="class">
-      </methodref>
-      <methodref name="InheritsFrom" visibility="public" procflags="class">
-      </methodref>
-      <methodref name="MethodAddress" visibility="public" procflags="class overload">
-      </methodref>
-      <methodref name="MethodAddress" visibility="public" procflags="class overload">
-      </methodref>
-      <methodref name="MethodName" visibility="public" procflags="class">
-      </methodref>
-      <methodref name="FieldAddress" visibility="public" procflags="overload">
-      </methodref>
-      <methodref name="FieldAddress" visibility="public" procflags="overload">
-      </methodref>
-      <methodref name="GetInterface" visibility="public">
-      </methodref>
-      <methodref name="GetInterfaceEntry" visibility="public" procflags="class">
-      </methodref>
-      <methodref name="GetInterfaceTable" visibility="public" procflags="class">
-      </methodref>
-      <methodref name="UnitName" visibility="public" procflags="class">
-      </methodref>
-      <methodref name="Equals" visibility="public" procflags="virtual">
-      </methodref>
-      <methodref name="GetHashCode" visibility="public" procflags="virtual">
-      </methodref>
-      <methodref name="ToString" visibility="public" procflags="virtual">
-      </methodref>
-      <methodref name="SafeCallException" visibility="public" procflags="virtual">
-      </methodref>
-      <methodref name="AfterConstruction" visibility="public" procflags="virtual">
-      </methodref>
-      <methodref name="BeforeDestruction" visibility="public" procflags="virtual">
-      </methodref>
-      <methodref name="Dispatch" visibility="public" procflags="virtual">
-      </methodref>
-      <methodref name="DefaultHandler" visibility="public" procflags="virtual">
-      </methodref>
-      <methodref name="NewInstance" visibility="public" procflags="class virtual">
-      </methodref>
-      <methodref name="FreeInstance" visibility="public" procflags="virtual">
-      </methodref>
-      <methodref name="Destroy" visibility="public" procflags="destructor virtual">
-      </methodref>
-    </ancestor>
-    <members>
-      <field name="FStation" type="TStation" visibility="private" />
+      <field name="FChangeText" type="TNotifyEvent" visibility="private" />
       <const name="count_tasks" visibility="private" type="Integer">
         <value>
           $6
@@ -458,8 +131,23 @@
         </parameters>
       </procedure>
       <procedure name="Subscribe" visibility="public">
+        <devnotes>
+          ///////////////////
+        </devnotes>
         <parameters>
           <parameter name="CurForm0" type="TForm" />
+        </parameters>
+      </procedure>
+      <event name="OnChangeText" visibility="public" read="FChangeText" write="FChangeText" type="TNotifyEvent" />
+      <event name="OnSubTaskComplete" visibility="public" read="FSubTaskComplete" write="FSubTaskComplete" type="TNotifyEvent" />
+      <event name="OnTaskComplete" visibility="public" read="FTaskComplete" write="FTaskComplete" type="TNotifyEvent" />
+      <procedure name="CheckTask" visibility="public">
+        <parameters>
+          <parameter name="Sender0" type="TObject" />
+          <parameter name="Button" type="TMouseButton" />
+          <parameter name="Shift" type="TShiftState" />
+          <parameter name="X" type="Integer" />
+          <parameter name="Y" type="Integer" />
         </parameters>
       </procedure>
       <constructor name="Create" visibility="public">
@@ -483,9 +171,16 @@
           <retval type="string" />
         </parameters>
       </function>
+      <function name="GetCurSubTaskBlock" visibility="public">
+        <parameters>
+          <retval type="TRacksEnum" />
+        </parameters>
+      </function>
       <property name="CountTasks" visibility="public" read="GetCountTasks" type="Integer" />
       <field name="CurrentTask" type="TTask" visibility="public" />
       <field name="CurrentForm" type="TForm" visibility="public" />
+      <field name="WorkMode" type="TWorkMode" visibility="public" />
+      <field name="TaskID" type="TTaskType" visibility="public" />
     </members>
   </class>
   <function name="GetNumberOfCallPassedThrough2ChannelMode" visibility="public">

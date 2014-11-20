@@ -2444,6 +2444,9 @@
       <field name="imgJmpToRight4" type="TImage" visibility="published" />
       <field name="imgJmpToRight5" type="TImage" visibility="published" />
       <field name="imgJmpToRight6" type="TImage" visibility="published" />
+      <field name="imgBut1240KPositionDown" type="TImage" visibility="published" />
+      <field name="imgBut1240KPositionUp" type="TImage" visibility="published" />
+      <field name="img1240KPowerOn" type="TImage" visibility="published" />
       <procedure name="FormClose" visibility="published">
         <parameters>
           <parameter name="Sender" type="TObject" />
@@ -2876,6 +2879,11 @@
         </parameters>
       </procedure>
       <procedure name="FormCreate" visibility="published">
+        <parameters>
+          <parameter name="Sender" type="TObject" />
+        </parameters>
+      </procedure>
+      <procedure name="imgbut1240KClick" visibility="published">
         <parameters>
           <parameter name="Sender" type="TObject" />
         </parameters>

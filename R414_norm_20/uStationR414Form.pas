@@ -187,6 +187,8 @@ type
     { Private declarations }
     procedure UpdSubTaskList(Sender: TObject);
     procedure AddSubTasks;
+
+    procedure ChangeTaskTextBlock(Sender: TObject);
   public
     { Public declarations }
     StationR414MinForm: TStationR414MinForm;
@@ -195,6 +197,7 @@ type
     procedure SpawnForm(FormTag: Integer);
     procedure ShowResults;
     procedure TuneTaskList;
+    procedure SetBlockRed(IdEnum: TRacksEnum);
     constructor Create(Sender1: TComponent; Station1: TStation; TaskController1: TTaskController; ClientState1: TClientState); reintroduce;
   end;
 
@@ -209,7 +212,6 @@ var
   CLientState: TClientState;
   Station: TStation;
   //ButtonBackForm: TButtonBackForm;
-
 
 
 
@@ -266,9 +268,8 @@ CurrentTaskForm: TCurrentTaskForm;
      AddSubTasks;
 
 
-      TaskController.CurrentTask.OnSubTaskComplete:=UpdSubTaskList;
+      TaskController.OnSubTaskComplete:=UpdSubTaskList;
       //UpdSubTaskList(nil);
-
 
      BackgroundForm:= TBackgroundForm.Create(Self);
      BackgroundForm.Show;
@@ -281,6 +282,8 @@ CurrentTaskForm: TCurrentTaskForm;
 
      CurrentTaskForm:= TCurrentTaskForm.Create(self, Station);
      CurrentTaskForm.Show;
+
+     TaskController.OnChangeText:= self.ChangeTaskTextBlock;
 
  end;
 
@@ -320,445 +323,13 @@ var
   end;
 
 
-procedure TStationR414Form.img8Click(Sender: TObject);
-var
-  Rack1500A: TRack1500Form;
-begin
-  Rack1500A := TRack1500Form.Create(self, 1, Station, TaskController);
-  //Rack1500a.Show;
-  Rack1500A.VertScrollBar.Position:=0;
-end;
-
-procedure TStationR414Form.img100Click(Sender: TObject);
-  var
-  Rack1920B: TRack1920Form;
-begin
-  Rack1920B := TRack1920Form.Create(self, 2, Station, TaskController);
-  //Rack1920B.Show;
-
-  SpawnForm((Sender as TImage).Tag);
-  Rack1920B.VertScrollBar.Position:=779;
-end;
-
-procedure TStationR414Form.img13Click(Sender: TObject);
-  var
-  Rack1600B: TRack1600Form;
-begin
-  Rack1600B := TRack1600Form.Create(self, 2, Station, TaskController);
-  //Rack1600B.Show;
-
-  SpawnForm((Sender as TImage).Tag);
-  Rack1600B.VertScrollBar.Position:=1506;
-end;
-
-procedure TStationR414Form.imgVolnomerBClick(Sender: TObject);
-var WaveMeterB: TBlockWaveMeterForm;
-begin
-  WaveMeterB:= TBlockWaveMeterForm.Create(self, 2, Station, TaskController);
-  //WaveMeterB.Show;
-
-  SpawnForm((Sender as TImage).Tag);
-end;
-
-procedure TStationR414Form.imgVolnomerAClick(Sender: TObject);
-var WaveMeterA: TBlockWaveMeterForm;
-begin
-WaveMeterA:=TBlockWaveMeterForm.Create(self, 1, Station, TaskController);
-//WaveMeterA.Show;
-  SpawnForm((Sender as TImage).Tag);
-end;
-
-procedure TStationR414Form.img14Click(Sender: TObject);
-var
-Rack1200B_PRM:TRack1200LeftForm;
-begin
-Rack1200B_PRM:= TRack1200LeftForm.Create(Self, 2, Station, TaskController);
-//Rack1200B_PRM.Show;
-
-  SpawnForm((Sender as TImage).Tag);
-  Rack1200B_PRM.VertScrollBar.Position:=0;
-end;
-
-procedure TStationR414Form.img15Click(Sender: TObject);
-var
-Rack1200B_PRM:TRack1200LeftForm;
-begin
-Rack1200B_PRM:= TRack1200LeftForm.Create(Self, 2, Station, TaskController);
-//Rack1200B_PRM.Show;
-
-  SpawnForm((Sender as TImage).Tag);
-  Rack1200B_PRM.VertScrollBar.Position:=729;
-end;
-
-procedure TStationR414Form.img102Click(Sender: TObject);
-var
-Rack1200B_PRM:TRack1200LeftForm;
-begin
-Rack1200B_PRM:= TRack1200LeftForm.Create(Self, 2, Station, TaskController);
-//Rack1200B_PRM.Show;
-  SpawnForm((Sender as TImage).Tag);
-  Rack1200B_PRM.VertScrollBar.Position:=1297;
-end;
-
-procedure TStationR414Form.img16Click(Sender: TObject);
-var
-Rack1200B_PRM:TRack1200LeftForm;
-begin
-Rack1200B_PRM:= TRack1200LeftForm.Create(Self, 2, Station, TaskController);
-//Rack1200B_PRM.Show;
-  SpawnForm((Sender as TImage).Tag);
-  Rack1200B_PRM.VertScrollBar.Position:=1651;
-end;
-
-procedure TStationR414Form.img17Click(Sender: TObject);
-var
-Rack1200B_PRM:TRack1200LeftForm;
-begin
-Rack1200B_PRM:= TRack1200LeftForm.Create(Self, 2, Station, TaskController);
-//Rack1200B_PRM.Show;
-  SpawnForm((Sender as TImage).Tag);
-  Rack1200B_PRM.VertScrollBar.Position:=2215;
-end;
-
-procedure TStationR414Form.img18Click(Sender: TObject);
-var
-Rack1200B_PRM:TRack1200LeftForm;
-begin
-Rack1200B_PRM:= TRack1200LeftForm.Create(Self,2, Station, TaskController);
-//Rack1200B_PRM.Show;
-  SpawnForm((Sender as TImage).Tag);
-  Rack1200B_PRM.VertScrollBar.Position:=2773;
-end;
-
-procedure TStationR414Form.img106Click(Sender: TObject);
-var Rack1500A: TRack1500Form;
-begin
-  Rack1500A:= TRack1500Form.Create(self, 1, Station, TaskController);
-  CurBlockSelected := 5;
-  //Rack1500A.Show;
-  Rack1500A.VertScrollBar.Position:=948;
-end;
-
-procedure TStationR414Form.img20Click(Sender: TObject);
-var  Rack1200B_PRD: TRack1200RightForm;
-begin
-  Rack1200B_PRD:=TRack1200RightForm.Create(Self, 2, Station, TaskController);
-  //Rack1200B_PRD.Show;
-  SpawnForm((Sender as TImage).Tag);
-  Rack1200B_PRD.VertScrollBar.Position:=0;
-end;
-
-procedure TStationR414Form.img21Click(Sender: TObject);
-var  Rack1200B_PRD: TRack1200RightForm;
-begin
-Rack1200B_PRD:= TRack1200RightForm.Create(self, 2, Station, TaskController);
-//Rack1200B_PRD.Show;
-  SpawnForm((Sender as TImage).Tag);
-  Rack1200B_PRD.VertScrollBar.Position:=673;
-end;
-
-procedure TStationR414Form.img101Click(Sender: TObject);
-var   Rack1200B_PRD: TRack1200RightForm;
-begin
-Rack1200B_PRD:=  TRack1200RightForm.Create(Self, 2, Station, TaskController);
-//Rack1200B_PRD.Show;
-  SpawnForm((Sender as TImage).Tag);
-  Rack1200B_PRD.VertScrollBar.Position:=1235;
-end;
-
-procedure TStationR414Form.img22Click(Sender: TObject);
-var  Rack1200B_PRD: TRack1200RightForm;
-begin
-Rack1200B_PRD:= TRack1200RightForm.Create(self, 2, Station, TaskController);
-//Rack1200B_PRD.Show;
-  SpawnForm((Sender as TImage).Tag);
-  Rack1200B_PRD.VertScrollBar.Position:=1772;
-end;
-
-procedure TStationR414Form.img23Click(Sender: TObject);
-var  Rack1200B_PRD: TRack1200RightForm;
-begin
-Rack1200B_PRD:= TRack1200RightForm.Create(self, 2, Station, TaskController);
-//Rack1200B_PRD.Show;
-  SpawnForm((Sender as TImage).Tag);
-  Rack1200B_PRD.VertScrollBar.Position:=2315;
-end;
-
-procedure TStationR414Form.img24Click(Sender: TObject);
-var  Rack1200B_PRD: TRack1200RightForm;
-begin
-Rack1200B_PRD:= TRack1200RightForm.Create(self, 2, Station, TaskController);
-//Rack1200B_PRD.Show;
-  SpawnForm((Sender as TImage).Tag);
-  Rack1200B_PRD.VertScrollBar.Position:=2703;
-end;
-
-procedure TStationR414Form.imgGenerAClick(Sender: TObject);
-var GeneratorA: TBlockGeneratorForm;
-begin
-  GeneratorA:= TBlockGeneratorForm.Create(Self, 1, Station, TaskController);
-  //GeneratorA.Show;
-  SpawnForm((Sender as TImage).Tag);
-end;
-
-procedure TStationR414Form.imgMshuAClick(Sender: TObject);
-var Mshu: TBlockLittleNoisyAmplifierForm;
-begin
-Mshu:= TBlockLittleNoisyAmplifierForm.Create(self,1, Station, TaskController);
-  SpawnForm((Sender as TImage).Tag);
-end;
-
-procedure TStationR414Form.imgGenerBClick(Sender: TObject);
-var GeneratorB: TBlockGeneratorForm;
-begin
-GeneratorB:= TBlockGeneratorForm.Create(Self, 2, Station, TaskController);
-  SpawnForm((Sender as TImage).Tag);
-end;
-
-procedure TStationR414Form.imgMshuBClick(Sender: TObject);
-var MshuB: TBlockLittleNoisyAmplifierForm;
-begin
-MshuB:= TBlockLittleNoisyAmplifierForm.Create(Self,2, Station, TaskController);
-  SpawnForm((Sender as TImage).Tag);
-end;
-
-procedure TStationR414Form.img19Click(Sender: TObject);
-var Rack1920A: TRack1920Form;
-begin
-  Rack1920A:=TRack1920Form.Create(self, 1, Station, TaskController);
-  SpawnForm((Sender as TImage).Tag);
-  Rack1920A.VertScrollBar.Position:=0;
-end;
-
-procedure TStationR414Form.img25Click(Sender: TObject);
-var Rack1710A: TRack1710Form;
-begin
-Rack1710A:=TRack1710Form.Create(self, Station, TaskController);
-//Rack1710A.Show;
-  SpawnForm((Sender as TImage).Tag);
-  Rack1710A.VertScrollBar.Position:=0;
-end;
-
-procedure TStationR414Form.img107Click(Sender: TObject);
-var Rack1710A: TRack1710Form;
-begin
-Rack1710A:=TRack1710Form.Create(self, Station, TaskController);
-//Rack1710A.Show;
-  SpawnForm((Sender as TImage).Tag);
-  Rack1710A.VertScrollBar.Position:=426;
-end;
-
-procedure TStationR414Form.imgRack1710Click(Sender: TObject);
-var Rack1710A: TRack1710Form;
-begin
-Rack1710A:=TRack1710Form.Create(self, Station, TaskController);
-  //Rack1710A.Show;
-  Rack1710A.VertScrollBar.Position:=871;
-end;
-
-procedure TStationR414Form.imgRack1920AClick(Sender: TObject);
-var Rack1920A: TRack1920Form;
-begin
-Rack1920A:=TRack1920Form.Create(self, 1, Station, TaskController);
-  SpawnForm((Sender as TImage).Tag);
-end;
-
-procedure TStationR414Form.imgRack1920BClick(Sender: TObject);
-var Rack1920B: TRack1920Form;
-begin
-      Rack1920B:=TRack1920Form.Create(self, 2, Station, TaskController);
-      //Rack1920B.Show;
-  SpawnForm((Sender as TImage).Tag);
-end;
-
-procedure TStationR414Form.imgRedMouseEnter(Sender: TObject);
+  procedure TStationR414Form.imgRedMouseEnter(Sender: TObject);
 begin
 
   imgRed.Hide;
 end;
 
-procedure TStationR414Form.imgDuplexerBClick(Sender: TObject);
-var DuplexerB: TBlockDuplexerForm;
-begin
-DuplexerB:= TBlockDuplexerForm.Create(self, 2, Station, TaskController);
-  SpawnForm((Sender as TImage).Tag);
-end;
 
-procedure TStationR414Form.imgRack1400Click(Sender: TObject);
-var RackB1400: TRack1400Form;
-begin
-RackB1400:=TRack1400Form.Create(self, Station, TaskController);
-  SpawnForm((Sender as TImage).Tag);
-  RackB1400.VertScrollBar.Position:=2283;
-end;
-
-procedure TStationR414Form.imgDuplexerAClick(Sender: TObject);
-var DuplexerA: TBlockDuplexerForm;
-begin
-DuplexerA:= TBlockDuplexerForm.Create(self, 1, Station, TaskController);
-  SpawnForm((Sender as TImage).Tag);
-end;
-
-procedure TStationR414Form.imgP321BClick(Sender: TObject);
-var RackP321B: TRackP321Form;
-begin
-RackP321B  := TRackP321Form.Create(self,2, Station, TaskController);
-  SpawnForm((Sender as TImage).Tag);
-end;
-
-procedure TStationR414Form.imgP321CClick(Sender: TObject);
-var RackP321C: TRackP321Form;
-begin
-RackP321C  := TrackP321Form.Create(self, 3, Station, TaskController);
-  SpawnForm((Sender as TImage).Tag);
-end;
-
-procedure TStationR414Form.img105Click(Sender: TObject);
-var Rack1920A: TRack1920Form;
-begin
-Rack1920A:=TRack1920Form.Create(Self, 1, Station, TaskController);
-  SpawnForm((Sender as TImage).Tag);
-  Rack1920A.VertScrollBar.Position:=779;
-end;
-
-procedure TStationR414Form.img26Click(Sender: TObject);
-var Rack1920A: TRack1920Form;
-begin
-  Rack1920A:=TRack1920Form.Create(self, 1, Station, TaskController);
-  SpawnForm((Sender as TImage).Tag);
-  Rack1920A.VertScrollBar.Position:=1506;
-end;
-
-procedure TStationR414Form.imgRack1600AClick(Sender: TObject);
-var
-Rack1600A: TRack1600Form;
-begin
-  Rack1600A:= TRack1600Form.Create(self, 1, Station, TaskController);
-  SpawnForm(idRack1600A);
-  Rack1600A.VertScrollBar.Position := 0;
-end;
-
-procedure TStationR414Form.img27Click(Sender: TObject);
-var Rack1200A_PRM: TRack1200LeftForm;
-begin
-  Rack1200A_PRM:=TRack1200LeftForm.Create(self,1, Station, TaskController);
-  SpawnForm((Sender as TImage).Tag);
-  Rack1200A_PRM.VertScrollBar.Position:=0;
-end;
-
-procedure TStationR414Form.img28Click(Sender: TObject);
-var Rack1200A_PRM: TRack1200LeftForm;
-begin
-  Rack1200A_PRM:=TRack1200LeftForm.Create(self,1, Station, TaskController);
-  SpawnForm((Sender as TImage).Tag);
-  Rack1200A_PRM.VertScrollBar.Position:=729;
-end;
-
-procedure TStationR414Form.lvTaskCustomDrawItem(Sender: TCustomListView; Item: TListItem;
-  State: TCustomDrawState; var DefaultDraw: Boolean);
-var
-  intA: Integer;
-begin
-  If Item.SubItems[2] = stTaskPassed then
-    lvTask.Canvas.Brush.Color := clLime
-  else
-  begin
-    lvTask.Canvas.Brush.Color := RGB($FD, $BF, $C1);
-  end;
-end;
-
-procedure TStationR414Form.lvTaskMouseDown(Sender: TObject; Button: TMouseButton;
-  Shift: TShiftState; X, Y: Integer);
-var
-  li: TListItem;
-  SpawnedFormId: Byte;
-begin
-  with lvTask do
-  begin
-    li := GetItemAt(10, Y);
-    if Assigned(li) then
-    begin
-      lvTaskSelectedId := StrToInt(li.Caption);
-      if Station.WorkType = wtLearn then
-      begin
-        if Button = mbLeft then
-        begin
-          SpawnedFormId := GetRackCodeByTaskId(lvTaskSelectedId);
-          if SpawnedFormId <> NotSelected then
-          begin
-            SpawnForm(SpawnedFormId);
-          end;
-        end;
-      end;
-    end;
-  end;
-end;
-
-procedure TStationR414Form.N1Click(Sender: TObject);
-var
-  SpawnedFormId: Byte;
-begin
-  if lvTaskSelectedId <> NotSelected then
-  begin
-    if Station.WorkType = wtLearn then
-    begin
-      SpawnedFormId := GetRackCodeByTaskId(lvTaskSelectedId);
-      if SpawnedFormId <> NotSelected then
-      begin
-        SpawnForm(SpawnedFormId);
-      end;
-    end;
-  end;
-end;
-
-procedure TStationR414Form.N2Click(Sender: TObject);
-begin
-  if lvTaskSelectedId <> NotSelected then
-  begin
-    DisplayVideoHelpInTreningMode(lvTaskSelectedId);
-  end;
-end;
-
-procedure TStationR414Form.img104Click(Sender: TObject);
-var Rack1200A_PRM: TRack1200LeftForm;
-begin
-  Rack1200A_PRM:=TRack1200LeftForm.Create(self,1, Station, TaskController);
-  SpawnForm((Sender as TImage).Tag);
-  Rack1200A_PRM.VertScrollBar.Position:=1297;
-end;
-
-procedure TStationR414Form.img1Click(Sender: TObject);
-var Rack1200A_PRM: TRack1200LeftForm;
-begin
-  Rack1200A_PRM:=TRack1200LeftForm.Create(self,1, Station, TaskController);
-  SpawnForm((Sender as TImage).Tag);
-  Rack1200A_PRM.VertScrollBar.Position:=1651;
-end;
-
-procedure TStationR414Form.img2Click(Sender: TObject);
-var Rack1200A_PRM: TRack1200LeftForm;
-begin
-  Rack1200A_PRM:=TRack1200LeftForm.Create(self,1, Station, TaskController);
-  SpawnForm((Sender as TImage).Tag);
-  Rack1200A_PRM.VertScrollBar.Position:=2215;
-end;
-
-procedure TStationR414Form.img3Click(Sender: TObject);
-var Rack1200A_PRM: TRack1200LeftForm;
-begin
-  Rack1200A_PRM:=TRack1200LeftForm.Create(self,1, Station, TaskController);
-  SpawnForm((Sender as TImage).Tag);
-  Rack1200A_PRM.VertScrollBar.Position:=2773;
-end;
-
-procedure TStationR414Form.imgRack1600BClick(Sender: TObject);
-var
-Rack1600B: TRack1600Form;
-begin
-  Rack1600B:= TRack1600Form.Create(Self, 2, Station, TaskController);
-  SpawnForm((Sender as TImage).Tag);
-  Rack1600B.VertScrollBar.Position:=0;
-end;
 
 procedure TStationR414Form.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
 //var executer: TForms_executer;
@@ -784,34 +355,34 @@ end;
 procedure TStationR414Form.FormCreate(Sender: TObject);
 begin
   //Инициализация
-  BgImages[idShield] := @imgShit;
-  BgImages[idMshuB] := @imgMshuB;
-  BgImages[idGeneratorB] := @imgGenerB;
-  BgImages[idDuplexerB] := @imgDuplexerB;
-  BgImages[idRack1500B] := @imgRack1500B;
-  BgImages[idRack1920B] := @imgRack1920B;
-  BgImages[idRack1600B] := @imgRack1600B;
-  BgImages[idWaveMeterB] := @imgVolnomerB;
-  BgImages[idRack1200B1] := @imgRack1200B2;
-  BgImages[idRack1200B2] := @imgRack1200B;
-  BgImages[idP321B] := @imgP321B;
-  BgImages[idRack1400B] := @imgRack1400;
-  BgImages[idOscillographC] := @imgOscillograph;
-  BgImages[idP321C] := @imgP321C;
-  BgImages[idPultA] := @imgPultA;
-  BgImages[idPowerC] := @imgPower;
-  BgImages[idPultB] := @imgPultB;
-  BgImages[idRack1710A] := @imgRack1710;
-  BgImages[idRack1200A2] := @imgRack1200A2;
-  BgImages[idRack1200A1] := @imgRack1200A;
-  BgImages[idP321A] := @imgP321A;
-  BgImages[idRack1600A] := @imgRack1600A;
-  BgImages[idWaveMeterA] := @imgVolnomerA;
-  BgImages[idRack1920A] := @imgRack1920A;
-  BgImages[idRack1500A] := @imgRack1500A;
-  BgImages[idDuplexerA] := @imgDuplexerA;
-  BgImages[idGeneratorA] := @imgGenerA;
-  BgImages[idMshuA] := @imgMshuA;
+  BgImages[ord(Power_panel)] := @imgShit;
+  BgImages[ord(Mshu_B)] := @imgMshuB;
+  BgImages[ord(Generator_B)] := @imgGenerB;
+  BgImages[ord(Duplexer_B)] := @imgDuplexerB;
+  BgImages[ord(Rack_1500_B)] := @imgRack1500B;
+  BgImages[ord(Rack_1920_B)] := @imgRack1920B;
+  BgImages[ord(Rack_1600_B)] := @imgRack1600B;
+  BgImages[ord(Wavemeter_B)] := @imgVolnomerB;
+  BgImages[ord(Rack_1200_broadcaster_B)] := @imgRack1200B;
+  BgImages[ord(Rack_1200_reciever_B)] := @imgRack1200B2;
+  BgImages[ord(P321_B)] := @imgP321B;
+  BgImages[ord(Rack_1400)] := @imgRack1400;
+  BgImages[ord(Oscillograph_rack)] := @imgOscillograph;
+  BgImages[ord(P321_C)] := @imgP321C;
+  BgImages[ord(Console_A)] := @imgPultA;
+  BgImages[ord(power_supply)] := @imgPower;
+  BgImages[ord(Console_B)] := @imgPultB;
+  BgImages[ord(Rack_1710)] := @imgRack1710;
+  BgImages[ord(Rack_1200_broadcaster_A)] := @imgRack1200A2;
+  BgImages[ord(Rack_1200_reciever_A)] := @imgRack1200A;
+  BgImages[ord(P321_A)] := @imgP321A;
+  BgImages[ord(Rack_1600_A)] := @imgRack1600A;
+  BgImages[ord(Wavemeter_A)] := @imgVolnomerA;
+  BgImages[ord(Rack_1920_A)] := @imgRack1920A;
+  BgImages[ord(Rack_1500_A)] := @imgRack1500A;
+  BgImages[ord(Duplexer_A)] := @imgDuplexerA;
+  BgImages[ord(Generator_A)] := @imgGenerA;
+  BgImages[ord(Mshu_A)] := @imgMshuA;
 
   //Установка позиций и размеров формы и её элементов в соответствии
   //с параметрами экрана пользователя
@@ -843,6 +414,9 @@ begin
   lvTask.Left := 10;
   lvTask.Width := Width - 20;
   lvTask.Height := Height - lvTask.Top - 10;
+
+
+  ChangeTaskTextBlock(nil);
 end;
 
 /// <summary>
@@ -859,7 +433,7 @@ end;
 procedure TStationR414Form.FormMouseMove(Sender: TObject; Shift: TShiftState; X,
   Y: Integer);
 begin
-//  imgRed.Show;
+  imgRed.Show;
 end;
 
 procedure TStationR414Form.PassTask(TaskId: Byte);
@@ -2020,45 +1594,6 @@ begin
 
 end;
 
-procedure TStationR414Form.img4Click(Sender: TObject);
-var Rack1200A_PRD: TRack1200RightForm;
-begin
-Rack1200A_PRD:= TRack1200RightForm.Create(self, 1, Station, TaskController);
-  SpawnForm((Sender as TImage).Tag);
-  Rack1200A_PRD.VertScrollBar.Position:=0;
-end;
-
-procedure TStationR414Form.img5Click(Sender: TObject);
-var Rack1200A_PRD: TRack1200RightForm;
-begin
-Rack1200A_PRD:= TRack1200RightForm.Create(self, 1, Station, TaskController);
-  SpawnForm((Sender as TImage).Tag);
-  Rack1200A_PRD.VertScrollBar.Position:=673;
-end;
-
-procedure TStationR414Form.imgRack1200A2Click(Sender: TObject);
-var Rack1200A_PRD: TRack1200RightForm;
-begin
-Rack1200A_PRD:= TRack1200RightForm.Create(self, 1, Station, TaskController);
-  SpawnForm((Sender as TImage).Tag);
-  Rack1200A_PRD.VertScrollBar.Position:=1235;
-end;
-
-procedure TStationR414Form.img6Click(Sender: TObject);
-var Rack1200A_PRD: TRack1200RightForm;
-begin
-Rack1200A_PRD:= TRack1200RightForm.Create(self, 1, Station, TaskController);
-  SpawnForm((Sender as TImage).Tag);
-  Rack1200A_PRD.VertScrollBar.Position:=1772;
-end;
-
-procedure TStationR414Form.img7Click(Sender: TObject);
-var Rack1200A_PRD: TRack1200RightForm;
-begin
-Rack1200A_PRD:= TRack1200RightForm.Create(self, 1, Station, TaskController);
-  SpawnForm((Sender as TImage).Tag);
-  Rack1200A_PRD.VertScrollBar.Position:=2315;
-end;
 
 procedure TStationR414Form.imgBgStationR414FormMouseMove(Sender: TObject;
   Shift: TShiftState; X, Y: Integer);
@@ -2078,46 +1613,6 @@ begin
       imgRed.Invalidate;
     end;
   end
-end;
-
-procedure TStationR414Form.img9Click(Sender: TObject);
-var Rack1200A_PRD: TRack1200RightForm;
-begin
-Rack1200A_PRD:= TRack1200RightForm.Create(self, 1, Station, TaskController);
-  SpawnForm((Sender as TImage).Tag);
-  Rack1200A_PRD.VertScrollBar.Position := 2703;
-end;
-
-procedure TStationR414Form.imgPowerClick(Sender: TObject);
-var PowerSupply: TBlockPowerSupplyForm;
-begin
-PowerSupply:=TBlockPowerSupplyForm.Create(self, Station, TaskController);
-  SpawnForm((Sender as TImage).Tag);
-end;
-
-procedure TStationR414Form.imgPultAClick(Sender: TObject);
-var RemotePult: T_Pult;
-begin
-RemotePult:=T_Pult.Create(Self, Station, TaskController);
-  SpawnForm((Sender as TImage).Tag);
-  RemotePult.VertScrollBar.Position:=0;
-  RemotePult.HorzScrollBar.Position:=0;
-end;
-
-procedure TStationR414Form.imgPultBClick(Sender: TObject);
-var RemotePult: T_Pult;
-begin
-RemotePult:=T_Pult.Create(Self, Station, TaskController);
-  SpawnForm((Sender as TImage).Tag);
-  RemotePult.VertScrollBar.Position:=0;
-  RemotePult.HorzScrollBar.Position:=411;
-end;
-
-procedure TStationR414Form.imgOscillographClick(Sender: TObject);
-var BlockOscillograph: TBlockOscillographForm;
-begin
-BlockOscillograph:= TBlockOscillographForm.Create(self, Station, TaskController);
-  SpawnForm((Sender as TImage).Tag);
 end;
 
 procedure TStationR414Form.SpawnForm(FormTag: Integer);
@@ -2316,6 +1811,52 @@ begin
   Hide;
 end;
 
+
+{$REGION 'Обработчики кликов по блокам'}
+
+
+procedure TStationR414Form.img104Click(Sender: TObject);
+var Rack1200A_PRM: TRack1200LeftForm;
+begin
+  Rack1200A_PRM:=TRack1200LeftForm.Create(self,1, Station, TaskController);
+  SpawnForm((Sender as TImage).Tag);
+  Rack1200A_PRM.VertScrollBar.Position:=1297;
+end;
+
+procedure TStationR414Form.img1Click(Sender: TObject);
+var Rack1200A_PRM: TRack1200LeftForm;
+begin
+  Rack1200A_PRM:=TRack1200LeftForm.Create(self,1, Station, TaskController);
+  SpawnForm((Sender as TImage).Tag);
+  Rack1200A_PRM.VertScrollBar.Position:=1651;
+end;
+
+procedure TStationR414Form.img2Click(Sender: TObject);
+var Rack1200A_PRM: TRack1200LeftForm;
+begin
+  Rack1200A_PRM:=TRack1200LeftForm.Create(self,1, Station, TaskController);
+  SpawnForm((Sender as TImage).Tag);
+  Rack1200A_PRM.VertScrollBar.Position:=2215;
+end;
+
+procedure TStationR414Form.img3Click(Sender: TObject);
+var Rack1200A_PRM: TRack1200LeftForm;
+begin
+  Rack1200A_PRM:=TRack1200LeftForm.Create(self,1, Station, TaskController);
+  SpawnForm((Sender as TImage).Tag);
+  Rack1200A_PRM.VertScrollBar.Position:=2773;
+end;
+
+procedure TStationR414Form.imgRack1600BClick(Sender: TObject);
+var
+Rack1600B: TRack1600Form;
+begin
+  Rack1600B:= TRack1600Form.Create(Self, 2, Station, TaskController);
+  SpawnForm((Sender as TImage).Tag);
+  Rack1600B.VertScrollBar.Position:=0;
+end;
+
+
 procedure TStationR414Form.imgShitClick(Sender: TObject);
 var PowerPanel: TBlockPowerPanelForm;
 begin
@@ -2355,6 +1896,487 @@ Rack1920B:=TRack1920Form.Create(self, 2, Station, TaskController);
   Rack1920B.VertScrollBar.Position := 0;
 end;
 
+
+procedure TStationR414Form.img8Click(Sender: TObject);
+var
+  Rack1500A: TRack1500Form;
+begin
+  Rack1500A := TRack1500Form.Create(self, 1, Station, TaskController);
+  //Rack1500a.Show;
+  Rack1500A.VertScrollBar.Position:=0;
+end;
+
+procedure TStationR414Form.img100Click(Sender: TObject);
+  var
+  Rack1920B: TRack1920Form;
+begin
+  Rack1920B := TRack1920Form.Create(self, 2, Station, TaskController);
+  //Rack1920B.Show;
+
+  SpawnForm((Sender as TImage).Tag);
+  Rack1920B.VertScrollBar.Position:=779;
+end;
+
+procedure TStationR414Form.img13Click(Sender: TObject);
+  var
+  Rack1600B: TRack1600Form;
+begin
+  Rack1600B := TRack1600Form.Create(self, 2, Station, TaskController);
+  //Rack1600B.Show;
+
+  SpawnForm((Sender as TImage).Tag);
+  Rack1600B.VertScrollBar.Position:=1506;
+end;
+
+procedure TStationR414Form.imgVolnomerBClick(Sender: TObject);
+var WaveMeterB: TBlockWaveMeterForm;
+begin
+  WaveMeterB:= TBlockWaveMeterForm.Create(self, 2, Station, TaskController);
+  //WaveMeterB.Show;
+
+  SpawnForm((Sender as TImage).Tag);
+end;
+
+procedure TStationR414Form.imgVolnomerAClick(Sender: TObject);
+var WaveMeterA: TBlockWaveMeterForm;
+begin
+WaveMeterA:=TBlockWaveMeterForm.Create(self, 1, Station, TaskController);
+//WaveMeterA.Show;
+  SpawnForm((Sender as TImage).Tag);
+end;
+
+procedure TStationR414Form.img14Click(Sender: TObject);
+var
+Rack1200B_PRM:TRack1200LeftForm;
+begin
+Rack1200B_PRM:= TRack1200LeftForm.Create(Self, 2, Station, TaskController);
+//Rack1200B_PRM.Show;
+
+  SpawnForm((Sender as TImage).Tag);
+  Rack1200B_PRM.VertScrollBar.Position:=0;
+end;
+
+procedure TStationR414Form.img15Click(Sender: TObject);
+var
+Rack1200B_PRM:TRack1200LeftForm;
+begin
+Rack1200B_PRM:= TRack1200LeftForm.Create(Self, 2, Station, TaskController);
+//Rack1200B_PRM.Show;
+
+  SpawnForm((Sender as TImage).Tag);
+  Rack1200B_PRM.VertScrollBar.Position:=729;
+end;
+
+procedure TStationR414Form.img102Click(Sender: TObject);
+var
+Rack1200B_PRM:TRack1200LeftForm;
+begin
+Rack1200B_PRM:= TRack1200LeftForm.Create(Self, 2, Station, TaskController);
+//Rack1200B_PRM.Show;
+  SpawnForm((Sender as TImage).Tag);
+  Rack1200B_PRM.VertScrollBar.Position:=1297;
+end;
+
+procedure TStationR414Form.img16Click(Sender: TObject);
+var
+Rack1200B_PRM:TRack1200LeftForm;
+begin
+Rack1200B_PRM:= TRack1200LeftForm.Create(Self, 2, Station, TaskController);
+//Rack1200B_PRM.Show;
+  SpawnForm((Sender as TImage).Tag);
+  Rack1200B_PRM.VertScrollBar.Position:=1651;
+end;
+
+procedure TStationR414Form.img17Click(Sender: TObject);
+var
+Rack1200B_PRM:TRack1200LeftForm;
+begin
+Rack1200B_PRM:= TRack1200LeftForm.Create(Self, 2, Station, TaskController);
+//Rack1200B_PRM.Show;
+  SpawnForm((Sender as TImage).Tag);
+  Rack1200B_PRM.VertScrollBar.Position:=2215;
+end;
+
+procedure TStationR414Form.img18Click(Sender: TObject);
+var
+Rack1200B_PRM:TRack1200LeftForm;
+begin
+Rack1200B_PRM:= TRack1200LeftForm.Create(Self,2, Station, TaskController);
+//Rack1200B_PRM.Show;
+  SpawnForm((Sender as TImage).Tag);
+  Rack1200B_PRM.VertScrollBar.Position:=2773;
+end;
+
+procedure TStationR414Form.img106Click(Sender: TObject);
+var Rack1500A: TRack1500Form;
+begin
+  Rack1500A:= TRack1500Form.Create(self, 1, Station, TaskController);
+  CurBlockSelected := 5;
+  //Rack1500A.Show;
+  Rack1500A.VertScrollBar.Position:=948;
+end;
+
+procedure TStationR414Form.img20Click(Sender: TObject);
+var  Rack1200B_PRD: TRack1200RightForm;
+begin
+  Rack1200B_PRD:=TRack1200RightForm.Create(Self, 2, Station, TaskController);
+  //Rack1200B_PRD.Show;
+  SpawnForm((Sender as TImage).Tag);
+  Rack1200B_PRD.VertScrollBar.Position:=0;
+end;
+
+procedure TStationR414Form.img21Click(Sender: TObject);
+var  Rack1200B_PRD: TRack1200RightForm;
+begin
+Rack1200B_PRD:= TRack1200RightForm.Create(self, 2, Station, TaskController);
+//Rack1200B_PRD.Show;
+  SpawnForm((Sender as TImage).Tag);
+  Rack1200B_PRD.VertScrollBar.Position:=673;
+end;
+
+procedure TStationR414Form.img101Click(Sender: TObject);
+var   Rack1200B_PRD: TRack1200RightForm;
+begin
+Rack1200B_PRD:=  TRack1200RightForm.Create(Self, 2, Station, TaskController);
+//Rack1200B_PRD.Show;
+  SpawnForm((Sender as TImage).Tag);
+  Rack1200B_PRD.VertScrollBar.Position:=1235;
+end;
+
+procedure TStationR414Form.img22Click(Sender: TObject);
+var  Rack1200B_PRD: TRack1200RightForm;
+begin
+Rack1200B_PRD:= TRack1200RightForm.Create(self, 2, Station, TaskController);
+//Rack1200B_PRD.Show;
+  SpawnForm((Sender as TImage).Tag);
+  Rack1200B_PRD.VertScrollBar.Position:=1772;
+end;
+
+procedure TStationR414Form.img23Click(Sender: TObject);
+var  Rack1200B_PRD: TRack1200RightForm;
+begin
+Rack1200B_PRD:= TRack1200RightForm.Create(self, 2, Station, TaskController);
+//Rack1200B_PRD.Show;
+  SpawnForm((Sender as TImage).Tag);
+  Rack1200B_PRD.VertScrollBar.Position:=2315;
+end;
+
+procedure TStationR414Form.img24Click(Sender: TObject);
+var  Rack1200B_PRD: TRack1200RightForm;
+begin
+Rack1200B_PRD:= TRack1200RightForm.Create(self, 2, Station, TaskController);
+//Rack1200B_PRD.Show;
+  SpawnForm((Sender as TImage).Tag);
+  Rack1200B_PRD.VertScrollBar.Position:=2703;
+end;
+
+procedure TStationR414Form.imgGenerAClick(Sender: TObject);
+var GeneratorA: TBlockGeneratorForm;
+begin
+  GeneratorA:= TBlockGeneratorForm.Create(Self, 1, Station, TaskController);
+  //GeneratorA.Show;
+  SpawnForm((Sender as TImage).Tag);
+end;
+
+procedure TStationR414Form.imgMshuAClick(Sender: TObject);
+var Mshu: TBlockLittleNoisyAmplifierForm;
+begin
+Mshu:= TBlockLittleNoisyAmplifierForm.Create(self,1, Station, TaskController);
+  SpawnForm((Sender as TImage).Tag);
+end;
+
+procedure TStationR414Form.imgGenerBClick(Sender: TObject);
+var GeneratorB: TBlockGeneratorForm;
+begin
+GeneratorB:= TBlockGeneratorForm.Create(Self, 2, Station, TaskController);
+  SpawnForm((Sender as TImage).Tag);
+end;
+
+procedure TStationR414Form.imgMshuBClick(Sender: TObject);
+var MshuB: TBlockLittleNoisyAmplifierForm;
+begin
+MshuB:= TBlockLittleNoisyAmplifierForm.Create(Self,2, Station, TaskController);
+  SpawnForm((Sender as TImage).Tag);
+end;
+
+procedure TStationR414Form.img19Click(Sender: TObject);
+var Rack1920A: TRack1920Form;
+begin
+  Rack1920A:=TRack1920Form.Create(self, 1, Station, TaskController);
+  SpawnForm((Sender as TImage).Tag);
+  Rack1920A.VertScrollBar.Position:=0;
+end;
+
+procedure TStationR414Form.img25Click(Sender: TObject);
+var Rack1710A: TRack1710Form;
+begin
+Rack1710A:=TRack1710Form.Create(self, Station, TaskController);
+//Rack1710A.Show;
+  SpawnForm((Sender as TImage).Tag);
+  Rack1710A.VertScrollBar.Position:=0;
+end;
+
+procedure TStationR414Form.img107Click(Sender: TObject);
+var Rack1710A: TRack1710Form;
+begin
+Rack1710A:=TRack1710Form.Create(self, Station, TaskController);
+//Rack1710A.Show;
+  SpawnForm((Sender as TImage).Tag);
+  Rack1710A.VertScrollBar.Position:=426;
+end;
+
+procedure TStationR414Form.imgRack1710Click(Sender: TObject);
+var Rack1710A: TRack1710Form;
+begin
+Rack1710A:=TRack1710Form.Create(self, Station, TaskController);
+  //Rack1710A.Show;
+  Rack1710A.VertScrollBar.Position:=871;
+end;
+
+procedure TStationR414Form.imgRack1920AClick(Sender: TObject);
+var Rack1920A: TRack1920Form;
+begin
+Rack1920A:=TRack1920Form.Create(self, 1, Station, TaskController);
+  SpawnForm((Sender as TImage).Tag);
+end;
+
+procedure TStationR414Form.imgRack1920BClick(Sender: TObject);
+var Rack1920B: TRack1920Form;
+begin
+      Rack1920B:=TRack1920Form.Create(self, 2, Station, TaskController);
+      //Rack1920B.Show;
+  SpawnForm((Sender as TImage).Tag);
+end;
+
+
+
+procedure TStationR414Form.imgDuplexerBClick(Sender: TObject);
+var DuplexerB: TBlockDuplexerForm;
+begin
+DuplexerB:= TBlockDuplexerForm.Create(self, 2, Station, TaskController);
+  SpawnForm((Sender as TImage).Tag);
+end;
+
+procedure TStationR414Form.imgRack1400Click(Sender: TObject);
+var RackB1400: TRack1400Form;
+begin
+RackB1400:=TRack1400Form.Create(self, Station, TaskController);
+  SpawnForm((Sender as TImage).Tag);
+  RackB1400.VertScrollBar.Position:=2283;
+end;
+
+procedure TStationR414Form.imgDuplexerAClick(Sender: TObject);
+var DuplexerA: TBlockDuplexerForm;
+begin
+DuplexerA:= TBlockDuplexerForm.Create(self, 1, Station, TaskController);
+  SpawnForm((Sender as TImage).Tag);
+end;
+
+procedure TStationR414Form.imgP321BClick(Sender: TObject);
+var RackP321B: TRackP321Form;
+begin
+RackP321B  := TRackP321Form.Create(self,2, Station, TaskController);
+  SpawnForm((Sender as TImage).Tag);
+end;
+
+procedure TStationR414Form.imgP321CClick(Sender: TObject);
+var RackP321C: TRackP321Form;
+begin
+RackP321C  := TrackP321Form.Create(self, 3, Station, TaskController);
+  SpawnForm((Sender as TImage).Tag);
+end;
+
+procedure TStationR414Form.img105Click(Sender: TObject);
+var Rack1920A: TRack1920Form;
+begin
+Rack1920A:=TRack1920Form.Create(Self, 1, Station, TaskController);
+  SpawnForm((Sender as TImage).Tag);
+  Rack1920A.VertScrollBar.Position:=779;
+end;
+
+procedure TStationR414Form.img26Click(Sender: TObject);
+var Rack1920A: TRack1920Form;
+begin
+  Rack1920A:=TRack1920Form.Create(self, 1, Station, TaskController);
+  SpawnForm((Sender as TImage).Tag);
+  Rack1920A.VertScrollBar.Position:=1506;
+end;
+
+procedure TStationR414Form.imgRack1600AClick(Sender: TObject);
+var
+Rack1600A: TRack1600Form;
+begin
+  Rack1600A:= TRack1600Form.Create(self, 1, Station, TaskController);
+  SpawnForm(idRack1600A);
+  Rack1600A.VertScrollBar.Position := 0;
+end;
+
+procedure TStationR414Form.img27Click(Sender: TObject);
+var Rack1200A_PRM: TRack1200LeftForm;
+begin
+  Rack1200A_PRM:=TRack1200LeftForm.Create(self,1, Station, TaskController);
+  SpawnForm((Sender as TImage).Tag);
+  Rack1200A_PRM.VertScrollBar.Position:=0;
+end;
+
+procedure TStationR414Form.img28Click(Sender: TObject);
+var Rack1200A_PRM: TRack1200LeftForm;
+begin
+  Rack1200A_PRM:=TRack1200LeftForm.Create(self,1, Station, TaskController);
+  SpawnForm((Sender as TImage).Tag);
+  Rack1200A_PRM.VertScrollBar.Position:=729;
+end;
+
+
+
+procedure TStationR414Form.img4Click(Sender: TObject);
+var Rack1200A_PRD: TRack1200RightForm;
+begin
+Rack1200A_PRD:= TRack1200RightForm.Create(self, 1, Station, TaskController);
+  SpawnForm((Sender as TImage).Tag);
+  Rack1200A_PRD.VertScrollBar.Position:=0;
+end;
+
+procedure TStationR414Form.img5Click(Sender: TObject);
+var Rack1200A_PRD: TRack1200RightForm;
+begin
+Rack1200A_PRD:= TRack1200RightForm.Create(self, 1, Station, TaskController);
+  SpawnForm((Sender as TImage).Tag);
+  Rack1200A_PRD.VertScrollBar.Position:=673;
+end;
+
+procedure TStationR414Form.imgRack1200A2Click(Sender: TObject);
+var Rack1200A_PRD: TRack1200RightForm;
+begin
+Rack1200A_PRD:= TRack1200RightForm.Create(self, 1, Station, TaskController);
+  SpawnForm((Sender as TImage).Tag);
+  Rack1200A_PRD.VertScrollBar.Position:=1235;
+end;
+
+procedure TStationR414Form.img6Click(Sender: TObject);
+var Rack1200A_PRD: TRack1200RightForm;
+begin
+Rack1200A_PRD:= TRack1200RightForm.Create(self, 1, Station, TaskController);
+  SpawnForm((Sender as TImage).Tag);
+  Rack1200A_PRD.VertScrollBar.Position:=1772;
+end;
+
+procedure TStationR414Form.img7Click(Sender: TObject);
+var Rack1200A_PRD: TRack1200RightForm;
+begin
+Rack1200A_PRD:= TRack1200RightForm.Create(self, 1, Station, TaskController);
+  SpawnForm((Sender as TImage).Tag);
+  Rack1200A_PRD.VertScrollBar.Position:=2315;
+end;
+
+
+procedure TStationR414Form.img9Click(Sender: TObject);
+var Rack1200A_PRD: TRack1200RightForm;
+begin
+Rack1200A_PRD:= TRack1200RightForm.Create(self, 1, Station, TaskController);
+  SpawnForm((Sender as TImage).Tag);
+  Rack1200A_PRD.VertScrollBar.Position := 2703;
+end;
+
+procedure TStationR414Form.imgPowerClick(Sender: TObject);
+var PowerSupply: TBlockPowerSupplyForm;
+begin
+PowerSupply:=TBlockPowerSupplyForm.Create(self, Station, TaskController);
+  SpawnForm((Sender as TImage).Tag);
+end;
+
+procedure TStationR414Form.imgPultAClick(Sender: TObject);
+var RemotePult: T_Pult;
+begin
+RemotePult:=T_Pult.Create(Self, Station, TaskController);
+  SpawnForm((Sender as TImage).Tag);
+  RemotePult.VertScrollBar.Position:=0;
+  RemotePult.HorzScrollBar.Position:=0;
+end;
+
+procedure TStationR414Form.imgPultBClick(Sender: TObject);
+var RemotePult: T_Pult;
+begin
+RemotePult:=T_Pult.Create(Self, Station, TaskController);
+  SpawnForm((Sender as TImage).Tag);
+  RemotePult.VertScrollBar.Position:=0;
+  RemotePult.HorzScrollBar.Position:=411;
+end;
+
+procedure TStationR414Form.imgOscillographClick(Sender: TObject);
+var BlockOscillograph: TBlockOscillographForm;
+begin
+BlockOscillograph:= TBlockOscillographForm.Create(self, Station, TaskController);
+  SpawnForm((Sender as TImage).Tag);
+end;
+{$ENDREGION}
+
+
+procedure TStationR414Form.lvTaskCustomDrawItem(Sender: TCustomListView; Item: TListItem;
+  State: TCustomDrawState; var DefaultDraw: Boolean);
+var
+  intA: Integer;
+begin
+  If Item.SubItems[2] = stTaskPassed then
+    lvTask.Canvas.Brush.Color := clLime
+  else
+  begin
+    lvTask.Canvas.Brush.Color := RGB($FD, $BF, $C1);
+  end;
+end;
+
+procedure TStationR414Form.lvTaskMouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+var
+  li: TListItem;
+  SpawnedFormId: Byte;
+begin
+  with lvTask do
+  begin
+    li := GetItemAt(10, Y);
+    if Assigned(li) then
+    begin
+      lvTaskSelectedId := StrToInt(li.Caption);
+      if Station.WorkType = wtLearn then
+      begin
+        if Button = mbLeft then
+        begin
+          SpawnedFormId := GetRackCodeByTaskId(lvTaskSelectedId);
+          if SpawnedFormId <> NotSelected then
+          begin
+            SpawnForm(SpawnedFormId);
+          end;
+        end;
+      end;
+    end;
+  end;
+end;
+
+procedure TStationR414Form.N1Click(Sender: TObject);
+var
+  SpawnedFormId: Byte;
+begin
+  if lvTaskSelectedId <> NotSelected then
+  begin
+    if Station.WorkType = wtLearn then
+    begin
+      SpawnedFormId := GetRackCodeByTaskId(lvTaskSelectedId);
+      if SpawnedFormId <> NotSelected then
+      begin
+        SpawnForm(SpawnedFormId);
+      end;
+    end;
+  end;
+end;
+
+procedure TStationR414Form.N2Click(Sender: TObject);
+begin
+  if lvTaskSelectedId <> NotSelected then
+  begin
+    DisplayVideoHelpInTreningMode(lvTaskSelectedId);
+  end;
+end;
+
 /// <summary>
 /// Настраивает вид списка заданий на крупном виде Р414
 /// </summary>
@@ -2381,5 +2403,47 @@ begin
                       //Способ не очень удачный, но лучше ничего не придумал
     end;
   end;
+
 end;
+
+
+ procedure TStationR414Form.SetBlockRed(IdEnum: TRacksEnum);
+ var Id: integer;
+ begin
+       if IdEnum<>none then
+       begin
+         Id:= Ord(IdEnum);
+              imgRed.Visible := True;
+              imgRed.BringToFront;
+              imgRed.Left := BgImages[Id].Left;
+              imgRed.Top := BgImages[Id].Top;
+              imgRed.Height := BgImages[Id].Height;
+              imgRed.Width := BgImages[Id].Width;
+              imgRed.Repaint;
+              imgRed.Invalidate;
+              imgBgStationR414Form.Repaint;
+              imgBgStationR414Form.Invalidate;
+       end
+       else
+       begin
+           imgRed.Visible := False;
+              imgRed.Left := 0;
+              imgRed.Top := 0;
+              imgRed.Height := 0;
+              imgRed.Width := 0;
+              imgRed.Repaint;
+              imgRed.Invalidate;
+              imgBgStationR414Form.Repaint;
+              imgBgStationR414Form.Invalidate;
+       end;
+ end;
+
+
+ //отмечает блок красным прямоугольником и меняет текст задания
+ procedure TStationR414Form.ChangeTaskTextBlock(Sender: TObject);
+ begin
+     SetBlockRed(TaskController.GetCurSubTaskBlock);
+     CurrentTaskForm.SetMyText(TaskController.CurrentTask.CurrentSubTask.Text);
+ end;
+
 end.

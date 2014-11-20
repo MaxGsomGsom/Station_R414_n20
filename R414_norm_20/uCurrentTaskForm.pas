@@ -17,7 +17,8 @@ uses
   uAdditionalFormMethods,
   uDefinitionsDM,
   uConstantsDM,
-  uStationStateDM;
+  uStationStateDM,
+  uTaskControllerDM;
 
 type
   TCurrentTaskForm = class(TForm)
@@ -29,15 +30,16 @@ type
     procedure SetFontSize(FontSize : Integer);
     procedure SetFormPosition();
     procedure setComponentsPosition;
-    procedure setTextHandler(var Msg : TMessage); message MM_SETTEXT;
-    procedure SetMyText(str : string);
+    //procedure setTextHandler(var Msg : TMessage); message MM_SETTEXT;
   public
     { Public declarations }
+    procedure SetMyText(Text: String);
     constructor Create(Parent1:TComponent; Station1:TStation); reintroduce;
   end;
 
 var
   Station: TStation;
+  TaskController: TTaskController;
 
 
 implementation
@@ -59,6 +61,7 @@ begin
   Self.SetFontSize(12);
   Self.TaskInfo.Text := '';
 end;
+
 
 /// <summary>
 /// Установить форму в один ряд с Р414-mini
@@ -95,10 +98,9 @@ end;
 /// <summary>
 /// Устанавливает текст отображаемого задания
 /// </summary>
-/// <param name="str">Текст задания</param>
-procedure TCurrentTaskForm.SetMyText(str: string);
+procedure TCurrentTaskForm.SetMyText(Text: String);
 begin
-  Self.TaskInfo.Text := str;
+  Self.TaskInfo.Text := Text;
 end;
 
 procedure TCurrentTaskForm.TaskInfoClick(Sender: TObject);
@@ -109,15 +111,15 @@ begin
   end;
 end;
 
-procedure TCurrentTaskForm.setTextHandler(var Msg: TMessage);
-type TPStr = ^string;
-var PStr : TPStr;
-s : string;
-begin
-  PStr := TPStr(Msg.WParam);
-  s := PStr^;
-  Self.SetMyText(PStr^);
-end;
+//procedure TCurrentTaskForm.setTextHandler(var Msg: TMessage);
+//type TPStr = ^string;
+//var PStr : TPStr;
+//s : string;
+//begin
+//  PStr := TPStr(Msg.WParam);
+//  s := PStr^;
+//  Self.SetMyText(PStr^);
+//end;
 {$R *.dfm}
 
 end.

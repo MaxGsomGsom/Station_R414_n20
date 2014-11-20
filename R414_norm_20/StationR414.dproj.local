@@ -130,11 +130,10 @@
     <Transaction>2014.08.25 18:17:31.892.dfm,G:\Проги\p414 project\Station_P414\uHintForm.dfm=</Transaction>
     <Transaction>2014.08.26 16:33:11.982.pas,G:\Проги\p414 project\Station_P414\uMainMenuForm.pas=</Transaction>
     <Transaction>2014.08.26 16:33:11.982.dfm,G:\Проги\p414 project\Station_P414\uMainMenuForm.dfm=</Transaction>
+    <Transaction>2014.11.06 14:22:32.710.pas,C:\Work\R414_norm_20\Unit1.pas=C:\Work\R414_norm_20\uTasks20.pas</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="main.optset"/>
-    <File Path="D:"/>
-    <File Path="D:\T_Stantion_PK12_Picture_Data.raw"/>
     <File Path="ModelSupport_StationR414"/>
     <File Path="ModelSupport_StationR414\StationR414"/>
     <File Path="ModelSupport_StationR414\StationR414\default.txaPackage"/>
@@ -160,8 +159,8 @@
     <File Path="ModelSupport_StationR414\uNetworkSenderDM"/>
     <File Path="ModelSupport_StationR414\uNetworkSenderDM\default.txaPackage"/>
     <File Path="ModelSupport_StationR414\uPreparationToWorkForm"/>
-    <File Path="ModelSupport_StationR414\uPreparationToWorkForm\default.txvpck"/>
     <File Path="ModelSupport_StationR414\uPreparationToWorkForm\default.txaPackage"/>
+    <File Path="ModelSupport_StationR414\uPreparationToWorkForm\default.txvpck"/>
     <File Path="ModelSupport_StationR414\uRackP321Form"/>
     <File Path="ModelSupport_StationR414\uRackP321Form\default.txvpck"/>
     <File Path="ModelSupport_StationR414\uRandomMethods"/>
@@ -285,5 +284,6 @@
     <File Path="uRandomMethods.pas"/>
     <File Path="uTaskControllerDM.pas"/>
     <File Path="uStationInitializer.pas"/>
+    <File Path="uTasks20.pas"/>
   </ProjectSortOrder>
 </BorlandProject>

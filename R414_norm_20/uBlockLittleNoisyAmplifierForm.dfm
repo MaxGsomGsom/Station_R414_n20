@@ -6,6 +6,7 @@ object BlockLittleNoisyAmplifierForm: TBlockLittleNoisyAmplifierForm
   Anchors = []
   BorderIcons = [biSystemMenu]
   BorderStyle = bsDialog
+  Caption = #1052#1064#1059
   ClientHeight = 685
   ClientWidth = 1207
   Color = clBtnFace
@@ -28,8 +29,6 @@ object BlockLittleNoisyAmplifierForm: TBlockLittleNoisyAmplifierForm
   OnMouseWheelDown = FormMouseWheelDown
   OnMouseWheelUp = FormMouseWheelUp
   OnShow = FormShow
-  ExplicitWidth = 320
-  ExplicitHeight = 240
   PixelsPerInch = 96
   TextHeight = 13
   object Image1: TImage

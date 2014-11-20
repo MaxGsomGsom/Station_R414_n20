@@ -136,25 +136,9 @@
            </summary>
         </devnotes>
       </procedure>
-      <procedure name="InitStationByTaskID" visibility="public">
-        <devnotes>
-           <summary>
-             Выставляет параметры станции для выполнения задания
-           <param name="TaskID">ID задания, для которого требутся
-             подготовить станцию<param>
-           </summary>
-        </devnotes>
-        <parameters>
-          <parameter name="TaskID" type="TTaskType" />
-        </parameters>
-      </procedure>
       <procedure name="InitStationByTask" visibility="public">
         <devnotes>
-           <summary>
-             Выставляет параметры станции для выполнения задания
-           <param name="TaskType">Задание, для которого требутся
-             подготовить станцию<param>
-           </summary>
+<!-- Badly formed XML comment ignored for member 'InitStationByTask' -->
         </devnotes>
         <parameters>
           <parameter name="TaskType" type="TTaskType" />

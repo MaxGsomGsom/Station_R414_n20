@@ -196,6 +196,9 @@ type
     imgJmpToRight4: TImage;
     imgJmpToRight5: TImage;
     imgJmpToRight6: TImage;
+    imgBut1240KPositionDown: TImage;
+    imgBut1240KPositionUp: TImage;
+    img1240KPowerOn: TImage;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormMouseWheelDown(Sender: TObject; Shift: TShiftState;
       MousePos: TPoint; var Handled: Boolean);
@@ -288,6 +291,7 @@ type
     procedure imgJmpToRight6Click(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure FormCreate(Sender: TObject);
+    procedure imgbut1240KClick(Sender: TObject);
   private
     { Private declarations }
     procedure SetCableOscillographSyncState(btStateCode: Byte);
@@ -331,6 +335,9 @@ begin
   //idRack1200A1:=1;
   //idRack1200B1:=2;
   CurFormId:=Half;
+
+  if (Half=1) then begin Self.Caption:='1200 œ–Ã ¿'; end
+  else Self.Caption:='1200 œ–Ã ¡';
 
     Station:=Station0;
   TaskController:=TaskController0;
@@ -559,6 +566,8 @@ begin
         // ÌÓÔÍË
         img1290ButPositionUp.Visible :=
           Boolean(Station.HalfSetA.Rack1200Left.but1290Power = butPositionUp);
+        imgBut1240KPositionUp.Visible :=
+          Boolean(Station.HalfSetA.Rack1200Left.but1240K = butPositionUp);
         ilChannelControl.GetBitmap(Station.HalfSetA.Rack1200Left.butChannelControl, imgbutChannelControl.Picture.Bitmap);
         img1240G1ButPositionUp.Visible :=
           Boolean(Station.HalfSetA.Rack1200Left.but1240G1 = butPositionUp);
@@ -649,6 +658,8 @@ begin
         begin
           imgind1220ADMain.Visible :=
             Boolean(Station.Rack1710.but1220AD = butPositionLeft);
+          img1240KPowerOn.Visible :=
+            Boolean(Station.HalfSetA.Rack1200Left.but1240K = butPositionUp);
           imgind1220ADReserve.Visible :=
             Boolean(Station.Rack1710.but1220AD = butPositionRight);
           imgind1220ADphasirovkaMain.Visible :=
@@ -831,6 +842,8 @@ begin
         // ÌÓÔÍË
         img1290ButPositionUp.Visible :=
           Boolean(Station.HalfSetB.Rack1200Left.but1290Power = butPositionUp);
+        imgBut1240KPositionUp.Visible :=
+          Boolean(Station.HalfSetB.Rack1200Left.but1240K = butPositionUp);
         ilChannelControl.GetBitmap(Station.HalfSetB.Rack1200Left.butChannelControl,
           imgbutChannelControl.Picture.Bitmap);
         img1240G1ButPositionUp.Visible :=
@@ -921,6 +934,8 @@ begin
         begin
           imgind1220ADMain.Visible :=
             Boolean(Station.Rack1710.but1220AD_2 = butPositionLeft);
+          img1240KPowerOn.Visible :=
+            Boolean(Station.HalfSetB.Rack1200Left.but1240K = butPositionUp);
           imgind1220ADReserve.Visible :=
             Boolean(Station.Rack1710.but1220AD_2 = butPositionRight);
           imgind1220ADphasirovkaMain.Visible :=
@@ -2040,6 +2055,31 @@ begin
 
   Reload;
 end;
+
+procedure TRack1200LeftForm.imgbut1240KClick(Sender: TObject);
+begin
+case CurFormId of
+    idRack1200A1:
+      begin
+        if Station.HalfSetA.Rack1200Left.but1240K = butPositionUp then
+          Station.HalfSetA.Rack1200Left.but1240K := butPositionDown
+        else
+          Station.HalfSetA.Rack1200Left.but1240K := butPositionUp;
+      end;
+
+    idRack1200B1:
+      begin
+        if Station.HalfSetB.Rack1200Left.but1240K = butPositionUp then
+          Station.HalfSetB.Rack1200Left.but1240K := butPositionDown
+        else
+          Station.HalfSetB.Rack1200Left.but1240K := butPositionUp;
+      end;
+  end;
+
+  Reload;
+end;
+
+
 
 procedure TRack1200LeftForm.imgbut1240V2Click(Sender: TObject);
 begin

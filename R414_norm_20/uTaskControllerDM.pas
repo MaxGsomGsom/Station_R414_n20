@@ -12,7 +12,9 @@ uses
   Classes,
   uClientStateDM,
   StdCtrls,
-  ExtCtrls;
+  ExtCtrls,
+  uAdditionalFormMethods,
+  uTasks20;
 
 
 
@@ -24,64 +26,6 @@ uses
 ///
 
 
- type TSubTask = class
-   public
-   function CheckSubTask: Boolean; virtual; abstract;
-   constructor Create; virtual;
-   var
-   EventType: TComponentName;
-   Text: String;
-   Name: String;
-   Time: String;
-   IsComplete: Boolean;
-   //const
-
- end;
-
-
-
-type TTask = class
-      private
-           FSubTaskComplete: TNotifyEvent;
-      FTaskComplete: TNotifyEvent;
-
-       TimeStart: TDateTime;
-       
-      public
-       Name: String;
-       
-       property OnSubTaskComplete: TNotifyEvent read FSubTaskComplete write FSubTaskComplete;
-       property OnTaskComplete: TNotifyEvent read FTaskComplete write FTaskComplete;
-      //const
-
-  procedure CheckTask(Sender0: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
-
-  constructor Create; virtual;
-  var
-    SubTasks: array of TSubTask;
-    CurrentSubTask: Integer;
-    
-end;
-
-
-
-  type TTaskNone = class (TTask)
-    public
-   constructor Create;  override;
-   //const
-
-  end;
-
-
-  type TTaskNoneSubTask1 = class (TSubTask)
-  public
-   function CheckSubTask: Boolean; override;
-   constructor Create;  override;
-  end;
-
-
-
-
 type TTaskController = class
   private
     //FTasks: TList<TTask>;     // TTask - общий предок для классов, содержащих
@@ -89,7 +33,11 @@ type TTaskController = class
                                 // Каждому Task соответствует константа из
                                 // перечисления TaskType
     FStation: TStation;
+               FSubTaskComplete: TNotifyEvent;
+      FTaskComplete: TNotifyEvent;
+      FChangeText: TNotifyEvent;
 
+       
     
     const                       // Временно, пока нет самих заданий,
                                 // используем константы
@@ -105,10 +53,9 @@ type TTaskController = class
         'Регулировка остаточного затухания двух каналов ТЧ  в режиме 4ПР.ОК.';
 
       procedure TaskComplete(Sender: TObject);
-      
+
 
       function GetCountTasks: Integer;
-
 
       property Station: TStation read FStation
                                  write FStation;
@@ -116,11 +63,16 @@ type TTaskController = class
     procedure SetCurrentTask(WorkMode:TWorkMode; TaskID:TTaskType);
     procedure Subscribe (CurForm0: TForm);
 
+           property OnChangeText: TNotifyEvent read FChangeText write FChangeText;
+       property OnSubTaskComplete: TNotifyEvent read FSubTaskComplete write FSubTaskComplete;
+       property OnTaskComplete: TNotifyEvent read FTaskComplete write FTaskComplete;
+       procedure CheckTask(Sender0: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+       
     constructor Create(Station: TStation);
     //destructor Destroy; override; // Переопредел-й виртуальный метод,
                                     // делает Tasks.Free
     function GetTaskTitle(TaskID: Integer): string;
-
+     function GetCurSubTaskBlock: TRacksEnum;
     
     //class function GetTaskType(TaskID: Integer): TTaskType; static;
 
@@ -128,6 +80,8 @@ type TTaskController = class
     var
     CurrentTask : TTask;
     CurrentForm: TForm;
+    WorkMode: TWorkMode;
+    TaskID: TTaskType;
     //Tasks: array of TTask;
 end;
 
@@ -227,18 +181,22 @@ function TTaskController.GetTaskTitle(TaskID: Integer): string;
     procedure TTaskController.SetCurrentTask(WorkMode:TWorkMode; TaskID:TTaskType);
     begin
 
+     Self.WorkMode:=WorkMode;
+     Self.TaskID:=TaskID;
+
     if WorkMode=TWorkMode.wmFree then
     begin
-          CurrentTask := TTaskNone.Create;    
+          CurrentTask := TTaskNone.Create;
     end
     else if WorkMode=TWorkMode.wmLearning then
     begin
         case TaskID of
-          ttNone:  CurrentTask := TTaskNone.Create;
-        end;      
+          ttPowerOn:  CurrentTask := TTaskPowerOn.Create;
+        else   CurrentTask := TTaskNone.Create;
+        end;
     end;
 
-    CurrentTask.OnTaskComplete:=self.TaskComplete;
+    self.OnTaskComplete:=self.TaskComplete;  //////////////////////
     end;
 
 
@@ -254,7 +212,7 @@ function TTaskController.GetTaskTitle(TaskID: Integer): string;
           for img in CurForm0 do
           begin
           if (img is TImage) then
-            (img as TImage).OnMouseDown:= CurrentTask.CheckTask;
+            (img as TImage).OnMouseUp:= self.CheckTask;
           end;
             
             
@@ -271,85 +229,43 @@ function TTaskController.GetTaskTitle(TaskID: Integer): string;
 
 
 
-  //создание задания
-  constructor TTask.Create;
-  begin
-       CurrentSubTask:= 0;
-        TimeStart:= Time;
-  end;
-
-    constructor TSubTask.Create;
-  begin
-
-  end;
-
+  
 
   //медот вызывающийся на каждое клик событие для проверки текущего задания
-  procedure TTask.CheckTask(Sender0: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+  procedure TTaskController.CheckTask(Sender0: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
   var
   SubResult: Boolean;
-  Sender: TControl;
+  Sender: TObject;
   begin
         Sender:=Sender0 as TControl;
         SubResult:= false;
 
-         if (Sender.Name=SubTasks[CurrentSubTask].EventType) then
+         if (((Sender as TComponent).Owner as TForm).Caption=CurrentTask.SubTasks[CurrentTask.CurrentSubTaskNum].EventFormName) then
          begin
-             SubResult:=SubTasks[CurrentSubTask].CheckSubTask;
+             SubResult:=CurrentTask.SubTasks[CurrentTask.CurrentSubTaskNum].CheckSubTask(Sender, self.Station);
          end;
 
          if SubResult then begin
-          SubTasks[CurrentSubTask].IsComplete:= true;
-          SubTasks[CurrentSubTask].Time:= TimeToStr(Time-TimeStart);
-          
-          self.FSubTaskComplete(nil);
-          if CurrentSubTask=Length(SubTasks)-1 then
+          CurrentTask.SubTasks[CurrentTask.CurrentSubTaskNum].IsComplete:= true;
+          CurrentTask.SubTasks[CurrentTask.CurrentSubTaskNum].Time:= TimeToStr(Time-CurrentTask.TimeStart);
+
+          if CurrentTask.CurrentSubTaskNum=Length(CurrentTask.SubTasks)-1 then
           begin
             self.FTaskComplete(nil);
           end
           else
           begin
-            CurrentSubTask:=CurrentSubTask+1;
+            CurrentTask.CurrentSubTaskNum:=CurrentTask.CurrentSubTaskNum+1;
           end;
+
+          CurrentTask.CurrentSubTask:= CurrentTask.SubTasks[CurrentTask.CurrentSubTaskNum];
+
+          self.FSubTaskComplete(nil);
+          self.FChangeText(nil);
           end;
   end;
 
   {$ENDREGION}  
-
-
-{$REGION 'Пустое задание'}
-  // создание пустого задания
-  constructor TTaskNone.Create;
-  begin
-  inherited Create;
-
-  Name:='Свободный осмотр станции';
-     
-  SetLength(SubTasks, 1);
-
-  SubTasks[0]:= TTaskNoneSubTask1.Create;
-
-  end;
-
-    //проверка выполнения первого подзадания пустого задания
-   function TTaskNoneSubTask1.CheckSubTask: Boolean;
-   begin
-        result:=true;
-   end;
-
-   constructor TTaskNoneSubTask1.Create;
-   begin
-   inherited Create;
-
-        Name:='Свободный осмотр станции';
-        Text:='';
-        EventType:='nil';
-        Time:= '';
-   end;
-{$ENDREGION}
-
-
-
 
 
 
@@ -4079,5 +3995,23 @@ begin
   Result := strMessage;
 end;
 {$ENDREGION}
+
+
+   function TTaskController.GetCurSubTaskBlock: TRacksEnum;
+   begin
+
+      if  (self.CurrentTask.CurrentSubTask.EventFormName='Щит питания')  then result:=Power_panel;
+      if  (self.CurrentTask.CurrentSubTask.EventFormName='МШУ Б') then result:=Mshu_B;
+      if  (self.CurrentTask.CurrentSubTask.EventFormName='1920 Б') then result:=Rack_1920_B;
+      if  (self.CurrentTask.CurrentSubTask.EventFormName='МШУ А') then result:=Mshu_A;
+      if  (self.CurrentTask.CurrentSubTask.EventFormName='1920 А') then result:=Rack_1920_A;
+      if  (self.CurrentTask.CurrentSubTask.EventFormName='1200 ПРМ А') then result:=Rack_1200_reciever_A;
+      if  (self.CurrentTask.CurrentSubTask.EventFormName='1200 ПРМ Б') then result:=Rack_1200_reciever_B;
+      if  (self.CurrentTask.CurrentSubTask.EventFormName='1710') then result:=Rack_1710;
+      if  (self.CurrentTask.CurrentSubTask.EventFormName='1400') then result:=Rack_1400;
+      if  (self.CurrentTask.CurrentSubTask.EventFormName='П-321 С') then result:=P321_C;
+
+
+   end;
 
 end.

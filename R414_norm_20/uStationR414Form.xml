@@ -2716,6 +2716,11 @@
       </procedure>
       <procedure name="AddSubTasks" visibility="private">
       </procedure>
+      <procedure name="ChangeTaskTextBlock" visibility="private">
+        <parameters>
+          <parameter name="Sender" type="TObject" />
+        </parameters>
+      </procedure>
       <field name="StationR414MinForm" type="TStationR414MinForm" visibility="public" />
       <procedure name="CheckProgress" visibility="public">
       </procedure>
@@ -2737,6 +2742,11 @@
            Настраивает вид списка заданий на крупном виде Р414
            </summary>
         </devnotes>
+      </procedure>
+      <procedure name="SetBlockRed" visibility="public">
+        <parameters>
+          <parameter name="IdEnum" type="TRacksEnum" />
+        </parameters>
       </procedure>
       <constructor name="Create" visibility="public">
         <parameters>

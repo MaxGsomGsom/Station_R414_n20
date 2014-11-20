@@ -83,7 +83,7 @@ uses
 
   constructor TClientState.Create;
   begin
-    TaskID := ttNull;
+    TaskID := ttPowerOn;
   end;
 
   procedure TClientState.SetTaskID(const Value: TTaskType);
