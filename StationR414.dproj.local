@@ -131,6 +131,17 @@
     <Transaction>2014.08.26 16:33:11.982.pas,G:\Проги\p414 project\Station_P414\uMainMenuForm.pas=</Transaction>
     <Transaction>2014.08.26 16:33:11.982.dfm,G:\Проги\p414 project\Station_P414\uMainMenuForm.dfm=</Transaction>
     <Transaction>2014.11.06 14:22:32.710.pas,C:\Work\R414_norm_20\Unit1.pas=C:\Work\R414_norm_20\uTasks20.pas</Transaction>
+    <Transaction>2014.11.27 13:50:05.527.pas,C:\Work\R414_norm_20\uStatisticForm.pas=</Transaction>
+    <Transaction>2014.11.27 13:50:05.527.dfm,C:\Work\R414_norm_20\uStatisticForm.dfm=</Transaction>
+    <Transaction>2014.11.27 13:50:41.751.pas,C:\Work\R414_norm_20\uMd5.pas=</Transaction>
+    <Transaction>2014.11.27 13:51:18.408.pas,C:\Work\R414_norm_20\uEducationForm.pas=</Transaction>
+    <Transaction>2014.11.27 13:51:18.408.dfm,C:\Work\R414_norm_20\uEducationForm.dfm=</Transaction>
+    <Transaction>2014.11.27 13:51:37.026.pas,C:\Work\R414_norm_20\uCreateUsersForm.pas=</Transaction>
+    <Transaction>2014.11.27 13:51:37.026.dfm,C:\Work\R414_norm_20\uCreateUsersForm.dfm=</Transaction>
+    <Transaction>2014.11.27 13:51:56.352.pas,C:\Work\R414_norm_20\uAboutStationForm.pas=</Transaction>
+    <Transaction>2014.11.27 13:51:56.352.dfm,C:\Work\R414_norm_20\uAboutStationForm.dfm=</Transaction>
+    <Transaction>2014.11.27 13:53:07.498.pas,C:\Work\R414_norm_20\uPassWordForm.pas=</Transaction>
+    <Transaction>2014.11.27 13:53:07.498.dfm,C:\Work\R414_norm_20\uPassWordForm.dfm=</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="main.optset"/>
@@ -181,8 +192,6 @@
     <File Path="ModelSupport_StationR414\default.txvpck"/>
     <File Path="uAboutProgramForm.pas"/>
     <File Path="uAboutProgramForm.dfm"/>
-    <File Path="uAboutStationForm.pas"/>
-    <File Path="uAboutStationForm.dfm"/>
     <File Path="uAdditionalFormMethods.pas"/>
     <File Path="uBackgroundForm.pas"/>
     <File Path="uBackgroundForm.dfm"/>
@@ -207,13 +216,9 @@
     <File Path="uButtonBackForm.pas"/>
     <File Path="uButtonBackForm.dfm"/>
     <File Path="uConstantsDM.pas"/>
-    <File Path="uCreateUsersForm.pas"/>
-    <File Path="uCreateUsersForm.dfm"/>
     <File Path="uCurrentTaskForm.pas"/>
     <File Path="uCurrentTaskForm.dfm"/>
     <File Path="uDefinitionsDM.pas"/>
-    <File Path="uEducationForm.pas"/>
-    <File Path="uEducationForm.dfm"/>
     <File Path="uFilterForm.pas"/>
     <File Path="uFilterForm.dfm"/>
     <File Path="uHandsetForm.pas"/>
@@ -221,11 +226,8 @@
     <File Path="uImageRotator.pas"/>
     <File Path="uMainMenuModernForm.pas"/>
     <File Path="uMainMenuModernForm.dfm"/>
-    <File Path="uMd5.pas"/>
     <File Path="uP321DisplayForm.pas"/>
     <File Path="uP321DisplayForm.dfm"/>
-    <File Path="uPassWordForm.pas"/>
-    <File Path="uPassWordForm.dfm"/>
     <File Path="uRack1200LeftForm.pas"/>
     <File Path="uRack1200LeftForm.dfm"/>
     <File Path="uRack1200RightForm.pas"/>
@@ -261,8 +263,6 @@
     <File Path="uStationR414MinForm.pas"/>
     <File Path="uStationR414MinForm.dfm"/>
     <File Path="uStationStateDM.pas"/>
-    <File Path="uStatisticForm.pas"/>
-    <File Path="uStatisticForm.dfm"/>
     <File Path="uTasksDM.pas"/>
     <File Path="uUsersForm.pas"/>
     <File Path="uUsersForm.dfm"/>

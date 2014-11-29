@@ -32,6 +32,7 @@ uses
 type TTask = class
       public
       TimeStart: TDateTime;
+      TimeEnd: TDateTime;
        Name: String;
   constructor Create; virtual;
   var
@@ -42,6 +43,7 @@ type TTask = class
 end;
 
 
+ {$REGION 'Пустое задание'}
    //================
   type TTaskNone = class (TTask)
     public
@@ -55,6 +57,8 @@ end;
    constructor Create;  override;
   end;
   //=============
+ {$ENDREGION}
+  {$REGION 'Включение питания, заголовки'}
 
     type TTaskPowerOn = class (TTask)
     public
@@ -129,10 +133,31 @@ end;
    constructor Create;  override;
   end;
 
+       type TTaskPowerOnSubTask12 = class (TSubTask)
+  public
+   function CheckSubTask(Sender: TObject; Station: TStation): Boolean; override;
+   constructor Create;  override;
+  end;
+
+        type TTaskPowerOnSubTask13 = class (TSubTask)
+  public
+   function CheckSubTask(Sender: TObject; Station: TStation): Boolean; override;
+   constructor Create;  override;
+  end;
 
   //================
+  {$ENDREGION}
 
+   type TTaskConnectToR415 = class (TTask)
+    public
+   constructor Create;  override;
+  end;
 
+    type TTaskConnectToR415SubTask1 = class (TSubTask)
+  public
+   function CheckSubTask(Sender: TObject; Station: TStation): Boolean; override;
+   constructor Create;  override;
+  end;
 
 
 
@@ -201,7 +226,7 @@ uBlockPowerPanelForm;
 
   Name:='Включение питания';
 
-  SetLength(SubTasks, 11);
+  SetLength(SubTasks, 13);
 
   SubTasks[0]:= TTaskPowerOnSubTask1.Create;
   SubTasks[1]:= TTaskPowerOnSubTask2.Create;
@@ -214,9 +239,10 @@ uBlockPowerPanelForm;
   SubTasks[8]:= TTaskPowerOnSubTask9.Create;
   SubTasks[9]:= TTaskPowerOnSubTask10.Create;
   SubTasks[10]:= TTaskPowerOnSubTask11.Create;
+  SubTasks[11]:= TTaskPowerOnSubTask12.Create;
+  SubTasks[12]:= TTaskPowerOnSubTask13.Create;
 
-
-         CurrentSubTask:=SubTasks[CurrentSubTaskNum];
+  CurrentSubTask:=SubTasks[CurrentSubTaskNum];
   end;
 
    //===
@@ -245,7 +271,7 @@ uBlockPowerPanelForm;
    function TTaskPowerOnSubTask2.CheckSubTask(Sender: TObject; Station: TStation): Boolean;
    begin
          if (Station.PowerPanel.sw1700Power=1) and (Station.PowerPanel.sw1900Power=1) and (Station.PowerPanel.sw1900Power_2=1)
-         and  (Station.PowerPanel.sw1200Power_2=1) and (Station.PowerPanel.sw1200Power=1) then
+         and  (Station.PowerPanel.sw1200Power_2=1) and (Station.PowerPanel.sw1200Power=1) and (Station.PowerPanel.sw1400=1) then
          begin
            Result:=true;
          end
@@ -257,7 +283,7 @@ uBlockPowerPanelForm;
    inherited Create;
 
         Name:='На щите питания включить 1900А, 1900Б, 1200А, 1200Б, 1700';
-        Text:='На щите питания 1820 выключатели 1900А, 1900Б, 1200А, 1200Б, 1700 установить в положение ВКЛ. При этом загораются сигнальные лампы над выключателями';
+        Text:='На щите питания 1820 выключатели 1900А, 1900Б, 1200А, 1200Б, 1700, 1400, установить в положение ВКЛ. При этом загораются сигнальные лампы над выключателями';
         EventFormName:='Щит питания';
         Time:= '';
    end;
@@ -309,12 +335,12 @@ uBlockPowerPanelForm;
 
    function TTaskPowerOnSubTask5.CheckSubTask(Sender: TObject; Station: TStation): Boolean;
    begin
-         if (Station.HalfSetA.Rack1920.but1910=0) and
-         (Station.HalfSetA.Rack1920.but1910A=0) and
-         (Station.HalfSetA.Rack1920.butPower=0) and
-         (Station.HalfSetA.Rack1920.butPower2=0) and
-         (Station.HalfSetA.Rack1920.but1930=0) and
-         (Station.HalfSetA.Rack1920.but1960_1=0) then
+         if (Station.HalfSetA.Rack1920.but1910=butPositionUp) and
+         (Station.HalfSetA.Rack1920.but1910A=butPositionUp) and
+         (Station.HalfSetA.Rack1920.butPower=butPositionUp) and
+         (Station.HalfSetA.Rack1920.butPower2=butPositionUp) and
+         (Station.HalfSetA.Rack1920.but1930=butPositionUp) and
+         (Station.HalfSetA.Rack1920.but1960_1=butPositionUp) then
          begin
            Result:=true;
          end
@@ -335,12 +361,12 @@ uBlockPowerPanelForm;
 
    function TTaskPowerOnSubTask6.CheckSubTask(Sender: TObject; Station: TStation): Boolean;
    begin
-         if (Station.HalfSetB.Rack1920.but1910=0) and
-         (Station.HalfSetB.Rack1920.but1910A=0) and
-         (Station.HalfSetB.Rack1920.butPower=0) and
-         (Station.HalfSetB.Rack1920.butPower2=0) and
-         (Station.HalfSetB.Rack1920.but1930=0) and
-         (Station.HalfSetB.Rack1920.but1960_1=0) then
+         if (Station.HalfSetB.Rack1920.but1910=butPositionUp) and
+         (Station.HalfSetB.Rack1920.but1910A=butPositionUp) and
+         (Station.HalfSetB.Rack1920.butPower=butPositionUp) and
+         (Station.HalfSetB.Rack1920.butPower2=butPositionUp) and
+         (Station.HalfSetB.Rack1920.but1930=butPositionUp) and
+         (Station.HalfSetB.Rack1920.but1960_1=butPositionUp) then
          begin
            Result:=true;
          end
@@ -361,7 +387,7 @@ uBlockPowerPanelForm;
 
    function TTaskPowerOnSubTask7.CheckSubTask(Sender: TObject; Station: TStation): Boolean;
    begin
-         if (Station.HalfSetA.Rack1200Left.but1240K=0) then
+         if (Station.HalfSetA.Rack1200Left.but1240K=butPositionUp) then
          begin
            Result:=true;
          end
@@ -382,7 +408,7 @@ uBlockPowerPanelForm;
 
    function TTaskPowerOnSubTask8.CheckSubTask(Sender: TObject; Station: TStation): Boolean;
    begin
-         if (Station.HalfSetB.Rack1200Left.but1240K=0) then
+         if (Station.HalfSetB.Rack1200Left.but1240K=butPositionUp) then
          begin
            Result:=true;
          end
@@ -403,7 +429,7 @@ uBlockPowerPanelForm;
 
    function TTaskPowerOnSubTask9.CheckSubTask(Sender: TObject; Station: TStation): Boolean;
    begin
-         if (Station.Rack1710.butPower=1) and (Station.Rack1710.butSpeaker=1) then
+         if (Station.Rack1710.butPower=butPositionRight) and (Station.Rack1710.butSpeaker=butPositionRight) then
          begin
            Result:=true;
          end
@@ -424,7 +450,7 @@ uBlockPowerPanelForm;
 
    function TTaskPowerOnSubTask10.CheckSubTask(Sender: TObject; Station: TStation): Boolean;
    begin
-         if (Station.Rack1400.butPower = 1) then
+         if (Station.Rack1400.butPower = butPositionRight) and (Station.Rack1400.butSpeaker = butPositionRight) then
          begin
            Result:=true;
          end
@@ -445,7 +471,7 @@ uBlockPowerPanelForm;
 
    function TTaskPowerOnSubTask11.CheckSubTask(Sender: TObject; Station: TStation): Boolean;
    begin
-         if (Station.P321C.butPower=0) and (Station.P321C.butMeasure=0) and (Station.P321C.but600Ohm=0) then
+         if (Station.P321C.butPower=butPositionUp) and (Station.P321C.butMeasure=butPositionUp) and (Station.P321C.but600Ohm=butPositionUp) then
          begin
            Result:=true;
          end
@@ -462,9 +488,85 @@ uBlockPowerPanelForm;
         Time:= '';
    end;
 
+     //==
+
+   function TTaskPowerOnSubTask12.CheckSubTask(Sender: TObject; Station: TStation): Boolean;
+   begin
+         if (Station.PowerSupply.butPower=butPositionUp) then
+         begin
+           Result:=true;
+         end
+         else Result:=false;
+   end;
+
+   constructor TTaskPowerOnSubTask12.Create;
+   begin
+   inherited Create;
+
+        Name:='Включить питание П-323ИШ';
+        Text:='На приборе П-323 ИШ установить тумблер питания на позицию ВКЛ.';
+        EventFormName:='П-323 ИШ';
+        Time:= '';
+   end;
+
+
+     //==
+
+   function TTaskPowerOnSubTask13.CheckSubTask(Sender: TObject; Station: TStation): Boolean;
+   begin
+         if (true) then
+         begin
+           Result:=true;
+         end
+         else Result:=false;
+   end;
+
+   constructor TTaskPowerOnSubTask13.Create;
+   begin
+   inherited Create;
+
+        Name:='Включить питание осциллографа';
+        Text:='На осциллографе установить тумблер питания на позицию ВКЛ.';
+        EventFormName:='Осциллограф';
+        Time:= '';
+   end;
+
 {$ENDREGION}
 
+  constructor TTaskConnectToR415.Create;
+  begin
+  inherited Create;
 
+  Name:='Включение питания';
+
+  SetLength(SubTasks, 1);
+
+  SubTasks[0]:= TTaskConnectToR415SubTask1.Create;
+
+
+  CurrentSubTask:=SubTasks[CurrentSubTaskNum];
+  end;
+
+   //===
+   function TTaskConnectToR415SubTask1.CheckSubTask(Sender: TObject; Station: TStation): Boolean;
+   begin
+
+         if (true) then
+         begin
+           Result:=true;
+         end
+         else Result:=false;
+   end;
+
+   constructor TTaskConnectToR415SubTask1.Create;
+   begin
+   inherited Create;
+
+        Name:='Что?';
+        Text:='Что-что?';
+        EventFormName:='что-то';
+        Time:= '';
+   end;
 
 end.
 

@@ -14,7 +14,7 @@ object ReportForm: TReportForm
   Font.Style = []
   OldCreateOrder = False
   Position = poDesktopCenter
-  OnClose = FormClose
+  OnCloseQuery = FormCloseQuery
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
@@ -154,8 +154,8 @@ object ReportForm: TReportForm
     Layout = tlCenter
   end
   object Label3: TLabel
-    Left = 8
-    Top = 375
+    Left = 5
+    Top = 438
     Width = 687
     Height = 33
     Alignment = taCenter
@@ -168,11 +168,71 @@ object ReportForm: TReportForm
     Font.Style = [fsBold]
     ParentFont = False
   end
+  object lblTaskTimeCapt: TLabel
+    Left = 12
+    Top = 147
+    Width = 96
+    Height = 24
+    AutoSize = False
+    Caption = #1042#1088#1077#1084#1103':'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+    Layout = tlCenter
+  end
+  object lbTaskTime: TLabel
+    Left = 116
+    Top = 152
+    Width = 111
+    Height = 17
+    AutoSize = False
+    Caption = '#'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    Layout = tlCenter
+  end
+  object lblWorkModeCapt: TLabel
+    Left = 13
+    Top = 177
+    Width = 96
+    Height = 24
+    AutoSize = False
+    Caption = #1056#1077#1078#1080#1084':'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+    Layout = tlCenter
+  end
+  object lblWorkMode: TLabel
+    Left = 115
+    Top = 180
+    Width = 111
+    Height = 17
+    AutoSize = False
+    Caption = '#'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    Layout = tlCenter
+  end
   object lvErrors: TListView
     Left = 5
-    Top = 414
+    Top = 477
     Width = 687
-    Height = 261
+    Height = 198
     Columns = <
       item
         Caption = 'ID'
@@ -194,9 +254,9 @@ object ReportForm: TReportForm
   end
   object lvTask: TListView
     Left = 8
-    Top = 152
+    Top = 232
     Width = 687
-    Height = 209
+    Height = 200
     Columns = <
       item
         Caption = 'ID'

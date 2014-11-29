@@ -2286,6 +2286,10 @@
       <field name="lvTask" type="TListView" visibility="published" />
       <field name="btnShowHideErrors" type="TButton" visibility="published" />
       <field name="btnExit" type="TButton" visibility="published" />
+      <field name="lblTaskTimeCapt" type="TLabel" visibility="published" />
+      <field name="lbTaskTime" type="TLabel" visibility="published" />
+      <field name="lblWorkModeCapt" type="TLabel" visibility="published" />
+      <field name="lblWorkMode" type="TLabel" visibility="published" />
       <procedure name="lvErrorsCustomDrawItem" visibility="published">
         <parameters>
           <parameter name="Sender" type="TCustomListView" />
@@ -2319,8 +2323,19 @@
           <parameter name="Sender" type="TObject" />
         </parameters>
       </procedure>
+      <procedure name="FormCloseQuery" visibility="published">
+        <parameters>
+          <parameter name="Sender" type="TObject" />
+          <parameter name="CanClose" type="Boolean" paramflags="var" />
+        </parameters>
+      </procedure>
       <field name="errorsShowing" type="Boolean" visibility="private" />
+      <constructor name="Create" visibility="public">
+        <parameters>
+          <parameter name="Sender1" type="TComponent" />
+          <parameter name="TaskController1" type="TTaskController" />
+        </parameters>
+      </constructor>
     </members>
   </class>
-  <variable name="ReportForm" type="TReportForm" />
 </namespace>

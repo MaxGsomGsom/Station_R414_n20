@@ -83,7 +83,7 @@ uses
 
   constructor TClientState.Create;
   begin
-    TaskID := ttPowerOn;
+    //TaskID := ttPowerOn;
   end;
 
   procedure TClientState.SetTaskID(const Value: TTaskType);
@@ -208,3 +208,4 @@ uses
       and CrossConnected;
   end;
 end.
+

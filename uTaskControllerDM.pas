@@ -41,18 +41,18 @@ type TTaskController = class
     
     const                       // Временно, пока нет самих заданий,
                                 // используем константы
-      count_tasks = 6;
-      task_title_1 = 'Включение питания';
-      task_title_2 =
-        'Проверка работоспособности станции в режиме "Автономный контроль"';
-      task_title_3 = 'Установка служебной связи с кроссом' ;
-      task_title_4 = 'Перевод станции в оконечный режим работы' ;
-      task_title_5 =
-        'Измерение запаса СВЧ уровня на выходе приёмников обоих полукомплектов';
-      task_title_6 =
-        'Регулировка остаточного затухания двух каналов ТЧ  в режиме 4ПР.ОК.';
+      Count_Tasks = 2;
+//      task_title_1 = 'Включение питания';
+//      task_title_2 =
+//        'Проверка работоспособности станции в режиме "Автономный контроль"';
+//      task_title_3 = 'Установка служебной связи с кроссом' ;
+//      task_title_4 = 'Перевод станции в оконечный режим работы' ;
+//      task_title_5 =
+//        'Измерение запаса СВЧ уровня на выходе приёмников обоих полукомплектов';
+//      task_title_6 =
+//        'Регулировка остаточного затухания двух каналов ТЧ  в режиме 4ПР.ОК.';
 
-      procedure TaskComplete(Sender: TObject);
+
 
 
       function GetCountTasks: Integer;
@@ -82,6 +82,7 @@ type TTaskController = class
     CurrentForm: TForm;
     WorkMode: TWorkMode;
     TaskID: TTaskType;
+    IsTaskComplete: Boolean;
     //Tasks: array of TTask;
 end;
 
@@ -131,11 +132,12 @@ constructor TTaskController.Create(Station: TStation);
 begin
   Inherited Create;
   Self.Station := Station;
+  IsTaskComplete:= false;
 
   //self.ClientState = ClientState;
   //Создать объекты Task в Tasks      SetLength(Tasks, 1);
       //Tasks[0] = TTaskNone.Create
-      
+
 end;
 
 /// <summary>
@@ -161,12 +163,8 @@ function TTaskController.GetTaskTitle(TaskID: Integer): string;
   begin           {TODO: Реализовать метод, когда появятся сами объекты Task }
     Result := '';
     case TaskID of
-      1: Result := task_title_1;
-      2: Result := task_title_2;
-      3: Result := task_title_3;
-      4: Result := task_title_4;
-      5: Result := task_title_5;
-      6: Result := task_title_6;
+      1: Result := 'Включение электропитания';
+      2: Result := 'Установка связи с Р-415 и регулировка ТЧ';
     end;
   end;
 
@@ -188,15 +186,14 @@ function TTaskController.GetTaskTitle(TaskID: Integer): string;
     begin
           CurrentTask := TTaskNone.Create;
     end
-    else if WorkMode=TWorkMode.wmLearning then
+    else if (WorkMode=TWorkMode.wmLearning) or (WorkMode=TWorkMode.wmTraining) then
     begin
         case TaskID of
           ttPowerOn:  CurrentTask := TTaskPowerOn.Create;
+          ttConnectToR415:  CurrentTask := TTaskConnectToR415.Create;
         else   CurrentTask := TTaskNone.Create;
         end;
     end;
-
-    self.OnTaskComplete:=self.TaskComplete;  //////////////////////
     end;
 
 
@@ -220,10 +217,7 @@ function TTaskController.GetTaskTitle(TaskID: Integer): string;
 
 
 
-      procedure TTaskController.TaskComplete(Sender: TObject);
-      begin
-            // код завершения выполнения задания
-      end;
+
 
 
 
@@ -237,6 +231,9 @@ function TTaskController.GetTaskTitle(TaskID: Integer): string;
   SubResult: Boolean;
   Sender: TObject;
   begin
+          if (IsTaskComplete=false) then
+             begin
+
         Sender:=Sender0 as TControl;
         SubResult:= false;
 
@@ -249,19 +246,21 @@ function TTaskController.GetTaskTitle(TaskID: Integer): string;
           CurrentTask.SubTasks[CurrentTask.CurrentSubTaskNum].IsComplete:= true;
           CurrentTask.SubTasks[CurrentTask.CurrentSubTaskNum].Time:= TimeToStr(Time-CurrentTask.TimeStart);
 
-          if CurrentTask.CurrentSubTaskNum=Length(CurrentTask.SubTasks)-1 then
+          if (CurrentTask.CurrentSubTaskNum=Length(CurrentTask.SubTasks)-1) then
           begin
+            self.FSubTaskComplete(nil);
             self.FTaskComplete(nil);
+            IsTaskComplete:=true;
+            CurrentTask.TimeEnd:=Time;
           end
           else
           begin
             CurrentTask.CurrentSubTaskNum:=CurrentTask.CurrentSubTaskNum+1;
-          end;
-
           CurrentTask.CurrentSubTask:= CurrentTask.SubTasks[CurrentTask.CurrentSubTaskNum];
-
           self.FSubTaskComplete(nil);
           self.FChangeText(nil);
+          end;
+          end;
           end;
   end;
 
@@ -3999,6 +3998,7 @@ end;
 
    function TTaskController.GetCurSubTaskBlock: TRacksEnum;
    begin
+   result:=none;
 
       if  (self.CurrentTask.CurrentSubTask.EventFormName='Щит питания')  then result:=Power_panel;
       if  (self.CurrentTask.CurrentSubTask.EventFormName='МШУ Б') then result:=Mshu_B;
@@ -4010,6 +4010,8 @@ end;
       if  (self.CurrentTask.CurrentSubTask.EventFormName='1710') then result:=Rack_1710;
       if  (self.CurrentTask.CurrentSubTask.EventFormName='1400') then result:=Rack_1400;
       if  (self.CurrentTask.CurrentSubTask.EventFormName='П-321 С') then result:=P321_C;
+      if  (self.CurrentTask.CurrentSubTask.EventFormName='П-323 ИШ') then result:=power_supply;
+
 
 
    end;

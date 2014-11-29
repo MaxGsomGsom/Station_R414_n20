@@ -490,119 +490,119 @@ var
   end;
 
 begin
-  if Station.IsPluggedIn then
-  begin
-    case Station.P321C.swNepGenYY of
-      csBlockPowerPanelForm:
-        begin
-          ilDisplay.GetBitmap(Station.P321C.swGradPit - 1, imgDisplay.Picture.Bitmap);
-        end;
-      csGenerator:
-        begin
-          ilDisplay.GetBitmap(Station.P321C.swGradGen - 1, imgDisplay.Picture.Bitmap);
-        end;
-      csInputYY:
-        begin
-          ilDisplay.GetBitmap(Station.P321C.swGradYY - 1, imgDisplay.Picture.Bitmap);
-        end;
-      6:
-        begin
-          //Проверим правильно ли выставлены параметры
-          if (Station.P321C.swNepGen = 5) and
-          (Station.P321C.swGradPit = 31) and
-          (Station.P321C.swGradGen = 31) and
-          (Station.P321C.swGradYY = 31) and
-          (Station.P321C.swFrequency = 4) then
-          begin
-            //Параметры выставлены верно
-            //Подключены ли кабели
-            if (Station.cbGenerator.stConnectedToPlaceId <> csDisconected) and
-            (Station.cbInputYY.stConnectedToPlaceId <> csDisconected) then
-            begin
-              //Кабели подключены
-              //Отображение расстройки стоек 1200
-              //ShowMessage(IntToStr(Station.cbGenerator.stConnectedToPlaceId));
-              //ShowMessage(IntToStr(Station.cbInputYY.stConnectedToPlaceId));
-              if (Station.IsPolukomplektATuned and Station.IsPolukomplektBTuned) then
-              begin
-                //==============Двух канальный режим===================
-                if (Station.IsChannelBlocksTunedAt2ChannelMode) then
-                begin
-                  if Station.IsP321ShuntsConnectedAt2ChannelMode then
-                  begin
-                    CurTuneValue := Station.GetTransmitBlockTune;
-                    NeededTuneValue := GetTransmitBlockTunedValue;
-                    if (CurTuneValue = NeededTuneValue) then
-                    begin
-                      //Блок настроен
-                      ilDisplay.GetBitmap(20, imgDisplay.Picture.Bitmap);
-                    end
-                    else
-                      if (CurTuneValue < NeededTuneValue) then
-                      begin
-                        ilDisplay.GetBitmap(20 - (NeededTuneValue - CurTuneValue), imgDisplay.Picture.Bitmap);
-                      end
-                      else
-                        ilDisplay.GetBitmap(20 + (CurTuneValue - NeededTuneValue), imgDisplay.Picture.Bitmap);
-                    ReloadP321Image;
-                    Exit;
-                  end
-                  else
-                    ShowNull;
-                end;
-                //==============Четырех канальный режим===================
-                if (Station.IsChannelBlocksTunedAt4ChannelMode) then
-                begin
-                  if Station.IsP321ShuntsConnectedAt4ChannelMode then
-                  begin
-                    CurTuneValue := Station.GetTransmitBlockTune;
-                    NeededTuneValue := GetTransmitBlockTunedValue;
-                    if ((CurTuneValue - NeededTuneValue) = 0) then
-                    begin
-                      //Блок настроен
-                      ilDisplay.GetBitmap(14, imgDisplay.Picture.Bitmap);
-                    end
-                    else
-                      if (CurTuneValue < NeededTuneValue) then
-                      begin
-                        ilDisplay.GetBitmap(14 - (NeededTuneValue - CurTuneValue), imgDisplay.Picture.Bitmap);
-                      end
-                      else
-                        ilDisplay.GetBitmap(14 + (CurTuneValue - NeededTuneValue), imgDisplay.Picture.Bitmap);
-                    ReloadP321Image;
-                    Exit;
-                  end
-                  else
-                    ShowNull;
-                end
-                else
-                begin
-                  AddError(idP321C, 'Параметры настройки оборудования не соответствуют ни 2-х ни 4-х канальному режиму, снятие показаний не возможно');
-                end;
-
-                if (Station.IsChannelBlocksTunedAt2ChannelMode = False) and (Station.IsChannelBlocksTunedAt2ChannelMode = False) then
-                begin
-                  ShowNull;
-                end;
-              end
-              else
-              begin
-                ShowNull;
-                AddError(idP321A, AnalyseTune(Station.HalfSetA.Rack1500, Station.HalfSetA.Rack1920, Station.HalfSetA.Rack1600, Station.HalfSetA.LittleNoisyAmplifier, Station.HalfSetA.Duplexer, 'A') +
-                AnalyseTune(Station.HalfSetA.Rack1500, Station.HalfSetA.Rack1920, Station.HalfSetA.Rack1600, Station.HalfSetA.LittleNoisyAmplifier, Station.HalfSetA.Duplexer, 'B'));
-              end;
-            end;
-          end
-          else
-          begin
-            AddError(idP321C, 'Параметры P-321 настроены не верно, снятие показаний не возможно');
-          end;
-        end;
-    else
-      ilDisplay.GetBitmap(0, imgDisplay.Picture.Bitmap);
-    end;
-    ReloadP321Image;
-  end;
+//  if Station.IsPluggedIn then
+//  begin
+//    case Station.P321C.swNepGenYY of
+//      csBlockPowerPanelForm:
+//        begin
+//          ilDisplay.GetBitmap(Station.P321C.swGradPit - 1, imgDisplay.Picture.Bitmap);
+//        end;
+//      csGenerator:
+//        begin
+//          ilDisplay.GetBitmap(Station.P321C.swGradGen - 1, imgDisplay.Picture.Bitmap);
+//        end;
+//      csInputYY:
+//        begin
+//          ilDisplay.GetBitmap(Station.P321C.swGradYY - 1, imgDisplay.Picture.Bitmap);
+//        end;
+//      6:
+//        begin
+//          //Проверим правильно ли выставлены параметры
+//          if (Station.P321C.swNepGen = 5) and
+//          (Station.P321C.swGradPit = 31) and
+//          (Station.P321C.swGradGen = 31) and
+//          (Station.P321C.swGradYY = 31) and
+//          (Station.P321C.swFrequency = 4) then
+//          begin
+//            //Параметры выставлены верно
+//            //Подключены ли кабели
+//            if (Station.cbGenerator.stConnectedToPlaceId <> csDisconected) and
+//            (Station.cbInputYY.stConnectedToPlaceId <> csDisconected) then
+//            begin
+//              //Кабели подключены
+//              //Отображение расстройки стоек 1200
+//              //ShowMessage(IntToStr(Station.cbGenerator.stConnectedToPlaceId));
+//              //ShowMessage(IntToStr(Station.cbInputYY.stConnectedToPlaceId));
+//              if (Station.IsPolukomplektATuned and Station.IsPolukomplektBTuned) then
+//              begin
+//                //==============Двух канальный режим===================
+//                if (Station.IsChannelBlocksTunedAt2ChannelMode) then
+//                begin
+//                  if Station.IsP321ShuntsConnectedAt2ChannelMode then
+//                  begin
+//                    CurTuneValue := Station.GetTransmitBlockTune;
+//                    NeededTuneValue := GetTransmitBlockTunedValue;
+//                    if (CurTuneValue = NeededTuneValue) then
+//                    begin
+//                      //Блок настроен
+//                      ilDisplay.GetBitmap(20, imgDisplay.Picture.Bitmap);
+//                    end
+//                    else
+//                      if (CurTuneValue < NeededTuneValue) then
+//                      begin
+//                        ilDisplay.GetBitmap(20 - (NeededTuneValue - CurTuneValue), imgDisplay.Picture.Bitmap);
+//                      end
+//                      else
+//                        ilDisplay.GetBitmap(20 + (CurTuneValue - NeededTuneValue), imgDisplay.Picture.Bitmap);
+//                    ReloadP321Image;
+//                    Exit;
+//                  end
+//                  else
+//                    ShowNull;
+//                end;
+//                //==============Четырех канальный режим===================
+//                if (Station.IsChannelBlocksTunedAt4ChannelMode) then
+//                begin
+//                  if Station.IsP321ShuntsConnectedAt4ChannelMode then
+//                  begin
+//                    CurTuneValue := Station.GetTransmitBlockTune;
+//                    NeededTuneValue := GetTransmitBlockTunedValue;
+//                    if ((CurTuneValue - NeededTuneValue) = 0) then
+//                    begin
+//                      //Блок настроен
+//                      ilDisplay.GetBitmap(14, imgDisplay.Picture.Bitmap);
+//                    end
+//                    else
+//                      if (CurTuneValue < NeededTuneValue) then
+//                      begin
+//                        ilDisplay.GetBitmap(14 - (NeededTuneValue - CurTuneValue), imgDisplay.Picture.Bitmap);
+//                      end
+//                      else
+//                        ilDisplay.GetBitmap(14 + (CurTuneValue - NeededTuneValue), imgDisplay.Picture.Bitmap);
+//                    ReloadP321Image;
+//                    Exit;
+//                  end
+//                  else
+//                    ShowNull;
+//                end
+//                else
+//                begin
+//                  AddError(idP321C, 'Параметры настройки оборудования не соответствуют ни 2-х ни 4-х канальному режиму, снятие показаний не возможно');
+//                end;
+//
+//                if (Station.IsChannelBlocksTunedAt2ChannelMode = False) and (Station.IsChannelBlocksTunedAt2ChannelMode = False) then
+//                begin
+//                  ShowNull;
+//                end;
+//              end
+//              else
+//              begin
+//                ShowNull;
+//                AddError(idP321A, AnalyseTune(Station.HalfSetA.Rack1500, Station.HalfSetA.Rack1920, Station.HalfSetA.Rack1600, Station.HalfSetA.LittleNoisyAmplifier, Station.HalfSetA.Duplexer, 'A') +
+//                AnalyseTune(Station.HalfSetA.Rack1500, Station.HalfSetA.Rack1920, Station.HalfSetA.Rack1600, Station.HalfSetA.LittleNoisyAmplifier, Station.HalfSetA.Duplexer, 'B'));
+//              end;
+//            end;
+//          end
+//          else
+//          begin
+//            AddError(idP321C, 'Параметры P-321 настроены не верно, снятие показаний не возможно');
+//          end;
+//        end;
+//    else
+//      ilDisplay.GetBitmap(0, imgDisplay.Picture.Bitmap);
+//    end;
+//    ReloadP321Image;
+//  end;
 end;
 
 procedure TRackP321Form.Reload;

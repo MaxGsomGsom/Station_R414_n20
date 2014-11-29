@@ -25,6 +25,8 @@ type
     imgSwKukushka3: TImage;
     imgSwKukushka4: TImage;
     imgTrubka: TImage;
+    imgSpeakerOn: TImage;
+    imgSpeakerOff: TImage;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormMouseWheelDown(Sender: TObject; Shift: TShiftState;
       MousePos: TPoint; var Handled: Boolean);
@@ -41,6 +43,8 @@ type
       Shift: TShiftState; X, Y: Integer);
     procedure imgTrubkaClick(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
+    procedure imgSpeakerOnClick(Sender: TObject);
+    procedure imgSpeakerOffClick(Sender: TObject);
   private
     { Private declarations }
     procedure imgsKukushkaChange(Button: TMouseButton);
@@ -160,6 +164,8 @@ begin
 
   Image3.Visible := Boolean(Station.Rack1400.butPower = butPositionRight);
   Image2.Visible := Boolean(Station.Rack1400.butPower = butPositionLeft);
+  imgSpeakerOn.Visible := Boolean(Station.Rack1400.butSpeaker = butPositionRight);
+  imgSpeakerOff.Visible := Boolean(Station.Rack1400.butSpeaker = butPositionLeft);
 end;
 
 procedure TRack1400Form.FormShow(Sender: TObject);
@@ -208,6 +214,28 @@ begin
     Inc(Station.Rack1400.swKukushka, 1);
   if (Button = mbRight) and (Station.Rack1400.swKukushka > 1)  then
     Dec(Station.Rack1400.swKukushka, 1);
+
+  Reload;
+end;
+
+procedure TRack1400Form.imgSpeakerOffClick(Sender: TObject);
+begin
+     ChangeEvent;
+  if Station.Rack1400.butSpeaker = butPositionLeft then
+    Station.Rack1400.butSpeaker := butPositionRight
+  else
+    Station.Rack1400.butSpeaker := butPositionLeft;
+
+  Reload;
+end;
+
+procedure TRack1400Form.imgSpeakerOnClick(Sender: TObject);
+begin
+ChangeEvent;
+  if Station.Rack1400.butSpeaker = butPositionLeft then
+    Station.Rack1400.butSpeaker := butPositionRight
+  else
+    Station.Rack1400.butSpeaker := butPositionLeft;
 
   Reload;
 end;

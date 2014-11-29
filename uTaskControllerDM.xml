@@ -78,46 +78,11 @@
       <field name="FSubTaskComplete" type="TNotifyEvent" visibility="private" />
       <field name="FTaskComplete" type="TNotifyEvent" visibility="private" />
       <field name="FChangeText" type="TNotifyEvent" visibility="private" />
-      <const name="count_tasks" visibility="private" type="Integer">
+      <const name="Count_Tasks" visibility="private" type="Integer">
         <value>
-          $6
+          $2
         </value>
       </const>
-      <const name="task_title_1" visibility="private" type="string">
-        <value>
-          Включение питания
-        </value>
-      </const>
-      <const name="task_title_2" visibility="private" type="string">
-        <value>
-          Проверка работоспособности станции в режиме &quot;Автономный контроль&quot;
-        </value>
-      </const>
-      <const name="task_title_3" visibility="private" type="string">
-        <value>
-          Установка служебной связи с кроссом
-        </value>
-      </const>
-      <const name="task_title_4" visibility="private" type="string">
-        <value>
-          Перевод станции в оконечный режим работы
-        </value>
-      </const>
-      <const name="task_title_5" visibility="private" type="string">
-        <value>
-          Измерение запаса СВЧ уровня на выходе приёмников обоих полукомплектов
-        </value>
-      </const>
-      <const name="task_title_6" visibility="private" type="string">
-        <value>
-          Регулировка остаточного затухания двух каналов ТЧ  в режиме 4ПР.ОК.
-        </value>
-      </const>
-      <procedure name="TaskComplete" visibility="private">
-        <parameters>
-          <parameter name="Sender" type="TObject" />
-        </parameters>
-      </procedure>
       <function name="GetCountTasks" visibility="private">
         <parameters>
           <retval type="Integer" />
@@ -131,9 +96,6 @@
         </parameters>
       </procedure>
       <procedure name="Subscribe" visibility="public">
-        <devnotes>
-          ///////////////////
-        </devnotes>
         <parameters>
           <parameter name="CurForm0" type="TForm" />
         </parameters>
@@ -181,6 +143,7 @@
       <field name="CurrentForm" type="TForm" visibility="public" />
       <field name="WorkMode" type="TWorkMode" visibility="public" />
       <field name="TaskID" type="TTaskType" visibility="public" />
+      <field name="IsTaskComplete" type="Boolean" visibility="public" />
     </members>
   </class>
   <function name="GetNumberOfCallPassedThrough2ChannelMode" visibility="public">

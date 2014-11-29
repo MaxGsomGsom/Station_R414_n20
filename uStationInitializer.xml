@@ -94,11 +94,11 @@
            </summary>
         </devnotes>
       </procedure>
-      <procedure name="InitForReceiveAndTransmitTracksSetupTask" visibility="private">
+      <procedure name="InitForConnectToR415Task" visibility="private">
         <devnotes>
            <summary>
              Настраивает параметры станции для выполнения задания
-             ReceiveAndTransmitTracksSetup
+             ConnectToR415
            </summary>
         </devnotes>
       </procedure>

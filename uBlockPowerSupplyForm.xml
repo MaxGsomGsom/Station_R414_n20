@@ -2293,6 +2293,9 @@
       <field name="P3_5" type="TImage" visibility="published" />
       <field name="P4_1" type="TImage" visibility="published" />
       <field name="P4_2" type="TImage" visibility="published" />
+      <field name="imgPower" type="TImage" visibility="published" />
+      <procedure name="Reload" visibility="published">
+      </procedure>
       <procedure name="FormMouseWheelDown" visibility="published">
         <parameters>
           <parameter name="Sender" type="TObject" />

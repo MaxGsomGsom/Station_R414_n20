@@ -43,6 +43,8 @@ type
     P3_5: TImage;
     P4_1: TImage;
     P4_2: TImage;
+    imgPower: TImage;
+    procedure Reload;
     procedure FormMouseWheelDown(Sender: TObject; Shift: TShiftState;
       MousePos: TPoint; var Handled: Boolean);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -185,6 +187,15 @@ begin
   if number=k10 then image10.BringToFront;
 end;
 
+
+procedure TBlockPowerSupplyForm.Reload;
+begin
+  imgPower.Visible:=Boolean( Station.PowerSupply.butPower= butPositionUp);
+  P4_2.Visible:=Boolean( Station.PowerSupply.butPower= butPositionUp);
+  P4_1.Visible:=Boolean( Station.PowerSupply.butPower= butPositionDown);
+end;
+
+
 procedure ImageStart5(image1,image2,image3,image4,image5:timage;number:integer);
 var k1,k2,k3,k4,k5:integer;
 begin
@@ -258,22 +269,24 @@ end;
 procedure ImageClick2(image1:timage;image2:timage;Button: TMouseButton;var Number:integer);
 var k1,k2:integer;
 begin
-  k1:=1;k2:=2;
-  if k1=number then
-  begin
-    image2.BringToFront;
-    image1.SendToBack;
-    number:=k2;
-  end
-  else
-  begin
-    if k2=number then
-    begin
-      image1.BringToFront;
-      image2.SendToBack;
-      number:=k1;
-    end;  //number<4
-  end;
+//  k1:=1;k2:=2;
+//  if k1=number then
+//  begin
+//    //image2.BringToFront;
+//    //image1.SendToBack;
+//    number:=k2;
+//    Station.PowerSupply.butPower:= butPositionUp;
+//  end
+//  else
+//  begin
+//    if k2=number then
+//    begin
+//      //image1.BringToFront;
+//      //image2.SendToBack;
+//      number:=k1;
+//      Station.PowerSupply.butPower:= butPositionDown;
+//    end;  //number<4
+//  end;
 end;
 
 procedure ImageClick10(image1,image2,image3,image4,image5,
@@ -599,13 +612,32 @@ end;
 procedure TBlockPowerSupplyForm.P4_1MouseDown(Sender: TObject;
   Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
 begin
-  ImageClick2(P4_1,P4_2,Button,P4);
+  //ImageClick2(P4_1,P4_2,Button,P4);
+  if (Station.PowerSupply.butPower= butPositionUp) then
+  begin
+    Station.PowerSupply.butPower:= butPositionDown;
+  end
+  else
+  begin
+    Station.PowerSupply.butPower:= butPositionUp;
+  end;
+   Reload;
 end;
+
 
 procedure TBlockPowerSupplyForm.P4_2MouseDown(Sender: TObject;
   Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
 begin
-ImageClick2(P4_1,P4_2,Button,P4);
+//ImageClick2(P4_1,P4_2,Button,P4);
+      if (Station.PowerSupply.butPower= butPositionUp) then
+  begin
+    Station.PowerSupply.butPower:= butPositionDown;
+  end
+  else
+  begin
+    Station.PowerSupply.butPower:= butPositionUp;
+  end;
+  Reload;
 end;
 
 procedure TBlockPowerSupplyForm.FormCreate(Sender: TObject);
@@ -621,8 +653,10 @@ begin
   P3:=1;
   ImageStart5(P3_1,P3_2,P3_3,P3_4,P3_5,P3);
   P4:=1;
-  ImageStart2(P4_1,P4_2,P4);
+  //ImageStart2(P4_1,P4_2,P4);
   MoveFormInScreenCenter(Self);
+
+  Reload;
 end;
 
 procedure TBlockPowerSupplyForm.FormKeyPress(Sender: TObject; var Key: Char);

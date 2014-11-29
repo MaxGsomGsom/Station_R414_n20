@@ -83,8 +83,8 @@ type
     imgGenerB: TImage;
     imgOscillograph: TImage;
     imgVolnomerA: TImage;
-    imgP321B: TImage;
     imgP321C: TImage;
+    imgP321B: TImage;
     imgPower: TImage;
     imgPultA: TImage;
     imgPultB: TImage;
@@ -164,8 +164,8 @@ type
     procedure imgDuplexerBClick(Sender: TObject);
     procedure imgRack1400Click(Sender: TObject);
     procedure imgDuplexerAClick(Sender: TObject);
-    procedure imgP321CClick(Sender: TObject);
     procedure imgP321BClick(Sender: TObject);
+    procedure imgP321CClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure lvTaskCustomDrawItem(Sender: TCustomListView; Item: TListItem;
       State: TCustomDrawState; var DefaultDraw: Boolean);
@@ -187,7 +187,7 @@ type
     { Private declarations }
     procedure UpdSubTaskList(Sender: TObject);
     procedure AddSubTasks;
-
+    procedure TaskComplete(Sender: TObject);
     procedure ChangeTaskTextBlock(Sender: TObject);
   public
     { Public declarations }
@@ -277,13 +277,14 @@ CurrentTaskForm: TCurrentTaskForm;
      StationR414MinForm.Show;
     // ButtonBackForm:= TButtonBackForm.Create(self);
     // ButtonBackForm.Show;
-     FilterForm:= TFilterForm.Create(self, CLientState);
+     FilterForm:= TFilterForm.Create(self,TaskController, CLientState);
      FilterForm.Show;
 
      CurrentTaskForm:= TCurrentTaskForm.Create(self, Station);
      CurrentTaskForm.Show;
 
      TaskController.OnChangeText:= self.ChangeTaskTextBlock;
+     TaskController.OnTaskComplete:= self.TaskComplete;
 
  end;
 
@@ -345,7 +346,7 @@ begin
                                         //форму с частотами и таймером
   //CanClose := True;
 
-  (Owner as TPreparationToWorkForm).Show;
+  //(Owner as TPreparationToWorkForm).Show;
   StationR414MinForm.Close;
   BackgroundForm.Close;
   FilterForm.Close;
@@ -468,8 +469,8 @@ begin
   NeedToCountTime := False;
   CloseStationR414FormFlag := 2;
 
-  ReportForm.lvErrors.Clear;
-  ReportForm.lvTask.Clear;
+  //ReportForm.lvErrors.Clear;
+  //ReportForm.lvTask.Clear;
 
   if Station.WorkType <> wtLearn then
   begin
@@ -489,7 +490,7 @@ begin
         begin
           for i := 0 to 27 do
           begin
-            LI := ReportForm.lvTask.Items.Add;
+            //LI := ReportForm.lvTask.Items.Add;
             LI.Caption := IntToStr(i + 1);
             //Обратное направление
             LI.SubItems.Add(UnitsNames[i]);
@@ -509,7 +510,7 @@ begin
         begin
           for i := 1 to Length(Task2Arr) do
           begin
-            LI := ReportForm.lvTask.Items.Add;
+           // LI := ReportForm.lvTask.Items.Add;
             LI.Caption := IntToStr(i);
             //Обратное направление
             LI.SubItems.Add(Task2Arr[i]);
@@ -534,7 +535,7 @@ begin
         begin
           for i := 1 to Length(Task3Arr) do
           begin
-            LI := ReportForm.lvTask.Items.Add;
+            //LI := ReportForm.lvTask.Items.Add;
             LI.Caption := IntToStr(i);
             //Обратное направление
             LI.SubItems.Add(Task3Arr[i]);
@@ -559,7 +560,7 @@ begin
         begin
           for i := 1 to Length(Task4Arr) do
           begin
-            LI := ReportForm.lvTask.Items.Add;
+            //LI := ReportForm.lvTask.Items.Add;
             LI.Caption := IntToStr(i);
             //Обратное направление
             LI.SubItems.Add(Task4Arr[i]);
@@ -585,7 +586,7 @@ begin
         begin
           for i := 1 to Length(Task5Arr) do
           begin
-            LI := ReportForm.lvTask.Items.Add;
+            //LI := ReportForm.lvTask.Items.Add;
             LI.Caption := IntToStr(i);
             //Обратное направление
             LI.SubItems.Add(Task5Arr[i]);
@@ -612,7 +613,7 @@ begin
         begin
           for i := 1 to Length(Task6Arr) do
           begin
-            LI := ReportForm.lvTask.Items.Add;
+            //LI := ReportForm.lvTask.Items.Add;
             LI.Caption := IntToStr(i);
             //Обратное направление
             LI.SubItems.Add(Task6Arr[i]);
@@ -671,7 +672,7 @@ begin
     for intA := 0 to 27 do
     begin
       inc(intB, 1);
-      LI := ReportForm.lvTask.Items.Add;
+      //LI := ReportForm.lvTask.Items.Add;
       LI.Caption := IntToStr(intB);
       //Обратное направление
       LI.SubItems.Add(UnitsNames[intA]);
@@ -689,7 +690,7 @@ begin
     for intA := 1 to Length(Task2Arr) do
     begin
       Inc(intB, 1);
-      LI := ReportForm.lvTask.Items.Add;
+      //LI := ReportForm.lvTask.Items.Add;
       LI.Caption := IntToStr(intB);
       //Обратное направление
       LI.SubItems.Add(Task2Arr[intA]);
@@ -712,7 +713,7 @@ begin
     for intA := 1 to Length(Task3Arr) do
     begin
       Inc(intB, 1);
-      LI := ReportForm.lvTask.Items.Add;
+      //LI := ReportForm.lvTask.Items.Add;
       LI.Caption := IntToStr(intB);
       //Обратное направление
       LI.SubItems.Add(Task3Arr[intA]);
@@ -735,7 +736,7 @@ begin
     for intA := 1 to Length(Task4Arr) do
     begin
       Inc(intB, 1);
-      LI := ReportForm.lvTask.Items.Add;
+      //LI := ReportForm.lvTask.Items.Add;
       LI.Caption := IntToStr(intB);
       //Обратное направление
       LI.SubItems.Add(Task4Arr[intA]);
@@ -758,7 +759,7 @@ begin
     for intA := 1 to Length(Task5Arr) do
     begin
       Inc(intB, 1);
-      LI := ReportForm.lvTask.Items.Add;
+      //LI := ReportForm.lvTask.Items.Add;
       LI.Caption := IntToStr(intB);
       //Обратное направление
       LI.SubItems.Add(Task5Arr[intA]);
@@ -787,15 +788,15 @@ begin
   if estimation < 2 then estimation := 2;   // Оценка не может быть меньше 2
 
   //Подготовим форму отчета к показу
-  ReportForm.lblTaskName.Caption := Task1Description;
-  ReportForm.lblFIO.Caption := CurUser.Surname + ' ' + CurUser.Name + ' '
-                            + CurUser.Patronomyc;
-  ReportForm.OtchetHideErorrs;
+  //ReportForm.lblTaskName.Caption := Task1Description;
+  //ReportForm.lblFIO.Caption := CurUser.Surname + ' ' + CurUser.Name + ' '
+                            //+ CurUser.Patronomyc;
+  //ReportForm.OtchetHideErorrs;
   ErrorsCount := Length(Errors);
-  ReportForm.lblMistakesCount.Caption := IntToStr(ErrorsCount);
+  //ReportForm.lblMistakesCount.Caption := IntToStr(ErrorsCount);
 
   //Отобразим ошибки
-  ReportForm.lblOzenka.Caption := FloatToStr(estimation);         //Вывести оценку
+  //ReportForm.lblOzenka.Caption := FloatToStr(estimation);         //Вывести оценку
   if Station.WorkType <> wtExam then
   begin
     case Station.WorkMode of
@@ -803,7 +804,7 @@ begin
         begin
           for intA := 0 to Length(Errors) - 1 do
           begin
-            LI := ReportForm.lvErrors.Items.Add;
+            //LI := ReportForm.lvErrors.Items.Add;
             LI.Caption := IntToStr(intA + 1);
             //Обратное направление
             LI.SubItems.Add(UnitsNames[Errors[intA].ErrInRack]);
@@ -815,7 +816,7 @@ begin
           //mdExternalView
           for intA := 0 to Length(Errors) - 1 do
           begin
-            LI := ReportForm.lvErrors.Items.Add;
+            //LI := ReportForm.lvErrors.Items.Add;
             LI.Caption := IntToStr(intA + 1);
             //Обратное направление
             LI.SubItems.Add(UnitsNames[Errors[intA].ErrInRack]);
@@ -826,7 +827,7 @@ begin
         begin
           for intA := 0 to Length(Errors) - 1 do
           begin
-            LI := ReportForm.lvErrors.Items.Add;
+            //LI := ReportForm.lvErrors.Items.Add;
             LI.Caption := IntToStr(intA + 1);
             //Обратное направление
             if Errors[intA].ErrInRack <> NotSelected then
@@ -840,7 +841,7 @@ begin
         begin
           for intA := 0 to Length(Errors) - 1 do
           begin
-            LI := ReportForm.lvErrors.Items.Add;
+            //LI := ReportForm.lvErrors.Items.Add;
             LI.Caption := IntToStr(intA + 1);
             //Обратное направление
             LI.SubItems.Add(UnitsNames[Errors[intA].ErrInRack]);
@@ -851,7 +852,7 @@ begin
         begin
           for intA := 0 to Length(Errors) - 1 do
           begin
-            LI := ReportForm.lvErrors.Items.Add;
+            //LI := ReportForm.lvErrors.Items.Add;
             LI.Caption := IntToStr(intA + 1);
             //Обратное направление
             LI.SubItems.Add(UnitsNames[Errors[intA].ErrInRack]);
@@ -864,7 +865,7 @@ begin
   begin
     for intA := 0 to Length(Errors) - 1 do
     begin
-      LI := ReportForm.lvErrors.Items.Add;
+      //LI := ReportForm.lvErrors.Items.Add;
       LI.Caption := IntToStr(intA + 1);
       if Errors[intA].ErrInRack <> NotSelected then
         LI.SubItems.Add(UnitsNames[Errors[intA].ErrInRack])
@@ -875,14 +876,14 @@ begin
   end;
 
   if Length(Errors) > 0 then                       //Настроить видимость кнопки
-    ReportForm.btnShowHideErrors.Visible := True      //отобразить/скрыть ошибки
+    //ReportForm.btnShowHideErrors.Visible := True      //отобразить/скрыть ошибки
   else
-    ReportForm.btnShowHideErrors.Visible := False;
+    //ReportForm.btnShowHideErrors.Visible := False;
 
   AddAchieve(CurUser.ID, estimation, PassedSeconds,
     Station.WorkMode, Station.WorkType);
-  ReportForm.Show;
-  ReportForm.SetFocus;
+  //ReportForm.Show;
+  //ReportForm.SetFocus;
   //HideHint;
 end;
 
@@ -1487,12 +1488,12 @@ begin
   if (Station.WorkType = wtLearn) and     // Чтоб в обучении автоматически
     IsZaniatiePassed then                 // нажималось завершение работы
   begin
-    if not(ReportForm.Showing) or not(ReportForm.Visible) then
-    begin
-      //Инициировать событие клика по кнопке завершения упражнения
-      filterHWND := FindWindow('TFilterForm', 'FilterForm');
-      PostMessage(filterHWND, MM_CLICK_BUTTON, 0, 0)
-    end;
+    //if not(ReportForm.Showing) or not(ReportForm.Visible) then
+    //begin
+    //  //Инициировать событие клика по кнопке завершения упражнения
+     // filterHWND := FindWindow('TFilterForm', 'FilterForm');
+     // PostMessage(filterHWND, MM_CLICK_BUTTON, 0, 0)
+    //end;
     imgRed.BringToFront;
   end;
 end;
@@ -1776,14 +1777,14 @@ begin
     //В районе пульта:
     11: SelectedRack := Console_A;
     12: SelectedRack := Console_B;
-    13: SelectedRack := P321_B;       //Полукомплект, стоящий над пультом
+    13: SelectedRack := P321_C;       //Полукомплект, стоящий над пультом
                                       //Не известно, кто в коде назвал его "B",
                                       //но для пользователя он обозначен как "C"
     14: SelectedRack := Oscillograph_rack;
     15: SelectedRack := Power_supply;
 
     //Справа от пульта:
-    19: SelectedRack := P321_C;
+    19: SelectedRack := P321_B;
     16: SelectedRack := Rack_1400;
     17: SelectedRack := Rack_1200_reciever_B;
     18: SelectedRack := Rack_1200_broadcaster_B;
@@ -2172,17 +2173,17 @@ DuplexerA:= TBlockDuplexerForm.Create(self, 1, Station, TaskController);
   SpawnForm((Sender as TImage).Tag);
 end;
 
-procedure TStationR414Form.imgP321BClick(Sender: TObject);
-var RackP321B: TRackP321Form;
-begin
-RackP321B  := TRackP321Form.Create(self,2, Station, TaskController);
-  SpawnForm((Sender as TImage).Tag);
-end;
-
 procedure TStationR414Form.imgP321CClick(Sender: TObject);
 var RackP321C: TRackP321Form;
 begin
-RackP321C  := TrackP321Form.Create(self, 3, Station, TaskController);
+RackP321C  := TRackP321Form.Create(self,3, Station, TaskController);
+  SpawnForm((Sender as TImage).Tag);
+end;
+
+procedure TStationR414Form.imgP321BClick(Sender: TObject);
+var RackP321B: TRackP321Form;
+begin
+RackP321B  := TrackP321Form.Create(self, 2, Station, TaskController);
   SpawnForm((Sender as TImage).Tag);
 end;
 
@@ -2444,6 +2445,12 @@ end;
  begin
      SetBlockRed(TaskController.GetCurSubTaskBlock);
      CurrentTaskForm.SetMyText(TaskController.CurrentTask.CurrentSubTask.Text);
+ end;
+
+ procedure TStationR414Form.TaskComplete(Sender: TObject);
+ begin
+      SetBlockRed(TRacksEnum.none);
+     CurrentTaskForm.SetMyText( 'Задание выполнено. Нажмите кнопку "Завершить выполнение" для выхода и получения статистики');
  end;
 
 end.

@@ -2432,6 +2432,7 @@
       <constructor name="Create" visibility="public">
         <parameters>
           <parameter name="Sender1" type="TComponent" />
+          <parameter name="TaskController1" type="TTaskController" />
           <parameter name="ClientState1" type="TClientState" />
         </parameters>
       </constructor>

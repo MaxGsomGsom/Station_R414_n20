@@ -103,9 +103,6 @@
 			<DCCReference Include="uRackP321Form.pas">
 				<Form>RackP321Form</Form>
 			</DCCReference>
-			<DCCReference Include="uEducationForm.pas">
-				<Form>EducationForm</Form>
-			</DCCReference>
 			<DCCReference Include="uBlockGeneratorForm.pas">
 				<Form>BlockGeneratorForm</Form>
 			</DCCReference>
@@ -136,9 +133,6 @@
 			<DCCReference Include="uUsersForm.pas">
 				<Form>UsersForm</Form>
 			</DCCReference>
-			<DCCReference Include="uCreateUsersForm.pas">
-				<Form>CreateUsersForm</Form>
-			</DCCReference>
 			<DCCReference Include="uRegistrationForm.pas">
 				<Form>RegistrationForm</Form>
 			</DCCReference>
@@ -146,20 +140,11 @@
 				<Form>HandsetForm</Form>
 			</DCCReference>
 			<DCCReference Include="uDefinitionsDM.pas"/>
-			<DCCReference Include="uStatisticForm.pas">
-				<Form>StatisticForm</Form>
-			</DCCReference>
 			<DCCReference Include="uSettingsForm.pas">
 				<Form>SettingsForm</Form>
 			</DCCReference>
-			<DCCReference Include="uAboutStationForm.pas">
-				<Form>AboutStationForm</Form>
-			</DCCReference>
 			<DCCReference Include="uAboutProgramForm.pas">
 				<Form>AboutProgramForm</Form>
-			</DCCReference>
-			<DCCReference Include="uPassWordForm.pas">
-				<Form>PassWordForm</Form>
 			</DCCReference>
 			<DCCReference Include="uBlockDuplexerForm.pas">
 				<Form>BlockDuplexerForm</Form>
@@ -195,7 +180,6 @@
 			</DCCReference>
 			<DCCReference Include="uTasksDM.pas"/>
 			<DCCReference Include="uStationStateDM.pas"/>
-			<DCCReference Include="uMd5.pas"/>
 			<DCCReference Include="uImageRotator.pas"/>
 			<DCCReference Include="uMainMenuModernForm.pas">
 				<Form>MainMenuModernForm</Form>
