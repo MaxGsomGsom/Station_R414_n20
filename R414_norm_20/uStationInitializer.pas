@@ -20,7 +20,7 @@ type TStationInitializer = class
     procedure CommonInit;
 
     procedure InitForPowerOnTask;
-    procedure InitForReceiveAndTransmitTracksSetupTask;
+    procedure InitForConnectToR415Task;
     procedure InitForWorkWithLowFrequencyTask;
 
   public
@@ -210,21 +210,21 @@ end;
 /// </summary>
 procedure TStationInitializer.InitStationByTask(TaskType: TTaskType);
 begin
-  if TaskType = ttNone then Exit;
+  //if TaskType = ttNone then Exit;
 
   CommonInit;
   case TaskType of
-   { ttExternalView, ttStartParametersSetup:
+    ttNone:
       begin
         InitForStartParametersSetupTask;
-      end;  }
+      end;
     ttPowerOn:
       begin
         InitForPowerOnTask;
       end;
-    ttCheckStationInStandaloneControlMode:{ttReceiveAndTransmitTracksSetup:}
+    ttConnectToR415:{ttReceiveAndTransmitTracksSetup:}
       begin
-        InitForReceiveAndTransmitTracksSetupTask;
+        InitForConnectToR415Task;
       end;
     {ttWorkWithLowFrequency:
       begin
@@ -558,6 +558,7 @@ begin
 
   Station.Rack1400.butPower := butPositionRight;
   Station.Rack1400.swKukushka := 3;
+  Station.Rack1400.butSpeaker := butPositionRight;
 
   Station.HalfSetA.Rack1500.CableMdMainState := csDisconected;
   Station.HalfSetA.Rack1500.CableMdReservState := csDisconected;
@@ -1044,6 +1045,7 @@ begin
 
   Station.Rack1400.butPower := butPositionLeft;
   Station.Rack1400.swKukushka := 1;
+  Station.Rack1400.butSpeaker := butPositionLeft;
 
   Station.HalfSetA.Rack1500.CableMdMainState := csDisconected;
   Station.HalfSetA.Rack1500.CableMdReservState := csDisconected;
@@ -1233,9 +1235,9 @@ begin
   Station.HalfSetB.P321.cblVhYY := csDisconected;
   Station.HalfSetB.P321.swGradPit := GetRandomSwitcherState;
 
-  Station.P321C.butPower := butPositionUp;
-  Station.P321C.butMeasure := butPositionUp;
-  Station.P321C.but600Ohm := butPositionUp;
+  Station.P321C.butPower := butPositionDown;
+  Station.P321C.butMeasure := butPositionDown;
+  Station.P321C.but600Ohm := butPositionDown;
   Station.P321C.cblVihGen := csDisconected;
   Station.P321C.cblVhYY := csDisconected;
   Station.P321C.swGradPit := GetRandomSwitcherState;
@@ -1251,6 +1253,8 @@ begin
   Station.P321C.swNepGen := 3;
   Station.P321C.swFrequency := 3;
   Station.P321C.swNepGenYY := 3;
+
+  Station.PowerSupply.butPower:= butPositionDown;
 
   Station.HalfSetA.P321.swGradGen := GetRandomWaveValue;
   Station.HalfSetB.P321.swGradGen := GetRandomWaveValue;
@@ -1288,13 +1292,15 @@ end;
 
 /// <summary>
 ///   Ќастраивает параметры станции дл€ выполнени€ задани€
-///   ReceiveAndTransmitTracksSetup
+///   ConnectToR415
 /// </summary>
-procedure TStationInitializer.InitForReceiveAndTransmitTracksSetupTask;
+procedure TStationInitializer.InitForConnectToR415Task;
 var
   i: Integer;
 begin
   {$REGION '»нициализаци€ параметров стоек'}
+  Station.PowerSupply.butPower:= butPositionUp;
+
   Station.WaveMeter.Int := 14;
   Station.WaveMeter.Float := 84;
 
@@ -1535,6 +1541,7 @@ begin
 
   Station.Rack1400.butPower := butPositionRight;
   Station.Rack1400.swKukushka := 1;
+  Station.Rack1400.butSpeaker := butPositionRight;
 
   Station.HalfSetA.Rack1500.CableMdMainState := csDisconected;
   Station.HalfSetA.Rack1500.CableMdReservState := csDisconected;
@@ -1650,7 +1657,7 @@ begin
   Station.HalfSetB.Rack1600B.but1621Main := butPositionUp;
   Station.HalfSetB.Rack1600B.but1621Reserve := butPositionUp;
 
-  Station.Rack1710.butPower := butPositionLeft;
+  Station.Rack1710.butPower := butPositionRight;
   Station.Rack1710.swKukushka := 1;
   Station.Rack1710.swWorkMode := 1;
   Station.Rack1710.butAutomat := butPositionUp;
@@ -1671,10 +1678,10 @@ begin
   Station.Rack1710.but1210A_2:= butPositionLeft;
   Station.Rack1710.but1270_2 := butPositionLeft;
   Station.Rack1710.swReductorCurrent := 1;
-  Station.Rack1710.butPower := butPositionLeft;
+  Station.Rack1710.butPower := butPositionRight;
   Station.Rack1710.butExternalUplotnenieA := butPositionLeft;
   Station.Rack1710.butExternalUplotnenieB := butPositionLeft;
-  Station.Rack1710.butSpeaker := butPositionLeft;
+  Station.Rack1710.butSpeaker := butPositionRight;
 
   Station.HalfSetA.Rack1920.but1910 := butPositionUp;
   Station.HalfSetA.Rack1920.but1910A := butPositionUp;
@@ -2043,6 +2050,7 @@ begin
 
   Station.Rack1400.butPower := butPositionRight;
   Station.Rack1400.swKukushka := 1;
+  Station.Rack1400.butSpeaker := butPositionRight;
 
   Station.HalfSetA.Rack1500.CableMdMainState := csDisconected;
   Station.HalfSetA.Rack1500.CableMdReservState := csDisconected;

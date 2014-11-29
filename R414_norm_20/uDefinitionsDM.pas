@@ -34,7 +34,7 @@ unit uDefinitionsDM;
   nmWeb = 2;
 
   PName = 'Радиорелейная станция P-414';
-  Pversion = '1.0.2.2 beta';
+  Pversion = '1.1.0 dev';
 
   WebHost = 'uvc.ispu.ru';
   //WebHost = '192.168.0.12';

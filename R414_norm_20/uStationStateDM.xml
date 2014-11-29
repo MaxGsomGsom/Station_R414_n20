@@ -353,11 +353,13 @@
     <field name="cblCableUsilitelState" type="Byte" visibility="public" />
     <field name="cblCableUsilitelConnectedTo" type="Byte" visibility="public" />
   </struct>
-  <struct name="pPowerSuply" packed="true">
+  <struct name="pPowerSupply" packed="true">
+    <field name="butPower" type="Byte" visibility="public" />
   </struct>
   <struct name="pRack1400" packed="true">
     <field name="butPower" type="Byte" visibility="public" />
     <field name="swKukushka" type="Byte" visibility="public" />
+    <field name="butSpeaker" type="Byte" visibility="public" />
   </struct>
   <struct name="pRack1500_back" packed="true">
     <field name="but1622_1" type="Byte" visibility="public" />
@@ -620,7 +622,7 @@
       <field name="RemoteController" type="pRemoteController" visibility="public" />
       <field name="P321C" type="pP321" visibility="public" />
       <field name="Oscillograph" type="pOscillograph" visibility="public" />
-      <field name="PowerSuply" type="pPowerSuply" visibility="public" />
+      <field name="PowerSupply" type="pPowerSupply" visibility="public" />
       <field name="WaveMeter" type="pWaveMeter" visibility="public" />
       <field name="PowerPanel" type="pPowerPanel" visibility="public" />
       <field name="cbGenerator" type="pP321Cables" visibility="public" />

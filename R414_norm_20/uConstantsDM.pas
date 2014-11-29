@@ -22,6 +22,7 @@ type TTaskType = (
   //ttExternalView,                     // Внешний осмотр
   //ttStartParametersSetup,             // Начальная настройка
   ttPowerOn,                            // Включение питания
+  ttConnectToR415,
   //ttReceiveAndTransmitTracksSetup,    // Настройка приёмо-передающего тракта
   //ttWorkWithLowFrequency,             // Работа с низкочастотным оборудованием
   ttCheckStationInStandaloneControlMode,// Проверка станции в режиме автономного

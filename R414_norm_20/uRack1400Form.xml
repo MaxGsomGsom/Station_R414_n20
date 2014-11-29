@@ -2286,6 +2286,8 @@
       <field name="imgSwKukushka3" type="TImage" visibility="published" />
       <field name="imgSwKukushka4" type="TImage" visibility="published" />
       <field name="imgTrubka" type="TImage" visibility="published" />
+      <field name="imgSpeakerOn" type="TImage" visibility="published" />
+      <field name="imgSpeakerOff" type="TImage" visibility="published" />
       <procedure name="FormClose" visibility="published">
         <parameters>
           <parameter name="Sender" type="TObject" />
@@ -2359,6 +2361,16 @@
         <parameters>
           <parameter name="Sender" type="TObject" />
           <parameter name="Key" type="Char" paramflags="var" />
+        </parameters>
+      </procedure>
+      <procedure name="imgSpeakerOnClick" visibility="published">
+        <parameters>
+          <parameter name="Sender" type="TObject" />
+        </parameters>
+      </procedure>
+      <procedure name="imgSpeakerOffClick" visibility="published">
+        <parameters>
+          <parameter name="Sender" type="TObject" />
         </parameters>
       </procedure>
       <procedure name="imgsKukushkaChange" visibility="private">

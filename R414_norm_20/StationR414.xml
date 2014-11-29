@@ -63,7 +63,10 @@
   <contains name="XPActnCtrls" />
   <contains name="WinSock" />
   <contains name="IdAntiFreeze" />
+  <contains name="uStatisticForm" />
+  <contains name="uAboutStationForm" />
   <contains name="uMainMenuForm" />
+  <contains name="uPassWordForm" />
   <contains name="IdIPAddress" />
   <contains name="IdTCPClient" />
   <contains name="IdSocks" />
@@ -78,11 +81,11 @@
   <contains name="IdBuffer" />
   <contains name="IdIntercept" />
   <contains name="IdStackBSDBase" />
+  <contains name="Generics.Collections" />
+  <contains name="Generics.Defaults" />
   <contains name="IdException" />
   <contains name="IdStreamVCL" />
   <contains name="IdBaseComponent" />
-  <contains name="Generics.Collections" />
-  <contains name="Generics.Defaults" />
   <contains name="ToolWin" />
   <contains name="ListActns" />
   <contains name="TpcShrd" />
@@ -117,6 +120,8 @@
   <contains name="Math" />
   <contains name="Character" />
   <contains name="Types" />
+  <contains name="uEducationForm" />
+  <contains name="uMd5" />
   <contains name="IdHTTP" />
   <contains name="IdAuthenticationDigest" />
   <contains name="IdAuthenticationNTLM" />
@@ -138,7 +143,6 @@
   <contains name="IdWship6" />
   <contains name="IdWinsock2" />
   <contains name="IdGlobal" />
-  <contains name="Sockets" />
   <contains name="XPStyleActnCtrls" />
   <contains name="PlatformDefaultStyleActnCtrls" />
   <contains name="ActnMan" />
@@ -146,8 +150,9 @@
   <contains name="ExtActns" />
   <contains name="Mapi" />
   <contains name="ExtDlgs" />
-  <contains name="Buttons" />
   <contains name="ComObj" />
+  <contains name="Buttons" />
+  <contains name="Sockets" />
   <contains name="jpeg" />
   <contains name="pngimage" />
   <contains name="Clipbrd" />
@@ -191,7 +196,6 @@
   <contains name="uNetWorkerDM" />
   <contains name="uMainMenuModernForm" />
   <contains name="uImageRotator" />
-  <contains name="uMd5" />
   <contains name="uStationStateDM" />
   <contains name="uTasksDM" />
   <contains name="uButtonBackForm" />
@@ -206,15 +210,11 @@
   <contains name="uBlockOscillographMinForm" />
   <contains name="uRackP321MinForm" />
   <contains name="uBlockDuplexerForm" />
-  <contains name="uPassWordForm" />
   <contains name="uAboutProgramForm" />
-  <contains name="uAboutStationForm" />
   <contains name="uSettingsForm" />
-  <contains name="uStatisticForm" />
   <contains name="uDefinitionsDM" />
   <contains name="uHandsetForm" />
   <contains name="uRegistrationForm" />
-  <contains name="uCreateUsersForm" />
   <contains name="uUsersForm" />
   <contains name="uRack1500MinForm" />
   <contains name="uWaveMeterPanelForm" />
@@ -225,7 +225,6 @@
   <contains name="uRack1710Form" />
   <contains name="uBlockLittleNoisyAmplifierForm" />
   <contains name="uBlockGeneratorForm" />
-  <contains name="uEducationForm" />
   <contains name="uRackP321Form" />
   <contains name="uBlockWaveMeterForm" />
   <contains name="uRack1920Form" />

@@ -2319,8 +2319,8 @@
       <field name="imgGenerB" type="TImage" visibility="published" />
       <field name="imgOscillograph" type="TImage" visibility="published" />
       <field name="imgVolnomerA" type="TImage" visibility="published" />
-      <field name="imgP321B" type="TImage" visibility="published" />
       <field name="imgP321C" type="TImage" visibility="published" />
+      <field name="imgP321B" type="TImage" visibility="published" />
       <field name="imgPower" type="TImage" visibility="published" />
       <field name="imgPultA" type="TImage" visibility="published" />
       <field name="imgPultB" type="TImage" visibility="published" />
@@ -2623,12 +2623,12 @@
           <parameter name="Sender" type="TObject" />
         </parameters>
       </procedure>
-      <procedure name="imgP321CClick" visibility="published">
+      <procedure name="imgP321BClick" visibility="published">
         <parameters>
           <parameter name="Sender" type="TObject" />
         </parameters>
       </procedure>
-      <procedure name="imgP321BClick" visibility="published">
+      <procedure name="imgP321CClick" visibility="published">
         <parameters>
           <parameter name="Sender" type="TObject" />
         </parameters>
@@ -2715,6 +2715,11 @@
         </parameters>
       </procedure>
       <procedure name="AddSubTasks" visibility="private">
+      </procedure>
+      <procedure name="TaskComplete" visibility="private">
+        <parameters>
+          <parameter name="Sender" type="TObject" />
+        </parameters>
       </procedure>
       <procedure name="ChangeTaskTextBlock" visibility="private">
         <parameters>

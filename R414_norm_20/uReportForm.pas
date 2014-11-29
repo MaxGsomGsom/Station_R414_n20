@@ -16,7 +16,10 @@ uses
   ComCtrls,
   uStationR414MinForm,
   uAdditionalFormMethods,
-  uBackgroundForm ;
+  uBackgroundForm,
+  uTaskControllerDM,
+  uStationStateDM,
+  uClientStateDM ;
 
 type
   TReportForm = class(TForm)
@@ -34,6 +37,10 @@ type
     lvTask: TListView;
     btnShowHideErrors: TButton;
     btnExit: TButton;
+    lblTaskTimeCapt: TLabel;
+    lbTaskTime: TLabel;
+    lblWorkModeCapt: TLabel;
+    lblWorkMode: TLabel;
     procedure lvErrorsCustomDrawItem(Sender: TCustomListView; Item: TListItem;
       State: TCustomDrawState; var DefaultDraw: Boolean);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -42,15 +49,16 @@ type
     procedure OtchetHideErorrs;
     procedure FormShow(Sender: TObject);
     procedure btnExitClick(Sender: TObject);
+    procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+
 
   private
     errorsShowing : Boolean;
   public
     { Public declarations }
+    constructor Create(Sender1: TComponent; TaskController1: TTaskController); reintroduce;
   end;
 
-var
-  ReportForm: TReportForm;
 
 implementation
 
@@ -62,10 +70,21 @@ uses
   uUsersForm,
   uRack1500bForm,
   uStationR414Form,
-  uConstantsDM,
-  uStationStateDM;
+  uConstantsDM;
 
 {$R *.dfm}
+
+ constructor TReportForm.Create(Sender1: TComponent; TaskController1: TTaskController);
+ begin
+     inherited Create(Sender1);
+     TaskController:= TaskController1;
+
+     lblTaskName.Caption:= TaskController.CurrentTask.Name;
+     lbTaskTime.Caption:=  TimeToStr(TaskController.CurrentTask.TimeEnd - TaskController.CurrentTask.TimeStart);
+     lblWorkMode.Caption:= GetWorkModeTitle(TaskController.WorkMode);
+
+ end;
+
 
 procedure TReportForm.OtchetShowErorrs;
 const
@@ -108,48 +127,55 @@ procedure TReportForm.FormClose(Sender: TObject; var Action: TCloseAction);
 var
   mbRes: Integer;
 begin
-  if (Station.WorkType <> wtExam) and
-  (Station.WorkMode < mdWorkWithLowFrequency) then
-  begin
-    //Если это не экзамен и не конечное занятие
-    if Length(Errors) = 0 then
-    begin
-      mbRes := Application.MessageBox('Вы хотите перейти к выполнению следующего занятия?',
-      PChar(PName + ' version: ' + Pversion), MB_YESNO + MB_ICONQUESTION);
-      if mbRes = mrYes then
-      begin
-        //Переход к следующему занятию...
-        Station.WorkMode := Station.WorkMode + 1;
-        CurBlockSelected := 255;
-        //Очистим задания
-        //StationR414Form.lvTask.Clear;
-        Initialise;
-        //StationR414Form.Show;
-      end
-      else
-      begin
-        EducationForm.Show;
-      end;
-    end
-    else
-    begin
-      EducationForm.Show;
-    end;
-  end
-  else
-  begin
-    EducationForm.Show;
-  end;
+//  if (Station.WorkType <> wtExam) and
+//  (Station.WorkMode < mdWorkWithLowFrequency) then
+//  begin
+//    //Если это не экзамен и не конечное занятие
+//    if Length(Errors) = 0 then
+//    begin
+//      mbRes := Application.MessageBox('Вы хотите перейти к выполнению следующего занятия?',
+//      PChar(PName + ' version: ' + Pversion), MB_YESNO + MB_ICONQUESTION);
+//      if mbRes = mrYes then
+//      begin
+//        //Переход к следующему занятию...
+//        Station.WorkMode := Station.WorkMode + 1;
+//        CurBlockSelected := 255;
+//        //Очистим задания
+//        //StationR414Form.lvTask.Clear;
+//        Initialise;
+//        //StationR414Form.Show;
+//      end
+//      else
+//      begin
+//        EducationForm.Show;
+//      end;
+//    end
+//    else
+//    begin
+//      EducationForm.Show;
+//    end;
+//  end
+//  else
+//  begin
+//    EducationForm.Show;
+//  end;
+end;
+
+procedure TReportForm.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+begin
+   (Owner as TForm).Show;
 end;
 
 procedure TReportForm.FormShow(Sender: TObject);
 begin
   errorsShowing := False;
   btnShowHideErrors.Caption := 'Показать ошибки';
-  Close;
-  if useBackground then
-    //BackgroundForm.Close;
+  //Close;
+  //if useBackground then
+   // //BackgroundForm.Close;
 end;
+
+
 
 procedure TReportForm.lvErrorsCustomDrawItem(Sender: TCustomListView;
   Item: TListItem; State: TCustomDrawState; var DefaultDraw: Boolean);

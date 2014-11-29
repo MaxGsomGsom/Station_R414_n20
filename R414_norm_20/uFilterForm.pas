@@ -20,7 +20,9 @@ uses
   uCurrentTaskForm,
   uDefinitionsDM,
   uClientStateDM,
-  uStationStateDM;
+  uStationStateDM,
+  uReportForm,
+  uTaskControllerDM;
 
 type
   TFilterForm = class(TForm)
@@ -65,7 +67,7 @@ type
     procedure SetStationWave(WavePRDA, WavePRDB, WavePRMA,WavePRMB : Integer);
     function GetCountHint :Integer;
     procedure SetCountHint (count : Integer);
-    constructor Create(Sender1: TComponent; ClientState1: TClientState); reintroduce;
+    constructor Create(Sender1: TComponent; TaskController1: TTaskController; ClientState1: TClientState); reintroduce;
   end;
 
 
@@ -73,18 +75,21 @@ type
 implementation
 
 uses
-  uTaskControllerDM,
-  uStationR414Form;
+  uStationR414Form,
+  uPreparationToWorkForm;
+
 
 {$R *.dfm}
  var
   ClientState: TClientState;
+  TaskController: TTaskController;
   //Station: TStation;
 
-constructor TFilterForm.Create(Sender1: TComponent; ClientState1: TClientState);
+constructor TFilterForm.Create(Sender1: TComponent; TaskController1: TTaskController; ClientState1: TClientState);
 begin
   inherited Create(Sender1);
   ClientState:= ClientState1;
+  TaskController:=TaskController1;
   SetStationWave(CLientState.TransmitterWaveA, CLientState.TransmitterWaveB, CLientState.ReceiverWaveA, CLientState.ReceiverWaveB);
   SetCountHint(0);
   StartTimer;
@@ -237,9 +242,19 @@ begin
 end;
 
 procedure TFilterForm.btnCompleteClick(Sender: TObject);
+var
+Report: TReportForm;
 begin
   //if (TaskController.CurrentTask.IsComplete) then
-  (Owner as TStationR414Form).Close;
+  if (TaskController.IsTaskComplete=True) then
+  begin
+  Report:=TReportForm.Create(Owner.Owner, TaskController);
+  Report.Show;
+  end
+  else  begin
+  (Owner.Owner as TForm).Show;
+  end;
+    (Owner as TStationR414Form).Close;
 end;
 
 /// <summary>

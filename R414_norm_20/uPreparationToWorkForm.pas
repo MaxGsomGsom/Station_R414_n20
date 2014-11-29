@@ -79,14 +79,14 @@ begin
   Self.TaskController := TTaskController.Create(Station);
 
   lstTaskChoice.Items.Delete(0);            // Удаляем пустую строчку
-  for i := 1 to TaskController.CountTasks do// Заполняем список заданий
-  begin
-    strTaskTitle := TaskController.GetTaskTitle(i);
-    if strTaskTitle = '' then continue;
-    strTaskTitle := IntToStr(i) + '. ' + strTaskTitle; // Приписываем номер задания
-    lstTaskChoice.Items.Add(strTaskTitle);
-  end;
-  lstTaskChoice.ItemIndex := 0;                        // Выбираем первое задание
+//  for i := 1 to TaskController.CountTasks do// Заполняем список заданий
+//  begin
+//    strTaskTitle := TaskController.GetTaskTitle(i);
+//    if strTaskTitle = '' then continue;
+//    strTaskTitle := IntToStr(i) + '. ' + strTaskTitle; // Приписываем номер задания
+//    lstTaskChoice.Items.Add(strTaskTitle);
+//  end;
+//  lstTaskChoice.ItemIndex := 0;                        // Выбираем первое задание
 
   cbbWorkMode.Items.Delete(0);                         // Удаляем пустую строку
   for i := 0 to COUNT_WORK_MODES - 1 do
@@ -189,12 +189,32 @@ end;
 ///   Сохраняет изменённый режим работы в состоянии клиента
 /// </summary>
 procedure TPreparationToWorkForm.cbbWorkModeChange(Sender: TObject);
+var
+strTaskTitle:string;
+i:integer;
 begin
+  NetWorker.ClientState.TaskID:= TTaskType.ttNone;
   if TWorkMode(cbbWorkMode.ItemIndex)    // Получаем тип задания по индексу
     <> NetWorker.ClientState.WorkMode then
   begin
     NetWorker.ClientState.WorkMode := TWorkMode(cbbWorkMode.ItemIndex);
   end;
+
+  lstTaskChoice.Items.Clear;
+  if (TWorkMode(cbbWorkMode.ItemIndex) = TWorkMode.wmLearning) or (TWorkMode(cbbWorkMode.ItemIndex) = TWorkMode.wmTraining) then
+  begin
+       for i := 1 to TaskController.CountTasks do// Заполняем список заданий
+  begin
+    strTaskTitle := TaskController.GetTaskTitle(i);
+    if strTaskTitle = '' then continue;
+    strTaskTitle := IntToStr(i) + '. ' + strTaskTitle; // Приписываем номер задания
+    lstTaskChoice.Items.Add(strTaskTitle);
+  end;
+  lstTaskChoice.ItemIndex := 0;
+  end
+  else if (TWorkMode(cbbWorkMode.ItemIndex) = TWorkMode.wmExam) then
+       
+  
 end;
 
 procedure TPreparationToWorkForm.FormClose(Sender: TObject;
