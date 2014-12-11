@@ -1,4 +1,4 @@
-unit uStationInitializer;
+п»їunit uStationInitializer;
 
 interface
 
@@ -9,7 +9,7 @@ uses
   uConstantsDM;
 
 /// <summary>
-///   Настраивает станцию перед началом какого-либо задания
+///   РќР°СЃС‚СЂР°РёРІР°РµС‚ СЃС‚Р°РЅС†РёСЋ РїРµСЂРµРґ РЅР°С‡Р°Р»РѕРј РєР°РєРѕРіРѕ-Р»РёР±Рѕ Р·Р°РґР°РЅРёСЏ
 /// </summary>
 type TStationInitializer = class
 
@@ -22,6 +22,8 @@ type TStationInitializer = class
     procedure InitForPowerOnTask;
     procedure InitForConnectToR415Task;
     procedure InitForWorkWithLowFrequencyTask;
+    procedure InitForSingleCheckTask;
+
 
   public
     property Station: TStation read FStation
@@ -30,7 +32,7 @@ type TStationInitializer = class
 
     constructor Create(Station: TStation);
 
-    procedure InitForStartParametersSetupTask;      //перенести в приватные
+    procedure InitForStartParametersSetupTask;      //РїРµСЂРµРЅРµСЃС‚Рё РІ РїСЂРёРІР°С‚РЅС‹Рµ
     procedure SetStationTo2ChannelMode;
     procedure SetStationTo4ChannelMode;
     //procedure InitStationByTaskID(TaskID: TTaskType);
@@ -53,7 +55,7 @@ begin
 end;
 
 /// <summary>
-///   Переводит станцию в 4-х проводный режим
+///   РџРµСЂРµРІРѕРґРёС‚ СЃС‚Р°РЅС†РёСЋ РІ 4-С… РїСЂРѕРІРѕРґРЅС‹Р№ СЂРµР¶РёРј
 /// </summary>
 procedure TStationInitializer.SetStationTo4ChannelMode;
 begin
@@ -102,7 +104,7 @@ begin
 end;
 
 /// <summary>
-///   Переводит станцию в 2-х проводный режим
+///   РџРµСЂРµРІРѕРґРёС‚ СЃС‚Р°РЅС†РёСЋ РІ 2-С… РїСЂРѕРІРѕРґРЅС‹Р№ СЂРµР¶РёРј
 /// </summary>
 procedure TStationInitializer.SetStationTo2ChannelMode;
 begin
@@ -150,8 +152,8 @@ begin
 end;
 
 /// <summary>
-///   Генерирует случайным образом значения волн приёма/передачи
-///   для обоих полукомплектов и применяет их к станции
+///   Р“РµРЅРµСЂРёСЂСѓРµС‚ СЃР»СѓС‡Р°Р№РЅС‹Рј РѕР±СЂР°Р·РѕРј Р·РЅР°С‡РµРЅРёСЏ РІРѕР»РЅ РїСЂРёС‘РјР°/РїРµСЂРµРґР°С‡Рё
+///   РґР»СЏ РѕР±РѕРёС… РїРѕР»СѓРєРѕРјРїР»РµРєС‚РѕРІ Рё РїСЂРёРјРµРЅСЏРµС‚ РёС… Рє СЃС‚Р°РЅС†РёРё
 /// </summary>
 procedure TStationInitializer.GenerateRandomWaves;
 var
@@ -188,9 +190,9 @@ begin
 end;
 
 /// <summary>
-///   Выставляет параметры станции для выполнения задания
-/// <param name='TaskID'>ID задания, для которого требутся
-///   подготовить станцию<param>
+///   Р’С‹СЃС‚Р°РІР»СЏРµС‚ РїР°СЂР°РјРµС‚СЂС‹ СЃС‚Р°РЅС†РёРё РґР»СЏ РІС‹РїРѕР»РЅРµРЅРёСЏ Р·Р°РґР°РЅРёСЏ
+/// <param name='TaskID'>ID Р·Р°РґР°РЅРёСЏ, РґР»СЏ РєРѕС‚РѕСЂРѕРіРѕ С‚СЂРµР±СѓС‚СЃСЏ
+///   РїРѕРґРіРѕС‚РѕРІРёС‚СЊ СЃС‚Р°РЅС†РёСЋ<param>
 /// </summary>
 //procedure TStationInitializer.InitStationByTaskID(TaskID: TTaskType);
 //var
@@ -204,9 +206,9 @@ end;
 //end;
 
 /// <summary>
-///   Выставляет параметры станции для выполнения задания
-/// <param name='TaskType'>Задание, для которого требутся
-///   подготовить станцию<param>
+///   Р’С‹СЃС‚Р°РІР»СЏРµС‚ РїР°СЂР°РјРµС‚СЂС‹ СЃС‚Р°РЅС†РёРё РґР»СЏ РІС‹РїРѕР»РЅРµРЅРёСЏ Р·Р°РґР°РЅРёСЏ
+/// <param name='TaskType'>Р—Р°РґР°РЅРёРµ, РґР»СЏ РєРѕС‚РѕСЂРѕРіРѕ С‚СЂРµР±СѓС‚СЃСЏ
+///   РїРѕРґРіРѕС‚РѕРІРёС‚СЊ СЃС‚Р°РЅС†РёСЋ<param>
 /// </summary>
 procedure TStationInitializer.InitStationByTask(TaskType: TTaskType);
 begin
@@ -214,17 +216,21 @@ begin
 
   CommonInit;
   case TaskType of
-    ttNone:
-      begin
-        InitForStartParametersSetupTask;
-      end;
+    //ttNone:
+    //  begin
+    //   InitForStartParametersSetupTask;
+    //  end;
     ttPowerOn:
       begin
         InitForPowerOnTask;
       end;
-    ttConnectToR415:{ttReceiveAndTransmitTracksSetup:}
+    //ttConnectToR415:{ttReceiveAndTransmitTracksSetup:}
+    //  begin
+     //   InitForConnectToR415Task;
+     // end;
+      ttCheckStationInStandaloneControlMode:
       begin
-        InitForConnectToR415Task;
+          InitForSingleCheckTask;
       end;
     {ttWorkWithLowFrequency:
       begin
@@ -234,7 +240,7 @@ begin
 end;
 
 /// <summary>
-///   Выполняет общую первоначальную инициализацию станции
+///   Р’С‹РїРѕР»РЅСЏРµС‚ РѕР±С‰СѓСЋ РїРµСЂРІРѕРЅР°С‡Р°Р»СЊРЅСѓСЋ РёРЅРёС†РёР°Р»РёР·Р°С†РёСЋ СЃС‚Р°РЅС†РёРё
 /// </summary>
 procedure TStationInitializer.CommonInit;
   var
@@ -255,7 +261,7 @@ begin
   Station.cbGenerator.stConnectedToPlaceId := csDisconected;
   Station.cbInputYY.stConnectedToPlaceId := csDisconected;
 
-  {$REGION 'Инициализация параметров стоек случайными значениями'}
+  {$REGION 'РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РїР°СЂР°РјРµС‚СЂРѕРІ СЃС‚РѕРµРє СЃР»СѓС‡Р°Р№РЅС‹РјРё Р·РЅР°С‡РµРЅРёСЏРјРё'}
   Station.HalfSetA.Rack1200Left.sw1240GTunedValue := GetRandomTuneValue;
   Station.HalfSetA.Rack1200Left.sw1240GPrmPrdTunedValue := GetRandomTuneValue;
   Station.HalfSetA.Rack1200Left.sw1240V2TunedValue := GetRandomTuneValue;
@@ -311,13 +317,13 @@ begin
 end;
 
 /// <summary>
-///   Настраивает параметры станции для выполнения задания StartParametersSetup
+///   РќР°СЃС‚СЂР°РёРІР°РµС‚ РїР°СЂР°РјРµС‚СЂС‹ СЃС‚Р°РЅС†РёРё РґР»СЏ РІС‹РїРѕР»РЅРµРЅРёСЏ Р·Р°РґР°РЅРёСЏ StartParametersSetup
 /// </summary>
 procedure TStationInitializer.InitForStartParametersSetupTask;
 var
   i: Integer;
 begin
-  {$REGION 'Инициализация параметров стоек'}
+  {$REGION 'РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РїР°СЂР°РјРµС‚СЂРѕРІ СЃС‚РѕРµРє'}
   Station.WaveMeter.Int := 4;
   Station.WaveMeter.Float := 8;
 
@@ -576,7 +582,7 @@ begin
   Station.HalfSetA.Rack1500.GeterodinFloatMain := GetRandomSwitcherState;
   Station.HalfSetA.Rack1500.GeterodinIntReserve := GetRandomSwitcherState;
   Station.HalfSetA.Rack1500.GeterodinFloatReserve := GetRandomSwitcherState;
-  Station.HalfSetA.Rack1500.stCableNoName := csDisconected;
+  Station.HalfSetA.Rack1500.stCableLoad := csDisconected;
   Station.HalfSetA.Rack1500.stCableSh1 := csDisconected;
   Station.HalfSetA.Rack1500.btnAutomatic := butPositionLeft;
 
@@ -602,7 +608,7 @@ begin
   Station.HalfSetB.Rack1500.GeterodinFloatMain := GetRandomSwitcherState;
   Station.HalfSetB.Rack1500.GeterodinIntReserve := GetRandomSwitcherState;
   Station.HalfSetB.Rack1500.GeterodinFloatReserve := GetRandomSwitcherState;
-  Station.HalfSetB.Rack1500.stCableNoName := csDisconected;
+  Station.HalfSetB.Rack1500.stCableLoad := csDisconected;
   Station.HalfSetB.Rack1500.stCableSh1 := csDisconected;
   Station.HalfSetB.Rack1500.btnAutomatic := butPositionLeft;
 
@@ -798,13 +804,13 @@ begin
 end;
 
 /// <summary>
-///   Настраивает параметры станции для выполнения задания PowerOn
+///   РќР°СЃС‚СЂР°РёРІР°РµС‚ РїР°СЂР°РјРµС‚СЂС‹ СЃС‚Р°РЅС†РёРё РґР»СЏ РІС‹РїРѕР»РЅРµРЅРёСЏ Р·Р°РґР°РЅРёСЏ PowerOn
 /// </summary>
 procedure TStationInitializer.InitForPowerOnTask;
 var
   i: Integer;
 begin
-  {$REGION 'Инициализация параметров стоек'}
+  {$REGION 'РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РїР°СЂР°РјРµС‚СЂРѕРІ СЃС‚РѕРµРє'}
   Station.WaveMeter.Int := 3;
   Station.WaveMeter.Float := 9;
 
@@ -1043,9 +1049,9 @@ begin
   Station.HalfSetB.Rack1200Right.sw1240G7Tune := GetrandomTuneValue;
   Station.HalfSetB.Rack1200Right.sw1240G8Tune := GetrandomTuneValue;
 
-  Station.Rack1400.butPower := butPositionLeft;
+  Station.Rack1400.butPower := butPositionRight;
   Station.Rack1400.swKukushka := 1;
-  Station.Rack1400.butSpeaker := butPositionLeft;
+  Station.Rack1400.butSpeaker := butPositionRight;
 
   Station.HalfSetA.Rack1500.CableMdMainState := csDisconected;
   Station.HalfSetA.Rack1500.CableMdReservState := csDisconected;
@@ -1063,7 +1069,7 @@ begin
   Station.HalfSetA.Rack1500.GeterodinFloatMain := GetRandomSwitcherState;
   Station.HalfSetA.Rack1500.GeterodinIntReserve := GetRandomSwitcherState;
   Station.HalfSetA.Rack1500.GeterodinFloatReserve := GetRandomSwitcherState;
-  Station.HalfSetA.Rack1500.stCableNoName := csDisconected;
+  Station.HalfSetA.Rack1500.stCableLoad := csDisconected;
   Station.HalfSetA.Rack1500.stCableSh1 := csDisconected;
   Station.HalfSetA.Rack1500.btnAutomatic := butPositionLeft;
 
@@ -1089,7 +1095,7 @@ begin
   Station.HalfSetB.Rack1500.GeterodinFloatMain := GetRandomSwitcherState;
   Station.HalfSetB.Rack1500.GeterodinIntReserve := GetRandomSwitcherState;
   Station.HalfSetB.Rack1500.GeterodinFloatReserve := GetRandomSwitcherState;
-  Station.HalfSetB.Rack1500.stCableNoName := csDisconected;
+  Station.HalfSetB.Rack1500.stCableLoad := csDisconected;
   Station.HalfSetB.Rack1500.stCableSh1 := csDisconected;
   Station.HalfSetB.Rack1500.btnAutomatic := butPositionLeft;
 
@@ -1291,14 +1297,506 @@ begin
 end;
 
 /// <summary>
-///   Настраивает параметры станции для выполнения задания
+///   РќР°СЃС‚СЂР°РёРІР°РµС‚ РїР°СЂР°РјРµС‚СЂС‹ СЃС‚Р°РЅС†РёРё РґР»СЏ РІС‹РїРѕР»РЅРµРЅРёСЏ Р·Р°РґР°РЅРёСЏ SingleCheck
+/// </summary>
+procedure TStationInitializer.InitForSingleCheckTask;
+var
+  i: Integer;
+begin
+  {$REGION 'РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РїР°СЂР°РјРµС‚СЂРѕРІ СЃС‚РѕРµРє'}
+  Station.WaveMeter.Int := 3;
+  Station.WaveMeter.Float := 9;
+
+  Station.PowerPanel.swPhase := 4;
+  Station.PowerPanel.swNet := 1;
+  Station.PowerPanel.butRetranslator := butPositionDown;
+  Station.PowerPanel.sw1700Power := 1;
+  Station.PowerPanel.butRetranslator2 := butPositionDown;
+  Station.PowerPanel.sw1900Power := 1;
+  Station.PowerPanel.swHeat5A := 0;
+  Station.PowerPanel.sw1900Power_2 := 1;
+  Station.PowerPanel.sw1200Power := 1;
+  Station.PowerPanel.sw1400 := 1;
+  Station.PowerPanel.sw1200Power_2 := 1;
+  Station.PowerPanel.butVent1 := butPositionDown;
+  Station.PowerPanel.butUnitBK := butPositionDown;
+  Station.PowerPanel.butVipriamit4V := butPositionDown;
+  Station.PowerPanel.butVent1_2 := butPositionDown;
+  Station.PowerPanel.butVent3 := butPositionDown;
+
+  Station.HalfSetA.LittleNoisyAmplifier.butMshu := butMain;
+  Station.HalfSetA.LittleNoisyAmplifier.butNet := butPositionUp;
+  Station.HalfSetA.LittleNoisyAmplifier.butNet2 := butPositionUp;
+  Station.HalfSetA.LittleNoisyAmplifier.swWave := Station.WaveReceiveA;
+
+  Station.HalfSetB.LittleNoisyAmplifier.butMshu := butMain;
+  Station.HalfSetB.LittleNoisyAmplifier.butNet := butPositionUp;
+  Station.HalfSetB.LittleNoisyAmplifier.butNet2 := butPositionUp;
+  Station.HalfSetB.LittleNoisyAmplifier.swWave := Station.WaveReceiveB;
+
+  Station.HalfSetA.Duplexer.waveTransmit := GetRandomWaveValue;
+  Station.HalfSetA.Duplexer.waveReceive := GetRandomWaveValue;
+  Station.HalfSetA.Duplexer.cbSh1 := csDisconected;
+  Station.HalfSetA.Duplexer.cb1840 := csConnectedAtDuplexeRight;
+  Station.HalfSetA.Duplexer.cbSh2 := csDisconected;
+
+  Station.HalfSetB.Duplexer.waveTransmit := GetRandomWaveValue;
+  Station.HalfSetB.Duplexer.waveReceive := GetRandomWaveValue;
+  Station.HalfSetB.Duplexer.cbSh1 := csDisconected;
+  Station.HalfSetB.Duplexer.cb1840 := csConnectedAtDuplexeRight;
+  Station.HalfSetB.Duplexer.cbSh2 := csDisconected;
+
+  Station.HalfSetA.Rack1200Left.butChannelControl := butPositionDown;
+  Station.HalfSetA.Rack1200Left.but1220ADMain := butPositionUp;
+  Station.HalfSetA.Rack1200Left.but1230AMain := butPositionUp;
+  Station.HalfSetA.Rack1200Left.Sw1240K := 1;
+  Station.HalfSetA.Rack1200Left.SwNumberOfUchastok := 1;
+  Station.HalfSetA.Rack1200Left.SwNumberOfStantion := 1;
+  Station.HalfSetA.Rack1200Left.but1240K := butPositionUp;
+  Station.HalfSetA.Rack1200Left.but1220ADReserve := butPositionUp;
+  Station.HalfSetA.Rack1200Left.but1230AReserve := butPositionUp;
+  Station.HalfSetA.Rack1200Left.But1240GMain := butPositionUp;
+  Station.HalfSetA.Rack1200Left.But1240GMain2 := butPositionUp;
+  Station.HalfSetA.Rack1200Left.but1240GPrmPrd := butPositionUp;
+  Station.HalfSetA.Rack1200Left.but1240GOneTwo := butPositionUp;
+  Station.HalfSetA.Rack1200Left.but1240G := butPositionUp;
+  Station.HalfSetA.Rack1200Left.but1240V := butPositionLeft;
+  Station.HalfSetA.Rack1200Left.Sw1240V := 1;
+  Station.HalfSetA.Rack1200Left.but1240V2 := butPositionLeft;
+  Station.HalfSetA.Rack1200Left.Sw1240V2 := 1;
+  Station.HalfSetA.Rack1200Left.but1240G1 := butPositionUp;
+  Station.HalfSetA.Rack1200Left.but1240G2 := butPositionUp;
+  Station.HalfSetA.Rack1200Left.but1240G3 := butPositionUp;
+  Station.HalfSetA.Rack1200Left.but1240G4 := butPositionUp;
+  Station.HalfSetA.Rack1200Left.but1240G5 := butPositionUp;
+  Station.HalfSetA.Rack1200Left.but1240G6 := butPositionUp;
+  Station.HalfSetA.Rack1200Left.but1240G7 := butPositionUp;
+  Station.HalfSetA.Rack1200Left.but1240G8 := butPositionUp;
+  Station.HalfSetA.Rack1200Left.but1290Power := butPositionUp;
+  Station.HalfSetA.Rack1200Left.Sw1290 := 1;
+  Station.HalfSetA.Rack1200Left.CableVhodPrm := csDisconected;
+  Station.HalfSetA.Rack1200Left.CableSinusOscill := csDisconected;
+  Station.HalfSetA.Rack1200Left.st1240G_ports := stPluggedIn;
+  Station.HalfSetA.Rack1200Left.st1240V1_4PDC_1_ports := stPluggedIn;
+  Station.HalfSetA.Rack1200Left.st1240V1_4PDC_2_ports := stPluggedIn;
+  Station.HalfSetA.Rack1200Left.st1240V2_4PDC_1_ports := stPluggedIn;
+  Station.HalfSetA.Rack1200Left.st1240V2_4PDC_2_ports := stPluggedIn;
+  Station.HalfSetA.Rack1200Left.sw1240GMainTune := GetRandomTuneValue;
+  Station.HalfSetA.Rack1200Left.sw1240GMain2Tune := GetRandomTuneValue;
+  Station.HalfSetA.Rack1200Left.sw1240GPrmPrdTune := GetRandomTuneValue;
+  Station.HalfSetA.Rack1200Left.sw1240V2Tune := GetRandomTuneValue;
+  Station.HalfSetA.Rack1200Left.sw1240VTune := GetRandomTuneValue;
+  Station.HalfSetA.Rack1200Left.sw1240G1Tune := GetRandomTuneValue;
+  Station.HalfSetA.Rack1200Left.sw1240G2Tune := GetRandomTuneValue;
+  Station.HalfSetA.Rack1200Left.sw1240G3Tune := GetRandomTuneValue;
+  Station.HalfSetA.Rack1200Left.sw1240G4Tune := GetRandomTuneValue;
+  Station.HalfSetA.Rack1200Left.sw1240G5Tune := GetRandomTuneValue;
+  Station.HalfSetA.Rack1200Left.sw1240G6Tune := GetRandomTuneValue;
+  Station.HalfSetA.Rack1200Left.sw1240G7Tune := GetRandomTuneValue;
+  Station.HalfSetA.Rack1200Left.sw1240G8Tune := GetRandomTuneValue;
+  Station.HalfSetA.Rack1200Left.sw1240GTune := GetRandomTuneValue;
+
+  Station.HalfSetB.Rack1200Left.butChannelControl := butPositionDown;
+  Station.HalfSetB.Rack1200Left.but1220ADMain := butPositionUp;
+  Station.HalfSetB.Rack1200Left.but1230AMain := butPositionUp;
+  Station.HalfSetB.Rack1200Left.Sw1240K := 1;
+  Station.HalfSetB.Rack1200Left.SwNumberOfUchastok := 1;
+  Station.HalfSetB.Rack1200Left.SwNumberOfStantion := 1;
+  Station.HalfSetB.Rack1200Left.but1240K := butPositionUp;
+  Station.HalfSetB.Rack1200Left.but1220ADReserve := butPositionDown;
+  Station.HalfSetB.Rack1200Left.but1230AReserve := butPositionUp;
+  Station.HalfSetB.Rack1200Left.But1240GMain := butPositionUp;
+  Station.HalfSetB.Rack1200Left.But1240GMain2 := butPositionUp;
+  Station.HalfSetB.Rack1200Left.but1240GPrmPrd := butPositionUp;
+  Station.HalfSetB.Rack1200Left.but1240GOneTwo := butPositionUp;
+  Station.HalfSetB.Rack1200Left.but1240G := butPositionUp;
+  Station.HalfSetB.Rack1200Left.but1240V := butPositionLeft;
+  Station.HalfSetB.Rack1200Left.Sw1240V := 1;
+  Station.HalfSetB.Rack1200Left.but1240V2 := butPositionLeft;
+  Station.HalfSetB.Rack1200Left.Sw1240V2 := 1;
+  Station.HalfSetB.Rack1200Left.but1240G1 := butPositionUp;
+  Station.HalfSetB.Rack1200Left.but1240G2 := butPositionUp;
+  Station.HalfSetB.Rack1200Left.but1240G3 := butPositionUp;
+  Station.HalfSetB.Rack1200Left.but1240G4 := butPositionUp;
+  Station.HalfSetB.Rack1200Left.but1240G5 := butPositionUp;
+  Station.HalfSetB.Rack1200Left.but1240G6 := butPositionUp;
+  Station.HalfSetB.Rack1200Left.but1240G7 := butPositionUp;
+  Station.HalfSetB.Rack1200Left.but1240G8 := butPositionUp;
+  Station.HalfSetB.Rack1200Left.but1290Power := butPositionUp;
+  Station.HalfSetB.Rack1200Left.Sw1290 := 1;
+  Station.HalfSetB.Rack1200Left.CableVhodPrm := csDisconected;
+  Station.HalfSetB.Rack1200Left.CableSinusOscill := csDisconected;
+  Station.HalfSetB.Rack1200Left.st1240G_ports := stPluggedIn;
+  Station.HalfSetB.Rack1200Left.st1240V1_4PDC_1_ports := stPluggedIn;
+  Station.HalfSetB.Rack1200Left.st1240V1_4PDC_2_ports := stPluggedIn;
+  Station.HalfSetB.Rack1200Left.st1240V2_4PDC_1_ports := stPluggedIn;
+  Station.HalfSetB.Rack1200Left.st1240V2_4PDC_2_ports := stPluggedIn;
+  Station.HalfSetB.Rack1200Left.sw1240GMainTune := GetRandomTuneValue;
+  Station.HalfSetB.Rack1200Left.sw1240GMain2Tune := GetRandomTuneValue;
+  Station.HalfSetB.Rack1200Left.sw1240GPrmPrdTune := GetRandomTuneValue;
+  Station.HalfSetB.Rack1200Left.sw1240V2Tune := GetRandomTuneValue;
+  Station.HalfSetB.Rack1200Left.sw1240VTune := GetRandomTuneValue;
+  Station.HalfSetB.Rack1200Left.sw1240G1Tune := GetRandomTuneValue;
+  Station.HalfSetB.Rack1200Left.sw1240G2Tune := GetRandomTuneValue;
+  Station.HalfSetB.Rack1200Left.sw1240G3Tune := GetRandomTuneValue;
+  Station.HalfSetB.Rack1200Left.sw1240G4Tune := GetRandomTuneValue;
+  Station.HalfSetB.Rack1200Left.sw1240G5Tune := GetRandomTuneValue;
+  Station.HalfSetB.Rack1200Left.sw1240G6Tune := GetRandomTuneValue;
+  Station.HalfSetB.Rack1200Left.sw1240G7Tune := GetRandomTuneValue;
+  Station.HalfSetB.Rack1200Left.sw1240G8Tune := GetRandomTuneValue;
+  Station.HalfSetB.Rack1200Left.sw1240GTune := GetRandomTuneValue;
+
+  Station.HalfSetA.Rack1200Right.CableOscillographLineInput := csDisconected;
+  Station.HalfSetA.Rack1200Right.CableUzlovoiInput := csDisconected;
+  Station.HalfSetA.Rack1200Right.But1270Main := GetRandomButtonState;
+  Station.HalfSetA.Rack1200Right.But1220AMMain := GetRandomButtonState;
+  Station.HalfSetA.Rack1200Right.But1230AMain := GetRandomButtonState;
+  Station.HalfSetA.Rack1200Right.But1210AMain := GetRandomButtonState;
+  Station.HalfSetA.Rack1200Right.but1210ARetrMain := GetRandomButtonState;
+  Station.HalfSetA.Rack1200Right.But1270Reserve := GetRandomButtonState;
+  Station.HalfSetA.Rack1200Right.But1220AMReserve := GetRandomButtonState;
+  Station.HalfSetA.Rack1200Right.But1230AReserve := GetRandomButtonState;
+  Station.HalfSetA.Rack1200Right.But1210AReserve := GetRandomButtonState;
+  Station.HalfSetA.Rack1200Right.but1210ARetrReserve := GetRandomButtonState;
+  Station.HalfSetA.Rack1200Right.But1240V := GetRandomButtonState;
+  Station.HalfSetA.Rack1200Right.Sw1240V := GetRandomSwitcherState;
+  Station.HalfSetA.Rack1200Right.st1240V_Zaglushka_4PDC := stPluggedIn;
+  Station.HalfSetA.Rack1200Right.st1240V_Zaglushka_KDC := stPluggedIn;
+  Station.HalfSetA.Rack1200Right.But1240V2 := GetRandomButtonState;
+  Station.HalfSetA.Rack1200Right.Sw1240V2 := GetRandomSwitcherState;
+  Station.HalfSetA.Rack1200Right.st1240V2_Zaglushka_4PDC := stPluggedIn;
+  Station.HalfSetA.Rack1200Right.st1240V2_Zaglushka_KDC := stPluggedIn;
+  Station.HalfSetA.Rack1200Right.But1240V3 := GetRandomButtonState;
+  Station.HalfSetA.Rack1200Right.Sw1240V3 := GetRandomSwitcherState;
+  Station.HalfSetA.Rack1200Right.st1240V3_Zaglushka_4PDC := stPluggedIn;
+  Station.HalfSetA.Rack1200Right.st1240V3_Zaglushka_KDC := stPluggedIn;
+  Station.HalfSetA.Rack1200Right.But1240G := GetRandomButtonState;
+  Station.HalfSetA.Rack1200Right.But1240G1 := GetRandomButtonState;
+  Station.HalfSetA.Rack1200Right.But1240G2 := GetRandomButtonState;
+  Station.HalfSetA.Rack1200Right.But1240G3 := GetRandomButtonState;
+  Station.HalfSetA.Rack1200Right.But1240G4 := GetRandomButtonState;
+  Station.HalfSetA.Rack1200Right.But1240G5 := GetRandomButtonState;
+  Station.HalfSetA.Rack1200Right.But1240G6 := GetRandomButtonState;
+  Station.HalfSetA.Rack1200Right.But1240G7 := GetRandomButtonState;
+  Station.HalfSetA.Rack1200Right.But1240G8 := GetRandomButtonState;
+  Station.HalfSetA.Rack1200Right.But1290Power := GetRandomButtonState;
+  Station.HalfSetA.Rack1200Right.sw1290Power := GetRandomSwitcherState;
+  Station.HalfSetA.Rack1200Right.sw1240V1Tune := GetrandomTuneValue;
+  Station.HalfSetA.Rack1200Right.sw1240V2Tune := GetrandomTuneValue;
+  Station.HalfSetA.Rack1200Right.sw1240V3Tune := GetrandomTuneValue;
+  Station.HalfSetA.Rack1200Right.sw1240GTune := GetrandomTuneValue;
+  Station.HalfSetA.Rack1200Right.sw1240G1Tune := GetrandomTuneValue;
+  Station.HalfSetA.Rack1200Right.sw1240G2Tune := GetrandomTuneValue;
+  Station.HalfSetA.Rack1200Right.sw1240G3Tune := GetrandomTuneValue;
+  Station.HalfSetA.Rack1200Right.sw1240G4Tune := GetrandomTuneValue;
+  Station.HalfSetA.Rack1200Right.sw1240G5Tune := GetrandomTuneValue;
+  Station.HalfSetA.Rack1200Right.sw1240G6Tune := GetrandomTuneValue;
+  Station.HalfSetA.Rack1200Right.sw1240G7Tune := GetrandomTuneValue;
+  Station.HalfSetA.Rack1200Right.sw1240G8Tune := GetrandomTuneValue;
+
+  Station.HalfSetB.Rack1200Right.CableOscillographLineInput := csDisconected;
+  Station.HalfSetB.Rack1200Right.CableUzlovoiInput := csDisconected;
+  Station.HalfSetB.Rack1200Right.But1270Main := GetRandomButtonState;
+  Station.HalfSetB.Rack1200Right.But1220AMMain := GetRandomButtonState;
+  Station.HalfSetB.Rack1200Right.But1230AMain := GetRandomButtonState;
+  Station.HalfSetB.Rack1200Right.But1210AMain := GetRandomButtonState;
+  Station.HalfSetB.Rack1200Right.but1210ARetrMain := GetRandomButtonState;
+  Station.HalfSetB.Rack1200Right.But1270Reserve := GetRandomButtonState;
+  Station.HalfSetB.Rack1200Right.But1220AMReserve := GetRandomButtonState;
+  Station.HalfSetB.Rack1200Right.But1230AReserve := GetRandomButtonState;
+  Station.HalfSetB.Rack1200Right.But1210AReserve := GetRandomButtonState;
+  Station.HalfSetB.Rack1200Right.but1210ARetrReserve := GetRandomButtonState;
+  Station.HalfSetB.Rack1200Right.But1240V := GetRandomButtonState;
+  Station.HalfSetB.Rack1200Right.Sw1240V := GetRandomSwitcherState;
+  Station.HalfSetB.Rack1200Right.st1240V_Zaglushka_4PDC := stPluggedIn;
+  Station.HalfSetB.Rack1200Right.st1240V_Zaglushka_KDC := stPluggedIn;
+  Station.HalfSetB.Rack1200Right.But1240V2 := GetRandomButtonState;
+  Station.HalfSetB.Rack1200Right.Sw1240V2 := GetRandomSwitcherState;
+  Station.HalfSetB.Rack1200Right.st1240V2_Zaglushka_4PDC := stPluggedIn;
+  Station.HalfSetB.Rack1200Right.st1240V2_Zaglushka_KDC := stPluggedIn;
+  Station.HalfSetB.Rack1200Right.But1240V3 := GetRandomButtonState;
+  Station.HalfSetB.Rack1200Right.Sw1240V3 := GetRandomSwitcherState;
+  Station.HalfSetB.Rack1200Right.st1240V3_Zaglushka_4PDC := stPluggedIn;
+  Station.HalfSetB.Rack1200Right.st1240V3_Zaglushka_KDC := stPluggedIn;
+  Station.HalfSetB.Rack1200Right.But1240G := GetRandomButtonState;
+  Station.HalfSetB.Rack1200Right.But1240G1 := GetRandomButtonState;
+  Station.HalfSetB.Rack1200Right.But1240G2 := GetRandomButtonState;
+  Station.HalfSetB.Rack1200Right.But1240G3 := GetRandomButtonState;
+  Station.HalfSetB.Rack1200Right.But1240G4 := GetRandomButtonState;
+  Station.HalfSetB.Rack1200Right.But1240G5 := GetRandomButtonState;
+  Station.HalfSetB.Rack1200Right.But1240G6 := GetRandomButtonState;
+  Station.HalfSetB.Rack1200Right.But1240G7 := GetRandomButtonState;
+  Station.HalfSetB.Rack1200Right.But1240G8 := GetRandomButtonState;
+  Station.HalfSetB.Rack1200Right.But1290Power := GetRandomButtonState;
+  Station.HalfSetB.Rack1200Right.sw1290Power := GetRandomSwitcherState;
+  Station.HalfSetB.Rack1200Right.sw1240V1Tune := GetrandomTuneValue;
+  Station.HalfSetB.Rack1200Right.sw1240V2Tune := GetrandomTuneValue;
+  Station.HalfSetB.Rack1200Right.sw1240V3Tune := GetrandomTuneValue;
+  Station.HalfSetB.Rack1200Right.sw1240GTune := GetrandomTuneValue;
+  Station.HalfSetB.Rack1200Right.sw1240G1Tune := GetrandomTuneValue;
+  Station.HalfSetB.Rack1200Right.sw1240G2Tune := GetrandomTuneValue;
+  Station.HalfSetB.Rack1200Right.sw1240G3Tune := GetrandomTuneValue;
+  Station.HalfSetB.Rack1200Right.sw1240G4Tune := GetrandomTuneValue;
+  Station.HalfSetB.Rack1200Right.sw1240G5Tune := GetrandomTuneValue;
+  Station.HalfSetB.Rack1200Right.sw1240G6Tune := GetrandomTuneValue;
+  Station.HalfSetB.Rack1200Right.sw1240G7Tune := GetrandomTuneValue;
+  Station.HalfSetB.Rack1200Right.sw1240G8Tune := GetrandomTuneValue;
+
+  Station.Rack1400.butPower := butPositionLeft;
+  Station.Rack1400.swKukushka := 1;
+  Station.Rack1400.butSpeaker := butPositionLeft;
+
+  Station.HalfSetA.Rack1500.CableMdMainState := csDisconected;
+  Station.HalfSetA.Rack1500.CableMdReservState := csDisconected;
+  Station.HalfSetA.Rack1500.DropError := False;
+  Station.HalfSetA.Rack1500.SelectedMd := NotSelected;
+  Station.HalfSetA.Rack1500.SelectedRetr := NotSelected;
+  Station.HalfSetA.Rack1500.swModeControl := GetRandomSwitcherState;
+  Station.HalfSetA.Rack1500.swWave1610_0 := GetRandomSwitcherState;
+  Station.HalfSetA.Rack1500.swWave1500 := GetRandomSwitcherState;
+  Station.HalfSetA.Rack1500.swWave161_R := GetRandomSwitcherState;
+  Station.HalfSetA.Rack1500.swPhaseMover := GetRandomSwitcherState;
+  Station.HalfSetA.Rack1500.GeterodinTunedMain := False;
+  Station.HalfSetA.Rack1500.GeterodinTunedReserve := False;
+  Station.HalfSetA.Rack1500.GeterodinIntMain := GetRandomSwitcherState;
+  Station.HalfSetA.Rack1500.GeterodinFloatMain := GetRandomSwitcherState;
+  Station.HalfSetA.Rack1500.GeterodinIntReserve := GetRandomSwitcherState;
+  Station.HalfSetA.Rack1500.GeterodinFloatReserve := GetRandomSwitcherState;
+  Station.HalfSetA.Rack1500.stCableLoad := csDisconected;
+  Station.HalfSetA.Rack1500.stCableSh1 := csConnected;
+  Station.HalfSetA.Rack1500.btnAutomatic := butPositionLeft;
+
+  Station.HalfSetA.Rack1500B.but1622_1 := GetRandomButtonState;
+  Station.HalfSetA.Rack1500B.but1622_2 := GetRandomButtonState;
+  Station.HalfSetA.Rack1500B.butMdOsn_1 := GetRandomButtonState;
+  Station.HalfSetA.Rack1500B.butMdOsn_2 := GetRandomButtonState;
+  Station.HalfSetA.Rack1500B.butMdOsn_3 := GetRandomButtonState;
+
+  Station.HalfSetB.Rack1500.CableMdMainState := csDisconected;
+  Station.HalfSetB.Rack1500.CableMdReservState := csDisconected;
+  Station.HalfSetB.Rack1500.DropError := False;
+  Station.HalfSetB.Rack1500.SelectedMd := NotSelected;
+  Station.HalfSetB.Rack1500.SelectedRetr := NotSelected;
+  Station.HalfSetB.Rack1500.swModeControl := GetRandomSwitcherState;
+  Station.HalfSetB.Rack1500.swWave1610_0 := GetRandomSwitcherState;
+  Station.HalfSetB.Rack1500.swWave1500 := GetRandomSwitcherState;
+  Station.HalfSetB.Rack1500.swWave161_R := GetRandomSwitcherState;
+  Station.HalfSetB.Rack1500.swPhaseMover := GetRandomSwitcherState;
+  Station.HalfSetB.Rack1500.GeterodinTunedMain := False;
+  Station.HalfSetB.Rack1500.GeterodinTunedReserve := False;
+  Station.HalfSetB.Rack1500.GeterodinIntMain := GetRandomSwitcherState;
+  Station.HalfSetB.Rack1500.GeterodinFloatMain := GetRandomSwitcherState;
+  Station.HalfSetB.Rack1500.GeterodinIntReserve := GetRandomSwitcherState;
+  Station.HalfSetB.Rack1500.GeterodinFloatReserve := GetRandomSwitcherState;
+  Station.HalfSetB.Rack1500.stCableLoad := csDisconected;
+  Station.HalfSetB.Rack1500.stCableSh1 := csConnected;
+  Station.HalfSetB.Rack1500.btnAutomatic := butPositionLeft;
+
+  Station.HalfSetB.Rack1500B.but1622_1 := GetRandomButtonState;
+  Station.HalfSetB.Rack1500B.but1622_2 := GetRandomButtonState;
+  Station.HalfSetB.Rack1500B.butMdOsn_1 := GetRandomButtonState;
+  Station.HalfSetB.Rack1500B.butMdOsn_2 := GetRandomButtonState;
+  Station.HalfSetB.Rack1500B.butMdOsn_3 := GetRandomButtonState;
+
+  Station.HalfSetA.Rack1600.GeterodinTunedMain := False;
+  Station.HalfSetA.Rack1600.GeterodinTunedReserve := False;
+  Station.HalfSetA.Rack1600.GeterodinIntMain := GetRandomSwitcherState;
+  Station.HalfSetA.Rack1600.GeterodinFloatMain := GetRandomSwitcherState;
+  Station.HalfSetA.Rack1600.GeterodinIntReserve := GetRandomSwitcherState;
+  Station.HalfSetA.Rack1600.GeterodinFloatReserve := GetRandomSwitcherState;
+  Station.HalfSetA.Rack1600.CableMdMainState := csDisconected;
+  Station.HalfSetA.Rack1600.CableMdReservState := csDisconected;
+  Station.HalfSetA.Rack1600.SelectedMd := NotSelected;
+  Station.HalfSetA.Rack1600.SelectedUpch := NotSelected;
+  Station.HalfSetA.Rack1600.SelectedDmch := NotSelected;
+  Station.HalfSetA.Rack1600.butAutomatic := butPositionRight;
+  Station.HalfSetA.Rack1600.butDmch := butPositionUp;
+  Station.HalfSetA.Rack1600.butChannelControl := butPositionUp;
+  Station.HalfSetA.Rack1600.swChannelControl := 9;
+  Station.HalfSetA.Rack1600.wave1610_0 := Station.WaveReceiveA;
+  Station.HalfSetA.Rack1600.wave1610_R := Station.WaveReceiveA;
+  Station.HalfSetA.Rack1600.wave1600 := Station.WaveReceiveA;
+  Station.HalfSetA.Rack1600.DropError := False;
+  Station.HalfSetA.Rack1600.stMoshnost := False;
+
+  Station.HalfSetB.Rack1600.GeterodinTunedMain := False;
+  Station.HalfSetB.Rack1600.GeterodinTunedReserve := False;
+  Station.HalfSetB.Rack1600.GeterodinIntMain := GetRandomSwitcherState;
+  Station.HalfSetB.Rack1600.GeterodinFloatMain := GetRandomSwitcherState;
+  Station.HalfSetB.Rack1600.GeterodinIntReserve := GetRandomSwitcherState;
+  Station.HalfSetB.Rack1600.GeterodinFloatReserve := GetRandomSwitcherState;
+  Station.HalfSetB.Rack1600.CableMdMainState := csDisconected;
+  Station.HalfSetB.Rack1600.CableMdReservState := csDisconected;
+  Station.HalfSetB.Rack1600.SelectedMd := NotSelected;
+  Station.HalfSetB.Rack1600.SelectedUpch := NotSelected;
+  Station.HalfSetB.Rack1600.SelectedDmch := NotSelected;
+  Station.HalfSetB.Rack1600.butAutomatic := butPositionRight;
+  Station.HalfSetB.Rack1600.butDmch := butPositionUp;
+  Station.HalfSetB.Rack1600.butChannelControl := butPositionUp;
+  Station.HalfSetB.Rack1600.swChannelControl := 9;
+  Station.HalfSetB.Rack1600.wave1610_0 := Station.WaveReceiveB;
+  Station.HalfSetB.Rack1600.wave1610_R := Station.WaveReceiveB;
+  Station.HalfSetB.Rack1600.wave1600 := Station.WaveReceiveB;
+  Station.HalfSetB.Rack1600.DropError := False;
+  Station.HalfSetB.Rack1600.stMoshnost := False;
+
+  Station.HalfSetA.Rack1600B.but1622Main := butPositionUp;
+  Station.HalfSetA.Rack1600B.but1622Reserve := butPositionUp;
+  Station.HalfSetA.Rack1600B.swUGS :=  5;;
+  Station.HalfSetA.Rack1600B.swUGS2 := 5;
+  Station.HalfSetA.Rack1600B.butUPT := butPositionRight;
+  Station.HalfSetA.Rack1600B.butUPT2 := butPositionRight;
+  Station.HalfSetA.Rack1600B.swKukushka := 1;
+  Station.HalfSetA.Rack1600B.but1621Main := butPositionUp;
+  Station.HalfSetA.Rack1600B.but1621Reserve := butPositionUp;
+
+  Station.HalfSetB.Rack1600B.but1622Main := butPositionUp;
+  Station.HalfSetB.Rack1600B.but1622Reserve := butPositionUp;
+  Station.HalfSetB.Rack1600B.swUGS :=  5;;
+  Station.HalfSetB.Rack1600B.swUGS2 := 5;
+  Station.HalfSetB.Rack1600B.butUPT := butPositionRight;
+  Station.HalfSetB.Rack1600B.butUPT2 := butPositionRight;
+  Station.HalfSetB.Rack1600B.swKukushka := 1;
+  Station.HalfSetB.Rack1600B.but1621Main := butPositionUp;
+  Station.HalfSetB.Rack1600B.but1621Reserve := butPositionUp;
+
+  Station.Rack1710.butPower := butPositionRight;
+  Station.Rack1710.swKukushka := 1;
+  Station.Rack1710.swWorkMode := 1;
+  Station.Rack1710.butAutomat := butPositionUp;
+  Station.Rack1710.butEmergencyLine1:= butPositionUp;
+  Station.Rack1710.butEmergencyLine2:= butPositionUp;
+  Station.Rack1710.but1220AD:= butPositionLeft;
+  Station.Rack1710.but1230AD:= butPositionLeft;
+  Station.Rack1710.but1290:= butPositionLeft;
+  Station.Rack1710.but1220AM:= butPositionLeft;
+  Station.Rack1710.but1230AM:= butPositionLeft;
+  Station.Rack1710.but1210A:= butPositionLeft;
+  Station.Rack1710.but1270:= butPositionLeft;
+  Station.Rack1710.but1220AD_2:= butPositionLeft;
+  Station.Rack1710.but1230AD_2:= butPositionLeft;
+  Station.Rack1710.but1290_2:= butPositionLeft;
+  Station.Rack1710.but1220AM_2:= butPositionLeft;
+  Station.Rack1710.but1230AM_2:= butPositionLeft;
+  Station.Rack1710.but1210A_2:= butPositionLeft;
+  Station.Rack1710.but1270_2 := butPositionLeft;
+  Station.Rack1710.swReductorCurrent := 1;
+  Station.Rack1710.butExternalUplotnenieA := butPositionLeft;
+  Station.Rack1710.butExternalUplotnenieB := butPositionLeft;
+  Station.Rack1710.butSpeaker := butPositionRight;
+
+  Station.HalfSetA.Rack1920.but1910 := butPositionUp;
+  Station.HalfSetA.Rack1920.but1910A := butPositionUp;
+  Station.HalfSetA.Rack1920.but1930 := butPositionUp;
+  Station.HalfSetA.Rack1920.but1960_1 := butPositionUp;
+  Station.HalfSetA.Rack1920.butHighOn := butPositionUp;
+  Station.HalfSetA.Rack1920.butHighOff := butPositionDown;
+  Station.HalfSetA.Rack1920.butCurrent5MA := butPositionUp;
+  Station.HalfSetA.Rack1920.stLBV1_TurnedOn := False;
+  Station.HalfSetA.Rack1920.stLBV2_TurnedOn := False;
+  Station.HalfSetA.Rack1920.butHighOn2 := butPositionUp;
+  Station.HalfSetA.Rack1920.butHighOff2 := butPositionDown;
+  Station.HalfSetA.Rack1920.butCurrent5MA2 := butPositionUp;
+  Station.HalfSetA.Rack1920.butPower := butPositionUp;
+  Station.HalfSetA.Rack1920.butPower2 := butPositionUp;
+  Station.HalfSetA.Rack1920.stZamedleniePodano_LVB1 := False;
+  Station.HalfSetA.Rack1920.stZamedleniePodano_LVB2 := False;
+
+  Station.HalfSetB.Rack1920.but1910 := butPositionUp;
+  Station.HalfSetB.Rack1920.but1910A := butPositionUp;
+  Station.HalfSetB.Rack1920.but1930 := butPositionUp;
+  Station.HalfSetB.Rack1920.but1960_1 := butPositionUp;
+  Station.HalfSetB.Rack1920.butHighOn := butPositionUp;
+  Station.HalfSetB.Rack1920.butHighOff := butPositionDown;
+  Station.HalfSetB.Rack1920.butCurrent5MA := butPositionUp;
+  Station.HalfSetB.Rack1920.stLBV1_TurnedOn := False;
+  Station.HalfSetB.Rack1920.stLBV2_TurnedOn := False;
+  Station.HalfSetB.Rack1920.butHighOn2 := butPositionUp;
+  Station.HalfSetB.Rack1920.butHighOff2 := butPositionDown;
+  Station.HalfSetB.Rack1920.butCurrent5MA2 := butPositionUp;
+  Station.HalfSetB.Rack1920.butPower := butPositionUp;
+  Station.HalfSetB.Rack1920.butPower2 := butPositionUp;
+  Station.HalfSetB.Rack1920.stZamedleniePodano_LVB1 := False;
+  Station.HalfSetB.Rack1920.stZamedleniePodano_LVB2 := False;
+
+  Station.HalfSetA.P321.butPower := butPositionUp;
+  Station.HalfSetA.P321.butMeasure := butPositionUp;
+  Station.HalfSetA.P321.but600Ohm := butPositionUp;
+  Station.HalfSetA.P321.cblVihGen := csDisconected;
+  Station.HalfSetA.P321.cblVhYY := csDisconected;
+  Station.HalfSetA.P321.swGradPit := GetRandomSwitcherState;
+
+  Station.HalfSetB.P321.butPower := butPositionUp;
+  Station.HalfSetB.P321.butMeasure := butPositionUp;
+  Station.HalfSetB.P321.but600Ohm := butPositionUp;
+  Station.HalfSetB.P321.cblVihGen := csDisconected;
+  Station.HalfSetB.P321.cblVhYY := csDisconected;
+  Station.HalfSetB.P321.swGradPit := GetRandomSwitcherState;
+
+  Station.P321C.butPower := butPositionUp;
+  Station.P321C.butMeasure := butPositionUp;
+  Station.P321C.but600Ohm := butPositionUp;
+  Station.P321C.cblVihGen := csDisconected;
+  Station.P321C.cblVhYY := csDisconected;
+  Station.P321C.swGradPit := GetRandomSwitcherState;
+
+  Station.HalfSetA.P321.swNepGen := 1;
+  Station.HalfSetA.P321.swFrequency := 1;
+  Station.HalfSetA.P321.swNepGenYY := 1;
+
+  Station.HalfSetB.P321.swNepGen := 2;
+  Station.HalfSetB.P321.swFrequency := 2;
+  Station.HalfSetB.P321.swNepGenYY := 2;
+
+  Station.P321C.swNepGen := 3;
+  Station.P321C.swFrequency := 3;
+  Station.P321C.swNepGenYY := 3;
+
+  Station.PowerSupply.butPower:= butPositionUp;
+
+  Station.HalfSetA.P321.swGradGen := GetRandomWaveValue;
+  Station.HalfSetB.P321.swGradGen := GetRandomWaveValue;
+  Station.P321C.swGradGen := GetRandomWaveValue;
+
+  Station.HalfSetA.P321.swGradYY := GetRandomWaveValue;
+  Station.HalfSetB.P321.swGradYY := GetRandomWaveValue;
+  Station.P321C.swGradYY := GetRandomWaveValue;
+
+  Station.RemoteController.SwPVU := GetRandomSwitcherState;
+  Station.RemoteController.butCall1 := GetRandomButtonState;
+  Station.RemoteController.butCall2 := GetRandomButtonState;
+  Station.RemoteController.butCall3 := GetRandomButtonState;
+  Station.RemoteController.butCall4 := GetRandomButtonState;
+  Station.RemoteController.butForceMachine := GetRandomButtonState;
+  for i := 1 to 21 do
+  begin
+    Station.RemoteController.CrossA[i].AbonentPRD.stChannelState := stChannelNotTuned;
+    Station.RemoteController.CrossA[i].ChannelM.stChannelState := stChannelNotTuned;
+    Station.RemoteController.CrossA[i].UdPRD.stChannelState := stChannelNotTuned;
+    Station.RemoteController.CrossA[i].Ud2PRD.stChannelState := stChannelNotTuned;
+    Station.RemoteController.CrossB[i].AbonentPRD.stChannelState := stChannelNotTuned;
+    Station.RemoteController.CrossB[i].ChannelM.stChannelState := stChannelNotTuned;
+    Station.RemoteController.CrossB[i].UdPRD.stChannelState := stChannelNotTuned;
+    Station.RemoteController.CrossB[i].Ud2PRD.stChannelState := stChannelNotTuned;
+  end;
+  Station.RemoteController.stGeneratorCableConnectedAtPortA := NotSelected;
+  Station.RemoteController.stInputYYCableConnectedAtPortA := NotSelected;
+  Station.RemoteController.stGeneratorCableConnectedAtPortB := NotSelected;
+  Station.RemoteController.stInputYYCableConnectedAtPortB := NotSelected;
+  Station.RemoteController.stGeneratorCableAType := NotSelected;
+  Station.RemoteController.stGeneratorCableBType := NotSelected;
+  {$ENDREGION}
+end;
+
+/// <summary>
+///   РќР°СЃС‚СЂР°РёРІР°РµС‚ РїР°СЂР°РјРµС‚СЂС‹ СЃС‚Р°РЅС†РёРё РґР»СЏ РІС‹РїРѕР»РЅРµРЅРёСЏ Р·Р°РґР°РЅРёСЏ
 ///   ConnectToR415
 /// </summary>
 procedure TStationInitializer.InitForConnectToR415Task;
 var
   i: Integer;
 begin
-  {$REGION 'Инициализация параметров стоек'}
+  {$REGION 'РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РїР°СЂР°РјРµС‚СЂРѕРІ СЃС‚РѕРµРє'}
   Station.PowerSupply.butPower:= butPositionUp;
 
   Station.WaveMeter.Int := 14;
@@ -1559,7 +2057,7 @@ begin
   Station.HalfSetA.Rack1500.GeterodinFloatMain := GetRandomSwitcherState;
   Station.HalfSetA.Rack1500.GeterodinIntReserve := GetRandomSwitcherState;
   Station.HalfSetA.Rack1500.GeterodinFloatReserve := GetRandomSwitcherState;
-  Station.HalfSetA.Rack1500.stCableNoName := csConnectedAtRack1500Sh1;
+  Station.HalfSetA.Rack1500.stCableLoad := csConnectedAtRack1500Sh1;
   Station.HalfSetA.Rack1500.stCableSh1 := csConnectedAtRack1500NoName;
   Station.HalfSetA.Rack1500.btnAutomatic := butPositionLeft;
 
@@ -1585,7 +2083,7 @@ begin
   Station.HalfSetB.Rack1500.GeterodinFloatMain := GetRandomSwitcherState;
   Station.HalfSetB.Rack1500.GeterodinIntReserve := GetRandomSwitcherState;
   Station.HalfSetB.Rack1500.GeterodinFloatReserve := GetRandomSwitcherState;
-  Station.HalfSetB.Rack1500.stCableNoName := csConnectedAtRack1500Sh1;
+  Station.HalfSetB.Rack1500.stCableLoad := csConnectedAtRack1500Sh1;
   Station.HalfSetB.Rack1500.stCableSh1 := csConnectedAtRack1500NoName;
   Station.HalfSetB.Rack1500.btnAutomatic := butPositionLeft;
 
@@ -1787,14 +2285,14 @@ begin
 end;
 
 /// <summary>
-///   Настраивает параметры станции для выполнения задания WorkWithLowFrequency
+///   РќР°СЃС‚СЂР°РёРІР°РµС‚ РїР°СЂР°РјРµС‚СЂС‹ СЃС‚Р°РЅС†РёРё РґР»СЏ РІС‹РїРѕР»РЅРµРЅРёСЏ Р·Р°РґР°РЅРёСЏ WorkWithLowFrequency
 /// </summary>
 procedure TStationInitializer.InitForWorkWithLowFrequencyTask;
 var
   i: Integer;
 begin
-  {$REGION 'Инициализация параметров стоек'}
-  //Случайная расстановка
+  {$REGION 'РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РїР°СЂР°РјРµС‚СЂРѕРІ СЃС‚РѕРµРє'}
+  //РЎР»СѓС‡Р°Р№РЅР°СЏ СЂР°СЃСЃС‚Р°РЅРѕРІРєР°
   Station.WaveMeter.Int := 14;
   Station.WaveMeter.Float := 84;
 
@@ -2069,7 +2567,7 @@ begin
   Station.HalfSetA.Rack1500.GeterodinFloatMain := GetRandomSwitcherState;
   Station.HalfSetA.Rack1500.GeterodinIntReserve := GetRandomSwitcherState;
   Station.HalfSetA.Rack1500.GeterodinFloatReserve := GetRandomSwitcherState;
-  Station.HalfSetA.Rack1500.stCableNoName := csConnectedAtRack1500Sh1;
+  Station.HalfSetA.Rack1500.stCableLoad := csConnectedAtRack1500Sh1;
   Station.HalfSetA.Rack1500.stCableSh1 := csConnectedAtRack1500NoName;
 
   Station.HalfSetA.Rack1500B.but1622_1 := GetRandomButtonState;
@@ -2095,7 +2593,7 @@ begin
   Station.HalfSetB.Rack1500.GeterodinFloatMain := GetRandomSwitcherState;
   Station.HalfSetB.Rack1500.GeterodinIntReserve := GetRandomSwitcherState;
   Station.HalfSetB.Rack1500.GeterodinFloatReserve := GetRandomSwitcherState;
-  Station.HalfSetB.Rack1500.stCableNoName := csConnectedAtRack1500Sh1;
+  Station.HalfSetB.Rack1500.stCableLoad := csConnectedAtRack1500Sh1;
   Station.HalfSetB.Rack1500.stCableSh1 := csConnectedAtRack1500NoName;
 
   Station.HalfSetB.Rack1500B.but1622_1 := GetRandomButtonState;
@@ -2296,7 +2794,7 @@ end;
 
 {
 /// <summary>
-///   Загружает начальное состояние станции на момент начала задания (2.5k строк...)
+///   Р—Р°РіСЂСѓР¶Р°РµС‚ РЅР°С‡Р°Р»СЊРЅРѕРµ СЃРѕСЃС‚РѕСЏРЅРёРµ СЃС‚Р°РЅС†РёРё РЅР° РјРѕРјРµРЅС‚ РЅР°С‡Р°Р»Р° Р·Р°РґР°РЅРёСЏ (2.5k СЃС‚СЂРѕРє...)
 /// </summary>
 procedure LoadInitialState;
   var
@@ -2326,7 +2824,7 @@ procedure LoadInitialState;
           end;
         end;
 
-        //======================================Экзамен=======================================
+        //======================================Р­РєР·Р°РјРµРЅ=======================================
       wtExam:
         begin
           Station.Oscillograph.swRazvertka := 1;
@@ -2602,7 +3100,7 @@ procedure LoadInitialState;
           Station.HalfSetA.Rack1500.GeterodinFloatMain := GetRandomSwitcherState;
           Station.HalfSetA.Rack1500.GeterodinIntReserve := GetRandomSwitcherState;
           Station.HalfSetA.Rack1500.GeterodinFloatReserve := GetRandomSwitcherState;
-          Station.HalfSetA.Rack1500.stCableNoName := csDisconected;
+          Station.HalfSetA.Rack1500.stCableLoad := csDisconected;
           Station.HalfSetA.Rack1500.stCableSh1 := csDisconected;
 
           Station.HalfSetA.Rack1500B.but1622_1 := GetRandomButtonState;
@@ -2627,7 +3125,7 @@ procedure LoadInitialState;
           Station.HalfSetB.Rack1500.GeterodinFloatMain := GetRandomSwitcherState;
           Station.HalfSetB.Rack1500.GeterodinIntReserve := GetRandomSwitcherState;
           Station.HalfSetB.Rack1500.GeterodinFloatReserve := GetRandomSwitcherState;
-          Station.HalfSetB.Rack1500.stCableNoName := csDisconected;
+          Station.HalfSetB.Rack1500.stCableLoad := csDisconected;
           Station.HalfSetB.Rack1500.stCableSh1 := csDisconected;
 
           Station.HalfSetB.Rack1500B.but1622_1 := GetRandomButtonState;

@@ -75,8 +75,8 @@ begin
   Self.edtUserName.Text := NetWorker.ClientState.UserName;
   Self.NetworkSender := TNetworkSender.Create(NetWorker);
 
-  Self.Station := TStation.Create;
-  Self.TaskController := TTaskController.Create(Station);
+  //Self.Station := TStation.Create;
+  //Self.TaskController := TTaskController.Create(Station);
 
   lstTaskChoice.Items.Delete(0);            // Удаляем пустую строчку
 //  for i := 1 to TaskController.CountTasks do// Заполняем список заданий
@@ -175,8 +175,8 @@ begin
     StationInitializer.Free;
 
 
-    TaskController := TTaskController.Create(Station); // Он проверяет станцию на соответствие заданию
-    TaskController.SetCurrentTask(WorkMode, TaskID);
+    TaskController := TTaskController.Create(Station, NetWorker.ClientState); // Он проверяет станцию на соответствие заданию
+    TaskController.SetCurrentTask();
     //Соответственно в деструкторе мы всё это дело убиваем
 
     R414 := TStationR414Form.Create(Self, Station, TaskController, NetWorker.ClientState);

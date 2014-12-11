@@ -3,7 +3,7 @@ object ConnectToServerForm: TConnectToServerForm
   Top = 0
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = #1055#1086#1076#1082#1083#1102#1095#1077#1085#1080#1077' '#1082' '#1089#1077#1088#1074#1077#1088#1091
-  ClientHeight = 162
+  ClientHeight = 161
   ClientWidth = 311
   Color = clBtnFace
   Constraints.MaxHeight = 200
@@ -16,17 +16,17 @@ object ConnectToServerForm: TConnectToServerForm
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
-  Position = poDesktopCenter
+  Position = poScreenCenter
   OnClose = FormClose
   OnCreate = FormCreate
   DesignSize = (
     311
-    162)
+    161)
   PixelsPerInch = 96
   TextHeight = 13
   object btnConnect: TButton
     Left = 185
-    Top = 124
+    Top = 123
     Width = 120
     Height = 30
     Anchors = [akRight, akBottom]
@@ -36,7 +36,7 @@ object ConnectToServerForm: TConnectToServerForm
   end
   object btnCancel: TButton
     Left = 8
-    Top = 124
+    Top = 123
     Width = 65
     Height = 30
     Anchors = [akLeft, akBottom]
@@ -48,12 +48,12 @@ object ConnectToServerForm: TConnectToServerForm
     Left = 8
     Top = 8
     Width = 297
-    Height = 110
+    Height = 109
     Anchors = [akLeft, akTop, akRight, akBottom]
     TabOrder = 2
     DesignSize = (
       297
-      110)
+      109)
     object lblUserName: TLabel
       Left = 14
       Top = 51
@@ -76,12 +76,13 @@ object ConnectToServerForm: TConnectToServerForm
     end
     object lblError: TLabel
       Left = 92
-      Top = 85
+      Top = 84
       Width = 181
       Height = 13
       Anchors = [akRight, akBottom]
       Caption = #1058#1072#1082#1086#1081' '#1087#1086#1079#1099#1074#1085#1086#1081' '#1091#1078#1077' '#1080#1089#1087#1086#1083#1100#1079#1091#1077#1090#1089#1103'!'
       Visible = False
+      ExplicitTop = 85
     end
     object edtUserName: TEdit
       Left = 92

@@ -1,4 +1,4 @@
-unit uRack1500Form;
+п»їunit uRack1500Form;
 
 interface
 
@@ -26,7 +26,7 @@ uses
 
 type
   TRack1500Form = class(TForm)
-  {$REGION 'Элементы формы'}
+  {$REGION 'Р­Р»РµРјРµРЅС‚С‹ С„РѕСЂРјС‹'}
     Panel1: TPanel;
     imgBG: TImage;
     ilSwModeControl: TImageList;
@@ -123,7 +123,7 @@ type
     imgEnterToRackRightSelected: TImage;
     {$ENDREGION}
 
-  {$REGION 'Обработка событий формы'}
+  {$REGION 'РћР±СЂР°Р±РѕС‚РєР° СЃРѕР±С‹С‚РёР№ С„РѕСЂРјС‹'}
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Image12Click(Sender: TObject);
     procedure Image11Click(Sender: TObject);
@@ -261,6 +261,8 @@ begin
   Inherited Create(AOwner);
   Station:=Station0;
   CurFormId:=Half;
+  if (Half=1) then begin Self.Caption:='1500 Рђ'; end
+  else Self.Caption:='1500 Р‘';
   TaskController:=TaskController0;
   TaskController.Subscribe(self);
   ButtonBackForm:= TButtonBackForm.Create(self);
@@ -268,7 +270,7 @@ begin
 end;
 
 
-{$REGION 'Процедуры присоединения/отсоединения кабелей'}
+{$REGION 'РџСЂРѕС†РµРґСѓСЂС‹ РїСЂРёСЃРѕРµРґРёРЅРµРЅРёСЏ/РѕС‚СЃРѕРµРґРёРЅРµРЅРёСЏ РєР°Р±РµР»РµР№'}
 procedure TRack1500Form.ConnectCable1840ToSh37;
 begin
   lblCable1840.Left := 335;
@@ -369,7 +371,7 @@ begin
   self.MoveToCenter;
 end;
 
-{$REGION 'Смещение формы влево/вправо, чтобы не перекрывать волномер'}
+{$REGION 'РЎРјРµС‰РµРЅРёРµ С„РѕСЂРјС‹ РІР»РµРІРѕ/РІРїСЂР°РІРѕ, С‡С‚РѕР±С‹ РЅРµ РїРµСЂРµРєСЂС‹РІР°С‚СЊ РІРѕР»РЅРѕРјРµСЂ'}
 procedure TRack1500Form.MoveToRight();
 begin
   if Self.Left < WaveMeterPanelForm.Width then
@@ -394,7 +396,7 @@ var StationR414FormminiHWND : HWND;
 begin
   if Ord(Key) = 27 then
   begin
-    //Инициация события "Закрытие окна стойки"
+    //РРЅРёС†РёР°С†РёСЏ СЃРѕР±С‹С‚РёСЏ "Р—Р°РєСЂС‹С‚РёРµ РѕРєРЅР° СЃС‚РѕР№РєРё"
     StationR414FormminiHWND := FindWindow(StationR414FormminiClassName, StationR414FormminiObjectName);
     PostMessage(StationR414FormminiHWND, MM_RACK_WAS_CLOSED, 0, 0);
   end;
@@ -554,7 +556,7 @@ begin
   VertScrollBar.Position := VertScrollBar.Position + ScroolValue;
 end;
 
-{$REGION 'Процедура TRack1500Form.Reload'}
+{$REGION 'РџСЂРѕС†РµРґСѓСЂР° TRack1500Form.Reload'}
 procedure TRack1500Form.Reload;
 begin;
   case CurFormId of
@@ -648,12 +650,12 @@ begin;
           imgWarningLight.Visible := Boolean(Station.HalfSetA.Rack1500.btnAutomatic = butPositionLeft);
         end;
 
-        if Station.HalfSetA.Rack1500.stCableNoName = csDisconected then
+        if Station.HalfSetA.Rack1500.stCableLoad = csDisconected then
         begin
           DisConnectCableNagruzka;
         end
         else
-          if Station.HalfSetA.Rack1500.stCableNoName = csConnectedAtRack1500NoName then
+          if Station.HalfSetA.Rack1500.stCableLoad = csConnectedAtRack1500NoName then
           begin
             ConnectCableNagruzkaToFreePlace;
           end
@@ -765,12 +767,12 @@ begin;
           imgWarningLight.Visible := Boolean(Station.HalfSetB.Rack1500.btnAutomatic = butPositionLeft);
         end;
 
-        if Station.HalfSetB.Rack1500.stCableNoName = csDisconected then
+        if Station.HalfSetB.Rack1500.stCableLoad = csDisconected then
         begin
           DisConnectCableNagruzka;
         end
         else
-          if Station.HalfSetB.Rack1500.stCableNoName = csConnectedAtRack1500NoName then
+          if Station.HalfSetB.Rack1500.stCableLoad = csConnectedAtRack1500NoName then
           begin
             ConnectCableNagruzkaToFreePlace;
           end
@@ -795,7 +797,7 @@ begin;
 end;
 {$ENDREGION}
 
-{$REGION 'Обработка событий, связанных с img'}
+{$REGION 'РћР±СЂР°Р±РѕС‚РєР° СЃРѕР±С‹С‚РёР№, СЃРІСЏР·Р°РЅРЅС‹С… СЃ img'}
 procedure TRack1500Form.imgSpawnNagruzkaClick(Sender: TObject);
 begin
   case CurFormId of
@@ -803,7 +805,7 @@ begin
       begin
         if SelectedCable1500 = cb1500Nagruzka then
         begin
-          Station.HalfSetA.Rack1500.stCableNoName := csConnectedAtRack1500NoName;
+          Station.HalfSetA.Rack1500.stCableLoad := csConnectedAtRack1500NoName;
         end;
         if SelectedCable1500 = cb1500Sa37 then
         begin
@@ -815,7 +817,7 @@ begin
       begin
         if SelectedCable1500 = cb1500Nagruzka then
         begin
-          Station.HalfSetB.Rack1500.stCableNoName := csConnectedAtRack1500NoName;
+          Station.HalfSetB.Rack1500.stCableLoad := csConnectedAtRack1500NoName;
         end;
         if SelectedCable1500 = cb1500Sa37 then
         begin
@@ -837,7 +839,7 @@ begin
       begin
         if SelectedCable1500 = cb1500Nagruzka then
         begin
-          Station.HalfSetA.Rack1500.stCableNoName := csConnectedAtRack1500Sh1;
+          Station.HalfSetA.Rack1500.stCableLoad := csConnectedAtRack1500Sh1;
         end;
         if SelectedCable1500 = cb1500Sa37 then
         begin
@@ -849,7 +851,7 @@ begin
       begin
         if SelectedCable1500 = cb1500Nagruzka then
         begin
-          Station.HalfSetB.Rack1500.stCableNoName := csConnectedAtRack1500Sh1;
+          Station.HalfSetB.Rack1500.stCableLoad := csConnectedAtRack1500Sh1;
         end;
         if SelectedCable1500 = cb1500Sa37 then
         begin
@@ -936,7 +938,7 @@ begin
       begin
         if Button = mbMiddle then
         begin
-          if not(InputQuery('Введите значение волны', PName, strDigit)) then
+          if not(InputQuery('Р’РІРµРґРёС‚Рµ Р·РЅР°С‡РµРЅРёРµ РІРѕР»РЅС‹', PName, strDigit)) then
             Exit;
           if Trim(strDigit) = '' then
             Exit;
@@ -944,7 +946,7 @@ begin
             btDigit := StrToInt(strDigit);
             Station.HalfSetA.Rack1500.swWave1610_0 := btDigit;
           except
-            Application.MessageBox(PChar('Введите число от ' + IntToStr(MIN_WAVE_VALUE) + ' до ' + IntToStr(MAX_WAVE_VALUE) + '!'),
+            Application.MessageBox(PChar('Р’РІРµРґРёС‚Рµ С‡РёСЃР»Рѕ РѕС‚ ' + IntToStr(MIN_WAVE_VALUE) + ' РґРѕ ' + IntToStr(MAX_WAVE_VALUE) + '!'),
             PChar(PName), MB_OK + MB_ICONSTOP);
             Exit;
           end;
@@ -965,7 +967,7 @@ begin
       begin
         if Button = mbMiddle then
         begin
-          if not(InputQuery('Введите значение волны', PName, strDigit)) then
+          if not(InputQuery('Р’РІРµРґРёС‚Рµ Р·РЅР°С‡РµРЅРёРµ РІРѕР»РЅС‹', PName, strDigit)) then
             Exit;
           if Trim(strDigit) = '' then
             Exit;
@@ -973,7 +975,7 @@ begin
             btDigit := StrToInt(strDigit);
             Station.HalfSetB.Rack1500.swWave1610_0 := btDigit;
           except
-            Application.MessageBox(PChar('Введите число от ' + IntToStr(MIN_WAVE_VALUE) + ' до ' + IntToStr(MAX_WAVE_VALUE) + '!'),
+            Application.MessageBox(PChar('Р’РІРµРґРёС‚Рµ С‡РёСЃР»Рѕ РѕС‚ ' + IntToStr(MIN_WAVE_VALUE) + ' РґРѕ ' + IntToStr(MAX_WAVE_VALUE) + '!'),
             PChar(PName), MB_OK + MB_ICONSTOP);
             Exit;
           end;
@@ -1005,7 +1007,7 @@ begin
       begin
         if Button = mbMiddle then
         begin
-          if not(InputQuery('Введите значение волны', PName, strDigit)) then
+          if not(InputQuery('Р’РІРµРґРёС‚Рµ Р·РЅР°С‡РµРЅРёРµ РІРѕР»РЅС‹', PName, strDigit)) then
             Exit;
           if Trim(strDigit) = '' then
             Exit;
@@ -1013,7 +1015,7 @@ begin
             btDigit := StrToInt(strDigit);
             Station.HalfSetA.Rack1500.swWave161_R := btDigit;
           except
-            Application.MessageBox(PChar('Введите число от ' + IntToStr(MIN_WAVE_VALUE) + ' до ' + IntToStr(MAX_WAVE_VALUE) + '!'),
+            Application.MessageBox(PChar('Р’РІРµРґРёС‚Рµ С‡РёСЃР»Рѕ РѕС‚ ' + IntToStr(MIN_WAVE_VALUE) + ' РґРѕ ' + IntToStr(MAX_WAVE_VALUE) + '!'),
             PChar(PName), MB_OK + MB_ICONSTOP);
             Exit;
           end;
@@ -1032,7 +1034,7 @@ begin
       begin
         if Button = mbMiddle then
         begin
-          if not(InputQuery('Введите значение волны', PName, strDigit)) then
+          if not(InputQuery('Р’РІРµРґРёС‚Рµ Р·РЅР°С‡РµРЅРёРµ РІРѕР»РЅС‹', PName, strDigit)) then
             Exit;
           if Trim(strDigit) = '' then
             Exit;
@@ -1040,7 +1042,7 @@ begin
             btDigit := StrToInt(strDigit);
             Station.HalfSetB.Rack1500.swWave161_R := btDigit;
           except
-            Application.MessageBox(PChar('Введите число от ' + IntToStr(MIN_WAVE_VALUE) + ' до ' + IntToStr(MAX_WAVE_VALUE) + '!'),
+            Application.MessageBox(PChar('Р’РІРµРґРёС‚Рµ С‡РёСЃР»Рѕ РѕС‚ ' + IntToStr(MIN_WAVE_VALUE) + ' РґРѕ ' + IntToStr(MAX_WAVE_VALUE) + '!'),
             PChar(PName), MB_OK + MB_ICONSTOP);
             Exit;
           end;
@@ -1080,16 +1082,16 @@ begin
 
         if Station.HalfSetA.Rack1500.butMode_R = butPositionLeft then
         begin
-          //---------------------------------------РАСФАЗИРОВКА----------------------------------
+          //---------------------------------------Р РђРЎР¤РђР—РР РћР’РљРђ----------------------------------
           if ((Station.HalfSetA.Rack1920.stLBV1_TurnedOn) and (not(Station.HalfSetA.Rack1920.stLBV2_TurnedOn))) or
           ((Station.HalfSetA.Rack1920.stLBV2_TurnedOn) and (not(Station.HalfSetA.Rack1920.stLBV1_TurnedOn))) then
           begin
-            //Включена одна лампа - максимальная расфазировка
+            //Р’РєР»СЋС‡РµРЅР° РѕРґРЅР° Р»Р°РјРїР° - РјР°РєСЃРёРјР°Р»СЊРЅР°СЏ СЂР°СЃС„Р°Р·РёСЂРѕРІРєР°
             ModeControl(6);
           end
           else
           begin
-            //Включены обе лампы - регулируем положение
+            //Р’РєР»СЋС‡РµРЅС‹ РѕР±Рµ Р»Р°РјРїС‹ - СЂРµРіСѓР»РёСЂСѓРµРј РїРѕР»РѕР¶РµРЅРёРµ
             case Station.HalfSetA.Rack1500.swPhaseMover of
               0:
                 ModeControl(11);
@@ -1171,16 +1173,16 @@ begin
 
         if Station.HalfSetB.Rack1500.butMode_R = butPositionLeft then
         begin
-          //---------------------------------------РАСФАЗИРОВКА----------------------------------
+          //---------------------------------------Р РђРЎР¤РђР—РР РћР’РљРђ----------------------------------
           if ((Station.HalfSetB.Rack1920.stLBV1_TurnedOn) and (not(Station.HalfSetB.Rack1920.stLBV2_TurnedOn))) or
           ((Station.HalfSetB.Rack1920.stLBV2_TurnedOn) and (not(Station.HalfSetB.Rack1920.stLBV1_TurnedOn))) then
           begin
-            //Включена одна лампа - максимальная расфазировка
+            //Р’РєР»СЋС‡РµРЅР° РѕРґРЅР° Р»Р°РјРїР° - РјР°РєСЃРёРјР°Р»СЊРЅР°СЏ СЂР°СЃС„Р°Р·РёСЂРѕРІРєР°
             ModeControl(6);
           end
           else
           begin
-            //Включены обе лампы - регулируем положение
+            //Р’РєР»СЋС‡РµРЅС‹ РѕР±Рµ Р»Р°РјРїС‹ - СЂРµРіСѓР»РёСЂСѓРµРј РїРѕР»РѕР¶РµРЅРёРµ
             case Station.HalfSetB.Rack1500.swPhaseMover of
               0:
                 ModeControl(11);
@@ -1239,7 +1241,7 @@ procedure TRack1500Form.imgSwPhaseSwitcherMouseEnter(Sender: TObject);
 var
   btA: Byte;
 begin
-  //Перерисуем выносной дисплей
+  //РџРµСЂРµСЂРёСЃСѓРµРј РІС‹РЅРѕСЃРЅРѕР№ РґРёСЃРїР»РµР№
   if pnlPhaseMover.Visible then
   begin
     for btA := 1 to 10 do
@@ -1274,7 +1276,7 @@ begin
       begin
         if Button = mbMiddle then
         begin
-          if not(InputQuery('Введите значение волны', PName, strDigit)) then
+          if not(InputQuery('Р’РІРµРґРёС‚Рµ Р·РЅР°С‡РµРЅРёРµ РІРѕР»РЅС‹', PName, strDigit)) then
             Exit;
           if Trim(strDigit) = '' then
             Exit;
@@ -1282,7 +1284,7 @@ begin
             btDigit := StrToInt(strDigit);
             Station.HalfSetA.Rack1500.swWave1500 := btDigit;
           except
-            Application.MessageBox(PChar('Введите число от ' + IntToStr(MIN_WAVE_VALUE) + ' до ' + IntToStr(MAX_WAVE_VALUE) + '!'),
+            Application.MessageBox(PChar('Р’РІРµРґРёС‚Рµ С‡РёСЃР»Рѕ РѕС‚ ' + IntToStr(MIN_WAVE_VALUE) + ' РґРѕ ' + IntToStr(MAX_WAVE_VALUE) + '!'),
             PChar(PName), MB_OK + MB_ICONSTOP);
             Exit;
           end;
@@ -1319,7 +1321,7 @@ begin
       begin
         if Button = mbMiddle then
         begin
-          if not(InputQuery('Введите значение волны', PName, strDigit)) then
+          if not(InputQuery('Р’РІРµРґРёС‚Рµ Р·РЅР°С‡РµРЅРёРµ РІРѕР»РЅС‹', PName, strDigit)) then
             Exit;
           if Trim(strDigit) = '' then
             Exit;
@@ -1327,7 +1329,7 @@ begin
             btDigit := StrToInt(strDigit);
             Station.HalfSetB.Rack1500.swWave1500 := btDigit;
           except
-            Application.MessageBox(PChar('Введите число от ' + IntToStr(MIN_WAVE_VALUE) + ' до ' + IntToStr(MAX_WAVE_VALUE) + '!'),
+            Application.MessageBox(PChar('Р’РІРµРґРёС‚Рµ С‡РёСЃР»Рѕ РѕС‚ ' + IntToStr(MIN_WAVE_VALUE) + ' РґРѕ ' + IntToStr(MAX_WAVE_VALUE) + '!'),
             PChar(PName), MB_OK + MB_ICONSTOP);
             Exit;
           end;
@@ -1562,8 +1564,8 @@ begin
 
   If Vidimost=false then
   begin
-    Image14.BringToFront;                    //Снять выделение с верхних
-    Image11.SendToBack;                      //ручек стойки
+    Image14.BringToFront;                    //РЎРЅСЏС‚СЊ РІС‹РґРµР»РµРЅРёРµ СЃ РІРµСЂС…РЅРёС…
+    Image11.SendToBack;                      //СЂСѓС‡РµРє СЃС‚РѕР№РєРё
     Image13.BringToFront;
     Image12.SendToBack;
 
@@ -1579,7 +1581,7 @@ begin
   case CurFormId of
     idRack1500A:
       begin
-        if Station.HalfSetA.Rack1500.stCableNoName = csDisconected then
+        if Station.HalfSetA.Rack1500.stCableLoad = csDisconected then
         begin
           imgSpawnNagruzka.Visible := Boolean(Station.HalfSetA.Rack1500.stCableSh1 <> csConnectedAtRack1500NoName);
           imgSpawnSh37.Visible := Boolean(Station.HalfSetA.Rack1500.stCableSh1 <> csConnectedAtRack1500Sh1);
@@ -1588,13 +1590,13 @@ begin
         end
         else
         begin
-          Station.HalfSetA.Rack1500.stCableNoName := csDisconected;
+          Station.HalfSetA.Rack1500.stCableLoad := csDisconected;
         end;
       end;
 
     idRack1500B:
       begin
-        if Station.HalfSetB.Rack1500.stCableNoName = csDisconected then
+        if Station.HalfSetB.Rack1500.stCableLoad = csDisconected then
         begin
           imgSpawnNagruzka.Visible := Boolean(Station.HalfSetB.Rack1500.stCableSh1 <> csConnectedAtRack1500NoName);
           imgSpawnSh37.Visible := Boolean(Station.HalfSetB.Rack1500.stCableSh1 <> csConnectedAtRack1500Sh1);
@@ -1603,7 +1605,7 @@ begin
         end
         else
         begin
-          Station.HalfSetB.Rack1500.stCableNoName := csDisconected;
+          Station.HalfSetB.Rack1500.stCableLoad := csDisconected;
         end;
       end;
   end;
@@ -1619,8 +1621,8 @@ begin
       begin
         if Station.HalfSetA.Rack1500.stCableSh1 = csDisconected then
         begin
-          imgSpawnNagruzka.Visible := Boolean(Station.HalfSetA.Rack1500.stCableNoName <> csConnectedAtRack1500NoName);
-          imgSpawnSh37.Visible := Boolean(Station.HalfSetA.Rack1500.stCableNoName <> csConnectedAtRack1500Sh1);
+          imgSpawnNagruzka.Visible := Boolean(Station.HalfSetA.Rack1500.stCableLoad <> csConnectedAtRack1500NoName);
+          imgSpawnSh37.Visible := Boolean(Station.HalfSetA.Rack1500.stCableLoad <> csConnectedAtRack1500Sh1);
           imgSpawnNagruzka.Invalidate;
           imgSpawnSh37.Invalidate;
         end
@@ -1634,8 +1636,8 @@ begin
       begin
         if Station.HalfSetB.Rack1500.stCableSh1 = csDisconected then
         begin
-          imgSpawnNagruzka.Visible := Boolean(Station.HalfSetB.Rack1500.stCableNoName <> csConnectedAtRack1500NoName);
-          imgSpawnSh37.Visible := Boolean(Station.HalfSetB.Rack1500.stCableNoName <> csConnectedAtRack1500Sh1);
+          imgSpawnNagruzka.Visible := Boolean(Station.HalfSetB.Rack1500.stCableLoad <> csConnectedAtRack1500NoName);
+          imgSpawnSh37.Visible := Boolean(Station.HalfSetB.Rack1500.stCableLoad <> csConnectedAtRack1500Sh1);
           imgSpawnNagruzka.Invalidate;
           imgSpawnSh37.Invalidate;
         end
@@ -1650,7 +1652,7 @@ begin
 end;
 
 /// <summary>
-/// Выделяет верхние ручки для выдвижения стойки
+/// Р’С‹РґРµР»СЏРµС‚ РІРµСЂС…РЅРёРµ СЂСѓС‡РєРё РґР»СЏ РІС‹РґРІРёР¶РµРЅРёСЏ СЃС‚РѕР№РєРё
 /// </summary>
 procedure TRack1500Form.Image13MouseMove(Sender: TObject; Shift: TShiftState; X,
   Y: Integer);
@@ -1672,7 +1674,7 @@ begin
 end;
 
 /// <summary>
-/// Выделяет верхние ручки для выдвижения стойки
+/// Р’С‹РґРµР»СЏРµС‚ РІРµСЂС…РЅРёРµ СЂСѓС‡РєРё РґР»СЏ РІС‹РґРІРёР¶РµРЅРёСЏ СЃС‚РѕР№РєРё
 /// </summary>
 procedure TRack1500Form.Image14MouseMove(Sender: TObject; Shift: TShiftState; X,
   Y: Integer);
@@ -1753,7 +1755,7 @@ end;
 
 {$ENDREGION}
 
-{$REGION 'Функция tmrLBVTimer'}
+{$REGION 'Р¤СѓРЅРєС†РёСЏ tmrLBVTimer'}
 procedure TRack1500Form.tmrLBVTimer(Sender: TObject);
 begin
   tmrLBV.Interval := 1000;
@@ -1976,7 +1978,7 @@ begin
 end;
 {$ENDREGION}
 
-{$REGION 'Процедура TRack1500Form.ModeControl'}
+{$REGION 'РџСЂРѕС†РµРґСѓСЂР° TRack1500Form.ModeControl'}
 procedure TRack1500Form.ModeControl(ShownImageId: Byte = NotSelected);
 var
   btA: Byte;
@@ -1995,7 +1997,7 @@ begin
     imgsRed[btA].Visible := False;
     imgsRed[btA].Invalidate;
   end;
-  //Перерисуем выносной дисплей
+  //РџРµСЂРµСЂРёСЃСѓРµРј РІС‹РЅРѕСЃРЅРѕР№ РґРёСЃРїР»РµР№
   if pnlPhaseMover.Visible then
   begin
     imgPhaseMoverAdditional.Picture.Assign(nil);
@@ -2008,7 +2010,7 @@ begin
         begin
           if Station.HalfSetA.Rack1500.butMode_R = butPositionLeft then
           begin
-            //---------------------Расфаз----------------------
+            //---------------------Р Р°СЃС„Р°Р·----------------------
             for btA := 1 to 11 do
             begin
               imgsBlack[btA].Visible := False;
@@ -2021,13 +2023,13 @@ begin
               ((Station.HalfSetA.Rack1920.stLBV2_TurnedOn) and (not(Station.HalfSetA.Rack1920.stLBV1_TurnedOn)))) or
               ((not(Station.HalfSetA.Rack1920.stLBV1_TurnedOn)) and (not(Station.HalfSetA.Rack1920.stLBV2_TurnedOn)))then
               begin
-                //Включена одна лампа - максимальная расфазировка
+                //Р’РєР»СЋС‡РµРЅР° РѕРґРЅР° Р»Р°РјРїР° - РјР°РєСЃРёРјР°Р»СЊРЅР°СЏ СЂР°СЃС„Р°Р·РёСЂРѕРІРєР°
                 imgWindow10.Visible := True;
                 imgWindow10.Invalidate;
               end
               else
               begin
-                //Включены обе лампы - регулируем положение
+                //Р’РєР»СЋС‡РµРЅС‹ РѕР±Рµ Р»Р°РјРїС‹ - СЂРµРіСѓР»РёСЂСѓРµРј РїРѕР»РѕР¶РµРЅРёРµ
                 case Station.HalfSetA.Rack1500.swPhaseMover of
                   0, 20:
                     begin
@@ -2110,7 +2112,7 @@ begin
           end
           else
           begin
-            //---------------------Мощность----------------------
+            //---------------------РњРѕС‰РЅРѕСЃС‚СЊ----------------------
             for btA := 1 to 11 do
             begin
               imgsRed[btA].Visible := False;
@@ -2120,7 +2122,7 @@ begin
             begin
               if (Station.HalfSetA.Rack1920.stLBV1_TurnedOn) and (Station.HalfSetA.Rack1920.stLBV2_TurnedOn) then
               begin
-                //Включены обе лампы
+                //Р’РєР»СЋС‡РµРЅС‹ РѕР±Рµ Р»Р°РјРїС‹
                 if Station.HalfSetA.Rack1500.swPhaseMover = 10 then
                 begin
                   imgWindow10.Visible := True;
@@ -2143,7 +2145,7 @@ begin
               else
                 if (Station.HalfSetA.Rack1920.stLBV1_TurnedOn) or (Station.HalfSetA.Rack1920.stLBV2_TurnedOn) then
                 begin
-                  //Включена одна лампа
+                  //Р’РєР»СЋС‡РµРЅР° РѕРґРЅР° Р»Р°РјРїР°
                   if Station.HalfSetA.Rack1500.swPhaseMover = 10 then
                   begin
                     imgsModeControl[6].Visible := True;
@@ -2225,7 +2227,7 @@ begin
         begin
           if Station.HalfSetB.Rack1500.butMode_R = butPositionLeft then
           begin
-            //---------------------Расфаз----------------------
+            //---------------------Р Р°СЃС„Р°Р·----------------------
             for btA := 1 to 11 do
             begin
               imgsBlack[btA].Visible := False;
@@ -2238,13 +2240,13 @@ begin
               ((Station.HalfSetB.Rack1920.stLBV2_TurnedOn) and (not(Station.HalfSetB.Rack1920.stLBV1_TurnedOn)))) or
               ((not(Station.HalfSetB.Rack1920.stLBV1_TurnedOn)) and (not(Station.HalfSetB.Rack1920.stLBV2_TurnedOn)))then
               begin
-                //Включена одна лампа - максимальная расфазировка
+                //Р’РєР»СЋС‡РµРЅР° РѕРґРЅР° Р»Р°РјРїР° - РјР°РєСЃРёРјР°Р»СЊРЅР°СЏ СЂР°СЃС„Р°Р·РёСЂРѕРІРєР°
                 imgWindow10.Visible := True;
                 imgWindow10.Invalidate;
               end
               else
               begin
-                //Включены обе лампы - регулируем положение
+                //Р’РєР»СЋС‡РµРЅС‹ РѕР±Рµ Р»Р°РјРїС‹ - СЂРµРіСѓР»РёСЂСѓРµРј РїРѕР»РѕР¶РµРЅРёРµ
                 case Station.HalfSetB.Rack1500.swPhaseMover of
                   0, 20:
                     begin
@@ -2327,7 +2329,7 @@ begin
           end
           else
           begin
-            //---------------------Мощность----------------------
+            //---------------------РњРѕС‰РЅРѕСЃС‚СЊ----------------------
             for btA := 1 to 11 do
             begin
               imgsRed[btA].Visible := False;
@@ -2396,7 +2398,7 @@ begin
       end;
   end;
 
-  //Перерисуем выносной дисплей
+  //РџРµСЂРµСЂРёСЃСѓРµРј РІС‹РЅРѕСЃРЅРѕР№ РґРёСЃРїР»РµР№
   if pnlPhaseMover.Visible then
   begin
     for btA := 1 to 10 do
@@ -2410,7 +2412,7 @@ begin
 end;
 {$ENDREGION}
 
-{$REGION 'Процедуры ButtonClick'}
+{$REGION 'РџСЂРѕС†РµРґСѓСЂС‹ ButtonClick'}
 procedure TRack1500Form.Button1Click(Sender: TObject);
 begin
   case CurFormId of

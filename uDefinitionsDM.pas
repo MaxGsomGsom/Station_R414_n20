@@ -1280,7 +1280,7 @@ end;
     (Station1.HalfSetA.Rack1500.DropError = Station2.HalfSetA.Rack1500.DropError) and
     (Station1.HalfSetA.Rack1500.GeterodinTunedMain = Station2.HalfSetA.Rack1500.GeterodinTunedMain) and
     (Station1.HalfSetA.Rack1500.GeterodinTunedReserve = Station2.HalfSetA.Rack1500.GeterodinTunedReserve) and
-    (Station1.HalfSetA.Rack1500.stCableNoName = Station2.HalfSetA.Rack1500.stCableNoName) and
+    (Station1.HalfSetA.Rack1500.stCableLoad = Station2.HalfSetA.Rack1500.stCableLoad) and
     (Station1.HalfSetA.Rack1500.stCableSh1 = Station2.HalfSetA.Rack1500.stCableSh1) and     //
     (Station1.HalfSetB.Rack1500.swModeControl = Station2.HalfSetB.Rack1500.swModeControl) and
     (Station1.HalfSetB.Rack1500.btnAutomatic = Station2.HalfSetB.Rack1500.btnAutomatic) and
@@ -1294,7 +1294,7 @@ end;
     (Station1.HalfSetB.Rack1500.DropError = Station2.HalfSetB.Rack1500.DropError) and
     (Station1.HalfSetB.Rack1500.GeterodinTunedMain = Station2.HalfSetB.Rack1500.GeterodinTunedMain) and
     (Station1.HalfSetB.Rack1500.GeterodinTunedReserve = Station2.HalfSetB.Rack1500.GeterodinTunedReserve) and
-    (Station1.HalfSetB.Rack1500.stCableNoName = Station2.HalfSetB.Rack1500.stCableNoName) and
+    (Station1.HalfSetB.Rack1500.stCableLoad = Station2.HalfSetB.Rack1500.stCableLoad) and
     (Station1.HalfSetB.Rack1500.stCableSh1 = Station2.HalfSetB.Rack1500.stCableSh1) and     //
     (Station1.HalfSetA.Rack1920.swAddInput = Station2.HalfSetA.Rack1920.swAddInput) and
     (Station1.HalfSetA.Rack1920.butPower = Station2.HalfSetA.Rack1920.butPower) and

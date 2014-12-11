@@ -1,4 +1,4 @@
-unit uTasks20;
+﻿unit uTasks20;
 
 interface
 
@@ -11,12 +11,13 @@ uses
    ComCtrls,
   SysUtils,
   Windows,
-  uStationStateDM;
+  uStationStateDM,
+  uClientStateDM;
 
 
  type TSubTask = class
    public
-   function CheckSubTask(Sender: TObject; Station: TStation): Boolean; virtual; abstract;
+   function CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean; virtual; abstract;
    constructor Create; virtual;
    var
    EventFormName: String;
@@ -43,7 +44,7 @@ type TTask = class
 end;
 
 
- {$REGION '������ �������'}
+ {$REGION 'Пустое задание'}
    //================
   type TTaskNone = class (TTask)
     public
@@ -53,12 +54,12 @@ end;
 
   type TTaskNoneSubTask1 = class (TSubTask)
   public
-   function CheckSubTask(Sender: TObject; Station: TStation): Boolean; override;
+   function CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean; override;
    constructor Create;  override;
   end;
   //=============
  {$ENDREGION}
-  {$REGION '��������� �������, ���������'}
+  {$REGION 'Включение питания, заголовки'}
 
     type TTaskPowerOn = class (TTask)
     public
@@ -67,97 +68,227 @@ end;
 
     type TTaskPowerOnSubTask1 = class (TSubTask)
   public
-   function CheckSubTask(Sender: TObject; Station: TStation): Boolean; override;
+   function CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean; override;
    constructor Create;  override;
   end;
 
     type TTaskPowerOnSubTask2 = class (TSubTask)
   public
-   function CheckSubTask(Sender: TObject; Station: TStation): Boolean; override;
+   function CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean; override;
    constructor Create;  override;
   end;
 
     type TTaskPowerOnSubTask3 = class (TSubTask)
   public
-   function CheckSubTask(Sender: TObject; Station: TStation): Boolean; override;
+   function CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean; override;
    constructor Create;  override;
   end;
 
 
    type TTaskPowerOnSubTask4 = class (TSubTask)
   public
-   function CheckSubTask(Sender: TObject; Station: TStation): Boolean; override;
+   function CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean; override;
    constructor Create;  override;
   end;
 
    type TTaskPowerOnSubTask5 = class (TSubTask)
   public
-   function CheckSubTask(Sender: TObject; Station: TStation): Boolean; override;
+   function CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean; override;
    constructor Create;  override;
   end;
 
    type TTaskPowerOnSubTask6 = class (TSubTask)
   public
-   function CheckSubTask(Sender: TObject; Station: TStation): Boolean; override;
+   function CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean; override;
    constructor Create;  override;
   end;
 
     type TTaskPowerOnSubTask7 = class (TSubTask)
   public
-   function CheckSubTask(Sender: TObject; Station: TStation): Boolean; override;
+   function CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean; override;
    constructor Create;  override;
   end;
 
     type TTaskPowerOnSubTask8 = class (TSubTask)
   public
-   function CheckSubTask(Sender: TObject; Station: TStation): Boolean; override;
+   function CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean; override;
    constructor Create;  override;
   end;
 
       type TTaskPowerOnSubTask9 = class (TSubTask)
   public
-   function CheckSubTask(Sender: TObject; Station: TStation): Boolean; override;
+   function CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean; override;
    constructor Create;  override;
   end;
 
       type TTaskPowerOnSubTask10 = class (TSubTask)
   public
-   function CheckSubTask(Sender: TObject; Station: TStation): Boolean; override;
+   function CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean; override;
    constructor Create;  override;
   end;
 
 
      type TTaskPowerOnSubTask11 = class (TSubTask)
   public
-   function CheckSubTask(Sender: TObject; Station: TStation): Boolean; override;
+   function CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean; override;
    constructor Create;  override;
   end;
 
        type TTaskPowerOnSubTask12 = class (TSubTask)
   public
-   function CheckSubTask(Sender: TObject; Station: TStation): Boolean; override;
+   function CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean; override;
    constructor Create;  override;
   end;
 
         type TTaskPowerOnSubTask13 = class (TSubTask)
   public
-   function CheckSubTask(Sender: TObject; Station: TStation): Boolean; override;
+   function CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean; override;
    constructor Create;  override;
   end;
 
   //================
   {$ENDREGION}
 
-   type TTaskConnectToR415 = class (TTask)
+ {$REGION 'Автономный контроль, заголовки'}
+
+   type TTaskSingleCheck = class (TTask)
     public
    constructor Create;  override;
   end;
 
-    type TTaskConnectToR415SubTask1 = class (TSubTask)
+    type TTaskSingleCheckSubTask1 = class (TSubTask)
   public
-   function CheckSubTask(Sender: TObject; Station: TStation): Boolean; override;
+   function CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean; override;
    constructor Create;  override;
   end;
+
+    type TTaskSingleCheckSubTask2 = class (TSubTask)
+  public
+   function CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean; override;
+   constructor Create;  override;
+  end;
+
+    type TTaskSingleCheckSubTask3 = class (TSubTask)
+  public
+   function CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean; override;
+   constructor Create;  override;
+  end;
+
+    type TTaskSingleCheckSubTask4 = class (TSubTask)
+  public
+   function CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean; override;
+   constructor Create;  override;
+  end;
+
+    type TTaskSingleCheckSubTask5 = class (TSubTask)
+  public
+   function CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean; override;
+   constructor Create;  override;
+  end;
+
+      type TTaskSingleCheckSubTask6 = class (TSubTask)
+  public
+   function CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean; override;
+   constructor Create;  override;
+  end;
+
+      type TTaskSingleCheckSubTask7 = class (TSubTask)
+  public
+   function CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean; override;
+   constructor Create;  override;
+  end;
+
+      type TTaskSingleCheckSubTask8 = class (TSubTask)
+  public
+   function CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean; override;
+   constructor Create;  override;
+  end;
+
+      type TTaskSingleCheckSubTask9 = class (TSubTask)
+  public
+   function CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean; override;
+   constructor Create;  override;
+  end;
+
+      type TTaskSingleCheckSubTask10 = class (TSubTask)
+  public
+   function CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean; override;
+   constructor Create;  override;
+  end;
+
+      type TTaskSingleCheckSubTask11 = class (TSubTask)
+  public
+   function CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean; override;
+   constructor Create;  override;
+  end;
+
+        type TTaskSingleCheckSubTask12 = class (TSubTask)
+  public
+   function CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean; override;
+   constructor Create;  override;
+  end;
+
+        type TTaskSingleCheckSubTask13 = class (TSubTask)
+  public
+   function CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean; override;
+   constructor Create;  override;
+  end;
+
+        type TTaskSingleCheckSubTask14 = class (TSubTask)
+  public
+   function CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean; override;
+   constructor Create;  override;
+  end;
+
+        type TTaskSingleCheckSubTask15 = class (TSubTask)
+  public
+   function CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean; override;
+   constructor Create;  override;
+  end;
+
+        type TTaskSingleCheckSubTask16 = class (TSubTask)
+  public
+   function CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean; override;
+   constructor Create;  override;
+  end;
+
+          type TTaskSingleCheckSubTask17 = class (TSubTask)
+  public
+   function CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean; override;
+   constructor Create;  override;
+  end;
+
+            type TTaskSingleCheckSubTask18 = class (TSubTask)
+  public
+   function CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean; override;
+   constructor Create;  override;
+  end;
+
+            type TTaskSingleCheckSubTask19 = class (TSubTask)
+  public
+   function CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean; override;
+   constructor Create;  override;
+  end;
+
+            type TTaskSingleCheckSubTask20 = class (TSubTask)
+  public
+   function CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean; override;
+   constructor Create;  override;
+  end;
+
+            type TTaskSingleCheckSubTask21 = class (TSubTask)
+  public
+   function CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean; override;
+   constructor Create;  override;
+  end;
+
+            type TTaskSingleCheckSubTask22 = class (TSubTask)
+  public
+   function CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean; override;
+   constructor Create;  override;
+  end;
+
+ {$ENDREGION}
 
 
 
@@ -165,9 +296,10 @@ implementation
 
 uses
 
-uBlockPowerPanelForm;
+uBlockPowerPanelForm,
+uConstantsDM;
 
- //�������� �������
+ //создание задания
   constructor TTask.Create;
   begin
        CurrentSubTaskNum:= 0;
@@ -181,13 +313,13 @@ uBlockPowerPanelForm;
 
 
 
-{$REGION '������ �������'}
+{$REGION 'Пустое задание'}
 
   constructor TTaskNone.Create;
   begin
   inherited Create;
 
-  Name:='��������� ������ �������';
+  Name:='Свободный осмотр станции';
 
   SetLength(SubTasks, 1);
 
@@ -198,7 +330,7 @@ uBlockPowerPanelForm;
   CurrentSubTask:=SubTasks[CurrentSubTaskNum];
   end;
 
-   function TTaskNoneSubTask1.CheckSubTask(Sender: TObject; Station: TStation): Boolean;
+   function TTaskNoneSubTask1.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
       var CurForm: TForm;
    begin
    CurForm:= (Sender as TComponent).Owner as TForm;
@@ -209,7 +341,7 @@ uBlockPowerPanelForm;
    begin
    inherited Create;
 
-        Name:='��������� ������ �������';
+        Name:='Свободный осмотр станции';
         Text:='';
         EventFormName:='nil';
         Time:= '';
@@ -218,13 +350,13 @@ uBlockPowerPanelForm;
 
 
 
-{$REGION '��������� �������'}
+{$REGION 'Включение питания'}
 
   constructor TTaskPowerOn.Create;
   begin
   inherited Create;
 
-  Name:='��������� �������';
+  Name:='Включение питания';
 
   SetLength(SubTasks, 13);
 
@@ -246,7 +378,7 @@ uBlockPowerPanelForm;
   end;
 
    //===
-   function TTaskPowerOnSubTask1.CheckSubTask(Sender: TObject; Station: TStation): Boolean;
+   function TTaskPowerOnSubTask1.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
    begin
 
          if (Station.PowerPanel.swNet=1) and (Station.PowerPanel.swPhase=4) then
@@ -260,15 +392,15 @@ uBlockPowerPanelForm;
    begin
    inherited Create;
 
-        Name:='�� ���� ������� ������ ������ ����';
-        Text:='�� ���� ������� 1820 ������ ������ ����. ���������� ���������� ����� ����. ����������������� � ������� ������������� �������� ���������� ������� � �������� ���������� �� ����� 1-2, 2-3, 3-1';
-        EventFormName:='��� �������';
+        Name:='На щите питания нажать кнопку СЕТЬ';
+        Text:='На щите питания 1820 нажать кнопку СЕТЬ. Загорается сигнальная лампа СЕТЬ. Проконтролировать с помощью переключателя КОНТРОЛЬ НАПРЯЖЕНИЙ наличие и величину напряжений на фазах 1-2, 2-3, 3-1';
+        EventFormName:='Щит питания';
         Time:= '';
    end;
 
   //  ===
 
-   function TTaskPowerOnSubTask2.CheckSubTask(Sender: TObject; Station: TStation): Boolean;
+   function TTaskPowerOnSubTask2.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
    begin
          if (Station.PowerPanel.sw1700Power=1) and (Station.PowerPanel.sw1900Power=1) and (Station.PowerPanel.sw1900Power_2=1)
          and  (Station.PowerPanel.sw1200Power_2=1) and (Station.PowerPanel.sw1200Power=1) and (Station.PowerPanel.sw1400=1) then
@@ -282,14 +414,14 @@ uBlockPowerPanelForm;
    begin
    inherited Create;
 
-        Name:='�� ���� ������� �������� 1900�, 1900�, 1200�, 1200�, 1700';
-        Text:='�� ���� ������� 1820 ����������� 1900�, 1900�, 1200�, 1200�, 1700, 1400, ���������� � ��������� ���. ��� ���� ���������� ���������� ����� ��� �������������';
-        EventFormName:='��� �������';
+        Name:='На щите питания включить 1900А, 1900Б, 1200А, 1200Б, 1700';
+        Text:='На щите питания 1820 выключатели 1900А, 1900Б, 1200А, 1200Б, 1700, 1400, установить в положение ВКЛ. При этом загораются сигнальные лампы над выключателями';
+        EventFormName:='Щит питания';
         Time:= '';
    end;
          //==
 
-   function TTaskPowerOnSubTask3.CheckSubTask(Sender: TObject; Station: TStation): Boolean;
+   function TTaskPowerOnSubTask3.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
    begin
          if (Station.HalfSetA.LittleNoisyAmplifier.butNet2=0)  and
          (Station.HalfSetA.LittleNoisyAmplifier.butNet=0) then
@@ -303,15 +435,15 @@ uBlockPowerPanelForm;
    begin
    inherited Create;
 
-        Name:='��� �������� �� ��� 1830�';
-        Text:='�������� �� ����� ��� 1830� ���������� � ��������� ���. ��� ���� ���������� ���������� ����� ��� �������������';
-        EventFormName:='��� �';
+        Name:='ВКЛ тумблеры на МШУ 1830А';
+        Text:='Тумблеры на блоке МШУ 1830А установить в положение ВКЛ. При этом загораются сигнальные лампы над выключателями';
+        EventFormName:='МШУ А';
         Time:= '';
    end;
 
    //==
 
-   function TTaskPowerOnSubTask4.CheckSubTask(Sender: TObject; Station: TStation): Boolean;
+   function TTaskPowerOnSubTask4.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
    begin
          if (Station.HalfSetB.LittleNoisyAmplifier.butNet2=0)  and
          (Station.HalfSetB.LittleNoisyAmplifier.butNet=0) then
@@ -325,15 +457,15 @@ uBlockPowerPanelForm;
    begin
    inherited Create;
 
-        Name:='��� �������� �� ��� 1830�';
-        Text:='�������� �� ����� ��� 1830� ���������� � ��������� ���. ��� ���� ���������� ���������� ����� ��� �������������';
-        EventFormName:='��� �';
+        Name:='ВКЛ тумблеры на МШУ 1830Б';
+        Text:='Тумблеры на блоке МШУ 1830Б установить в положение ВКЛ. При этом загораются сигнальные лампы над выключателями';
+        EventFormName:='МШУ Б';
         Time:= '';
    end;
 
    //==
 
-   function TTaskPowerOnSubTask5.CheckSubTask(Sender: TObject; Station: TStation): Boolean;
+   function TTaskPowerOnSubTask5.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
    begin
          if (Station.HalfSetA.Rack1920.but1910=butPositionUp) and
          (Station.HalfSetA.Rack1920.but1910A=butPositionUp) and
@@ -351,15 +483,15 @@ uBlockPowerPanelForm;
    begin
    inherited Create;
 
-        Name:='��� �������� �� ������ 1920�';
-        Text:='�� ������ 1920�: �������� �� ������ 1920 ���������� � ��������� ���. �������� �� ������ 1910 ���������� � ��������� ���. ������� �� ����� 1930 ���������� � ��������� ���. ������� �� ����� 1360 ���������� � ��������� ���.';
-        EventFormName:='1920 �';
+        Name:='ВКЛ тумблеры на стойке 1920А';
+        Text:='На стойке 1920А: тумблеры на блоках 1920 установить в положение ВКЛ. Тумблеры на блоках 1910 установить в положение ВКЛ. Тумблер на блоке 1930 установить в положение ВКЛ. Тумблер на блоке 1360 установить в положение ВКЛ.';
+        EventFormName:='1920 А';
         Time:= '';
    end;
 
    //==
 
-   function TTaskPowerOnSubTask6.CheckSubTask(Sender: TObject; Station: TStation): Boolean;
+   function TTaskPowerOnSubTask6.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
    begin
          if (Station.HalfSetB.Rack1920.but1910=butPositionUp) and
          (Station.HalfSetB.Rack1920.but1910A=butPositionUp) and
@@ -377,15 +509,15 @@ uBlockPowerPanelForm;
    begin
    inherited Create;
 
-        Name:='��� �������� �� ������ 1920�';
-        Text:='�� ������ 1920�: �������� �� ������ 1920 ���������� � ��������� ���. �������� �� ������ 1910 ���������� � ��������� ���. ������� �� ����� 1930 ���������� � ��������� ���. ������� �� ����� 1360 ���������� � ��������� ���.';
-        EventFormName:='1920 �';
+        Name:='ВКЛ тумблеры на стойке 1920Б';
+        Text:='На стойке 1920Б: тумблеры на блоках 1920 установить в положение ВКЛ. Тумблеры на блоках 1910 установить в положение ВКЛ. Тумблер на блоке 1930 установить в положение ВКЛ. Тумблер на блоке 1360 установить в положение ВКЛ.';
+        EventFormName:='1920 Б';
         Time:= '';
    end;
 
    //==
 
-   function TTaskPowerOnSubTask7.CheckSubTask(Sender: TObject; Station: TStation): Boolean;
+   function TTaskPowerOnSubTask7.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
    begin
          if (Station.HalfSetA.Rack1200Left.but1240K=butPositionUp) then
          begin
@@ -398,15 +530,15 @@ uBlockPowerPanelForm;
    begin
    inherited Create;
 
-        Name:='�������� ���� �� ������ 1200 ��� �';
-        Text:='�� ������ 1200 ��� � ������� ���� �� ����� 1240� ���������� � ��������� ���. ���������� ���������� ����� ��� ���������';
-        EventFormName:='1200 ��� �';
+        Name:='Включить СЕТЬ на стойке 1200 ПРМ А';
+        Text:='На стойке 1200 ПРМ А тумблер СЕТЬ на блоке 1240К установить в положение ВКЛ. Загорается сигнальная лампа над тумблером';
+        EventFormName:='1200 ПРМ А';
         Time:= '';
    end;
 
    //==
 
-   function TTaskPowerOnSubTask8.CheckSubTask(Sender: TObject; Station: TStation): Boolean;
+   function TTaskPowerOnSubTask8.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
    begin
          if (Station.HalfSetB.Rack1200Left.but1240K=butPositionUp) then
          begin
@@ -419,15 +551,15 @@ uBlockPowerPanelForm;
    begin
    inherited Create;
 
-        Name:='�������� ���� �� ������ 1200 ��� �';
-        Text:='�� ������ 1200 ��� � ������� ���� �� ����� 1240� ���������� � ��������� ���. ���������� ���������� ����� ��� ���������';
-        EventFormName:='1200 ��� �';
+        Name:='Включить СЕТЬ на стойке 1200 ПРМ Б';
+        Text:='На стойке 1200 ПРМ Б тумблер СЕТЬ на блоке 1240К установить в положение ВКЛ. Загорается сигнальная лампа над тумблером';
+        EventFormName:='1200 ПРМ Б';
         Time:= '';
    end;
 
    //==
 
-   function TTaskPowerOnSubTask9.CheckSubTask(Sender: TObject; Station: TStation): Boolean;
+   function TTaskPowerOnSubTask9.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
    begin
          if (Station.Rack1710.butPower=butPositionRight) and (Station.Rack1710.butSpeaker=butPositionRight) then
          begin
@@ -440,15 +572,15 @@ uBlockPowerPanelForm;
    begin
    inherited Create;
 
-        Name:='�� ������ 1710 ��� ���. �� ����� 470';
-        Text:='�� ������ 1710 �� ����� 470 �������� ���. � ���������������� ��������� � ��������� ���.';
+        Name:='На стойке 1710 ВКЛ ПИТ. на блоке 470';
+        Text:='На стойке 1710 на блоке 470 тумблеры ПИТ. и ГРОМКОГОВОРИТЕЛЬ перевести в положение ВКЛ.';
         EventFormName:='1710';
         Time:= '';
    end;
 
    //==
 
-   function TTaskPowerOnSubTask10.CheckSubTask(Sender: TObject; Station: TStation): Boolean;
+   function TTaskPowerOnSubTask10.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
    begin
          if (Station.Rack1400.butPower = butPositionRight) and (Station.Rack1400.butSpeaker = butPositionRight) then
          begin
@@ -461,15 +593,15 @@ uBlockPowerPanelForm;
    begin
    inherited Create;
 
-        Name:='�� ������ 1400 ��� ���. �� ����� 470';
-        Text:='�� ������ 1400 �� ����� 470 �������� ���. � ���������������� ��������� � ��������� ���.';
+        Name:='На стойке 1400 ВКЛ ПИТ. на блоке 470';
+        Text:='На стойке 1400 на блоке 470 тумблеры ПИТ. и ГРОМКОГОВОРИТЕЛЬ перевести в положение ВКЛ.';
         EventFormName:='1400';
         Time:= '';
    end;
 
    //==
 
-   function TTaskPowerOnSubTask11.CheckSubTask(Sender: TObject; Station: TStation): Boolean;
+   function TTaskPowerOnSubTask11.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
    begin
          if (Station.P321C.butPower=butPositionUp) and (Station.P321C.butMeasure=butPositionUp) and (Station.P321C.but600Ohm=butPositionUp) then
          begin
@@ -482,15 +614,15 @@ uBlockPowerPanelForm;
    begin
    inherited Create;
 
-        Name:='�������� ������� �-321 �';
-        Text:='�� ������� �-321 � ���������� �������� �� �������: ������� ���., �����., 600 ��';
-        EventFormName:='�-321 �';
+        Name:='Включить питание П-321 С';
+        Text:='На приборе П-321 С установить тумблеры на позиции: ПИТАНИЕ ВКЛ., ИЗМЕР., 600 Ом';
+        EventFormName:='П-321 С';
         Time:= '';
    end;
 
      //==
 
-   function TTaskPowerOnSubTask12.CheckSubTask(Sender: TObject; Station: TStation): Boolean;
+   function TTaskPowerOnSubTask12.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
    begin
          if (Station.PowerSupply.butPower=butPositionUp) then
          begin
@@ -503,16 +635,16 @@ uBlockPowerPanelForm;
    begin
    inherited Create;
 
-        Name:='�������� ������� �-323��';
-        Text:='�� ������� �-323 �� ���������� ������� ������� �� ������� ���.';
-        EventFormName:='�-323 ��';
+        Name:='Включить питание П-323ИШ';
+        Text:='На приборе П-323 ИШ установить тумблер питания на позицию ВКЛ.';
+        EventFormName:='П-323 ИШ';
         Time:= '';
    end;
 
 
      //==
 
-   function TTaskPowerOnSubTask13.CheckSubTask(Sender: TObject; Station: TStation): Boolean;
+   function TTaskPowerOnSubTask13.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
    begin
          if (true) then
          begin
@@ -525,30 +657,256 @@ uBlockPowerPanelForm;
    begin
    inherited Create;
 
-        Name:='�������� ������� ������������';
-        Text:='�� ������������ ���������� ������� ������� �� ������� ���.';
-        EventFormName:='�����������';
+        Name:='Включить питание осциллографа ???';
+        Text:='На осциллографе установить тумблер питания на позицию ВКЛ.';
+        EventFormName:='Осциллограф';
         Time:= '';
    end;
 
 {$ENDREGION}
 
-  constructor TTaskConnectToR415.Create;
+{$REGION 'Автономный контроль'}
+
+  constructor TTaskSingleCheck.Create;
   begin
   inherited Create;
 
-  Name:='��������� �������';
+  Name:='Проверка работоспособности станции в режиме "Автономный контроль"';
 
-  SetLength(SubTasks, 1);
+  SetLength(SubTasks, 22);
 
-  SubTasks[0]:= TTaskConnectToR415SubTask1.Create;
+  SubTasks[0]:= TTaskSingleCheckSubTask1.Create;
+  SubTasks[1]:= TTaskSingleCheckSubTask2.Create;
+  SubTasks[2]:= TTaskSingleCheckSubTask3.Create;
+  SubTasks[3]:= TTaskSingleCheckSubTask4.Create;
+  SubTasks[4]:= TTaskSingleCheckSubTask5.Create;
+  SubTasks[5]:= TTaskSingleCheckSubTask6.Create;
+  SubTasks[6]:= TTaskSingleCheckSubTask7.Create;
+  SubTasks[7]:= TTaskSingleCheckSubTask8.Create;
+  SubTasks[8]:= TTaskSingleCheckSubTask9.Create;
+  SubTasks[9]:= TTaskSingleCheckSubTask10.Create;
+  SubTasks[10]:= TTaskSingleCheckSubTask11.Create;
+  SubTasks[11]:= TTaskSingleCheckSubTask12.Create;
+  SubTasks[12]:= TTaskSingleCheckSubTask13.Create;
+  SubTasks[13]:= TTaskSingleCheckSubTask14.Create;
+  SubTasks[14]:= TTaskSingleCheckSubTask15.Create;
+  SubTasks[15]:= TTaskSingleCheckSubTask16.Create;
+  SubTasks[16]:= TTaskSingleCheckSubTask17.Create;
+  SubTasks[17]:= TTaskSingleCheckSubTask18.Create;
+  SubTasks[18]:= TTaskSingleCheckSubTask19.Create;
+  SubTasks[19]:= TTaskSingleCheckSubTask20.Create;
+  SubTasks[20]:= TTaskSingleCheckSubTask21.Create;
+  SubTasks[21]:= TTaskSingleCheckSubTask22.Create;
+
 
 
   CurrentSubTask:=SubTasks[CurrentSubTaskNum];
   end;
 
    //===
-   function TTaskConnectToR415SubTask1.CheckSubTask(Sender: TObject; Station: TStation): Boolean;
+   function TTaskSingleCheckSubTask1.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
+   begin
+
+         if (Station.HalfSetA.Rack1500.stCableLoad = csConnectedAtRack1500Sh1) and (Station.HalfSetA.Rack1500.stCableSh1 = csDisconected) then
+         begin
+           Result:=true;
+         end
+         else Result:=false;
+   end;
+
+   constructor TTaskSingleCheckSubTask1.Create;
+   begin
+   inherited Create;
+
+        Name:='Подключить кабели на стойке 1500А';
+        Text:='На стойке 1500А от разьема ВЫХОД СВЧ. отключить кабель, идущий к дуплексеру и подключить к нему кабель НАГРУЗКА. Проверить подключены ли соотвествующие кабели к разъемам ВЫХОД АК 1500 и ВЫХОД АК 1600.';
+        EventFormName:='1500 А';
+        Time:= '';
+   end;
+
+   function TTaskSingleCheckSubTask2.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
+   begin
+
+         if ((Station.HalfSetA.Duplexer.cbSh1 = csConnectedAtDuplexeLeft) or (Station.HalfSetA.Duplexer.cbSh1 = csConnectedAtDuplexeRight)) and (Station.HalfSetA.Duplexer.cb1840 = csDisconected) then
+         begin
+           Result:=true;
+         end
+         else Result:=false;
+   end;
+
+   constructor TTaskSingleCheckSubTask2.Create;
+   begin
+   inherited Create;
+
+        Name:='Подключить кабели а фильтру Ф-33 А';
+        Text:='На фильтре Ф-33 А отключить от входа кабель, идущий к дуплексеру; подключить к входу кабель, идущий от разема стойки 1600 ВЫХОД АК 1600 другого полукомплекта (с красным наконечником)';
+        EventFormName:='Дуплексер А';
+        Time:= '';
+   end;
+
+   function TTaskSingleCheckSubTask3.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
+   begin
+
+         if (Station.HalfSetB.Rack1500.stCableLoad = csConnectedAtRack1500Sh1) and (Station.HalfSetB.Rack1500.stCableSh1 = csDisconected) then
+         begin
+           Result:=true;
+         end
+         else Result:=false;
+   end;
+
+   constructor TTaskSingleCheckSubTask3.Create;
+   begin
+   inherited Create;
+
+        Name:='Подключить кабели на стойке 1500Б';
+        Text:='На стойке 1500Б от разьема ВЫХОД СВЧ. отключить кабель, идущий к дуплексеру и подключить к нему кабель НАГРУЗКА. Проверить подключены ли соотвествующие кабели к разъемам ВЫХОД АК 1500 и ВЫХОД АК 1600.';
+        EventFormName:='1500 Б';
+        Time:= '';
+   end;
+
+   function TTaskSingleCheckSubTask4.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
+   begin
+
+         if ((Station.HalfSetB.Duplexer.cbSh1 = csConnectedAtDuplexeLeft) or (Station.HalfSetB.Duplexer.cbSh1 = csConnectedAtDuplexeRight)) and (Station.HalfSetB.Duplexer.cb1840 = csDisconected) then
+         begin
+           Result:=true;
+         end
+         else Result:=false;
+   end;
+
+   constructor TTaskSingleCheckSubTask4.Create;
+   begin
+   inherited Create;
+
+        Name:='Подключить кабели а фильтру Ф-33 Б';
+        Text:='На фильтре Ф-33 Б отключить от входа кабель, идущий к дуплексеру; подключить к входу кабель, идущий от разема стойки 1600 ВЫХОД АК 1600 другого полукомплекта (с красным наконечником)';
+        EventFormName:='Дуплексер Б';
+        Time:= '';
+   end;
+
+
+   function TTaskSingleCheckSubTask5.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
+   begin
+
+         if (Station.HalfSetA.Duplexer.waveTransmit = ClientState.TransmitterWaveA) and (Station.HalfSetA.Duplexer.waveReceive = ClientState.ReceiverWaveA) then
+         begin
+           Result:=true;
+         end
+         else Result:=false;
+   end;
+
+   constructor TTaskSingleCheckSubTask5.Create;
+   begin
+   inherited Create;
+
+        Name:='Установить волны на дуплексере А';
+        Text:='Установить рабочие волны передачи и приема на дуплексере А, используя вращающиеся переключатели';
+        EventFormName:='Дуплексер А';
+        Time:= '';
+   end;
+
+   function TTaskSingleCheckSubTask6.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
+   begin
+
+         if (Station.HalfSetA.Rack1500.swWave1610_0 = ClientState.TransmitterWaveA) and (Station.HalfSetA.Rack1500.swWave161_R = ClientState.ReceiverWaveA) then
+         begin
+           Result:=true;
+         end
+         else Result:=false;
+   end;
+
+   constructor TTaskSingleCheckSubTask6.Create;
+   begin
+   inherited Create;
+
+        Name:='Установить волны на стойке 1500 А';
+        Text:='Установить рабочие волны передачи и приема на стойке 1500 А, используя вращающиеся переключатели';
+        EventFormName:='1500 А';
+        Time:= '';
+   end;
+
+   function TTaskSingleCheckSubTask7.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
+   begin
+
+         if (Station.HalfSetA.Rack1600.wave1610_0 = ClientState.TransmitterWaveA) and (Station.HalfSetA.Rack1600.wave1610_R = ClientState.ReceiverWaveA) then
+         begin
+           Result:=true;
+         end
+         else Result:=false;
+   end;
+
+   constructor TTaskSingleCheckSubTask7.Create;
+   begin
+   inherited Create;
+
+        Name:='Установить волны на стойке 1600 А';
+        Text:='Установить рабочие волны передачи и приема на стойке 1600 А, используя вращающиеся переключатели';
+        EventFormName:='1600 А';
+        Time:= '';
+   end;
+
+    function TTaskSingleCheckSubTask8.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
+   begin
+
+         if (Station.HalfSetB.Duplexer.waveTransmit = ClientState.TransmitterWaveB) and (Station.HalfSetB.Duplexer.waveReceive = ClientState.ReceiverWaveB) then
+         begin
+           Result:=true;
+         end
+         else Result:=false;
+   end;
+
+   constructor TTaskSingleCheckSubTask8.Create;
+   begin
+   inherited Create;
+
+        Name:='Установить волны на дуплексере Б';
+        Text:='Установить рабочие волны передачи и приема на дуплексере Б, используя вращающиеся переключатели';
+        EventFormName:='Дуплексер Б';
+        Time:= '';
+   end;
+
+   function TTaskSingleCheckSubTask9.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
+   begin
+
+         if (Station.HalfSetB.Rack1500.swWave1610_0 = ClientState.TransmitterWaveB) and (Station.HalfSetB.Rack1500.swWave161_R = ClientState.ReceiverWaveB) then
+         begin
+           Result:=true;
+         end
+         else Result:=false;
+   end;
+
+   constructor TTaskSingleCheckSubTask9.Create;
+   begin
+   inherited Create;
+
+        Name:='Установить волны на стойке 1500 Б';
+        Text:='Установить рабочие волны передачи и приема на стойке 1500 Б, используя вращающиеся переключатели';
+        EventFormName:='1500 Б';
+        Time:= '';
+   end;
+
+   function TTaskSingleCheckSubTask10.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
+   begin
+
+         if (Station.HalfSetB.Rack1600.wave1610_0 = ClientState.TransmitterWaveB) and (Station.HalfSetB.Rack1600.wave1610_R = ClientState.ReceiverWaveB) then
+         begin
+           Result:=true;
+         end
+         else Result:=false;
+   end;
+
+   constructor TTaskSingleCheckSubTask10.Create;
+   begin
+   inherited Create;
+
+        Name:='Установить волны на стойке 1600 Б';
+        Text:='Установить рабочие волны передачи и приема на стойке 1600 Б, используя вращающиеся переключатели';
+        EventFormName:='1600 Б';
+        Time:= '';
+   end;
+
+
+    function TTaskSingleCheckSubTask11.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
    begin
 
          if (true) then
@@ -558,15 +916,238 @@ uBlockPowerPanelForm;
          else Result:=false;
    end;
 
-   constructor TTaskConnectToR415SubTask1.Create;
+   constructor TTaskSingleCheckSubTask11.Create;
    begin
    inherited Create;
 
-        Name:='���?';
-        Text:='���-���?';
-        EventFormName:='���-��';
+        Name:='Настроить 1200 ПРД А по волномеру ???';
+        Text:='Что-что?';
+        EventFormName:='1200 ПРД А';
         Time:= '';
    end;
+
+      function TTaskSingleCheckSubTask12.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
+   begin
+
+         if (true) then
+         begin
+           Result:=true;
+         end
+         else Result:=false;
+   end;
+
+   constructor TTaskSingleCheckSubTask12.Create;
+   begin
+   inherited Create;
+
+        Name:='Настроить 1200 ПРМ А по волномеру ???';
+        Text:='Что-что?';
+        EventFormName:='1200 ПРМ А';
+        Time:= '';
+   end;
+
+      function TTaskSingleCheckSubTask13.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
+   begin
+
+         if (true) then
+         begin
+           Result:=true;
+         end
+         else Result:=false;
+   end;
+
+   constructor TTaskSingleCheckSubTask13.Create;
+   begin
+   inherited Create;
+
+        Name:='Настроить 1200 ПРД Б по волномеру ???';
+        Text:='Что-что?';
+        EventFormName:='1200 ПРД Б';
+        Time:= '';
+   end;
+
+      function TTaskSingleCheckSubTask14.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
+   begin
+
+         if (true) then
+         begin
+           Result:=true;
+         end
+         else Result:=false;
+   end;
+
+   constructor TTaskSingleCheckSubTask14.Create;
+   begin
+   inherited Create;
+
+        Name:='Настроить 1200 ПРМ Б по волномеру ???';
+        Text:='Что-что?';
+        EventFormName:='1200 ПРМ Б';
+        Time:= '';
+   end;
+
+      function TTaskSingleCheckSubTask15.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
+   begin
+
+         if (Station.HalfSetA.Rack1920.butHighOn = butPositionDown) and (Station.HalfSetA.Rack1920.butCurrent5MA = butPositionDown)  then
+         begin
+           Result:=true;
+         end
+         else Result:=false;
+   end;
+
+   constructor TTaskSingleCheckSubTask15.Create;
+   begin
+   inherited Create;
+
+        Name:='Включить высокое напряжение на стойке 1920 А';
+        Text:='Включить высое напряжение одновременным нажатием кнопок ВЫСОКОЕ ВКЛ. и ТОК 5 МА на стойке 1920 А';
+        EventFormName:='1920 А';
+        Time:= '';
+   end;
+
+       function TTaskSingleCheckSubTask16.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
+   begin
+
+         if (Station.HalfSetB.Rack1920.butHighOn = butPositionDown) and (Station.HalfSetB.Rack1920.butCurrent5MA = butPositionDown)  then
+         begin
+           Result:=true;
+         end
+         else Result:=false;
+   end;
+
+   constructor TTaskSingleCheckSubTask16.Create;
+   begin
+   inherited Create;
+
+        Name:='Включить высокое напряжение на стойке 1920 Б';
+        Text:='Включить высое напряжение одновременным нажатием кнопок ВЫСОКОЕ ВКЛ. и ТОК 5 МА на стойке 1920 Б';
+        EventFormName:='1920 Б';
+        Time:= '';
+   end;
+
+      function TTaskSingleCheckSubTask17.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
+   begin
+
+         if (true) then
+         begin
+           Result:=true;
+         end
+         else Result:=false;
+   end;
+
+   constructor TTaskSingleCheckSubTask17.Create;
+   begin
+   inherited Create;
+
+        Name:='Сфазировать сигналы ЛБВ на стойке 1500 А ???';
+        Text:='Сфазировать сигналы ЛБВ путем вращения учки ФАЗОВРАЩАТЕЛЬ на передней панели стойки 1500 (минимальные показания прибора стойки 1500 в положении переключателя КОНТРОЛЬ - РАСФАЗ.)';
+        EventFormName:='1500 А';
+        Time:= '';
+   end;
+
+       function TTaskSingleCheckSubTask18.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
+   begin
+
+         if (true) then
+         begin
+           Result:=true;
+         end
+         else Result:=false;
+   end;
+
+   constructor TTaskSingleCheckSubTask18.Create;
+   begin
+   inherited Create;
+
+        Name:='Сфазировать сигналы ЛБВ на стойке 1500 Б ???';
+        Text:='Сфазировать сигналы ЛБВ путем вращения учки ФАЗОВРАЩАТЕЛЬ на передней панели стойки 1500 (минимальные показания прибора стойки 1500 в положении переключателя КОНТРОЛЬ - РАСФАЗ.)';
+        EventFormName:='1500 Б';
+        Time:= '';
+   end;
+
+
+       function TTaskSingleCheckSubTask19.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
+   begin
+
+         if (true) then
+         begin
+           Result:=true;
+         end
+         else Result:=false;
+   end;
+
+   constructor TTaskSingleCheckSubTask19.Create;
+   begin
+   inherited Create;
+
+        Name:='Что?';
+        Text:='Что-что?';
+        EventFormName:='что-то';
+        Time:= '';
+   end;
+
+       function TTaskSingleCheckSubTask20.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
+   begin
+
+         if (true) then
+         begin
+           Result:=true;
+         end
+         else Result:=false;
+   end;
+
+   constructor TTaskSingleCheckSubTask20.Create;
+   begin
+   inherited Create;
+
+        Name:='Что?';
+        Text:='Что-что?';
+        EventFormName:='что-то';
+        Time:= '';
+   end;
+
+       function TTaskSingleCheckSubTask21.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
+   begin
+
+         if (true) then
+         begin
+           Result:=true;
+         end
+         else Result:=false;
+   end;
+
+   constructor TTaskSingleCheckSubTask21.Create;
+   begin
+   inherited Create;
+
+        Name:='Что?';
+        Text:='Что-что?';
+        EventFormName:='что-то';
+        Time:= '';
+   end;
+
+       function TTaskSingleCheckSubTask22.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
+   begin
+
+         if (true) then
+         begin
+           Result:=true;
+         end
+         else Result:=false;
+   end;
+
+   constructor TTaskSingleCheckSubTask22.Create;
+   begin
+   inherited Create;
+
+        Name:='Что?';
+        Text:='Что-что?';
+        EventFormName:='что-то';
+        Time:= '';
+   end;
+{$ENDREGION}
+
 
 end.
 

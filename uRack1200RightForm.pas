@@ -320,7 +320,8 @@ begin
   //idRack1200A2:=1;
   //idRack1200B2:=2;
   CurFormId:=Half;
-
+      if (Half=1) then begin Self.Caption:='1200 ÏÐÄ À'; end
+  else Self.Caption:='1200 ÏÐÄ Á';
       Station:=Station0;
   TaskController:=TaskController0;
   TaskController.Subscribe(self);

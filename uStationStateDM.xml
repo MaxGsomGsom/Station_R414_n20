@@ -64,7 +64,7 @@
     <field name="GeterodinFloatMain" type="Byte" visibility="public" />
     <field name="GeterodinIntReserve" type="Byte" visibility="public" />
     <field name="GeterodinFloatReserve" type="Byte" visibility="public" />
-    <field name="stCableNoName" type="Byte" visibility="public" />
+    <field name="stCableLoad" type="Byte" visibility="public" />
     <field name="stCableSh1" type="Byte" visibility="public" />
   </struct>
   <struct name="pRack1920" packed="true">

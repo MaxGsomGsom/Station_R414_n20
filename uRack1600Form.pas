@@ -214,6 +214,8 @@ begin
   Inherited Create(AOwner);
   CurFormId:=Half;
   Station:=Station0;
+  if (Half=1) then begin Self.Caption:='1600 À'; end
+  else Self.Caption:='1600 Á';
   TaskController:=TaskController0;
   TaskController.Subscribe(self);
   ButtonBackForm:= TButtonBackForm.Create(self);

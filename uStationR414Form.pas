@@ -2445,6 +2445,8 @@ end;
  begin
      SetBlockRed(TaskController.GetCurSubTaskBlock);
      CurrentTaskForm.SetMyText(TaskController.CurrentTask.CurrentSubTask.Text);
+     CurrentTaskForm.TaskInfo.Color:= clLime;
+     CurrentTaskForm.ReturnWhite:= 3;
  end;
 
  procedure TStationR414Form.TaskComplete(Sender: TObject);

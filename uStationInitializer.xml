@@ -109,6 +109,13 @@
            </summary>
         </devnotes>
       </procedure>
+      <procedure name="InitForSingleCheckTask" visibility="private">
+        <devnotes>
+           <summary>
+             Настраивает параметры станции для выполнения задания SingleCheck
+           </summary>
+        </devnotes>
+      </procedure>
       <property name="Station" visibility="public" read="FStation" write="FStation" type="TStation" />
       <constructor name="Create" visibility="public">
         <parameters>

@@ -13,7 +13,7 @@ object PreparationToWorkForm: TPreparationToWorkForm
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
-  Position = poDesktopCenter
+  Position = poScreenCenter
   OnClose = FormClose
   DesignSize = (
     634

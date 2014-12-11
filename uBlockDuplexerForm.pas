@@ -64,7 +64,7 @@ type
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure FormCreate(Sender: TObject);
   private
-
+    CurFormId: Integer;
   public
   constructor Create(AOwner: TComponent; Half:Integer; Station0: TStation; TaskController0: TTaskController); reintroduce;
 
@@ -72,7 +72,7 @@ type
 
 var
   //BlockDuplexerForm: TBlockDuplexerForm;
-  CurFormId: Integer;
+
   Station: TStation;
   ButtonBackForm: TButtonBackForm;
   TaskController: TTaskController;
@@ -98,6 +98,8 @@ begin
   //idDuplexerB:=2;
   CurFormId:=Half;
   Station:=Station0;
+  if (Half=1) then begin Self.Caption:='Дуплексер А'; end
+  else Self.Caption:='Дуплексер Б';
   TaskController:=TaskController0;
   TaskController.Subscribe(self);
   ButtonBackForm:= TButtonBackForm.Create(self);
