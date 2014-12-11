@@ -1,4 +1,4 @@
-unit uTaskControllerDM;
+п»їunit uTaskControllerDM;
 
 interface
 
@@ -19,8 +19,8 @@ uses
 
 
 /// <summary>
-///   Реализует контроль заданий, проверку ошибок и прочее,
-///   связанное с обучением (ПОКА НЕ РЕАЛИЗОВАН)
+///   Р РµР°Р»РёР·СѓРµС‚ РєРѕРЅС‚СЂРѕР»СЊ Р·Р°РґР°РЅРёР№, РїСЂРѕРІРµСЂРєСѓ РѕС€РёР±РѕРє Рё РїСЂРѕС‡РµРµ,
+///   СЃРІСЏР·Р°РЅРЅРѕРµ СЃ РѕР±СѓС‡РµРЅРёРµРј (РџРћРљРђ РќР• Р Р•РђР›РР—РћР’РђРќ)
 /// </summary>
 ///
 ///
@@ -28,10 +28,10 @@ uses
 
 type TTaskController = class
   private
-    //FTasks: TList<TTask>;     // TTask - общий предок для классов, содержащих
-                                // тексты заданий, проверку заданий и проч
-                                // Каждому Task соответствует константа из
-                                // перечисления TaskType
+    //FTasks: TList<TTask>;     // TTask - РѕР±С‰РёР№ РїСЂРµРґРѕРє РґР»СЏ РєР»Р°СЃСЃРѕРІ, СЃРѕРґРµСЂР¶Р°С‰РёС…
+                                // С‚РµРєСЃС‚С‹ Р·Р°РґР°РЅРёР№, РїСЂРѕРІРµСЂРєСѓ Р·Р°РґР°РЅРёР№ Рё РїСЂРѕС‡
+                                // РљР°Р¶РґРѕРјСѓ Task СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓРµС‚ РєРѕРЅСЃС‚Р°РЅС‚Р° РёР·
+                                // РїРµСЂРµС‡РёСЃР»РµРЅРёСЏ TaskType
     FStation: TStation;
                FSubTaskComplete: TNotifyEvent;
       FTaskComplete: TNotifyEvent;
@@ -39,18 +39,18 @@ type TTaskController = class
 
        
     
-    const                       // Временно, пока нет самих заданий,
-                                // используем константы
+    const                       // Р’СЂРµРјРµРЅРЅРѕ, РїРѕРєР° РЅРµС‚ СЃР°РјРёС… Р·Р°РґР°РЅРёР№,
+                                // РёСЃРїРѕР»СЊР·СѓРµРј РєРѕРЅСЃС‚Р°РЅС‚С‹
       Count_Tasks = 2;
-//      task_title_1 = 'Включение питания';
+//      task_title_1 = 'Р’РєР»СЋС‡РµРЅРёРµ РїРёС‚Р°РЅРёСЏ';
 //      task_title_2 =
-//        'Проверка работоспособности станции в режиме "Автономный контроль"';
-//      task_title_3 = 'Установка служебной связи с кроссом' ;
-//      task_title_4 = 'Перевод станции в оконечный режим работы' ;
+//        'РџСЂРѕРІРµСЂРєР° СЂР°Р±РѕС‚РѕСЃРїРѕСЃРѕР±РЅРѕСЃС‚Рё СЃС‚Р°РЅС†РёРё РІ СЂРµР¶РёРјРµ "РђРІС‚РѕРЅРѕРјРЅС‹Р№ РєРѕРЅС‚СЂРѕР»СЊ"';
+//      task_title_3 = 'РЈСЃС‚Р°РЅРѕРІРєР° СЃР»СѓР¶РµР±РЅРѕР№ СЃРІСЏР·Рё СЃ РєСЂРѕСЃСЃРѕРј' ;
+//      task_title_4 = 'РџРµСЂРµРІРѕРґ СЃС‚Р°РЅС†РёРё РІ РѕРєРѕРЅРµС‡РЅС‹Р№ СЂРµР¶РёРј СЂР°Р±РѕС‚С‹' ;
 //      task_title_5 =
-//        'Измерение запаса СВЧ уровня на выходе приёмников обоих полукомплектов';
+//        'РР·РјРµСЂРµРЅРёРµ Р·Р°РїР°СЃР° РЎР’Р§ СѓСЂРѕРІРЅСЏ РЅР° РІС‹С…РѕРґРµ РїСЂРёС‘РјРЅРёРєРѕРІ РѕР±РѕРёС… РїРѕР»СѓРєРѕРјРїР»РµРєС‚РѕРІ';
 //      task_title_6 =
-//        'Регулировка остаточного затухания двух каналов ТЧ  в режиме 4ПР.ОК.';
+//        'Р РµРіСѓР»РёСЂРѕРІРєР° РѕСЃС‚Р°С‚РѕС‡РЅРѕРіРѕ Р·Р°С‚СѓС…Р°РЅРёСЏ РґРІСѓС… РєР°РЅР°Р»РѕРІ РўР§  РІ СЂРµР¶РёРјРµ 4РџР .РћРљ.';
 
 
 
@@ -60,7 +60,7 @@ type TTaskController = class
       property Station: TStation read FStation
                                  write FStation;
   public
-    procedure SetCurrentTask(WorkMode:TWorkMode; TaskID:TTaskType);
+    procedure SetCurrentTask();
     procedure Subscribe (CurForm0: TForm);
 
            property OnChangeText: TNotifyEvent read FChangeText write FChangeText;
@@ -68,9 +68,9 @@ type TTaskController = class
        property OnTaskComplete: TNotifyEvent read FTaskComplete write FTaskComplete;
        procedure CheckTask(Sender0: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
        
-    constructor Create(Station: TStation);
-    //destructor Destroy; override; // Переопредел-й виртуальный метод,
-                                    // делает Tasks.Free
+    constructor Create(Station: TStation; ClientState: TClientState);
+    //destructor Destroy; override; // РџРµСЂРµРѕРїСЂРµРґРµР»-Р№ РІРёСЂС‚СѓР°Р»СЊРЅС‹Р№ РјРµС‚РѕРґ,
+                                    // РґРµР»Р°РµС‚ Tasks.Free
     function GetTaskTitle(TaskID: Integer): string;
      function GetCurSubTaskBlock: TRacksEnum;
     
@@ -80,16 +80,15 @@ type TTaskController = class
     var
     CurrentTask : TTask;
     CurrentForm: TForm;
-    WorkMode: TWorkMode;
-    TaskID: TTaskType;
     IsTaskComplete: Boolean;
+    ClientState: TClientState;
     //Tasks: array of TTask;
 end;
 
 
 
 
-{$REGION 'Старые методы'}
+{$REGION 'РЎС‚Р°СЂС‹Рµ РјРµС‚РѕРґС‹'}
 
   function AnalyseStation(CurBlockId: Byte = NotSelected;
                           WorkMode: Byte = NotSelected): string;
@@ -128,27 +127,28 @@ uses
   uTasksDM,
   uStationR414Form;
 
-constructor TTaskController.Create(Station: TStation);
+constructor TTaskController.Create(Station: TStation; ClientState: TClientState);
 begin
   Inherited Create;
   Self.Station := Station;
   IsTaskComplete:= false;
 
+  self.ClientState:=ClientState;
   //self.ClientState = ClientState;
-  //Создать объекты Task в Tasks      SetLength(Tasks, 1);
+  //РЎРѕР·РґР°С‚СЊ РѕР±СЉРµРєС‚С‹ Task РІ Tasks      SetLength(Tasks, 1);
       //Tasks[0] = TTaskNone.Create
 
 end;
 
 /// <summary>
-///   Возвращает тип задания по его ID (индексация с 1)
-/// <param name='TaskID'>ID Задания<param>
+///   Р’РѕР·РІСЂР°С‰Р°РµС‚ С‚РёРї Р·Р°РґР°РЅРёСЏ РїРѕ РµРіРѕ ID (РёРЅРґРµРєСЃР°С†РёСЏ СЃ 1)
+/// <param name='TaskID'>ID Р—Р°РґР°РЅРёСЏ<param>
 /// </summary>
 //class function TTaskController.GetTaskType(TaskID: Integer): TTaskType;
 //begin
 //                                                     // Low = ttNone
-//  if (TaskID > Ord(Low(TTaskType)))                  // Если такой ID
-//    and (TaskID <= Ord(High(TTaskType))) then        // есть в перечислении
+//  if (TaskID > Ord(Low(TTaskType)))                  // Р•СЃР»Рё С‚Р°РєРѕР№ ID
+//    and (TaskID <= Ord(High(TTaskType))) then        // РµСЃС‚СЊ РІ РїРµСЂРµС‡РёСЃР»РµРЅРёРё
 //  begin
 //    Exit(TTaskType(TaskID));
 //  end;
@@ -156,15 +156,15 @@ end;
 //end;
 
 /// <summary>
-///   Возвращает заголовок задания по его ID (индексация с 1)
-/// <param name='TaskID'>ID Задания<param>
+///   Р’РѕР·РІСЂР°С‰Р°РµС‚ Р·Р°РіРѕР»РѕРІРѕРє Р·Р°РґР°РЅРёСЏ РїРѕ РµРіРѕ ID (РёРЅРґРµРєСЃР°С†РёСЏ СЃ 1)
+/// <param name='TaskID'>ID Р—Р°РґР°РЅРёСЏ<param>
 /// </summary>
 function TTaskController.GetTaskTitle(TaskID: Integer): string;
-  begin           {TODO: Реализовать метод, когда появятся сами объекты Task }
+  begin           {TODO: Р РµР°Р»РёР·РѕРІР°С‚СЊ РјРµС‚РѕРґ, РєРѕРіРґР° РїРѕСЏРІСЏС‚СЃСЏ СЃР°РјРё РѕР±СЉРµРєС‚С‹ Task }
     Result := '';
     case TaskID of
-      1: Result := 'Включение электропитания';
-      2: Result := 'Установка связи с Р-415 и регулировка ТЧ';
+      1: Result := 'Р’РєР»СЋС‡РµРЅРёРµ СЌР»РµРєС‚СЂРѕРїРёС‚Р°РЅРёСЏ';
+      2: Result := 'РџСЂРѕРІРµСЂРєР° СЂР°Р±РѕС‚РѕСЃРїРѕСЃРѕР±РЅРѕСЃС‚Рё СЃС‚Р°РЅС†РёРё РІ СЂРµР¶РёРјРµ "РђРІС‚РѕРЅРѕРјРЅС‹Р№ РєРѕРЅС‚СЂРѕР»СЊ"';
     end;
   end;
 
@@ -174,23 +174,20 @@ function TTaskController.GetTaskTitle(TaskID: Integer): string;
     Result := count_tasks;
   end;
 
-  {$REGION 'Общие методы контроллера и заданий'}
-  
-    procedure TTaskController.SetCurrentTask(WorkMode:TWorkMode; TaskID:TTaskType);
+  {$REGION 'РћР±С‰РёРµ РјРµС‚РѕРґС‹ РєРѕРЅС‚СЂРѕР»Р»РµСЂР° Рё Р·Р°РґР°РЅРёР№'}
+
+    procedure TTaskController.SetCurrentTask();
     begin
 
-     Self.WorkMode:=WorkMode;
-     Self.TaskID:=TaskID;
-
-    if WorkMode=TWorkMode.wmFree then
+    if Self.ClientState.WorkMode=TWorkMode.wmFree then
     begin
           CurrentTask := TTaskNone.Create;
     end
-    else if (WorkMode=TWorkMode.wmLearning) or (WorkMode=TWorkMode.wmTraining) then
+    else if (Self.ClientState.WorkMode=TWorkMode.wmLearning) or (Self.ClientState.WorkMode=TWorkMode.wmTraining) then
     begin
-        case TaskID of
+        case Self.ClientState.TaskID of
           ttPowerOn:  CurrentTask := TTaskPowerOn.Create;
-          ttConnectToR415:  CurrentTask := TTaskConnectToR415.Create;
+          ttCheckStationInStandaloneControlMode:  CurrentTask := TTaskSingleCheck.Create;
         else   CurrentTask := TTaskNone.Create;
         end;
     end;
@@ -205,7 +202,7 @@ function TTaskController.GetTaskTitle(TaskID: Integer): string;
      var
      img: TComponent;
      begin
-          //код подписки на все события click всех элементов формы
+          //РєРѕРґ РїРѕРґРїРёСЃРєРё РЅР° РІСЃРµ СЃРѕР±С‹С‚РёСЏ click РІСЃРµС… СЌР»РµРјРµРЅС‚РѕРІ С„РѕСЂРјС‹
           for img in CurForm0 do
           begin
           if (img is TImage) then
@@ -225,7 +222,7 @@ function TTaskController.GetTaskTitle(TaskID: Integer): string;
 
   
 
-  //медот вызывающийся на каждое клик событие для проверки текущего задания
+  //РјРµРґРѕС‚ РІС‹Р·С‹РІР°СЋС‰РёР№СЃСЏ РЅР° РєР°Р¶РґРѕРµ РєР»РёРє СЃРѕР±С‹С‚РёРµ РґР»СЏ РїСЂРѕРІРµСЂРєРё С‚РµРєСѓС‰РµРіРѕ Р·Р°РґР°РЅРёСЏ
   procedure TTaskController.CheckTask(Sender0: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
   var
   SubResult: Boolean;
@@ -239,7 +236,7 @@ function TTaskController.GetTaskTitle(TaskID: Integer): string;
 
          if (((Sender as TComponent).Owner as TForm).Caption=CurrentTask.SubTasks[CurrentTask.CurrentSubTaskNum].EventFormName) then
          begin
-             SubResult:=CurrentTask.SubTasks[CurrentTask.CurrentSubTaskNum].CheckSubTask(Sender, self.Station);
+             SubResult:=CurrentTask.SubTasks[CurrentTask.CurrentSubTaskNum].CheckSubTask(Sender, self.Station, self.ClientState);
          end;
 
          if SubResult then begin
@@ -268,10 +265,10 @@ function TTaskController.GetTaskTitle(TaskID: Integer): string;
 
 
 
-{$REGION 'Старые методы'}
+{$REGION 'РЎС‚Р°СЂС‹Рµ РјРµС‚РѕРґС‹'}
 
 {*************************************************************************}
-{ Далее следуют старые функции, которые должны быть реализованы в классах }
+{ Р”Р°Р»РµРµ СЃР»РµРґСѓСЋС‚ СЃС‚Р°СЂС‹Рµ С„СѓРЅРєС†РёРё, РєРѕС‚РѕСЂС‹Рµ РґРѕР»Р¶РЅС‹ Р±С‹С‚СЊ СЂРµР°Р»РёР·РѕРІР°РЅС‹ РІ РєР»Р°СЃСЃР°С… }
 {*************************************************************************}
 
 function GetNumberOfCallPassedThrough2ChannelMode: Byte;
@@ -571,7 +568,7 @@ begin
         begin
           if Task1Passed[btA] = stNotPassed then
           begin
-            Result := 'Произвести внешний осмотр: ' + UnitsNames[btA];
+            Result := 'РџСЂРѕРёР·РІРµСЃС‚Рё РІРЅРµС€РЅРёР№ РѕСЃРјРѕС‚СЂ: ' + UnitsNames[btA];
             Break;
           end;
         end;
@@ -678,8 +675,8 @@ begin
 end;
 
 /// <summary>
-///   Возвращает количество проверенных вызовом каналов (оба направления)
-///    оба режима (2х и 4х проводные)
+///   Р’РѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»РёС‡РµСЃС‚РІРѕ РїСЂРѕРІРµСЂРµРЅРЅС‹С… РІС‹Р·РѕРІРѕРј РєР°РЅР°Р»РѕРІ (РѕР±Р° РЅР°РїСЂР°РІР»РµРЅРёСЏ)
+///    РѕР±Р° СЂРµР¶РёРјР° (2С… Рё 4С… РїСЂРѕРІРѕРґРЅС‹Рµ)
 /// </summary>
 function GetNumberOfCallPassedThrough: Byte;
 var
@@ -698,7 +695,7 @@ begin
 end;
 
 /// <summary>
-///   Возвращает Id первого невыполненного задания в текущем упражнении
+///   Р’РѕР·РІСЂР°С‰Р°РµС‚ Id РїРµСЂРІРѕРіРѕ РЅРµРІС‹РїРѕР»РЅРµРЅРЅРѕРіРѕ Р·Р°РґР°РЅРёСЏ РІ С‚РµРєСѓС‰РµРј СѓРїСЂР°Р¶РЅРµРЅРёРё
 /// </summary>
 function GetNotPassedTaskId: Byte;
 var
@@ -765,8 +762,8 @@ begin
 end;
 
 /// <summary>
-///   Проверяет, в правильном ли порядке включается питание на блоках
-///   (сначала первый, потом второй и т.д.)
+///   РџСЂРѕРІРµСЂСЏРµС‚, РІ РїСЂР°РІРёР»СЊРЅРѕРј Р»Рё РїРѕСЂСЏРґРєРµ РІРєР»СЋС‡Р°РµС‚СЃСЏ РїРёС‚Р°РЅРёРµ РЅР° Р±Р»РѕРєР°С…
+///   (СЃРЅР°С‡Р°Р»Р° РїРµСЂРІС‹Р№, РїРѕС‚РѕРј РІС‚РѕСЂРѕР№ Рё С‚.Рґ.)
 /// </summary>
 function ChangeEvent: Byte;
 var
@@ -775,7 +772,7 @@ var
   btA: Byte;
 
 const
-  ErrMessageText = 'Неверный порядок блоков при включении питания';
+  ErrMessageText = 'РќРµРІРµСЂРЅС‹Р№ РїРѕСЂСЏРґРѕРє Р±Р»РѕРєРѕРІ РїСЂРё РІРєР»СЋС‡РµРЅРёРё РїРёС‚Р°РЅРёСЏ';
 
   function IsErrorExists: Boolean;
   var
@@ -878,7 +875,7 @@ begin
   end;
   if Length(Errors) > MaxErrorsAllowedWhileTesting then
   begin
-    Application.MessageBox('Допущено слишком много ошибок, пожалуйста начните прохождение заново!',
+    Application.MessageBox('Р”РѕРїСѓС‰РµРЅРѕ СЃР»РёС€РєРѕРј РјРЅРѕРіРѕ РѕС€РёР±РѕРє, РїРѕР¶Р°Р»СѓР№СЃС‚Р° РЅР°С‡РЅРёС‚Рµ РїСЂРѕС…РѕР¶РґРµРЅРёРµ Р·Р°РЅРѕРІРѕ!',
       PChar(PName), MB_OK + MB_ICONINFORMATION);
     CurBlockSelected := 255;
     //StationR414Form.lvTask.Clear;
@@ -889,7 +886,7 @@ begin
 end;
 
 /// <summary>
-///   Возвращает ID следующего блока для настройки (по списку задания)
+///   Р’РѕР·РІСЂР°С‰Р°РµС‚ ID СЃР»РµРґСѓСЋС‰РµРіРѕ Р±Р»РѕРєР° РґР»СЏ РЅР°СЃС‚СЂРѕР№РєРё (РїРѕ СЃРїРёСЃРєСѓ Р·Р°РґР°РЅРёСЏ)
 /// </summary>
 function GetNextBlockId: LongInt;
 var
@@ -945,9 +942,9 @@ begin
 end;
 
 /// <summary>
-///   Возвращает id стойки по номеру задания
+///   Р’РѕР·РІСЂР°С‰Р°РµС‚ id СЃС‚РѕР№РєРё РїРѕ РЅРѕРјРµСЂСѓ Р·Р°РґР°РЅРёСЏ
 /// </summary>
-/// <param name="TaskId">Номер задания</param>
+/// <param name="TaskId">РќРѕРјРµСЂ Р·Р°РґР°РЅРёСЏ</param>
 function GetRackCodeByTaskId(TaskId: Integer): Integer;
 var
   btAA: Byte;
@@ -1014,11 +1011,11 @@ end;
 
 procedure MadeMistake(MistakeId: Integer);
 begin
-  AddError(MistakeId, 'Ошибка при выполнении задачи ');
+  AddError(MistakeId, 'РћС€РёР±РєР° РїСЂРё РІС‹РїРѕР»РЅРµРЅРёРё Р·Р°РґР°С‡Рё ');
 end;
 
 /// <summary>
-///   Загружает список заданий, отображающийся на общем виде Р414
+///   Р—Р°РіСЂСѓР¶Р°РµС‚ СЃРїРёСЃРѕРє Р·Р°РґР°РЅРёР№, РѕС‚РѕР±СЂР°Р¶Р°СЋС‰РёР№СЃСЏ РЅР° РѕР±С‰РµРј РІРёРґРµ Р 414
 /// </summary>
 procedure LoadSubject;
 
@@ -1032,7 +1029,7 @@ procedure LoadSubject;
 //    begin
 //      LI := StationR414Form.lvTask.Items.Add;
 //      LI.Caption := IntToStr(i + 1);
-//      //Обратное направление               //Что за обратное направение нах??
+//      //РћР±СЂР°С‚РЅРѕРµ РЅР°РїСЂР°РІР»РµРЅРёРµ               //Р§С‚Рѕ Р·Р° РѕР±СЂР°С‚РЅРѕРµ РЅР°РїСЂР°РІРµРЅРёРµ РЅР°С…??
 //      LI.SubItems.Add(arrTaskTexts[i]);
 //      LI.SubItems.Add(stTaskOpened);
 //      LI.SubItems.Add(InitialTimeString);
@@ -1065,7 +1062,7 @@ begin
   intCount := 0;
   for btA := 0 to Length(Task1Passed) - 1 do
   begin
-    //Если это новый режим и за него не ставилась оценка
+    //Р•СЃР»Рё СЌС‚Рѕ РЅРѕРІС‹Р№ СЂРµР¶РёРј Рё Р·Р° РЅРµРіРѕ РЅРµ СЃС‚Р°РІРёР»Р°СЃСЊ РѕС†РµРЅРєР°
     if Task1Passed[btA] = stPassed then
     begin
       Inc(intCount, 1);
@@ -1073,7 +1070,7 @@ begin
   end;
   for btA := 1 to Length(Task2Passed) do
   begin
-    //Если это новый режим и за него не ставилась оценка
+    //Р•СЃР»Рё СЌС‚Рѕ РЅРѕРІС‹Р№ СЂРµР¶РёРј Рё Р·Р° РЅРµРіРѕ РЅРµ СЃС‚Р°РІРёР»Р°СЃСЊ РѕС†РµРЅРєР°
     if Task2Passed[btA] = stPassed then
     begin
       Inc(intCount, 1);
@@ -1081,7 +1078,7 @@ begin
   end;
   for btA := 1 to Length(Task3Passed) do
   begin
-    //Если это новый режим и за него не ставилась оценка
+    //Р•СЃР»Рё СЌС‚Рѕ РЅРѕРІС‹Р№ СЂРµР¶РёРј Рё Р·Р° РЅРµРіРѕ РЅРµ СЃС‚Р°РІРёР»Р°СЃСЊ РѕС†РµРЅРєР°
     if Task3Passed[btA] = stPassed then
     begin
       Inc(intCount, 1);
@@ -1089,7 +1086,7 @@ begin
   end;
   for btA := 1 to Length(Task4Passed) do
   begin
-    //Если это новый режим и за него не ставилась оценка
+    //Р•СЃР»Рё СЌС‚Рѕ РЅРѕРІС‹Р№ СЂРµР¶РёРј Рё Р·Р° РЅРµРіРѕ РЅРµ СЃС‚Р°РІРёР»Р°СЃСЊ РѕС†РµРЅРєР°
     if Task4Passed[btA] = stPassed then
     begin
       Inc(intCount, 1);
@@ -1097,7 +1094,7 @@ begin
   end;
   for btA := 1 to Length(Task5Passed) do
   begin
-    //Если это новый режим и за него не ставилась оценка
+    //Р•СЃР»Рё СЌС‚Рѕ РЅРѕРІС‹Р№ СЂРµР¶РёРј Рё Р·Р° РЅРµРіРѕ РЅРµ СЃС‚Р°РІРёР»Р°СЃСЊ РѕС†РµРЅРєР°
     if Task5Passed[btA] = stPassed then
     begin
       Inc(intCount, 1);
@@ -1108,11 +1105,11 @@ end;
 
 
 /// <summary>
-/// Возвращает номер задания, связанного с формой, id которой передаётся
-/// в параметрах.
+/// Р’РѕР·РІСЂР°С‰Р°РµС‚ РЅРѕРјРµСЂ Р·Р°РґР°РЅРёСЏ, СЃРІСЏР·Р°РЅРЅРѕРіРѕ СЃ С„РѕСЂРјРѕР№, id РєРѕС‚РѕСЂРѕР№ РїРµСЂРµРґР°С‘С‚СЃСЏ
+/// РІ РїР°СЂР°РјРµС‚СЂР°С….
 /// </summary>
-/// <param name="FormId">id стойки, для которой необходимо получить
-/// номер задания.</param>
+/// <param name="FormId">id СЃС‚РѕР№РєРё, РґР»СЏ РєРѕС‚РѕСЂРѕР№ РЅРµРѕР±С…РѕРґРёРјРѕ РїРѕР»СѓС‡РёС‚СЊ
+/// РЅРѕРјРµСЂ Р·Р°РґР°РЅРёСЏ.</param>
 function GetNumberHelp (FormId : Integer) : Integer;
 begin
   if (FormId <> NotSelected) then
@@ -1140,10 +1137,10 @@ begin
 end;
 
 /// <summary>
-///   Проверяет, настроена ли закрываемая форма в соответствии
-///   с текущим заданием
-/// <param name = 'CanClose'> Изменяемый параметр, показывающий,
-///   можно ли закрывать форму </param>
+///   РџСЂРѕРІРµСЂСЏРµС‚, РЅР°СЃС‚СЂРѕРµРЅР° Р»Рё Р·Р°РєСЂС‹РІР°РµРјР°СЏ С„РѕСЂРјР° РІ СЃРѕРѕС‚РІРµС‚СЃС‚РІРёРё
+///   СЃ С‚РµРєСѓС‰РёРј Р·Р°РґР°РЅРёРµРј
+/// <param name = 'CanClose'> РР·РјРµРЅСЏРµРјС‹Р№ РїР°СЂР°РјРµС‚СЂ, РїРѕРєР°Р·С‹РІР°СЋС‰РёР№,
+///   РјРѕР¶РЅРѕ Р»Рё Р·Р°РєСЂС‹РІР°С‚СЊ С„РѕСЂРјСѓ </param>
 /// </summary>
 procedure CheckFormBeforeClosing(var CanClose: Boolean);
 var
@@ -1211,7 +1208,7 @@ begin
   begin
     case Station.WorkMode of
       mdStartParametersSetup:
-        {$REGION 'Начальная настройка органов управления'}
+        {$REGION 'РќР°С‡Р°Р»СЊРЅР°СЏ РЅР°СЃС‚СЂРѕР№РєР° РѕСЂРіР°РЅРѕРІ СѓРїСЂР°РІР»РµРЅРёСЏ'}
         begin
           PassTaskNumber := Task2RackCodeArr[ClosingFormId];
           case ClosingFormId of
@@ -1517,7 +1514,7 @@ begin
                   and (Station.WaveTransmitB = Station.HalfSetB.Rack1500.swWave1610_0)
                   and (Station.WaveTransmitB = Station.HalfSetB.Rack1500.swWave1500)
                   and (Station.WaveTransmitB = Station.HalfSetB.Rack1500.swWave161_R)
-                  and (Station.HalfSetB.Rack1500.stCableNoName = csConnectedAtRack1500Sh1)
+                  and (Station.HalfSetB.Rack1500.stCableLoad = csConnectedAtRack1500Sh1)
                   and (Station.HalfSetB.Rack1500.stCableSh1 = csConnectedAtRack1500NoName)
                   and (Station.HalfSetB.Rack1500B.butMdOsn_1 = butPositionLeft)
                   and (Station.HalfSetB.Rack1500B.butMdOsn_2 = butPositionLeft)
@@ -1534,7 +1531,7 @@ begin
                   and (Station.WaveTransmitA = Station.HalfSetA.Rack1500.swWave1610_0)
                   and (Station.WaveTransmitA = Station.HalfSetA.Rack1500.swWave1500)
                   and (Station.WaveTransmitA = Station.HalfSetA.Rack1500.swWave161_R)
-                  and (Station.HalfSetA.Rack1500.stCableNoName = csConnectedAtRack1500Sh1)
+                  and (Station.HalfSetA.Rack1500.stCableLoad = csConnectedAtRack1500Sh1)
                   and (Station.HalfSetA.Rack1500.stCableSh1 = csConnectedAtRack1500NoName)
                   and (Station.HalfSetA.Rack1500B.butMdOsn_1 = butPositionLeft)
                   and (Station.HalfSetA.Rack1500B.butMdOsn_2 = butPositionLeft)
@@ -1553,7 +1550,7 @@ begin
         end;
         {$ENDREGION}
       mdPowerOn:
-        {$REGION 'Включение питания'}
+        {$REGION 'Р’РєР»СЋС‡РµРЅРёРµ РїРёС‚Р°РЅРёСЏ'}
         begin
           PassTaskNumber := Task3RackCodeArr[ClosingFormId];
           case ClosingFormId of
@@ -1635,7 +1632,7 @@ begin
         end;
         {$ENDREGION}
       mdReceiveAndTransmitTracksSetup:
-        {$REGION 'Настройка приёмо-передающего тракта'}
+        {$REGION 'РќР°СЃС‚СЂРѕР№РєР° РїСЂРёС‘РјРѕ-РїРµСЂРµРґР°СЋС‰РµРіРѕ С‚СЂР°РєС‚Р°'}
         begin
           case ClosingFormId of
             idRack1500A:
@@ -1764,10 +1761,10 @@ begin
 end;
 
 /// <summary>
-///   Проверяет, настроена ли закрываемая форма в соответствии
-///   с текущим заданием в режиме экзамена
-/// <param name = 'CanClose'> Изменяемый параметр, показывающий,
-///   можно ли закрывать форму </param>
+///   РџСЂРѕРІРµСЂСЏРµС‚, РЅР°СЃС‚СЂРѕРµРЅР° Р»Рё Р·Р°РєСЂС‹РІР°РµРјР°СЏ С„РѕСЂРјР° РІ СЃРѕРѕС‚РІРµС‚СЃС‚РІРёРё
+///   СЃ С‚РµРєСѓС‰РёРј Р·Р°РґР°РЅРёРµРј РІ СЂРµР¶РёРјРµ СЌРєР·Р°РјРµРЅР°
+/// <param name = 'CanClose'> РР·РјРµРЅСЏРµРјС‹Р№ РїР°СЂР°РјРµС‚СЂ, РїРѕРєР°Р·С‹РІР°СЋС‰РёР№,
+///   РјРѕР¶РЅРѕ Р»Рё Р·Р°РєСЂС‹РІР°С‚СЊ С„РѕСЂРјСѓ </param>
 /// </summary>
 procedure CheckFormBeforeClosingInExamMode(var CanClose: Boolean);
 var
@@ -1806,7 +1803,7 @@ begin
   ClosingFormId := CurBlockSelected;
 
     //====================== mdStartParametersSetup ==============================
-    {$REGION 'Начальная настройка'}
+    {$REGION 'РќР°С‡Р°Р»СЊРЅР°СЏ РЅР°СЃС‚СЂРѕР№РєР°'}
     PassTaskNumber := Task2RackCodeArr[ClosingFormId];
     case ClosingFormId of
       idDuplexerB:
@@ -2062,7 +2059,7 @@ begin
         end;
       idDuplexerA:
         begin
-          //-----------------Левый дуплексер-------------------------------------------
+          //-----------------Р›РµРІС‹Р№ РґСѓРїР»РµРєСЃРµСЂ-------------------------------------------
           if ((Station.HalfSetA.Duplexer.waveTransmit = Station.WaveTransmitA)and
           (Station.HalfSetA.Duplexer.waveReceive = Station.WaveReceiveA) and
           (Station.HalfSetA.Duplexer.cbSh1 = csConnectedAtDuplexeLeft) and
@@ -2174,7 +2171,7 @@ begin
           (Station.WaveTransmitB = Station.HalfSetB.Rack1500.swWave1610_0) and
           (Station.WaveTransmitB = Station.HalfSetB.Rack1500.swWave1500) and
           (Station.WaveTransmitB = Station.HalfSetB.Rack1500.swWave161_R) and
-          (Station.HalfSetB.Rack1500.stCableNoName = csConnectedAtRack1500Sh1) and
+          (Station.HalfSetB.Rack1500.stCableLoad = csConnectedAtRack1500Sh1) and
           (Station.HalfSetB.Rack1500.stCableSh1 = csConnectedAtRack1500NoName) and
           (Station.HalfSetB.Rack1500B.butMdOsn_1 = butPositionLeft) and
           (Station.HalfSetB.Rack1500B.butMdOsn_2 = butPositionLeft) and
@@ -2198,7 +2195,7 @@ begin
           (Station.WaveTransmitA = Station.HalfSetA.Rack1500.swWave1610_0) and
           (Station.WaveTransmitA = Station.HalfSetA.Rack1500.swWave1500) and
           (Station.WaveTransmitA = Station.HalfSetA.Rack1500.swWave161_R) and
-          (Station.HalfSetA.Rack1500.stCableNoName = csConnectedAtRack1500Sh1) and
+          (Station.HalfSetA.Rack1500.stCableLoad = csConnectedAtRack1500Sh1) and
           (Station.HalfSetA.Rack1500.stCableSh1 = csConnectedAtRack1500NoName) and
           (Station.HalfSetA.Rack1500B.butMdOsn_1 = butPositionLeft) and
           (Station.HalfSetA.Rack1500B.butMdOsn_2 = butPositionLeft) and
@@ -2231,7 +2228,7 @@ begin
     {$ENDREGION}
 
     //==========================mdPowerOn=======================================
-    {$REGION 'Включение питания'}
+    {$REGION 'Р’РєР»СЋС‡РµРЅРёРµ РїРёС‚Р°РЅРёСЏ'}
     PassTaskNumber := Task3RackCodeArr[ClosingFormId];
     case ClosingFormId of
       idRack1920B:
@@ -2372,7 +2369,7 @@ begin
     {$ENDREGION}
 
     //====================mdReceiveAndTransmitTracksSetup=======================
-    {$REGION 'Настройка приёмо-передающего тракта'}
+    {$REGION 'РќР°СЃС‚СЂРѕР№РєР° РїСЂРёС‘РјРѕ-РїРµСЂРµРґР°СЋС‰РµРіРѕ С‚СЂР°РєС‚Р°'}
     case ClosingFormId of
       idRack1500A:
         begin
@@ -2465,8 +2462,8 @@ begin
     end;
     {$ENDREGION}
 
-    //=====================================5 занятие===========================================
-    {$REGION 'Работа с низкочастотным оборудованием'}
+    //=====================================5 Р·Р°РЅСЏС‚РёРµ===========================================
+    {$REGION 'Р Р°Р±РѕС‚Р° СЃ РЅРёР·РєРѕС‡Р°СЃС‚РѕС‚РЅС‹Рј РѕР±РѕСЂСѓРґРѕРІР°РЅРёРµРј'}
     if ((stDeviation.Rack1200A_PRD = stPassed)
         and (stDeviation.Rack1200A_PRM = stPassed)
         and (stDeviation.Rack1200B_PRD = stPassed)
@@ -2497,8 +2494,8 @@ end;
 
 
 /// <summary>
-/// Анализирует станцию на предмет ошибок в настройке и возвращает
-/// строку расшифровки ошибки
+/// РђРЅР°Р»РёР·РёСЂСѓРµС‚ СЃС‚Р°РЅС†РёСЋ РЅР° РїСЂРµРґРјРµС‚ РѕС€РёР±РѕРє РІ РЅР°СЃС‚СЂРѕР№РєРµ Рё РІРѕР·РІСЂР°С‰Р°РµС‚
+/// СЃС‚СЂРѕРєСѓ СЂР°СЃС€РёС„СЂРѕРІРєРё РѕС€РёР±РєРё
 /// </summary>
 /// <param name="CurBlockId"></param>
 /// <param name="WorkMode"></param>
@@ -2525,19 +2522,19 @@ begin
     WorkMode := Station.WorkMode;
   case WorkMode of
     mdStartParametersSetup:
-      {$REGION 'Проверка правильности настройки блоков'}
+      {$REGION 'РџСЂРѕРІРµСЂРєР° РїСЂР°РІРёР»СЊРЅРѕСЃС‚Рё РЅР°СЃС‚СЂРѕР№РєРё Р±Р»РѕРєРѕРІ'}
       begin
         case CurBlockId of
           idDuplexerB:
           begin
             if (Station.HalfSetB.Duplexer.waveTransmit <> Station.WaveTransmitB) then
             begin
-              AddMessage('Неверная волна передачи. Есть: ' + IntToStr(Station.HalfSetB.Duplexer.waveTransmit) + ' Надо: ' +
+              AddMessage('РќРµРІРµСЂРЅР°СЏ РІРѕР»РЅР° РїРµСЂРµРґР°С‡Рё. Р•СЃС‚СЊ: ' + IntToStr(Station.HalfSetB.Duplexer.waveTransmit) + ' РќР°РґРѕ: ' +
               IntToStr(Station.WaveTransmitB));
             end;
             if (Station.HalfSetB.Duplexer.waveTransmit <> Station.WaveTransmitB) then
             begin
-              AddMessage('Неверная волна приема. Есть: ' + IntToStr(Station.HalfSetB.Duplexer.waveReceive) + ' Надо: ' +
+              AddMessage('РќРµРІРµСЂРЅР°СЏ РІРѕР»РЅР° РїСЂРёРµРјР°. Р•СЃС‚СЊ: ' + IntToStr(Station.HalfSetB.Duplexer.waveReceive) + ' РќР°РґРѕ: ' +
               IntToStr(Station.WaveReceiveB));
             end;
             if ((Station.HalfSetB.Duplexer.cbSh1 <> csConnectedAtDuplexeLeft) and
@@ -2547,836 +2544,836 @@ begin
             (Station.HalfSetB.Duplexer.cbSh1 <> csConnectedAtDuplexeRight) and
             (Station.HalfSetB.Duplexer.cbSh2 <> csConnectedAtDuplexeLeft)) then
             begin
-              AddMessage('Неверно подключены кабели к дуплексеру');
+              AddMessage('РќРµРІРµСЂРЅРѕ РїРѕРґРєР»СЋС‡РµРЅС‹ РєР°Р±РµР»Рё Рє РґСѓРїР»РµРєСЃРµСЂСѓ');
             end;
           end;
           idRack1920B:
             begin
               if (Station.HalfSetB.Rack1920.butPower <> butPositionDown) then
               begin
-                AddMessage('Переключатель ''Сеть'' во включенном положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ ''РЎРµС‚СЊ'' РІРѕ РІРєР»СЋС‡РµРЅРЅРѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetB.Rack1920.butPower2 <> butPositionDown) then
               begin
-                AddMessage('Переключатель ''Сеть'' 2 во включенном положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ ''РЎРµС‚СЊ'' 2 РІРѕ РІРєР»СЋС‡РµРЅРЅРѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetB.Rack1920.but1910 <> butPositionDown) then
               begin
-                AddMessage('Переключатель блока ''1910'' во включенном положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° ''1910'' РІРѕ РІРєР»СЋС‡РµРЅРЅРѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetB.Rack1920.but1930 <> butPositionDown) then
               begin
-                AddMessage('Переключатель блока ''1930'' во включенном положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° ''1930'' РІРѕ РІРєР»СЋС‡РµРЅРЅРѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetB.Rack1920.but1910A <> butPositionDown) then
               begin
-                AddMessage('Переключатель блока ''1910A'' во включенном положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° ''1910A'' РІРѕ РІРєР»СЋС‡РµРЅРЅРѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetB.Rack1920.but1960_1 <> butPositionDown) then
               begin
-                AddMessage('Переключатель блока ''1360-1'' во включенном положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° ''1360-1'' РІРѕ РІРєР»СЋС‡РµРЅРЅРѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
             end;
           idRack1200B2:
             begin
               if (Station.HalfSetB.Rack1200Right.But1270Main <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока ''1270'' в нижнем положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° ''1270'' РІ РЅРёР¶РЅРµРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetB.Rack1200Right.But1220AMMain <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока ''1220AM'' в нижнем положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° ''1220AM'' РІ РЅРёР¶РЅРµРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetB.Rack1200Right.But1230AMain <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока ''1230A'' в нижнем положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° ''1230A'' РІ РЅРёР¶РЅРµРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetB.Rack1200Right.But1210AMain <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока ''1210A'' в нижнем положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° ''1210A'' РІ РЅРёР¶РЅРµРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetB.Rack1200Right.But1270Reserve <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока ''1270'' в нижнем положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° ''1270'' РІ РЅРёР¶РЅРµРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetB.Rack1200Right.But1220AMReserve <> butPositionUp) then
               begin
-                AddMessage('Переключатель резервного блока ''1220AM'' в нижнем положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ СЂРµР·РµСЂРІРЅРѕРіРѕ Р±Р»РѕРєР° ''1220AM'' РІ РЅРёР¶РЅРµРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetB.Rack1200Right.But1240V <> butPositionLeft) then
               begin
-                AddMessage('Переключатель блока ''1240В'' в положении ''РЕТР''');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° ''1240Р’'' РІ РїРѕР»РѕР¶РµРЅРёРё ''Р Р•РўР ''');
               end;
               if (Station.HalfSetB.Rack1200Right.But1240V2 <> butPositionLeft) then
               begin
-                AddMessage('Переключатель блока ''1240В-2'' в положении ''РЕТР''');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° ''1240Р’-2'' РІ РїРѕР»РѕР¶РµРЅРёРё ''Р Р•РўР ''');
               end;
               if (Station.HalfSetB.Rack1200Right.But1240V3 <> butPositionLeft) then
               begin
-                AddMessage('Переключатель блока ''1240В-3'' в нижнем положении ''РЕТР''');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° ''1240Р’-3'' РІ РЅРёР¶РЅРµРј РїРѕР»РѕР¶РµРЅРёРё ''Р Р•РўР ''');
               end;
               if (Station.HalfSetB.Rack1200Right.Sw1240V <> butPositionUp) then
               begin
-                AddMessage('Кукушка блока ''1240В'' не в первой позиции');
+                AddMessage('РљСѓРєСѓС€РєР° Р±Р»РѕРєР° ''1240Р’'' РЅРµ РІ РїРµСЂРІРѕР№ РїРѕР·РёС†РёРё');
               end;
               if (Station.HalfSetB.Rack1200Right.Sw1240V2 <> butPositionUp) then
               begin
-                AddMessage('Кукушка блока ''1240В-2'' не в первой позиции');
+                AddMessage('РљСѓРєСѓС€РєР° Р±Р»РѕРєР° ''1240Р’-2'' РЅРµ РІ РїРµСЂРІРѕР№ РїРѕР·РёС†РёРё');
               end;
               if (Station.HalfSetB.Rack1200Right.Sw1240V3 <> butPositionUp) then
               begin
-                AddMessage('Кукушка блока ''1240В-3'' не в первой позиции');
+                AddMessage('РљСѓРєСѓС€РєР° Р±Р»РѕРєР° ''1240Р’-3'' РЅРµ РІ РїРµСЂРІРѕР№ РїРѕР·РёС†РёРё');
               end;
               if (Station.HalfSetB.Rack1200Right.But1240G <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока ''1240Г'' не в верхнем положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° ''1240Р“'' РЅРµ РІ РІРµСЂС…РЅРµРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetB.Rack1200Right.But1240G1 <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока ''1240Г-1'' не в верхнем положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° ''1240Р“-1'' РЅРµ РІ РІРµСЂС…РЅРµРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetB.Rack1200Right.But1240G2 <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока ''1240Г-2'' не в верхнем положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° ''1240Р“-2'' РЅРµ РІ РІРµСЂС…РЅРµРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetB.Rack1200Right.But1240G3 <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока ''1240Г-3'' не в верхнем положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° ''1240Р“-3'' РЅРµ РІ РІРµСЂС…РЅРµРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetB.Rack1200Right.But1240G4 <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока ''1240Г-4'' не в верхнем положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° ''1240Р“-4'' РЅРµ РІ РІРµСЂС…РЅРµРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetB.Rack1200Right.But1240G5 <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока ''1240Г-5'' не в верхнем положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° ''1240Р“-5'' РЅРµ РІ РІРµСЂС…РЅРµРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetB.Rack1200Right.But1240G6 <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока ''1240Г-6'' не в верхнем положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° ''1240Р“-6'' РЅРµ РІ РІРµСЂС…РЅРµРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetB.Rack1200Right.But1240G7 <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока ''1240Г-7'' не в верхнем положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° ''1240Р“-7'' РЅРµ РІ РІРµСЂС…РЅРµРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetB.Rack1200Right.But1240G8 <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока ''1240Г-8'' не в верхнем положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° ''1240Р“-8'' РЅРµ РІ РІРµСЂС…РЅРµРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetB.Rack1200Right.st1240V_Zaglushka_4PDC <> stPluggedIn) then
               begin
-                AddMessage('Заглушка блока ''1240В'' в положении кросс');
+                AddMessage('Р—Р°РіР»СѓС€РєР° Р±Р»РѕРєР° ''1240Р’'' РІ РїРѕР»РѕР¶РµРЅРёРё РєСЂРѕСЃСЃ');
               end;
               if (Station.HalfSetB.Rack1200Right.st1240V_Zaglushka_KDC <> stPluggedIn) then
               begin
-                AddMessage('Заглушка блока ''1240В'' в положении кросс');
+                AddMessage('Р—Р°РіР»СѓС€РєР° Р±Р»РѕРєР° ''1240Р’'' РІ РїРѕР»РѕР¶РµРЅРёРё РєСЂРѕСЃСЃ');
               end;
               if (Station.HalfSetB.Rack1200Right.st1240V2_Zaglushka_4PDC <> stPluggedIn) then
               begin
-                AddMessage('Заглушка блока ''1240В-2'' в положении кросс');
+                AddMessage('Р—Р°РіР»СѓС€РєР° Р±Р»РѕРєР° ''1240Р’-2'' РІ РїРѕР»РѕР¶РµРЅРёРё РєСЂРѕСЃСЃ');
               end;
               if (Station.HalfSetB.Rack1200Right.st1240V2_Zaglushka_KDC <> stPluggedIn) then
               begin
-                AddMessage('Заглушка блока ''1240В-2'' в положении кросс');
+                AddMessage('Р—Р°РіР»СѓС€РєР° Р±Р»РѕРєР° ''1240Р’-2'' РІ РїРѕР»РѕР¶РµРЅРёРё РєСЂРѕСЃСЃ');
               end;
               if (Station.HalfSetB.Rack1200Right.st1240V2_Zaglushka_4PDC <> stPluggedIn) then
               begin
-                AddMessage('Заглушка блока ''1240В-3'' в положении кросс');
+                AddMessage('Р—Р°РіР»СѓС€РєР° Р±Р»РѕРєР° ''1240Р’-3'' РІ РїРѕР»РѕР¶РµРЅРёРё РєСЂРѕСЃСЃ');
               end;
               if (Station.HalfSetB.Rack1200Right.st1240V2_Zaglushka_KDC <> stPluggedIn) then
               begin
-                AddMessage('Заглушка блока ''1240В-3'' в положении кросс');
+                AddMessage('Р—Р°РіР»СѓС€РєР° Р±Р»РѕРєР° ''1240Р’-3'' РІ РїРѕР»РѕР¶РµРЅРёРё РєСЂРѕСЃСЃ');
               end;
               if (Station.HalfSetB.Rack1200Right.But1290Power <> butPositionDown) then
               begin
-                AddMessage('Заглушка блока ''1290'' в положении включено');
+                AddMessage('Р—Р°РіР»СѓС€РєР° Р±Р»РѕРєР° ''1290'' РІ РїРѕР»РѕР¶РµРЅРёРё РІРєР»СЋС‡РµРЅРѕ');
               end;
             end;
           idShield:
             begin
               if (Station.PowerPanel.swNet <> 0) or (Station.PowerPanel.swNet <> 2) then
               begin
-                AddMessage('Переключатель основного питания включен');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РѕСЃРЅРѕРІРЅРѕРіРѕ РїРёС‚Р°РЅРёСЏ РІРєР»СЋС‡РµРЅ');
               end;
               if (Station.PowerPanel.butRetranslator <> butPositionDown) then
               begin
-                AddMessage('Переключатель питания ретранслятора включен');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РїРёС‚Р°РЅРёСЏ СЂРµС‚СЂР°РЅСЃР»СЏС‚РѕСЂР° РІРєР»СЋС‡РµРЅ');
               end;
               if (Station.PowerPanel.sw1700Power <> 0) or (Station.PowerPanel.sw1700Power <> 2) then
               begin
-                AddMessage('Питание на стойку 1700 подано');
+                AddMessage('РџРёС‚Р°РЅРёРµ РЅР° СЃС‚РѕР№РєСѓ 1700 РїРѕРґР°РЅРѕ');
               end;
               if (Station.PowerPanel.butRetranslator2 <> butPositionDown) then
               begin
-                AddMessage('Переключатель питания второго ретранслятора включен');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РїРёС‚Р°РЅРёСЏ РІС‚РѕСЂРѕРіРѕ СЂРµС‚СЂР°РЅСЃР»СЏС‚РѕСЂР° РІРєР»СЋС‡РµРЅ');
               end;
               if (Station.PowerPanel.sw1900Power <> 0) or (Station.PowerPanel.sw1900Power <> 2) then
               begin
-                AddMessage('Переключатель питания стойки 1920 А включен');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РїРёС‚Р°РЅРёСЏ СЃС‚РѕР№РєРё 1920 Рђ РІРєР»СЋС‡РµРЅ');
               end;
               if (Station.PowerPanel.sw1900Power <> 0) or (Station.PowerPanel.sw1900Power <> 2) then
               begin
-                AddMessage('Переключатель питания стойки 1920 Б включен');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РїРёС‚Р°РЅРёСЏ СЃС‚РѕР№РєРё 1920 Р‘ РІРєР»СЋС‡РµРЅ');
               end;
               if (Station.PowerPanel.swHeat5A <> 0) or (Station.PowerPanel.swHeat5A <> 2) then
               begin
-                AddMessage('Переключатель питания обогревателя включен');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РїРёС‚Р°РЅРёСЏ РѕР±РѕРіСЂРµРІР°С‚РµР»СЏ РІРєР»СЋС‡РµРЅ');
               end;
               if (Station.PowerPanel.sw1200Power <> 0) or (Station.PowerPanel.sw1200Power <> 2) then
               begin
-                AddMessage('Переключатель питания стойки 1200 А включен');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РїРёС‚Р°РЅРёСЏ СЃС‚РѕР№РєРё 1200 Рђ РІРєР»СЋС‡РµРЅ');
               end;
               if (Station.PowerPanel.sw1200Power_2 <> 0) or (Station.PowerPanel.sw1200Power_2 <> 2) then
               begin
-                AddMessage('Переключатель питания стойки 1200 Б включен');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РїРёС‚Р°РЅРёСЏ СЃС‚РѕР№РєРё 1200 Р‘ РІРєР»СЋС‡РµРЅ');
               end;
               if (Station.PowerPanel.sw1400 <> 0) or (Station.PowerPanel.sw1400 <> 2) then
               begin
-                AddMessage('Переключатель питания стойки 1400 включен');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РїРёС‚Р°РЅРёСЏ СЃС‚РѕР№РєРё 1400 РІРєР»СЋС‡РµРЅ');
               end;
               if (Station.PowerPanel.butVent1 <> butPositionDown) then
               begin
-                AddMessage('Переключатель питания вентилятора включен');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РїРёС‚Р°РЅРёСЏ РІРµРЅС‚РёР»СЏС‚РѕСЂР° РІРєР»СЋС‡РµРЅ');
               end;
               if (Station.PowerPanel.butUnitBK <> butPositionDown) then
               begin
-                AddMessage('Переключатель питания блока БК включен');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РїРёС‚Р°РЅРёСЏ Р±Р»РѕРєР° Р‘Рљ РІРєР»СЋС‡РµРЅ');
               end;
               if (Station.PowerPanel.butVent1_2 <> butPositionDown) then
               begin
-                AddMessage('Переключатель питания вентилятора включен');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РїРёС‚Р°РЅРёСЏ РІРµРЅС‚РёР»СЏС‚РѕСЂР° РІРєР»СЋС‡РµРЅ');
               end;
               if (Station.PowerPanel.butVipriamit4V <> butPositionDown) then
               begin
-                AddMessage('Переключатель питания выпрямителя 4В включен');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РїРёС‚Р°РЅРёСЏ РІС‹РїСЂСЏРјРёС‚РµР»СЏ 4Р’ РІРєР»СЋС‡РµРЅ');
               end;
               if (Station.PowerPanel.butVent3 <> butPositionDown) then
               begin
-                AddMessage('Переключатель питания вентилятора 3 включен');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РїРёС‚Р°РЅРёСЏ РІРµРЅС‚РёР»СЏС‚РѕСЂР° 3 РІРєР»СЋС‡РµРЅ');
               end;
             end;
           idRack1200A2:
             begin
               if (Station.HalfSetA.Rack1200Right.But1270Main <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока ''1270'' в нижнем положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° ''1270'' РІ РЅРёР¶РЅРµРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetA.Rack1200Right.But1220AMMain <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока ''1220AM'' в нижнем положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° ''1220AM'' РІ РЅРёР¶РЅРµРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetA.Rack1200Right.But1230AMain <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока ''1230A'' в нижнем положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° ''1230A'' РІ РЅРёР¶РЅРµРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetA.Rack1200Right.But1210AMain <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока ''1210A'' в нижнем положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° ''1210A'' РІ РЅРёР¶РЅРµРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetA.Rack1200Right.But1270Reserve <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока ''1270'' в нижнем положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° ''1270'' РІ РЅРёР¶РЅРµРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetA.Rack1200Right.But1220AMReserve <> butPositionUp) then
               begin
-                AddMessage('Переключатель резервного блока ''1220AM'' в нижнем положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ СЂРµР·РµСЂРІРЅРѕРіРѕ Р±Р»РѕРєР° ''1220AM'' РІ РЅРёР¶РЅРµРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetA.Rack1200Right.But1240V <> butPositionLeft) then
               begin
-                AddMessage('Переключатель блока ''1240В'' в положении ''РЕТР''');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° ''1240Р’'' РІ РїРѕР»РѕР¶РµРЅРёРё ''Р Р•РўР ''');
               end;
               if (Station.HalfSetA.Rack1200Right.But1240V2 <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока ''1240В-2'' в положении ''РЕТР''');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° ''1240Р’-2'' РІ РїРѕР»РѕР¶РµРЅРёРё ''Р Р•РўР ''');
               end;
               if (Station.HalfSetA.Rack1200Right.But1240V3 <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока ''1240В-3'' в положении ''РЕТР''');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° ''1240Р’-3'' РІ РїРѕР»РѕР¶РµРЅРёРё ''Р Р•РўР ''');
               end;
               if (Station.HalfSetA.Rack1200Right.Sw1240V <> butPositionUp) then
               begin
-                AddMessage('Кукушка блока ''1240В'' не в первой позиции');
+                AddMessage('РљСѓРєСѓС€РєР° Р±Р»РѕРєР° ''1240Р’'' РЅРµ РІ РїРµСЂРІРѕР№ РїРѕР·РёС†РёРё');
               end;
               if (Station.HalfSetA.Rack1200Right.Sw1240V2 <> butPositionUp) then
               begin
-                AddMessage('Кукушка блока ''1240В-2'' не в первой позиции');
+                AddMessage('РљСѓРєСѓС€РєР° Р±Р»РѕРєР° ''1240Р’-2'' РЅРµ РІ РїРµСЂРІРѕР№ РїРѕР·РёС†РёРё');
               end;
               if (Station.HalfSetA.Rack1200Right.Sw1240V3 <> butPositionUp) then
               begin
-                AddMessage('Кукушка блока ''1240В-3'' не в первой позиции');
+                AddMessage('РљСѓРєСѓС€РєР° Р±Р»РѕРєР° ''1240Р’-3'' РЅРµ РІ РїРµСЂРІРѕР№ РїРѕР·РёС†РёРё');
               end;
               if (Station.HalfSetA.Rack1200Right.But1240G <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока ''1240Г'' не в верхнем положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° ''1240Р“'' РЅРµ РІ РІРµСЂС…РЅРµРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetA.Rack1200Right.But1240G1 <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока ''1240Г-1'' не в верхнем положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° ''1240Р“-1'' РЅРµ РІ РІРµСЂС…РЅРµРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetA.Rack1200Right.But1240G2 <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока ''1240Г-2'' не в верхнем положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° ''1240Р“-2'' РЅРµ РІ РІРµСЂС…РЅРµРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetA.Rack1200Right.But1240G3 <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока ''1240Г-3'' не в верхнем положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° ''1240Р“-3'' РЅРµ РІ РІРµСЂС…РЅРµРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetA.Rack1200Right.But1240G4 <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока ''1240Г-4'' не в верхнем положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° ''1240Р“-4'' РЅРµ РІ РІРµСЂС…РЅРµРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetA.Rack1200Right.But1240G5 <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока ''1240Г-5'' не в верхнем положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° ''1240Р“-5'' РЅРµ РІ РІРµСЂС…РЅРµРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetA.Rack1200Right.But1240G6 <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока ''1240Г-6'' не в верхнем положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° ''1240Р“-6'' РЅРµ РІ РІРµСЂС…РЅРµРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetA.Rack1200Right.But1240G7 <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока ''1240Г-7'' не в верхнем положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° ''1240Р“-7'' РЅРµ РІ РІРµСЂС…РЅРµРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetA.Rack1200Right.But1240G8 <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока ''1240Г-8'' не в верхнем положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° ''1240Р“-8'' РЅРµ РІ РІРµСЂС…РЅРµРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetA.Rack1200Right.st1240V_Zaglushka_4PDC <> stPluggedIn) then
               begin
-                AddMessage('Заглушка блока ''1240В'' в положении кросс');
+                AddMessage('Р—Р°РіР»СѓС€РєР° Р±Р»РѕРєР° ''1240Р’'' РІ РїРѕР»РѕР¶РµРЅРёРё РєСЂРѕСЃСЃ');
               end;
               if (Station.HalfSetA.Rack1200Right.st1240V_Zaglushka_KDC <> stPluggedIn) then
               begin
-                AddMessage('Заглушка блока ''1240В'' в положении кросс');
+                AddMessage('Р—Р°РіР»СѓС€РєР° Р±Р»РѕРєР° ''1240Р’'' РІ РїРѕР»РѕР¶РµРЅРёРё РєСЂРѕСЃСЃ');
               end;
               if (Station.HalfSetA.Rack1200Right.st1240V2_Zaglushka_4PDC <> stPluggedIn) then
               begin
-                AddMessage('Заглушка блока ''1240В-2'' в положении кросс');
+                AddMessage('Р—Р°РіР»СѓС€РєР° Р±Р»РѕРєР° ''1240Р’-2'' РІ РїРѕР»РѕР¶РµРЅРёРё РєСЂРѕСЃСЃ');
               end;
               if (Station.HalfSetA.Rack1200Right.st1240V2_Zaglushka_KDC <> stPluggedIn) then
               begin
-                AddMessage('Заглушка блока ''1240В-2'' в положении кросс');
+                AddMessage('Р—Р°РіР»СѓС€РєР° Р±Р»РѕРєР° ''1240Р’-2'' РІ РїРѕР»РѕР¶РµРЅРёРё РєСЂРѕСЃСЃ');
               end;
               if (Station.HalfSetA.Rack1200Right.st1240V2_Zaglushka_4PDC <> stPluggedIn) then
               begin
-                AddMessage('Заглушка блока ''1240В-3'' в положении кросс');
+                AddMessage('Р—Р°РіР»СѓС€РєР° Р±Р»РѕРєР° ''1240Р’-3'' РІ РїРѕР»РѕР¶РµРЅРёРё РєСЂРѕСЃСЃ');
               end;
               if (Station.HalfSetA.Rack1200Right.st1240V2_Zaglushka_KDC <> stPluggedIn) then
               begin
-                AddMessage('Заглушка блока ''1240В-3'' в положении кросс');
+                AddMessage('Р—Р°РіР»СѓС€РєР° Р±Р»РѕРєР° ''1240Р’-3'' РІ РїРѕР»РѕР¶РµРЅРёРё РєСЂРѕСЃСЃ');
               end;
               if (Station.HalfSetA.Rack1200Right.But1290Power <> butPositionDown) then
               begin
-                AddMessage('Заглушка блока ''1290'' в положении включено');
+                AddMessage('Р—Р°РіР»СѓС€РєР° Р±Р»РѕРєР° ''1290'' РІ РїРѕР»РѕР¶РµРЅРёРё РІРєР»СЋС‡РµРЅРѕ');
               end;
             end;
           idRack1600B, idRack1600Bback:
             begin
               if (Station.HalfSetB.Rack1600.butAutomatic <> butPositionRight) then
               begin
-                AddMessage('Переключатель автоматики включен');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р°РІС‚РѕРјР°С‚РёРєРё РІРєР»СЋС‡РµРЅ');
               end;
               if (Station.HalfSetB.Rack1600.butDmch <> butPositionUp) then
               begin
-                AddMessage('Переключатель ДМЧ не включен');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р”РњР§ РЅРµ РІРєР»СЋС‡РµРЅ');
               end;
               if (Station.HalfSetB.Rack1600.butDmch <> butPositionUp) then
               begin
-                AddMessage('Переключатель ДМЧ не включен');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р”РњР§ РЅРµ РІРєР»СЋС‡РµРЅ');
               end;
               if (Station.HalfSetB.Rack1600.butChannelControl <> butPositionUp) then
               begin
-                AddMessage('Переключатель контроля каналов не включен');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РєРѕРЅС‚СЂРѕР»СЏ РєР°РЅР°Р»РѕРІ РЅРµ РІРєР»СЋС‡РµРЅ');
               end;
               if (Station.HalfSetB.Rack1600.wave1610_0 <> Station.WaveReceiveB) then
               begin
-                AddMessage('Неправильно выставлена волна 1610-0. Есть ' + inttostr(Station.HalfSetB.Rack1600.wave1610_0) + ' Надо:' +
+                AddMessage('РќРµРїСЂР°РІРёР»СЊРЅРѕ РІС‹СЃС‚Р°РІР»РµРЅР° РІРѕР»РЅР° 1610-0. Р•СЃС‚СЊ ' + inttostr(Station.HalfSetB.Rack1600.wave1610_0) + ' РќР°РґРѕ:' +
                 IntToStr(Station.WaveReceiveB));
               end;
               if (Station.HalfSetB.Rack1600.swChannelControl <> 9) then
               begin
-                AddMessage('Кукушка контроля каналов не в том положении');
+                AddMessage('РљСѓРєСѓС€РєР° РєРѕРЅС‚СЂРѕР»СЏ РєР°РЅР°Р»РѕРІ РЅРµ РІ С‚РѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetB.Rack1600.wave1610_R <> Station.WaveReceiveB) then
               begin
-                AddMessage('Неправильно выставлена волна 1610-Р. Есть ' + inttostr(Station.HalfSetB.Rack1600.wave1610_R) + ' Надо:' +
+                AddMessage('РќРµРїСЂР°РІРёР»СЊРЅРѕ РІС‹СЃС‚Р°РІР»РµРЅР° РІРѕР»РЅР° 1610-Р . Р•СЃС‚СЊ ' + inttostr(Station.HalfSetB.Rack1600.wave1610_R) + ' РќР°РґРѕ:' +
                 IntToStr(Station.WaveReceiveB));
               end;
               if (Station.HalfSetB.Rack1600.wave1610_R <> Station.WaveReceiveB) then
               begin
-                AddMessage('Неправильно выставлена волна 1600. Есть ' + inttostr(Station.HalfSetB.Rack1600.wave1600) + ' Надо:' +
+                AddMessage('РќРµРїСЂР°РІРёР»СЊРЅРѕ РІС‹СЃС‚Р°РІР»РµРЅР° РІРѕР»РЅР° 1600. Р•СЃС‚СЊ ' + inttostr(Station.HalfSetB.Rack1600.wave1600) + ' РќР°РґРѕ:' +
                 IntToStr(Station.WaveReceiveB));
               end;
               if (Station.HalfSetB.Rack1600B.swKukushka <> 1) then
               begin
-                AddMessage('Кукушка не в положении ''ФИМ''');
+                AddMessage('РљСѓРєСѓС€РєР° РЅРµ РІ РїРѕР»РѕР¶РµРЅРёРё ''Р¤РРњ''');
               end;
               if (Station.HalfSetB.Rack1600B.but1621Main <> butPositionUp) then
               begin
-                AddMessage('Переключатель питания блока 1621-0 не во включенном состоянии');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РїРёС‚Р°РЅРёСЏ Р±Р»РѕРєР° 1621-0 РЅРµ РІРѕ РІРєР»СЋС‡РµРЅРЅРѕРј СЃРѕСЃС‚РѕСЏРЅРёРё');
               end;
               if (Station.HalfSetB.Rack1600B.but1621Reserve <> butPositionUp) then
               begin
-                AddMessage('Переключатель питания блока 1621-Р не во включенном состоянии');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РїРёС‚Р°РЅРёСЏ Р±Р»РѕРєР° 1621-Р  РЅРµ РІРѕ РІРєР»СЋС‡РµРЅРЅРѕРј СЃРѕСЃС‚РѕСЏРЅРёРё');
               end;
               if (Station.HalfSetB.Rack1600B.butUPT <> butPositionRight) then
               begin
-                AddMessage('Переключатель блока УПТ не в положении ''АРУ''');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° РЈРџРў РЅРµ РІ РїРѕР»РѕР¶РµРЅРёРё ''РђР РЈ''');
               end;
               if (Station.HalfSetB.Rack1600B.butUPT2 <> butPositionRight) then
               begin
-                AddMessage('Переключатель блока УПТ-2 не в положении ''АРУ''');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° РЈРџРў-2 РЅРµ РІ РїРѕР»РѕР¶РµРЅРёРё ''РђР РЈ''');
               end;
               if (Station.HalfSetB.Rack1600B.swUGS2 <> 5) then
               begin
-                AddMessage('Переключатель блока УГС-2 не на отметке ''5''');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° РЈР“РЎ-2 РЅРµ РЅР° РѕС‚РјРµС‚РєРµ ''5''');
               end;
               if (Station.HalfSetB.Rack1600B.swUGS <> 5) then
               begin
-                AddMessage('Переключатель блока УГС не на отметке ''5''');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° РЈР“РЎ РЅРµ РЅР° РѕС‚РјРµС‚РєРµ ''5''');
               end;
               if (Station.HalfSetB.Rack1600B.but1622Main <> butPositionUp) then
               begin
-                AddMessage('Переключатель питания блока 1622-0 не во включенном состоянии');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РїРёС‚Р°РЅРёСЏ Р±Р»РѕРєР° 1622-0 РЅРµ РІРѕ РІРєР»СЋС‡РµРЅРЅРѕРј СЃРѕСЃС‚РѕСЏРЅРёРё');
               end;
               if (Station.HalfSetB.Rack1600B.but1622Reserve <> butPositionUp) then
               begin
-                AddMessage('Переключатель питания блока 1622-0 не во включенном состоянии');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РїРёС‚Р°РЅРёСЏ Р±Р»РѕРєР° 1622-0 РЅРµ РІРѕ РІРєР»СЋС‡РµРЅРЅРѕРј СЃРѕСЃС‚РѕСЏРЅРёРё');
               end;
             end;
           idRack1710A:
             begin
               if (Station.Rack1710.swWorkMode <> 1) then
               begin
-                AddMessage('Переключатель режима работы не в том положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ СЂРµР¶РёРјР° СЂР°Р±РѕС‚С‹ РЅРµ РІ С‚РѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.Rack1710.butEmergencyLine1 <> butPositionUp) then
               begin
-                AddMessage('Переключатель аварийной линии не во включенном положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р°РІР°СЂРёР№РЅРѕР№ Р»РёРЅРёРё РЅРµ РІРѕ РІРєР»СЋС‡РµРЅРЅРѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.Rack1710.butEmergencyLine2 <> butPositionUp) then
               begin
-                AddMessage('Переключатель аварийной линии 2 не во включенном положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р°РІР°СЂРёР№РЅРѕР№ Р»РёРЅРёРё 2 РЅРµ РІРѕ РІРєР»СЋС‡РµРЅРЅРѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.Rack1710.but1220AD <> butPositionLeft) then
               begin
-                AddMessage('Переключатель блока 1220АД (А) на резервном блоке');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° 1220РђР” (Рђ) РЅР° СЂРµР·РµСЂРІРЅРѕРј Р±Р»РѕРєРµ');
               end;
               if (Station.Rack1710.but1220AD <> butPositionLeft) then
               begin
-                AddMessage('Переключатель блока 1230АД (А) на резервном блоке');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° 1230РђР” (Рђ) РЅР° СЂРµР·РµСЂРІРЅРѕРј Р±Р»РѕРєРµ');
               end;
               if (Station.Rack1710.but1290 <> butPositionLeft) then
               begin
-                AddMessage('Переключатель блока 1290 (А) на резервном блоке');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° 1290 (Рђ) РЅР° СЂРµР·РµСЂРІРЅРѕРј Р±Р»РѕРєРµ');
               end;
               if (Station.Rack1710.but1220AM <> butPositionLeft) then
               begin
-                AddMessage('Переключатель блока 1220АМ (А) на резервном блоке');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° 1220РђРњ (Рђ) РЅР° СЂРµР·РµСЂРІРЅРѕРј Р±Р»РѕРєРµ');
               end;
               if (Station.Rack1710.but1230AM <> butPositionLeft) then
               begin
-                AddMessage('Переключатель блока 1230АМ (А) на резервном блоке');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° 1230РђРњ (Рђ) РЅР° СЂРµР·РµСЂРІРЅРѕРј Р±Р»РѕРєРµ');
               end;
               if (Station.Rack1710.but1210A <> butPositionLeft) then
               begin
-                AddMessage('Переключатель блока 1210А (А) на резервном блоке');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° 1210Рђ (Рђ) РЅР° СЂРµР·РµСЂРІРЅРѕРј Р±Р»РѕРєРµ');
               end;
               if (Station.Rack1710.but1270 <> butPositionLeft) then
               begin
-                AddMessage('Переключатель блока 1270 (А) на резервном блоке');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° 1270 (Рђ) РЅР° СЂРµР·РµСЂРІРЅРѕРј Р±Р»РѕРєРµ');
               end;
               if (Station.Rack1710.but1220AD_2 <> butPositionLeft) then
               begin
-                AddMessage('Переключатель блока 1220АД (Б) на резервном блоке');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° 1220РђР” (Р‘) РЅР° СЂРµР·РµСЂРІРЅРѕРј Р±Р»РѕРєРµ');
               end;
               if (Station.Rack1710.but1230AD_2 <> butPositionLeft) then
               begin
-                AddMessage('Переключатель блока 1230АД (Б) на резервном блоке');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° 1230РђР” (Р‘) РЅР° СЂРµР·РµСЂРІРЅРѕРј Р±Р»РѕРєРµ');
               end;
               if (Station.Rack1710.but1290_2 <> butPositionLeft) then
               begin
-                AddMessage('Переключатель блока 1290 (Б) на резервном блоке');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° 1290 (Р‘) РЅР° СЂРµР·РµСЂРІРЅРѕРј Р±Р»РѕРєРµ');
               end;
               if (Station.Rack1710.but1220AM_2 <> butPositionLeft) then
               begin
-                AddMessage('Переключатель блока 1220АМ (Б) на резервном блоке');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° 1220РђРњ (Р‘) РЅР° СЂРµР·РµСЂРІРЅРѕРј Р±Р»РѕРєРµ');
               end;
               if (Station.Rack1710.but1230AM_2 <> butPositionLeft) then
               begin
-                AddMessage('Переключатель блока 1230АМ (Б) на резервном блоке');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° 1230РђРњ (Р‘) РЅР° СЂРµР·РµСЂРІРЅРѕРј Р±Р»РѕРєРµ');
               end;
               if (Station.Rack1710.but1210A_2 <> butPositionLeft) then
               begin
-                AddMessage('Переключатель блока 1210А (Б) на резервном блоке');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° 1210Рђ (Р‘) РЅР° СЂРµР·РµСЂРІРЅРѕРј Р±Р»РѕРєРµ');
               end;
               if (Station.Rack1710.but1270_2 <> butPositionLeft) then
               begin
-                AddMessage('Переключатель блока 1270 (Б) на резервном блоке');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° 1270 (Р‘) РЅР° СЂРµР·РµСЂРІРЅРѕРј Р±Р»РѕРєРµ');
               end;
               if (Station.Rack1710.swReductorCurrent <> 1) then
               begin
-                AddMessage('Переключатель блока 310 не в том положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° 310 РЅРµ РІ С‚РѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.Rack1710.butExternalUplotnenieA <> butPositionLeft) then
               begin
-                AddMessage('Переключатель внешнего уплотнения А в положении ''Абонент''');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РІРЅРµС€РЅРµРіРѕ СѓРїР»РѕС‚РЅРµРЅРёСЏ Рђ РІ РїРѕР»РѕР¶РµРЅРёРё ''РђР±РѕРЅРµРЅС‚''');
               end;
               if (Station.Rack1710.butExternalUplotnenieB <> butPositionLeft) then
               begin
-                AddMessage('Переключатель внешнего уплотнения Б в положении ''Абонент''');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РІРЅРµС€РЅРµРіРѕ СѓРїР»РѕС‚РЅРµРЅРёСЏ Р‘ РІ РїРѕР»РѕР¶РµРЅРёРё ''РђР±РѕРЅРµРЅС‚''');
               end;
               if (Station.Rack1710.butPower <> butPositionLeft) then
               begin
-                AddMessage('Переключатель питания блока 470 во включенном состоянии''');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РїРёС‚Р°РЅРёСЏ Р±Р»РѕРєР° 470 РІРѕ РІРєР»СЋС‡РµРЅРЅРѕРј СЃРѕСЃС‚РѕСЏРЅРёРё''');
               end;
               if (Station.Rack1710.butSpeaker <> butPositionLeft) then
               begin
-                AddMessage('Громкоговоритель включен''');
+                AddMessage('Р“СЂРѕРјРєРѕРіРѕРІРѕСЂРёС‚РµР»СЊ РІРєР»СЋС‡РµРЅ''');
               end;
               if (Station.Rack1710.swKukushka <> 1) then
               begin
-                AddMessage('Кукушка переключения частоты блока 470 включена''');
+                AddMessage('РљСѓРєСѓС€РєР° РїРµСЂРµРєР»СЋС‡РµРЅРёСЏ С‡Р°СЃС‚РѕС‚С‹ Р±Р»РѕРєР° 470 РІРєР»СЋС‡РµРЅР°''');
               end;
             end;
           idRack1200B1:
             begin
               if (Station.HalfSetB.Rack1200Left.butChannelControl <> butPositionDown) then
               begin
-                AddMessage('Переключатель контроля каналов во включенном положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РєРѕРЅС‚СЂРѕР»СЏ РєР°РЅР°Р»РѕРІ РІРѕ РІРєР»СЋС‡РµРЅРЅРѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetB.Rack1200Left.but1220ADMain <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока 1220АД в положении ''проверка''');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° 1220РђР” РІ РїРѕР»РѕР¶РµРЅРёРё ''РїСЂРѕРІРµСЂРєР°''');
               end;
               if (Station.HalfSetB.Rack1200Left.but1230AMain <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока 1230 в положении ''проверка''');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° 1230 РІ РїРѕР»РѕР¶РµРЅРёРё ''РїСЂРѕРІРµСЂРєР°''');
               end;
               if (Station.HalfSetB.Rack1200Left.but1220ADReserve <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока 1220АД (запасной) не в том положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° 1220РђР” (Р·Р°РїР°СЃРЅРѕР№) РЅРµ РІ С‚РѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetB.Rack1200Left.but1230AReserve <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока 1230 (запасной) не в том положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° 1230 (Р·Р°РїР°СЃРЅРѕР№) РЅРµ РІ С‚РѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetB.Rack1200Left.But1240GMain <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока 1240Г-0 не в том положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° 1240Р“-0 РЅРµ РІ С‚РѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetB.Rack1200Left.But1240GMain2 <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока 1240Г-0 (резервный) не в том положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° 1240Р“-0 (СЂРµР·РµСЂРІРЅС‹Р№) РЅРµ РІ С‚РѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetB.Rack1200Left.but1240GPrmPrd <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока 1240Г в положении ''ПР''');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° 1240Р“ РІ РїРѕР»РѕР¶РµРЅРёРё ''РџР ''');
               end;
               if (Station.HalfSetB.Rack1200Left.but1240GOneTwo <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока 1240Г в положении ''2''');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° 1240Р“ РІ РїРѕР»РѕР¶РµРЅРёРё ''2''');
               end;
               if (Station.HalfSetB.Rack1200Left.but1240G <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока 1240Г не в положении ''ОТВ.''');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° 1240Р“ РЅРµ РІ РїРѕР»РѕР¶РµРЅРёРё ''РћРўР’.''');
               end;
               if (Station.HalfSetB.Rack1200Left.st1240G_ports <> stPluggedIn) then
               begin
-                AddMessage('Заглушки блока 1240Г в положении кросс');
+                AddMessage('Р—Р°РіР»СѓС€РєРё Р±Р»РѕРєР° 1240Р“ РІ РїРѕР»РѕР¶РµРЅРёРё РєСЂРѕСЃСЃ');
               end;
               if (Station.HalfSetB.Rack1200Left.but1240V <> butPositionLeft) then
               begin
-                AddMessage('Переключатель блока 1240В  в положении ''РЕТР''');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° 1240Р’  РІ РїРѕР»РѕР¶РµРЅРёРё ''Р Р•РўР ''');
               end;
               if (Station.HalfSetB.Rack1200Left.but1240V2 <> butPositionLeft) then
               begin
-                AddMessage('Заглушки блока 1240В2 в положении ''РЕТР''');
+                AddMessage('Р—Р°РіР»СѓС€РєРё Р±Р»РѕРєР° 1240Р’2 РІ РїРѕР»РѕР¶РµРЅРёРё ''Р Р•РўР ''');
               end;
               if (Station.HalfSetB.Rack1200Left.Sw1240V <> 1) then
               begin
-                AddMessage('Кукушка блока 1240В не в первом положении');
+                AddMessage('РљСѓРєСѓС€РєР° Р±Р»РѕРєР° 1240Р’ РЅРµ РІ РїРµСЂРІРѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetB.Rack1200Left.Sw1240V2 <> 1) then
               begin
-                AddMessage('Кукушка блока 1240В2 не в первом положении');
+                AddMessage('РљСѓРєСѓС€РєР° Р±Р»РѕРєР° 1240Р’2 РЅРµ РІ РїРµСЂРІРѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetB.Rack1200Left.st1240V1_4PDC_1_ports <> stPluggedIn) then
               begin
-                AddMessage('Заглушки блока 1240В в положении кросс');
+                AddMessage('Р—Р°РіР»СѓС€РєРё Р±Р»РѕРєР° 1240Р’ РІ РїРѕР»РѕР¶РµРЅРёРё РєСЂРѕСЃСЃ');
               end;
                if (Station.HalfSetB.Rack1200Left.st1240V1_4PDC_2_ports <> stPluggedIn) then
               begin
-                AddMessage('Заглушки блока 1240В в положении кросс');
+                AddMessage('Р—Р°РіР»СѓС€РєРё Р±Р»РѕРєР° 1240Р’ РІ РїРѕР»РѕР¶РµРЅРёРё РєСЂРѕСЃСЃ');
               end;
               if (Station.HalfSetB.Rack1200Left.st1240V2_4PDC_1_ports <> stPluggedIn) then
               begin
-                AddMessage('Заглушки блока 1240В-2 в положении кросс');
+                AddMessage('Р—Р°РіР»СѓС€РєРё Р±Р»РѕРєР° 1240Р’-2 РІ РїРѕР»РѕР¶РµРЅРёРё РєСЂРѕСЃСЃ');
               end;
               if (Station.HalfSetB.Rack1200Left.st1240V2_4PDC_2_ports <> stPluggedIn) then
               begin
-                AddMessage('Заглушки блока 1240В-2 в положении кросс');
+                AddMessage('Р—Р°РіР»СѓС€РєРё Р±Р»РѕРєР° 1240Р’-2 РІ РїРѕР»РѕР¶РµРЅРёРё РєСЂРѕСЃСЃ');
               end;
               if (Station.HalfSetB.Rack1200Left.but1240G1 <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока 1240Г-1 не в том положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° 1240Р“-1 РЅРµ РІ С‚РѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetB.Rack1200Left.but1240G2 <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока 1240Г-2 не в том положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° 1240Р“-2 РЅРµ РІ С‚РѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetB.Rack1200Left.but1240G3 <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока 1240Г-3 не в том положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° 1240Р“-3 РЅРµ РІ С‚РѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetB.Rack1200Left.but1240G4 <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока 1240Г-4 не в том положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° 1240Р“-4 РЅРµ РІ С‚РѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetB.Rack1200Left.but1240G5 <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока 1240Г-5 не в том положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° 1240Р“-5 РЅРµ РІ С‚РѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetB.Rack1200Left.but1240G6 <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока 1240Г-6 не в том положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° 1240Р“-6 РЅРµ РІ С‚РѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetB.Rack1200Left.but1240G7 <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока 1240Г-7 не в том положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° 1240Р“-7 РЅРµ РІ С‚РѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetB.Rack1200Left.but1240G8 <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока 1240Г-8 не в том положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° 1240Р“-8 РЅРµ РІ С‚РѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetB.Rack1200Left.but1290Power <> butPositionDown) then
               begin
-                AddMessage('Питание блока 1290 включено');
+                AddMessage('РџРёС‚Р°РЅРёРµ Р±Р»РѕРєР° 1290 РІРєР»СЋС‡РµРЅРѕ');
               end;
             end;
           idRack1200A1:
             begin
               if (Station.HalfSetA.Rack1200Left.butChannelControl <> butPositionDown) then
               begin
-                AddMessage('Переключатель контроля каналов во включенном положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РєРѕРЅС‚СЂРѕР»СЏ РєР°РЅР°Р»РѕРІ РІРѕ РІРєР»СЋС‡РµРЅРЅРѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetA.Rack1200Left.but1220ADMain <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока 1220АД в положении ''проверка''');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° 1220РђР” РІ РїРѕР»РѕР¶РµРЅРёРё ''РїСЂРѕРІРµСЂРєР°''');
               end;
               if (Station.HalfSetA.Rack1200Left.but1230AMain <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока 1230 в положении ''проверка''');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° 1230 РІ РїРѕР»РѕР¶РµРЅРёРё ''РїСЂРѕРІРµСЂРєР°''');
               end;
               if (Station.HalfSetA.Rack1200Left.but1220ADReserve <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока 1220АД (запасной) не в том положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° 1220РђР” (Р·Р°РїР°СЃРЅРѕР№) РЅРµ РІ С‚РѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetA.Rack1200Left.but1230AReserve <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока 1230 (запасной) не в том положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° 1230 (Р·Р°РїР°СЃРЅРѕР№) РЅРµ РІ С‚РѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetA.Rack1200Left.But1240GMain <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока 1240Г-0 не в том положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° 1240Р“-0 РЅРµ РІ С‚РѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetA.Rack1200Left.But1240GMain2 <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока 1240Г-0 (резервный) не в том положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° 1240Р“-0 (СЂРµР·РµСЂРІРЅС‹Р№) РЅРµ РІ С‚РѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetA.Rack1200Left.but1240GPrmPrd <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока 1240Г в положении ''ПР''');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° 1240Р“ РІ РїРѕР»РѕР¶РµРЅРёРё ''РџР ''');
               end;
               if (Station.HalfSetA.Rack1200Left.but1240GOneTwo <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока 1240Г в положении ''2''');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° 1240Р“ РІ РїРѕР»РѕР¶РµРЅРёРё ''2''');
               end;
               if (Station.HalfSetA.Rack1200Left.but1240G <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока 1240Г не в положении ''ОТВ.''');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° 1240Р“ РЅРµ РІ РїРѕР»РѕР¶РµРЅРёРё ''РћРўР’.''');
               end;
               if (Station.HalfSetA.Rack1200Left.st1240G_ports <> stPluggedIn) then
               begin
-                AddMessage('Заглушки блока 1240Г в положении кросс');
+                AddMessage('Р—Р°РіР»СѓС€РєРё Р±Р»РѕРєР° 1240Р“ РІ РїРѕР»РѕР¶РµРЅРёРё РєСЂРѕСЃСЃ');
               end;
               if (Station.HalfSetA.Rack1200Left.but1240V <> butPositionLeft) then
               begin
-                AddMessage('Переключатель блока 1240В в положении ''РЕТР''');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° 1240Р’ РІ РїРѕР»РѕР¶РµРЅРёРё ''Р Р•РўР ''');
               end;
               if (Station.HalfSetA.Rack1200Left.but1240V2 <> butPositionLeft) then
               begin
-                AddMessage('Заглушки блока 1240В2 в положении ''РЕТР''');
+                AddMessage('Р—Р°РіР»СѓС€РєРё Р±Р»РѕРєР° 1240Р’2 РІ РїРѕР»РѕР¶РµРЅРёРё ''Р Р•РўР ''');
               end;
               if (Station.HalfSetA.Rack1200Left.Sw1240V <> 1) then
               begin
-                AddMessage('Кукушка блока 1240В не в первом положении');
+                AddMessage('РљСѓРєСѓС€РєР° Р±Р»РѕРєР° 1240Р’ РЅРµ РІ РїРµСЂРІРѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetA.Rack1200Left.Sw1240V2 <> 1) then
               begin
-                AddMessage('Кукушка блока 1240В2 не в первом положении');
+                AddMessage('РљСѓРєСѓС€РєР° Р±Р»РѕРєР° 1240Р’2 РЅРµ РІ РїРµСЂРІРѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetA.Rack1200Left.st1240V1_4PDC_1_ports <> stPluggedIn) then
               begin
-                AddMessage('Заглушки блока 1240В в положении кросс');
+                AddMessage('Р—Р°РіР»СѓС€РєРё Р±Р»РѕРєР° 1240Р’ РІ РїРѕР»РѕР¶РµРЅРёРё РєСЂРѕСЃСЃ');
               end;
                if (Station.HalfSetA.Rack1200Left.st1240V1_4PDC_2_ports <> stPluggedIn) then
               begin
-                AddMessage('Заглушки блока 1240В в положении кросс');
+                AddMessage('Р—Р°РіР»СѓС€РєРё Р±Р»РѕРєР° 1240Р’ РІ РїРѕР»РѕР¶РµРЅРёРё РєСЂРѕСЃСЃ');
               end;
               if (Station.HalfSetA.Rack1200Left.st1240V2_4PDC_1_ports <> stPluggedIn) then
               begin
-                AddMessage('Заглушки блока 1240В-2 в положении кросс');
+                AddMessage('Р—Р°РіР»СѓС€РєРё Р±Р»РѕРєР° 1240Р’-2 РІ РїРѕР»РѕР¶РµРЅРёРё РєСЂРѕСЃСЃ');
               end;
               if (Station.HalfSetA.Rack1200Left.st1240V2_4PDC_2_ports <> stPluggedIn) then
               begin
-                AddMessage('Заглушки блока 1240В-2 в положении кросс');
+                AddMessage('Р—Р°РіР»СѓС€РєРё Р±Р»РѕРєР° 1240Р’-2 РІ РїРѕР»РѕР¶РµРЅРёРё РєСЂРѕСЃСЃ');
               end;
               if (Station.HalfSetA.Rack1200Left.but1240G1 <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока 1240Г-1 не в том положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° 1240Р“-1 РЅРµ РІ С‚РѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetA.Rack1200Left.but1240G2 <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока 1240Г-2 не в том положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° 1240Р“-2 РЅРµ РІ С‚РѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetA.Rack1200Left.but1240G3 <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока 1240Г-3 не в том положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° 1240Р“-3 РЅРµ РІ С‚РѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetA.Rack1200Left.but1240G4 <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока 1240Г-4 не в том положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° 1240Р“-4 РЅРµ РІ С‚РѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetA.Rack1200Left.but1240G5 <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока 1240Г-5 не в том положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° 1240Р“-5 РЅРµ РІ С‚РѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetA.Rack1200Left.but1240G6 <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока 1240Г-6 не в том положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° 1240Р“-6 РЅРµ РІ С‚РѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetA.Rack1200Left.but1240G7 <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока 1240Г-7 не в том положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° 1240Р“-7 РЅРµ РІ С‚РѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetA.Rack1200Left.but1240G8 <> butPositionUp) then
               begin
-                AddMessage('Переключатель блока 1240Г-8 не в том положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° 1240Р“-8 РЅРµ РІ С‚РѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetA.Rack1200Left.but1290Power <> butPositionDown) then
               begin
-                AddMessage('Питание блока 1290 включено');
+                AddMessage('РџРёС‚Р°РЅРёРµ Р±Р»РѕРєР° 1290 РІРєР»СЋС‡РµРЅРѕ');
               end;
             end;
           idRack1600A, idRack1600Aback:
             begin
               if (Station.HalfSetA.Rack1600.butAutomatic <> butPositionRight) then
               begin
-                AddMessage('Переключатель автоматики включен');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р°РІС‚РѕРјР°С‚РёРєРё РІРєР»СЋС‡РµРЅ');
               end;
               if (Station.HalfSetA.Rack1600.butDmch <> butPositionUp) then
               begin
-                AddMessage('Переключатель ДМЧ не включен');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р”РњР§ РЅРµ РІРєР»СЋС‡РµРЅ');
               end;
               if (Station.HalfSetA.Rack1600.butChannelControl <> butPositionUp) then
               begin
-                AddMessage('Переключатель контроля каналов не включен');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РєРѕРЅС‚СЂРѕР»СЏ РєР°РЅР°Р»РѕРІ РЅРµ РІРєР»СЋС‡РµРЅ');
               end;
               if (Station.HalfSetA.Rack1600.wave1610_0 <> Station.WaveReceiveA) then
               begin
-                AddMessage('Неправильно выставлена волна 1610-0. Есть ' + inttostr(Station.HalfSetA.Rack1600.wave1610_0) + ' Надо:' +
+                AddMessage('РќРµРїСЂР°РІРёР»СЊРЅРѕ РІС‹СЃС‚Р°РІР»РµРЅР° РІРѕР»РЅР° 1610-0. Р•СЃС‚СЊ ' + inttostr(Station.HalfSetA.Rack1600.wave1610_0) + ' РќР°РґРѕ:' +
                 IntToStr(Station.WaveReceiveA));
               end;
               if (Station.HalfSetA.Rack1600.swChannelControl <> 9) then
               begin
-                AddMessage('Кукушка контроля каналов не в том положении');
+                AddMessage('РљСѓРєСѓС€РєР° РєРѕРЅС‚СЂРѕР»СЏ РєР°РЅР°Р»РѕРІ РЅРµ РІ С‚РѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetA.Rack1600.wave1610_R <> Station.WaveReceiveA) then
               begin
-                AddMessage('Неправильно выставлена волна 1610-Р. Есть ' + inttostr(Station.HalfSetA.Rack1600.wave1610_R) + ' Надо:' +
+                AddMessage('РќРµРїСЂР°РІРёР»СЊРЅРѕ РІС‹СЃС‚Р°РІР»РµРЅР° РІРѕР»РЅР° 1610-Р . Р•СЃС‚СЊ ' + inttostr(Station.HalfSetA.Rack1600.wave1610_R) + ' РќР°РґРѕ:' +
                 IntToStr(Station.WaveReceiveA));
               end;
               if (Station.HalfSetA.Rack1600.wave1610_R <> Station.WaveReceiveA) then
               begin
-                AddMessage('Неправильно выставлена волна 1600. Есть ' + inttostr(Station.HalfSetA.Rack1600.wave1600) + ' Надо:' +
+                AddMessage('РќРµРїСЂР°РІРёР»СЊРЅРѕ РІС‹СЃС‚Р°РІР»РµРЅР° РІРѕР»РЅР° 1600. Р•СЃС‚СЊ ' + inttostr(Station.HalfSetA.Rack1600.wave1600) + ' РќР°РґРѕ:' +
                 IntToStr(Station.WaveReceiveA));
               end;
               if (Station.HalfSetA.Rack1600B.swKukushka <> 1) then
               begin
-                AddMessage('Кукушка не в положении ''ФИМ''');
+                AddMessage('РљСѓРєСѓС€РєР° РЅРµ РІ РїРѕР»РѕР¶РµРЅРёРё ''Р¤РРњ''');
               end;
               if (Station.HalfSetA.Rack1600B.but1621Main <> butPositionUp) then
               begin
-                AddMessage('Переключатель питания блока 1621-0 не во включенном состоянии');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РїРёС‚Р°РЅРёСЏ Р±Р»РѕРєР° 1621-0 РЅРµ РІРѕ РІРєР»СЋС‡РµРЅРЅРѕРј СЃРѕСЃС‚РѕСЏРЅРёРё');
               end;
               if (Station.HalfSetA.Rack1600B.but1621Reserve <> butPositionUp) then
               begin
-                AddMessage('Переключатель питания блока 1621-Р не во включенном состоянии');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РїРёС‚Р°РЅРёСЏ Р±Р»РѕРєР° 1621-Р  РЅРµ РІРѕ РІРєР»СЋС‡РµРЅРЅРѕРј СЃРѕСЃС‚РѕСЏРЅРёРё');
               end;
               if (Station.HalfSetA.Rack1600B.butUPT <> butPositionRight) then
               begin
-                AddMessage('Переключатель блока УПТ не в положении ''АРУ''');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° РЈРџРў РЅРµ РІ РїРѕР»РѕР¶РµРЅРёРё ''РђР РЈ''');
               end;
               if (Station.HalfSetA.Rack1600B.butUPT2 <> butPositionRight) then
               begin
-                AddMessage('Переключатель блока УПТ-2 не в положении ''АРУ''');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° РЈРџРў-2 РЅРµ РІ РїРѕР»РѕР¶РµРЅРёРё ''РђР РЈ''');
               end;
               if (Station.HalfSetA.Rack1600B.swUGS2 <> 5) then
               begin
-                AddMessage('Переключатель блока УГС-2 не на отметке ''5''');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° РЈР“РЎ-2 РЅРµ РЅР° РѕС‚РјРµС‚РєРµ ''5''');
               end;
               if (Station.HalfSetA.Rack1600B.swUGS <> 5) then
               begin
-                AddMessage('Переключатель блока УГС не на отметке ''5''');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° РЈР“РЎ РЅРµ РЅР° РѕС‚РјРµС‚РєРµ ''5''');
               end;
               if (Station.HalfSetA.Rack1600B.but1622Main <> butPositionUp) then
               begin
-                AddMessage('Переключатель питания блока 1622-0 не во включенном состоянии');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РїРёС‚Р°РЅРёСЏ Р±Р»РѕРєР° 1622-0 РЅРµ РІРѕ РІРєР»СЋС‡РµРЅРЅРѕРј СЃРѕСЃС‚РѕСЏРЅРёРё');
               end;
               if (Station.HalfSetA.Rack1600B.but1622Reserve <> butPositionUp) then
               begin
-                AddMessage('Переключатель питания блока 1622-0 не во включенном состоянии');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РїРёС‚Р°РЅРёСЏ Р±Р»РѕРєР° 1622-0 РЅРµ РІРѕ РІРєР»СЋС‡РµРЅРЅРѕРј СЃРѕСЃС‚РѕСЏРЅРёРё');
               end;
             end;
           idRack1920A:
             begin
               if (Station.HalfSetA.Rack1920.butPower <> butPositionDown) then
               begin
-                AddMessage('Переключатель ''Сеть'' во включенном положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ ''РЎРµС‚СЊ'' РІРѕ РІРєР»СЋС‡РµРЅРЅРѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetA.Rack1920.butPower2 <> butPositionDown) then
               begin
-                AddMessage('Переключатель ''Сеть'' 2 во включенном положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ ''РЎРµС‚СЊ'' 2 РІРѕ РІРєР»СЋС‡РµРЅРЅРѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetA.Rack1920.but1910 <> butPositionDown) then
               begin
-                AddMessage('Переключатель блока ''1910'' во включенном положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° ''1910'' РІРѕ РІРєР»СЋС‡РµРЅРЅРѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetA.Rack1920.but1930 <> butPositionDown) then
               begin
-                AddMessage('Переключатель блока ''1930'' во включенном положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° ''1930'' РІРѕ РІРєР»СЋС‡РµРЅРЅРѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetA.Rack1920.but1910A <> butPositionDown) then
               begin
-                AddMessage('Переключатель блока ''1910A'' во включенном положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° ''1910A'' РІРѕ РІРєР»СЋС‡РµРЅРЅРѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetA.Rack1920.but1960_1 <> butPositionDown) then
               begin
-                AddMessage('Переключатель блока ''1360-1'' во включенном положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° ''1360-1'' РІРѕ РІРєР»СЋС‡РµРЅРЅРѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
             end;
           idDuplexerA:
             begin
-              //-----------------Левый дуплексер-------------------------------------------
+              //-----------------Р›РµРІС‹Р№ РґСѓРїР»РµРєСЃРµСЂ-------------------------------------------
               if (Station.HalfSetA.Duplexer.waveTransmit <> Station.WaveTransmitA) then
               begin
-                AddMessage('Неверная волна передачи. Есть: ' + IntToStr(Station.HalfSetA.Duplexer.waveTransmit) + ' Надо: ' +
+                AddMessage('РќРµРІРµСЂРЅР°СЏ РІРѕР»РЅР° РїРµСЂРµРґР°С‡Рё. Р•СЃС‚СЊ: ' + IntToStr(Station.HalfSetA.Duplexer.waveTransmit) + ' РќР°РґРѕ: ' +
                 IntToStr(Station.WaveTransmitA));
               end;
               if (Station.HalfSetA.Duplexer.waveReceive <> Station.WaveReceiveA) then
               begin
-                AddMessage('Неверная волна приема. Есть: ' + IntToStr(Station.HalfSetA.Duplexer.waveReceive) + ' Надо: ' +
+                AddMessage('РќРµРІРµСЂРЅР°СЏ РІРѕР»РЅР° РїСЂРёРµРјР°. Р•СЃС‚СЊ: ' + IntToStr(Station.HalfSetA.Duplexer.waveReceive) + ' РќР°РґРѕ: ' +
                 IntToStr(Station.WaveReceiveA));
               end;
               if ((Station.HalfSetA.Duplexer.cbSh1 <> csConnectedAtDuplexeLeft) and
@@ -3386,609 +3383,609 @@ begin
               (Station.HalfSetA.Duplexer.cbSh1 <> csConnectedAtDuplexeRight) and
               (Station.HalfSetA.Duplexer.cbSh2 <> csConnectedAtDuplexeLeft)) then
               begin
-                AddMessage('Неверно подключены кабели к дуплексеру');
+                AddMessage('РќРµРІРµСЂРЅРѕ РїРѕРґРєР»СЋС‡РµРЅС‹ РєР°Р±РµР»Рё Рє РґСѓРїР»РµРєСЃРµСЂСѓ');
               end;
             end;
           idMshuA:
             begin
               if (Station.HalfSetA.LittleNoisyAmplifier.swWave <> Station.WaveReceiveA) then
               begin
-                AddMessage('Неправильно выставлена волна приема. Есть: ' + inttostr(Station.HalfSetA.LittleNoisyAmplifier.swWave) + ' Надо: ' + inttostr(Station.WaveReceiveA));
+                AddMessage('РќРµРїСЂР°РІРёР»СЊРЅРѕ РІС‹СЃС‚Р°РІР»РµРЅР° РІРѕР»РЅР° РїСЂРёРµРјР°. Р•СЃС‚СЊ: ' + inttostr(Station.HalfSetA.LittleNoisyAmplifier.swWave) + ' РќР°РґРѕ: ' + inttostr(Station.WaveReceiveA));
               end;
               if (Station.HalfSetA.LittleNoisyAmplifier.butNet <> butPositionDown) then
               begin
-                AddMessage('Переключатель блока 1831 во включенном положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° 1831 РІРѕ РІРєР»СЋС‡РµРЅРЅРѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetA.LittleNoisyAmplifier.butNet2 <> butPositionDown) then
               begin
-                AddMessage('Переключатель блока 1831-Р во включенном положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° 1831-Р  РІРѕ РІРєР»СЋС‡РµРЅРЅРѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetA.LittleNoisyAmplifier.butMshu <> butPositionLeft) then
               begin
-                AddMessage('Переключатель выбора основного блока стоит на значении ''резервный блок''');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РІС‹Р±РѕСЂР° РѕСЃРЅРѕРІРЅРѕРіРѕ Р±Р»РѕРєР° СЃС‚РѕРёС‚ РЅР° Р·РЅР°С‡РµРЅРёРё ''СЂРµР·РµСЂРІРЅС‹Р№ Р±Р»РѕРє''');
               end;
             end;
           idMshuB:
             begin
               if (Station.HalfSetB.LittleNoisyAmplifier.swWave <> Station.WaveReceiveA) then
               begin
-                AddMessage('Неправильно выставлена волна приема. Есть: ' + inttostr(Station.HalfSetB.LittleNoisyAmplifier.swWave) + ' Надо: ' + inttostr(Station.WaveReceiveA));
+                AddMessage('РќРµРїСЂР°РІРёР»СЊРЅРѕ РІС‹СЃС‚Р°РІР»РµРЅР° РІРѕР»РЅР° РїСЂРёРµРјР°. Р•СЃС‚СЊ: ' + inttostr(Station.HalfSetB.LittleNoisyAmplifier.swWave) + ' РќР°РґРѕ: ' + inttostr(Station.WaveReceiveA));
               end;
               if (Station.HalfSetB.LittleNoisyAmplifier.butNet <> butPositionDown) then
               begin
-                AddMessage('Переключатель блока 1831 во включенном положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° 1831 РІРѕ РІРєР»СЋС‡РµРЅРЅРѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetB.LittleNoisyAmplifier.butNet2 <> butPositionDown) then
               begin
-                AddMessage('Переключатель блока 1831-Р во включенном положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° 1831-Р  РІРѕ РІРєР»СЋС‡РµРЅРЅРѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetB.LittleNoisyAmplifier.butMshu <> butPositionLeft) then
               begin
-                AddMessage('Переключатель выбора основного блока стоит на значении ''резервный блок''');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РІС‹Р±РѕСЂР° РѕСЃРЅРѕРІРЅРѕРіРѕ Р±Р»РѕРєР° СЃС‚РѕРёС‚ РЅР° Р·РЅР°С‡РµРЅРёРё ''СЂРµР·РµСЂРІРЅС‹Р№ Р±Р»РѕРє''');
               end;
             end;
           idP321A:
             begin
               if (Station.HalfSetA.P321.butPower <> butPositionUp) then
               begin
-                AddMessage('Переключатель питания в положении ''ВЫКЛ''');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РїРёС‚Р°РЅРёСЏ РІ РїРѕР»РѕР¶РµРЅРёРё ''Р’Р«РљР›''');
               end;
               if (Station.HalfSetA.P321.butMeasure <> butPositionUp) then
               begin
-                AddMessage('Переключатель питания в положении ''УСИЛ''');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РїРёС‚Р°РЅРёСЏ РІ РїРѕР»РѕР¶РµРЅРёРё ''РЈРЎРР›''');
               end;
               if (Station.HalfSetA.P321.but600Ohm <> butPositionUp) then
               begin
-                AddMessage('Переключатель питания в положении ''ВЫС. СОПР.''');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РїРёС‚Р°РЅРёСЏ РІ РїРѕР»РѕР¶РµРЅРёРё ''Р’Р«РЎ. РЎРћРџР .''');
               end;
               if (Station.HalfSetA.P321.swNepGen <> 8) then
               begin
-                AddMessage('Кукушка ''НЕП. ГЕН.'' не в том положении');
+                AddMessage('РљСѓРєСѓС€РєР° ''РќР•Рџ. Р“Р•Рќ.'' РЅРµ РІ С‚РѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetA.P321.swFrequency <> 4) then
               begin
-                AddMessage('Кукушка ''Частота'' не в том положении');
+                AddMessage('РљСѓРєСѓС€РєР° ''Р§Р°СЃС‚РѕС‚Р°'' РЅРµ РІ С‚РѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetA.P321.swNepGenYY <> 7) then
               begin
-                AddMessage('Кукушка ''НЕП. УУ.'' не в том положении');
+                AddMessage('РљСѓРєСѓС€РєР° ''РќР•Рџ. РЈРЈ.'' РЅРµ РІ С‚РѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetA.P321.cblVhYY <> csDisconected) then
               begin
-                AddMessage('Кабель входа указателя уровня подключен');
+                AddMessage('РљР°Р±РµР»СЊ РІС…РѕРґР° СѓРєР°Р·Р°С‚РµР»СЏ СѓСЂРѕРІРЅСЏ РїРѕРґРєР»СЋС‡РµРЅ');
               end;
               if (Station.HalfSetA.P321.cblVhYY <> csDisconected) then
               begin
-                AddMessage('Кабель выхода генератора подключен');
+                AddMessage('РљР°Р±РµР»СЊ РІС‹С…РѕРґР° РіРµРЅРµСЂР°С‚РѕСЂР° РїРѕРґРєР»СЋС‡РµРЅ');
               end;
             end;
           idP321B:
             begin
               if (Station.HalfSetB.P321.butPower <> butPositionUp) then
               begin
-                AddMessage('Переключатель питания в положении ''ВЫКЛ''');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РїРёС‚Р°РЅРёСЏ РІ РїРѕР»РѕР¶РµРЅРёРё ''Р’Р«РљР›''');
               end;
               if (Station.HalfSetB.P321.butMeasure <> butPositionUp) then
               begin
-                AddMessage('Переключатель питания в положении ''УСИЛ''');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РїРёС‚Р°РЅРёСЏ РІ РїРѕР»РѕР¶РµРЅРёРё ''РЈРЎРР›''');
               end;
               if (Station.HalfSetB.P321.but600Ohm <> butPositionUp) then
               begin
-                AddMessage('Переключатель питания в положении ''ВЫС. СОПР.''');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РїРёС‚Р°РЅРёСЏ РІ РїРѕР»РѕР¶РµРЅРёРё ''Р’Р«РЎ. РЎРћРџР .''');
               end;
               if (Station.HalfSetB.P321.swNepGen <> 8) then
               begin
-                AddMessage('Кукушка ''НЕП. ГЕН.'' не в том положении');
+                AddMessage('РљСѓРєСѓС€РєР° ''РќР•Рџ. Р“Р•Рќ.'' РЅРµ РІ С‚РѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetB.P321.swFrequency <> 4) then
               begin
-                AddMessage('Кукушка ''Частота'' не в том положении');
+                AddMessage('РљСѓРєСѓС€РєР° ''Р§Р°СЃС‚РѕС‚Р°'' РЅРµ РІ С‚РѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetB.P321.swNepGenYY <> 7) then
               begin
-                AddMessage('Кукушка ''НЕП. УУ.'' не в том положении');
+                AddMessage('РљСѓРєСѓС€РєР° ''РќР•Рџ. РЈРЈ.'' РЅРµ РІ С‚РѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetB.P321.cblVhYY <> csDisconected) then
               begin
-                AddMessage('Кабель входа указателя уровня подключен');
+                AddMessage('РљР°Р±РµР»СЊ РІС…РѕРґР° СѓРєР°Р·Р°С‚РµР»СЏ СѓСЂРѕРІРЅСЏ РїРѕРґРєР»СЋС‡РµРЅ');
               end;
               if (Station.HalfSetB.P321.cblVhYY <> csDisconected) then
               begin
-                AddMessage('Кабель выхода генератора подключен');
+                AddMessage('РљР°Р±РµР»СЊ РІС‹С…РѕРґР° РіРµРЅРµСЂР°С‚РѕСЂР° РїРѕРґРєР»СЋС‡РµРЅ');
               end;
             end;
           idP321C:
             begin
               if (Station.P321C.butPower <> butPositionUp) then
               begin
-                AddMessage('Переключатель питания в положении ''ВЫКЛ''');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РїРёС‚Р°РЅРёСЏ РІ РїРѕР»РѕР¶РµРЅРёРё ''Р’Р«РљР›''');
               end;
               if (Station.P321C.butMeasure <> butPositionUp) then
               begin
-                AddMessage('Переключатель питания в положении ''УСИЛ''');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РїРёС‚Р°РЅРёСЏ РІ РїРѕР»РѕР¶РµРЅРёРё ''РЈРЎРР›''');
               end;
               if (Station.P321C.but600Ohm <> butPositionUp) then
               begin
-                AddMessage('Переключатель питания в положении ''ВЫС. СОПР.''');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РїРёС‚Р°РЅРёСЏ РІ РїРѕР»РѕР¶РµРЅРёРё ''Р’Р«РЎ. РЎРћРџР .''');
               end;
               if (Station.P321C.swNepGen <> 8) then
               begin
-                AddMessage('Кукушка ''НЕП. ГЕН.'' не в том положении');
+                AddMessage('РљСѓРєСѓС€РєР° ''РќР•Рџ. Р“Р•Рќ.'' РЅРµ РІ С‚РѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.P321C.swFrequency <> 4) then
               begin
-                AddMessage('Кукушка ''Частота'' не в том положении');
+                AddMessage('РљСѓРєСѓС€РєР° ''Р§Р°СЃС‚РѕС‚Р°'' РЅРµ РІ С‚РѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.P321C.swNepGenYY <> 7) then
               begin
-                AddMessage('Кукушка ''НЕП. УУ.'' не в том положении');
+                AddMessage('РљСѓРєСѓС€РєР° ''РќР•Рџ. РЈРЈ.'' РЅРµ РІ С‚РѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.P321C.cblVhYY <> csDisconected) then
               begin
-                AddMessage('Кабель входа указателя уровня подключен');
+                AddMessage('РљР°Р±РµР»СЊ РІС…РѕРґР° СѓРєР°Р·Р°С‚РµР»СЏ СѓСЂРѕРІРЅСЏ РїРѕРґРєР»СЋС‡РµРЅ');
               end;
               if (Station.P321C.cblVhYY <> csDisconected) then
               begin
-                AddMessage('Кабель выхода генератора подключен');
+                AddMessage('РљР°Р±РµР»СЊ РІС‹С…РѕРґР° РіРµРЅРµСЂР°С‚РѕСЂР° РїРѕРґРєР»СЋС‡РµРЅ');
               end;
             end;
           idRack1500B:
             begin
               if (Station.HalfSetB.Rack1500.btnAutomatic <> butPositionLeft) then
               begin
-                AddMessage('Переключатель автоматики во включенном положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р°РІС‚РѕРјР°С‚РёРєРё РІРѕ РІРєР»СЋС‡РµРЅРЅРѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetB.Rack1500.swModeControl <> 6) then
               begin
-                AddMessage('Кукушка контроля режимов не в том положении');
+                AddMessage('РљСѓРєСѓС€РєР° РєРѕРЅС‚СЂРѕР»СЏ СЂРµР¶РёРјРѕРІ РЅРµ РІ С‚РѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetB.Rack1500.butMode_R <> butPositionLeft) then
               begin
-                AddMessage('Переключатель контроля режимов не в том положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РєРѕРЅС‚СЂРѕР»СЏ СЂРµР¶РёРјРѕРІ РЅРµ РІ С‚РѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetB.Rack1500.swWave1610_0 <> Station.WaveTransmitB) then
               begin
-                AddMessage('Неправильно выставлена волна передачи блока 1610-0. Есть: ' + inttostr(Station.HalfSetB.Rack1500.swWave1610_0) +
-                ' Надо: ' + inttostr(Station.WaveTransmitB));
+                AddMessage('РќРµРїСЂР°РІРёР»СЊРЅРѕ РІС‹СЃС‚Р°РІР»РµРЅР° РІРѕР»РЅР° РїРµСЂРµРґР°С‡Рё Р±Р»РѕРєР° 1610-0. Р•СЃС‚СЊ: ' + inttostr(Station.HalfSetB.Rack1500.swWave1610_0) +
+                ' РќР°РґРѕ: ' + inttostr(Station.WaveTransmitB));
               end;
               if (Station.HalfSetB.Rack1500.swWave1500 <> Station.WaveTransmitB) then
               begin
-                AddMessage('Неправильно выставлена волна передачи блока 1500. Есть: ' + inttostr(Station.HalfSetB.Rack1500.swWave1500) +
-                ' Надо: ' + inttostr(Station.WaveTransmitB));
+                AddMessage('РќРµРїСЂР°РІРёР»СЊРЅРѕ РІС‹СЃС‚Р°РІР»РµРЅР° РІРѕР»РЅР° РїРµСЂРµРґР°С‡Рё Р±Р»РѕРєР° 1500. Р•СЃС‚СЊ: ' + inttostr(Station.HalfSetB.Rack1500.swWave1500) +
+                ' РќР°РґРѕ: ' + inttostr(Station.WaveTransmitB));
               end;
               if (Station.HalfSetB.Rack1500.swWave161_R <> Station.WaveTransmitB) then
               begin
-                AddMessage('Неправильно выставлена волна передачи блока 1610-Р. Есть: ' + inttostr(Station.HalfSetB.Rack1500.swWave161_R) +
-                ' Надо: ' + inttostr(Station.WaveTransmitB));
+                AddMessage('РќРµРїСЂР°РІРёР»СЊРЅРѕ РІС‹СЃС‚Р°РІР»РµРЅР° РІРѕР»РЅР° РїРµСЂРµРґР°С‡Рё Р±Р»РѕРєР° 1610-Р . Р•СЃС‚СЊ: ' + inttostr(Station.HalfSetB.Rack1500.swWave161_R) +
+                ' РќР°РґРѕ: ' + inttostr(Station.WaveTransmitB));
               end;
-              if (Station.HalfSetB.Rack1500.stCableNoName <> csConnectedAtRack1500Sh1) then
+              if (Station.HalfSetB.Rack1500.stCableLoad <> csConnectedAtRack1500Sh1) then
               begin
-                AddMessage('Неправильно подключен кабель нагрузки');
+                AddMessage('РќРµРїСЂР°РІРёР»СЊРЅРѕ РїРѕРґРєР»СЋС‡РµРЅ РєР°Р±РµР»СЊ РЅР°РіСЂСѓР·РєРё');
               end;
               if (Station.HalfSetB.Rack1500.stCableSh1 <> csConnectedAtRack1500Sh1) then
               begin
-                AddMessage('Неправильно подключен кабель Ш1');
+                AddMessage('РќРµРїСЂР°РІРёР»СЊРЅРѕ РїРѕРґРєР»СЋС‡РµРЅ РєР°Р±РµР»СЊ РЁ1');
               end;
               if (Station.HalfSetB.Rack1500B.butMdOsn_1 <> butPositionLeft) then
               begin
-                AddMessage('Переключатель блока 1550 не в положении ''РАБ.''');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° 1550 РЅРµ РІ РїРѕР»РѕР¶РµРЅРёРё ''Р РђР‘.''');
               end;
               if (Station.HalfSetB.Rack1500B.butMdOsn_2 <> butPositionLeft) then
               begin
-                AddMessage('Переключатель блока 1550 не в положении ''РАБ.''');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° 1550 РЅРµ РІ РїРѕР»РѕР¶РµРЅРёРё ''Р РђР‘.''');
               end;
               if (Station.HalfSetB.Rack1500B.butMdOsn_3 <> butPositionLeft) then
               begin
-                AddMessage('Переключатель блока 1550 не в положении ''ОКОН.''');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° 1550 РЅРµ РІ РїРѕР»РѕР¶РµРЅРёРё ''РћРљРћРќ.''');
               end;
               if (Station.HalfSetB.Rack1500B.but1622_1 <> butPositionUp) then
               begin
-                AddMessage('Переключатель питания блока 1622-0 не во включенном положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РїРёС‚Р°РЅРёСЏ Р±Р»РѕРєР° 1622-0 РЅРµ РІРѕ РІРєР»СЋС‡РµРЅРЅРѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetB.Rack1500B.but1622_2 <> butPositionUp) then
               begin
-                AddMessage('Переключатель питания блока 1622-Р не во включенном положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РїРёС‚Р°РЅРёСЏ Р±Р»РѕРєР° 1622-Р  РЅРµ РІРѕ РІРєР»СЋС‡РµРЅРЅРѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
             end;
           idRack1500A:
             begin
               if (Station.HalfSetA.Rack1500.btnAutomatic <> butPositionLeft) then
               begin
-                AddMessage('Переключатель автоматики во включенном положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р°РІС‚РѕРјР°С‚РёРєРё РІРѕ РІРєР»СЋС‡РµРЅРЅРѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetA.Rack1500.swModeControl <> 6) then
               begin
-                AddMessage('Кукушка контроля режимов не в том положении');
+                AddMessage('РљСѓРєСѓС€РєР° РєРѕРЅС‚СЂРѕР»СЏ СЂРµР¶РёРјРѕРІ РЅРµ РІ С‚РѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetA.Rack1500.butMode_R <> butPositionLeft) then
               begin
-                AddMessage('Переключатель контроля режимов не в том положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РєРѕРЅС‚СЂРѕР»СЏ СЂРµР¶РёРјРѕРІ РЅРµ РІ С‚РѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetA.Rack1500.swWave1610_0 <> Station.WaveTransmitA) then
               begin
-                AddMessage('Неправильно выставлена волна передачи блока 1610-0. Есть: ' + inttostr(Station.HalfSetA.Rack1500.swWave1610_0) +
-                ' Надо: ' + inttostr(Station.WaveTransmitA));
+                AddMessage('РќРµРїСЂР°РІРёР»СЊРЅРѕ РІС‹СЃС‚Р°РІР»РµРЅР° РІРѕР»РЅР° РїРµСЂРµРґР°С‡Рё Р±Р»РѕРєР° 1610-0. Р•СЃС‚СЊ: ' + inttostr(Station.HalfSetA.Rack1500.swWave1610_0) +
+                ' РќР°РґРѕ: ' + inttostr(Station.WaveTransmitA));
               end;
               if (Station.HalfSetA.Rack1500.swWave1500 <> Station.WaveTransmitA) then
               begin
-                AddMessage('Неправильно выставлена волна передачи блока 1500. Есть: ' + inttostr(Station.HalfSetA.Rack1500.swWave1500) +
-                ' Надо: ' + inttostr(Station.WaveTransmitA));
+                AddMessage('РќРµРїСЂР°РІРёР»СЊРЅРѕ РІС‹СЃС‚Р°РІР»РµРЅР° РІРѕР»РЅР° РїРµСЂРµРґР°С‡Рё Р±Р»РѕРєР° 1500. Р•СЃС‚СЊ: ' + inttostr(Station.HalfSetA.Rack1500.swWave1500) +
+                ' РќР°РґРѕ: ' + inttostr(Station.WaveTransmitA));
               end;
               if (Station.HalfSetA.Rack1500.swWave161_R <> Station.WaveTransmitA) then
               begin
-                AddMessage('Неправильно выставлена волна передачи блока 1610-Р. Есть: ' + inttostr(Station.HalfSetA.Rack1500.swWave161_R) +
-                ' Надо: ' + inttostr(Station.WaveTransmitA));
+                AddMessage('РќРµРїСЂР°РІРёР»СЊРЅРѕ РІС‹СЃС‚Р°РІР»РµРЅР° РІРѕР»РЅР° РїРµСЂРµРґР°С‡Рё Р±Р»РѕРєР° 1610-Р . Р•СЃС‚СЊ: ' + inttostr(Station.HalfSetA.Rack1500.swWave161_R) +
+                ' РќР°РґРѕ: ' + inttostr(Station.WaveTransmitA));
               end;
-              if (Station.HalfSetA.Rack1500.stCableNoName <> csConnectedAtRack1500Sh1) then
+              if (Station.HalfSetA.Rack1500.stCableLoad <> csConnectedAtRack1500Sh1) then
               begin
-                AddMessage('Неправильно подключен кабель нагрузки');
+                AddMessage('РќРµРїСЂР°РІРёР»СЊРЅРѕ РїРѕРґРєР»СЋС‡РµРЅ РєР°Р±РµР»СЊ РЅР°РіСЂСѓР·РєРё');
               end;
               if (Station.HalfSetA.Rack1500.stCableSh1 <> csConnectedAtRack1500Sh1) then
               begin
-                AddMessage('Неправильно подключен кабель Ш1');
+                AddMessage('РќРµРїСЂР°РІРёР»СЊРЅРѕ РїРѕРґРєР»СЋС‡РµРЅ РєР°Р±РµР»СЊ РЁ1');
               end;
               if (Station.HalfSetA.Rack1500B.butMdOsn_1 <> butPositionLeft) then
               begin
-                AddMessage('Переключатель блока 1550 не в положении ''РАБ.''');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° 1550 РЅРµ РІ РїРѕР»РѕР¶РµРЅРёРё ''Р РђР‘.''');
               end;
               if (Station.HalfSetA.Rack1500B.butMdOsn_2 <> butPositionLeft) then
               begin
-                AddMessage('Переключатель блока 1550 не в положении ''РАБ.''');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° 1550 РЅРµ РІ РїРѕР»РѕР¶РµРЅРёРё ''Р РђР‘.''');
               end;
               if (Station.HalfSetA.Rack1500B.butMdOsn_3 <> butPositionLeft) then
               begin
-                AddMessage('Переключатель блока 1550 не в положении ''ОКОН.''');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р±Р»РѕРєР° 1550 РЅРµ РІ РїРѕР»РѕР¶РµРЅРёРё ''РћРљРћРќ.''');
               end;
               if (Station.HalfSetA.Rack1500B.but1622_1 <> butPositionUp) then
               begin
-                AddMessage('Переключатель питания блока 1622-0 не во включенном положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РїРёС‚Р°РЅРёСЏ Р±Р»РѕРєР° 1622-0 РЅРµ РІРѕ РІРєР»СЋС‡РµРЅРЅРѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.HalfSetA.Rack1500B.but1622_2 <> butPositionUp) then
               begin
-                AddMessage('Переключатель питания блока 1622-Р не во включенном положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РїРёС‚Р°РЅРёСЏ Р±Р»РѕРєР° 1622-Р  РЅРµ РІРѕ РІРєР»СЋС‡РµРЅРЅРѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
             end;
           idRack1400B:
             begin
               if (Station.Rack1400.butPower <> butPositionLeft) then
               begin
-                AddMessage('Питание стойки во включеном положении');
+                AddMessage('РџРёС‚Р°РЅРёРµ СЃС‚РѕР№РєРё РІРѕ РІРєР»СЋС‡РµРЅРѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.Rack1400.swKukushka <> 1) then
               begin
-                AddMessage('Кукушка не в первом положении');
+                AddMessage('РљСѓРєСѓС€РєР° РЅРµ РІ РїРµСЂРІРѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
             end;
         end;
       end;
       {$ENDREGION}
     mdPowerOn:
-      {$REGION 'Проверка правильности настройки блоков'}
+      {$REGION 'РџСЂРѕРІРµСЂРєР° РїСЂР°РІРёР»СЊРЅРѕСЃС‚Рё РЅР°СЃС‚СЂРѕР№РєРё Р±Р»РѕРєРѕРІ'}
       begin
         case CurBlockId of
           idRack1920B:
             begin
               if (Station.HalfSetB.Rack1920.butPower <> butPositionUp) then
               begin
-                AddMessage('Переключатель питания первой ЛБВ не включен');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РїРёС‚Р°РЅРёСЏ РїРµСЂРІРѕР№ Р›Р‘Р’ РЅРµ РІРєР»СЋС‡РµРЅ');
               end;
               if (Station.HalfSetB.Rack1920.butPower2 <> butPositionUp) then
               begin
-                AddMessage('Переключатель питания второй ЛБВ не включен');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РїРёС‚Р°РЅРёСЏ РІС‚РѕСЂРѕР№ Р›Р‘Р’ РЅРµ РІРєР»СЋС‡РµРЅ');
               end;
               if (Station.HalfSetB.Rack1920.but1910 <> butPositionUp) then
               begin
-                AddMessage('Переключатель питания блока 1910 не включен');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РїРёС‚Р°РЅРёСЏ Р±Р»РѕРєР° 1910 РЅРµ РІРєР»СЋС‡РµРЅ');
               end;
               if (Station.HalfSetB.Rack1920.but1910A <> butPositionUp) then
               begin
-                AddMessage('Переключатель питания блока 1910А не включен');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РїРёС‚Р°РЅРёСЏ Р±Р»РѕРєР° 1910Рђ РЅРµ РІРєР»СЋС‡РµРЅ');
               end;
               if (Station.HalfSetB.Rack1920.but1930 <> butPositionUp) then
               begin
-                AddMessage('Переключатель питания блока 1930 не включен');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РїРёС‚Р°РЅРёСЏ Р±Р»РѕРєР° 1930 РЅРµ РІРєР»СЋС‡РµРЅ');
               end;
               if (Station.HalfSetB.Rack1920.but1960_1 <> butPositionUp) then
               begin
-                AddMessage('Переключатель питания блока 1960-1 не включен');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РїРёС‚Р°РЅРёСЏ Р±Р»РѕРєР° 1960-1 РЅРµ РІРєР»СЋС‡РµРЅ');
               end;
             end;
           idRack1710A:
             begin
               if (Station.Rack1710.butPower <> butPositionRight) then
               begin
-                AddMessage('Переключатель питания стоки 1710 не включен');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РїРёС‚Р°РЅРёСЏ СЃС‚РѕРєРё 1710 РЅРµ РІРєР»СЋС‡РµРЅ');
               end;
               if (Station.Rack1710.swKukushka <> butPositionRight) then
               begin
-                AddMessage('Кукушка указателя частоты блока 470 не в первом положении');
+                AddMessage('РљСѓРєСѓС€РєР° СѓРєР°Р·Р°С‚РµР»СЏ С‡Р°СЃС‚РѕС‚С‹ Р±Р»РѕРєР° 470 РЅРµ РІ РїРµСЂРІРѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
             end;
           idRack1920A:
             begin
               if (Station.HalfSetA.Rack1920.butPower <> butPositionUp) then
               begin
-                AddMessage('Переключатель питания первой ЛБВ не включен');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РїРёС‚Р°РЅРёСЏ РїРµСЂРІРѕР№ Р›Р‘Р’ РЅРµ РІРєР»СЋС‡РµРЅ');
               end;
               if (Station.HalfSetA.Rack1920.butPower2 <> butPositionUp) then
               begin
-                AddMessage('Переключатель питания второй ЛБВ не включен');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РїРёС‚Р°РЅРёСЏ РІС‚РѕСЂРѕР№ Р›Р‘Р’ РЅРµ РІРєР»СЋС‡РµРЅ');
               end;
               if (Station.HalfSetA.Rack1920.but1910 <> butPositionUp) then
               begin
-                AddMessage('Переключатель питания блока 1910 не включен');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РїРёС‚Р°РЅРёСЏ Р±Р»РѕРєР° 1910 РЅРµ РІРєР»СЋС‡РµРЅ');
               end;
               if (Station.HalfSetA.Rack1920.but1910A <> butPositionUp) then
               begin
-                AddMessage('Переключатель питания блока 1910А не включен');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РїРёС‚Р°РЅРёСЏ Р±Р»РѕРєР° 1910Рђ РЅРµ РІРєР»СЋС‡РµРЅ');
               end;
               if (Station.HalfSetA.Rack1920.but1930 <> butPositionUp) then
               begin
-                AddMessage('Переключатель питания блока 1930 не включен');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РїРёС‚Р°РЅРёСЏ Р±Р»РѕРєР° 1930 РЅРµ РІРєР»СЋС‡РµРЅ');
               end;
               if (Station.HalfSetA.Rack1920.but1960_1 <> butPositionUp) then
               begin
-                AddMessage('Переключатель питания блока 1960-1 не включен');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РїРёС‚Р°РЅРёСЏ Р±Р»РѕРєР° 1960-1 РЅРµ РІРєР»СЋС‡РµРЅ');
               end;
             end;
           idMshuA:
             begin
               if (Station.HalfSetA.LittleNoisyAmplifier.swWave <> Station.WaveReceiveA) then
               begin
-                AddMessage('Неверная волна приема. Есть: ' + inttostr(Station.HalfSetA.LittleNoisyAmplifier.swWave) + ' Надо: ' +
+                AddMessage('РќРµРІРµСЂРЅР°СЏ РІРѕР»РЅР° РїСЂРёРµРјР°. Р•СЃС‚СЊ: ' + inttostr(Station.HalfSetA.LittleNoisyAmplifier.swWave) + ' РќР°РґРѕ: ' +
                 inttostr(Station.WaveReceiveA));
               end;
               if (Station.HalfSetA.LittleNoisyAmplifier.butMshu <> butMain) then
               begin
-                AddMessage('Переключатель выбора основного устройства на резервном блоке');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РІС‹Р±РѕСЂР° РѕСЃРЅРѕРІРЅРѕРіРѕ СѓСЃС‚СЂРѕР№СЃС‚РІР° РЅР° СЂРµР·РµСЂРІРЅРѕРј Р±Р»РѕРєРµ');
               end;
               if (Station.HalfSetA.LittleNoisyAmplifier.butNet <> butPositionUp) then
               begin
-                AddMessage('Переключатель питания основного блока выключен');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РїРёС‚Р°РЅРёСЏ РѕСЃРЅРѕРІРЅРѕРіРѕ Р±Р»РѕРєР° РІС‹РєР»СЋС‡РµРЅ');
               end;
               if (Station.HalfSetA.LittleNoisyAmplifier.butNet2 <> butPositionUp) then
               begin
-                AddMessage('Переключатель питания резервного блока выключен');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РїРёС‚Р°РЅРёСЏ СЂРµР·РµСЂРІРЅРѕРіРѕ Р±Р»РѕРєР° РІС‹РєР»СЋС‡РµРЅ');
               end;
             end;
           idMshuB:
             begin
               if (Station.HalfSetB.LittleNoisyAmplifier.swWave <> Station.WaveReceiveB) then
               begin
-                AddMessage('Неверная волна приема. Есть: ' + inttostr(Station.HalfSetB.LittleNoisyAmplifier.swWave) + ' Надо: ' +
+                AddMessage('РќРµРІРµСЂРЅР°СЏ РІРѕР»РЅР° РїСЂРёРµРјР°. Р•СЃС‚СЊ: ' + inttostr(Station.HalfSetB.LittleNoisyAmplifier.swWave) + ' РќР°РґРѕ: ' +
                 inttostr(Station.WaveReceiveB));
               end;
               if (Station.HalfSetB.LittleNoisyAmplifier.butMshu <> butMain) then
               begin
-                AddMessage('Переключатель выбора основного устройства на резервном блоке');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РІС‹Р±РѕСЂР° РѕСЃРЅРѕРІРЅРѕРіРѕ СѓСЃС‚СЂРѕР№СЃС‚РІР° РЅР° СЂРµР·РµСЂРІРЅРѕРј Р±Р»РѕРєРµ');
               end;
               if (Station.HalfSetB.LittleNoisyAmplifier.butNet <> butPositionUp) then
               begin
-                AddMessage('Переключатель питания основного блока выключен');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РїРёС‚Р°РЅРёСЏ РѕСЃРЅРѕРІРЅРѕРіРѕ Р±Р»РѕРєР° РІС‹РєР»СЋС‡РµРЅ');
               end;
               if (Station.HalfSetB.LittleNoisyAmplifier.butNet2 <> butPositionUp) then
               begin
-                AddMessage('Переключатель питания резервного блока выключен');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РїРёС‚Р°РЅРёСЏ СЂРµР·РµСЂРІРЅРѕРіРѕ Р±Р»РѕРєР° РІС‹РєР»СЋС‡РµРЅ');
               end;
             end;
           idShield:
             begin
               if (Station.PowerPanel.swNet <> 1) then
               begin
-                AddMessage('Переключатель подачи напряжения на щит в выключенном положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РїРѕРґР°С‡Рё РЅР°РїСЂСЏР¶РµРЅРёСЏ РЅР° С‰РёС‚ РІ РІС‹РєР»СЋС‡РµРЅРЅРѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.PowerPanel.sw1700Power <> 1) then
               begin
-                AddMessage('Переключатель питания блока 1700 в выключенном положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РїРёС‚Р°РЅРёСЏ Р±Р»РѕРєР° 1700 РІ РІС‹РєР»СЋС‡РµРЅРЅРѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.PowerPanel.sw1900Power <> 1) then
               begin
-                AddMessage('Переключатель питания блока 1900 (А) в выключенном положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РїРёС‚Р°РЅРёСЏ Р±Р»РѕРєР° 1900 (Рђ) РІ РІС‹РєР»СЋС‡РµРЅРЅРѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.PowerPanel.sw1900Power_2 <> 1) then
               begin
-                AddMessage('Переключатель питания блока 1900 (Б) в выключенном положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РїРёС‚Р°РЅРёСЏ Р±Р»РѕРєР° 1900 (Р‘) РІ РІС‹РєР»СЋС‡РµРЅРЅРѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.PowerPanel.sw1200Power <> 1) then
               begin
-                AddMessage('Переключатель питания блока 1200 (А) в выключенном положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РїРёС‚Р°РЅРёСЏ Р±Р»РѕРєР° 1200 (Рђ) РІ РІС‹РєР»СЋС‡РµРЅРЅРѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.PowerPanel.sw1200Power_2 <> 1) then
               begin
-                AddMessage('Переключатель питания блока 1200 (Б) в выключенном положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РїРёС‚Р°РЅРёСЏ Р±Р»РѕРєР° 1200 (Р‘) РІ РІС‹РєР»СЋС‡РµРЅРЅРѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
               if (Station.PowerPanel.sw1400 <> 1) then
               begin
-                AddMessage('Переключатель питания блока 1400 в выключенном положении');
+                AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ РїРёС‚Р°РЅРёСЏ Р±Р»РѕРєР° 1400 РІ РІС‹РєР»СЋС‡РµРЅРЅРѕРј РїРѕР»РѕР¶РµРЅРёРё');
               end;
             end;
           idRack1400B:
             begin
               if Station.Rack1400.butPower = butPositionRight then
               begin
-                AddMessage('Питание блока 1400 не включено');
+                AddMessage('РџРёС‚Р°РЅРёРµ Р±Р»РѕРєР° 1400 РЅРµ РІРєР»СЋС‡РµРЅРѕ');
               end;
             end;
         end;
       end;
       {$ENDREGION}
     mdReceiveAndTransmitTracksSetup:
-      {$REGION 'Проверка правильности настройки блоков'}
+      {$REGION 'РџСЂРѕРІРµСЂРєР° РїСЂР°РІРёР»СЊРЅРѕСЃС‚Рё РЅР°СЃС‚СЂРѕР№РєРё Р±Р»РѕРєРѕРІ'}
       case CurBlockId of
         idRack1500A:
           begin
             if not(Station.HalfSetA.Rack1500.GeterodinTunedMain) then
             begin
-              AddMessage('Гетеродин основного канала не настроен');
+              AddMessage('Р“РµС‚РµСЂРѕРґРёРЅ РѕСЃРЅРѕРІРЅРѕРіРѕ РєР°РЅР°Р»Р° РЅРµ РЅР°СЃС‚СЂРѕРµРЅ');
             end;
             if not(Station.HalfSetA.Rack1500.GeterodinTunedReserve) then
             begin
-              AddMessage('Гетеродин резервного канала не настроен');
+              AddMessage('Р“РµС‚РµСЂРѕРґРёРЅ СЂРµР·РµСЂРІРЅРѕРіРѕ РєР°РЅР°Р»Р° РЅРµ РЅР°СЃС‚СЂРѕРµРЅ');
             end;
             if ((Station.HalfSetA.Rack1500.SelectedMd <> smdMain) and (Station.HalfSetA.Rack1500.SelectedRetr <> sRetrMain)) then
             begin
-              AddMessage('В качестве передающего комплекта выбран резервный комплект');
+              AddMessage('Р’ РєР°С‡РµСЃС‚РІРµ РїРµСЂРµРґР°СЋС‰РµРіРѕ РєРѕРјРїР»РµРєС‚Р° РІС‹Р±СЂР°РЅ СЂРµР·РµСЂРІРЅС‹Р№ РєРѕРјРїР»РµРєС‚');
             end;
             if (not(Station.HalfSetA.Rack1500.DropError)) then
             begin
-              AddMessage('Не сброшена ошибка');
+              AddMessage('РќРµ СЃР±СЂРѕС€РµРЅР° РѕС€РёР±РєР°');
             end;
             if (Station.HalfSetA.Rack1500.btnAutomatic <> butPositionRight) then
             begin
-              AddMessage('Переключатель автоматики не включен');
+              AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р°РІС‚РѕРјР°С‚РёРєРё РЅРµ РІРєР»СЋС‡РµРЅ');
             end;
             if (Station.HalfSetA.Rack1500.swPhaseMover <> 10) then
             begin
-              AddMessage('Расфазировка не устранена');
+              AddMessage('Р Р°СЃС„Р°Р·РёСЂРѕРІРєР° РЅРµ СѓСЃС‚СЂР°РЅРµРЅР°');
             end;
           end;
         idRack1920A:
           begin
             if not(Station.HalfSetA.Rack1920.stLBV1_TurnedOn) then
             begin
-              AddMessage('Напряжение на ЛБВ 1 не подано');
+              AddMessage('РќР°РїСЂСЏР¶РµРЅРёРµ РЅР° Р›Р‘Р’ 1 РЅРµ РїРѕРґР°РЅРѕ');
             end;
             if not(Station.HalfSetA.Rack1920.stLBV2_TurnedOn) then
             begin
-              AddMessage('Напряжение на ЛБВ 2 не подано');
+              AddMessage('РќР°РїСЂСЏР¶РµРЅРёРµ РЅР° Р›Р‘Р’ 2 РЅРµ РїРѕРґР°РЅРѕ');
             end;
             if not(Station.HalfSetA.Rack1920.stLBV1_TurnedOn) then
             begin
-              AddMessage('Замедление не включено ЛБВ 1');
+              AddMessage('Р—Р°РјРµРґР»РµРЅРёРµ РЅРµ РІРєР»СЋС‡РµРЅРѕ Р›Р‘Р’ 1');
             end;
             if not(Station.HalfSetA.Rack1920.stLBV2_TurnedOn) then
             begin
-              AddMessage('Замедление не включено ЛБВ 2');
+              AddMessage('Р—Р°РјРµРґР»РµРЅРёРµ РЅРµ РІРєР»СЋС‡РµРЅРѕ Р›Р‘Р’ 2');
             end;
           end;
         idRack1600A:
           begin
             if not(Station.HalfSetA.Rack1600.GeterodinTunedMain) then
             begin
-              AddMessage('Гетеродин основного приемного канала не настроен');
+              AddMessage('Р“РµС‚РµСЂРѕРґРёРЅ РѕСЃРЅРѕРІРЅРѕРіРѕ РїСЂРёРµРјРЅРѕРіРѕ РєР°РЅР°Р»Р° РЅРµ РЅР°СЃС‚СЂРѕРµРЅ');
             end;
             if not(Station.HalfSetA.Rack1600.GeterodinTunedReserve) then
             begin
-              AddMessage('Гетеродин резервного приемного канала не настроен');
+              AddMessage('Р“РµС‚РµСЂРѕРґРёРЅ СЂРµР·РµСЂРІРЅРѕРіРѕ РїСЂРёРµРјРЅРѕРіРѕ РєР°РЅР°Р»Р° РЅРµ РЅР°СЃС‚СЂРѕРµРЅ');
             end;
             if ((Station.HalfSetA.Rack1600.SelectedMd = smdMain) and (Station.HalfSetA.Rack1600.SelectedUpch = sUpchMain) and
             (Station.HalfSetA.Rack1600.SelectedDmch = sDmchMain)) then
             begin
-              AddMessage('В качестве рабочих блоков выбраны резервные');
+              AddMessage('Р’ РєР°С‡РµСЃС‚РІРµ СЂР°Р±РѕС‡РёС… Р±Р»РѕРєРѕРІ РІС‹Р±СЂР°РЅС‹ СЂРµР·РµСЂРІРЅС‹Рµ');
             end;
             if not(Station.HalfSetA.Rack1600.DropError) then
             begin
-              AddMessage('Ошибка не сброшена');
+              AddMessage('РћС€РёР±РєР° РЅРµ СЃР±СЂРѕС€РµРЅР°');
             end;
             if (Station.HalfSetA.Rack1600.butAutomatic = butPositionLeft) then
             begin
-              AddMessage('Автоматика не включена');
+              AddMessage('РђРІС‚РѕРјР°С‚РёРєР° РЅРµ РІРєР»СЋС‡РµРЅР°');
             end;
           end;
         idRack1600B:
           begin
             if not(Station.HalfSetB.Rack1600.GeterodinTunedMain) then
             begin
-              AddMessage('Гетеродин основного приемного канала не настроен');
+              AddMessage('Р“РµС‚РµСЂРѕРґРёРЅ РѕСЃРЅРѕРІРЅРѕРіРѕ РїСЂРёРµРјРЅРѕРіРѕ РєР°РЅР°Р»Р° РЅРµ РЅР°СЃС‚СЂРѕРµРЅ');
             end;
             if not(Station.HalfSetB.Rack1600.GeterodinTunedReserve) then
             begin
-              AddMessage('Гетеродин резервного приемного канала не настроен');
+              AddMessage('Р“РµС‚РµСЂРѕРґРёРЅ СЂРµР·РµСЂРІРЅРѕРіРѕ РїСЂРёРµРјРЅРѕРіРѕ РєР°РЅР°Р»Р° РЅРµ РЅР°СЃС‚СЂРѕРµРЅ');
             end;
             if ((Station.HalfSetB.Rack1600.SelectedMd = smdMain) and (Station.HalfSetB.Rack1600.SelectedUpch = sUpchMain) and
             (Station.HalfSetB.Rack1600.SelectedDmch = sDmchMain)) then
             begin
-              AddMessage('В качестве рабочих блоков выбраны резервные');
+              AddMessage('Р’ РєР°С‡РµСЃС‚РІРµ СЂР°Р±РѕС‡РёС… Р±Р»РѕРєРѕРІ РІС‹Р±СЂР°РЅС‹ СЂРµР·РµСЂРІРЅС‹Рµ');
             end;
             if not(Station.HalfSetB.Rack1600.DropError) then
             begin
-              AddMessage('Ошибка не сброшена');
+              AddMessage('РћС€РёР±РєР° РЅРµ СЃР±СЂРѕС€РµРЅР°');
             end;
             if (Station.HalfSetB.Rack1600.butAutomatic = butPositionLeft) then
             begin
-              AddMessage('Автоматика не включена');
+              AddMessage('РђРІС‚РѕРјР°С‚РёРєР° РЅРµ РІРєР»СЋС‡РµРЅР°');
             end;
           end;
         idRack1500B:
           begin
             if not(Station.HalfSetB.Rack1500.GeterodinTunedMain) then
             begin
-              AddMessage('Гетеродин основного канала не настроен');
+              AddMessage('Р“РµС‚РµСЂРѕРґРёРЅ РѕСЃРЅРѕРІРЅРѕРіРѕ РєР°РЅР°Р»Р° РЅРµ РЅР°СЃС‚СЂРѕРµРЅ');
             end;
             if not(Station.HalfSetB.Rack1500.GeterodinTunedReserve) then
             begin
-              AddMessage('Гетеродин резервного канала не настроен');
+              AddMessage('Р“РµС‚РµСЂРѕРґРёРЅ СЂРµР·РµСЂРІРЅРѕРіРѕ РєР°РЅР°Р»Р° РЅРµ РЅР°СЃС‚СЂРѕРµРЅ');
             end;
             if ((Station.HalfSetB.Rack1500.SelectedMd <> smdMain) and (Station.HalfSetA.Rack1500.SelectedRetr <> sRetrMain)) then
             begin
-              AddMessage('В качестве передающего комплекта выбран резервный комплект');
+              AddMessage('Р’ РєР°С‡РµСЃС‚РІРµ РїРµСЂРµРґР°СЋС‰РµРіРѕ РєРѕРјРїР»РµРєС‚Р° РІС‹Р±СЂР°РЅ СЂРµР·РµСЂРІРЅС‹Р№ РєРѕРјРїР»РµРєС‚');
             end;
             if (not(Station.HalfSetB.Rack1500.DropError)) then
             begin
-              AddMessage('Не сброшена ошибка');
+              AddMessage('РќРµ СЃР±СЂРѕС€РµРЅР° РѕС€РёР±РєР°');
             end;
             if (Station.HalfSetB.Rack1500.btnAutomatic <> butPositionRight) then
             begin
-              AddMessage('Переключатель автоматики не включен');
+              AddMessage('РџРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ Р°РІС‚РѕРјР°С‚РёРєРё РЅРµ РІРєР»СЋС‡РµРЅ');
             end;
             if (Station.HalfSetB.Rack1500.swPhaseMover <> 10) then
             begin
-              AddMessage('Расфазировка не устранена');
+              AddMessage('Р Р°СЃС„Р°Р·РёСЂРѕРІРєР° РЅРµ СѓСЃС‚СЂР°РЅРµРЅР°');
             end;
           end;
         idRack1920B:
           begin
             if not(Station.HalfSetB.Rack1920.stLBV1_TurnedOn) then
             begin
-              AddMessage('Напряжение на ЛБВ 1 не подано');
+              AddMessage('РќР°РїСЂСЏР¶РµРЅРёРµ РЅР° Р›Р‘Р’ 1 РЅРµ РїРѕРґР°РЅРѕ');
             end;
             if not(Station.HalfSetB.Rack1920.stLBV2_TurnedOn) then
             begin
-              AddMessage('Напряжение на ЛБВ 2 не подано');
+              AddMessage('РќР°РїСЂСЏР¶РµРЅРёРµ РЅР° Р›Р‘Р’ 2 РЅРµ РїРѕРґР°РЅРѕ');
             end;
             if not(Station.HalfSetB.Rack1920.stLBV1_TurnedOn) then
             begin
-              AddMessage('Замедление не включено ЛБВ 1');
+              AddMessage('Р—Р°РјРµРґР»РµРЅРёРµ РЅРµ РІРєР»СЋС‡РµРЅРѕ Р›Р‘Р’ 1');
             end;
             if not(Station.HalfSetB.Rack1920.stLBV2_TurnedOn) then
             begin
-              AddMessage('Замедление не включено ЛБВ 2');
+              AddMessage('Р—Р°РјРµРґР»РµРЅРёРµ РЅРµ РІРєР»СЋС‡РµРЅРѕ Р›Р‘Р’ 2');
             end;
           end;
       end;
       {$ENDREGION}
     mdWorkWithLowFrequency:
-      {$REGION 'Проверка правильности настройки блоков'}
+      {$REGION 'РџСЂРѕРІРµСЂРєР° РїСЂР°РІРёР»СЊРЅРѕСЃС‚Рё РЅР°СЃС‚СЂРѕР№РєРё Р±Р»РѕРєРѕРІ'}
       begin
         if (stDeviation.Rack1200A_PRD <> stPassed) then
         begin
-          AddMessage('Девиация стойки 1200А ПРД не проверена');
+          AddMessage('Р”РµРІРёР°С†РёСЏ СЃС‚РѕР№РєРё 1200Рђ РџР Р” РЅРµ РїСЂРѕРІРµСЂРµРЅР°');
         end;
         if (stDeviation.Rack1200A_PRM <> stPassed) then
         begin
-          AddMessage('Девиация стойки 1200А ПРМ не проверена');
+          AddMessage('Р”РµРІРёР°С†РёСЏ СЃС‚РѕР№РєРё 1200Рђ РџР Рњ РЅРµ РїСЂРѕРІРµСЂРµРЅР°');
         end;
         if (stDeviation.Rack1200B_PRD <> stPassed) then
         begin
-          AddMessage('Девиация стойки 1200Б ПРД не проверена');
+          AddMessage('Р”РµРІРёР°С†РёСЏ СЃС‚РѕР№РєРё 1200Р‘ РџР Р” РЅРµ РїСЂРѕРІРµСЂРµРЅР°');
         end;
         if (stDeviation.Rack1200B_PRM <> stPassed) then
         begin
-          AddMessage('Девиация стойки 1200Б ПРМ не проверена');
+          AddMessage('Р”РµРІРёР°С†РёСЏ СЃС‚РѕР№РєРё 1200Р‘ РџР Рњ РЅРµ РїСЂРѕРІРµСЂРµРЅР°');
         end;
         if (GetNumberOfTunedChannelBlocks < 5) then
         begin
-          AddMessage('Количество настроенных канальных блоков меньше 5: ' + inttostr(GetNumberOfTunedChannelBlocks));
+          AddMessage('РљРѕР»РёС‡РµСЃС‚РІРѕ РЅР°СЃС‚СЂРѕРµРЅРЅС‹С… РєР°РЅР°Р»СЊРЅС‹С… Р±Р»РѕРєРѕРІ РјРµРЅСЊС€Рµ 5: ' + inttostr(GetNumberOfTunedChannelBlocks));
         end;
         if (GetNumberOfCallPassedThrough < 5) then
         begin
-          AddMessage('Количество произведенных вызовов меньше 5: ' + inttostr(GetNumberOfCallPassedThrough));
+          AddMessage('РљРѕР»РёС‡РµСЃС‚РІРѕ РїСЂРѕРёР·РІРµРґРµРЅРЅС‹С… РІС‹Р·РѕРІРѕРІ РјРµРЅСЊС€Рµ 5: ' + inttostr(GetNumberOfCallPassedThrough));
         end;
       end;
       {$ENDREGION}
     mdTransferToTerminalMode:
-      {$REGION 'Проверка правильности настройки блоков'}
-      { TODO: Вписать проверку настройки блоков }
+      {$REGION 'РџСЂРѕРІРµСЂРєР° РїСЂР°РІРёР»СЊРЅРѕСЃС‚Рё РЅР°СЃС‚СЂРѕР№РєРё Р±Р»РѕРєРѕРІ'}
+      { TODO: Р’РїРёСЃР°С‚СЊ РїСЂРѕРІРµСЂРєСѓ РЅР°СЃС‚СЂРѕР№РєРё Р±Р»РѕРєРѕРІ }
       {$ENDREGION}
   end;
   Result := strMessage;
@@ -4000,17 +3997,25 @@ end;
    begin
    result:=none;
 
-      if  (self.CurrentTask.CurrentSubTask.EventFormName='Щит питания')  then result:=Power_panel;
-      if  (self.CurrentTask.CurrentSubTask.EventFormName='МШУ Б') then result:=Mshu_B;
-      if  (self.CurrentTask.CurrentSubTask.EventFormName='1920 Б') then result:=Rack_1920_B;
-      if  (self.CurrentTask.CurrentSubTask.EventFormName='МШУ А') then result:=Mshu_A;
-      if  (self.CurrentTask.CurrentSubTask.EventFormName='1920 А') then result:=Rack_1920_A;
-      if  (self.CurrentTask.CurrentSubTask.EventFormName='1200 ПРМ А') then result:=Rack_1200_reciever_A;
-      if  (self.CurrentTask.CurrentSubTask.EventFormName='1200 ПРМ Б') then result:=Rack_1200_reciever_B;
+      if  (self.CurrentTask.CurrentSubTask.EventFormName='Р©РёС‚ РїРёС‚Р°РЅРёСЏ')  then result:=Power_panel;
+      if  (self.CurrentTask.CurrentSubTask.EventFormName='РњРЁРЈ Р‘') then result:=Mshu_B;
+      if  (self.CurrentTask.CurrentSubTask.EventFormName='1920 Р‘') then result:=Rack_1920_B;
+      if  (self.CurrentTask.CurrentSubTask.EventFormName='РњРЁРЈ Рђ') then result:=Mshu_A;
+      if  (self.CurrentTask.CurrentSubTask.EventFormName='1920 Рђ') then result:=Rack_1920_A;
+      if  (self.CurrentTask.CurrentSubTask.EventFormName='1200 РџР Рњ Рђ') then result:=Rack_1200_reciever_A;
+      if  (self.CurrentTask.CurrentSubTask.EventFormName='1200 РџР Рњ Р‘') then result:=Rack_1200_reciever_B;
       if  (self.CurrentTask.CurrentSubTask.EventFormName='1710') then result:=Rack_1710;
       if  (self.CurrentTask.CurrentSubTask.EventFormName='1400') then result:=Rack_1400;
-      if  (self.CurrentTask.CurrentSubTask.EventFormName='П-321 С') then result:=P321_C;
-      if  (self.CurrentTask.CurrentSubTask.EventFormName='П-323 ИШ') then result:=power_supply;
+      if  (self.CurrentTask.CurrentSubTask.EventFormName='Рџ-321 РЎ') then result:=P321_C;
+      if  (self.CurrentTask.CurrentSubTask.EventFormName='Рџ-323 РРЁ') then result:=power_supply;
+      if  (self.CurrentTask.CurrentSubTask.EventFormName='1500 Рђ') then result:=Rack_1500_A;
+      if  (self.CurrentTask.CurrentSubTask.EventFormName='1500 Р‘') then result:=Rack_1500_B;
+      if  (self.CurrentTask.CurrentSubTask.EventFormName='Р”СѓРїР»РµРєСЃРµСЂ Рђ') then result:=Duplexer_A;
+      if  (self.CurrentTask.CurrentSubTask.EventFormName='Р”СѓРїР»РµРєСЃРµСЂ Р‘') then result:=Duplexer_B;
+      if  (self.CurrentTask.CurrentSubTask.EventFormName='1600 Рђ') then result:=Rack_1600_A;
+      if  (self.CurrentTask.CurrentSubTask.EventFormName='1600 Р‘') then result:=Rack_1600_B;
+      if  (self.CurrentTask.CurrentSubTask.EventFormName='1200 РџР Р” Рђ') then result:=Rack_1200_broadcaster_A;
+      if  (self.CurrentTask.CurrentSubTask.EventFormName='1200 РџР Р” Р‘') then result:=Rack_1200_broadcaster_B;
 
 
 

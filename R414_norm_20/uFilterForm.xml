@@ -2287,7 +2287,7 @@
       <field name="lblwavePRM_B" type="TLabel" visibility="published" />
       <field name="Label9" type="TLabel" visibility="published" />
       <field name="Label10" type="TLabel" visibility="published" />
-      <field name="tmrTimeUpdate" type="TTimer" visibility="published" />
+      <field name="tmrTimeUpdate" type="erroneous type" visibility="published" />
       <field name="btnCompleteExercise" type="TButton" visibility="published" />
       <field name="btnHelp" type="TButton" visibility="published" />
       <procedure name="FormCreate" visibility="published">

@@ -568,7 +568,7 @@ begin
         if imgHighOff2Clicked.Visible then
           imgHighOff2Clicked.BringToFront;
 
-        if (TaskController.WorkMode = wmLearning) then
+        if (TaskController.ClientState.WorkMode = wmLearning) then
         begin
           Image35.Visible := Boolean(Station.HalfSetA.Rack1920.but1930 = butPositionDown);
           Label2.Visible := Boolean(Station.HalfSetA.Rack1920.but1930 = butPositionDown);
@@ -794,7 +794,7 @@ begin
         if imgHighOff2Clicked.Visible then
           imgHighOff2Clicked.BringToFront;
 
-        if (TaskController.WorkMode = wmLearning) then
+        if (TaskController.ClientState.WorkMode = wmLearning) then
         begin
           Image35.Visible :=
             Boolean(Station.HalfSetB.Rack1920.but1930 = butPositionDown);
@@ -1785,7 +1785,7 @@ begin
   HelpImages[4].HelpLabel := Label7;
   HelpImages[5].HelpImage := Image33;
   HelpImages[5].HelpLabel := Label8;
-  if TaskController.WorkMode = wmLearning then
+  if TaskController.ClientState.WorkMode = wmLearning then
   begin
     for btA := 0 to Length(HelpImages) - 1 do
     begin

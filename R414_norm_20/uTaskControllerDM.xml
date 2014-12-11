@@ -90,10 +90,6 @@
       </function>
       <property name="Station" visibility="private" read="FStation" write="FStation" type="TStation" />
       <procedure name="SetCurrentTask" visibility="public">
-        <parameters>
-          <parameter name="WorkMode" type="TWorkMode" />
-          <parameter name="TaskID" type="TTaskType" />
-        </parameters>
       </procedure>
       <procedure name="Subscribe" visibility="public">
         <parameters>
@@ -115,6 +111,7 @@
       <constructor name="Create" visibility="public">
         <parameters>
           <parameter name="Station" type="TStation" />
+          <parameter name="ClientState" type="TClientState" />
         </parameters>
       </constructor>
       <function name="GetTaskTitle" visibility="public">
@@ -141,9 +138,8 @@
       <property name="CountTasks" visibility="public" read="GetCountTasks" type="Integer" />
       <field name="CurrentTask" type="TTask" visibility="public" />
       <field name="CurrentForm" type="TForm" visibility="public" />
-      <field name="WorkMode" type="TWorkMode" visibility="public" />
-      <field name="TaskID" type="TTaskType" visibility="public" />
       <field name="IsTaskComplete" type="Boolean" visibility="public" />
+      <field name="ClientState" type="TClientState" visibility="public" />
     </members>
   </class>
   <function name="GetNumberOfCallPassedThrough2ChannelMode" visibility="public">

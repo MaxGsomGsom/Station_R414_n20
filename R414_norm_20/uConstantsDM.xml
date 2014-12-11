@@ -41,11 +41,6 @@
       ttPowerOn
     </value>
   </const>
-  <const name="ttConnectToR415" type="TTaskType">
-    <value>
-      ttConnectToR415
-    </value>
-  </const>
   <const name="ttCheckStationInStandaloneControlMode" type="TTaskType">
     <value>
       ttCheckStationInStandaloneControlMode
@@ -65,7 +60,6 @@
     <element name="ttNull" />
     <element name="ttNone" />
     <element name="ttPowerOn" />
-    <element name="ttConnectToR415" />
     <element name="ttCheckStationInStandaloneControlMode" />
     <element name="ttSetConnectionWithCross" />
     <element name="ttTransferToTerminalMode" />

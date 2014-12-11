@@ -1,9 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <namespace name="StationR414">
-  <devnotes>
-    /  FormsArr[idRack1600Aback] := Rack1600BForm;
-    /  FormsArr[idRack1600Bback] := Rack1600BForm;
-  </devnotes>
   <contains name="ComConst" />
   <contains name="IdGlobalCore" />
   <contains name="IdAllAuthentications" />

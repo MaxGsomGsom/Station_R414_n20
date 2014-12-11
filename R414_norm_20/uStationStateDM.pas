@@ -50,7 +50,7 @@ const
     GeterodinFloatMain: Byte;
     GeterodinIntReserve: Byte;
     GeterodinFloatReserve: Byte;
-    stCableNoName: Byte;
+    stCableLoad: Byte;
     stCableSh1: Byte;
   end;
 
@@ -593,7 +593,7 @@ begin
     and (Rack1500.DropError = True)
     and (Rack1500.GeterodinTunedMain = True)
     and (Rack1500.GeterodinTunedReserve = True)
-    and (Rack1500.stCableNoName = csConnectedAtRack1500NoName)
+    and (Rack1500.stCableLoad = csConnectedAtRack1500NoName)
     and (Rack1500.stCableSh1 = csConnectedAtRack1500Sh1)
     and (Rack1920.butPower = butPositionUp)
     and (Rack1920.butPower2 = butPositionUp)
@@ -654,7 +654,7 @@ begin
     and (Rack1500.DropError = True)
     and (Rack1500.GeterodinTunedMain = True)
     and (Rack1500.GeterodinTunedReserve = True)
-    and (Rack1500.stCableNoName = csConnectedAtRack1500Sh1)
+    and (Rack1500.stCableLoad = csConnectedAtRack1500Sh1)
     and (Rack1500.stCableSh1 = csConnectedAtRack1500NoName)
     and (Rack1920.butPower = butPositionUp)
     and (Rack1920.butPower2 = butPositionUp)

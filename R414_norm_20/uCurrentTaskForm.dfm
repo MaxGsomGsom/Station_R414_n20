@@ -20,6 +20,7 @@ object CurrentTaskForm: TCurrentTaskForm
     Top = 40
     Width = 185
     Height = 89
+    Color = clWhite
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -11
@@ -34,5 +35,10 @@ object CurrentTaskForm: TCurrentTaskForm
     ShowHint = False
     TabOrder = 0
     OnClick = TaskInfoClick
+  end
+  object tmrColor: TTimer
+    OnTimer = tmrColorTimer
+    Left = 392
+    Top = 96
   end
 end

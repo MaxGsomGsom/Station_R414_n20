@@ -13,18 +13,21 @@ uses
   Forms,
   Dialogs,
   StdCtrls,
-  ComCtrls,
+  ExtCtrls,
+  uConstantsDM,
+  DateUtils,
   uAdditionalFormMethods,
   uDefinitionsDM,
-  uConstantsDM,
   uStationStateDM,
-  uTaskControllerDM;
+  uTaskControllerDM, ComCtrls;
 
 type
   TCurrentTaskForm = class(TForm)
     TaskInfo: TRichEdit;
+    tmrColor: TTimer;
     procedure FormCreate(Sender: TObject);
     procedure TaskInfoClick(Sender: TObject);
+    procedure tmrColorTimer(Sender: TObject);
   private
     { Private declarations }
     procedure SetFontSize(FontSize : Integer);
@@ -33,6 +36,7 @@ type
     //procedure setTextHandler(var Msg : TMessage); message MM_SETTEXT;
   public
     { Public declarations }
+    ReturnWhite: Integer;
     procedure SetMyText(Text: String);
     constructor Create(Parent1:TComponent; Station1:TStation); reintroduce;
   end;
@@ -60,6 +64,7 @@ begin
   Self.setComponentsPosition;
   Self.SetFontSize(12);
   Self.TaskInfo.Text := '';
+  self.tmrColor.Enabled:=True;
 end;
 
 
@@ -109,6 +114,19 @@ begin
   begin
     DisplayHint;
   end;
+end;
+
+procedure TCurrentTaskForm.tmrColorTimer(Sender: TObject);
+begin
+if (ReturnWhite=0) then
+begin
+  self.TaskInfo.Color:= clWhite;
+  ReturnWhite:=-1;
+end;
+if (ReturnWhite>0) then
+begin
+  ReturnWhite:=ReturnWhite-1;
+end;
 end;
 
 //procedure TCurrentTaskForm.setTextHandler(var Msg: TMessage);

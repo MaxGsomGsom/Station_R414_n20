@@ -2273,12 +2273,18 @@
     </ancestor>
     <members>
       <field name="TaskInfo" type="TRichEdit" visibility="published" />
+      <field name="tmrColor" type="TTimer" visibility="published" />
       <procedure name="FormCreate" visibility="published">
         <parameters>
           <parameter name="Sender" type="TObject" />
         </parameters>
       </procedure>
       <procedure name="TaskInfoClick" visibility="published">
+        <parameters>
+          <parameter name="Sender" type="TObject" />
+        </parameters>
+      </procedure>
+      <procedure name="tmrColorTimer" visibility="published">
         <parameters>
           <parameter name="Sender" type="TObject" />
         </parameters>
@@ -2309,6 +2315,7 @@
            </summary>
         </devnotes>
       </procedure>
+      <field name="ReturnWhite" type="Integer" visibility="public" />
       <procedure name="SetMyText" visibility="public">
         <devnotes>
            <summary>

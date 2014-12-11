@@ -2420,6 +2420,7 @@
           <parameter name="Sender" type="TObject" />
         </parameters>
       </procedure>
+      <field name="CurFormId" type="Integer" visibility="private" />
       <constructor name="Create" visibility="public">
         <parameters>
           <parameter name="AOwner" type="TComponent" />
@@ -2430,7 +2431,6 @@
       </constructor>
     </members>
   </class>
-  <variable name="CurFormId" type="Integer" />
   <variable name="Station" type="TStation" />
   <variable name="ButtonBackForm" type="TButtonBackForm" />
   <variable name="TaskController" type="TTaskController" />

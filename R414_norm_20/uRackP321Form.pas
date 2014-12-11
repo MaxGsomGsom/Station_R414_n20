@@ -325,7 +325,7 @@ begin
   begin
     AddAnalyseTuneError('1500(' + Litera + '): гетеродин резервного полукомплекта не настроен');
   end;
-  if (Station.HalfSetA.Rack1500.stCableNoName <> csConnectedAtRack1500Sh1) then
+  if (Station.HalfSetA.Rack1500.stCableLoad <> csConnectedAtRack1500Sh1) then
   begin
     AddAnalyseTuneError('1500(' + Litera + '): Кабель нагрузки болтается в воздухе');
   end;
