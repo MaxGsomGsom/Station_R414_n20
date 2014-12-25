@@ -292,6 +292,7 @@ end;
 
 
 
+
 procedure TRack1500bForm.imgDropErrorMouseDown(Sender: TObject;
   Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
 begin

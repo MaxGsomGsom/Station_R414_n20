@@ -1168,7 +1168,8 @@ end;
 
 procedure TRack1920Form.imgCurrent5MA2Click(Sender: TObject);
 begin
-  case CurFormId of
+
+       case CurFormId of
     idRack1920A:
       begin
         Station.HalfSetA.Rack1920.butCurrent5MA2 := butPositionDown;
@@ -1182,7 +1183,6 @@ begin
         end
         else
         begin
-          AddError(CurFormId, 'Блок 1920 не подготовлен к подаче высокого напряжения!');
           if Station.WorkType = wtLearn then
           begin
             Application.MessageBox('Не удалось подать высокое напряжение!',
@@ -1190,7 +1190,6 @@ begin
           end;
         end;
       end;
-
     idRack1920B:
       begin
         Station.HalfSetB.Rack1920.butCurrent5MA2 := butPositionDown;
@@ -1204,7 +1203,11 @@ begin
         end
         else
         begin
-          AddError(CurFormId, 'Блок 1920 не подготовлен к подаче высокого напряжения!');
+          if Station.WorkType = wtLearn then
+          begin
+            Application.MessageBox('Не удалось подать высокое напряжение!',
+              PChar(PName), MB_OK + MB_ICONWARNING);
+          end;
         end;
       end;
   end;
@@ -1247,7 +1250,6 @@ begin
         end
         else
         begin
-          AddError(CurFormId, 'Блок 1920 не подготовлен к подаче высокого напряжения!');
           if Station.WorkType = wtLearn then
           begin
             Application.MessageBox('Не удалось подать высокое напряжение!',
@@ -1268,7 +1270,11 @@ begin
         end
         else
         begin
-          AddError(CurFormId, 'Блок 1920 не подготовлен к подаче высокого напряжения!');
+          if Station.WorkType = wtLearn then
+          begin
+            Application.MessageBox('Не удалось подать высокое напряжение!',
+              PChar(PName), MB_OK + MB_ICONWARNING);
+          end;
         end;
       end;
   end;
@@ -1502,28 +1508,23 @@ end;
 
 procedure TRack1920Form.imgHighOn2Click(Sender: TObject);
 begin
-  case CurFormId of
+
+     case CurFormId of
     idRack1920A:
       begin
-        if Station.WorkType = wtLearn then
-        begin
+
           if (not(Station.HalfSetA.Rack1500.GeterodinTunedMain))
             and (not(Station.HalfSetA.Rack1500.GeterodinTunedReserve)) then
           begin
-            AddError(CurFormId, 'Попытка подать высокое на ЛБВ2 прежде чем настроен гетеродин');
-            Application.MessageBox('Сперва необходимо настроить гетеродин в стойке 1500!',
-            PChar(PName), MB_OK + MB_ICONWARNING);
+            AddError(CurFormId, 'Попытка подать высокое на ЛБВ1 '
+              +'прежде чем настроен гетеродин');
+            Application.MessageBox('Сперва необходимо настроить '
+              +'гетеродин в стойке 1500!',
+            PChar(PName),
+            MB_OK + MB_ICONWARNING);
             Exit;
           end;
-        end;
-        if Station.WorkMode = mdReceiveAndTransmitTracksSetup then
-        begin
-          if (not(Station.HalfSetA.Rack1500.GeterodinTunedMain))
-            or (not(Station.HalfSetA.Rack1500.GeterodinTunedReserve)) then
-          begin
-            AddError(CurFormId, 'Попытка подать высокое на ЛБВ2 прежде чем настроен гетеродин');
-          end;
-        end;
+
 
         if Station.HalfSetA.Rack1920.butHighOn2 = butPositionDown then
           Station.HalfSetA.Rack1920.butHighOn2 := butPositionUp
@@ -1537,55 +1538,33 @@ begin
 
         if (not(Station.Is1920A2ReadyToTurnHighON)) then
         begin
-          AddError(CurFormId, 'Слишком рано подали высокое напряжение');
           if Station.WorkType = wtLearn then
           begin
-            Application.MessageBox('Стойка настроена не верно!'
-              +' Подача высокого не возможна!',
+            Application.MessageBox('Стойка настроена не верно! '
+              +'Подача высокого не возможна!',
             PChar(PName), MB_OK + MB_ICONWARNING);
             Exit;
           end;
         end
         else
-          if (Abs(Station.WaveTransmitA - Station.WaveReceiveA) > 5) then
-          begin
+        begin
             TurnOnLBV2;
-          end
-          else
-          begin
-            Application.MessageBox('Невозможно включить высокое напряжение!'
-              +' Разница между волной приема и передачи полукомлекта'
-              +' должна быть не менее 6 чисел!',
-            PChar(PName), MB_OK + MB_ICONWARNING);
-            Exit;
           end;
       end;
-
     idRack1920B:
       begin
-        if Station.WorkType = wtLearn then
-        begin
           if (not(Station.HalfSetB.Rack1500.GeterodinTunedMain))
-            or (not(Station.HalfSetB.Rack1500.GeterodinTunedReserve)) then
+            and (not(Station.HalfSetB.Rack1500.GeterodinTunedReserve)) then
           begin
-            AddError(CurFormId, 'Попытка подать высокое на ЛБВ2 '
+            AddError(CurFormId, 'Попытка подать высокое на ЛБВ1 '
               +'прежде чем настроен гетеродин');
-            Application.MessageBox('Сперва необходимо '
-              +'настроить гетеродин в стойке 1500!',
+            Application.MessageBox('Сперва необходимо настроить '
+              +'гетеродин в стойке 1500!',
             PChar(PName),
             MB_OK + MB_ICONWARNING);
             Exit;
           end;
-        end;
-        if Station.WorkMode = mdReceiveAndTransmitTracksSetup then
-        begin
-          if (not(Station.HalfSetB.Rack1500.GeterodinTunedMain))
-            or (not(Station.HalfSetB.Rack1500.GeterodinTunedReserve)) then
-          begin
-            AddError(CurFormId, 'Попытка подать высокое '
-              +'на ЛБВ2 прежде чем настроен гетеродин');
-          end;
-        end;
+
 
         if Station.HalfSetB.Rack1920.butHighOn2 = butPositionDown then
           Station.HalfSetB.Rack1920.butHighOn2 := butPositionUp
@@ -1599,7 +1578,6 @@ begin
 
         if (not(Station.Is1920B2ReadyToTurnHighON)) then
         begin
-          AddError(CurFormId, 'Слишком рано подали высокое напряжение');
           if Station.WorkType = wtLearn then
           begin
             Application.MessageBox('Стойка настроена не верно! '
@@ -1609,17 +1587,8 @@ begin
           end;
         end
         else
-          if (Abs(Station.WaveTransmitB - Station.WaveReceiveB) > 5) then
           begin
             TurnOnLBV2;
-          end
-          else
-          begin
-            Application.MessageBox('Невозможно включить высокое напряжение! '
-              +'Разница между волной приема и передачи полукомлекта '
-              +'должна быть не менее 6 чисел!',
-            PChar(PName), MB_OK + MB_ICONWARNING);
-            Exit;
           end;
       end;
   end;
@@ -1632,8 +1601,7 @@ begin
   case CurFormId of
     idRack1920A:
       begin
-        if Station.WorkType = wtLearn then
-        begin
+
           if (not(Station.HalfSetA.Rack1500.GeterodinTunedMain))
             and (not(Station.HalfSetA.Rack1500.GeterodinTunedReserve)) then
           begin
@@ -1645,16 +1613,7 @@ begin
             MB_OK + MB_ICONWARNING);
             Exit;
           end;
-        end;
-        if Station.WorkMode = mdReceiveAndTransmitTracksSetup then
-        begin
-          if (not(Station.HalfSetA.Rack1500.GeterodinTunedMain))
-            or (not(Station.HalfSetA.Rack1500.GeterodinTunedReserve)) then
-          begin
-            AddError(CurFormId, 'Попытка подать высокое на '
-              +'ЛБВ1 прежде чем настроен гетеродин');
-          end;
-        end;
+
 
         if Station.HalfSetA.Rack1920.butHighOn = butPositionDown then
           Station.HalfSetA.Rack1920.butHighOn := butPositionUp
@@ -1662,13 +1621,12 @@ begin
         begin
           Station.HalfSetA.Rack1920.butHighOn := butPositionDown;
           Station.HalfSetA.Rack1920.butHighOff := butPositionUp;
-        end; 
-  
+        end;
+
         Reload;
-  
+
         if (not(Station.Is1920A1ReadyToTurnHighON)) then
         begin
-          AddError(CurFormId, 'Слишком рано подали высокое напряжение');
           if Station.WorkType = wtLearn then
           begin
             Application.MessageBox('Стойка настроена не верно! '
@@ -1678,44 +1636,24 @@ begin
           end;
         end
         else
-          if (Abs(Station.WaveTransmitA - Station.WaveReceiveA) > 5) then
-          begin
+        begin
             TurnOnLBV1;
-          end
-          else
-          begin
-            Application.MessageBox('Невозможно включить высокое напряжение! '
-              +'Разница между волной приема и передачи полукомлекта '
-              +'должна быть не менее 6 чисел!',
-            PChar(PName), MB_OK + MB_ICONWARNING);
-            Exit;
           end;
       end;
     idRack1920B:
       begin
-        if Station.WorkType = wtLearn then
-        begin
           if (not(Station.HalfSetB.Rack1500.GeterodinTunedMain))
-            or (not(Station.HalfSetB.Rack1500.GeterodinTunedReserve)) then
+            and (not(Station.HalfSetB.Rack1500.GeterodinTunedReserve)) then
           begin
             AddError(CurFormId, 'Попытка подать высокое на ЛБВ1 '
               +'прежде чем настроен гетеродин');
-            Application.MessageBox('Сперва необходимо настроить гетеродин '
-              +'в стойке 1500!',
+            Application.MessageBox('Сперва необходимо настроить '
+              +'гетеродин в стойке 1500!',
             PChar(PName),
             MB_OK + MB_ICONWARNING);
             Exit;
           end;
-        end;
-        if Station.WorkMode = mdReceiveAndTransmitTracksSetup then
-        begin
-          if (not(Station.HalfSetB.Rack1500.GeterodinTunedMain))
-            or (not(Station.HalfSetB.Rack1500.GeterodinTunedReserve)) then
-          begin
-            AddError(CurFormId, 'Попытка подать высокое на ЛБВ1 '
-              +'прежде чем настроен гетеродин');
-          end;
-        end;
+
 
         if Station.HalfSetB.Rack1920.butHighOn = butPositionDown then
           Station.HalfSetB.Rack1920.butHighOn := butPositionUp
@@ -1723,13 +1661,12 @@ begin
         begin
           Station.HalfSetB.Rack1920.butHighOn := butPositionDown;
           Station.HalfSetB.Rack1920.butHighOff := butPositionUp;
-        end; 
-  
+        end;
+
         Reload;
 
         if (not(Station.Is1920B1ReadyToTurnHighON)) then
         begin
-          AddError(CurFormId, 'Слишком рано подали высокое напряжение');
           if Station.WorkType = wtLearn then
           begin
             Application.MessageBox('Стойка настроена не верно! '
@@ -1739,19 +1676,10 @@ begin
           end;
         end
         else
-          if (Abs(Station.WaveTransmitB - Station.WaveReceiveB) > 5) then
           begin
             TurnOnLBV1;
-          end
-          else
-          begin
-            Application.MessageBox('Невозможно включить высокое напряжение! '
-              +'Разница между волной приема и передачи полукомлекта должна'
-              +' быть не менее 6 чисел!',
-            PChar(PName), MB_OK + MB_ICONWARNING);
-            Exit;
           end;
-      end;    
+      end;
   end;
 end;
 

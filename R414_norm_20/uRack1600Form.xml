@@ -2340,6 +2340,9 @@
       <field name="imgWindow7" type="TImage" visibility="published" />
       <field name="imgWindow8" type="TImage" visibility="published" />
       <field name="imgWindow9" type="TImage" visibility="published" />
+      <field name="imgWaveMeterMain" type="TImage" visibility="published" />
+      <field name="imgWaveMeterMain1" type="TImage" visibility="published" />
+      <field name="imgWaveMeterReserv1" type="TImage" visibility="published" />
       <procedure name="FormClose" visibility="published">
         <parameters>
           <parameter name="Sender" type="TObject" />
@@ -2614,6 +2617,26 @@
         </parameters>
       </procedure>
       <procedure name="FormHide" visibility="published">
+        <parameters>
+          <parameter name="Sender" type="TObject" />
+        </parameters>
+      </procedure>
+      <procedure name="imgCableMdMainClick" visibility="published">
+        <parameters>
+          <parameter name="Sender" type="TObject" />
+        </parameters>
+      </procedure>
+      <procedure name="imgWaveMeterMain1Click" visibility="published">
+        <parameters>
+          <parameter name="Sender" type="TObject" />
+        </parameters>
+      </procedure>
+      <procedure name="imgWaveMeterReserv1Click" visibility="published">
+        <parameters>
+          <parameter name="Sender" type="TObject" />
+        </parameters>
+      </procedure>
+      <procedure name="imgCableMdRClick" visibility="published">
         <parameters>
           <parameter name="Sender" type="TObject" />
         </parameters>

@@ -1546,6 +1546,7 @@ begin
   Station.Rack1400.swKukushka := 1;
   Station.Rack1400.butSpeaker := butPositionLeft;
 
+  Station.HalfSetA.Rack1500.butMode_R := butPositionRight;
   Station.HalfSetA.Rack1500.CableMdMainState := csDisconected;
   Station.HalfSetA.Rack1500.CableMdReservState := csDisconected;
   Station.HalfSetA.Rack1500.DropError := False;
@@ -1572,6 +1573,7 @@ begin
   Station.HalfSetA.Rack1500B.butMdOsn_2 := GetRandomButtonState;
   Station.HalfSetA.Rack1500B.butMdOsn_3 := GetRandomButtonState;
 
+  Station.HalfSetB.Rack1500.butMode_R := butPositionRight;
   Station.HalfSetB.Rack1500.CableMdMainState := csDisconected;
   Station.HalfSetB.Rack1500.CableMdReservState := csDisconected;
   Station.HalfSetB.Rack1500.DropError := False;

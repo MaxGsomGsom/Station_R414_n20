@@ -91,7 +91,6 @@ type
     imgGeterodinTuned: TImage;
     btnClose: TButton;
     procedure FormCreate(Sender: TObject);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Image5MouseMove(Sender: TObject; Shift: TShiftState; X,
       Y: Integer);
     procedure Timer1Timer(Sender: TObject);
@@ -137,10 +136,6 @@ type
 
   end;
 
-type pGeterodinWaves = packed record
-  Int: Byte;
-  Float: Byte;
-end;
 
 const
 idRack1500A = 1;
@@ -153,7 +148,6 @@ var
   Station: TStation;
   ButtonBackForm: TButtonBackForm;
   TaskController: TTaskController;
-  GeterodinWaves: array [MIN_WAVE_VALUE..MAX_WAVE_VALUE] of pGeterodinWaves;
   waveInt: Byte;
   waveFloat: byte;
   CurFormID: Integer;
@@ -169,6 +163,7 @@ uses
   uAdditionalFormMethods;
 
 {$R *.dfm}
+
 
 constructor TBlockWaveMeterForm.Create(AOwner: TComponent; Half:Integer; Station0: TStation; TaskController0: TTaskController);
 begin
@@ -191,72 +186,6 @@ procedure TBlockWaveMeterForm.btnCloseClick(Sender: TObject);
 begin
   //ButtonBackForm.Show;    // Мы её скрывали, когда открыли Волномер в зад.4
   Self.Close;             // Ранее эту функцию выполнял крест в Border
-end;
-
-procedure TBlockWaveMeterForm.FormClose(Sender: TObject;
-  var Action: TCloseAction);
-begin
-  if Station.WorkMode = mdReceiveAndTransmitTracksSetup then
-  begin
-    case TunedFormId of
-      idRack1500A:
-        begin
-          if (Station.HalfSetA.Rack1500.CableMdMainState = smdMain) then
-          begin
-            Station.HalfSetA.Rack1500.GeterodinIntMain := StrToInt(edtInt.Text);
-            Station.HalfSetA.Rack1500.GeterodinFloatMain := StrToInt(edtFloat.Text);
-          end;
-          if (Station.HalfSetA.Rack1500.CableMdReservState = sRetrReserv) then
-          begin
-            Station.HalfSetA.Rack1500.GeterodinIntReserve := StrToInt(edtInt.Text);
-            Station.HalfSetA.Rack1500.GeterodinFloatReserve:= StrToInt(edtFloat.Text);
-          end;
-        end;
-      idRack1500B:
-        begin  
-          if (Station.HalfSetB.Rack1500.CableMdMainState = smdMain) then
-          begin
-            Station.HalfSetB.Rack1500.GeterodinIntMain := StrToInt(edtInt.Text);
-            Station.HalfSetB.Rack1500.GeterodinFloatMain := StrToInt(edtFloat.Text);
-          end;
-          if (Station.HalfSetB.Rack1500.CableMdReservState = sRetrReserv) then
-          begin
-            Station.HalfSetB.Rack1500.GeterodinIntReserve := StrToInt(edtInt.Text);
-            Station.HalfSetB.Rack1500.GeterodinFloatReserve:= StrToInt(edtFloat.Text);
-          end;
-        end;
-      idRack1600A:
-        begin  
-          if (Station.HalfSetA.Rack1600.CableMdMainState = smdMain) then
-          begin
-            Station.HalfSetA.Rack1600.GeterodinIntMain := StrToInt(edtInt.Text);
-            Station.HalfSetA.Rack1600.GeterodinFloatMain := StrToInt(edtFloat.Text);
-          end;
-          if (Station.HalfSetA.Rack1600.CableMdReservState = sRetrReserv) then
-          begin
-            Station.HalfSetA.Rack1600.GeterodinIntReserve := StrToInt(edtInt.Text);
-            Station.HalfSetA.Rack1600.GeterodinFloatReserve:= StrToInt(edtFloat.Text);
-          end;
-        end;
-      idRack1600B:
-        begin  
-          if (Station.HalfSetB.Rack1600.CableMdMainState = smdMain) then
-          begin
-            Station.HalfSetB.Rack1600.GeterodinIntMain := StrToInt(edtInt.Text);
-            Station.HalfSetB.Rack1600.GeterodinFloatMain := StrToInt(edtFloat.Text);
-          end;
-          if (Station.HalfSetB.Rack1600.CableMdReservState = sRetrReserv) then
-          begin
-            Station.HalfSetB.Rack1600.GeterodinIntReserve := StrToInt(edtInt.Text);
-            Station.HalfSetB.Rack1600.GeterodinFloatReserve:= StrToInt(edtFloat.Text);
-          end;
-        end;
-    end;
-  end
-  else
-  begin
-    ReturnFromRack;
-  end;
 end;
 
 procedure TBlockWaveMeterForm.FormCreate(Sender: TObject);
@@ -289,98 +218,6 @@ begin
   Shkala2:=0;
   //
 
-  GeterodinWaves[1].Int := 3;
-  GeterodinWaves[1].Float := 7;
-  GeterodinWaves[2].Int := 3;
-  GeterodinWaves[2].Float := 75;
-  GeterodinWaves[3].Int := 4;
-  GeterodinWaves[3].Float := 43;
-  GeterodinWaves[4].Int := 5;
-  GeterodinWaves[4].Float := 8;
-  GeterodinWaves[5].Int := 5;
-  GeterodinWaves[5].Float := 72;
-  GeterodinWaves[6].Int := 6;
-  GeterodinWaves[6].Float := 39;
-  GeterodinWaves[7].Int := 7;
-  GeterodinWaves[7].Float := 3;
-  GeterodinWaves[8].Int := 7;
-  GeterodinWaves[8].Float := 66;
-  GeterodinWaves[9].Int := 8;
-  GeterodinWaves[9].Float := 28;
-  GeterodinWaves[10].Int := 8;
-  GeterodinWaves[10].Float := 90;
-  GeterodinWaves[11].Int := 9;
-  GeterodinWaves[11].Float := 52;
-  GeterodinWaves[12].Int := 10;
-  GeterodinWaves[12].Float := 13;
-  GeterodinWaves[13].Int := 10;
-  GeterodinWaves[13].Float := 72;
-  GeterodinWaves[14].Int := 11;
-  GeterodinWaves[14].Float := 31;
-  GeterodinWaves[15].Int := 11;
-  GeterodinWaves[15].Float := 89;
-  GeterodinWaves[16].Int := 12;
-  GeterodinWaves[16].Float := 47;
-  GeterodinWaves[17].Int := 13;
-  GeterodinWaves[17].Float := 04;
-  GeterodinWaves[18].Int := 13;
-  GeterodinWaves[18].Float := 61;
-  GeterodinWaves[19].Int := 14;
-  GeterodinWaves[19].Float := 17;
-  GeterodinWaves[20].Int := 14;
-  GeterodinWaves[20].Float := 72;
-  GeterodinWaves[21].Int := 15;
-  GeterodinWaves[21].Float := 27;
-  GeterodinWaves[22].Int := 15;
-  GeterodinWaves[22].Float := 81;
-  GeterodinWaves[23].Int := 16;
-  GeterodinWaves[23].Float := 35;
-  GeterodinWaves[24].Int := 16;
-  GeterodinWaves[24].Float := 88;
-  GeterodinWaves[25].Int := 17;
-  GeterodinWaves[25].Float := 40;
-  GeterodinWaves[26].Int := 17;
-  GeterodinWaves[26].Float := 92;
-  GeterodinWaves[27].Int := 18;
-  GeterodinWaves[27].Float := 44;
-  GeterodinWaves[28].Int := 18;
-  GeterodinWaves[28].Float := 95;
-  GeterodinWaves[29].Int := 19;
-  GeterodinWaves[29].Float := 45;
-  GeterodinWaves[30].Int := 19;
-  GeterodinWaves[30].Float := 94;
-  GeterodinWaves[31].Int := 20;
-  GeterodinWaves[31].Float := 43;
-  GeterodinWaves[32].Int := 20;
-  GeterodinWaves[32].Float := 92;
-  GeterodinWaves[33].Int := 21;
-  GeterodinWaves[33].Float := 40;
-  GeterodinWaves[34].Int := 21;
-  GeterodinWaves[34].Float := 88;
-  GeterodinWaves[35].Int := 22;
-  GeterodinWaves[35].Float := 35;
-  GeterodinWaves[36].Int := 22;
-  GeterodinWaves[36].Float := 82;
-  GeterodinWaves[37].Int := 23;
-  GeterodinWaves[37].Float := 28;
-  GeterodinWaves[38].Int := 23;
-  GeterodinWaves[38].Float := 74;
-  GeterodinWaves[39].Int := 24;
-  GeterodinWaves[39].Float := 19;
-  GeterodinWaves[40].Int := 24;
-  GeterodinWaves[40].Float := 64;
-  GeterodinWaves[41].Int := 25;
-  GeterodinWaves[41].Float := 09;
-  GeterodinWaves[42].Int := 25;
-  GeterodinWaves[42].Float := 53;
-  GeterodinWaves[43].Int := 25;
-  GeterodinWaves[43].Float := 96;
-  GeterodinWaves[44].Int := 26;
-  GeterodinWaves[44].Float := 39;
-  GeterodinWaves[45].Int := 26;
-  GeterodinWaves[45].Float := 82;
-  GeterodinWaves[46].Int := 27;
-  GeterodinWaves[46].Float := 25;
 
 
   Self.Height := Panel1.Height;
@@ -414,8 +251,8 @@ end;
 
 procedure TBlockWaveMeterForm.Reload;
 begin
-  if Station.WorkMode = mdReceiveAndTransmitTracksSetup then
-  begin
+
+
     case CurFormId of
       idRack1500A:
         begin
@@ -481,12 +318,7 @@ begin
 
     edtInt.Text := IntToStr(waveInt);
     edtFloat.Text := IntToStr(waveFloat);
-  end
-  else
-  begin
-    edtInt.Text := IntToStr(Station.WaveMeter.Int);
-    edtFloat.Text := IntToStr(Station.WaveMeter.Float);
-  end;
+
 
   imgGeterodinTuned.Invalidate;
 end;
@@ -548,13 +380,72 @@ end;
 /// <returns></returns>
 function TBlockWaveMeterForm.IsGeterodinTuned(WaveToTune: Byte): Boolean;
 begin
-  Result := False;
-  if (GeterodinWaves[WaveToTune].Int = waveInt)
-      and (((GeterodinWaves[WaveToTune].Float - 2) <= waveFloat)
-            and (waveFloat <= (GeterodinWaves[WaveToTune].Float + 2)))
-  then begin
-    Result := True;
-  end;
+  //Result := False;
+  //if (GeterodinWaves[WaveToTune].Int = waveInt)
+  //    and (((GeterodinWaves[WaveToTune].Float - 2) <= waveFloat)
+  //          and (waveFloat <= (GeterodinWaves[WaveToTune].Float + 2)))
+  //then begin
+  //  Result := True;
+  //end;
+
+
+
+    case TunedFormId of
+      idRack1500A:
+        begin
+          if (Station.HalfSetA.Rack1500.CableMdMainState = csConnected) then
+          begin
+            Station.HalfSetA.Rack1500.GeterodinIntMain := StrToInt(edtInt.Text);
+            Station.HalfSetA.Rack1500.GeterodinFloatMain := StrToInt(edtFloat.Text);
+          end;
+          if (Station.HalfSetA.Rack1500.CableMdReservState = csConnected) then
+          begin
+            Station.HalfSetA.Rack1500.GeterodinIntReserve := StrToInt(edtInt.Text);
+            Station.HalfSetA.Rack1500.GeterodinFloatReserve:= StrToInt(edtFloat.Text);
+          end;
+        end;
+      idRack1500B:
+        begin
+          if (Station.HalfSetB.Rack1500.CableMdMainState = csConnected) then
+          begin
+            Station.HalfSetB.Rack1500.GeterodinIntMain := StrToInt(edtInt.Text);
+            Station.HalfSetB.Rack1500.GeterodinFloatMain := StrToInt(edtFloat.Text);
+          end;
+          if (Station.HalfSetB.Rack1500.CableMdReservState = csConnected) then
+          begin
+            Station.HalfSetB.Rack1500.GeterodinIntReserve := StrToInt(edtInt.Text);
+            Station.HalfSetB.Rack1500.GeterodinFloatReserve:= StrToInt(edtFloat.Text);
+          end;
+        end;
+      idRack1600A:
+        begin
+          if (Station.HalfSetA.Rack1600.CableMdMainState = csConnected) then
+          begin
+            Station.HalfSetA.Rack1600.GeterodinIntMain := StrToInt(edtInt.Text);
+            Station.HalfSetA.Rack1600.GeterodinFloatMain := StrToInt(edtFloat.Text);
+          end;
+          if (Station.HalfSetA.Rack1600.CableMdReservState = csConnected) then
+          begin
+            Station.HalfSetA.Rack1600.GeterodinIntReserve := StrToInt(edtInt.Text);
+            Station.HalfSetA.Rack1600.GeterodinFloatReserve:= StrToInt(edtFloat.Text);
+          end;
+        end;
+      idRack1600B:
+        begin
+          if (Station.HalfSetB.Rack1600.CableMdMainState = csConnected) then
+          begin
+            Station.HalfSetB.Rack1600.GeterodinIntMain := StrToInt(edtInt.Text);
+            Station.HalfSetB.Rack1600.GeterodinFloatMain := StrToInt(edtFloat.Text);
+          end;
+          if (Station.HalfSetB.Rack1600.CableMdReservState = csConnected) then
+          begin
+            Station.HalfSetB.Rack1600.GeterodinIntReserve := StrToInt(edtInt.Text);
+            Station.HalfSetB.Rack1600.GeterodinFloatReserve:= StrToInt(edtFloat.Text);
+          end;
+        end;
+    end;
+
+
 end;
 
 /// <summary>
@@ -615,6 +506,7 @@ end;
 /// <summary>
 /// Мышь перемещается в квадрате, описанном возле колеса настройки
 /// </summary>
+
 procedure TBlockWaveMeterForm.Image5MouseMove(Sender: TObject; Shift: TShiftState; X,
   Y: Integer);
 begin

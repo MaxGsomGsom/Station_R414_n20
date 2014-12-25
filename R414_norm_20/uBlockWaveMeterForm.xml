@@ -2341,12 +2341,6 @@
           <parameter name="Sender" type="TObject" />
         </parameters>
       </procedure>
-      <procedure name="FormClose" visibility="published">
-        <parameters>
-          <parameter name="Sender" type="TObject" />
-          <parameter name="Action" type="TCloseAction" paramflags="var" />
-        </parameters>
-      </procedure>
       <procedure name="Image5MouseMove" visibility="published">
         <devnotes>
            <summary>
@@ -2502,10 +2496,6 @@
       </constructor>
     </members>
   </class>
-  <struct name="pGeterodinWaves" packed="true">
-    <field name="Int" type="Byte" visibility="public" />
-    <field name="Float" type="Byte" visibility="public" />
-  </struct>
   <const name="idRack1500A" type="Integer">
     <value>
       $1
@@ -2529,7 +2519,6 @@
   <variable name="Station" type="TStation" />
   <variable name="ButtonBackForm" type="TButtonBackForm" />
   <variable name="TaskController" type="TTaskController" />
-  <variable name="GeterodinWaves" />
   <variable name="waveInt" type="Byte" />
   <variable name="waveFloat" type="Byte" />
   <variable name="CurFormID" type="Integer" />

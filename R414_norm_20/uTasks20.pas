@@ -724,50 +724,56 @@ uConstantsDM;
         Time:= '';
    end;
 
-   function TTaskSingleCheckSubTask2.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
+
+        function TTaskSingleCheckSubTask2.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
    begin
 
-         if ((Station.HalfSetA.Duplexer.cbSh1 = csConnectedAtDuplexeLeft) or (Station.HalfSetA.Duplexer.cbSh1 = csConnectedAtDuplexeRight)) and (Station.HalfSetA.Duplexer.cb1840 = csDisconected) then
+         if (Station.HalfSetA.Rack1500.swWave1610_0 = ClientState.TransmitterWaveA) and (Station.HalfSetA.Rack1500.swWave161_R = ClientState.TransmitterWaveA) and (Station.HalfSetA.Rack1500.swWave1500 = ClientState.TransmitterWaveA) then
          begin
            Result:=true;
          end
          else Result:=false;
    end;
 
-   constructor TTaskSingleCheckSubTask2.Create;
+    constructor TTaskSingleCheckSubTask2.Create;
    begin
    inherited Create;
 
-        Name:='Подключить кабели а фильтру Ф-33 А';
-        Text:='На фильтре Ф-33 А отключить от входа кабель, идущий к дуплексеру; подключить к входу кабель, идущий от разема стойки 1600 ВЫХОД АК 1600 другого полукомплекта (с красным наконечником)';
-        EventFormName:='Дуплексер А';
+        Name:='Установить волны на передатчике 1500 А';
+        Text:='Установить рабочие волны передачи на стойке 1500 А, используя вращающиеся переключатели';
+        EventFormName:='1500 А';
         Time:= '';
    end;
 
+   
    function TTaskSingleCheckSubTask3.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
    begin
 
-         if (Station.HalfSetB.Rack1500.stCableLoad = csConnectedAtRack1500Sh1) and (Station.HalfSetB.Rack1500.stCableSh1 = csDisconected) then
+         if (((Station.HalfSetA.Duplexer.cbSh1 = csConnectedAtDuplexeLeft) and (Station.HalfSetA.Duplexer.cbSh2 = csConnectedAtDuplexeRight))
+         or ((Station.HalfSetA.Duplexer.cbSh1 = csConnectedAtDuplexeRight) and (Station.HalfSetA.Duplexer.cbSh2 = csConnectedAtDuplexeLeft)))
+          and (Station.HalfSetA.Duplexer.cb1840 = csDisconected) then
          begin
            Result:=true;
          end
          else Result:=false;
    end;
 
-   constructor TTaskSingleCheckSubTask3.Create;
+          constructor TTaskSingleCheckSubTask3.Create;
    begin
    inherited Create;
 
-        Name:='Подключить кабели на стойке 1500Б';
-        Text:='На стойке 1500Б от разьема ВЫХОД СВЧ. отключить кабель, идущий к дуплексеру и подключить к нему кабель НАГРУЗКА. Проверить подключены ли соотвествующие кабели к разъемам ВЫХОД АК 1500 и ВЫХОД АК 1600.';
-        EventFormName:='1500 Б';
+        Name:='Подключить кабели к фильтру Ф-33 А';
+        Text:='На фильтре Ф-33 А отключить от входа кабель, идущий к дуплексеру; подключить к входу кабель, идущий от разема стойки 1600 ВЫХОД АК 1600 другого полукомплекта (с красным наконечником) и кабель Ф33 Ш2';
+        EventFormName:='Дуплексер А';
         Time:= '';
    end;
+   
+
 
    function TTaskSingleCheckSubTask4.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
    begin
 
-         if ((Station.HalfSetB.Duplexer.cbSh1 = csConnectedAtDuplexeLeft) or (Station.HalfSetB.Duplexer.cbSh1 = csConnectedAtDuplexeRight)) and (Station.HalfSetB.Duplexer.cb1840 = csDisconected) then
+         if (Station.HalfSetA.Duplexer.waveTransmit = ClientState.TransmitterWaveA) and (Station.HalfSetA.Duplexer.waveReceive = ClientState.ReceiverWaveA) then
          begin
            Result:=true;
          end
@@ -778,18 +784,29 @@ uConstantsDM;
    begin
    inherited Create;
 
-        Name:='Подключить кабели а фильтру Ф-33 Б';
-        Text:='На фильтре Ф-33 Б отключить от входа кабель, идущий к дуплексеру; подключить к входу кабель, идущий от разема стойки 1600 ВЫХОД АК 1600 другого полукомплекта (с красным наконечником)';
-        EventFormName:='Дуплексер Б';
+        Name:='Установить волны на дуплексере А';
+        Text:='Установить рабочие волны передачи и приема на дуплексере А, используя вращающиеся переключатели';
+        EventFormName:='Дуплексер А';
         Time:= '';
    end;
 
 
-   function TTaskSingleCheckSubTask5.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
+
+
+    function TTaskSingleCheckSubTask5.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
    begin
 
-         if (Station.HalfSetA.Duplexer.waveTransmit = ClientState.TransmitterWaveA) and (Station.HalfSetA.Duplexer.waveReceive = ClientState.ReceiverWaveA) then
+         if (GeterodinWaves[ClientState.TransmitterWaveA][0] = Station.HalfSetA.Rack1500.GeterodinIntMain)
+      and (((GeterodinWaves[ClientState.TransmitterWaveA][1] - 2) <= Station.HalfSetA.Rack1500.GeterodinFloatMain)
+            and (Station.HalfSetA.Rack1500.GeterodinFloatMain <= (GeterodinWaves[ClientState.TransmitterWaveA][1] + 2)))
+            
+            and (GeterodinWaves[ClientState.TransmitterWaveA][0] = Station.HalfSetA.Rack1500.GeterodinIntReserve)
+      and (((GeterodinWaves[ClientState.TransmitterWaveA][1] - 2) <= Station.HalfSetA.Rack1500.GeterodinFloatReserve)
+            and (Station.HalfSetA.Rack1500.GeterodinFloatReserve <= (GeterodinWaves[ClientState.TransmitterWaveA][1] + 2)))
+            and (Station.HalfSetA.Rack1500.SelectedMd = smdMain) and (Station.HalfSetA.Rack1500.SelectedRetr = sRetrMain) then
          begin
+         Station.HalfSetA.Rack1500.GeterodinTunedMain := True;
+         Station.HalfSetA.Rack1500.GeterodinTunedReserve := True;
            Result:=true;
          end
          else Result:=false;
@@ -799,16 +816,20 @@ uConstantsDM;
    begin
    inherited Create;
 
-        Name:='Установить волны на дуплексере А';
-        Text:='Установить рабочие волны передачи и приема на дуплексере А, используя вращающиеся переключатели';
-        EventFormName:='Дуплексер А';
+        Name:='Настроить передатчик 1500 А по волномеру';
+        Text:='Нажать на кнопки-лампы МД-О и 1610-О, подключить волномер к основному каналу, на волномере установить шкалу в соответствии с номерами волн гетеродина.' 
+        + ' Нажать на кнопки-лампы МД-Р и 1610-Р, подключить волномер к резервному каналу, на волномере установить шкалу в соответствии с номерами волн гетеродина.'
+        + 'Нажать на кнопки-лампы МД-О и 1610-О';
+        EventFormName:='1500 А';
         Time:= '';
+
+
    end;
 
-   function TTaskSingleCheckSubTask6.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
+      function TTaskSingleCheckSubTask6.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
    begin
 
-         if (Station.HalfSetA.Rack1500.swWave1610_0 = ClientState.TransmitterWaveA) and (Station.HalfSetA.Rack1500.swWave161_R = ClientState.ReceiverWaveA) then
+         if (Station.HalfSetA.Rack1500.btnAutomatic = butPositionRight) and (Station.HalfSetA.Rack1500.DropError = True) then
          begin
            Result:=true;
          end
@@ -819,16 +840,16 @@ uConstantsDM;
    begin
    inherited Create;
 
-        Name:='Установить волны на стойке 1500 А';
-        Text:='Установить рабочие волны передачи и приема на стойке 1500 А, используя вращающиеся переключатели';
+        Name:='На стойке 1500 А сбросить аварию';
+        Text:='Внутри стойки 1500 А нажать на кнопку "СБРОС АВАРИИ", чтобы сбросить аварию, на передней панели тумблер "АВТОМАТИКА" перевести в положение "ВКЛ"';
         EventFormName:='1500 А';
         Time:= '';
    end;
 
-   function TTaskSingleCheckSubTask7.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
+      function TTaskSingleCheckSubTask7.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
    begin
 
-         if (Station.HalfSetA.Rack1600.wave1610_0 = ClientState.TransmitterWaveA) and (Station.HalfSetA.Rack1600.wave1610_R = ClientState.ReceiverWaveA) then
+         if (Station.HalfSetA.Rack1920.stLBV2_TurnedOn = True) and (Station.HalfSetA.Rack1920.stLBV1_TurnedOn = True) then
          begin
            Result:=true;
          end
@@ -839,16 +860,16 @@ uConstantsDM;
    begin
    inherited Create;
 
-        Name:='Установить волны на стойке 1600 А';
-        Text:='Установить рабочие волны передачи и приема на стойке 1600 А, используя вращающиеся переключатели';
-        EventFormName:='1600 А';
+        Name:='Включить высокое напряжение на стойке 1920 А';
+        Text:='Включить высокое напряжение одновременным нажатием кнопок ВЫСОКОЕ ВКЛ. и ТОК 5 МА на стойке 1920 А';
+        EventFormName:='1920 А';
         Time:= '';
    end;
 
-    function TTaskSingleCheckSubTask8.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
+      function TTaskSingleCheckSubTask8.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
    begin
 
-         if (Station.HalfSetB.Duplexer.waveTransmit = ClientState.TransmitterWaveB) and (Station.HalfSetB.Duplexer.waveReceive = ClientState.ReceiverWaveB) then
+         if (Station.HalfSetA.Rack1500.swModeControl = 6) and (Station.HalfSetA.Rack1500.swPhaseMover = 10) and (Station.HalfSetA.Rack1500.butMode_R = butPositionLeft) then
          begin
            Result:=true;
          end
@@ -859,16 +880,16 @@ uConstantsDM;
    begin
    inherited Create;
 
-        Name:='Установить волны на дуплексере Б';
-        Text:='Установить рабочие волны передачи и приема на дуплексере Б, используя вращающиеся переключатели';
-        EventFormName:='Дуплексер Б';
+        Name:='Сфазировать сигналы ЛБВ на стойке 1500 А';
+        Text:='На передней панели стойки 1500 А переключатель режима установить в положение МОЩН.-РАСФАЗ. Тумблер МД-Р переключить в левое положение. Сфазировать сигналы ЛБВ путем вращения ручки ФАЗОВРАЩАТЕЛЬ.';
+        EventFormName:='1500 А';
         Time:= '';
    end;
 
-   function TTaskSingleCheckSubTask9.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
+    function TTaskSingleCheckSubTask9.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
    begin
 
-         if (Station.HalfSetB.Rack1500.swWave1610_0 = ClientState.TransmitterWaveB) and (Station.HalfSetB.Rack1500.swWave161_R = ClientState.ReceiverWaveB) then
+         if (Station.HalfSetA.Rack1600.wave1610_0 = ClientState.ReceiverWaveA) and (Station.HalfSetA.Rack1600.wave1610_R = ClientState.ReceiverWaveA) and (Station.HalfSetA.Rack1600.wave1600 = ClientState.ReceiverWaveA) then
          begin
            Result:=true;
          end
@@ -879,37 +900,49 @@ uConstantsDM;
    begin
    inherited Create;
 
-        Name:='Установить волны на стойке 1500 Б';
-        Text:='Установить рабочие волны передачи и приема на стойке 1500 Б, используя вращающиеся переключатели';
-        EventFormName:='1500 Б';
+        Name:='Установить волны на приемнике 1600 А';
+        Text:='Установить рабочие волны приема на стойке 1600 А, используя вращающиеся переключатели';
+        EventFormName:='1600 А';
         Time:= '';
    end;
 
-   function TTaskSingleCheckSubTask10.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
+
+   
+      function TTaskSingleCheckSubTask10.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
    begin
 
-         if (Station.HalfSetB.Rack1600.wave1610_0 = ClientState.TransmitterWaveB) and (Station.HalfSetB.Rack1600.wave1610_R = ClientState.ReceiverWaveB) then
+         if (Station.HalfSetA.Rack1600.SelectedMd = smdMain) and (Station.HalfSetA.Rack1600.SelectedUpch = sUpchMain) and (Station.HalfSetA.Rack1600.SelectedDmch = sDmchMain)  
+         and (GeterodinWaves[ClientState.ReceiverWaveA][0] = Station.HalfSetA.Rack1600.GeterodinIntMain)
+      and (((GeterodinWaves[ClientState.ReceiverWaveA][1] - 2) <= Station.HalfSetA.Rack1600.GeterodinFloatMain)
+            and (Station.HalfSetA.Rack1600.GeterodinFloatMain <= (GeterodinWaves[ClientState.ReceiverWaveA][1] + 2)))
+            
+            and (GeterodinWaves[ClientState.ReceiverWaveA][0] = Station.HalfSetA.Rack1600.GeterodinIntReserve)
+      and (((GeterodinWaves[ClientState.ReceiverWaveA][1] - 2) <= Station.HalfSetA.Rack1600.GeterodinFloatReserve)
+            and (Station.HalfSetA.Rack1600.GeterodinFloatReserve <= (GeterodinWaves[ClientState.ReceiverWaveA][1] + 2)))
+            then
          begin
            Result:=true;
          end
          else Result:=false;
    end;
 
+
    constructor TTaskSingleCheckSubTask10.Create;
    begin
    inherited Create;
 
-        Name:='Установить волны на стойке 1600 Б';
-        Text:='Установить рабочие волны передачи и приема на стойке 1600 Б, используя вращающиеся переключатели';
-        EventFormName:='1600 Б';
+        Name:='Настроить приемник 1600 А по волномеру';
+        Text:='Нажать на кнопки-лампы 1610-О, УПЧ-0 и ДМЧ-0, подключить волномер к основному каналу, на волномере установить шкалу в соответствии с номерами волн гетеродина.' 
+        + ' Нажать на кнопки-лампы 1601-Р, УПЧ-Р, ДМЧ-Р, подключить волномер к резервному каналу, на волномере установить шкалу в соответствии с номерами волн гетеродина.'
+        + 'Нажать на кнопки-лампы 1610-О, УПЧ-0 и ДМЧ-0';
+        EventFormName:='1600 А';
         Time:= '';
    end;
 
-
-    function TTaskSingleCheckSubTask11.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
+      function TTaskSingleCheckSubTask11.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
    begin
 
-         if (true) then
+         if (Station.HalfSetA.Rack1600.butAutomatic = butPositionLeft) and (Station.HalfSetA.Rack1600.DropError = True) then
          begin
            Result:=true;
          end
@@ -920,16 +953,20 @@ uConstantsDM;
    begin
    inherited Create;
 
-        Name:='Настроить 1200 ПРД А по волномеру ???';
-        Text:='Что-что?';
-        EventFormName:='1200 ПРД А';
+        Name:='На стойке 1600 А сбросить аварию';
+        Text:='Внутри стойки 1600 А нажать на кнопку "СБРОС АВАРИИ", чтобы сбросить аварию, на передней панели тумблер "АВТОМАТИКА" перевести в положение "ВКЛ"';
+        EventFormName:='1600 А';
         Time:= '';
    end;
 
-      function TTaskSingleCheckSubTask12.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
+    //==================================================================================
+
+
+
+    function TTaskSingleCheckSubTask12.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
    begin
 
-         if (true) then
+         if (Station.HalfSetA.Rack1500.stCableLoad = csConnectedAtRack1500Sh1) and (Station.HalfSetA.Rack1500.stCableSh1 = csDisconected) then
          begin
            Result:=true;
          end
@@ -940,56 +977,62 @@ uConstantsDM;
    begin
    inherited Create;
 
-        Name:='Настроить 1200 ПРМ А по волномеру ???';
-        Text:='Что-что?';
-        EventFormName:='1200 ПРМ А';
+        Name:='Подключить кабели на стойке 1500А';
+        Text:='На стойке 1500А от разьема ВЫХОД СВЧ. отключить кабель, идущий к дуплексеру и подключить к нему кабель НАГРУЗКА. Проверить подключены ли соотвествующие кабели к разъемам ВЫХОД АК 1500 и ВЫХОД АК 1600.';
+        EventFormName:='1500 А';
         Time:= '';
    end;
 
-      function TTaskSingleCheckSubTask13.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
+
+        function TTaskSingleCheckSubTask13.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
    begin
 
-         if (true) then
+         if (Station.HalfSetA.Rack1500.swWave1610_0 = ClientState.TransmitterWaveA) and (Station.HalfSetA.Rack1500.swWave161_R = ClientState.TransmitterWaveA) and (Station.HalfSetA.Rack1500.swWave1500 = ClientState.TransmitterWaveA) then
          begin
            Result:=true;
          end
          else Result:=false;
    end;
 
-   constructor TTaskSingleCheckSubTask13.Create;
+    constructor TTaskSingleCheckSubTask13.Create;
    begin
    inherited Create;
 
-        Name:='Настроить 1200 ПРД Б по волномеру ???';
-        Text:='Что-что?';
-        EventFormName:='1200 ПРД Б';
+        Name:='Установить волны на передатчике 1500 А';
+        Text:='Установить рабочие волны передачи на стойке 1500 А, используя вращающиеся переключатели';
+        EventFormName:='1500 А';
         Time:= '';
    end;
 
-      function TTaskSingleCheckSubTask14.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
+   
+   function TTaskSingleCheckSubTask14.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
    begin
 
-         if (true) then
+         if (((Station.HalfSetA.Duplexer.cbSh1 = csConnectedAtDuplexeLeft) and (Station.HalfSetA.Duplexer.cbSh2 = csConnectedAtDuplexeRight))
+         or ((Station.HalfSetA.Duplexer.cbSh1 = csConnectedAtDuplexeRight) and (Station.HalfSetA.Duplexer.cbSh2 = csConnectedAtDuplexeLeft)))
+          and (Station.HalfSetA.Duplexer.cb1840 = csDisconected) then
          begin
            Result:=true;
          end
          else Result:=false;
    end;
 
-   constructor TTaskSingleCheckSubTask14.Create;
+          constructor TTaskSingleCheckSubTask14.Create;
    begin
    inherited Create;
 
-        Name:='Настроить 1200 ПРМ Б по волномеру ???';
-        Text:='Что-что?';
-        EventFormName:='1200 ПРМ Б';
+        Name:='Подключить кабели к фильтру Ф-33 А';
+        Text:='На фильтре Ф-33 А отключить от входа кабель, идущий к дуплексеру; подключить к входу кабель, идущий от разема стойки 1600 ВЫХОД АК 1600 другого полукомплекта (с красным наконечником) и кабель Ф33 Ш2';
+        EventFormName:='Дуплексер А';
         Time:= '';
    end;
+   
 
-      function TTaskSingleCheckSubTask15.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
+
+   function TTaskSingleCheckSubTask15.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
    begin
 
-         if (Station.HalfSetA.Rack1920.butHighOn = butPositionDown) and (Station.HalfSetA.Rack1920.butCurrent5MA = butPositionDown)  then
+         if (Station.HalfSetA.Duplexer.waveTransmit = ClientState.TransmitterWaveA) and (Station.HalfSetA.Duplexer.waveReceive = ClientState.ReceiverWaveA) then
          begin
            Result:=true;
          end
@@ -1000,17 +1043,29 @@ uConstantsDM;
    begin
    inherited Create;
 
-        Name:='Включить высокое напряжение на стойке 1920 А';
-        Text:='Включить высое напряжение одновременным нажатием кнопок ВЫСОКОЕ ВКЛ. и ТОК 5 МА на стойке 1920 А';
-        EventFormName:='1920 А';
+        Name:='Установить волны на дуплексере А';
+        Text:='Установить рабочие волны передачи и приема на дуплексере А, используя вращающиеся переключатели';
+        EventFormName:='Дуплексер А';
         Time:= '';
    end;
 
-       function TTaskSingleCheckSubTask16.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
+
+
+
+    function TTaskSingleCheckSubTask16.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
    begin
 
-         if (Station.HalfSetB.Rack1920.butHighOn = butPositionDown) and (Station.HalfSetB.Rack1920.butCurrent5MA = butPositionDown)  then
+         if (GeterodinWaves[ClientState.TransmitterWaveA][0] = Station.HalfSetA.Rack1500.GeterodinIntMain)
+      and (((GeterodinWaves[ClientState.TransmitterWaveA][1] - 2) <= Station.HalfSetA.Rack1500.GeterodinFloatMain)
+            and (Station.HalfSetA.Rack1500.GeterodinFloatMain <= (GeterodinWaves[ClientState.TransmitterWaveA][1] + 2)))
+            
+            and (GeterodinWaves[ClientState.TransmitterWaveA][0] = Station.HalfSetA.Rack1500.GeterodinIntReserve)
+      and (((GeterodinWaves[ClientState.TransmitterWaveA][1] - 2) <= Station.HalfSetA.Rack1500.GeterodinFloatReserve)
+            and (Station.HalfSetA.Rack1500.GeterodinFloatReserve <= (GeterodinWaves[ClientState.TransmitterWaveA][1] + 2)))
+            and (Station.HalfSetA.Rack1500.SelectedMd = smdMain) and (Station.HalfSetA.Rack1500.SelectedRetr = sRetrMain) then
          begin
+         Station.HalfSetA.Rack1500.GeterodinTunedMain := True;
+         Station.HalfSetA.Rack1500.GeterodinTunedReserve := True;
            Result:=true;
          end
          else Result:=false;
@@ -1020,16 +1075,20 @@ uConstantsDM;
    begin
    inherited Create;
 
-        Name:='Включить высокое напряжение на стойке 1920 Б';
-        Text:='Включить высое напряжение одновременным нажатием кнопок ВЫСОКОЕ ВКЛ. и ТОК 5 МА на стойке 1920 Б';
-        EventFormName:='1920 Б';
+        Name:='Настроить передатчик 1500 А по волномеру';
+        Text:='Нажать на кнопки-лампы МД-О и 1610-О, подключить волномер к основному каналу, на волномере установить шкалу в соответствии с номерами волн гетеродина.' 
+        + ' Нажать на кнопки-лампы МД-Р и 1610-Р, подключить волномер к резервному каналу, на волномере установить шкалу в соответствии с номерами волн гетеродина.'
+        + 'Нажать на кнопки-лампы МД-О и 1610-О';
+        EventFormName:='1500 А';
         Time:= '';
+
+
    end;
 
       function TTaskSingleCheckSubTask17.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
    begin
 
-         if (true) then
+         if (Station.HalfSetA.Rack1500.btnAutomatic = butPositionRight) and (Station.HalfSetA.Rack1500.DropError = True) then
          begin
            Result:=true;
          end
@@ -1040,16 +1099,16 @@ uConstantsDM;
    begin
    inherited Create;
 
-        Name:='Сфазировать сигналы ЛБВ на стойке 1500 А ???';
-        Text:='Сфазировать сигналы ЛБВ путем вращения учки ФАЗОВРАЩАТЕЛЬ на передней панели стойки 1500 (минимальные показания прибора стойки 1500 в положении переключателя КОНТРОЛЬ - РАСФАЗ.)';
+        Name:='На стойке 1500 А сбросить аварию';
+        Text:='Внутри стойки 1500 А нажать на кнопку "СБРОС АВАРИИ", чтобы сбросить аварию, на передней панели тумблер "АВТОМАТИКА" перевести в положение "ВКЛ"';
         EventFormName:='1500 А';
         Time:= '';
    end;
 
-       function TTaskSingleCheckSubTask18.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
+      function TTaskSingleCheckSubTask18.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
    begin
 
-         if (true) then
+         if (Station.HalfSetA.Rack1920.stLBV2_TurnedOn = True) and (Station.HalfSetA.Rack1920.stLBV1_TurnedOn = True) then
          begin
            Result:=true;
          end
@@ -1060,17 +1119,16 @@ uConstantsDM;
    begin
    inherited Create;
 
-        Name:='Сфазировать сигналы ЛБВ на стойке 1500 Б ???';
-        Text:='Сфазировать сигналы ЛБВ путем вращения учки ФАЗОВРАЩАТЕЛЬ на передней панели стойки 1500 (минимальные показания прибора стойки 1500 в положении переключателя КОНТРОЛЬ - РАСФАЗ.)';
-        EventFormName:='1500 Б';
+        Name:='Включить высокое напряжение на стойке 1920 А';
+        Text:='Включить высокое напряжение одновременным нажатием кнопок ВЫСОКОЕ ВКЛ. и ТОК 5 МА на стойке 1920 А';
+        EventFormName:='1920 А';
         Time:= '';
    end;
 
-
-       function TTaskSingleCheckSubTask19.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
+      function TTaskSingleCheckSubTask19.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
    begin
 
-         if (true) then
+         if (Station.HalfSetA.Rack1500.swModeControl = 6) and (Station.HalfSetA.Rack1500.swPhaseMover = 10) and (Station.HalfSetA.Rack1500.butMode_R = butPositionLeft) then
          begin
            Result:=true;
          end
@@ -1081,16 +1139,16 @@ uConstantsDM;
    begin
    inherited Create;
 
-        Name:='Что?';
-        Text:='Что-что?';
-        EventFormName:='что-то';
+        Name:='Сфазировать сигналы ЛБВ на стойке 1500 А';
+        Text:='На передней панели стойки 1500 А переключатель режима установить в положение МОЩН.-РАСФАЗ. Тумблер МД-Р переключить в левое положение. Сфазировать сигналы ЛБВ путем вращения ручки ФАЗОВРАЩАТЕЛЬ.';
+        EventFormName:='1500 А';
         Time:= '';
    end;
 
-       function TTaskSingleCheckSubTask20.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
+    function TTaskSingleCheckSubTask20.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
    begin
 
-         if (true) then
+         if (Station.HalfSetA.Rack1600.wave1610_0 = ClientState.ReceiverWaveA) and (Station.HalfSetA.Rack1600.wave1610_R = ClientState.ReceiverWaveA) and (Station.HalfSetA.Rack1600.wave1600 = ClientState.ReceiverWaveA) then
          begin
            Result:=true;
          end
@@ -1101,36 +1159,49 @@ uConstantsDM;
    begin
    inherited Create;
 
-        Name:='Что?';
-        Text:='Что-что?';
-        EventFormName:='что-то';
+        Name:='Установить волны на приемнике 1600 А';
+        Text:='Установить рабочие волны приема на стойке 1600 А, используя вращающиеся переключатели';
+        EventFormName:='1600 А';
         Time:= '';
    end;
 
-       function TTaskSingleCheckSubTask21.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
+
+   
+      function TTaskSingleCheckSubTask21.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
    begin
 
-         if (true) then
+         if (Station.HalfSetA.Rack1600.SelectedMd = smdMain) and (Station.HalfSetA.Rack1600.SelectedUpch = sUpchMain) and (Station.HalfSetA.Rack1600.SelectedDmch = sDmchMain)  
+         and (GeterodinWaves[ClientState.ReceiverWaveA][0] = Station.HalfSetA.Rack1600.GeterodinIntMain)
+      and (((GeterodinWaves[ClientState.ReceiverWaveA][1] - 2) <= Station.HalfSetA.Rack1600.GeterodinFloatMain)
+            and (Station.HalfSetA.Rack1600.GeterodinFloatMain <= (GeterodinWaves[ClientState.ReceiverWaveA][1] + 2)))
+            
+            and (GeterodinWaves[ClientState.ReceiverWaveA][0] = Station.HalfSetA.Rack1600.GeterodinIntReserve)
+      and (((GeterodinWaves[ClientState.ReceiverWaveA][1] - 2) <= Station.HalfSetA.Rack1600.GeterodinFloatReserve)
+            and (Station.HalfSetA.Rack1600.GeterodinFloatReserve <= (GeterodinWaves[ClientState.ReceiverWaveA][1] + 2)))
+            then
          begin
            Result:=true;
          end
          else Result:=false;
    end;
 
+
    constructor TTaskSingleCheckSubTask21.Create;
    begin
    inherited Create;
 
-        Name:='Что?';
-        Text:='Что-что?';
-        EventFormName:='что-то';
+        Name:='Настроить приемник 1600 А по волномеру';
+        Text:='Нажать на кнопки-лампы 1610-О, УПЧ-0 и ДМЧ-0, подключить волномер к основному каналу, на волномере установить шкалу в соответствии с номерами волн гетеродина.' 
+        + ' Нажать на кнопки-лампы 1601-Р, УПЧ-Р, ДМЧ-Р, подключить волномер к резервному каналу, на волномере установить шкалу в соответствии с номерами волн гетеродина.'
+        + 'Нажать на кнопки-лампы 1610-О, УПЧ-0 и ДМЧ-0';
+        EventFormName:='1600 А';
         Time:= '';
    end;
 
-       function TTaskSingleCheckSubTask22.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
+      function TTaskSingleCheckSubTask22.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
    begin
 
-         if (true) then
+         if (Station.HalfSetA.Rack1600.butAutomatic = butPositionLeft) and (Station.HalfSetA.Rack1600.DropError = True) then
          begin
            Result:=true;
          end
@@ -1141,9 +1212,9 @@ uConstantsDM;
    begin
    inherited Create;
 
-        Name:='Что?';
-        Text:='Что-что?';
-        EventFormName:='что-то';
+        Name:='На стойке 1600 А сбросить аварию';
+        Text:='Внутри стойки 1600 А нажать на кнопку "СБРОС АВАРИИ", чтобы сбросить аварию, на передней панели тумблер "АВТОМАТИКА" перевести в положение "ВКЛ"';
+        EventFormName:='1600 А';
         Time:= '';
    end;
 {$ENDREGION}
