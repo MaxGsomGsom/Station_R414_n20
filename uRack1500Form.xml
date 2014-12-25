@@ -2366,6 +2366,8 @@
       <field name="imgEnterToRackLeft" type="TImage" visibility="published" />
       <field name="imgEnterToRackLeftSelected" type="TImage" visibility="published" />
       <field name="imgEnterToRackRightSelected" type="TImage" visibility="published" />
+      <field name="imgWaveMeterMain" type="TImage" visibility="published" />
+      <field name="imgWaveMeterReserv" type="TImage" visibility="published" />
       <procedure name="FormClose" visibility="published">
         <devnotes>
           /StationR414Form.XT := 24;
@@ -2688,6 +2690,26 @@
         </parameters>
       </procedure>
       <procedure name="FormHide" visibility="published">
+        <parameters>
+          <parameter name="Sender" type="TObject" />
+        </parameters>
+      </procedure>
+      <procedure name="imgCableMdMainConnectedClick" visibility="published">
+        <parameters>
+          <parameter name="Sender" type="TObject" />
+        </parameters>
+      </procedure>
+      <procedure name="imgCableMdReservConnectedClick" visibility="published">
+        <parameters>
+          <parameter name="Sender" type="TObject" />
+        </parameters>
+      </procedure>
+      <procedure name="btnWaveMeterMainClick" visibility="published">
+        <parameters>
+          <parameter name="Sender" type="TObject" />
+        </parameters>
+      </procedure>
+      <procedure name="btnWaveMeterReservClick" visibility="published">
         <parameters>
           <parameter name="Sender" type="TObject" />
         </parameters>

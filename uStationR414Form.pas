@@ -1932,7 +1932,7 @@ end;
 procedure TStationR414Form.imgVolnomerBClick(Sender: TObject);
 var WaveMeterB: TBlockWaveMeterForm;
 begin
-  WaveMeterB:= TBlockWaveMeterForm.Create(self, 2, Station, TaskController);
+  WaveMeterB:= TBlockWaveMeterForm.Create(self, 0, Station, TaskController);
   //WaveMeterB.Show;
 
   SpawnForm((Sender as TImage).Tag);
@@ -1941,7 +1941,7 @@ end;
 procedure TStationR414Form.imgVolnomerAClick(Sender: TObject);
 var WaveMeterA: TBlockWaveMeterForm;
 begin
-WaveMeterA:=TBlockWaveMeterForm.Create(self, 1, Station, TaskController);
+WaveMeterA:=TBlockWaveMeterForm.Create(self, 0, Station, TaskController);
 //WaveMeterA.Show;
   SpawnForm((Sender as TImage).Tag);
 end;

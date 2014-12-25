@@ -95,6 +95,9 @@ type
     imgWindow7: TImage;
     imgWindow8: TImage;
     imgWindow9: TImage;
+    imgWaveMeterMain: TImage;
+    imgWaveMeterMain1: TImage;
+    imgWaveMeterReserv1: TImage;
     {$ENDREGION}
 
     {$REGION 'ќбъ€вление обработчиков событий формы'}
@@ -164,6 +167,10 @@ type
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure FormHide(Sender: TObject);
+    procedure imgCableMdMainClick(Sender: TObject);
+    procedure imgWaveMeterMain1Click(Sender: TObject);
+    procedure imgWaveMeterReserv1Click(Sender: TObject);
+    procedure imgCableMdRClick(Sender: TObject);
     {$ENDREGION}
 
   private
@@ -207,6 +214,7 @@ var
   ButtonBackForm: TButtonBackForm;
   Station: TStation;
   TaskController: TTaskController;
+  WaveMeterForm: TBlockWaveMeterForm;
 
 
 constructor TRack1600Form.Create(AOwner: TComponent; Half:Integer; Station0: TStation; TaskController0: TTaskController);
@@ -801,6 +809,44 @@ end;
 //  Image33.Hide;
 //end;
 
+procedure TRack1600Form.imgCableMdMainClick(Sender: TObject);
+begin
+case CurFormId of
+    idRack1600A:
+      begin
+        Station.HalfSetA.Rack1600.CableMdMainState := csDisconected;
+        Station.HalfSetA.Rack1600.CableMdReservState := csDisconected;
+      end;
+    idRack1600B:
+      begin
+        Station.HalfSetB.Rack1600.CableMdMainState := csDisconected;
+        Station.HalfSetB.Rack1600.CableMdReservState := csDisconected;
+      end;
+  end;
+  imgCableMdMain.Hide;
+  WaveMeterForm.Close;
+     Reload;
+end;
+
+procedure TRack1600Form.imgCableMdRClick(Sender: TObject);
+begin
+case CurFormId of
+    idRack1600A:
+      begin
+        Station.HalfSetA.Rack1600.CableMdMainState := csDisconected;
+        Station.HalfSetA.Rack1600.CableMdReservState := csDisconected;
+      end;
+    idRack1600B:
+      begin
+        Station.HalfSetB.Rack1600.CableMdMainState := csDisconected;
+        Station.HalfSetB.Rack1600.CableMdReservState := csDisconected;
+      end;
+  end;
+  imgCableMdMain.Hide;
+  WaveMeterForm.Close;
+     Reload;
+end;
+
 procedure TRack1600Form.imgChannelSwitcherMouseDown(Sender: TObject;
   Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
 begin
@@ -1173,6 +1219,66 @@ end;
 procedure TRack1600Form.imgUpchReserveSelectedMouseLeave(Sender: TObject);
 begin
   imgUpchReserveSelected.Visible := False;
+end;
+
+procedure TRack1600Form.imgWaveMeterMain1Click(Sender: TObject);
+begin
+case CurFormId of
+    idRack1600A:
+      begin
+              Station.HalfSetA.Rack1600.CableMdMainState := csConnected;
+        Station.HalfSetA.Rack1600.CableMdReservState := csDisconected;
+        if (Station.HalfSetA.Rack1600.SelectedMd = smdMain) and (Station.HalfSetA.Rack1600.SelectedUpch = sUpchMain) and
+        (Station.HalfSetA.Rack1600.SelectedDmch = sDmchMain) then
+        begin
+              WaveMeterForm:=TBlockWaveMeterForm.Create(Self, 3, Station, TaskController);
+              WaveMeterForm.Show;
+        end;
+      end;
+    idRack1600B:
+      begin
+              Station.HalfSetB.Rack1600.CableMdMainState := csConnected;
+        Station.HalfSetB.Rack1600.CableMdReservState := csDisconected;
+        if (Station.HalfSetB.Rack1600.SelectedMd = smdMain) and (Station.HalfSetB.Rack1600.SelectedUpch = sUpchMain) and
+        (Station.HalfSetB.Rack1600.SelectedDmch = sDmchMain) then
+        begin
+             WaveMeterForm:=TBlockWaveMeterForm.Create(Self, 4, Station, TaskController);
+             WaveMeterForm.Show;
+        end;
+      end;
+  end;
+  imgCableMdMain.Show;
+     Reload;
+end;
+
+procedure TRack1600Form.imgWaveMeterReserv1Click(Sender: TObject);
+begin
+    case CurFormId of
+    idRack1600A:
+      begin
+              Station.HalfSetA.Rack1600.CableMdMainState := csDisconected;
+        Station.HalfSetA.Rack1600.CableMdReservState := csConnected;
+        if (Station.HalfSetA.Rack1600.SelectedMd = smdRetr) and (Station.HalfSetA.Rack1600.SelectedUpch = sUpchReserve) and
+        (Station.HalfSetA.Rack1600.SelectedDmch = sDmchReserve) then
+        begin
+              WaveMeterForm:=TBlockWaveMeterForm.Create(Self, 3, Station, TaskController);
+              WaveMeterForm.Show;
+        end;
+      end;
+    idRack1600B:
+      begin
+         Station.HalfSetB.Rack1600.CableMdMainState := csDisconected;
+        Station.HalfSetB.Rack1600.CableMdReservState := csConnected;
+        if (Station.HalfSetA.Rack1600.SelectedMd = smdRetr) and (Station.HalfSetA.Rack1600.SelectedUpch = sUpchReserve) and
+        (Station.HalfSetA.Rack1600.SelectedDmch = sDmchReserve) then
+        begin
+             WaveMeterForm:=TBlockWaveMeterForm.Create(Self, 4, Station, TaskController);
+             WaveMeterForm.Show;
+        end;
+      end;
+  end;
+  imgCableMdMain.Show;
+  Reload;
 end;
 
 procedure TRack1600Form.Button1Click(Sender: TObject);
