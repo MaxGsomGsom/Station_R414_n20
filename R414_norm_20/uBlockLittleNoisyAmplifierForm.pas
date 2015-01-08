@@ -65,12 +65,12 @@ type
 
 var
   //BlockLittleNoisyAmplifierForm: TBlockLittleNoisyAmplifierForm;
-  CurFormId: Integer;
+  CurFormId1: Integer;
   Station: TStation;
   ButtonBackForm: TButtonBackForm;
   TaskController: TTaskController;
   const
-   idMshuA=1;
+  idMshuA=1;
   idMshuB=2;
 
 implementation
@@ -89,7 +89,7 @@ constructor TBlockLittleNoisyAmplifierForm.Create(AOwner: TComponent; Half:Integ
 begin
   Inherited Create(AOwner);
 
-  CurFormId:=Half;
+  CurFormId1:=Half;
   if (Half=1) then begin Self.Caption:='льс ю'; end
   else Self.Caption:='льс а';
   Station:=Station0;
@@ -107,7 +107,7 @@ end;
 
 procedure TBlockLittleNoisyAmplifierForm.Reload;
 begin
-  case CurFormId of
+  case CurFormId1 of
     idMshuA:
       begin
         if station.HalfSetA.LittleNoisyAmplifier.butNet = butPositionDown then
@@ -311,7 +311,7 @@ end;
 procedure TBlockLittleNoisyAmplifierForm.Image2MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
-  case CurFormId of
+  case CurFormId1 of
     idMshuA:
       begin
         if (button=mbLeft)and(Station.HalfSetA.LittleNoisyAmplifier.swWave < MAX_WAVE_VALUE) then
@@ -358,9 +358,9 @@ var
   strDigit: string;
   btDigit: Byte;
 begin
-  ChangeEvent;
+  //ChangeEvent;
 
-  case CurFormId of
+  case CurFormId1 of
     idMshuA:
       begin
         if Button = mbMiddle then
@@ -433,9 +433,9 @@ end;
 
 procedure TBlockLittleNoisyAmplifierForm.Image4Click(Sender: TObject);
 begin
-  ChangeEvent;
+  //ChangeEvent;
 
-  case CurFormId of
+  case CurFormId1 of
     idMshuA:
       Station.HalfSetA.LittleNoisyAmplifier.butNet := butPositionUp;
     idMshuB:
@@ -447,9 +447,9 @@ end;
 
 procedure TBlockLittleNoisyAmplifierForm.Image5Click(Sender: TObject);
 begin
-  ChangeEvent;
+  //ChangeEvent;
 
-  case CurFormId of
+  case CurFormId1 of
     idMshuA:
       Station.HalfSetA.LittleNoisyAmplifier.butNet := butPositionDown;
     idMshuB:
@@ -461,9 +461,9 @@ end;
 
 procedure TBlockLittleNoisyAmplifierForm.Image6Click(Sender: TObject);
 begin
-  ChangeEvent;
+  //ChangeEvent;
 
-  case CurFormId of
+  case CurFormId1 of
     idMshuA:
       Station.HalfSetA.LittleNoisyAmplifier.butNet2 := butPositionUp;
     idMshuB:
@@ -475,9 +475,9 @@ end;
 
 procedure TBlockLittleNoisyAmplifierForm.Image7Click(Sender: TObject);
 begin
-  ChangeEvent;
+  //ChangeEvent;
 
-  case CurFormId of
+  case CurFormId1 of
     idMshuA:
       Station.HalfSetA.LittleNoisyAmplifier.butNet2 := butPositionDown;
 
@@ -490,9 +490,9 @@ end;
 
 procedure TBlockLittleNoisyAmplifierForm.Image8Click(Sender: TObject);
 begin
-  ChangeEvent;
+  //ChangeEvent;
 
-  case CurFormId of
+  case CurFormId1 of
     idMshuA:
       Station.HalfSetA.LittleNoisyAmplifier.butMshu := butReserve;
     idMshuB:
@@ -504,9 +504,9 @@ end;
 
 procedure TBlockLittleNoisyAmplifierForm.Image9Click(Sender: TObject);
 begin
-  ChangeEvent;
+  ////ChangeEvent;
 
-  case CurFormId of
+  case CurFormId1 of
     idMshuA:
       Station.HalfSetA.LittleNoisyAmplifier.butMshu := butMain;
 

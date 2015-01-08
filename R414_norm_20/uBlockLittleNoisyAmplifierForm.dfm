@@ -5,14 +5,14 @@ object BlockLittleNoisyAmplifierForm: TBlockLittleNoisyAmplifierForm
   Align = alTop
   Anchors = []
   BorderIcons = [biSystemMenu]
-  BorderStyle = bsDialog
+  BorderStyle = bsNone
   Caption = #1052#1064#1059
   ClientHeight = 685
-  ClientWidth = 1207
+  ClientWidth = 1225
   Color = clBtnFace
   Constraints.MaxHeight = 723
   Constraints.MaxWidth = 1225
-  Constraints.MinWidth = 1213
+  Constraints.MinWidth = 1225
   DoubleBuffered = True
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText

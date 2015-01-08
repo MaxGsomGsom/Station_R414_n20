@@ -2365,6 +2365,9 @@
         </parameters>
       </procedure>
       <procedure name="FormMouseWheelUp" visibility="published">
+        <devnotes>
+          /ChangeEvent;
+        </devnotes>
         <parameters>
           <parameter name="Sender" type="TObject" />
           <parameter name="Shift" type="TShiftState" />
@@ -2390,7 +2393,7 @@
       </constructor>
     </members>
   </class>
-  <variable name="CurFormId" type="Integer" />
+  <variable name="CurFormId1" type="Integer" />
   <variable name="Station" type="TStation" />
   <variable name="ButtonBackForm" type="TButtonBackForm" />
   <variable name="TaskController" type="TTaskController" />
