@@ -1049,9 +1049,9 @@ begin
   Station.HalfSetB.Rack1200Right.sw1240G7Tune := GetrandomTuneValue;
   Station.HalfSetB.Rack1200Right.sw1240G8Tune := GetrandomTuneValue;
 
-  Station.Rack1400.butPower := butPositionRight;
+  Station.Rack1400.butPower := butPositionLeft;
   Station.Rack1400.swKukushka := 1;
-  Station.Rack1400.butSpeaker := butPositionRight;
+  Station.Rack1400.butSpeaker := butPositionLeft;
 
   Station.HalfSetA.Rack1500.CableMdMainState := csDisconected;
   Station.HalfSetA.Rack1500.CableMdReservState := csDisconected;
