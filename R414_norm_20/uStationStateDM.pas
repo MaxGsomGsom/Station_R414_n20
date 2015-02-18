@@ -427,7 +427,7 @@ const
       function IsTunedFor2ChannelMode: Boolean;
       function IsTunedFor4ChannelMode: Boolean;
       function IsTunedOK: Boolean;
-      function Is1500Transmited: Boolean;
+
 
       function IsTuned(RequiredWaveTransmit,
         RequiredWaveReceive: Integer): Boolean;
@@ -436,6 +436,13 @@ const
         OtherHalfSetTransmited: Boolean);
   end;
 
+
+  type pDeviation = packed record
+    Rack1200A_PRD: Byte;
+    Rack1200A_PRM: Byte;
+    Rack1200B_PRD: Byte;
+    Rack1200B_PRM: Byte;
+  end;
   /// <summary>
   ///   Станция Р414 (блоки и настроенные состояния)
   /// </summary>
@@ -444,11 +451,14 @@ const
       FHalfSetA: THalfSet;
       FHalfSetB: THalfSet;
 
+
+
       procedure Initialise; inline;
     public
       // Общие приборы и стойки
       Rack1710: pRack1710;
       Rack1400: pRack1400;
+      Deviation: pDeviation;
       RemoteController: pRemoteController;
       P321C: pP321;
       Oscillograph: pOscillograph;
@@ -696,18 +706,6 @@ begin
 end;
 
 
-function THalfSet.Is1500Transmited: Boolean;
-begin
-  Result := (Rack1500.GeterodinTunedMain
-      and (Rack1920.stLBV1_TurnedOn or Rack1920.stLBV2_TurnedOn)
-      and (Rack1500.SelectedMd = smdMain)
-      and (Rack1500.SelectedRetr = sRetrMain))
-
-      or (Rack1500.GeterodinTunedReserve
-      and (Rack1920.stLBV1_TurnedOn or Rack1920.stLBV2_TurnedOn)
-      and (Rack1500.SelectedMd = smdRetr)
-      and (Rack1500.SelectedRetr = sRetrReserv));
-end;
 
 /// <summary>
 ///   Проверяет мощность (не известно, что за мощость)) )
@@ -1188,12 +1186,29 @@ end;
 
 function TStation.Is1500ATransmited: Boolean;
 begin
-  Result := HalfSetA.Is1500Transmited;
+  Result := (HalfSetA.Rack1500.GeterodinTunedMain
+      and (HalfSetA.Rack1920.stLBV1_TurnedOn or HalfSetA.Rack1920.stLBV2_TurnedOn)
+      and (HalfSetA.Rack1500.SelectedMd = smdMain)
+      and (HalfSetA.Rack1500.SelectedRetr = sRetrMain))
+
+      or (HalfSetA.Rack1500.GeterodinTunedReserve
+      and (HalfSetA.Rack1920.stLBV1_TurnedOn or HalfSetA.Rack1920.stLBV2_TurnedOn)
+      and (HalfSetA.Rack1500.SelectedMd = smdRetr)
+      and (HalfSetA.Rack1500.SelectedRetr = sRetrReserv));
 end;
 
 function TStation.Is1500BTransmited: Boolean;
 begin
-  Result := HalfSetB.Is1500Transmited;
+
+  Result := (HalfSetB.Rack1500.GeterodinTunedMain
+      and (HalfSetB.Rack1920.stLBV1_TurnedOn or HalfSetB.Rack1920.stLBV2_TurnedOn)
+      and (HalfSetB.Rack1500.SelectedMd = smdMain)
+      and (HalfSetB.Rack1500.SelectedRetr = sRetrMain))
+
+      or (HalfSetB.Rack1500.GeterodinTunedReserve
+      and (HalfSetB.Rack1920.stLBV1_TurnedOn or HalfSetB.Rack1920.stLBV2_TurnedOn)
+      and (HalfSetB.Rack1500.SelectedMd = smdRetr)
+      and (HalfSetB.Rack1500.SelectedRetr = sRetrReserv));
 end;
 
 

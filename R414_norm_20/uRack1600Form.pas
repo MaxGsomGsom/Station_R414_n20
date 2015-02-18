@@ -371,6 +371,7 @@ begin
   case CurFormId of
     idRack1600A:
       begin
+
         if Station.IsPluggedIn then
         begin
           with Station.HalfSetA.Rack1600 do
@@ -382,13 +383,15 @@ begin
               imgUpchMainLight.Visible := True;
               imgArrowDown.Visible := True;
 
-              if ((GeterodinTunedMain = True) and
-              (Station.HalfSetA.Rack1600.wave1610_0 = Station.WaveReceiveA) and
-              (Station.HalfSetA.Rack1600.wave1610_R = Station.WaveReceiveA) and
-              (Station.HalfSetA.Rack1600.wave1600 = Station.WaveReceiveA) and
-              (Station.Is1500BTransmited = True) and
+
+
+              if ((Station.HalfSetA.Rack1500.GeterodinTunedMain = True) and
+              (Station.HalfSetA.Rack1600.wave1610_0 = TaskController.ClientState.ReceiverWaveA) and
+              (Station.HalfSetA.Rack1600.wave1610_R = TaskController.ClientState.ReceiverWaveA) and
+              (Station.HalfSetA.Rack1600.wave1600 = TaskController.ClientState.ReceiverWaveA) and
+              (Station.Is1500BTransmited) and
               (Station.HalfSetA.LittleNoisyAmplifier.butNet2 = butPositionUp) or (Station.HalfSetA.LittleNoisyAmplifier.butMshu = butPositionRight) and
-              (Station.HalfSetA.LittleNoisyAmplifier.swWave = Station.WaveReceiveA) and
+              (Station.HalfSetA.LittleNoisyAmplifier.swWave = TaskController.ClientState.ReceiverWaveA) and
               (((Station.HalfSetA.Duplexer.cbSh1 = csConnectedAtDuplexeLeft) and
               (Station.HalfSetA.Duplexer.cbSh2 = csConnectedAtDuplexeRight)) or
               ((Station.HalfSetA.Duplexer.cbSh1 = csConnectedAtDuplexeRight) and
@@ -557,13 +560,13 @@ begin
               imgUpchMainLight.Visible := True;
               imgArrowDown.Visible := True;
 
-              if ((GeterodinTunedMain = True) and
-              (Station.HalfSetB.Rack1600.wave1610_0 = Station.WaveReceiveB) and
-              (Station.HalfSetB.Rack1600.wave1610_R = Station.WaveReceiveB) and
-              (Station.HalfSetB.Rack1600.wave1600 = Station.WaveReceiveB) and
+              if ((Station.HalfSetB.Rack1500.GeterodinTunedMain = True) and
+              (Station.HalfSetB.Rack1600.wave1610_0 = TaskController.ClientState.ReceiverWaveB) and
+              (Station.HalfSetB.Rack1600.wave1610_R = TaskController.ClientState.ReceiverWaveB) and
+              (Station.HalfSetB.Rack1600.wave1600 = TaskController.ClientState.ReceiverWaveB) and
               (Station.Is1500ATransmited = True) and
               (Station.HalfSetB.LittleNoisyAmplifier.butNet2 = butPositionUp) or (Station.HalfSetB.LittleNoisyAmplifier.butMshu = butPositionRight) and
-              (Station.HalfSetB.LittleNoisyAmplifier.swWave = Station.WaveReceiveB) and
+              (Station.HalfSetB.LittleNoisyAmplifier.swWave = TaskController.ClientState.ReceiverWaveB) and
               (((Station.HalfSetB.Duplexer.cbSh1 = csConnectedAtDuplexeLeft) and
               (Station.HalfSetB.Duplexer.cbSh2 = csConnectedAtDuplexeRight)) or
               ((Station.HalfSetB.Duplexer.cbSh1 = csConnectedAtDuplexeRight) and
@@ -1269,8 +1272,8 @@ begin
       begin
          Station.HalfSetB.Rack1600.CableMdMainState := csDisconected;
         Station.HalfSetB.Rack1600.CableMdReservState := csConnected;
-        if (Station.HalfSetA.Rack1600.SelectedMd = smdRetr) and (Station.HalfSetA.Rack1600.SelectedUpch = sUpchReserve) and
-        (Station.HalfSetA.Rack1600.SelectedDmch = sDmchReserve) then
+        if (Station.HalfSetB.Rack1600.SelectedMd = smdRetr) and (Station.HalfSetB.Rack1600.SelectedUpch = sUpchReserve) and
+        (Station.HalfSetB.Rack1600.SelectedDmch = sDmchReserve) then
         begin
              WaveMeterForm:=TBlockWaveMeterForm.Create(Self, 4, Station, TaskController);
              WaveMeterForm.Show;

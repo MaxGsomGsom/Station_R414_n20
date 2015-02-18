@@ -2277,6 +2277,7 @@
       <field name="imgSpeechOn" type="TImage" visibility="published" />
       <field name="imgSpeech" type="TImage" visibility="published" />
       <field name="tmrSpeech" type="TTimer" visibility="published" />
+      <field name="lbl1whathalf" type="TLabel" visibility="published" />
       <procedure name="imgTrubkaMouseDown" visibility="published">
         <parameters>
           <parameter name="Sender" type="TObject" />
@@ -2306,7 +2307,18 @@
           <parameter name="Key" type="Char" paramflags="var" />
         </parameters>
       </procedure>
+      <constructor name="Create" visibility="published">
+        <parameters>
+          <parameter name="AOwner" type="TComponent" />
+          <parameter name="Half0" type="Integer" />
+          <parameter name="Station0" type="TStation" />
+          <parameter name="TaskController0" type="TTaskController" />
+        </parameters>
+      </constructor>
+      <field name="Half" type="Integer" visibility="public" />
     </members>
   </class>
   <variable name="HandsetForm" type="THandsetForm" />
+  <variable name="Station" type="TStation" />
+  <variable name="TaskController" type="TTaskController" />
 </namespace>

@@ -933,12 +933,11 @@ END
 /* uAboutProgramForm.dfm */
 /* uAboutStationForm.dfm */
 /* uStatisticForm.dfm */
+/* uBlockPowerSupplyForm.dfm */
 /* uRack1200LeftForm.dfm */
 /* uRack1200RightForm.dfm */
 /* uRack1710Form.dfm */
 /* uRack1400Form.dfm */
-/* uHandsetForm.dfm */
-/* uBlockPowerSupplyForm.dfm */
 /* uBlockRemoteControllerForm.dfm */
 /* uConnectToServerForm.dfm */
 /* uMainMenuModernForm.dfm */
@@ -961,6 +960,7 @@ END
 /* uReportForm.dfm */
 /* uVideoHelpForm.dfm */
 /* uRackP321MinForm.dfm */
+/* uHandsetForm.dfm */
 /* uBlockOscillographForm.dfm */
 /* uBlockPowerPanelForm.dfm */
 /* uRackP321Form.dfm */

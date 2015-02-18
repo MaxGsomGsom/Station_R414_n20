@@ -2458,6 +2458,8 @@
       </procedure>
       <procedure name="Reload" visibility="published">
       </procedure>
+      <procedure name="ShowOscill" visibility="published">
+      </procedure>
       <procedure name="imgBut1270MainClick" visibility="published">
         <parameters>
           <parameter name="Sender" type="TObject" />

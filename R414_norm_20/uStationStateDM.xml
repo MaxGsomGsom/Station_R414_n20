@@ -509,11 +509,6 @@
           <retval type="Boolean" />
         </parameters>
       </function>
-      <function name="Is1500Transmited" visibility="public">
-        <parameters>
-          <retval type="Boolean" />
-        </parameters>
-      </function>
       <function name="IsTuned" visibility="public">
         <devnotes>
            <summary>
@@ -542,6 +537,12 @@
       </procedure>
     </members>
   </class>
+  <struct name="pDeviation" packed="true">
+    <field name="Rack1200A_PRD" type="Byte" visibility="public" />
+    <field name="Rack1200A_PRM" type="Byte" visibility="public" />
+    <field name="Rack1200B_PRD" type="Byte" visibility="public" />
+    <field name="Rack1200B_PRM" type="Byte" visibility="public" />
+  </struct>
   <class name="TStation">
     <devnotes>
        <summary>
@@ -619,6 +620,7 @@
       </procedure>
       <field name="Rack1710" type="pRack1710" visibility="public" />
       <field name="Rack1400" type="pRack1400" visibility="public" />
+      <field name="Deviation" type="pDeviation" visibility="public" />
       <field name="RemoteController" type="pRemoteController" visibility="public" />
       <field name="P321C" type="pP321" visibility="public" />
       <field name="Oscillograph" type="pOscillograph" visibility="public" />

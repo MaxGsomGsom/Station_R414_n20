@@ -185,6 +185,7 @@ type
     procedure FormShow(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure Reload;
+    procedure ShowOscill;
     procedure imgBut1270MainClick(Sender: TObject);
     procedure imgBut1220AMMainClick(Sender: TObject);
     procedure imgBut1230AMainClick(Sender: TObject);
@@ -340,12 +341,15 @@ procedure TRack1200RightForm.Reload;
     Result := tmpByte;
   end;
 
+
   procedure HideLevel;
   begin
     imgInd1240V1_Line.Visible := False;
     imgInd1240V2_Line.Visible := False;
     imgInd1240V3_Line.Visible := False;
   end;
+
+
 
   procedure InvalidateAll;
   begin
@@ -1057,6 +1061,22 @@ begin
 
   InvalidateAll;
 end;
+
+
+
+procedure TRack1200RightForm.ShowOscill;
+  var
+  Oscill: TBlockOscillographForm;
+  begin
+    if (Station.HalfSetA.Rack1200Right.CableOscillographLineInput <> csDisconected) and
+         (Station.HalfSetA.Rack1200Right.CableUzlovoiInput <> csDisconected) and (Oscill.Showing=False) then
+         begin
+               Oscill := TBlockOscillographForm.Create(Self, Station, TaskController);
+               Oscill.Left := Screen.Width - self.Width;
+               Oscill.Show;
+         end;
+  end;
+
 
 procedure TRack1200RightForm.img1240G1TuneMouseDown(Sender: TObject;
   Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
@@ -2405,6 +2425,8 @@ begin
   imgSpawnPRD.Visible := False;
   imgSpawnPRM.Visible := False;
 
+  ShowOscill;
+
   Reload;
 end;
 
@@ -2448,6 +2470,8 @@ begin
   imgSpawnPRD.Visible := False;
   imgSpawnPRM.Visible := False;
 
+  ShowOscill;
+
   Reload;
 end;
 
@@ -2490,6 +2514,8 @@ begin
   imgSpawnSync.Visible := False;
   imgSpawnPRD.Visible := False;
   imgSpawnPRM.Visible := False;
+
+  ShowOscill;
 
   Reload;
 end;
