@@ -2447,12 +2447,7 @@
           <parameter name="Sender" type="TObject" />
         </parameters>
       </procedure>
-      <procedure name="Label1Click" visibility="published">
-        <parameters>
-          <parameter name="Sender" type="TObject" />
-        </parameters>
-      </procedure>
-      <procedure name="Image6Click" visibility="published">
+      <procedure name="Image7Click" visibility="published">
         <parameters>
           <parameter name="Sender" type="TObject" />
         </parameters>
@@ -2475,6 +2470,11 @@
           <parameter name="TaskController0" type="TTaskController" />
         </parameters>
       </constructor>
+      <procedure name="Image6Click" visibility="published">
+        <parameters>
+          <parameter name="Sender" type="TObject" />
+        </parameters>
+      </procedure>
       <procedure name="Reload" visibility="public">
       </procedure>
       <procedure name="PaintOscilogram" visibility="public">
@@ -2496,4 +2496,5 @@
   <variable name="ButtonBackForm" type="TButtonBackForm" />
   <variable name="Station" type="TStation" />
   <variable name="TaskController" type="TTaskController" />
+  <variable name="Handset" type="THandsetForm" />
 </namespace>

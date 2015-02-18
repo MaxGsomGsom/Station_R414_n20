@@ -4018,7 +4018,7 @@ end;
       if  (self.CurrentTask.CurrentSubTask.EventFormName='1200 ПРД Б') then result:=Rack_1200_broadcaster_B;
       if  (self.CurrentTask.CurrentSubTask.EventFormName='Волномер А') then result:=Wavemeter_A;
       if  (self.CurrentTask.CurrentSubTask.EventFormName='Волномер Б') then result:=Wavemeter_B;
-
+      if  (self.CurrentTask.CurrentSubTask.EventFormName='Осциллограф') then result:=Oscillograph_rack;
 
 
    end;

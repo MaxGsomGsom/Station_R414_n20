@@ -1304,6 +1304,26 @@ var
   i: Integer;
 begin
   {$REGION 'Инициализация параметров стоек'}
+  Station.Deviation.Rack1200A_PRD := stNotPassed;
+  Station.Deviation.Rack1200A_PRM := stNotPassed;
+  Station.Deviation.Rack1200B_PRD := stNotPassed;
+  Station.Deviation.Rack1200B_PRM := stNotPassed;
+
+  Station.Oscillograph.swRazvertka := 1;
+  Station.Oscillograph.swRazvertkaShortTune := 11;
+  Station.Oscillograph.butDirectOrAlternative  := butPositionUp;
+  Station.Oscillograph.swSyncType := 2;
+  Station.Oscillograph.butLevelPosition := butPositionUp;
+  Station.Oscillograph.cblCabelSyncState := csDisconected;
+  Station.Oscillograph.cblCabelSyncConnectedTo := csDisconected;
+  Station.Oscillograph.swCalibrator := 1;
+  Station.Oscillograph.but1Khz := butPositionUp;
+  Station.Oscillograph.swHz := 2;
+  Station.Oscillograph.swVvsDel := 7;
+  Station.Oscillograph.swPowerType := 2;
+  Station.Oscillograph.cblCableUsilitelState := csDisconected;
+  Station.Oscillograph.cblCableUsilitelConnectedTo := csDisconected;
+
   Station.WaveMeter.Int := 3;
   Station.WaveMeter.Float := 9;
 

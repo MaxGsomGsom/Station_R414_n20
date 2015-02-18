@@ -300,6 +300,25 @@ end;
    constructor Create;  override;
   end;
 
+
+               type TTaskSingleCheckSubTask25 = class (TSubTask)
+  public
+   function CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean; override;
+   constructor Create;  override;
+  end;
+
+               type TTaskSingleCheckSubTask26 = class (TSubTask)
+  public
+   function CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean; override;
+   constructor Create;  override;
+  end;
+
+
+               type TTaskSingleCheckSubTask27 = class (TSubTask)
+  public
+   function CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean; override;
+   constructor Create;  override;
+  end;
  {$ENDREGION}
 
 
@@ -685,7 +704,7 @@ uConstantsDM;
 
   Name:='Проверка работоспособности станции в режиме "Автономный контроль"';
 
-  SetLength(SubTasks, 24);
+  SetLength(SubTasks, 27);
 
   SubTasks[0]:= TTaskSingleCheckSubTask1.Create;
   SubTasks[1]:= TTaskSingleCheckSubTask2.Create;
@@ -711,7 +730,9 @@ uConstantsDM;
   SubTasks[21]:= TTaskSingleCheckSubTask22.Create;
   SubTasks[22]:= TTaskSingleCheckSubTask23.Create;
   SubTasks[23]:= TTaskSingleCheckSubTask24.Create;
-
+  SubTasks[24]:= TTaskSingleCheckSubTask25.Create;
+  SubTasks[25]:= TTaskSingleCheckSubTask26.Create;
+  SubTasks[26]:= TTaskSingleCheckSubTask27.Create;
 
 
   CurrentSubTask:=SubTasks[CurrentSubTaskNum];
@@ -993,7 +1014,7 @@ uConstantsDM;
 
         Name:='Подключить кабели на стойке 1500 Б';
         Text:='На стойке 1500 Б от разьема ВЫХОД СВЧ. отключить кабель, идущий к дуплексеру и подключить к нему кабель НАГРУЗКА. Проверить подключены ли соотвествующие кабели к разъемам ВЫХОД АК 1500 и ВЫХОД АК 1600.';
-        EventFormName:='1500 B';
+        EventFormName:='1500 Б';
         Time:= '';
    end;
 
@@ -1014,7 +1035,7 @@ uConstantsDM;
 
         Name:='Установить волны на передатчике 1500 Б';
         Text:='Установить рабочие волны передачи на стойке 1500 Б, используя вращающиеся переключатели';
-        EventFormName:='1500 B';
+        EventFormName:='1500 Б';
         Time:= '';
    end;
 
@@ -1037,7 +1058,7 @@ uConstantsDM;
 
         Name:='Подключить кабели к фильтру Ф-33 Б';
         Text:='На фильтре Ф-33 Б отключить от входа кабель, идущий к дуплексеру; подключить к входу кабель, идущий от разема стойки 1600 ВЫХОД АК 1600 другого полукомплекта (с красным наконечником) и кабель Ф33 Ш2';
-        EventFormName:='Дуплексер B';
+        EventFormName:='Дуплексер Б';
         Time:= '';
    end;
    
@@ -1059,7 +1080,7 @@ uConstantsDM;
 
         Name:='Установить волны на дуплексере Б';
         Text:='Установить рабочие волны передачи и приема на дуплексере Б, используя вращающиеся переключатели';
-        EventFormName:='Дуплексер B';
+        EventFormName:='Дуплексер Б';
         Time:= '';
    end;
 
@@ -1093,7 +1114,7 @@ uConstantsDM;
         Text:='Нажать на кнопки-лампы МД-О и 1610-О, подключить волномер к основному каналу, на волномере установить шкалу в соответствии с номерами волн гетеродина.' 
         + ' Нажать на кнопки-лампы МД-Р и 1610-Р, подключить волномер к резервному каналу, на волномере установить шкалу в соответствии с номерами волн гетеродина.'
         + 'Нажать на кнопки-лампы МД-О и 1610-О';
-        EventFormName:='1500 B';
+        EventFormName:='1500 Б';
         Time:= '';
 
 
@@ -1115,7 +1136,7 @@ uConstantsDM;
 
         Name:='На стойке 1500 Б сбросить аварию';
         Text:='Внутри стойки 1500 Б нажать на кнопку "СБРОС АВАРИИ", чтобы сбросить аварию, на передней панели тумблер "АВТОМАТИКА" перевести в положение "ВКЛ"';
-        EventFormName:='1500 B';
+        EventFormName:='1500 Б';
         Time:= '';
    end;
 
@@ -1135,7 +1156,7 @@ uConstantsDM;
 
         Name:='Включить высокое напряжение на стойке 1920 Б';
         Text:='Включить высокое напряжение одновременным нажатием кнопок ВЫСОКОЕ ВКЛ. и ТОК 5 МА на стойке 1920 Б';
-        EventFormName:='1920 B';
+        EventFormName:='1920 Б';
         Time:= '';
    end;
 
@@ -1155,7 +1176,7 @@ uConstantsDM;
 
         Name:='Сфазировать сигналы ЛБВ на стойке 1500 Б';
         Text:='На передней панели стойки 1500 Б переключатель режима установить в положение МОЩН.-РАСФАЗ. Тумблер МД-Р переключить в левое положение. Сфазировать сигналы ЛБВ путем вращения ручки ФАЗОВРАЩАТЕЛЬ.';
-        EventFormName:='1500 B';
+        EventFormName:='1500 Б';
         Time:= '';
    end;
 
@@ -1175,7 +1196,7 @@ uConstantsDM;
 
         Name:='Установить волны на приемнике 1600 Б';
         Text:='Установить рабочие волны приема на стойке 1600 Б, используя вращающиеся переключатели';
-        EventFormName:='1600 B';
+        EventFormName:='1600 Б';
         Time:= '';
    end;
 
@@ -1208,7 +1229,7 @@ uConstantsDM;
         Text:='Нажать на кнопки-лампы 1610-О, УПЧ-0 и ДМЧ-0, подключить волномер к основному каналу, на волномере установить шкалу в соответствии с номерами волн гетеродина.' 
         + ' Нажать на кнопки-лампы 1601-Р, УПЧ-Р, ДМЧ-Р, подключить волномер к резервному каналу, на волномере установить шкалу в соответствии с номерами волн гетеродина.'
         + 'Нажать на кнопки-лампы 1610-О, УПЧ-0 и ДМЧ-0';
-        EventFormName:='1600 B';
+        EventFormName:='1600 Б';
         Time:= '';
    end;
 
@@ -1228,14 +1249,14 @@ uConstantsDM;
 
         Name:='На стойке 1600 Б сбросить аварию';
         Text:='Внутри стойки 1600 Б нажать на кнопку "СБРОС АВАРИИ", чтобы сбросить аварию, на передней панели тумблер "АВТОМАТИКА" перевести в положение "ВКЛ"';
-        EventFormName:='1600 B';
+        EventFormName:='1600 Б';
         Time:= '';
    end;
 
       function TTaskSingleCheckSubTask23.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
    begin
 
-         if (True) then
+         if (Station.HalfSetA.Rack1600.stMoshnost = True) then
          begin
            Result:=true;
          end
@@ -1255,7 +1276,7 @@ uConstantsDM;
       function TTaskSingleCheckSubTask24.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
    begin
 
-         if (True) then
+         if (Station.HalfSetB.Rack1600.stMoshnost = True) then
          begin
            Result:=true;
          end
@@ -1267,9 +1288,297 @@ uConstantsDM;
 
         Name:='Проверить настройку на стойке 1600 Б';
         Text:='Убедиться в правильности настройки: безымянная кнопка лампа на стойке 1600 Б горит';
-        EventFormName:='1600 B';
+        EventFormName:='1600 Б';
         Time:= '';
    end;
+
+
+
+
+
+      //======================
+
+
+
+
+          function TTaskSingleCheckSubTask25.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
+   begin
+
+         if (Station.Oscillograph.cblCableUsilitelState = csConnectedAtPower) and (Station.Oscillograph.cblCabelSyncState = csConnectedAtSync) then
+         begin
+           Result:=true;
+         end
+         else Result:=false;
+   end;
+   constructor TTaskSingleCheckSubTask25.Create;
+   begin
+   inherited Create;
+
+        Name:='Проверка девиации: подключить провода к осциллографу';
+        Text:='На осциллографе подключить серый провод в левое нижнее гнездо Y, подключить чёрный провод в правое верхнее гнездо X';
+        EventFormName:='Осциллограф';
+        Time:= '';
+   end;
+
+
+
+
+       function TTaskSingleCheckSubTask26.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
+   begin
+
+         if (Station.HalfSetA.Rack1200Right.CableOscillographLineInput = csDisconected) and
+         (Station.HalfSetA.Rack1200Right.CableUzlovoiInput = csDisconected) and
+
+
+//         (Station.Oscillograph.swPowerType = 2) and
+//        (Station.Oscillograph.swVvsDel = 7) and
+//        (Station.Oscillograph.swHz = 2) and
+//        (Station.Oscillograph.swSyncType = 2) and
+//        (Station.Oscillograph.swPowerType = 2) and
+//        (Station.Oscillograph.butLevelPosition = butPositionUp) and
+//        (Station.Oscillograph.but1Khz = butPositionUp) and
+//        (Station.Oscillograph.swRazvertkaShortTune = 11) and
+//        (Station.Oscillograph.swCalibrator = 1) and
+
+        (Station.Oscillograph.cblCabelSyncState = csConnectedAtSync) and
+          (Station.Oscillograph.cblCableUsilitelState = csConnectedAtPower) and
+
+          (Station.Deviation.Rack1200A_PRD = stPassed) and (Station.Deviation.Rack1200A_PRM = stPassed)
+         then
+         begin
+           Result:=true;
+
+
+{$REGION ''}
+
+//  if (Station.HalfSetA.Rack1500.swPhaseMover <> 10) then
+//  begin
+//    AddAnalyseTuneError('1500(' + Litera + '): Расфазировка не устранена ');
+//  end;
+//  if (Station.HalfSetA.Rack1500.btnAutomatic <> butPositionRight) then
+//  begin
+//    AddAnalyseTuneError('1500(' + Litera + '): Автоматика не включена');
+//  end;
+//  if (Station.HalfSetA.Rack1500.swWave1610_0 <> Station.WaveTransmitA) then
+//  begin
+//    AddAnalyseTuneError('1500(' + Litera + '): Волна блока 1610 выставлена не верно');
+//  end;
+//  if (Station.HalfSetA.Rack1500.swWave1500 <> Station.WaveTransmitA) then
+//  begin
+//    AddAnalyseTuneError('1500(' + Litera + '): Волна блока 1500 выставлена не верно');
+//  end;
+//  if (Station.HalfSetA.Rack1500.swWave161_R <> Station.WaveTransmitA) then
+//  begin
+//    AddAnalyseTuneError('1500(' + Litera + '): Волна 1610-Р выставлена не верно');
+//  end;
+//  if (((Station.HalfSetA.Rack1500.SelectedMd <> smdMain) and (Station.HalfSetA.Rack1500.SelectedRetr <> sRetrMain)) and
+//  ((Station.HalfSetA.Rack1500.SelectedMd <> smdRetr) and (Station.HalfSetA.Rack1500.SelectedRetr <> sRetrReserv))) then
+//  begin
+//    AddAnalyseTuneError('1500(' + Litera + '): Не выбран передающий полукомплект оборудования');
+//  end;
+//  if (Station.HalfSetA.Rack1500.DropError <> True) then
+//  begin
+//    AddAnalyseTuneError('1500(' + Litera + '): Ошибка не сброшена');
+//  end;
+//  if (Station.HalfSetA.Rack1500.GeterodinTunedMain <> True) then
+//  begin
+//    AddAnalyseTuneError('1500(' + Litera + '): гетеродин освного полукомплекта не настроен');
+//  end;
+//  if (Station.HalfSetA.Rack1500.GeterodinTunedReserve <> True) then
+//  begin
+//    AddAnalyseTuneError('1500(' + Litera + '): гетеродин резервного полукомплекта не настроен');
+//  end;
+//  if (Station.HalfSetA.Rack1500.stCableLoad <> csConnectedAtRack1500Sh1) then
+//  begin
+//    AddAnalyseTuneError('1500(' + Litera + '): Кабель нагрузки болтается в воздухе');
+//  end;
+//  if (Station.HalfSetA.Rack1500.stCableSh1 <> csConnectedAtRack1500NoName) then
+//  begin
+//    AddAnalyseTuneError('1500(' + Litera + '): Кабель Ш1 подключен не верно');
+//  end;
+//  if (Station.HalfSetA.Rack1920.butPower <> butPositionUp) then
+//  begin
+//    AddAnalyseTuneError('1920(' + Litera + '): Питание на ЛБВ 1 не поступает');
+//  end;
+//  if (Station.HalfSetA.Rack1920.butPower2 <> butPositionUp) then
+//  begin
+//    AddAnalyseTuneError('1920(' + Litera + '): Питание на ЛБВ 2 не поступает');
+//  end;
+//  if (Station.HalfSetA.Rack1920.but1910 <> butPositionUp) then
+//  begin
+//    AddAnalyseTuneError('1920(' + Litera + '): Переключатель питания блока 1910 не включено');
+//  end;
+//  if (Station.HalfSetA.Rack1920.but1910A <> butPositionUp) then
+//  begin
+//    AddAnalyseTuneError('1920(' + Litera + '): Перключатель питания резервного блока 1910 не включен');
+//  end;
+//  if (Station.HalfSetA.Rack1920.but1930 <> butPositionUp) then
+//  begin
+//    AddAnalyseTuneError('1920(' + Litera + '): Перключатель питания блока 1930 не включен');
+//  end;
+//  if (Station.HalfSetA.Rack1920.but1960_1 <> butPositionUp) then
+//  begin
+//    AddAnalyseTuneError('1920(' + Litera + '): Перключатель питания блока 1960 не включен');
+//  end;
+//  if (Station.HalfSetA.Rack1920.butHighOn <> butPositionDown) then
+//  begin
+//    AddAnalyseTuneError('1920(' + Litera + '): Кнопка подачи питания на ЛБВ1 не нажата');
+//  end;
+//  if (Station.HalfSetA.Rack1920.butHighOn2 <> butPositionDown) then
+//  begin
+//    AddAnalyseTuneError('1920(' + Litera + '): Кнопка подачи питания на ЛБВ2 не нажата');
+//  end;
+//  if (Station.HalfSetA.Rack1920.butHighOff <> butPositionUp) then
+//  begin
+//    AddAnalyseTuneError('1920(' + Litera + '): Кнопка отключения питания ЛБВ 1 нажата');
+//  end;
+//  if (Station.HalfSetA.Rack1920.butHighOff2 <> butPositionUp) then
+//  begin
+//    AddAnalyseTuneError('1920(' + Litera + '): Кнопка отключения питания ЛБВ 2 нажата');
+//  end;
+//  if (Station.HalfSetA.Rack1920.butCurrent5MA <> butPositionDown) then
+//  begin
+//    AddAnalyseTuneError('1920(' + Litera + '): Кнопка подачи тока на ЛБВ 1 не нажата');
+//  end;
+//  if (Station.HalfSetA.Rack1920.butCurrent5MA2 <> butPositionDown) then
+//  begin
+//    AddAnalyseTuneError('1920(' + Litera + '): Кнопка подачи тока на ЛБВ 2 не нажата');
+//  end;
+//  if (not(Station.HalfSetA.Rack1920.stZamedleniePodano_LVB1)) then
+//  begin
+//    AddAnalyseTuneError('1920(' + Litera + '): Замедление на ЛБВ 1 не подано');
+//  end;
+//  if (not(Station.HalfSetA.Rack1920.stZamedleniePodano_LVB2)) then
+//  begin
+//    AddAnalyseTuneError('1920(' + Litera + '): Замедление на ЛБВ 2 не подано');
+//  end;
+//  if (not(Station.HalfSetA.Rack1920.stLBV1_TurnedOn)) then
+//  begin
+//    AddAnalyseTuneError('1920(' + Litera + '): ЛБВ 1 не включена');
+//  end;
+//  if (not(Station.HalfSetA.Rack1920.stLBV2_TurnedOn)) then
+//  begin
+//    AddAnalyseTuneError('1920(' + Litera + '): ЛБВ 2 не включена');
+//  end;
+//  if (Station.HalfSetA.Rack1600.GeterodinTunedMain <> True) then
+//  begin
+//    AddAnalyseTuneError('1600(' + Litera + '): основной гетеродин не настроен');
+//  end;
+//  if (Station.HalfSetA.Rack1600.GeterodinTunedReserve <> True) then
+//  begin
+//    AddAnalyseTuneError('1600(' + Litera + '): запасной гетеродин не настроен');
+//  end;
+//  if (Station.HalfSetA.Rack1600.butAutomatic <> butPositionLeft) then
+//  begin
+//    AddAnalyseTuneError('1600(' + Litera + '): Автоматика не включена');
+//  end;
+//  if (((Station.HalfSetA.Rack1600.SelectedMd <> smdMain) and (Station.HalfSetA.Rack1600.SelectedUpch <> sUpchMain) and (Station.HalfSetA.Rack1600.SelectedDmch <> sDmchMain)) and
+//  ((Station.HalfSetA.Rack1600.SelectedMd <> smdRetr) and (Station.HalfSetA.Rack1600.SelectedUpch <> sUpchReserve) and (Station.HalfSetA.Rack1600.SelectedDmch <> sDmchReserve))) then
+//  begin
+//    AddAnalyseTuneError('1600(' + Litera + '): Не выбран ни один из полукомплектов');
+//  end;
+//  if (Station.HalfSetA.Rack1600.wave1610_0 <> Station.WaveReceiveA) then
+//  begin
+//    AddAnalyseTuneError('1600(' + Litera + '): Волна на блоке 1610 выставлена не верно');
+//  end;
+//  if (Station.HalfSetA.Rack1600.wave1600 <> Station.WaveReceiveA) then
+//  begin
+//    AddAnalyseTuneError('1600(' + Litera + '): Волна на блоке 1600 выставлена не верно');
+//  end;
+//  if (Station.HalfSetA.Rack1600.wave1610_R <> Station.WaveReceiveA) then
+//  begin
+//    AddAnalyseTuneError('1600(' + Litera + '): Волна на блоке 1610-Р выставлена не верно');
+//  end;
+//  if (Station.HalfSetA.Rack1600.DropError <> True) then
+//  begin
+//    AddAnalyseTuneError('1600(' + Litera + '): Ошибка не сброшена');
+//  end;
+//  if (Station.HalfSetA.Rack1600.stMoshnost <> True) then
+//  begin
+//    AddAnalyseTuneError('1600(' + Litera + '): Нет мощности на входе блока 1600!');
+//  end;
+//  if (Station.HalfSetA.LittleNoisyAmplifier.swWave <> Station.WaveReceiveA) then
+//  begin
+//    AddAnalyseTuneError('Волна в МШУ(' + Litera + ') выставлена не верно');
+//  end;
+//  if ((Station.HalfSetA.LittleNoisyAmplifier.butNet <> butPositionUp) and (Station.HalfSetA.LittleNoisyAmplifier.butNet2 <> butPositionUp)) then
+//  begin
+//    AddAnalyseTuneError('МШУ (' + Litera + '): Переключатели включения основного или резервного блоков не включен');
+//  end;
+//  if (((Station.HalfSetA.Duplexer.cbSh1 <> csConnectedAtDuplexeLeft) and (Station.HalfSetA.Duplexer.cbSh2 <> csConnectedAtDuplexeRight)) and
+//    ((Station.HalfSetA.Duplexer.cbSh1 <> csConnectedAtDuplexeRight) and (Station.HalfSetA.Duplexer.cbSh2 <> csConnectedAtDuplexeLeft))) then
+//  begin
+//    AddAnalyseTuneError('Дуплексер (' + Litera + ') кабели соеденены не верно');
+//  end;
+//  if not(Station.IsPowerPanelPoweredOn) then
+//  begin
+//    AddAnalyseTuneError('Питание в щите подано не на все блоки(не верно)');
+//  end;
+//
+//  if strError <> '' then
+//    strError := 'Ошибки настройки полукомплекта (' + Litera + '): '+ strError;
+{$ENDREGION}
+
+         end
+         else Result:=false;
+   end;
+   constructor TTaskSingleCheckSubTask26.Create;
+   begin
+   inherited Create;
+
+        Name:='Проверить девиацию на стойке 1200 А ПРД';
+        Text:='На стойке 1200 А ПРД подключить чёрный провод к гнезду СИНХ. ОСЦИЛ., cерый провод подключить к гнезду ВХ. ПРМ. С помощью осциллографа на каждой из 2-х трубок проверить прохождение вызовов.'+
+        'На стойке 1200 А ПРД подключить серый провод в гнездо "Вых. ПРД". Аналогично проверить проверить прохождение вызовов.' +
+        'Отключить провода от стойки 1200.';
+
+        EventFormName:='1200 ПРД А';
+        Time:= '';
+   end;
+
+
+
+
+          function TTaskSingleCheckSubTask27.CheckSubTask(Sender: TObject; Station: TStation; ClientState: TClientState): Boolean;
+   begin
+
+         if (Station.HalfSetB.Rack1200Right.CableOscillographLineInput = csDisconected) and
+         (Station.HalfSetB.Rack1200Right.CableUzlovoiInput = csDisconected) and
+
+
+        (Station.Oscillograph.cblCabelSyncState = csConnectedAtSync) and
+          (Station.Oscillograph.cblCableUsilitelState = csConnectedAtPower) and
+
+          (Station.Deviation.Rack1200B_PRD = stPassed) and (Station.Deviation.Rack1200B_PRM = stPassed)
+         then
+         begin
+           Result:=true;
+
+
+         end
+         else Result:=false;
+   end;
+   constructor TTaskSingleCheckSubTask27.Create;
+   begin
+   inherited Create;
+
+        Name:='Проверить девиацию на стойке 1200 Б ПРД';
+        Text:='На стойке 1200 Б ПРД подключить чёрный провод к гнезду СИНХ. ОСЦИЛ., cерый провод подключить к гнезду ВХ. ПРМ. С помощью осциллографа на каждой из 2-х трубок проверить прохождение вызовов.'+
+        'На стойке 1200 Б ПРД подключить серый провод в гнездо "Вых. ПРД". Аналогично проверить проверить прохождение вызовов.' +
+        'Отключить провода от стойки 1200.';
+
+        EventFormName:='1200 ПРД Б';
+        Time:= '';
+   end;
+
+
+
+
+
+
+
+
+
+
 {$ENDREGION}
 
 

@@ -24,7 +24,8 @@ uses
   uTaskControllerDM,
   uStationStateDM,
   uButtonBackForm,
-  uAdditionalFormMethods;
+  uAdditionalFormMethods,
+  uHandsetForm;
 
 type
   TBlockOscillographForm = class(TForm)
@@ -96,12 +97,12 @@ type
     procedure imgCableGNDDisconnectedClick(Sender: TObject);
     procedure imgSpawnPowerClick(Sender: TObject);
     procedure imgSpawnSyncClick(Sender: TObject);
-    procedure Label1Click(Sender: TObject);
-    procedure Image6Click(Sender: TObject);
+    procedure Image7Click(Sender: TObject);
     procedure tmrMainTimer(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
 
     constructor Create(AOwner: TComponent; Station0: TStation; TaskController0: TTaskController); reintroduce;
+    procedure Image6Click(Sender: TObject);
 
 
 
@@ -124,6 +125,7 @@ var
   ButtonBackForm: TButtonBackForm;
   Station: TStation;
   TaskController: TTaskController;
+  Handset: THandsetForm;
 
 implementation
 
@@ -134,15 +136,15 @@ uses
   uEducationForm,
   uBlockPowerSupplyForm,
   uBlockRemoteControllerForm,
-  uRackP321Form,
-  uBlockOscillographMinForm,
-  uHandsetForm;
+  uRackP321Form;
 
 {$R *.dfm}
 
 constructor TBlockOscillographForm.Create(AOwner: TComponent; Station0: TStation; TaskController0: TTaskController);
 begin
   Inherited Create(AOwner);
+
+  Self.Caption:='Осциллограф';
   Station:=Station0;
   TaskController:=TaskController0;
   TaskController.Subscribe(self);
@@ -157,29 +159,31 @@ procedure TBlockOscillographForm.PaintOscilogram;
 
   procedure Deviation(PolukomplektCode: Byte);
   begin
-    PolukomplektCode := HandsetForm.Tag;
+    PolukomplektCode := Handset.Half;
     if CurDeviationID > 6 then
       Dec(CurDeviationID, 6);
     //=================A==============
     if PolukomplektCode = 1 then
     begin
       ilDeviationA.GetBitmap(CurDeviationID - 1, imgDeviation.Picture.Bitmap);
-      ilDeviationA.GetBitmap(CurDeviationID - 1, BlockOscillographMinForm.imgDeviation.Picture.Bitmap);
+      //ilDeviationA.GetBitmap(CurDeviationID - 1, BlockOscillographMinForm.imgDeviation.Picture.Bitmap);
     end;
     //=================B==============
     if PolukomplektCode = 2 then
     begin
       ilDeviationB.GetBitmap(CurDeviationID - 1, imgDeviation.Picture.Bitmap);
-      ilDeviationB.GetBitmap(CurDeviationID - 1, BlockOscillographMinForm.imgDeviation.Picture.Bitmap);
+      //ilDeviationB.GetBitmap(CurDeviationID - 1, BlockOscillographMinForm.imgDeviation.Picture.Bitmap);
     end;
     imgDeviation.Invalidate;
-    BlockOscillographMinForm.imgDeviation.Invalidate;
+    //BlockOscillographMinForm.imgDeviation.Invalidate;
     Inc(CurDeviationID, 1);
   end;
 
 begin
   //Проверка правильности настройки всех блоков станции
   if (Station.IsPolukomplektATuned) and (Station.IsPolukomplektBTuned) then
+  //if (True) then
+
   begin
     //Проверка правильности настроек осциллографа
     if  (Station.Oscillograph.swPowerType = 2) and
@@ -203,40 +207,40 @@ begin
         (Station.Oscillograph.cblCableUsilitelConnectedTo = csConnectedTo1200A2PRD) then
         begin
           Deviation(2);
-          stDeviation.Rack1200A_PRD := stPassed;
+          Station.Deviation.Rack1200A_PRD := stPassed;
         end;
         if (Station.Oscillograph.cblCabelSyncConnectedTo = csConnectedTo1200A2Sync) and
         (Station.Oscillograph.cblCableUsilitelConnectedTo = csConnectedTo1200A2PRM) then
         begin
           Deviation(1);
-          stDeviation.Rack1200A_PRM := stPassed;
+          Station.Deviation.Rack1200A_PRM := stPassed;
         end;
         //===========================1200B2 PRD==================================
         if (Station.Oscillograph.cblCabelSyncConnectedTo = csConnectedTo1200B2Sync) and
         (Station.Oscillograph.cblCableUsilitelConnectedTo = csConnectedTo1200B2PRD) then
         begin
           Deviation(2);
-          stDeviation.Rack1200B_PRD := stPassed;
+          Station.Deviation.Rack1200B_PRD := stPassed;
         end;
         if (Station.Oscillograph.cblCabelSyncConnectedTo = csConnectedTo1200B2Sync) and
         (Station.Oscillograph.cblCableUsilitelConnectedTo = csConnectedTo1200B2PRM) then
         begin
           Deviation(1);
-          stDeviation.Rack1200B_PRM := stPassed;
+          Station.Deviation.Rack1200B_PRM := stPassed;
         end;
         //===========================1200B1 PRD==================================
         if (Station.Oscillograph.cblCabelSyncConnectedTo = csConnectedTo1200A1Sync) and
         (Station.Oscillograph.cblCableUsilitelConnectedTo = csConnectedTo1200A1PRM) then
         begin
           Deviation(2);
-          stDeviation.Rack1200A_PRM := stPassed;
+          Station.Deviation.Rack1200A_PRM := stPassed;
         end;
         //===========================1200B2 PRD==================================
         if (Station.Oscillograph.cblCabelSyncConnectedTo = csConnectedTo1200B1Sync) and
         (Station.Oscillograph.cblCableUsilitelConnectedTo = csConnectedTo1200B1PRM) then
         begin
           Deviation(1);
-          stDeviation.Rack1200B_PRM := stPassed;
+          Station.Deviation.Rack1200B_PRM := stPassed;
         end;
       end
       else begin
@@ -336,7 +340,25 @@ end;
 
 procedure TBlockOscillographForm.Image6Click(Sender: TObject);
 begin
-  SpawnTrubka((Sender As TImage).Tag);
+  if not (Handset = nil) then
+  begin
+    Handset.Close;
+  end;
+
+  Handset := THandsetForm.Create(Self, 2, Station, TaskController);
+  Handset.Show;
+end;
+
+procedure TBlockOscillographForm.Image7Click(Sender: TObject);
+
+begin
+  if not (Handset = nil) then
+  begin
+    Handset.Close;
+  end;
+
+  Handset := THandsetForm.Create(Self, 1, Station, TaskController);
+  Handset.Show;
 end;
 
 procedure TBlockOscillographForm.imgbut1KhzClick(Sender: TObject);
@@ -354,8 +376,8 @@ begin
   Station.Oscillograph.cblCableUsilitelState := csDisconected;
 
   Reload;
-  if BlockOscillographMinForm.Showing then
-    BlockOscillographMinForm.Reload;
+  //if BlockOscillographMinForm.Showing then
+  //  BlockOscillographMinForm.Reload;
 end;
 
 procedure TBlockOscillographForm.imgCableGNDConnectedAtSyncClick(Sender: TObject);
@@ -363,8 +385,8 @@ begin
   Station.Oscillograph.cblCableUsilitelState := csDisconected;
 
   Reload;
-  if BlockOscillographMinForm.Showing then
-    BlockOscillographMinForm.Reload;
+  //if BlockOscillographMinForm.Showing then
+  //  BlockOscillographMinForm.Reload;
 end;
 
 procedure TBlockOscillographForm.imgCableGNDDisconnectedClick(Sender: TObject);
@@ -384,8 +406,8 @@ begin
   end;
 
   Reload;
-  if BlockOscillographMinForm.Showing then
-    BlockOscillographMinForm.Reload;
+  //if BlockOscillographMinForm.Showing then
+  //  BlockOscillographMinForm.Reload;
 end;
 
 procedure TBlockOscillographForm.imgCableSyncConnectedAtPowerClick(Sender: TObject);
@@ -393,8 +415,8 @@ begin
   Station.Oscillograph.cblCabelSyncState := csDisconected;
 
   Reload;
-  if BlockOscillographMinForm.Showing then
-    BlockOscillographMinForm.Reload;
+  //if BlockOscillographMinForm.Showing then
+  //  BlockOscillographMinForm.Reload;
 end;
 
 procedure TBlockOscillographForm.imgCableSyncConnectedAtSyncClick(Sender: TObject);
@@ -402,8 +424,8 @@ begin
   Station.Oscillograph.cblCabelSyncState := csDisconected;
 
   Reload;
-  if BlockOscillographMinForm.Showing then
-    BlockOscillographMinForm.Reload;
+  //if BlockOscillographMinForm.Showing then
+   // BlockOscillographMinForm.Reload;
 end;
 
 procedure TBlockOscillographForm.imgCableSyncDisconnectedClick(Sender: TObject);
@@ -423,8 +445,8 @@ begin
   end;
 
   Reload;
-  if BlockOscillographMinForm.Showing then
-    BlockOscillographMinForm.Reload;
+  //if BlockOscillographMinForm.Showing then
+  //  BlockOscillographMinForm.Reload;
 end;
 
 procedure TBlockOscillographForm.imgCalibratorMouseDown(Sender: TObject; Button: TMouseButton;
@@ -506,8 +528,8 @@ begin
   imgSpawnSync.Visible := False;
 
   Reload;
-  if BlockOscillographMinForm.Showing then
-    BlockOscillographMinForm.Reload;
+  //if BlockOscillographMinForm.Showing then
+  //  BlockOscillographMinForm.Reload;
 end;
 
 procedure TBlockOscillographForm.imgSpawnSyncClick(Sender: TObject);
@@ -525,8 +547,8 @@ begin
   imgSpawnSync.Visible := False;
 
   Reload;
-  if BlockOscillographMinForm.Showing then
-    BlockOscillographMinForm.Reload;
+  //if BlockOscillographMinForm.Showing then
+  //  BlockOscillographMinForm.Reload;
 end;
 
 procedure TBlockOscillographForm.imgSwVvsDelMouseDown(Sender: TObject; Button: TMouseButton;
@@ -562,13 +584,11 @@ begin
   Reload;
 end;
 
-procedure TBlockOscillographForm.Label1Click(Sender: TObject);
-begin
-  SpawnTrubka((Sender As TLabel).Tag);
-end;
+
 
 procedure TBlockOscillographForm.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
+ if not (Handset = nil) then Handset.Close;
   ReturnFromRack;
 end;
 
