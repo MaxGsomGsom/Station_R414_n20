@@ -68,7 +68,7 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="abstract virtual">
         <parameters>
-          <parameter name="Sender" type="TObject" />
+          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
           <retval type="Boolean" />
@@ -154,17 +154,26 @@
       <field name="TimeStart" type="TDateTime" visibility="public" />
       <field name="TimeEnd" type="TDateTime" visibility="public" />
       <field name="Name" type="string" visibility="public" />
+      <procedure name="LastCheck" visibility="public" procflags="virtual">
+      </procedure>
       <constructor name="Create" visibility="public">
         <parameters>
+          <parameter name="Station" type="TStation" />
+          <parameter name="ClientState" type="TClientState" />
         </parameters>
       </constructor>
       <field name="CurrentSubTask" type="TSubTask" visibility="public" />
       <field name="SubTasks" type=":TTask.:1" visibility="public" />
       <field name="CurrentSubTaskNum" type="Integer" visibility="public" />
+      <field name="Sender" type="TObject" visibility="public" />
+      <field name="Station" type="TStation" visibility="public" />
+      <field name="ClientState" type="TClientState" visibility="public" />
+      <field name="FullCheck" type="Boolean" visibility="public" />
     </members>
   </class>
   <class name="TTaskNone">
     <ancestor name="TTask" namespace="uTasks20">
+      <methodref name="LastCheck" visibility="public" procflags="virtual" />
       <methodref name="Create" visibility="public" procflags="constructor virtual" />
       <ancestor name="TObject" namespace="System">
         <methodref name="Create" visibility="public" procflags="constructor">
@@ -234,8 +243,12 @@
     <members>
       <constructor name="Create" visibility="public">
         <parameters>
+          <parameter name="Station" type="TStation" />
+          <parameter name="ClientState" type="TClientState" />
         </parameters>
       </constructor>
+      <procedure name="LastCheck" visibility="public" procflags="override">
+      </procedure>
     </members>
   </class>
   <class name="TTaskNoneSubTask1">
@@ -310,7 +323,7 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="Sender" type="TObject" />
+          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
           <retval type="Boolean" />
@@ -324,6 +337,7 @@
   </class>
   <class name="TTaskPowerOn">
     <ancestor name="TTask" namespace="uTasks20">
+      <methodref name="LastCheck" visibility="public" procflags="virtual" />
       <methodref name="Create" visibility="public" procflags="constructor virtual" />
       <ancestor name="TObject" namespace="System">
         <methodref name="Create" visibility="public" procflags="constructor">
@@ -393,8 +407,12 @@
     <members>
       <constructor name="Create" visibility="public">
         <parameters>
+          <parameter name="Station" type="TStation" />
+          <parameter name="ClientState" type="TClientState" />
         </parameters>
       </constructor>
+      <procedure name="LastCheck" visibility="public" procflags="override">
+      </procedure>
     </members>
   </class>
   <class name="TTaskPowerOnSubTask1">
@@ -469,7 +487,7 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="Sender" type="TObject" />
+          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
           <retval type="Boolean" />
@@ -553,7 +571,7 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="Sender" type="TObject" />
+          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
           <retval type="Boolean" />
@@ -637,7 +655,7 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="Sender" type="TObject" />
+          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
           <retval type="Boolean" />
@@ -721,7 +739,7 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="Sender" type="TObject" />
+          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
           <retval type="Boolean" />
@@ -805,7 +823,7 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="Sender" type="TObject" />
+          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
           <retval type="Boolean" />
@@ -815,6 +833,11 @@
         <parameters>
         </parameters>
       </constructor>
+      <field name="Conditions" visibility="public">
+        <array name="Conditions" visibility="public" low="0" high="3">
+          <element type="Boolean" />
+        </array>
+      </field>
     </members>
   </class>
   <class name="TTaskPowerOnSubTask6">
@@ -889,7 +912,7 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="Sender" type="TObject" />
+          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
           <retval type="Boolean" />
@@ -899,6 +922,11 @@
         <parameters>
         </parameters>
       </constructor>
+      <field name="Conditions" visibility="public">
+        <array name="Conditions" visibility="public" low="0" high="3">
+          <element type="Boolean" />
+        </array>
+      </field>
     </members>
   </class>
   <class name="TTaskPowerOnSubTask7">
@@ -973,7 +1001,7 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="Sender" type="TObject" />
+          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
           <retval type="Boolean" />
@@ -1057,7 +1085,7 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="Sender" type="TObject" />
+          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
           <retval type="Boolean" />
@@ -1141,7 +1169,7 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="Sender" type="TObject" />
+          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
           <retval type="Boolean" />
@@ -1225,7 +1253,7 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="Sender" type="TObject" />
+          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
           <retval type="Boolean" />
@@ -1309,7 +1337,7 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="Sender" type="TObject" />
+          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
           <retval type="Boolean" />
@@ -1393,7 +1421,7 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="Sender" type="TObject" />
+          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
           <retval type="Boolean" />
@@ -1477,7 +1505,7 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="Sender" type="TObject" />
+          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
           <retval type="Boolean" />
@@ -1491,6 +1519,7 @@
   </class>
   <class name="TTaskSingleCheck">
     <ancestor name="TTask" namespace="uTasks20">
+      <methodref name="LastCheck" visibility="public" procflags="virtual" />
       <methodref name="Create" visibility="public" procflags="constructor virtual" />
       <ancestor name="TObject" namespace="System">
         <methodref name="Create" visibility="public" procflags="constructor">
@@ -1560,8 +1589,12 @@
     <members>
       <constructor name="Create" visibility="public">
         <parameters>
+          <parameter name="Station" type="TStation" />
+          <parameter name="ClientState" type="TClientState" />
         </parameters>
       </constructor>
+      <procedure name="LastCheck" visibility="public" procflags="override">
+      </procedure>
     </members>
   </class>
   <class name="TTaskSingleCheckSubTask1">
@@ -1636,7 +1669,7 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="Sender" type="TObject" />
+          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
           <retval type="Boolean" />
@@ -1720,7 +1753,7 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="Sender" type="TObject" />
+          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
           <retval type="Boolean" />
@@ -1804,7 +1837,7 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="Sender" type="TObject" />
+          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
           <retval type="Boolean" />
@@ -1888,7 +1921,7 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="Sender" type="TObject" />
+          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
           <retval type="Boolean" />
@@ -1972,7 +2005,7 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="Sender" type="TObject" />
+          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
           <retval type="Boolean" />
@@ -2056,7 +2089,7 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="Sender" type="TObject" />
+          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
           <retval type="Boolean" />
@@ -2140,7 +2173,7 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="Sender" type="TObject" />
+          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
           <retval type="Boolean" />
@@ -2224,7 +2257,7 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="Sender" type="TObject" />
+          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
           <retval type="Boolean" />
@@ -2308,7 +2341,7 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="Sender" type="TObject" />
+          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
           <retval type="Boolean" />
@@ -2392,7 +2425,7 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="Sender" type="TObject" />
+          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
           <retval type="Boolean" />
@@ -2476,7 +2509,7 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="Sender" type="TObject" />
+          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
           <retval type="Boolean" />
@@ -2560,7 +2593,7 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="Sender" type="TObject" />
+          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
           <retval type="Boolean" />
@@ -2644,7 +2677,7 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="Sender" type="TObject" />
+          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
           <retval type="Boolean" />
@@ -2728,7 +2761,7 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="Sender" type="TObject" />
+          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
           <retval type="Boolean" />
@@ -2812,7 +2845,7 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="Sender" type="TObject" />
+          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
           <retval type="Boolean" />
@@ -2896,7 +2929,7 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="Sender" type="TObject" />
+          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
           <retval type="Boolean" />
@@ -2980,7 +3013,7 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="Sender" type="TObject" />
+          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
           <retval type="Boolean" />
@@ -3064,7 +3097,7 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="Sender" type="TObject" />
+          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
           <retval type="Boolean" />
@@ -3148,7 +3181,7 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="Sender" type="TObject" />
+          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
           <retval type="Boolean" />
@@ -3232,7 +3265,7 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="Sender" type="TObject" />
+          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
           <retval type="Boolean" />
@@ -3316,7 +3349,7 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="Sender" type="TObject" />
+          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
           <retval type="Boolean" />
@@ -3400,7 +3433,7 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="Sender" type="TObject" />
+          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
           <retval type="Boolean" />
@@ -3484,7 +3517,7 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="Sender" type="TObject" />
+          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
           <retval type="Boolean" />
@@ -3568,7 +3601,7 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="Sender" type="TObject" />
+          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
           <retval type="Boolean" />
@@ -3652,7 +3685,7 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="Sender" type="TObject" />
+          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
           <retval type="Boolean" />
@@ -3736,7 +3769,7 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="Sender" type="TObject" />
+          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
           <retval type="Boolean" />
@@ -3820,7 +3853,7 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="Sender" type="TObject" />
+          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
           <retval type="Boolean" />

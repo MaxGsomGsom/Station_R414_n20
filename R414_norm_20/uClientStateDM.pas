@@ -3,7 +3,8 @@ unit uClientStateDM;
 interface
 
 uses
-  uConstantsDM;
+  uConstantsDM,
+  uErrorKeeper;
 
 type TClientState = class
 
@@ -37,6 +38,8 @@ type TClientState = class
       const receiverWave: Integer): string;
 
   public
+    ErrorKepeer: TErrorKeeper;
+
     constructor Create(); reintroduce;
 
     function TrySetWaves(const WaveTA, WaveTB, WaveRA, WaveRB: Integer): string;
@@ -84,6 +87,7 @@ uses
   constructor TClientState.Create;
   begin
     //TaskID := ttPowerOn;
+    ErrorKepeer:= TErrorKeeper.Create;
   end;
 
   procedure TClientState.SetTaskID(const Value: TTaskType);

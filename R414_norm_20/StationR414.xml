@@ -1,9 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <namespace name="StationR414">
-  <devnotes>
-    /  FormsArr[idRack1600Aback] := Rack1600BForm;
-    /  FormsArr[idRack1600Bback] := Rack1600BForm;
-  </devnotes>
   <contains name="JConsts" />
   <contains name="ComConst" />
   <contains name="IdGlobalCore" />
@@ -16,14 +12,14 @@
   <contains name="IdStream" />
   <contains name="pnglang" />
   <contains name="DateUtils" />
+  <contains name="Consts" />
   <contains name="ComStrs" />
   <contains name="RTLConsts" />
   <contains name="SysConst" />
-  <contains name="Consts" />
+  <contains name="uCloseForm" />
   <contains name="MPlayer" />
   <contains name="SQLite3" />
   <contains name="SQLiteTable3" />
-  <contains name="uCloseForm" />
   <contains name="StdActnMenus" />
   <contains name="ThemedActnCtrls" />
   <contains name="ActnPopup" />
@@ -62,11 +58,6 @@
   <contains name="IdHash" />
   <contains name="IdCoder3to4" />
   <contains name="IdCoder" />
-  <contains name="uStatisticForm" />
-  <contains name="uAboutStationForm" />
-  <contains name="uPassWordForm" />
-  <contains name="uMainMenuForm" />
-  <contains name="uLoaderForm" />
   <contains name="IdIPAddress" />
   <contains name="IdTCPClient" />
   <contains name="IdSocks" />
@@ -86,7 +77,11 @@
   <contains name="IdBaseComponent" />
   <contains name="Generics.Collections" />
   <contains name="Generics.Defaults" />
-  <contains name="uHintForm" />
+  <contains name="uStatisticForm" />
+  <contains name="uAboutStationForm" />
+  <contains name="uPassWordForm" />
+  <contains name="uMainMenuForm" />
+  <contains name="uLoaderForm" />
   <contains name="TpcShrd" />
   <contains name="Imm" />
   <contains name="RichEdit" />
@@ -111,10 +106,11 @@
   <contains name="CommDlg" />
   <contains name="StdActns" />
   <contains name="CommCtrl" />
-  <contains name="ActiveX" />
   <contains name="Dwmapi" />
   <contains name="StdCtrls" />
+  <contains name="uHintForm" />
   <contains name="Messages" />
+  <contains name="ActiveX" />
   <contains name="ImageHlp" />
   <contains name="StrUtils" />
   <contains name="Math" />
@@ -181,6 +177,7 @@
   <contains name="SysUtils" />
   <contains name="Windows" />
   <contains name="Variants" />
+  <contains name="uErrorKeeper" />
   <contains name="uTasks20" />
   <contains name="uStationInitializer" />
   <contains name="uTaskControllerDM" />

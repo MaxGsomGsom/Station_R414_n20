@@ -118,6 +118,7 @@
           <retval type="string" />
         </parameters>
       </function>
+      <field name="ErrorKepeer" type="TErrorKeeper" visibility="public" />
       <constructor name="Create" visibility="public">
         <parameters>
         </parameters>

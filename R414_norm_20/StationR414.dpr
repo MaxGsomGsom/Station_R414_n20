@@ -59,7 +59,8 @@ uses
   uRandomMethods in 'uRandomMethods.pas',
   uTaskControllerDM in 'uTaskControllerDM.pas',
   uStationInitializer in 'uStationInitializer.pas',
-  uTasks20 in 'uTasks20.pas';
+  uTasks20 in 'uTasks20.pas',
+  uErrorKeeper in 'uErrorKeeper.pas';
 
 {$R *.res}
 

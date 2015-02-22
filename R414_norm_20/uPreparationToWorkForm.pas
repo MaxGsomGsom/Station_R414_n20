@@ -211,6 +211,7 @@ begin
     lstTaskChoice.Items.Add(strTaskTitle);
   end;
   lstTaskChoice.ItemIndex := 0;
+  NetWorker.ClientState.TaskID := TTaskType(lstTaskChoice.ItemIndex + 1);
   end
   else if (TWorkMode(cbbWorkMode.ItemIndex) = TWorkMode.wmExam) then
        

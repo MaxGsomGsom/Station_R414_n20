@@ -89,6 +89,11 @@
         </parameters>
       </function>
       <property name="Station" visibility="private" read="FStation" write="FStation" type="TStation" />
+      <field name="ErrorList" type="TList" visibility="public" />
+      <procedure name="ShowError" visibility="public">
+      </procedure>
+      <procedure name="ShowHelp" visibility="public">
+      </procedure>
       <procedure name="SetCurrentTask" visibility="public">
       </procedure>
       <procedure name="Subscribe" visibility="public">
@@ -140,6 +145,8 @@
       <field name="CurrentForm" type="TForm" visibility="public" />
       <field name="IsTaskComplete" type="Boolean" visibility="public" />
       <field name="ClientState" type="TClientState" visibility="public" />
+      <field name="ErrorMsg" type="string" visibility="public" />
+      <field name="HelpMsg" type="string" visibility="public" />
     </members>
   </class>
   <function name="GetNumberOfCallPassedThrough2ChannelMode" visibility="public">
