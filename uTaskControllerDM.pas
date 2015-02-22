@@ -60,6 +60,9 @@ type TTaskController = class
       property Station: TStation read FStation
                                  write FStation;
   public
+  ErrorList: TList;
+  procedure ShowError();
+  procedure ShowHelp();
     procedure SetCurrentTask();
     procedure Subscribe (CurForm0: TForm);
 
@@ -82,6 +85,8 @@ type TTaskController = class
     CurrentForm: TForm;
     IsTaskComplete: Boolean;
     ClientState: TClientState;
+    ErrorMsg: string;
+    HelpMsg: string;
     //Tasks: array of TTask;
 end;
 
@@ -134,6 +139,7 @@ begin
   IsTaskComplete:= false;
 
   self.ClientState:=ClientState;
+  ErrorMsg := '';
   //self.ClientState = ClientState;
   //Создать объекты Task в Tasks      SetLength(Tasks, 1);
       //Tasks[0] = TTaskNone.Create
@@ -181,14 +187,14 @@ function TTaskController.GetTaskTitle(TaskID: Integer): string;
 
     if Self.ClientState.WorkMode=TWorkMode.wmFree then
     begin
-          CurrentTask := TTaskNone.Create;
+          CurrentTask := TTaskNone.Create(self.Station,self.ClientState);
     end
     else if (Self.ClientState.WorkMode=TWorkMode.wmLearning) or (Self.ClientState.WorkMode=TWorkMode.wmTraining) then
     begin
         case Self.ClientState.TaskID of
-          ttPowerOn:  CurrentTask := TTaskPowerOn.Create;
-          ttCheckStationInStandaloneControlMode:  CurrentTask := TTaskSingleCheck.Create;
-        else   CurrentTask := TTaskNone.Create;
+          ttPowerOn:  CurrentTask := TTaskPowerOn.Create(self.Station,self.ClientState);
+          ttCheckStationInStandaloneControlMode:  CurrentTask := TTaskSingleCheck.Create(self.Station,self.ClientState);
+        else   CurrentTask := TTaskNone.Create(self.Station,self.ClientState);
         end;
     end;
     end;
@@ -208,8 +214,9 @@ function TTaskController.GetTaskTitle(TaskID: Integer): string;
           if (img is TImage) then
             (img as TImage).OnMouseUp:= self.CheckTask;
           end;
-            
-            
+
+              CheckTask(TImage.Create(CurForm0), TMouseButton.mbLeft, KeysToShiftState(0), 0,0);
+
      end;
 
 
@@ -236,7 +243,7 @@ function TTaskController.GetTaskTitle(TaskID: Integer): string;
 
          if (((Sender as TComponent).Owner as TForm).Caption=CurrentTask.SubTasks[CurrentTask.CurrentSubTaskNum].EventFormName) then
          begin
-             SubResult:=CurrentTask.SubTasks[CurrentTask.CurrentSubTaskNum].CheckSubTask(Sender, self.Station, self.ClientState);
+             SubResult:=CurrentTask.SubTasks[CurrentTask.CurrentSubTaskNum].CheckSubTask(CurrentTask.FullCheck, self.Station, self.ClientState);
          end;
 
          if SubResult then begin
@@ -245,10 +252,11 @@ function TTaskController.GetTaskTitle(TaskID: Integer): string;
 
           if (CurrentTask.CurrentSubTaskNum=Length(CurrentTask.SubTasks)-1) then
           begin
+            Self.CurrentTask.FullCheck:= True;
             self.FSubTaskComplete(nil);
             self.FTaskComplete(nil);
-            IsTaskComplete:=true;
-            CurrentTask.TimeEnd:=Time;
+
+
           end
           else
           begin
@@ -256,10 +264,33 @@ function TTaskController.GetTaskTitle(TaskID: Integer): string;
           CurrentTask.CurrentSubTask:= CurrentTask.SubTasks[CurrentTask.CurrentSubTaskNum];
           self.FSubTaskComplete(nil);
           self.FChangeText(nil);
+          ErrorMsg := '';
+          CheckTask(Sender0, TMouseButton.mbLeft, KeysToShiftState(0), 0,0);
           end;
           end;
           end;
   end;
+
+
+
+
+
+      procedure TTaskController.ShowError();
+      begin
+        MessageBox(HWND_TOP, PWideChar(ErrorMsg), 'Ошибка', MB_OK);
+      end;
+
+
+
+     procedure TTaskController.ShowHelp();
+     begin
+        MessageBox(HWND_TOP, PWideChar('Необходимо исправить следующие ошибки:' + #10#13 + #10#13 + ErrorMsg), 'Подсказка', MB_OK);
+      end;
+
+
+
+
+
 
   {$ENDREGION}  
 

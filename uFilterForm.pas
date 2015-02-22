@@ -91,7 +91,7 @@ begin
   ClientState:= ClientState1;
   TaskController:=TaskController1;
   SetStationWave(CLientState.TransmitterWaveA, CLientState.TransmitterWaveB, CLientState.ReceiverWaveA, CLientState.ReceiverWaveB);
-  SetCountHint(0);
+  SetCountHint(99);
   StartTimer;
   //Station:=Station0;
 end;
@@ -118,15 +118,16 @@ end;
 /// </summary>
 procedure TFilterForm.btnHelpClick(Sender: TObject);
 begin
-  if Station.WorkType = wtTrening then
-  begin
+  //if Station.WorkType = wtTrening then
+  //begin
     //HideHint;
-    DisplayHint;
-  end
-  else if Station.WorkType = wtLearn then
-  begin
-     ShowVideoHelpInLearningMode(GetNumberHelp(CurBlockSelected), False);
-  end
+  //  DisplayHint;
+  //end
+  //else if Station.WorkType = wtLearn then
+  //begin
+  //   ShowVideoHelpInLearningMode(GetNumberHelp(CurBlockSelected), False);
+  //end
+  TaskController.ShowHelp;
 end;
 
 /// <summary>
@@ -246,15 +247,20 @@ var
 Report: TReportForm;
 begin
   //if (TaskController.CurrentTask.IsComplete) then
-  if (TaskController.IsTaskComplete=True) then
-  begin
-  Report:=TReportForm.Create(Owner.Owner, TaskController);
-  Report.Show;
-  end
-  else  begin
+  if (TaskController.CurrentTask.FullCheck = False) then begin
   (Owner.Owner as TForm).Show;
+  (Owner as TStationR414Form).Close;
+  end
+  else
+  begin
+    TaskController.CurrentTask.LastCheck;
+    if (TaskController.IsTaskComplete=True) then
+      begin
+        Report:=TReportForm.Create(Owner.Owner, TaskController);
+        Report.Show;
+        (Owner as TStationR414Form).Close;
+      end
   end;
-    (Owner as TStationR414Form).Close;
 end;
 
 /// <summary>

@@ -201,6 +201,7 @@
 			<DCCReference Include="uTaskControllerDM.pas"/>
 			<DCCReference Include="uStationInitializer.pas"/>
 			<DCCReference Include="uTasks20.pas"/>
+			<DCCReference Include="uErrorKeeper.pas"/>
 			<None Include="ModelSupport_StationR414\default.txaPackage"/>
 			<None Include="ModelSupport_StationR414\default.txvpck"/>
 			<None Include="ModelSupport_StationR414\StationR414\default.txvpck"/>

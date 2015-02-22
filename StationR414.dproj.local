@@ -142,6 +142,7 @@
     <Transaction>2014.11.27 13:51:56.352.dfm,C:\Work\R414_norm_20\uAboutStationForm.dfm=</Transaction>
     <Transaction>2014.11.27 13:53:07.498.pas,C:\Work\R414_norm_20\uPassWordForm.pas=</Transaction>
     <Transaction>2014.11.27 13:53:07.498.dfm,C:\Work\R414_norm_20\uPassWordForm.dfm=</Transaction>
+    <Transaction>2015.02.19 15:40:44.376.pas,C:\Users\Max\Documents\RAD Studio\Projects\R414_norm_20\Unit1.pas=C:\Users\Max\Documents\RAD Studio\Projects\R414_norm_20\uErrorKeeper.pas</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="main.optset"/>
@@ -285,5 +286,6 @@
     <File Path="uTaskControllerDM.pas"/>
     <File Path="uStationInitializer.pas"/>
     <File Path="uTasks20.pas"/>
+    <File Path="uErrorKeeper.pas"/>
   </ProjectSortOrder>
 </BorlandProject>
