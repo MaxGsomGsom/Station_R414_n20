@@ -2329,21 +2329,21 @@
           <parameter name="TaskController0" type="TTaskController" />
         </parameters>
       </constructor>
+      <field name="Skrol" type="Integer" visibility="public" />
+      <field name="CurFormID" type="Integer" visibility="public" />
+      <field name="Station" type="TStation" visibility="public" />
+      <field name="ButtonBackForm" type="TButtonBackForm" visibility="public" />
+      <field name="TaskController" type="TTaskController" visibility="public" />
+      <const name="idGeneratorA" visibility="public" type="Integer">
+        <value>
+          $1
+        </value>
+      </const>
+      <const name="idGeneratorB" visibility="public" type="Integer">
+        <value>
+          $2
+        </value>
+      </const>
     </members>
   </class>
-  <variable name="Skrol" type="Integer" />
-  <variable name="CurFormID" type="Integer" />
-  <variable name="Station" type="TStation" />
-  <variable name="ButtonBackForm" type="TButtonBackForm" />
-  <variable name="TaskController" type="TTaskController" />
-  <const name="idGeneratorA" type="Integer">
-    <value>
-      $1
-    </value>
-  </const>
-  <const name="idGeneratorB" type="Integer">
-    <value>
-      $2
-    </value>
-  </const>
 </namespace>

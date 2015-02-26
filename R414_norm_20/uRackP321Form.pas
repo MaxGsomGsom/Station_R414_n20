@@ -135,13 +135,9 @@ type
     procedure FreeCallInit;
     procedure PaintDisplay;
     constructor Create(AOwner: TComponent; Half:Integer; Station0: TStation; TaskController0: TTaskController); reintroduce;
-  end;
 
-  //Функция возвращает строку расшифровки ошибки неверной настройки полукомплекта А или Б
-  //Используется при попытке снять показания с осциллографа и p-321
-  function AnalyseTune(Rack1500: pRack1500; Rack1920: pRack1920;
-    Rack1600: pRack1600; Mshu: pLittleNoisyAmplifier;
-    Duplexer: pDuplexer; Litera: Char): string;
+
+
 
 var
   //RackP321Form: TRackP321Form;
@@ -150,7 +146,7 @@ var
    arrNepGen: array [1..11] of TImage;
    arrNepGenYY: array [1..11] of TImage;
    arrFrequency: array [1..24] of TImage;
-   P321FreeCall: Boolean = False;
+   P321FreeCall: Boolean;
    CurFormId: integer;
    Station: TStation;
   ButtonBackForm: TButtonBackForm;
@@ -159,6 +155,13 @@ var
     idP321A=1;
   idP321B=2;
   idP321C=3;
+  end;
+
+  //Функция возвращает строку расшифровки ошибки неверной настройки полукомплекта А или Б
+  //Используется при попытке снять показания с осциллографа и p-321
+  function AnalyseTune(Rack1500: pRack1500; Rack1920: pRack1920;
+    Rack1600: pRack1600; Mshu: pLittleNoisyAmplifier;
+    Duplexer: pDuplexer; Litera: Char): string;
 
 implementation
 
@@ -176,6 +179,7 @@ constructor TRackP321Form.Create(AOwner: TComponent; Half:Integer; Station0: TSt
 begin
   Inherited Create(AOwner);
 //  idP321A:=1;
+P321FreeCall:= False;
 //  idP321B:=2;
 //  idP321C:=3;
 if (Half=1) then begin Self.Caption:='П-321 А'; end;
@@ -471,9 +475,9 @@ var
     imgDisplay.Invalidate;
     if imgDisplay.Picture <> nil then
     begin
-      P321DisplayForm.imgDisplay.Picture := imgDisplay.Picture;
-      P321DisplayForm.imgDisplay.Invalidate;
-      RackP321MinForm.imgDisplay.Picture := imgDisplay.Picture;
+      imgDisplay.Picture := imgDisplay.Picture;
+      imgDisplay.Invalidate;
+      imgDisplay.Picture := imgDisplay.Picture;
     end
     else
     begin
@@ -730,7 +734,7 @@ end;
 
 procedure TRackP321Form.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
 begin
-  CheckFormBeforeClosing(CanClose);
+  TaskController.CheckFormBeforeClosing(CanClose);
 end;
 
 procedure TRackP321Form.FormCreate(Sender: TObject);

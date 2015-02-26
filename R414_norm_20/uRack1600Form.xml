@@ -2660,17 +2660,17 @@
           <parameter name="TaskController0" type="TTaskController" />
         </parameters>
       </constructor>
+      <field name="Rack1600back" type="TRack1600BForm" visibility="public" />
+      <const name="idRack1600A" visibility="public" type="Integer">
+        <value>
+          $1
+        </value>
+      </const>
+      <const name="idRack1600B" visibility="public" type="Integer">
+        <value>
+          $2
+        </value>
+      </const>
     </members>
   </class>
-  <variable name="Rack1600back" type="TRack1600BForm" />
-  <const name="idRack1600A" type="Integer">
-    <value>
-      $1
-    </value>
-  </const>
-  <const name="idRack1600B" type="Integer">
-    <value>
-      $2
-    </value>
-  </const>
 </namespace>

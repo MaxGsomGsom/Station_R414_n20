@@ -2497,32 +2497,44 @@
           <parameter name="TaskController0" type="TTaskController" />
         </parameters>
       </constructor>
+      <field name="bmp" type="TBitmap" visibility="public" />
+      <field name="arrNepGen" visibility="public">
+        <array name="arrNepGen" visibility="public" low="1" high="11">
+          <element type="TImage" />
+        </array>
+      </field>
+      <field name="arrNepGenYY" visibility="public">
+        <array name="arrNepGenYY" visibility="public" low="1" high="11">
+          <element type="TImage" />
+        </array>
+      </field>
+      <field name="arrFrequency" visibility="public">
+        <array name="arrFrequency" visibility="public" low="1" high="24">
+          <element type="TImage" />
+        </array>
+      </field>
+      <field name="P321FreeCall" type="Boolean" visibility="public" />
+      <field name="CurFormId" type="Integer" visibility="public" />
+      <field name="Station" type="TStation" visibility="public" />
+      <field name="ButtonBackForm" type="TButtonBackForm" visibility="public" />
+      <field name="TaskController" type="TTaskController" visibility="public" />
+      <const name="idP321A" visibility="public" type="Integer">
+        <value>
+          $1
+        </value>
+      </const>
+      <const name="idP321B" visibility="public" type="Integer">
+        <value>
+          $2
+        </value>
+      </const>
+      <const name="idP321C" visibility="public" type="Integer">
+        <value>
+          $3
+        </value>
+      </const>
     </members>
   </class>
-  <variable name="bmp" type="TBitmap" />
-  <variable name="arrNepGen" />
-  <variable name="arrNepGenYY" />
-  <variable name="arrFrequency" />
-  <variable name="P321FreeCall" type="Boolean" visibility="public" />
-  <variable name="CurFormId" type="Integer" />
-  <variable name="Station" type="TStation" />
-  <variable name="ButtonBackForm" type="TButtonBackForm" />
-  <variable name="TaskController" type="TTaskController" />
-  <const name="idP321A" type="Integer">
-    <value>
-      $1
-    </value>
-  </const>
-  <const name="idP321B" type="Integer">
-    <value>
-      $2
-    </value>
-  </const>
-  <const name="idP321C" type="Integer">
-    <value>
-      $3
-    </value>
-  </const>
   <function name="AnalyseTune" visibility="public">
     <parameters>
       <parameter name="Rack1500" type="pRack1500" />

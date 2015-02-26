@@ -2754,15 +2754,27 @@
           <parameter name="TaskController0" type="TTaskController" />
         </parameters>
       </constructor>
+      <field name="l3" type="Integer" visibility="public" />
+      <field name="l4" type="Integer" visibility="public" />
+      <field name="l6" type="Integer" visibility="public" />
+      <field name="half" type="Integer" visibility="public" />
+      <field name="imgsRed" visibility="public">
+        <array name="imgsRed" visibility="public" low="1" high="11">
+          <element />
+        </array>
+      </field>
+      <field name="imgsBlack" visibility="public">
+        <array name="imgsBlack" visibility="public" low="1" high="11">
+          <element />
+        </array>
+      </field>
+      <field name="imgsModeControl" visibility="public">
+        <array name="imgsModeControl" visibility="public" low="1" high="10">
+          <element />
+        </array>
+      </field>
+      <field name="SelectedCable1500" type="Byte" visibility="public" />
+      <field name="Rack1500back" type="TRack1500bForm" visibility="public" />
     </members>
   </class>
-  <variable name="l3" type="Integer" />
-  <variable name="l4" type="Integer" />
-  <variable name="l6" type="Integer" />
-  <variable name="half" type="Integer" />
-  <variable name="imgsRed" />
-  <variable name="imgsBlack" />
-  <variable name="imgsModeControl" />
-  <variable name="SelectedCable1500" type="Byte" visibility="public" />
-  <variable name="Rack1500back" type="TRack1500bForm" />
 </namespace>

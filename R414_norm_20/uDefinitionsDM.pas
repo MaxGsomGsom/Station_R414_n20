@@ -390,7 +390,7 @@ begin
     and (Station.WorkMode = mdExternalView) then
     ShowMessage(Task1Description);
 
-  LoadSubject;                          // Загрузить список заданий
+ // LoadSubject;                          // Загрузить список заданий
   //LoadInitialState;                     // Инициализировать стойки
   ClearPassedTasksLists;                // Очистить списки пройденных заданий
 
@@ -775,7 +775,7 @@ begin
 
   if ShowHint then
   begin
-    HintStr := GetNextTaskString;
+    //HintStr := GetNextTaskString;
 
     if HintStr <> '' then
     begin
@@ -867,7 +867,7 @@ begin
           HelpTaskId := 3;
       end;
     end;
-    VideoHelpForm.PlayVideo(IntToStr(Station.WorkMode) + '\' + IntToStr(HelpTaskId) + '.avi');
+    //VideoHelpForm.PlayVideo(IntToStr(Station.WorkMode) + '\' + IntToStr(HelpTaskId) + '.avi');
   end;
 end;
 
@@ -943,18 +943,18 @@ begin
 //    end;
 //  end;
 //StationR414Form.CheckProgress;
-  JmpFormId := NotSelected;
-
-  if Station.WorkMode = mdReceiveAndTransmitTracksSetup then
-  begin
-    case CurFormId of
-      idRack1500A, idRack1500B, idRack1600A, idRack1600B:
-        begin
-          WaveMeterPanelForm.Close;
-          WaveMeterPanelForm.Tag := 0;
-        end;
-    end;
-  end;
+//  JmpFormId := NotSelected;
+//
+//  if Station.WorkMode = mdReceiveAndTransmitTracksSetup then
+//  begin
+//    case CurFormId of
+//      idRack1500A, idRack1500B, idRack1600A, idRack1600B:
+//        begin
+//          WaveMeterPanelForm.Close;
+//          WaveMeterPanelForm.Tag := 0;
+//        end;
+//    end;
+//  end;
 
 //  if Station.WorkMode = mdWorkWithLowFrequency then
 //  begin

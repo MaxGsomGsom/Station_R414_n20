@@ -227,16 +227,17 @@ type
     procedure Reload;
     procedure MoveToRight();
     constructor Create(AOwner: TComponent; Half:Integer; Station0: TStation; TaskController0: TTaskController); reintroduce;
-  end;
+
 
 var
   l3, l4, l6, half: Integer;
   imgsRed: array [1..11] of ^TImage;
   imgsBlack: array [1..11] of ^TImage;
   imgsModeControl: array [1..10] of ^TImage;
-  SelectedCable1500: Byte = NotSelected;
+  SelectedCable1500: Byte;
   Rack1500back: TRack1500bForm;
 
+  end;
 
 
 implementation
@@ -267,6 +268,7 @@ idRack1500B=2;
 constructor TRack1500Form.Create(AOwner: TComponent; Half:Integer; Station0: TStation; TaskController0: TTaskController);
 begin
   Inherited Create(AOwner);
+  SelectedCable1500:= NotSelected  ;
   Station:=Station0;
   CurFormId:=Half;
   if (Half=1) then begin Self.Caption:='1500 А'; end
@@ -330,7 +332,7 @@ end;
 
 procedure TRack1500Form.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
 begin
-  CheckFormBeforeClosing(CanClose);
+  TaskController.CheckFormBeforeClosing(CanClose);
 end;
 
 procedure TRack1500Form.FormCreate(Sender: TObject);

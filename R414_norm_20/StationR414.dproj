@@ -130,12 +130,6 @@
 			<DCCReference Include="uRack1500MinForm.pas">
 				<Form>Rack1500MinForm</Form>
 			</DCCReference>
-			<DCCReference Include="uUsersForm.pas">
-				<Form>UsersForm</Form>
-			</DCCReference>
-			<DCCReference Include="uRegistrationForm.pas">
-				<Form>RegistrationForm</Form>
-			</DCCReference>
 			<DCCReference Include="uHandsetForm.pas">
 				<Form>HandsetForm</Form>
 			</DCCReference>

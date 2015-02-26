@@ -123,7 +123,7 @@ begin
   try
     //Присвоение начальных значений объекту "станция"
     Nick := edtNick.Text;
-    Station.Nick := Nick;
+    //Station.Nick := Nick;
 
     WaveTranm := StrToInt(edtTransmitWaveA.Text);
     WaveReceiv := StrToInt(edtReceiveWaveA.Text);
@@ -131,8 +131,8 @@ begin
       Exit;
 
     //Установить волны приёма/передачи полукомплекта А
-    Station.WaveTransmitA := WaveTranm;
-    Station.WaveReceiveA := WaveReceiv;
+   // Station.WaveTransmitA := WaveTranm;
+    //tation.WaveReceiveA := WaveReceiv;
 
 
     WaveTranm := StrToInt(edtTransmitWaveB.Text);
@@ -141,8 +141,8 @@ begin
       Exit;
 
     //Установить волны приёма/передачи полукомплекта Б
-    Station.WaveTransmitB := WaveTranm;
-    Station.WaveReceiveB := WaveReceiv;
+    //Station.WaveTransmitB := WaveTranm;
+    //Station.WaveReceiveB := WaveReceiv;
   except
     Application.MessageBox('В качестве значения волны должно быть указано положительное число в диапазоне от 1 до 46!',
     PChar(PName), MB_OK + MB_ICONWARNING);
@@ -151,8 +151,8 @@ begin
 
   //Очистим задания
   //StationR414Form.lvTask.Clear;
-  Station.WorkMode := cmbTaskNumber.ItemIndex + 1;
-  Station.WorkType := cbbTaskType.ItemIndex + 1;
+  //Station.WorkMode := cmbTaskNumber.ItemIndex + 1;
+  //Station.WorkType := cbbTaskType.ItemIndex + 1;
   CurBlockSelected := 255;
   Initialise;
   //StationR414Form.TuneTaskList;
@@ -167,7 +167,7 @@ end;
 
 procedure TEducationForm.cbbTaskTypeChange(Sender: TObject);
 begin
-  Station.WorkType := cbbTaskType.ItemIndex + 1;
+  //Station.WorkType := cbbTaskType.ItemIndex + 1;
   SetCurUserAccessLevel;
 end;
 
@@ -190,7 +190,7 @@ end;
 
 procedure TEducationForm.cmbTaskNumberChange(Sender: TObject);
 begin
-  Station.WorkMode := cmbTaskNumber.ItemIndex + 1;
+  //Station.WorkMode := cmbTaskNumber.ItemIndex + 1;
 end;
 
 
@@ -203,7 +203,7 @@ end;
 procedure TEducationForm.FormCreate(Sender: TObject);
 begin
   cmbTaskNumber.ItemIndex := 0;
-  Station.WorkMode := 1;
+  //Station.WorkMode := 1;
 
   arrTaskNumber[1] := '1.Проведения внешнего осмотра';
   arrTaskNumber[2] := '2.Установка органов управления в исходное положение';

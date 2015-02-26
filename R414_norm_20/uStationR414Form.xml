@@ -2753,6 +2753,8 @@
           <parameter name="IdEnum" type="TRacksEnum" />
         </parameters>
       </procedure>
+      <procedure name="ReloadProgressExam" visibility="public">
+      </procedure>
       <constructor name="Create" visibility="public">
         <parameters>
           <parameter name="Sender1" type="TComponent" />
@@ -2761,14 +2763,16 @@
           <parameter name="ClientState1" type="TClientState" />
         </parameters>
       </constructor>
+      <field name="BgImages" visibility="public">
+        <array name="BgImages" visibility="public" low="0" high="27">
+          <element />
+        </array>
+      </field>
+      <field name="lvTaskSelectedId" type="Byte" visibility="public" />
+      <field name="TaskController" type="TTaskController" visibility="public" />
+      <field name="CLientState" type="TClientState" visibility="public" />
+      <field name="Station" type="TStation" visibility="public" />
     </members>
   </class>
-  <variable name="BgImages" />
   <variable name="CloseStationR414FormFlag" type="Byte" />
-  <variable name="lvTaskSelectedId" type="Byte" />
-  <variable name="TaskController" type="TTaskController" />
-  <variable name="CLientState" type="TClientState" />
-  <variable name="Station" type="TStation" />
-  <procedure name="ReloadProgressExam" visibility="public">
-  </procedure>
 </namespace>

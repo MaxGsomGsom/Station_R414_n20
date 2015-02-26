@@ -19,10 +19,11 @@ type
     { Private declarations }
   public
     { Public declarations }
-  end;
 
+ end;
 var
   RackP321MinForm: TRackP321MinForm;
+
 
 implementation
 

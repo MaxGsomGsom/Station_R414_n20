@@ -14,7 +14,8 @@ uses
   StdCtrls,
   ExtCtrls,
   uAdditionalFormMethods,
-  uTasks20;
+  uTasks20,
+  uErrorKeeper;
 
 
 
@@ -60,9 +61,8 @@ type TTaskController = class
       property Station: TStation read FStation
                                  write FStation;
   public
-  ErrorList: TList;
-  procedure ShowError();
-  procedure ShowHelp();
+
+
     procedure SetCurrentTask();
     procedure Subscribe (CurForm0: TForm);
 
@@ -83,27 +83,25 @@ type TTaskController = class
     var
     CurrentTask : TTask;
     CurrentForm: TForm;
-    IsTaskComplete: Boolean;
     ClientState: TClientState;
-    ErrorMsg: string;
-    HelpMsg: string;
+    ErrorKeeper: TErrorKeeper;
     //Tasks: array of TTask;
-end;
+
+
 
 
 
 
 {$REGION 'Старые методы'}
 
-  function AnalyseStation(CurBlockId: Byte = NotSelected;
-                          WorkMode: Byte = NotSelected): string;
-  function ChangeEvent: Byte;
+
 
   function GetNumberOfCallPassedThrough2ChannelMode: Byte;
   function GetNumberOfCallPassedThrough4ChannelMode: Byte;
   function GetNumberOfTunedChannelBlocksA: Byte;
   function GetNumberOfTunedChannelBlocksB: Byte;
   function GetNumberOfTunedChannelBlocks: Byte;
+
   function GetNextTaskString: string;
   function GetNumberOfCallPassedThrough: Byte;
   function GetNotPassedTaskId: Byte;
@@ -114,13 +112,20 @@ end;
 
   function IsZaniatiePassed: boolean;
 
-  procedure AddError(ErrorInRackCode: Byte = NotSelected;
-    ErrorDescription: string = '');
-  procedure CheckFormBeforeClosing(var CanClose: Boolean);
+
+
   procedure CheckFormBeforeClosingInExamMode(var CanClose: Boolean);
   procedure MadeMistake(MistakeId: Integer);
   procedure LoadSubject;
+  function AnalyseStation(CurBlockId: Byte = NotSelected;
+                          WorkMode: Byte = NotSelected): string;
+                 procedure CheckFormBeforeClosing(var CanClose: Boolean);
+                 function ChangeEvent: Byte;
+                 procedure AddError(ErrorInRackCode: Byte = NotSelected;
+    ErrorDescription: string = '');
 {$ENDREGION}  
+
+ end;
 
 implementation
 
@@ -136,10 +141,10 @@ constructor TTaskController.Create(Station: TStation; ClientState: TClientState)
 begin
   Inherited Create;
   Self.Station := Station;
-  IsTaskComplete:= false;
+ErrorKeeper := TErrorKeeper.Create;
+        ErrorKeeper.ErrorMsg := '';
 
   self.ClientState:=ClientState;
-  ErrorMsg := '';
   //self.ClientState = ClientState;
   //Создать объекты Task в Tasks      SetLength(Tasks, 1);
       //Tasks[0] = TTaskNone.Create
@@ -187,14 +192,14 @@ function TTaskController.GetTaskTitle(TaskID: Integer): string;
 
     if Self.ClientState.WorkMode=TWorkMode.wmFree then
     begin
-          CurrentTask := TTaskNone.Create(self.Station,self.ClientState);
+          CurrentTask := TTaskNone.Create(self.Station,self.ClientState, self.ErrorKeeper);
     end
     else if (Self.ClientState.WorkMode=TWorkMode.wmLearning) or (Self.ClientState.WorkMode=TWorkMode.wmTraining) then
     begin
         case Self.ClientState.TaskID of
-          ttPowerOn:  CurrentTask := TTaskPowerOn.Create(self.Station,self.ClientState);
-          ttCheckStationInStandaloneControlMode:  CurrentTask := TTaskSingleCheck.Create(self.Station,self.ClientState);
-        else   CurrentTask := TTaskNone.Create(self.Station,self.ClientState);
+          ttPowerOn:  CurrentTask := TTaskPowerOn.Create(self.Station,self.ClientState,self.ErrorKeeper);
+          ttCheckStationInStandaloneControlMode:  CurrentTask := TTaskSingleCheck.Create(self.Station,self.ClientState,Self.ErrorKeeper);
+        else   CurrentTask := TTaskNone.Create(self.Station,self.ClientState,self.ErrorKeeper);
         end;
     end;
     end;
@@ -235,7 +240,7 @@ function TTaskController.GetTaskTitle(TaskID: Integer): string;
   SubResult: Boolean;
   Sender: TObject;
   begin
-          if (IsTaskComplete=false) then
+          if (CurrentTask.IsTaskComplete=false) then
              begin
 
         Sender:=Sender0 as TControl;
@@ -243,7 +248,7 @@ function TTaskController.GetTaskTitle(TaskID: Integer): string;
 
          if (((Sender as TComponent).Owner as TForm).Caption=CurrentTask.SubTasks[CurrentTask.CurrentSubTaskNum].EventFormName) then
          begin
-             SubResult:=CurrentTask.SubTasks[CurrentTask.CurrentSubTaskNum].CheckSubTask(CurrentTask.FullCheck, self.Station, self.ClientState);
+             SubResult:=CurrentTask.SubTasks[CurrentTask.CurrentSubTaskNum].CheckSubTask(CurrentTask.FullCheck, self.Station, self.ClientState, self.ErrorKeeper);
          end;
 
          if SubResult then begin
@@ -264,28 +269,13 @@ function TTaskController.GetTaskTitle(TaskID: Integer): string;
           CurrentTask.CurrentSubTask:= CurrentTask.SubTasks[CurrentTask.CurrentSubTaskNum];
           self.FSubTaskComplete(nil);
           self.FChangeText(nil);
-          ErrorMsg := '';
+          ErrorKeeper.ErrorMsg := '';
           CheckTask(Sender0, TMouseButton.mbLeft, KeysToShiftState(0), 0,0);
           end;
           end;
           end;
   end;
 
-
-
-
-
-      procedure TTaskController.ShowError();
-      begin
-        MessageBox(HWND_TOP, PWideChar(ErrorMsg), 'Ошибка', MB_OK);
-      end;
-
-
-
-     procedure TTaskController.ShowHelp();
-     begin
-        MessageBox(HWND_TOP, PWideChar('Необходимо исправить следующие ошибки:' + #10#13 + #10#13 + ErrorMsg), 'Подсказка', MB_OK);
-      end;
 
 
 
@@ -302,7 +292,7 @@ function TTaskController.GetTaskTitle(TaskID: Integer): string;
 { Далее следуют старые функции, которые должны быть реализованы в классах }
 {*************************************************************************}
 
-function GetNumberOfCallPassedThrough2ChannelMode: Byte;
+function TTaskController.GetNumberOfCallPassedThrough2ChannelMode: Byte;
 var
   PassedCallCount, btA: Byte;
 begin
@@ -315,7 +305,7 @@ begin
   Result := PassedCallCount;
 end;
 
-function GetNumberOfCallPassedThrough4ChannelMode;
+function TTaskController.GetNumberOfCallPassedThrough4ChannelMode;
 var
   PassedCallCount, btA: Byte;
 begin
@@ -329,7 +319,7 @@ begin
   Result := PassedCallCount;
 end;
 
-function GetNumberOfTunedChannelBlocks: Byte;
+function TTaskController.GetNumberOfTunedChannelBlocks: Byte;
 const
   OffsetTuneValue = 6;
 var
@@ -484,7 +474,7 @@ begin
   Result := btResult;
 end;
 
-function GetNumberOfTunedChannelBlocksA: Byte;
+function TTaskController.GetNumberOfTunedChannelBlocksA: Byte;
 const
   OffsetTuneValue = 6;
 var
@@ -536,7 +526,7 @@ begin
   Result := btResult;
 end;
 
-function GetNumberOfTunedChannelBlocksB: Byte;
+function TTaskController.GetNumberOfTunedChannelBlocksB: Byte;
 const
   OffsetTuneValue = 6;
 var
@@ -588,7 +578,7 @@ begin
   Result := btResult;
 end;
 
-function GetNextTaskString: string;
+function TTaskController.GetNextTaskString: string;
 var
   btA: Byte;
 begin
@@ -651,7 +641,7 @@ begin
   end;
 end;
 
-function IsZaniatiePassed: Boolean;
+function TTaskController.IsZaniatiePassed: Boolean;
 var
   btA: Byte;
 begin
@@ -709,7 +699,7 @@ end;
 ///   Возвращает количество проверенных вызовом каналов (оба направления)
 ///    оба режима (2х и 4х проводные)
 /// </summary>
-function GetNumberOfCallPassedThrough: Byte;
+function TTaskController.GetNumberOfCallPassedThrough: Byte;
 var
   PassedCallCount, btA: Byte;
 begin
@@ -728,7 +718,7 @@ end;
 /// <summary>
 ///   Возвращает Id первого невыполненного задания в текущем упражнении
 /// </summary>
-function GetNotPassedTaskId: Byte;
+function TTaskController.GetNotPassedTaskId: Byte;
 var
   btAA: Byte;
 begin
@@ -796,7 +786,7 @@ end;
 ///   Проверяет, в правильном ли порядке включается питание на блоках
 ///   (сначала первый, потом второй и т.д.)
 /// </summary>
-function ChangeEvent: Byte;
+function TTaskController.ChangeEvent: Byte;
 var
   PowerArr: array [1..7] of Byte;
   stPowered: Boolean;
@@ -890,7 +880,7 @@ begin
 //  end;
 end;
 
-procedure AddError(ErrorInRackCode: Byte = NotSelected; ErrorDescription: string = '');
+procedure TTaskController.AddError(ErrorInRackCode: Byte = NotSelected; ErrorDescription: string = '');
 begin
 //  if ErrorInRackCode = NotSelected then
 //    ErrorInRackCode := CurFormId;
@@ -919,7 +909,7 @@ end;
 /// <summary>
 ///   Возвращает ID следующего блока для настройки (по списку задания)
 /// </summary>
-function GetNextBlockId: LongInt;
+function TTaskController.GetNextBlockId: LongInt;
 var
   btBlockId: Byte;
 begin
@@ -976,7 +966,7 @@ end;
 ///   Возвращает id стойки по номеру задания
 /// </summary>
 /// <param name="TaskId">Номер задания</param>
-function GetRackCodeByTaskId(TaskId: Integer): Integer;
+function TTaskController.GetRackCodeByTaskId(TaskId: Integer): Integer;
 var
   btAA: Byte;
 begin
@@ -1040,7 +1030,7 @@ begin
   end;
 end;
 
-procedure MadeMistake(MistakeId: Integer);
+procedure TTaskController.MadeMistake(MistakeId: Integer);
 begin
   AddError(MistakeId, 'Ошибка при выполнении задачи ');
 end;
@@ -1048,7 +1038,7 @@ end;
 /// <summary>
 ///   Загружает список заданий, отображающийся на общем виде Р414
 /// </summary>
-procedure LoadSubject;
+procedure TTaskController.LoadSubject;
 
   procedure addTaskInTaskList(var arrTaskTexts: array of String;
     iCountTaskTexts: Integer);
@@ -1085,7 +1075,7 @@ begin
   end;
 end;
 
-function GetNumberOfPassedExamTasks: Byte;
+function TTaskController.GetNumberOfPassedExamTasks: Byte;
 var
   btA: Byte;
   intCount: Byte;
@@ -1141,7 +1131,7 @@ end;
 /// </summary>
 /// <param name="FormId">id стойки, для которой необходимо получить
 /// номер задания.</param>
-function GetNumberHelp (FormId : Integer) : Integer;
+function TTaskController.GetNumberHelp (FormId : Integer) : Integer;
 begin
   if (FormId <> NotSelected) then
     case Station.WorkMode of
@@ -1173,7 +1163,7 @@ end;
 /// <param name = 'CanClose'> Изменяемый параметр, показывающий,
 ///   можно ли закрывать форму </param>
 /// </summary>
-procedure CheckFormBeforeClosing(var CanClose: Boolean);
+procedure TTaskController.CheckFormBeforeClosing(var CanClose: Boolean);
 var
   PassTaskNumber, ClosingFormId: Byte;
   ConditionsAreMet : Boolean;
@@ -1213,7 +1203,7 @@ var
     end
     else
     begin
-      AddError;
+       AddError;
       if (Station.WorkType = wtLearn) then
       begin
         CanClose := ShowVideoHelpInLearningMode(PassTaskNumber, True);
@@ -1797,7 +1787,7 @@ end;
 /// <param name = 'CanClose'> Изменяемый параметр, показывающий,
 ///   можно ли закрывать форму </param>
 /// </summary>
-procedure CheckFormBeforeClosingInExamMode(var CanClose: Boolean);
+procedure TTaskController.CheckFormBeforeClosingInExamMode(var CanClose: Boolean);
 var
   PassTaskNumber, ClosingFormId: Byte;
 
@@ -2531,7 +2521,7 @@ end;
 /// <param name="CurBlockId"></param>
 /// <param name="WorkMode"></param>
 /// <returns></returns>
-function AnalyseStation(CurBlockId: Byte = NotSelected;
+function TTaskController.AnalyseStation(CurBlockId: Byte = NotSelected;
                         WorkMode: Byte = NotSelected): string;
 var
   strMessage: string;

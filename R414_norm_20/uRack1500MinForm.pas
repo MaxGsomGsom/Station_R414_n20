@@ -23,10 +23,11 @@ type
     { Private declarations }
   public
     { Public declarations }
-  end;
+
 
 var
   Rack1500MinForm: TRack1500MinForm;
+  end;
 
 implementation
 

@@ -57,6 +57,9 @@ type
   public
     { Public declarations }
     constructor Create(Sender1: TComponent; TaskController1: TTaskController); reintroduce;
+  var
+  TaskController: TTaskController;
+
   end;
 
 

@@ -143,6 +143,10 @@
     <Transaction>2014.11.27 13:53:07.498.pas,C:\Work\R414_norm_20\uPassWordForm.pas=</Transaction>
     <Transaction>2014.11.27 13:53:07.498.dfm,C:\Work\R414_norm_20\uPassWordForm.dfm=</Transaction>
     <Transaction>2015.02.19 15:40:44.376.pas,C:\Users\Max\Documents\RAD Studio\Projects\R414_norm_20\Unit1.pas=C:\Users\Max\Documents\RAD Studio\Projects\R414_norm_20\uErrorKeeper.pas</Transaction>
+    <Transaction>2015.02.26 10:25:26.609.pas,C:\Users\Max\Documents\RAD Studio\Projects\R414_norm_20\uRegistrationForm.pas=</Transaction>
+    <Transaction>2015.02.26 10:25:26.609.dfm,C:\Users\Max\Documents\RAD Studio\Projects\R414_norm_20\uRegistrationForm.dfm=</Transaction>
+    <Transaction>2015.02.26 10:27:29.437.pas,C:\Users\Max\Documents\RAD Studio\Projects\R414_norm_20\uUsersForm.pas=</Transaction>
+    <Transaction>2015.02.26 10:27:29.437.dfm,C:\Users\Max\Documents\RAD Studio\Projects\R414_norm_20\uUsersForm.dfm=</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="main.optset"/>
@@ -253,8 +257,6 @@
     <File Path="uRackP321Form.dfm"/>
     <File Path="uRackP321MinForm.pas"/>
     <File Path="uRackP321MinForm.dfm"/>
-    <File Path="uRegistrationForm.pas"/>
-    <File Path="uRegistrationForm.dfm"/>
     <File Path="uReportForm.pas"/>
     <File Path="uReportForm.dfm"/>
     <File Path="uSettingsForm.pas"/>
@@ -265,8 +267,6 @@
     <File Path="uStationR414MinForm.dfm"/>
     <File Path="uStationStateDM.pas"/>
     <File Path="uTasksDM.pas"/>
-    <File Path="uUsersForm.pas"/>
-    <File Path="uUsersForm.dfm"/>
     <File Path="uVideoHelpForm.pas"/>
     <File Path="uVideoHelpForm.dfm"/>
     <File Path="uWaveMeterPanelForm.pas"/>

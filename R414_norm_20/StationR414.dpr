@@ -25,8 +25,6 @@ uses
   uRack1200RightForm in 'uRack1200RightForm.pas' {Rack1200RightForm},
   uWaveMeterPanelForm in 'uWaveMeterPanelForm.pas' {WaveMeterPanelForm},
   uRack1500MinForm in 'uRack1500MinForm.pas' {Rack1500MinForm},
-  uUsersForm in 'uUsersForm.pas' {UsersForm},
-  uRegistrationForm in 'uRegistrationForm.pas' {RegistrationForm},
   uHandsetForm in 'uHandsetForm.pas' {HandsetForm},
   uDefinitionsDM in 'uDefinitionsDM.pas',
   uSettingsForm in 'uSettingsForm.pas' {SettingsForm},

@@ -2332,8 +2332,8 @@
           <parameter name="Station1" type="TStation" />
         </parameters>
       </constructor>
+      <field name="Station" type="TStation" visibility="public" />
+      <field name="TaskController" type="TTaskController" visibility="public" />
     </members>
   </class>
-  <variable name="Station" type="TStation" />
-  <variable name="TaskController" type="TTaskController" />
 </namespace>

@@ -89,11 +89,6 @@
         </parameters>
       </function>
       <property name="Station" visibility="private" read="FStation" write="FStation" type="TStation" />
-      <field name="ErrorList" type="TList" visibility="public" />
-      <procedure name="ShowError" visibility="public">
-      </procedure>
-      <procedure name="ShowHelp" visibility="public">
-      </procedure>
       <procedure name="SetCurrentTask" visibility="public">
       </procedure>
       <procedure name="Subscribe" visibility="public">
@@ -143,194 +138,192 @@
       <property name="CountTasks" visibility="public" read="GetCountTasks" type="Integer" />
       <field name="CurrentTask" type="TTask" visibility="public" />
       <field name="CurrentForm" type="TForm" visibility="public" />
-      <field name="IsTaskComplete" type="Boolean" visibility="public" />
       <field name="ClientState" type="TClientState" visibility="public" />
-      <field name="ErrorMsg" type="string" visibility="public" />
-      <field name="HelpMsg" type="string" visibility="public" />
+      <field name="ErrorKeeper" type="TErrorKeeper" visibility="public" />
+      <function name="GetNumberOfCallPassedThrough2ChannelMode" visibility="public">
+        <parameters>
+          <retval type="Byte" />
+        </parameters>
+      </function>
+      <function name="GetNumberOfCallPassedThrough4ChannelMode" visibility="public">
+        <parameters>
+          <retval type="Byte" />
+        </parameters>
+      </function>
+      <function name="GetNumberOfTunedChannelBlocksA" visibility="public">
+        <parameters>
+          <retval type="Byte" />
+        </parameters>
+      </function>
+      <function name="GetNumberOfTunedChannelBlocksB" visibility="public">
+        <parameters>
+          <retval type="Byte" />
+        </parameters>
+      </function>
+      <function name="GetNumberOfTunedChannelBlocks" visibility="public">
+        <parameters>
+          <retval type="Byte" />
+        </parameters>
+      </function>
+      <function name="GetNextTaskString" visibility="public">
+        <parameters>
+          <retval type="string" />
+        </parameters>
+      </function>
+      <function name="GetNumberOfCallPassedThrough" visibility="public">
+        <devnotes>
+           <summary>
+             Возвращает количество проверенных вызовом каналов (оба направления)
+              оба режима (2х и 4х проводные)
+           </summary>
+        </devnotes>
+        <parameters>
+          <retval type="Byte" />
+        </parameters>
+      </function>
+      <function name="GetNotPassedTaskId" visibility="public">
+        <devnotes>
+           <summary>
+             Возвращает Id первого невыполненного задания в текущем упражнении
+           </summary>
+        </devnotes>
+        <parameters>
+          <retval type="Byte" />
+        </parameters>
+      </function>
+      <function name="GetNextBlockId" visibility="public">
+        <devnotes>
+           <summary>
+             Возвращает ID следующего блока для настройки (по списку задания)
+           </summary>
+        </devnotes>
+        <parameters>
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <function name="GetRackCodeByTaskId" visibility="public">
+        <devnotes>
+           <summary>
+             Возвращает id стойки по номеру задания
+           </summary>
+           <param name="TaskId">Номер задания</param>
+        </devnotes>
+        <parameters>
+          <parameter name="TaskId" type="Integer" />
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <function name="GetNumberOfPassedExamTasks" visibility="public">
+        <parameters>
+          <retval type="Byte" />
+        </parameters>
+      </function>
+      <function name="GetNumberHelp" visibility="public">
+        <devnotes>
+           <summary>
+           Возвращает номер задания, связанного с формой, id которой передаётся
+           в параметрах.
+           </summary>
+           <param name="FormId">id стойки, для которой необходимо получить
+           номер задания.</param>
+        </devnotes>
+        <parameters>
+          <parameter name="FormId" type="Integer" />
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <function name="IsZaniatiePassed" visibility="public">
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <procedure name="CheckFormBeforeClosingInExamMode" visibility="public">
+        <devnotes>
+           <summary>
+             Проверяет, настроена ли закрываемая форма в соответствии
+             с текущим заданием в режиме экзамена
+           <param name = "CanClose"> Изменяемый параметр, показывающий,
+             можно ли закрывать форму </param>
+           </summary>
+        </devnotes>
+        <parameters>
+          <parameter name="CanClose" type="Boolean" paramflags="var" />
+        </parameters>
+      </procedure>
+      <procedure name="MadeMistake" visibility="public">
+        <parameters>
+          <parameter name="MistakeId" type="Integer" />
+        </parameters>
+      </procedure>
+      <procedure name="LoadSubject" visibility="public">
+        <devnotes>
+           <summary>
+             Загружает список заданий, отображающийся на общем виде Р414
+           </summary>
+        </devnotes>
+      </procedure>
+      <function name="AnalyseStation" visibility="public">
+        <devnotes>
+           <summary>
+           Анализирует станцию на предмет ошибок в настройке и возвращает
+           строку расшифровки ошибки
+           </summary>
+           <param name="CurBlockId"></param>
+           <param name="WorkMode"></param>
+           <returns></returns>
+        </devnotes>
+        <parameters>
+          <parameter name="CurBlockId" type="Byte">
+            <value>
+              $FF
+            </value>
+          </parameter>
+          <parameter name="WorkMode" type="Byte">
+            <value>
+              $FF
+            </value>
+          </parameter>
+          <retval type="string" />
+        </parameters>
+      </function>
+      <procedure name="CheckFormBeforeClosing" visibility="public">
+        <devnotes>
+           <summary>
+             Проверяет, настроена ли закрываемая форма в соответствии
+             с текущим заданием
+           <param name = "CanClose"> Изменяемый параметр, показывающий,
+             можно ли закрывать форму </param>
+           </summary>
+        </devnotes>
+        <parameters>
+          <parameter name="CanClose" type="Boolean" paramflags="var" />
+        </parameters>
+      </procedure>
+      <function name="ChangeEvent" visibility="public">
+        <devnotes>
+           <summary>
+             Проверяет, в правильном ли порядке включается питание на блоках
+             (сначала первый, потом второй и т.д.)
+           </summary>
+        </devnotes>
+        <parameters>
+          <retval type="Byte" />
+        </parameters>
+      </function>
+      <procedure name="AddError" visibility="public">
+        <parameters>
+          <parameter name="ErrorInRackCode" type="Byte">
+            <value>
+              $FF
+            </value>
+          </parameter>
+          <parameter name="ErrorDescription" type="string">
+            <value>
+              
+            </value>
+          </parameter>
+        </parameters>
+      </procedure>
     </members>
   </class>
-  <function name="GetNumberOfCallPassedThrough2ChannelMode" visibility="public">
-    <parameters>
-      <retval type="Byte" />
-    </parameters>
-  </function>
-  <function name="GetNumberOfCallPassedThrough4ChannelMode" visibility="public">
-    <parameters>
-      <retval type="Byte" />
-    </parameters>
-  </function>
-  <function name="GetNumberOfTunedChannelBlocks" visibility="public">
-    <parameters>
-      <retval type="Byte" />
-    </parameters>
-  </function>
-  <function name="GetNumberOfTunedChannelBlocksA" visibility="public">
-    <parameters>
-      <retval type="Byte" />
-    </parameters>
-  </function>
-  <function name="GetNumberOfTunedChannelBlocksB" visibility="public">
-    <parameters>
-      <retval type="Byte" />
-    </parameters>
-  </function>
-  <function name="GetNextTaskString" visibility="public">
-    <parameters>
-      <retval type="string" />
-    </parameters>
-  </function>
-  <function name="IsZaniatiePassed" visibility="public">
-    <parameters>
-      <retval type="Boolean" />
-    </parameters>
-  </function>
-  <function name="GetNumberOfCallPassedThrough" visibility="public">
-    <devnotes>
-       <summary>
-         Возвращает количество проверенных вызовом каналов (оба направления)
-          оба режима (2х и 4х проводные)
-       </summary>
-    </devnotes>
-    <parameters>
-      <retval type="Byte" />
-    </parameters>
-  </function>
-  <function name="GetNotPassedTaskId" visibility="public">
-    <devnotes>
-       <summary>
-         Возвращает Id первого невыполненного задания в текущем упражнении
-       </summary>
-    </devnotes>
-    <parameters>
-      <retval type="Byte" />
-    </parameters>
-  </function>
-  <function name="ChangeEvent" visibility="public">
-    <devnotes>
-       <summary>
-         Проверяет, в правильном ли порядке включается питание на блоках
-         (сначала первый, потом второй и т.д.)
-       </summary>
-    </devnotes>
-    <parameters>
-      <retval type="Byte" />
-    </parameters>
-  </function>
-  <procedure name="AddError" visibility="public">
-    <parameters>
-      <parameter name="ErrorInRackCode" type="Byte">
-        <value>
-          $FF
-        </value>
-      </parameter>
-      <parameter name="ErrorDescription" type="string">
-        <value>
-          
-        </value>
-      </parameter>
-    </parameters>
-  </procedure>
-  <function name="GetNextBlockId" visibility="public">
-    <devnotes>
-       <summary>
-         Возвращает ID следующего блока для настройки (по списку задания)
-       </summary>
-    </devnotes>
-    <parameters>
-      <retval type="Integer" />
-    </parameters>
-  </function>
-  <function name="GetRackCodeByTaskId" visibility="public">
-    <devnotes>
-       <summary>
-         Возвращает id стойки по номеру задания
-       </summary>
-       <param name="TaskId">Номер задания</param>
-    </devnotes>
-    <parameters>
-      <parameter name="TaskId" type="Integer" />
-      <retval type="Integer" />
-    </parameters>
-  </function>
-  <procedure name="MadeMistake" visibility="public">
-    <parameters>
-      <parameter name="MistakeId" type="Integer" />
-    </parameters>
-  </procedure>
-  <procedure name="LoadSubject" visibility="public">
-    <devnotes>
-       <summary>
-         Загружает список заданий, отображающийся на общем виде Р414
-       </summary>
-    </devnotes>
-  </procedure>
-  <function name="GetNumberOfPassedExamTasks" visibility="public">
-    <parameters>
-      <retval type="Byte" />
-    </parameters>
-  </function>
-  <function name="GetNumberHelp" visibility="public">
-    <devnotes>
-       <summary>
-       Возвращает номер задания, связанного с формой, id которой передаётся
-       в параметрах.
-       </summary>
-       <param name="FormId">id стойки, для которой необходимо получить
-       номер задания.</param>
-    </devnotes>
-    <parameters>
-      <parameter name="FormId" type="Integer" />
-      <retval type="Integer" />
-    </parameters>
-  </function>
-  <procedure name="CheckFormBeforeClosing" visibility="public">
-    <devnotes>
-       <summary>
-         Проверяет, настроена ли закрываемая форма в соответствии
-         с текущим заданием
-       <param name = "CanClose"> Изменяемый параметр, показывающий,
-         можно ли закрывать форму </param>
-       </summary>
-    </devnotes>
-    <parameters>
-      <parameter name="CanClose" type="Boolean" paramflags="var" />
-    </parameters>
-  </procedure>
-  <procedure name="CheckFormBeforeClosingInExamMode" visibility="public">
-    <devnotes>
-       <summary>
-         Проверяет, настроена ли закрываемая форма в соответствии
-         с текущим заданием в режиме экзамена
-       <param name = "CanClose"> Изменяемый параметр, показывающий,
-         можно ли закрывать форму </param>
-       </summary>
-    </devnotes>
-    <parameters>
-      <parameter name="CanClose" type="Boolean" paramflags="var" />
-    </parameters>
-  </procedure>
-  <function name="AnalyseStation" visibility="public">
-    <devnotes>
-       <summary>
-       Анализирует станцию на предмет ошибок в настройке и возвращает
-       строку расшифровки ошибки
-       </summary>
-       <param name="CurBlockId"></param>
-       <param name="WorkMode"></param>
-       <returns></returns>
-    </devnotes>
-    <parameters>
-      <parameter name="CurBlockId" type="Byte">
-        <value>
-          $FF
-        </value>
-      </parameter>
-      <parameter name="WorkMode" type="Byte">
-        <value>
-          $FF
-        </value>
-      </parameter>
-      <retval type="string" />
-    </parameters>
-  </function>
 </namespace>

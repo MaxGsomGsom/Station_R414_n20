@@ -2734,9 +2734,9 @@
           <parameter name="TaskController0" type="TTaskController" />
         </parameters>
       </constructor>
+      <field name="ButtonBackForm" type="TButtonBackForm" visibility="public" />
+      <field name="Station" type="TStation" visibility="public" />
+      <field name="TaskController" type="TTaskController" visibility="public" />
     </members>
   </class>
-  <variable name="ButtonBackForm" type="TButtonBackForm" />
-  <variable name="Station" type="TStation" />
-  <variable name="TaskController" type="TTaskController" />
 </namespace>

@@ -241,6 +241,7 @@ begin
   StationR414Form := Sender1 as TStationR414Form;
   //executer.Create();
 
+
   SetFormPosition(0,
                   Screen.Height - GetTaskBarHeight() - R414miniFormHeight);
   Self.ClientHeight := R414miniFormHeight;

@@ -71,6 +71,7 @@
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
+          <parameter name="ErrorKeeper" type="TErrorKeeper" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -153,6 +154,7 @@
     <members>
       <field name="TimeStart" type="TDateTime" visibility="public" />
       <field name="TimeEnd" type="TDateTime" visibility="public" />
+      <field name="IsTaskComplete" type="Boolean" visibility="public" />
       <field name="Name" type="string" visibility="public" />
       <procedure name="LastCheck" visibility="public" procflags="virtual">
       </procedure>
@@ -160,6 +162,7 @@
         <parameters>
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
+          <parameter name="ErrorKeeper" type="TErrorKeeper" />
         </parameters>
       </constructor>
       <field name="CurrentSubTask" type="TSubTask" visibility="public" />
@@ -169,6 +172,7 @@
       <field name="Station" type="TStation" visibility="public" />
       <field name="ClientState" type="TClientState" visibility="public" />
       <field name="FullCheck" type="Boolean" visibility="public" />
+      <field name="ErrorKeeper" type="TErrorKeeper" visibility="public" />
     </members>
   </class>
   <class name="TTaskNone">
@@ -245,6 +249,7 @@
         <parameters>
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
+          <parameter name="ErrorKeeper" type="TErrorKeeper" />
         </parameters>
       </constructor>
       <procedure name="LastCheck" visibility="public" procflags="override">
@@ -326,6 +331,7 @@
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
+          <parameter name="ErrorKeeper" type="TErrorKeeper" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -409,6 +415,7 @@
         <parameters>
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
+          <parameter name="ErrorKeeper" type="TErrorKeeper" />
         </parameters>
       </constructor>
       <procedure name="LastCheck" visibility="public" procflags="override">
@@ -490,6 +497,7 @@
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
+          <parameter name="ErrorKeeper" type="TErrorKeeper" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -574,6 +582,7 @@
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
+          <parameter name="ErrorKeeper" type="TErrorKeeper" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -658,6 +667,7 @@
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
+          <parameter name="ErrorKeeper" type="TErrorKeeper" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -742,6 +752,7 @@
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
+          <parameter name="ErrorKeeper" type="TErrorKeeper" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -826,6 +837,7 @@
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
+          <parameter name="ErrorKeeper" type="TErrorKeeper" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -915,6 +927,7 @@
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
+          <parameter name="ErrorKeeper" type="TErrorKeeper" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -1004,6 +1017,7 @@
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
+          <parameter name="ErrorKeeper" type="TErrorKeeper" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -1088,6 +1102,7 @@
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
+          <parameter name="ErrorKeeper" type="TErrorKeeper" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -1172,6 +1187,7 @@
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
+          <parameter name="ErrorKeeper" type="TErrorKeeper" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -1256,6 +1272,7 @@
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
+          <parameter name="ErrorKeeper" type="TErrorKeeper" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -1340,6 +1357,7 @@
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
+          <parameter name="ErrorKeeper" type="TErrorKeeper" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -1424,6 +1442,7 @@
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
+          <parameter name="ErrorKeeper" type="TErrorKeeper" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -1508,6 +1527,7 @@
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
+          <parameter name="ErrorKeeper" type="TErrorKeeper" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -1591,6 +1611,7 @@
         <parameters>
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
+          <parameter name="ErrorKeeper" type="TErrorKeeper" />
         </parameters>
       </constructor>
       <procedure name="LastCheck" visibility="public" procflags="override">
@@ -1672,6 +1693,7 @@
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
+          <parameter name="ErrorKeeper" type="TErrorKeeper" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -1756,6 +1778,7 @@
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
+          <parameter name="ErrorKeeper" type="TErrorKeeper" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -1840,6 +1863,7 @@
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
+          <parameter name="ErrorKeeper" type="TErrorKeeper" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -1924,6 +1948,7 @@
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
+          <parameter name="ErrorKeeper" type="TErrorKeeper" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -2008,6 +2033,7 @@
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
+          <parameter name="ErrorKeeper" type="TErrorKeeper" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -2092,6 +2118,7 @@
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
+          <parameter name="ErrorKeeper" type="TErrorKeeper" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -2176,6 +2203,7 @@
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
+          <parameter name="ErrorKeeper" type="TErrorKeeper" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -2260,6 +2288,7 @@
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
+          <parameter name="ErrorKeeper" type="TErrorKeeper" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -2344,6 +2373,7 @@
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
+          <parameter name="ErrorKeeper" type="TErrorKeeper" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -2428,6 +2458,7 @@
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
+          <parameter name="ErrorKeeper" type="TErrorKeeper" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -2512,6 +2543,7 @@
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
+          <parameter name="ErrorKeeper" type="TErrorKeeper" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -2596,6 +2628,7 @@
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
+          <parameter name="ErrorKeeper" type="TErrorKeeper" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -2680,6 +2713,7 @@
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
+          <parameter name="ErrorKeeper" type="TErrorKeeper" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -2764,6 +2798,7 @@
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
+          <parameter name="ErrorKeeper" type="TErrorKeeper" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -2848,6 +2883,7 @@
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
+          <parameter name="ErrorKeeper" type="TErrorKeeper" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -2932,6 +2968,7 @@
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
+          <parameter name="ErrorKeeper" type="TErrorKeeper" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -3016,6 +3053,7 @@
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
+          <parameter name="ErrorKeeper" type="TErrorKeeper" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -3100,6 +3138,7 @@
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
+          <parameter name="ErrorKeeper" type="TErrorKeeper" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -3184,6 +3223,7 @@
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
+          <parameter name="ErrorKeeper" type="TErrorKeeper" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -3268,6 +3308,7 @@
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
+          <parameter name="ErrorKeeper" type="TErrorKeeper" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -3352,6 +3393,7 @@
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
+          <parameter name="ErrorKeeper" type="TErrorKeeper" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -3436,6 +3478,7 @@
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
+          <parameter name="ErrorKeeper" type="TErrorKeeper" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -3520,6 +3563,7 @@
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
+          <parameter name="ErrorKeeper" type="TErrorKeeper" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -3604,6 +3648,7 @@
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
+          <parameter name="ErrorKeeper" type="TErrorKeeper" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -3688,6 +3733,7 @@
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
+          <parameter name="ErrorKeeper" type="TErrorKeeper" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -3772,6 +3818,7 @@
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
+          <parameter name="ErrorKeeper" type="TErrorKeeper" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -3856,6 +3903,7 @@
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="ClientState" type="TClientState" />
+          <parameter name="ErrorKeeper" type="TErrorKeeper" />
           <retval type="Boolean" />
         </parameters>
       </function>

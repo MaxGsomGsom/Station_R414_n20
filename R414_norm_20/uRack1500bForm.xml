@@ -2379,20 +2379,20 @@
           <parameter name="TaskController0" type="TTaskController" />
         </parameters>
       </constructor>
+      <field name="Station" type="TStation" visibility="public" />
+      <field name="ButtonBackForm" type="TButtonBackForm" visibility="public" />
+      <field name="TaskController" type="TTaskController" visibility="public" />
+      <field name="CurFormId" type="Integer" visibility="public" />
+      <const name="idRack1500Aback" visibility="public" type="Integer">
+        <value>
+          $1
+        </value>
+      </const>
+      <const name="idRack1500Bback" visibility="public" type="Integer">
+        <value>
+          $2
+        </value>
+      </const>
     </members>
   </class>
-  <variable name="Station" type="TStation" />
-  <variable name="ButtonBackForm" type="TButtonBackForm" />
-  <variable name="TaskController" type="TTaskController" />
-  <variable name="CurFormId" type="Integer" />
-  <const name="idRack1500Aback" type="Integer">
-    <value>
-      $1
-    </value>
-  </const>
-  <const name="idRack1500Bback" type="Integer">
-    <value>
-      $2
-    </value>
-  </const>
 </namespace>

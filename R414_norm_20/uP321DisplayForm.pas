@@ -15,10 +15,10 @@ type
     { Private declarations }
   public
     { Public declarations }
-  end;
 
 var
   P321DisplayForm: TP321DisplayForm;
+  end;
 
 implementation
 

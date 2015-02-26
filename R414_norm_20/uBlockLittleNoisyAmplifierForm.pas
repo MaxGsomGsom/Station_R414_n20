@@ -61,7 +61,7 @@ type
   public
     { Public declarations }
     constructor Create(AOwner: TComponent; Half:Integer; Station0: TStation; TaskController0: TTaskController); reintroduce;
-  end;
+
 
 var
   //BlockLittleNoisyAmplifierForm: TBlockLittleNoisyAmplifierForm;
@@ -72,6 +72,7 @@ var
   const
   idMshuA=1;
   idMshuB=2;
+   end;
 
 implementation
 
@@ -284,7 +285,7 @@ end;
 
 procedure TBlockLittleNoisyAmplifierForm.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
 begin
-  CheckFormBeforeClosing(CanClose);
+  TaskController.CheckFormBeforeClosing(CanClose);
 end;
 
 procedure TBlockLittleNoisyAmplifierForm.FormCreate(Sender: TObject);

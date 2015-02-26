@@ -25,6 +25,7 @@ type
 var
   WaveMeterPanelForm: TWaveMeterPanelForm;
   Station: TStation;
+  CurFormID: Integer;
 
 implementation
 
