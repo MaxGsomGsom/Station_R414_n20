@@ -207,7 +207,7 @@ procedure TForms_executer.CloseAllMiniRacks();
 begin
   if HandsetForm.Showing  then HandsetForm.Close;
   if BlockOscillographMinForm.Showing then BlockOscillographMinForm.Close;
-  if P321DisplayForm.Showing then P321DisplayForm.Close;
+  //if P321DisplayForm.Showing then P321DisplayForm.Close;
   if WaveMeterPanelForm.Showing then WaveMeterPanelForm.Close;
   if RackP321MinForm.Showing then RackP321MinForm.Close;
 

@@ -134,7 +134,7 @@ type
     procedure Reload;
     constructor Create(AOwner: TComponent; Half:Integer; Station0: TStation; TaskController0: TTaskController); reintroduce;
 
-  end;
+
 
 
 const
@@ -151,6 +151,7 @@ var
   waveInt: Byte;
   waveFloat: byte;
   CurFormID: Integer;
+  end;
 
 implementation
 

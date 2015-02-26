@@ -257,7 +257,6 @@ type
       i11,i12,i13,i14,i15,i16,i17,i18,i19,i20:integer;
     Bst2:boolean;
     constructor Create(AOwner: TComponent; Station0: TStation; TaskController0: TTaskController); reintroduce;
-  end;
 
 var
   imgsRack1200Main: array [1..14] of ^TImage;
@@ -265,6 +264,7 @@ var
   Station: TStation;
   ButtonBackForm: TButtonBackForm;
   TaskController: TTaskController;
+  end;
 
 implementation
 
@@ -473,7 +473,7 @@ end;
 
 procedure TRack1710Form.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
 begin
-  CheckFormBeforeClosing(CanClose);
+  TaskController.CheckFormBeforeClosing(CanClose);
 end;
 
 procedure TRack1710Form.FormCreate(Sender: TObject);
@@ -539,7 +539,7 @@ end;
 
 procedure TRack1710Form.FormShow(Sender: TObject);
 begin
-  ChangeEvent;
+  TaskController.ChangeEvent;
   Reload;
 end;
 

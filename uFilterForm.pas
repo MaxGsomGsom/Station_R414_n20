@@ -127,7 +127,7 @@ begin
   //begin
   //   ShowVideoHelpInLearningMode(GetNumberHelp(CurBlockSelected), False);
   //end
-  TaskController.ShowHelp;
+  TaskController.ErrorKeeper.ShowHelp;
 end;
 
 /// <summary>
@@ -226,7 +226,7 @@ begin
   StationTime:= RecodeTime(StationTime,0,0,0,0);
   Update;
   tmrTimeUpdate.Enabled := True;
-  if Station.WorkType = wtExam then
+  if TaskController.ClientState.WorkMode = wmExam then
     btnHelp.Enabled := False
   else
     btnHelp.Enabled := True;
@@ -249,12 +249,13 @@ begin
   //if (TaskController.CurrentTask.IsComplete) then
   if (TaskController.CurrentTask.FullCheck = False) then begin
   (Owner.Owner as TForm).Show;
+
   (Owner as TStationR414Form).Close;
   end
   else
   begin
     TaskController.CurrentTask.LastCheck;
-    if (TaskController.IsTaskComplete=True) then
+    if (TaskController.CurrentTask.IsTaskComplete=True) then
       begin
         Report:=TReportForm.Create(Owner.Owner, TaskController);
         Report.Show;

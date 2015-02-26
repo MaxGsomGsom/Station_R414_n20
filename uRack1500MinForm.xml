@@ -2278,7 +2278,7 @@
           <parameter name="Sender" type="TObject" />
         </parameters>
       </procedure>
+      <field name="Rack1500MinForm" type="TRack1500MinForm" visibility="public" />
     </members>
   </class>
-  <variable name="Rack1500MinForm" type="TRack1500MinForm" />
 </namespace>

@@ -51,7 +51,7 @@ type
       bmp: tbitmap;
       Avaria:boolean;
       constructor Create(AOwner: TComponent; Half:Integer; Station0: TStation; TaskController0: TTaskController); reintroduce;
-  end;
+
 
 var
 Station: TStation;
@@ -62,6 +62,7 @@ Station: TStation;
 const
 idRack1500Aback= 1;
 idRack1500Bback=2;
+  end;
 
 implementation
 

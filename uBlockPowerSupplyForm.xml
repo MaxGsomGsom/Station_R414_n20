@@ -2517,10 +2517,13 @@
           <parameter name="TaskController0" type="TTaskController" />
         </parameters>
       </constructor>
+      <field name="P1" type="Integer" visibility="public" />
+      <field name="P2" type="Integer" visibility="public" />
+      <field name="P3" type="Integer" visibility="public" />
+      <field name="P4" type="Integer" visibility="public" />
+      <field name="ButtonBackForm" type="TButtonBackForm" visibility="public" />
+      <field name="Station" type="TStation" visibility="public" />
+      <field name="TaskController" type="TTaskController" visibility="public" />
     </members>
   </class>
-  <variable name="P1" type="Integer" />
-  <variable name="P2" type="Integer" />
-  <variable name="P3" type="Integer" />
-  <variable name="P4" type="Integer" />
 </namespace>

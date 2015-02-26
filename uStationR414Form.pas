@@ -198,21 +198,25 @@ type
     procedure ShowResults;
     procedure TuneTaskList;
     procedure SetBlockRed(IdEnum: TRacksEnum);
+    procedure ReloadProgressExam;
     constructor Create(Sender1: TComponent; Station1: TStation; TaskController1: TTaskController; ClientState1: TClientState); reintroduce;
-  end;
 
-  procedure ReloadProgressExam;
+
+
 
 var
   //StationR414Form: TStationR414Form;
   BgImages: array [0..27] of ^TImage;
-  CloseStationR414FormFlag: Byte;
   lvTaskSelectedId: Byte;
   TaskController: TTaskController;
   CLientState: TClientState;
   Station: TStation;
   //ButtonBackForm: TButtonBackForm;
+  end;
 
+
+  var
+  CloseStationR414FormFlag: Byte;
 
 
 
@@ -499,7 +503,7 @@ begin
             else
             begin
               //task is not finished
-              AddError(i, 'Внешний осмотр не произведён!');
+              TaskController.AddError(i, 'Внешний осмотр не произведён!');
               LI.SubItems.Add(stTaskOpened);
               if estimation > 2 then estimation := estimation - 0.5;
             end;
@@ -519,12 +523,12 @@ begin
             else
             begin
               //task is not finished
-              strError := AnalyseStation(GetRackCodeByTaskId(i - 1), mdStartParametersSetup);
+              strError :=  TaskController.AnalyseStation(TaskController.GetRackCodeByTaskId(i - 1), mdStartParametersSetup);
               if strError = '' then
               begin
                 strError := 'Занятие 2, задание ' + IntToStr(i);
               end;
-              AddError(GetRackCodeByTaskId(i - 1), strError);
+              TaskController.AddError(TaskController.GetRackCodeByTaskId(i - 1), strError);
               LI.SubItems.Add(stTaskOpened);
               if estimation > 2 then estimation := estimation - 1;
             end;
@@ -544,12 +548,12 @@ begin
             else
             begin
               //task is not finished
-              strError := AnalyseStation(GetRackCodeByTaskId(i - 1), mdPowerOn);
+              strError := TaskController.AnalyseStation(TaskController.GetRackCodeByTaskId(i - 1), mdPowerOn);
               if strError = '' then
               begin
                 strError := 'Занятие 3, задание ' + IntToStr(i);
               end;
-              AddError(GetRackCodeByTaskId(i - 1), strError);
+              TaskController.AddError(TaskController.GetRackCodeByTaskId(i - 1), strError);
               LI.SubItems.Add(stTaskOpened);
               if estimation > 2 then estimation := estimation - 2;
             end;
@@ -569,13 +573,13 @@ begin
             else
             begin
               //task is not finished
-              strError := AnalyseStation(GetRackCodeByTaskId(i - 1),
+              strError := TaskController.AnalyseStation(TaskController.GetRackCodeByTaskId(i - 1),
                 mdReceiveAndTransmitTracksSetup);
               if strError = '' then
               begin
                 strError := 'Занятие 4, задание ' + IntToStr(i);
               end;
-              AddError(GetRackCodeByTaskId(i - 1), strError);
+              TaskController.AddError(TaskController.GetRackCodeByTaskId(i - 1), strError);
               LI.SubItems.Add(stTaskOpened);
               if estimation > 2 then estimation := estimation - 2;
             end;
@@ -595,13 +599,13 @@ begin
             else
             begin
               //task is not finished
-              strError := AnalyseStation(GetRackCodeByTaskId(i - 1),
+              strError := TaskController.AnalyseStation(TaskController.GetRackCodeByTaskId(i - 1),
                                         mdWorkWithLowFrequency);
               if strError = '' then
               begin
                 strError := 'Занятие 5, задание ' + IntToStr(i);
               end;
-              AddError(NotSelected, strError);
+              TaskController.AddError(NotSelected, strError);
               LI.SubItems.Add(stTaskOpened);
               estimation := 2;                // За невыполнение одного из 2-х
                                               // заданий сразу 2 балла
@@ -622,13 +626,13 @@ begin
             else
             begin
               //task is not finished
-              strError := AnalyseStation(GetRackCodeByTaskId(i - 1),
+              strError := TaskController.AnalyseStation(TaskController.GetRackCodeByTaskId(i - 1),
                                         mdTransferToTerminalMode);
               if strError = '' then
               begin
                 strError := 'Занятие 6, задание ' + IntToStr(i);
               end;
-              AddError(NotSelected, strError);
+              TaskController.AddError(NotSelected, strError);
               LI.SubItems.Add(stTaskOpened);
               { TODO: Сдклать расчёт оценки }
               estimation := 42;
@@ -655,8 +659,8 @@ begin
       Task5PassTime[1] := InitialTimeString;
     end;
 
-    if (((GetNumberOfTunedChannelBlocks) > 4) and
-    (GetNumberOfCallPassedThrough > 4))  and (Task5Passed[2] = stNotPassed) then
+    if (((TaskController.GetNumberOfTunedChannelBlocks > 4) and
+    (TaskController.GetNumberOfCallPassedThrough > 4)))  and (Task5Passed[2] = stNotPassed) then
     begin
       Task5Passed[2] := stPassed;
       Task5PassTime[2] := TimeToStr(Time);
@@ -681,7 +685,7 @@ begin
       else
       begin
         //task is not finished
-        AddError(intA, 'Внешний осмотр не произведён!');
+        TaskController.AddError(intA, 'Внешний осмотр не произведён!');
         LI.SubItems.Add(stTaskOpened);
         if estimation > 2 then estimation := estimation - 2;
       end;
@@ -699,12 +703,12 @@ begin
       else
       begin
         //task is not finished
-        strError := AnalyseStation(GetRackCodeByTaskId(intA - 1), mdStartParametersSetup);
+        strError := TaskController.AnalyseStation(TaskController.GetRackCodeByTaskId(intA - 1), mdStartParametersSetup);
         if strError = '' then
         begin
           strError := 'Занятие 2, задание ' + IntToStr(intA);
         end;
-        AddError(GetRackCodeByTaskId(intA - 1), strError);
+        TaskController.AddError(TaskController.GetRackCodeByTaskId(intA - 1), strError);
         LI.SubItems.Add(stTaskOpened);
         if estimation > 2 then estimation := estimation - 2;
       end;
@@ -722,12 +726,12 @@ begin
       else
       begin
         //task is not finished
-        strError := AnalyseStation(GetRackCodeByTaskId(intA - 1), mdPowerOn);
+        strError := TaskController.AnalyseStation(TaskController.GetRackCodeByTaskId(intA - 1), mdPowerOn);
         if strError = '' then
         begin
           strError := 'Занятие 3, задание ' + IntToStr(intA);
         end;
-        AddError(GetRackCodeByTaskId(intA - 1), strError);
+        TaskController.AddError(TaskController.GetRackCodeByTaskId(intA - 1), strError);
         LI.SubItems.Add(stTaskOpened);
         if estimation > 2 then estimation := estimation - 2;
       end;
@@ -745,12 +749,12 @@ begin
       else
       begin
         //task is not finished
-        strError := AnalyseStation(GetRackCodeByTaskId(intA - 1), mdReceiveAndTransmitTracksSetup);
+        strError := TaskController.AnalyseStation(TaskController.GetRackCodeByTaskId(intA - 1), mdReceiveAndTransmitTracksSetup);
         if strError = '' then
         begin
           strError := 'Занятие 4, задание ' + IntToStr(intA);
         end;
-        AddError(GetRackCodeByTaskId(intA - 1), strError);
+        TaskController.AddError(TaskController.GetRackCodeByTaskId(intA - 1), strError);
         LI.SubItems.Add(stTaskOpened);
         if estimation > 2 then estimation := estimation - 2;
       end;
@@ -768,12 +772,12 @@ begin
       else
       begin
         //task is not finished
-        strError := AnalyseStation(GetRackCodeByTaskId(intA - 1), mdWorkWithLowFrequency);
+        strError := TaskController.AnalyseStation(TaskController.GetRackCodeByTaskId(intA - 1), mdWorkWithLowFrequency);
         if strError = '' then
         begin
           strError := 'Занятие 5, задание ' + IntToStr(intA);
         end;
-        AddError(NotSelected, strError);
+        TaskController.AddError(NotSelected, strError);
         LI.SubItems.Add(stTaskOpened);
         estimation := 2;                      // За невыполнение одного из 2-х
                                               // заданий сразу 2 балла
@@ -948,7 +952,7 @@ begin
 end;
 
 //Процедура проверки прогресса выполнения заданий входе экзамена
-procedure ReloadProgressExam;
+procedure TStationR414Form.ReloadProgressExam;
 var
   btA, Progress, TotalTasksCount: Byte;
 
@@ -968,7 +972,7 @@ var
             if Task1Passed[btA] = stNotPassed then
             begin
               ErrorsFound := True;
-              AddError(btA, 'Внешний осмотр не произведен!');
+              TaskController.AddError(btA, 'Внешний осмотр не произведен!');
             end;
 
             if ErrorsFound then
@@ -989,7 +993,7 @@ var
             if Task2Passed[btA] = stNotPassed then
             begin
               ErrorsFound := True;
-              AddError(Task2RackCodeArr[btA], AnalyseStation(Task2RackCodeArr[btA], mdStartParametersSetup));
+              TaskController.AddError(Task2RackCodeArr[btA], TaskController.AnalyseStation(Task2RackCodeArr[btA], mdStartParametersSetup));
             end;
 
             if ErrorsFound then
@@ -997,7 +1001,7 @@ var
               if ErrorForLevelGiven[mdStartParametersSetup] = 0 then
               begin
                 ErrorForLevelGiven[mdStartParametersSetup] := 1;
-                AddExamError(Task2RackCodeArr[btA], AnalyseStation(Task2RackCodeArr[btA], mdStartParametersSetup));
+                AddExamError(Task2RackCodeArr[btA], TaskController.AnalyseStation(Task2RackCodeArr[btA], mdStartParametersSetup));
               end;
             end;
           end;
@@ -1010,7 +1014,7 @@ var
             if Task3Passed[btA] = stNotPassed then
             begin
               ErrorsFound := True;
-              AddError(Task3RackCodeArr[btA], AnalyseStation(Task3RackCodeArr[btA], mdPowerOn));
+              TaskController.AddError(Task3RackCodeArr[btA], TaskController.AnalyseStation(Task3RackCodeArr[btA], mdPowerOn));
             end;
 
             if ErrorsFound then
@@ -1018,7 +1022,7 @@ var
               if ErrorForLevelGiven[mdPowerOn] = 0 then
               begin
                 ErrorForLevelGiven[mdPowerOn] := 1;
-                AddExamError(Task3RackCodeArr[btA], AnalyseStation(Task3RackCodeArr[btA], mdPowerOn));
+                AddExamError(Task3RackCodeArr[btA], TaskController.AnalyseStation(Task3RackCodeArr[btA], mdPowerOn));
               end;
             end;
           end;
@@ -1031,7 +1035,7 @@ var
             if Task4Passed[btA] = stNotPassed then
             begin
               ErrorsFound := True;
-              AddError(Task4RackCodeArr[btA], AnalyseStation(Task4RackCodeArr[btA], mdReceiveAndTransmitTracksSetup));
+              TaskController.AddError(Task4RackCodeArr[btA], TaskController.AnalyseStation(Task4RackCodeArr[btA], mdReceiveAndTransmitTracksSetup));
             end;
 
             if ErrorsFound then
@@ -1039,7 +1043,7 @@ var
               if ErrorForLevelGiven[mdReceiveAndTransmitTracksSetup] = 0 then
               begin
                 ErrorForLevelGiven[mdReceiveAndTransmitTracksSetup] := 1;
-                AddExamError(Task4RackCodeArr[btA], AnalyseStation(Task4RackCodeArr[btA], mdReceiveAndTransmitTracksSetup));
+                AddExamError(Task4RackCodeArr[btA], TaskController.AnalyseStation(Task4RackCodeArr[btA], mdReceiveAndTransmitTracksSetup));
               end;
             end;
           end;
@@ -1052,7 +1056,7 @@ var
             if Task5Passed[btA] = stNotPassed then
             begin
               ErrorsFound := True;
-              AddError(Task5RackCodeArr[btA], AnalyseStation(Task5RackCodeArr[btA], mdWorkWithLowFrequency));
+              TaskController.AddError(Task5RackCodeArr[btA], TaskController.AnalyseStation(Task5RackCodeArr[btA], mdWorkWithLowFrequency));
             end;
 
             if ErrorsFound then
@@ -1060,7 +1064,7 @@ var
               if ErrorForLevelGiven[mdWorkWithLowFrequency] = 0 then
               begin
                 ErrorForLevelGiven[mdWorkWithLowFrequency] := 1;
-                AddExamError(Task5RackCodeArr[btA], AnalyseStation(Task5RackCodeArr[btA], mdWorkWithLowFrequency));
+                AddExamError(Task5RackCodeArr[btA], TaskController.AnalyseStation(Task5RackCodeArr[btA], mdWorkWithLowFrequency));
               end;
             end;
           end;
@@ -1078,7 +1082,7 @@ begin
                                         //следующего упражнения
     CurTaskId := btA;
 
-  if IsZaniatiePassed then              //Если станция находится в режиме уже
+  if TaskController.IsZaniatiePassed then              //Если станция находится в режиме уже
                                         //выполненного упражнения
     if (Station.WorkMode <= CurTaskId) and (CurTaskId < 5) then
       Inc(CurTaskId, 1);
@@ -1300,8 +1304,8 @@ begin
           Task5PassTime[1] := InitialTimeString;
         end;
 
-        if (((GetNumberOfTunedChannelBlocks) > 4) and
-        (GetNumberOfCallPassedThrough > 4))  and (Task5Passed[2] = stNotPassed) then
+        if (((TaskController.GetNumberOfTunedChannelBlocks) > 4) and
+        (TaskController.GetNumberOfCallPassedThrough > 4))  and (Task5Passed[2] = stNotPassed) then
         begin
           Task5Passed[2] := stPassed;
           Task5PassTime[2] := TimeToStr(Time);
@@ -1338,7 +1342,7 @@ begin
     case Station.WorkMode of
       mdExternalView:
         begin
-          btA := GetNextBlockId;
+          btA := TaskController.GetNextBlockId;
           case btA of
             0:
               begin
@@ -1486,7 +1490,7 @@ begin
   end;
 
   if (Station.WorkType = wtLearn) and     // Чтоб в обучении автоматически
-    IsZaniatiePassed then                 // нажималось завершение работы
+    TaskController.IsZaniatiePassed then                 // нажималось завершение работы
   begin
     //if not(ReportForm.Showing) or not(ReportForm.Visible) then
     //begin
@@ -1654,7 +1658,7 @@ begin
 //    end;
 //  end;
 
-  CurFormId := FormTag;
+  //CurFormId := FormTag;
 
 //  if Station.WorkMode = mdReceiveAndTransmitTracksSetup then
 //  begin
@@ -2342,7 +2346,7 @@ begin
       begin
         if Button = mbLeft then
         begin
-          SpawnedFormId := GetRackCodeByTaskId(lvTaskSelectedId);
+          SpawnedFormId := TaskController.GetRackCodeByTaskId(lvTaskSelectedId);
           if SpawnedFormId <> NotSelected then
           begin
             SpawnForm(SpawnedFormId);
@@ -2361,7 +2365,7 @@ begin
   begin
     if Station.WorkType = wtLearn then
     begin
-      SpawnedFormId := GetRackCodeByTaskId(lvTaskSelectedId);
+      SpawnedFormId := TaskController.GetRackCodeByTaskId(lvTaskSelectedId);
       if SpawnedFormId <> NotSelected then
       begin
         SpawnForm(SpawnedFormId);

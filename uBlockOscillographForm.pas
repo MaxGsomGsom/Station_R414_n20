@@ -112,20 +112,24 @@ type
   public
     procedure Reload;
     procedure PaintOscilogram;
-  end;
 
-const
-  scPower = 1;
-  scSync = 2;
 
 var
   //BlockOscillographForm: TBlockOscillographForm;
-  SelectedCable: Byte = NotSelected;
-  CurDeviationID: Byte = 1;
+  CurDeviationID: Byte;
   ButtonBackForm: TButtonBackForm;
   Station: TStation;
   TaskController: TTaskController;
   Handset: THandsetForm;
+  end;
+
+  var
+  //BlockOscillographForm: TBlockOscillographForm;
+  SelectedCable: Byte;
+
+  const
+  scPower = 1;
+  scSync = 2;
 
 implementation
 
@@ -138,11 +142,14 @@ uses
   uBlockRemoteControllerForm,
   uRackP321Form;
 
+
 {$R *.dfm}
 
 constructor TBlockOscillographForm.Create(AOwner: TComponent; Station0: TStation; TaskController0: TTaskController);
 begin
   Inherited Create(AOwner);
+        SelectedCable:= NotSelected;
+  CurDeviationID:= 1;
 
   Self.Caption:='Осциллограф';
   Station:=Station0;
@@ -244,15 +251,15 @@ begin
         end;
       end
       else begin
-        AddError(idOscillographC, 'Не верно подключены (не подключены) провода осциллографа');
+        TaskController.AddError(idOscillographC, 'Не верно подключены (не подключены) провода осциллографа');
       end;
     end
     else begin
-      AddError(idOscillographC, 'Не верно настроены параметры осциллографа');
+      TaskController.AddError(idOscillographC, 'Не верно настроены параметры осциллографа');
     end;
   end
   else begin
-    AddError(idOscillographC, AnalyseTune(Station.HalfSetA.Rack1500, Station.HalfSetA.Rack1920, Station.HalfSetA.Rack1600, Station.HalfSetA.LittleNoisyAmplifier, Station.HalfSetA.Duplexer, 'A') +
+    TaskController.AddError(idOscillographC, AnalyseTune(Station.HalfSetA.Rack1500, Station.HalfSetA.Rack1920, Station.HalfSetA.Rack1600, Station.HalfSetA.LittleNoisyAmplifier, Station.HalfSetA.Duplexer, 'A') +
     AnalyseTune(Station.HalfSetA.Rack1500, Station.HalfSetA.Rack1920, Station.HalfSetA.Rack1600, Station.HalfSetA.LittleNoisyAmplifier, Station.HalfSetA.Duplexer, 'B'));
   end;
 end;
@@ -594,7 +601,7 @@ end;
 
 procedure TBlockOscillographForm.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
 begin
-  CheckFormBeforeClosing(CanClose);
+  TaskController.CheckFormBeforeClosing(CanClose);
 end;
 
 procedure TBlockOscillographForm.FormKeyPress(Sender: TObject; var Key: Char);

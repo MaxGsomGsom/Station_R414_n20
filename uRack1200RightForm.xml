@@ -2895,31 +2895,31 @@
           <parameter name="TaskController0" type="TTaskController" />
         </parameters>
       </constructor>
+      <const name="scCableSync" visibility="public" type="Integer">
+        <value>
+          $1
+        </value>
+      </const>
+      <const name="scCableUzlovoi" visibility="public" type="Integer">
+        <value>
+          $2
+        </value>
+      </const>
+      <field name="SelectedCable" type="Byte" visibility="public" />
+      <field name="CurFormId" type="Integer" visibility="public" />
+      <field name="ButtonBackForm" type="TButtonBackForm" visibility="public" />
+      <field name="Station" type="TStation" visibility="public" />
+      <field name="TaskController" type="TTaskController" visibility="public" />
+      <const name="idRack1200A2" visibility="public" type="Integer">
+        <value>
+          $1
+        </value>
+      </const>
+      <const name="idRack1200B2" visibility="public" type="Integer">
+        <value>
+          $2
+        </value>
+      </const>
     </members>
   </class>
-  <const name="scCableSync" type="Integer">
-    <value>
-      $1
-    </value>
-  </const>
-  <const name="scCableUzlovoi" type="Integer">
-    <value>
-      $2
-    </value>
-  </const>
-  <variable name="SelectedCable" type="Byte" visibility="public" />
-  <variable name="CurFormId" type="Integer" />
-  <variable name="ButtonBackForm" type="TButtonBackForm" />
-  <variable name="Station" type="TStation" />
-  <variable name="TaskController" type="TTaskController" />
-  <const name="idRack1200A2" type="Integer">
-    <value>
-      $1
-    </value>
-  </const>
-  <const name="idRack1200B2" type="Integer">
-    <value>
-      $2
-    </value>
-  </const>
 </namespace>

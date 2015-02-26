@@ -20,7 +20,7 @@ object VideoHelpForm: TVideoHelpForm
   object MediaPlayer1: TMediaPlayer
     Left = 8
     Top = 345
-    Width = 0
+    Width = 29
     Height = 97
     VisibleButtons = []
     AutoEnable = False

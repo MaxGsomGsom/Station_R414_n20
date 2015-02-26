@@ -40,9 +40,9 @@ type
   public
     { Public declarations }
   end;
-
 var
   MainMenuModernForm: TMainMenuModernForm;
+
 
 implementation
 

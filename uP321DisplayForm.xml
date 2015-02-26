@@ -2279,7 +2279,7 @@
           <parameter name="Sender" type="TObject" />
         </parameters>
       </procedure>
+      <field name="P321DisplayForm" type="TP321DisplayForm" visibility="public" />
     </members>
   </class>
-  <variable name="P321DisplayForm" type="TP321DisplayForm" />
 </namespace>

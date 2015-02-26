@@ -2494,32 +2494,32 @@
           <parameter name="TaskController0" type="TTaskController" />
         </parameters>
       </constructor>
+      <const name="idRack1500A" visibility="public" type="Integer">
+        <value>
+          $1
+        </value>
+      </const>
+      <const name="idRack1500B" visibility="public" type="Integer">
+        <value>
+          $2
+        </value>
+      </const>
+      <const name="idRack1600A" visibility="public" type="Integer">
+        <value>
+          $3
+        </value>
+      </const>
+      <const name="idRack1600B" visibility="public" type="Integer">
+        <value>
+          $4
+        </value>
+      </const>
+      <field name="Station" type="TStation" visibility="public" />
+      <field name="ButtonBackForm" type="TButtonBackForm" visibility="public" />
+      <field name="TaskController" type="TTaskController" visibility="public" />
+      <field name="waveInt" type="Byte" visibility="public" />
+      <field name="waveFloat" type="Byte" visibility="public" />
+      <field name="CurFormID" type="Integer" visibility="public" />
     </members>
   </class>
-  <const name="idRack1500A" type="Integer">
-    <value>
-      $1
-    </value>
-  </const>
-  <const name="idRack1500B" type="Integer">
-    <value>
-      $2
-    </value>
-  </const>
-  <const name="idRack1600A" type="Integer">
-    <value>
-      $3
-    </value>
-  </const>
-  <const name="idRack1600B" type="Integer">
-    <value>
-      $4
-    </value>
-  </const>
-  <variable name="Station" type="TStation" />
-  <variable name="ButtonBackForm" type="TButtonBackForm" />
-  <variable name="TaskController" type="TTaskController" />
-  <variable name="waveInt" type="Byte" />
-  <variable name="waveFloat" type="Byte" />
-  <variable name="CurFormID" type="Integer" />
 </namespace>

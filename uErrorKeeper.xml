@@ -68,6 +68,10 @@
     <members>
       <field name="ErrorList" type="TList" visibility="public" />
       <field name="ErrorMsg" type="string" visibility="public" />
+      <procedure name="ShowError" visibility="public">
+      </procedure>
+      <procedure name="ShowHelp" visibility="public">
+      </procedure>
     </members>
   </class>
 </namespace>

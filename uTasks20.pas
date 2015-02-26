@@ -12,12 +12,13 @@ uses
   SysUtils,
   Windows,
   uStationStateDM,
-  uClientStateDM;
+  uClientStateDM,
+  uErrorKeeper;
 
 
  type TSubTask = class
    public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean; virtual; abstract;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; virtual; abstract;
    constructor Create; virtual;
    var
    EventFormName: String;
@@ -34,10 +35,11 @@ type TTask = class
       public
       TimeStart: TDateTime;
       TimeEnd: TDateTime;
+      IsTaskComplete: Boolean;
        Name: String;
        procedure LastCheck(); virtual;
        
-  constructor Create(Station: TStation; ClientState: TClientState); virtual;
+  constructor Create(Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper); virtual;
   var
     CurrentSubTask: TSubTask;
     SubTasks: array of TSubTask;
@@ -46,24 +48,27 @@ type TTask = class
     Station: TStation;
     ClientState: TClientState;
     FullCheck: Boolean;
+    ErrorKeeper: TErrorKeeper;
 
 
 
 end;
 
 
+
+
  {$REGION 'Пустое задание'}
    //================
   type TTaskNone = class (TTask)
     public
-   constructor Create(Station: TStation; ClientState: TClientState);  override;
+   constructor Create(Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper);  override;
    procedure LastCheck(); override;
   end;
 
 
   type TTaskNoneSubTask1 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
    constructor Create;  override;
   end;
   //=============
@@ -72,89 +77,89 @@ end;
 
     type TTaskPowerOn = class (TTask)
     public
-   constructor Create(Station: TStation; ClientState: TClientState);  override;
+   constructor Create(Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper);  override;
    procedure LastCheck(); override;
   end;
 
     type TTaskPowerOnSubTask1 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
    constructor Create;  override;
   end;
 
     type TTaskPowerOnSubTask2 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
    constructor Create;  override;
   end;
 
     type TTaskPowerOnSubTask3 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
    constructor Create;  override;
   end;
 
 
    type TTaskPowerOnSubTask4 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
    constructor Create;  override;
   end;
 
    type TTaskPowerOnSubTask5 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
    constructor Create;  override;
    var Conditions: array [0..3] of Boolean;
   end;
 
    type TTaskPowerOnSubTask6 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
    constructor Create;  override;
    var Conditions: array [0..3] of Boolean;
   end;
 
     type TTaskPowerOnSubTask7 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
    constructor Create;  override;
   end;
 
     type TTaskPowerOnSubTask8 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
    constructor Create;  override;
   end;
 
       type TTaskPowerOnSubTask9 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
    constructor Create;  override;
   end;
 
       type TTaskPowerOnSubTask10 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
    constructor Create;  override;
   end;
 
 
      type TTaskPowerOnSubTask11 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
    constructor Create;  override;
   end;
 
        type TTaskPowerOnSubTask12 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
    constructor Create;  override;
   end;
 
         type TTaskPowerOnSubTask13 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
    constructor Create;  override;
   end;
 
@@ -165,171 +170,171 @@ end;
 
    type TTaskSingleCheck = class (TTask)
     public
-   constructor Create(Station: TStation; ClientState: TClientState);  override;
+   constructor Create(Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper);  override;
    procedure LastCheck(); override;
   end;
 
     type TTaskSingleCheckSubTask1 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
    constructor Create;  override;
   end;
 
     type TTaskSingleCheckSubTask2 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
    constructor Create;  override;
   end;
 
     type TTaskSingleCheckSubTask3 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
    constructor Create;  override;
   end;
 
     type TTaskSingleCheckSubTask4 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
    constructor Create;  override;
   end;
 
     type TTaskSingleCheckSubTask5 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
    constructor Create;  override;
   end;
 
       type TTaskSingleCheckSubTask6 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
    constructor Create;  override;
   end;
 
       type TTaskSingleCheckSubTask7 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
    constructor Create;  override;
   end;
 
       type TTaskSingleCheckSubTask8 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
    constructor Create;  override;
   end;
 
       type TTaskSingleCheckSubTask9 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
    constructor Create;  override;
   end;
 
       type TTaskSingleCheckSubTask10 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
    constructor Create;  override;
   end;
 
       type TTaskSingleCheckSubTask11 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
    constructor Create;  override;
   end;
 
         type TTaskSingleCheckSubTask12 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
    constructor Create;  override;
   end;
 
         type TTaskSingleCheckSubTask13 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
    constructor Create;  override;
   end;
 
         type TTaskSingleCheckSubTask14 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
    constructor Create;  override;
   end;
 
         type TTaskSingleCheckSubTask15 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
    constructor Create;  override;
   end;
 
         type TTaskSingleCheckSubTask16 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
    constructor Create;  override;
   end;
 
           type TTaskSingleCheckSubTask17 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
    constructor Create;  override;
   end;
 
             type TTaskSingleCheckSubTask18 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
    constructor Create;  override;
   end;
 
             type TTaskSingleCheckSubTask19 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
    constructor Create;  override;
   end;
 
             type TTaskSingleCheckSubTask20 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
    constructor Create;  override;
   end;
 
             type TTaskSingleCheckSubTask21 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
    constructor Create;  override;
   end;
 
             type TTaskSingleCheckSubTask22 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
    constructor Create;  override;
   end;
 
              type TTaskSingleCheckSubTask23 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
    constructor Create;  override;
   end;
 
              type TTaskSingleCheckSubTask24 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
    constructor Create;  override;
   end;
 
 
                type TTaskSingleCheckSubTask25 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
    constructor Create;  override;
   end;
 
                type TTaskSingleCheckSubTask26 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
    constructor Create;  override;
   end;
 
 
                type TTaskSingleCheckSubTask27 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
    constructor Create;  override;
   end;
  {$ENDREGION}
@@ -344,13 +349,16 @@ uBlockPowerPanelForm,
 uConstantsDM;
 
  //создание задания
-  constructor TTask.Create(Station: TStation; ClientState: TClientState);
+  constructor TTask.Create(Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper);
   begin
+  Self.ErrorKeeper:=ErrorKeeper;
   Self.Sender := Sender;
   Self.Station := Station;
   Self.ClientState := ClientState;
+    IsTaskComplete:= false;
        CurrentSubTaskNum:= 0;
         TimeStart:= Time;
+
   end;
   
        procedure TTask.LastCheck();
@@ -367,9 +375,9 @@ uConstantsDM;
 
 {$REGION 'Пустое задание'}
 
-  constructor TTaskNone.Create(Station: TStation; ClientState: TClientState);
+  constructor TTaskNone.Create(Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper);
   begin
-  inherited Create(Station, ClientState);
+  inherited Create(Station, ClientState,ErrorKeeper);
 
   Name:='Свободный осмотр станции';
 
@@ -382,7 +390,7 @@ uConstantsDM;
   CurrentSubTask:=SubTasks[CurrentSubTaskNum];
   end;
 
-   function TTaskNoneSubTask1.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean;
+   function TTaskNoneSubTask1.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
    begin
         result:=true;
    end;
@@ -407,9 +415,9 @@ uConstantsDM;
 
 {$REGION 'Включение питания'}
 
-  constructor TTaskPowerOn.Create(Station: TStation; ClientState: TClientState);
+  constructor TTaskPowerOn.Create(Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper);
   begin
-  inherited Create(Station, ClientState);
+  inherited Create(Station, ClientState,ErrorKeeper);
   FullCheck := False;
    
   Name:='Включение питания';
@@ -439,25 +447,25 @@ uConstantsDM;
   var allRight: Boolean;
   begin
        allRight:= true;
-        TaskController.ErrorMsg := 'Общая проверка правильности настройки:' + #10#13;;
+        ErrorKeeper.ErrorMsg := 'Общая проверка правильности настройки:' + #10#13;;
     for I := 0 to Length(SubTasks) - 1 do
      begin
-          if (SubTasks[i].CheckSubTask(FullCheck, Station, ClientState) = False) then allRight := false;
+          if (SubTasks[i].CheckSubTask(FullCheck, Station, ClientState,ErrorKeeper) = False) then allRight := false;
      end;
 
     if (allRight = true) then
       begin
-        TaskController.IsTaskComplete:=true;
+        IsTaskComplete:=true;
         TimeEnd:=Time;
       end
       else
       begin
-        TaskController.ShowError;
+        ErrorKeeper.ShowError;
       end;
   end;
 
    //===
-   function TTaskPowerOnSubTask1.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean;
+   function TTaskPowerOnSubTask1.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
    begin
 
          if (Station.PowerPanel.swNet=1) and (Station.PowerPanel.swPhase=4) then
@@ -466,9 +474,9 @@ uConstantsDM;
          end
          else
          begin
-            if (FullCheck = False) then TaskController.ErrorMsg := '' ;
-            if (Station.PowerPanel.swNet<>1) then TaskController.ErrorMsg:= TaskController.ErrorMsg + 'Не включено питание станции' + #10#13;
-            if (Station.PowerPanel.swPhase<>4) then TaskController.ErrorMsg:= TaskController.ErrorMsg + 'Не проверено напряжение на фазах' + #10#13;
+            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+            if (Station.PowerPanel.swNet<>1) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включено питание станции' + #10#13;
+            if (Station.PowerPanel.swPhase<>4) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не проверено напряжение на фазах' + #10#13;
            Result:=false;
          end;
    end;
@@ -485,7 +493,7 @@ uConstantsDM;
 
   //  ===
 
-   function TTaskPowerOnSubTask2.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean;
+   function TTaskPowerOnSubTask2.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
    begin
          if (Station.PowerPanel.sw1700Power=1) and (Station.PowerPanel.sw1900Power=1) and (Station.PowerPanel.sw1900Power_2=1)
          and  (Station.PowerPanel.sw1200Power_2=1) and (Station.PowerPanel.sw1200Power=1) and (Station.PowerPanel.sw1400=1) then
@@ -494,13 +502,13 @@ uConstantsDM;
          end
          else
          begin
-            if (FullCheck = False) then TaskController.ErrorMsg := '' ;
-            if (Station.PowerPanel.sw1700Power<>1) then TaskController.ErrorMsg:= TaskController.ErrorMsg + 'Не включено питание блока 1700' + #10#13;
-            if (Station.PowerPanel.sw1900Power<>1) then TaskController.ErrorMsg:= TaskController.ErrorMsg + 'Не включено питание блока 1900А' + #10#13;
-            if (Station.PowerPanel.sw1900Power_2<>1) then TaskController.ErrorMsg:= TaskController.ErrorMsg + 'Не включено питание блока 1900Б' + #10#13;
-            if (Station.PowerPanel.sw1200Power<>1) then TaskController.ErrorMsg:= TaskController.ErrorMsg + 'Не включено питание блока 1200А' + #10#13;
-            if (Station.PowerPanel.sw1200Power_2<>1) then TaskController.ErrorMsg:= TaskController.ErrorMsg + 'Не включено питание блока 1200Б' + #10#13;
-            if (Station.PowerPanel.sw1400<>1) then TaskController.ErrorMsg:= TaskController.ErrorMsg + 'Не включено питание блока 1400' + #10#13;
+            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+            if (Station.PowerPanel.sw1700Power<>1) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включено питание блока 1700' + #10#13;
+            if (Station.PowerPanel.sw1900Power<>1) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включено питание блока 1900А' + #10#13;
+            if (Station.PowerPanel.sw1900Power_2<>1) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включено питание блока 1900Б' + #10#13;
+            if (Station.PowerPanel.sw1200Power<>1) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включено питание блока 1200А' + #10#13;
+            if (Station.PowerPanel.sw1200Power_2<>1) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включено питание блока 1200Б' + #10#13;
+            if (Station.PowerPanel.sw1400<>1) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включено питание блока 1400' + #10#13;
            Result:=false;
          end;
 
@@ -517,7 +525,7 @@ uConstantsDM;
    end;
          //==
 
-   function TTaskPowerOnSubTask3.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean;
+   function TTaskPowerOnSubTask3.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
    begin
          if (Station.HalfSetA.LittleNoisyAmplifier.butNet2=0)  and
          (Station.HalfSetA.LittleNoisyAmplifier.butNet=0) then
@@ -526,9 +534,9 @@ uConstantsDM;
          end
          else
          begin
-            if (FullCheck = False) then TaskController.ErrorMsg := '' ;
-            if (Station.HalfSetA.LittleNoisyAmplifier.butNet2<>0) then TaskController.ErrorMsg:= TaskController.ErrorMsg + 'Не включен тумблер СЕТЬ' + #10#13;
-            if (Station.HalfSetA.LittleNoisyAmplifier.butNet<>0) then TaskController.ErrorMsg:= TaskController.ErrorMsg + 'Не включен тумблер СЕТЬ' + #10#13;
+            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+            if (Station.HalfSetA.LittleNoisyAmplifier.butNet2<>0) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включен тумблер СЕТЬ' + #10#13;
+            if (Station.HalfSetA.LittleNoisyAmplifier.butNet<>0) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включен тумблер СЕТЬ' + #10#13;
            Result:=false;
          end;
    end;
@@ -545,7 +553,7 @@ uConstantsDM;
 
    //==
 
-   function TTaskPowerOnSubTask4.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean;
+   function TTaskPowerOnSubTask4.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
    begin
          if (Station.HalfSetB.LittleNoisyAmplifier.butNet2=0)  and
          (Station.HalfSetB.LittleNoisyAmplifier.butNet=0) then
@@ -554,9 +562,9 @@ uConstantsDM;
          end
          else
          begin
-            if (FullCheck = False) then TaskController.ErrorMsg := '' ;
-            if (Station.HalfSetB.LittleNoisyAmplifier.butNet2<>0) then TaskController.ErrorMsg:= TaskController.ErrorMsg + 'Не включен тумблер СЕТЬ' + #10#13;
-            if (Station.HalfSetB.LittleNoisyAmplifier.butNet<>0) then TaskController.ErrorMsg:= TaskController.ErrorMsg + 'Не включен тумблер СЕТЬ' + #10#13;
+            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+            if (Station.HalfSetB.LittleNoisyAmplifier.butNet2<>0) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включен тумблер СЕТЬ' + #10#13;
+            if (Station.HalfSetB.LittleNoisyAmplifier.butNet<>0) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включен тумблер СЕТЬ' + #10#13;
            Result:=false;
          end;
    end;
@@ -573,23 +581,23 @@ uConstantsDM;
 
    //==
 
-   function TTaskPowerOnSubTask5.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean;
+   function TTaskPowerOnSubTask5.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
    var I: Integer;
    begin
-          if (FullCheck = False) then TaskController.ErrorMsg := '' ;
+          if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
           Conditions[0]:=False;
           Conditions[1]:=False;
           Conditions[2]:=False;
           Conditions[3]:=False;
 
           if (Station.HalfSetA.Rack1920.but1930=butPositionUp) then begin Conditions[0]:=True;  end
-          else TaskController.ErrorMsg:= TaskController.ErrorMsg + 'Не включен тумблер на блоке 1930' + #10#13;
+          else ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включен тумблер на блоке 1930' + #10#13;
           if (Station.HalfSetA.Rack1920.but1910=butPositionUp) and (Station.HalfSetA.Rack1920.but1910A=butPositionUp) then begin Conditions[1]:=True;  end
-          else TaskController.ErrorMsg:= TaskController.ErrorMsg + 'Не включены тумблеры на блоках 1910' + #10#13;
+          else ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включены тумблеры на блоках 1910' + #10#13;
           if (Station.HalfSetA.Rack1920.butPower=butPositionUp) and (Station.HalfSetA.Rack1920.butPower2=butPositionUp) then begin Conditions[2]:=True;  end
-          else TaskController.ErrorMsg:= TaskController.ErrorMsg + 'Не включены тумблеры на блоках 1920' + #10#13;
+          else ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включены тумблеры на блоках 1920' + #10#13;
           if (Station.HalfSetA.Rack1920.but1960_1=butPositionUp) then begin Conditions[3]:=True;  end
-          else TaskController.ErrorMsg:= TaskController.ErrorMsg + 'Не включен тумблер на блоке 1960' + #10#13;
+          else ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включен тумблер на блоке 1960' + #10#13;
 
           Result:= false;
 
@@ -597,8 +605,8 @@ uConstantsDM;
             begin
                 if (Conditions[i]=False) and (Conditions[i+1]=True) then
                  begin
-                    TaskController.ErrorMsg:= TaskController.ErrorMsg + #10#13 +'Неверная последоваельность включения тумблеров' + #10#13 + 'Правильно: 1930, 1910, 1920, 1960';
-                    TaskController.ShowError;
+                    ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + #10#13 +'Неверная последоваельность включения тумблеров' + #10#13 + 'Правильно: 1930, 1910, 1920, 1960';
+                    ErrorKeeper.ShowError;
                     Break;
                   end;
             end;
@@ -620,23 +628,23 @@ uConstantsDM;
 
    //==
 
-   function TTaskPowerOnSubTask6.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean;
+   function TTaskPowerOnSubTask6.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
    var I: Integer;
    begin
-          if (FullCheck = False) then TaskController.ErrorMsg := '' ;
+          if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
           Conditions[0]:=False;
           Conditions[1]:=False;
           Conditions[2]:=False;
           Conditions[3]:=False;
 
           if (Station.HalfSetB.Rack1920.but1930=butPositionUp) then begin Conditions[0]:=True;  end
-          else TaskController.ErrorMsg:= TaskController.ErrorMsg + 'Не включен тумблер на блоке 1930' + #10#13;
+          else ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включен тумблер на блоке 1930' + #10#13;
           if (Station.HalfSetB.Rack1920.but1910=butPositionUp) and (Station.HalfSetB.Rack1920.but1910A=butPositionUp) then begin Conditions[1]:=True;  end
-          else TaskController.ErrorMsg:= TaskController.ErrorMsg + 'Не включены тумблеры на блоках 1910' + #10#13;
+          else ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включены тумблеры на блоках 1910' + #10#13;
           if (Station.HalfSetB.Rack1920.butPower=butPositionUp) and (Station.HalfSetB.Rack1920.butPower2=butPositionUp) then begin Conditions[2]:=True;  end
-          else TaskController.ErrorMsg:= TaskController.ErrorMsg + 'Не включены тумблеры на блоках 1920' + #10#13;
+          else ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включены тумблеры на блоках 1920' + #10#13;
           if (Station.HalfSetB.Rack1920.but1960_1=butPositionUp) then begin Conditions[3]:=True;  end
-          else TaskController.ErrorMsg:= TaskController.ErrorMsg + 'Не включен тумблер на блоке 1960' + #10#13;
+          else ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включен тумблер на блоке 1960' + #10#13;
 
           Result:= false;
 
@@ -644,8 +652,8 @@ uConstantsDM;
             begin
                 if (Conditions[i]=False) and (Conditions[i+1]=True) then
                  begin
-                    TaskController.ErrorMsg:= TaskController.ErrorMsg + #10#13 +'Неверная последоваельность включения тумблеров' + #10#13 + 'Правильно: 1930, 1910, 1920, 1960';
-                    TaskController.ShowError;
+                    ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + #10#13 +'Неверная последоваельность включения тумблеров' + #10#13 + 'Правильно: 1930, 1910, 1920, 1960';
+                    ErrorKeeper.ShowError;
                     Break;
                   end;
             end;
@@ -667,7 +675,7 @@ uConstantsDM;
 
    //==
 
-   function TTaskPowerOnSubTask7.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean;
+   function TTaskPowerOnSubTask7.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
    begin
          if (Station.HalfSetA.Rack1200Left.but1240K=butPositionUp) then
          begin
@@ -675,8 +683,8 @@ uConstantsDM;
          end
          else
          begin
-            if (FullCheck = False) then TaskController.ErrorMsg := '' ;
-            if (Station.HalfSetA.Rack1200Left.but1240K<>butPositionUp) then TaskController.ErrorMsg:= TaskController.ErrorMsg + 'Не включен тумблер на блоке 1240к' + #10#13;
+            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+            if (Station.HalfSetA.Rack1200Left.but1240K<>butPositionUp) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включен тумблер на блоке 1240к' + #10#13;
            Result:=false;
          end;
    end;
@@ -693,7 +701,7 @@ uConstantsDM;
 
    //==
 
-   function TTaskPowerOnSubTask8.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean;
+   function TTaskPowerOnSubTask8.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
    begin
          if (Station.HalfSetB.Rack1200Left.but1240K=butPositionUp) then
          begin
@@ -701,8 +709,8 @@ uConstantsDM;
          end
          else
          begin
-            if (FullCheck = False) then TaskController.ErrorMsg := '' ;
-            if (Station.HalfSetB.Rack1200Left.but1240K<>butPositionUp) then TaskController.ErrorMsg:= TaskController.ErrorMsg + 'Не включен тумблер на блоке 1240к' + #10#13;
+            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+            if (Station.HalfSetB.Rack1200Left.but1240K<>butPositionUp) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включен тумблер на блоке 1240к' + #10#13;
            Result:=false;
          end;
    end;
@@ -719,7 +727,7 @@ uConstantsDM;
 
    //==
 
-   function TTaskPowerOnSubTask9.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean;
+   function TTaskPowerOnSubTask9.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
    begin
          if (Station.Rack1710.butPower=butPositionRight) and (Station.Rack1710.butSpeaker=butPositionRight) then
          begin
@@ -727,9 +735,9 @@ uConstantsDM;
          end
          else
          begin
-            if (FullCheck = False) then TaskController.ErrorMsg := '' ;
-            if (Station.Rack1710.butPower<>butPositionRight) then TaskController.ErrorMsg:= TaskController.ErrorMsg + 'Не включен тумблер питания на блоке 470' + #10#13;
-            if (Station.Rack1710.butSpeaker<>butPositionRight) then TaskController.ErrorMsg:= TaskController.ErrorMsg + 'Не включен тумблер ГРОМКОГОВОРИТЕЛЬ на блоке 470' + #10#13;
+            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+            if (Station.Rack1710.butPower<>butPositionRight) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включен тумблер питания на блоке 470' + #10#13;
+            if (Station.Rack1710.butSpeaker<>butPositionRight) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включен тумблер ГРОМКОГОВОРИТЕЛЬ на блоке 470' + #10#13;
            Result:=false;
          end;
    end;
@@ -746,7 +754,7 @@ uConstantsDM;
 
    //==
 
-   function TTaskPowerOnSubTask10.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean;
+   function TTaskPowerOnSubTask10.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
    begin
          if (Station.Rack1400.butPower = butPositionRight) and (Station.Rack1400.butSpeaker = butPositionRight) then
          begin
@@ -754,9 +762,9 @@ uConstantsDM;
          end
          else
          begin
-            if (FullCheck = False) then TaskController.ErrorMsg := '' ;
-            if (Station.Rack1400.butPower<>butPositionRight) then TaskController.ErrorMsg:= TaskController.ErrorMsg + 'Не включен тумблер питания на блоке 470' + #10#13;
-            if (Station.Rack1400.butSpeaker<>butPositionRight) then TaskController.ErrorMsg:= TaskController.ErrorMsg + 'Не включен тумблер ГРОМКОГОВОРИТЕЛЬ на блоке 470' + #10#13;
+            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+            if (Station.Rack1400.butPower<>butPositionRight) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включен тумблер питания на блоке 470' + #10#13;
+            if (Station.Rack1400.butSpeaker<>butPositionRight) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включен тумблер ГРОМКОГОВОРИТЕЛЬ на блоке 470' + #10#13;
            Result:=false;
          end;
    end;
@@ -773,7 +781,7 @@ uConstantsDM;
 
    //==
 
-   function TTaskPowerOnSubTask11.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean;
+   function TTaskPowerOnSubTask11.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
    begin
          if (Station.P321C.butPower=butPositionUp) and (Station.P321C.butMeasure=butPositionUp) and (Station.P321C.but600Ohm=butPositionUp) then
          begin
@@ -781,10 +789,10 @@ uConstantsDM;
          end
          else
          begin
-            if (FullCheck = False) then TaskController.ErrorMsg := '' ;
-            if (Station.P321C.butPower<>butPositionUp) then TaskController.ErrorMsg:= TaskController.ErrorMsg + 'Не включен тумблер питания' + #10#13;
-            if (Station.P321C.butMeasure<>butPositionUp) then TaskController.ErrorMsg:= TaskController.ErrorMsg + 'Не включен тумблер ИЗМЕРЕНИЕ' + #10#13;
-            if (Station.P321C.but600Ohm<>butPositionUp) then TaskController.ErrorMsg:= TaskController.ErrorMsg + 'Не включен тумблер 600ом' + #10#13;
+            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+            if (Station.P321C.butPower<>butPositionUp) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включен тумблер питания' + #10#13;
+            if (Station.P321C.butMeasure<>butPositionUp) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включен тумблер ИЗМЕРЕНИЕ' + #10#13;
+            if (Station.P321C.but600Ohm<>butPositionUp) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включен тумблер 600ом' + #10#13;
            Result:=false;
          end;
    end;
@@ -801,7 +809,7 @@ uConstantsDM;
 
      //==
 
-   function TTaskPowerOnSubTask12.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean;
+   function TTaskPowerOnSubTask12.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
    begin
          if (Station.PowerSupply.butPower=butPositionUp) then
          begin
@@ -809,8 +817,8 @@ uConstantsDM;
          end
          else
          begin
-            if (FullCheck = False) then TaskController.ErrorMsg := '' ;
-            if (Station.PowerSupply.butPower<>butPositionUp) then TaskController.ErrorMsg:= TaskController.ErrorMsg + 'Не включен тумблер питания' + #10#13;
+            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+            if (Station.PowerSupply.butPower<>butPositionUp) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включен тумблер питания' + #10#13;
            Result:=false;
          end;
    end;
@@ -828,7 +836,7 @@ uConstantsDM;
 
      //==
 
-   function TTaskPowerOnSubTask13.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean;
+   function TTaskPowerOnSubTask13.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
    begin
          if (Station.Oscillograph.butLevelPosition = butPositionUp) then
          begin
@@ -836,8 +844,8 @@ uConstantsDM;
          end
          else
          begin
-            if (FullCheck = False) then TaskController.ErrorMsg := '' ;
-            if (Station.Oscillograph.butLevelPosition<>butPositionUp) then TaskController.ErrorMsg:= TaskController.ErrorMsg + 'Не включен тумблер питания' + #10#13;
+            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+            if (Station.Oscillograph.butLevelPosition<>butPositionUp) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включен тумблер питания' + #10#13;
            Result:=false;
          end;
    end;
@@ -858,7 +866,7 @@ uConstantsDM;
 
   constructor TTaskSingleCheck.Create;
   begin
-  inherited Create(Station, ClientState);
+  inherited Create(Station, ClientState, ErrorKeeper);
 
   Name:='Проверка работоспособности станции в режиме "Автономный контроль"';
 
@@ -907,7 +915,7 @@ uConstantsDM;
        end;
   
    //===
-   function TTaskSingleCheckSubTask1.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean;
+   function TTaskSingleCheckSubTask1.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
    begin
 
          if (Station.HalfSetA.Rack1500.stCableLoad = csConnectedAtRack1500Sh1) and (Station.HalfSetA.Rack1500.stCableSh1 = csDisconected) then
@@ -928,7 +936,7 @@ uConstantsDM;
    end;
 
 
-        function TTaskSingleCheckSubTask2.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean;
+        function TTaskSingleCheckSubTask2.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
    begin
 
          if (Station.HalfSetA.Rack1500.swWave1610_0 = ClientState.TransmitterWaveA) and (Station.HalfSetA.Rack1500.swWave161_R = ClientState.TransmitterWaveA) and (Station.HalfSetA.Rack1500.swWave1500 = ClientState.TransmitterWaveA) then
@@ -949,7 +957,7 @@ uConstantsDM;
    end;
 
    
-   function TTaskSingleCheckSubTask3.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean;
+   function TTaskSingleCheckSubTask3.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
    begin
 
          if (((Station.HalfSetA.Duplexer.cbSh1 = csConnectedAtDuplexeLeft) and (Station.HalfSetA.Duplexer.cbSh2 = csConnectedAtDuplexeRight))
@@ -973,7 +981,7 @@ uConstantsDM;
    
 
 
-   function TTaskSingleCheckSubTask4.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean;
+   function TTaskSingleCheckSubTask4.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
    begin
 
          if (Station.HalfSetA.Duplexer.waveTransmit = ClientState.TransmitterWaveA) and (Station.HalfSetA.Duplexer.waveReceive = ClientState.ReceiverWaveA) then
@@ -996,7 +1004,7 @@ uConstantsDM;
 
 
 
-    function TTaskSingleCheckSubTask5.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean;
+    function TTaskSingleCheckSubTask5.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
    begin
 
          if (GeterodinWaves[ClientState.TransmitterWaveA][0] = Station.HalfSetA.Rack1500.GeterodinIntMain)
@@ -1029,7 +1037,7 @@ uConstantsDM;
 
    end;
 
-      function TTaskSingleCheckSubTask6.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean;
+      function TTaskSingleCheckSubTask6.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
    begin
 
          if (Station.HalfSetA.Rack1500.btnAutomatic = butPositionRight) and (Station.HalfSetA.Rack1500.DropError = True) then
@@ -1049,7 +1057,7 @@ uConstantsDM;
         Time:= '';
    end;
 
-      function TTaskSingleCheckSubTask7.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean;
+      function TTaskSingleCheckSubTask7.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
    begin
 
          if (Station.HalfSetA.Rack1920.stLBV2_TurnedOn = True) and (Station.HalfSetA.Rack1920.stLBV1_TurnedOn = True) then
@@ -1069,7 +1077,7 @@ uConstantsDM;
         Time:= '';
    end;
 
-      function TTaskSingleCheckSubTask8.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean;
+      function TTaskSingleCheckSubTask8.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
    begin
 
          if (Station.HalfSetA.Rack1500.swModeControl = 6) and (Station.HalfSetA.Rack1500.swPhaseMover = 10) and (Station.HalfSetA.Rack1500.butMode_R = butPositionLeft) then
@@ -1089,7 +1097,7 @@ uConstantsDM;
         Time:= '';
    end;
 
-    function TTaskSingleCheckSubTask9.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean;
+    function TTaskSingleCheckSubTask9.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
    begin
 
          if (Station.HalfSetA.Rack1600.wave1610_0 = ClientState.ReceiverWaveA) and (Station.HalfSetA.Rack1600.wave1610_R = ClientState.ReceiverWaveA) and (Station.HalfSetA.Rack1600.wave1600 = ClientState.ReceiverWaveA) then
@@ -1111,7 +1119,7 @@ uConstantsDM;
 
 
    
-      function TTaskSingleCheckSubTask10.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean;
+      function TTaskSingleCheckSubTask10.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
    begin
 
          if (Station.HalfSetA.Rack1600.SelectedMd = smdMain) and (Station.HalfSetA.Rack1600.SelectedUpch = sUpchMain) and (Station.HalfSetA.Rack1600.SelectedDmch = sDmchMain)
@@ -1142,7 +1150,7 @@ uConstantsDM;
         Time:= '';
    end;
 
-      function TTaskSingleCheckSubTask11.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean;
+      function TTaskSingleCheckSubTask11.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
    begin
 
          if (Station.HalfSetA.Rack1600.butAutomatic = butPositionLeft) and (Station.HalfSetA.Rack1600.DropError = True) then
@@ -1166,7 +1174,7 @@ uConstantsDM;
 
 
 
-    function TTaskSingleCheckSubTask12.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean;
+    function TTaskSingleCheckSubTask12.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
    begin
 
          if (Station.HalfSetB.Rack1500.stCableLoad = csConnectedAtRack1500Sh1) and (Station.HalfSetB.Rack1500.stCableSh1 = csDisconected) then
@@ -1187,7 +1195,7 @@ uConstantsDM;
    end;
 
 
-        function TTaskSingleCheckSubTask13.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean;
+        function TTaskSingleCheckSubTask13.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
    begin
 
          if (Station.HalfSetB.Rack1500.swWave1610_0 = ClientState.TransmitterWaveB) and (Station.HalfSetB.Rack1500.swWave161_R = ClientState.TransmitterWaveB) and (Station.HalfSetB.Rack1500.swWave1500 = ClientState.TransmitterWaveB) then
@@ -1208,7 +1216,7 @@ uConstantsDM;
    end;
 
    
-   function TTaskSingleCheckSubTask14.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean;
+   function TTaskSingleCheckSubTask14.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
    begin
 
          if (((Station.HalfSetB.Duplexer.cbSh1 = csConnectedAtDuplexeLeft) and (Station.HalfSetB.Duplexer.cbSh2 = csConnectedAtDuplexeRight))
@@ -1232,7 +1240,7 @@ uConstantsDM;
    
 
 
-   function TTaskSingleCheckSubTask15.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean;
+   function TTaskSingleCheckSubTask15.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
    begin
 
          if (Station.HalfSetB.Duplexer.waveTransmit = ClientState.TransmitterWaveB) and (Station.HalfSetB.Duplexer.waveReceive = ClientState.ReceiverWaveB) then
@@ -1255,7 +1263,7 @@ uConstantsDM;
 
 
 
-    function TTaskSingleCheckSubTask16.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean;
+    function TTaskSingleCheckSubTask16.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
    begin
 
          if (GeterodinWaves[ClientState.TransmitterWaveB][0] = Station.HalfSetB.Rack1500.GeterodinIntMain)
@@ -1288,7 +1296,7 @@ uConstantsDM;
 
    end;
 
-      function TTaskSingleCheckSubTask17.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean;
+      function TTaskSingleCheckSubTask17.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
    begin
 
          if (Station.HalfSetB.Rack1500.btnAutomatic = butPositionRight) and (Station.HalfSetB.Rack1500.DropError = True) then
@@ -1308,7 +1316,7 @@ uConstantsDM;
         Time:= '';
    end;
 
-      function TTaskSingleCheckSubTask18.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean;
+      function TTaskSingleCheckSubTask18.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
    begin
 
          if (Station.HalfSetB.Rack1920.stLBV2_TurnedOn = True) and (Station.HalfSetB.Rack1920.stLBV1_TurnedOn = True) then
@@ -1328,7 +1336,7 @@ uConstantsDM;
         Time:= '';
    end;
 
-      function TTaskSingleCheckSubTask19.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean;
+      function TTaskSingleCheckSubTask19.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
    begin
 
          if (Station.HalfSetB.Rack1500.swModeControl = 6) and (Station.HalfSetB.Rack1500.swPhaseMover = 10) and (Station.HalfSetB.Rack1500.butMode_R = butPositionLeft) then
@@ -1348,7 +1356,7 @@ uConstantsDM;
         Time:= '';
    end;
 
-    function TTaskSingleCheckSubTask20.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean;
+    function TTaskSingleCheckSubTask20.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
    begin
 
          if (Station.HalfSetB.Rack1600.wave1610_0 = ClientState.ReceiverWaveB) and (Station.HalfSetB.Rack1600.wave1610_R = ClientState.ReceiverWaveB) and (Station.HalfSetB.Rack1600.wave1600 = ClientState.ReceiverWaveB) then
@@ -1370,7 +1378,7 @@ uConstantsDM;
 
 
    
-      function TTaskSingleCheckSubTask21.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean;
+      function TTaskSingleCheckSubTask21.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
    begin
 
          if (Station.HalfSetB.Rack1600.SelectedMd = smdMain) and (Station.HalfSetB.Rack1600.SelectedUpch = sUpchMain) and (Station.HalfSetB.Rack1600.SelectedDmch = sDmchMain)
@@ -1401,7 +1409,7 @@ uConstantsDM;
         Time:= '';
    end;
 
-      function TTaskSingleCheckSubTask22.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean;
+      function TTaskSingleCheckSubTask22.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
    begin
 
          if (Station.HalfSetB.Rack1600.butAutomatic = butPositionLeft) and (Station.HalfSetB.Rack1600.DropError = True) then
@@ -1421,7 +1429,7 @@ uConstantsDM;
         Time:= '';
    end;
 
-      function TTaskSingleCheckSubTask23.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean;
+      function TTaskSingleCheckSubTask23.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
    begin
 
          if (Station.HalfSetA.Rack1600.stMoshnost = True) then
@@ -1441,7 +1449,7 @@ uConstantsDM;
         Time:= '';
    end;
 
-      function TTaskSingleCheckSubTask24.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean;
+      function TTaskSingleCheckSubTask24.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
    begin
 
          if (Station.HalfSetB.Rack1600.stMoshnost = True) then
@@ -1469,7 +1477,7 @@ uConstantsDM;
 
 
 
-          function TTaskSingleCheckSubTask25.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean;
+          function TTaskSingleCheckSubTask25.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
    begin
 
          if (Station.Oscillograph.cblCableUsilitelState = csConnectedAtPower) and (Station.Oscillograph.cblCabelSyncState = csConnectedAtSync) then
@@ -1491,7 +1499,7 @@ uConstantsDM;
 
 
 
-       function TTaskSingleCheckSubTask26.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean;
+       function TTaskSingleCheckSubTask26.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
    begin
 
          if (Station.HalfSetA.Rack1200Right.CableOscillographLineInput = csDisconected) and
@@ -1706,7 +1714,7 @@ uConstantsDM;
 
 
 
-          function TTaskSingleCheckSubTask27.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState): Boolean;
+          function TTaskSingleCheckSubTask27.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
    begin
 
          if (Station.HalfSetB.Rack1200Right.CableOscillographLineInput = csDisconected) and

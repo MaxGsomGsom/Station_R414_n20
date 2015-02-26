@@ -136,17 +136,19 @@ type
     constructor Create(AOwner: TComponent; Half: Integer; Station0: TStation; TaskController0: TTaskController); reintroduce;
 
 
-  end;
 
 var
   CurFormId: Integer;
   Station: TStation;
+  TaskController: TTaskController;
   ButtonBackForm: TButtonBackForm;
 
 
   const
   idRack1920A=1;
   idRack1920B=2;
+
+  end;
 
 implementation
 
@@ -190,7 +192,7 @@ begin
           (Station.HalfSetA.Rack1920.but1910A = butPositionDown) or
           (Station.HalfSetA.Rack1920.butPower2 = butPositionDown) then
           begin
-            AddError(CurFormId, 'Сперва необходимо настроить предыдущие блоки');
+            TaskController.AddError(CurFormId, 'Сперва необходимо настроить предыдущие блоки');
             if Station.WorkType = wtLearn then
             begin
               Application.MessageBox('Сперва необходимо настроить предыдущие блоки',
@@ -224,7 +226,7 @@ begin
             (Station.HalfSetB.Rack1920.but1910A = butPositionDown) or
             (Station.HalfSetB.Rack1920.butPower2 = butPositionDown) then
             begin
-              AddError(CurFormId, 'Сперва необходимо настроить предыдущие блоки');
+              TaskController.AddError(CurFormId, 'Сперва необходимо настроить предыдущие блоки');
               if Station.WorkType = wtLearn then
               begin
                 Application.MessageBox('Сперва необходимо настроить предыдущие блоки',
@@ -265,7 +267,7 @@ begin
           (Station.HalfSetA.Rack1920.but1910 = butPositionDown) or
           (Station.HalfSetA.Rack1920.but1910A = butPositionDown) then
           begin
-            AddError(CurFormId, 'Сперва необходимо настроить предыдущие блоки');
+            TaskController.AddError(CurFormId, 'Сперва необходимо настроить предыдущие блоки');
             if Station.WorkType = wtLearn then
             begin
               Application.MessageBox('Сперва необходимо настроить предыдущие блоки',
@@ -299,7 +301,7 @@ begin
           (Station.HalfSetB.Rack1920.but1910 = butPositionDown) or
           (Station.HalfSetB.Rack1920.but1910A = butPositionDown) then
           begin
-            AddError(CurFormId, 'Сперва необходимо настроить предыдущие блоки');
+            TaskController.AddError(CurFormId, 'Сперва необходимо настроить предыдущие блоки');
             if Station.WorkType = wtLearn then
             begin
               Application.MessageBox('Сперва необходимо настроить предыдущие блоки',
@@ -338,7 +340,7 @@ begin
         begin
           if Station.HalfSetA.Rack1920.but1930 = butPositionDown then
           begin
-            AddError(CurFormId, 'Сперва необходимо настроить предыдущий блок');
+            TaskController.AddError(CurFormId, 'Сперва необходимо настроить предыдущий блок');
             if Station.WorkType = wtLearn then
             begin
               Application.MessageBox('Сперва необходимо настроить предыдущий блок',
@@ -363,7 +365,7 @@ begin
         begin
           if Station.HalfSetB.Rack1920.but1930 = butPositionDown then
           begin
-            AddError(CurFormId, 'Сперва необходимо настроить предыдущий блок');
+            TaskController.AddError(CurFormId, 'Сперва необходимо настроить предыдущий блок');
             if Station.WorkType = wtLearn then
             begin
               Application.MessageBox('Сперва необходимо настроить предыдущий блок',
@@ -397,7 +399,7 @@ begin
           if (Station.HalfSetA.Rack1920.but1930 = butPositionDown) or
           (Station.HalfSetA.Rack1920.but1910 = butPositionDown) then
           begin
-            AddError(CurFormId, 'Сперва необходимо настроить предыдущие блоки');
+            TaskController.AddError(CurFormId, 'Сперва необходимо настроить предыдущие блоки');
             if Station.WorkType = wtLearn then
             begin
               Application.MessageBox('Сперва необходимо настроить предыдущие блоки',
@@ -423,7 +425,7 @@ begin
           if (Station.HalfSetB.Rack1920.but1930 = butPositionDown) or
           (Station.HalfSetB.Rack1920.but1910 = butPositionDown) then
           begin
-            AddError(CurFormId, 'Сперва необходимо настроить предыдущие блоки');
+            TaskController.AddError(CurFormId, 'Сперва необходимо настроить предыдущие блоки');
             if Station.WorkType = wtLearn then
             begin
               Application.MessageBox('Сперва необходимо настроить предыдущие блоки',
@@ -957,7 +959,7 @@ begin
           (Station.HalfSetA.Rack1920.butPower2 = butPositionDown) or
           ( Station.HalfSetA.Rack1920.butPower = butPositionDown) then
           begin
-            AddError(CurFormId, 'Сперва необходимо настроить предыдущие блоки');
+            TaskController.AddError(CurFormId, 'Сперва необходимо настроить предыдущие блоки');
             if Station.WorkType = wtLearn then
             begin
               Application.MessageBox('Сперва необходимо настроить предыдущие блоки',
@@ -987,7 +989,7 @@ begin
           (Station.HalfSetB.Rack1920.butPower2 = butPositionDown) or
           ( Station.HalfSetB.Rack1920.butPower = butPositionDown) then
           begin
-            AddError(CurFormId, 'Сперва необходимо настроить предыдущие блоки');
+            TaskController.AddError(CurFormId, 'Сперва необходимо настроить предыдущие блоки');
             if Station.WorkType = wtLearn then
             begin
               Application.MessageBox('Сперва необходимо настроить предыдущие блоки',
@@ -1516,7 +1518,7 @@ begin
           if (not(Station.HalfSetA.Rack1500.GeterodinTunedMain))
             and (not(Station.HalfSetA.Rack1500.GeterodinTunedReserve)) then
           begin
-            AddError(CurFormId, 'Попытка подать высокое на ЛБВ1 '
+            TaskController.AddError(CurFormId, 'Попытка подать высокое на ЛБВ1 '
               +'прежде чем настроен гетеродин');
             Application.MessageBox('Сперва необходимо настроить '
               +'гетеродин в стойке 1500!',
@@ -1556,7 +1558,7 @@ begin
           if (not(Station.HalfSetB.Rack1500.GeterodinTunedMain))
             and (not(Station.HalfSetB.Rack1500.GeterodinTunedReserve)) then
           begin
-            AddError(CurFormId, 'Попытка подать высокое на ЛБВ1 '
+            TaskController.AddError(CurFormId, 'Попытка подать высокое на ЛБВ1 '
               +'прежде чем настроен гетеродин');
             Application.MessageBox('Сперва необходимо настроить '
               +'гетеродин в стойке 1500!',
@@ -1605,7 +1607,7 @@ begin
           if (not(Station.HalfSetA.Rack1500.GeterodinTunedMain))
             and (not(Station.HalfSetA.Rack1500.GeterodinTunedReserve)) then
           begin
-            AddError(CurFormId, 'Попытка подать высокое на ЛБВ1 '
+            TaskController.AddError(CurFormId, 'Попытка подать высокое на ЛБВ1 '
               +'прежде чем настроен гетеродин');
             Application.MessageBox('Сперва необходимо настроить '
               +'гетеродин в стойке 1500!',
@@ -1645,7 +1647,7 @@ begin
           if (not(Station.HalfSetB.Rack1500.GeterodinTunedMain))
             and (not(Station.HalfSetB.Rack1500.GeterodinTunedReserve)) then
           begin
-            AddError(CurFormId, 'Попытка подать высокое на ЛБВ1 '
+            TaskController.AddError(CurFormId, 'Попытка подать высокое на ЛБВ1 '
               +'прежде чем настроен гетеродин');
             Application.MessageBox('Сперва необходимо настроить '
               +'гетеродин в стойке 1500!',
@@ -1695,7 +1697,7 @@ var
 begin
   //CurFormId := self.Tag;
 
-  ChangeEvent;
+  TaskController.ChangeEvent;
 
   imgHighOn.BringToFront;
 

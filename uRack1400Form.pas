@@ -52,7 +52,7 @@ type
     { Public declarations }
     Bst:boolean;
     constructor Create(AOwner: TComponent; Station0: TStation; TaskController0: TTaskController); reintroduce;
-  end;
+
 
 var
   Station: TStation;
@@ -60,6 +60,7 @@ var
   TaskController: TTaskController;
   //Rack1400Form: TRack1400Form;
 
+  end;
 implementation
 
 uses
@@ -98,7 +99,7 @@ end;
 
 procedure TRack1400Form.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
 begin
-  CheckFormBeforeClosing(CanClose);
+  TaskController.CheckFormBeforeClosing(CanClose);
 end;
 
 procedure TRack1400Form.FormCreate(Sender: TObject);
@@ -183,7 +184,7 @@ end;
 
 procedure TRack1400Form.Image2Click(Sender: TObject);
 begin
-  ChangeEvent;
+  TaskController.ChangeEvent;
   if Station.Rack1400.butPower = butPositionLeft then
     Station.Rack1400.butPower := butPositionRight
   else
@@ -194,7 +195,7 @@ end;
 
 procedure TRack1400Form.Image3Click(Sender: TObject);
 begin
-  ChangeEvent;
+  TaskController.ChangeEvent;
   if Station.Rack1400.butPower = butPositionLeft then
     Station.Rack1400.butPower := butPositionRight
   else
@@ -205,7 +206,7 @@ end;
 
 procedure TRack1400Form.Image4Click(Sender: TObject);
 begin
-  ChangeEvent;
+  TaskController.ChangeEvent;
 end;
 
 procedure TRack1400Form.imgsKukushkaChange(Button: TMouseButton);
@@ -220,7 +221,7 @@ end;
 
 procedure TRack1400Form.imgSpeakerOffClick(Sender: TObject);
 begin
-     ChangeEvent;
+     TaskController.ChangeEvent;
   if Station.Rack1400.butSpeaker = butPositionLeft then
     Station.Rack1400.butSpeaker := butPositionRight
   else
@@ -231,7 +232,7 @@ end;
 
 procedure TRack1400Form.imgSpeakerOnClick(Sender: TObject);
 begin
-ChangeEvent;
+TaskController.ChangeEvent;
   if Station.Rack1400.butSpeaker = butPositionLeft then
     Station.Rack1400.butSpeaker := butPositionRight
   else

@@ -2479,8 +2479,14 @@
       </procedure>
       <procedure name="PaintOscilogram" visibility="public">
       </procedure>
+      <field name="CurDeviationID" type="Byte" visibility="public" />
+      <field name="ButtonBackForm" type="TButtonBackForm" visibility="public" />
+      <field name="Station" type="TStation" visibility="public" />
+      <field name="TaskController" type="TTaskController" visibility="public" />
+      <field name="Handset" type="THandsetForm" visibility="public" />
     </members>
   </class>
+  <variable name="SelectedCable" type="Byte" />
   <const name="scPower" type="Integer">
     <value>
       $1
@@ -2491,10 +2497,4 @@
       $2
     </value>
   </const>
-  <variable name="SelectedCable" type="Byte" visibility="public" />
-  <variable name="CurDeviationID" type="Byte" visibility="public" />
-  <variable name="ButtonBackForm" type="TButtonBackForm" />
-  <variable name="Station" type="TStation" />
-  <variable name="TaskController" type="TTaskController" />
-  <variable name="Handset" type="THandsetForm" />
 </namespace>

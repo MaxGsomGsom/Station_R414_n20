@@ -145,9 +145,9 @@ procedure TBlockOscillographMinForm.FormShow(Sender: TObject);
 begin
   //Разместить форму слева под изображением панели P321
   Self.Left := 5;
-  Self.Top := P321DisplayForm.Top + P321DisplayForm.Height + 5;
+  //Self.Top := P321DisplayForm.Top + P321DisplayForm.Height + 5;
   //Применить соответствующие размеры
-  Self.Width := P321DisplayForm.Width - 10;
+  //Self.Width := P321DisplayForm.Width - 10;
 
   btnShowHideOscillograph.Caption := 'Развернуть';
 end;

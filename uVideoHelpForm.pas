@@ -20,11 +20,12 @@ type
   public
     { Public declarations }
     procedure PlayVideo(PathToVideo: string);
-  end;
+
 
 var
   VideoHelpForm: TVideoHelpForm;
-  Playng: Boolean = False;
+  Playng: Boolean;
+  end;
 
 implementation
 

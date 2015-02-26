@@ -251,7 +251,7 @@ begin
     mmOverview:
       begin
         CloseStationR414FormFlag := 2;
-        Station.WorkType := mdExternalView;
+        //Station.WorkType := mdExternalView;
         Initialise;
         //StationR414Form.Show;
       end;
@@ -378,8 +378,8 @@ begin
   case mmSelected of
     mmOverview:
       begin
-        Station.WorkType := wtFree;
-        Station.WorkMode := mdExternalView;
+       // Station.WorkType := wtFree;
+        //Station.WorkMode := mdExternalView;
         CloseStationR414FormFlag := 1;
         //StationR414Form.Show;
       end;

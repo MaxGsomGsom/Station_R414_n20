@@ -2336,6 +2336,7 @@
           <parameter name="TaskController1" type="TTaskController" />
         </parameters>
       </constructor>
+      <field name="TaskController" type="TTaskController" visibility="public" />
     </members>
   </class>
 </namespace>

@@ -187,7 +187,7 @@ type
       Vidimost:boolean;
       procedure MoveToRight();
      constructor Create(AOwner: TComponent; Half:Integer; Station0: TStation; TaskController0: TTaskController); reintroduce;
-  end;
+
 
   var
   Rack1600back: TRack1600BForm;
@@ -195,6 +195,7 @@ type
   const
   idRack1600A=1;
   idRack1600B=2;
+  end;
 
 implementation
 
@@ -748,7 +749,7 @@ end;
 {$REGION 'Обработчики событий формы'}
 procedure TRack1600Form.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
 begin
-  CheckFormBeforeClosing(CanClose);
+  TaskController.CheckFormBeforeClosing(CanClose);
 end;
 
 procedure TRack1600Form.FormCreate(Sender: TObject);

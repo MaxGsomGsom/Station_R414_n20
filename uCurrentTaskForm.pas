@@ -39,12 +39,13 @@ type
     ReturnWhite: Integer;
     procedure SetMyText(Text: String);
     constructor Create(Parent1:TComponent; Station1:TStation); reintroduce;
-  end;
+
 
 var
   Station: TStation;
   TaskController: TTaskController;
 
+  end;
 
 implementation
 

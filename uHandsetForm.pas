@@ -28,13 +28,15 @@ type
   public
     { Public declarations }
     Half: Integer;
-  end;
+
 
 var
-  HandsetForm: THandsetForm;
   Station: TStation;
   TaskController: TTaskController;
+  end;
 
+ var
+  HandsetForm: THandsetForm ;
 
 implementation
 

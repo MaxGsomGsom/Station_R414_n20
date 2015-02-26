@@ -96,12 +96,14 @@ type
   public
     Skrol:integer;
     constructor Create(AOwner: TComponent; Station0: TStation; TaskController0: TTaskController); reintroduce;
-  end;
 
 var
   //BlockPowerSupplyForm: TBlockPowerSupplyForm;
   P1,P2,P3,P4:integer;
-
+  ButtonBackForm: TButtonBackForm;
+  Station: TStation;
+  TaskController: TTaskController;
+   end;
 implementation
 
 uses
@@ -109,10 +111,6 @@ uses
   uDefinitionsDM,
   uConstantsDM;
 
-  var
-  ButtonBackForm: TButtonBackForm;
-  Station: TStation;
-  TaskController: TTaskController;
 
 {$R *.dfm}
 

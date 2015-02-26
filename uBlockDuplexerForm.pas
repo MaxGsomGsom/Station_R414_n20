@@ -68,7 +68,7 @@ type
   public
   constructor Create(AOwner: TComponent; Half:Integer; Station0: TStation; TaskController0: TTaskController); reintroduce;
 
-  end;
+
 
 var
   //BlockDuplexerForm: TBlockDuplexerForm;
@@ -79,6 +79,7 @@ var
   const
   idDuplexerA=1;
   idDuplexerB=2;
+  end;
 
 implementation
 
@@ -113,7 +114,7 @@ end;
 
 procedure TBlockDuplexerForm.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
 begin
-  CheckFormBeforeClosing(CanClose);
+  TaskController.CheckFormBeforeClosing(CanClose);
 end;
 
 procedure TBlockDuplexerForm.FormCreate(Sender: TObject);

@@ -2323,4 +2323,5 @@
   </class>
   <variable name="WaveMeterPanelForm" type="TWaveMeterPanelForm" />
   <variable name="Station" type="TStation" />
+  <variable name="CurFormID" type="Integer" />
 </namespace>

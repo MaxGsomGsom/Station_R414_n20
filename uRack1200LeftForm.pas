@@ -299,7 +299,6 @@ type
   public
     { Public declarations }
     constructor Create(AOwner: TComponent; Half: Integer; Station0: TStation; TaskController0: TTaskController); reintroduce;
-  end;
 
 var
   //Rack1200LeftForm: TRack1200LeftForm;
@@ -311,6 +310,8 @@ var
   const
   idRack1200A1=1;
   idRack1200B1=2;
+
+  end;
 
 
 implementation
@@ -1054,7 +1055,7 @@ end;
 procedure TRack1200LeftForm.FormCloseQuery(Sender: TObject;
   var CanClose: Boolean);
 begin
-  CheckFormBeforeClosing(CanClose);
+  TaskController.CheckFormBeforeClosing(CanClose);
 end;
 
 procedure TRack1200LeftForm.FormCreate(Sender: TObject);

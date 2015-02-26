@@ -284,7 +284,7 @@ type
   public
     { Public declarations }
     constructor Create(AOwner: TComponent; Half: Integer; Station0: TStation; TaskController0: TTaskController); reintroduce;
-  end;
+
 
 const
   scCableSync = 1;
@@ -292,7 +292,7 @@ const
 
 var
   //Rack1200RightForm: TRack1200RightForm;
-  SelectedCable: Byte = NotSelected;
+  SelectedCable: Byte;
   CurFormId: Integer;
     ButtonBackForm: TButtonBackForm;
   Station: TStation;
@@ -300,6 +300,8 @@ var
   const
   idRack1200A2=1;
   idRack1200B2=2;
+
+  end;
 
 implementation
 
@@ -321,6 +323,7 @@ begin
   //idRack1200A2:=1;
   //idRack1200B2:=2;
   CurFormId:=Half;
+  SelectedCable:= NotSelected;
       if (Half=1) then begin Self.Caption:='1200 ÏÐÄ À'; end
   else Self.Caption:='1200 ÏÐÄ Á';
       Station:=Station0;
@@ -2598,7 +2601,7 @@ end;
 procedure TRack1200RightForm.FormCloseQuery(Sender: TObject;
   var CanClose: Boolean);
 begin
-  CheckFormBeforeClosing(CanClose);
+  TaskController.CheckFormBeforeClosing(CanClose);
 end;
 
 procedure TRack1200RightForm.FormCreate(Sender: TObject);

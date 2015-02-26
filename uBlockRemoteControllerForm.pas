@@ -633,6 +633,7 @@ type
     procedure pmSpawn1200BPrdClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
 
+
   private
     procedure Reload;
     function IsGeneratorCableConnnected: Boolean;
@@ -642,10 +643,10 @@ type
     function IsPlaceHolderEmpty(PlaceHolderId: Integer): Boolean;
     procedure CablePopUp;
   public
-    SelectedCable: Byte;
+  SelectedCable: Byte;
     constructor Create(AOwner: TComponent; Station0: TStation; TaskController0: TTaskController); reintroduce;
     //LastSelectedCable: Byte;   //Предыдущий взятый кабель
-  end;
+
 
 const
   stcblGenerator = 2;
@@ -656,10 +657,14 @@ var
   ButtonBackForm: TButtonBackForm;
   Station: TStation;
   TaskController: TTaskController;
-  cbUdlinitel1, cbUdlinitel2: pUdlinitelCable;
   imgsLightCallDiods: array [1..9] of ^TImage;
   imgsLightCallDiodsPressed: array [1..9] of ^TImage;
   btLeft, btTop, imgTopOffset, imgLeftOffset, btPlaceHolder: Integer;
+  end;
+
+ var
+   cbUdlinitel1, cbUdlinitel2: pUdlinitelCable;
+
 
 implementation
 
@@ -1378,7 +1383,7 @@ end;
 
 procedure T_Pult.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
 begin
-  CheckFormBeforeClosing(CanClose);
+  TaskController.CheckFormBeforeClosing(CanClose);
 end;
 
 procedure T_Pult.FormCreate(Sender: TObject);

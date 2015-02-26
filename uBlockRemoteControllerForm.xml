@@ -3154,28 +3154,36 @@
           <parameter name="TaskController0" type="TTaskController" />
         </parameters>
       </constructor>
+      <const name="stcblGenerator" visibility="public" type="Integer">
+        <value>
+          $2
+        </value>
+      </const>
+      <const name="stcblInputYY" visibility="public" type="Integer">
+        <value>
+          $3
+        </value>
+      </const>
+      <field name="ButtonBackForm" type="TButtonBackForm" visibility="public" />
+      <field name="Station" type="TStation" visibility="public" />
+      <field name="TaskController" type="TTaskController" visibility="public" />
+      <field name="imgsLightCallDiods" visibility="public">
+        <array name="imgsLightCallDiods" visibility="public" low="1" high="9">
+          <element />
+        </array>
+      </field>
+      <field name="imgsLightCallDiodsPressed" visibility="public">
+        <array name="imgsLightCallDiodsPressed" visibility="public" low="1" high="9">
+          <element />
+        </array>
+      </field>
+      <field name="btLeft" type="Integer" visibility="public" />
+      <field name="btTop" type="Integer" visibility="public" />
+      <field name="imgTopOffset" type="Integer" visibility="public" />
+      <field name="imgLeftOffset" type="Integer" visibility="public" />
+      <field name="btPlaceHolder" type="Integer" visibility="public" />
     </members>
   </class>
-  <const name="stcblGenerator" type="Integer">
-    <value>
-      $2
-    </value>
-  </const>
-  <const name="stcblInputYY" type="Integer">
-    <value>
-      $3
-    </value>
-  </const>
-  <variable name="ButtonBackForm" type="TButtonBackForm" />
-  <variable name="Station" type="TStation" />
-  <variable name="TaskController" type="TTaskController" />
   <variable name="cbUdlinitel1" type="pUdlinitelCable" />
   <variable name="cbUdlinitel2" type="pUdlinitelCable" />
-  <variable name="imgsLightCallDiods" />
-  <variable name="imgsLightCallDiodsPressed" />
-  <variable name="btLeft" type="Integer" />
-  <variable name="btTop" type="Integer" />
-  <variable name="imgTopOffset" type="Integer" />
-  <variable name="imgLeftOffset" type="Integer" />
-  <variable name="btPlaceHolder" type="Integer" />
 </namespace>

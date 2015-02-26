@@ -165,13 +165,15 @@ type
     procedure Reload;
     constructor Create(AOwner: TComponent; Station0: TStation; TaskController0: TTaskController); reintroduce;
 
-  end;
+
 
 var
  // BlockPowerPanelForm: TBlockPowerPanelForm;
  ButtonBackForm: TButtonBackForm;
   Station: TStation;
   TaskController: TTaskController;
+
+  end;
 
 implementation
 
@@ -200,7 +202,7 @@ end;
 
 procedure TBlockPowerPanelForm.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
 begin
-  CheckFormBeforeClosing(CanClose);
+  TaskController.CheckFormBeforeClosing(CanClose);
 end;
 
 procedure TBlockPowerPanelForm.FormCreate(Sender: TObject);
@@ -240,7 +242,7 @@ end;
 procedure TBlockPowerPanelForm.imgSwPhaseMouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
-  ChangeEvent;
+  TaskController.ChangeEvent;
   if (Button = mbLeft) and (Station.PowerPanel.swPhase < 4) then
   begin
     Inc(Station.PowerPanel.swPhase, 1);
@@ -255,7 +257,7 @@ end;
 procedure TBlockPowerPanelForm.imgSwNetMouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
-  ChangeEvent;
+  TaskController.ChangeEvent;
   if (Button = mbLeft) and (Station.PowerPanel.swNet < 2) then
   begin
     Station.PowerPanel.swNet := Station.PowerPanel.swNet + 1;
@@ -279,7 +281,7 @@ end;
 procedure TBlockPowerPanelForm.k1_1MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
-  ChangeEvent;
+  TaskController.ChangeEvent;
   Station.PowerPanel.sw1700Power := 1;
   Reload;
 end;
@@ -287,7 +289,7 @@ end;
 procedure TBlockPowerPanelForm.k1_2MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
-  ChangeEvent;
+  TaskController.ChangeEvent;
   if (Button = mbRight) then
   begin
     Station.PowerPanel.sw1700Power := 2;
@@ -302,7 +304,7 @@ end;
 procedure TBlockPowerPanelForm.k1_3MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
-  ChangeEvent;
+  TaskController.ChangeEvent;
   Station.PowerPanel.sw1700Power := 1;
   Reload;
 end;
@@ -310,7 +312,7 @@ end;
 procedure TBlockPowerPanelForm.k2_1MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
-  ChangeEvent;
+  TaskController.ChangeEvent;
   Station.PowerPanel.swHeat5A := 1;
 
   Reload;
@@ -319,7 +321,7 @@ end;
 procedure TBlockPowerPanelForm.k2_2MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
-  ChangeEvent;
+  TaskController.ChangeEvent;
   if (Button = mbRight) then
   begin
     Station.PowerPanel.swHeat5A := 2;
@@ -335,7 +337,7 @@ end;
 procedure TBlockPowerPanelForm.k2_3MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
-  ChangeEvent;
+  TaskController.ChangeEvent;
   Station.PowerPanel.swHeat5A := 1;
 
   Reload;
@@ -344,7 +346,7 @@ end;
 procedure TBlockPowerPanelForm.k3_1MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
-  ChangeEvent;
+  TaskController.ChangeEvent;
   Station.PowerPanel.sw1900Power := 1;
 
   Reload;
@@ -353,7 +355,7 @@ end;
 procedure TBlockPowerPanelForm.k3_2MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
-  ChangeEvent;
+  TaskController.ChangeEvent;
   if (Button = mbRight) then
   begin
     Station.PowerPanel.sw1900Power := 2;
@@ -368,7 +370,7 @@ end;
 procedure TBlockPowerPanelForm.k3_3MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
-  ChangeEvent;
+  TaskController.ChangeEvent;
   Station.PowerPanel.sw1900Power := 1;
   Reload;
 end;
@@ -383,7 +385,7 @@ end;
 procedure TBlockPowerPanelForm.k4_1MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
-  ChangeEvent;
+  TaskController.ChangeEvent;
   Station.PowerPanel.sw1900Power_2 := 1;
 
   Reload;
@@ -392,7 +394,7 @@ end;
 procedure TBlockPowerPanelForm.k4_2MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
-  ChangeEvent;
+  TaskController.ChangeEvent;
   if (Button = mbRight) then
   begin
     Station.PowerPanel.sw1900Power_2 := 2;
@@ -408,7 +410,7 @@ end;
 procedure TBlockPowerPanelForm.k4_3MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
-  ChangeEvent;
+  TaskController.ChangeEvent;
   Station.PowerPanel.sw1900Power_2 := 1;
 
   Reload;
@@ -417,7 +419,7 @@ end;
 procedure TBlockPowerPanelForm.k5_1MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
-  ChangeEvent;
+  TaskController.ChangeEvent;
   Station.PowerPanel.sw1200Power_2 := 1;
 
   Reload;
@@ -426,7 +428,7 @@ end;
 procedure TBlockPowerPanelForm.k5_2MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
-  ChangeEvent;
+  TaskController.ChangeEvent;
   if (Button = mbRight) then
   begin
     Station.PowerPanel.sw1200Power_2 := 2;
@@ -733,7 +735,7 @@ end;
 procedure TBlockPowerPanelForm.k5_3MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
-  ChangeEvent;
+  TaskController.ChangeEvent;
   Station.PowerPanel.sw1200Power_2 := 1;
   Reload;
 end;
@@ -741,7 +743,7 @@ end;
 procedure TBlockPowerPanelForm.k6_1MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
-  ChangeEvent;
+  TaskController.ChangeEvent;
   Station.PowerPanel.sw1400 := 1;
   Reload;
 end;
@@ -749,7 +751,7 @@ end;
 procedure TBlockPowerPanelForm.k6_2MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
-  ChangeEvent;
+  TaskController.ChangeEvent;
   if (Button = mbRight) then
   begin
     Station.PowerPanel.sw1400 := 2;
@@ -764,7 +766,7 @@ end;
 procedure TBlockPowerPanelForm.k6_3MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
-  ChangeEvent;
+  TaskController.ChangeEvent;
   Station.PowerPanel.sw1400 := 1;
   Reload;
 end;
@@ -780,7 +782,7 @@ end;
 procedure TBlockPowerPanelForm.k7_1MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
-  ChangeEvent;
+  TaskController.ChangeEvent;
   Station.PowerPanel.sw1200Power := 1;
   Reload;
 end;
@@ -788,7 +790,7 @@ end;
 procedure TBlockPowerPanelForm.k7_2MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
-  ChangeEvent;
+  TaskController.ChangeEvent;
   if (Button = mbRight) then
   begin
     Station.PowerPanel.sw1200Power := 2;
@@ -807,7 +809,7 @@ end;
 procedure TBlockPowerPanelForm.k7_3MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
-  ChangeEvent;
+  TaskController.ChangeEvent;
   Station.PowerPanel.sw1200Power := 1;
   Reload;
 end;
@@ -815,7 +817,7 @@ end;
 procedure TBlockPowerPanelForm.t1_1MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
-  ChangeEvent;
+  TaskController.ChangeEvent;
   Station.PowerPanel.butRetranslator := butPositionUp;
 
   Reload;
@@ -824,7 +826,7 @@ end;
 procedure TBlockPowerPanelForm.t1_2MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
-  ChangeEvent;
+  TaskController.ChangeEvent;
   Station.PowerPanel.butRetranslator := butPositionDown;
 
   Reload;
@@ -833,7 +835,7 @@ end;
 procedure TBlockPowerPanelForm.t2_1MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
-  ChangeEvent;
+  TaskController.ChangeEvent;
   Station.PowerPanel.butRetranslator2 := butPositionUp;
 
   Reload;
@@ -842,7 +844,7 @@ end;
 procedure TBlockPowerPanelForm.t2_2MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
-  ChangeEvent;
+  TaskController.ChangeEvent;
   Station.PowerPanel.butRetranslator2 := butPositionDown;
 
   Reload;
@@ -851,7 +853,7 @@ end;
 procedure TBlockPowerPanelForm.t3_1MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
-  ChangeEvent;
+  TaskController.ChangeEvent;
   Station.PowerPanel.butUnitBK := butPositionUp;
 
   Reload;
@@ -860,7 +862,7 @@ end;
 procedure TBlockPowerPanelForm.t3_2MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
-  ChangeEvent;
+  TaskController.ChangeEvent;
   Station.PowerPanel.butUnitBK := butPositionDown;
 
   Reload;
@@ -869,7 +871,7 @@ end;
 procedure TBlockPowerPanelForm.t4_1MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
-  ChangeEvent;
+  TaskController.ChangeEvent;
   Station.PowerPanel.butVipriamit4V := butPositionUp;
 
   Reload;
@@ -878,7 +880,7 @@ end;
 procedure TBlockPowerPanelForm.t4_2MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
-  ChangeEvent;
+  TaskController.ChangeEvent;
   Station.PowerPanel.butVipriamit4V := butPositionDown;
 
   Reload;
@@ -887,7 +889,7 @@ end;
 procedure TBlockPowerPanelForm.t5_1MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
-  ChangeEvent;
+  TaskController.ChangeEvent;
   Station.PowerPanel.butVent3 := butPositionDown;
 
   Reload;
@@ -896,7 +898,7 @@ end;
 procedure TBlockPowerPanelForm.t5_2MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
-  ChangeEvent;
+  TaskController.ChangeEvent;
   Station.PowerPanel.butVent3 := butPositionDown;
 
   Reload;
@@ -905,7 +907,7 @@ end;
 procedure TBlockPowerPanelForm.t6_1MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
-  ChangeEvent;
+  TaskController.ChangeEvent;
   Station.PowerPanel.butVent1 := butPositionUp;
 
   Reload;
@@ -914,7 +916,7 @@ end;
 procedure TBlockPowerPanelForm.t6_2MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
-  ChangeEvent;
+  TaskController.ChangeEvent;
   Station.PowerPanel.butVent1 := butPositionDown;
 
   Reload;
@@ -923,7 +925,7 @@ end;
 procedure TBlockPowerPanelForm.t7_1MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
-  ChangeEvent;
+  TaskController.ChangeEvent;
   Station.PowerPanel.butVent1_2 := butPositionUp;
 
   Reload;
@@ -932,7 +934,7 @@ end;
 procedure TBlockPowerPanelForm.t7_2MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
-  ChangeEvent;
+  TaskController.ChangeEvent;
   Station.PowerPanel.butVent1_2 := butPositionDown;
 
   Reload;

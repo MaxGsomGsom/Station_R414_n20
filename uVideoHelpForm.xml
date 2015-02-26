@@ -2296,8 +2296,8 @@
           <parameter name="PathToVideo" type="string" />
         </parameters>
       </procedure>
+      <field name="VideoHelpForm" type="TVideoHelpForm" visibility="public" />
+      <field name="Playng" type="Boolean" visibility="public" />
     </members>
   </class>
-  <variable name="VideoHelpForm" type="TVideoHelpForm" />
-  <variable name="Playng" type="Boolean" visibility="public" />
 </namespace>

@@ -26,7 +26,7 @@ type
   public
   constructor Create(AOwner: TComponent; Half: Integer; Station0: TStation; TaskController0: TTaskController); reintroduce;
     { Public declarations }
-  end;
+
 
 var
    Skrol:integer;
@@ -37,6 +37,7 @@ var
    const
    idGeneratorA=1;
   idGeneratorB=2;
+  end;
 
 implementation
 
@@ -68,7 +69,7 @@ end;
 
 procedure TBlockGeneratorForm.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
 begin
-  CheckFormBeforeClosing(CanClose);
+  TaskController.CheckFormBeforeClosing(CanClose);
 end;
 
 procedure TBlockGeneratorForm.FormCreate(Sender: TObject);

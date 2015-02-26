@@ -2391,20 +2391,20 @@
           <parameter name="TaskController0" type="TTaskController" />
         </parameters>
       </constructor>
+      <field name="CurFormId1" type="Integer" visibility="public" />
+      <field name="Station" type="TStation" visibility="public" />
+      <field name="ButtonBackForm" type="TButtonBackForm" visibility="public" />
+      <field name="TaskController" type="TTaskController" visibility="public" />
+      <const name="idMshuA" visibility="public" type="Integer">
+        <value>
+          $1
+        </value>
+      </const>
+      <const name="idMshuB" visibility="public" type="Integer">
+        <value>
+          $2
+        </value>
+      </const>
     </members>
   </class>
-  <variable name="CurFormId1" type="Integer" />
-  <variable name="Station" type="TStation" />
-  <variable name="ButtonBackForm" type="TButtonBackForm" />
-  <variable name="TaskController" type="TTaskController" />
-  <const name="idMshuA" type="Integer">
-    <value>
-      $1
-    </value>
-  </const>
-  <const name="idMshuB" type="Integer">
-    <value>
-      $2
-    </value>
-  </const>
 </namespace>
