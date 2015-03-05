@@ -936,7 +936,7 @@ END
 /* uRack1400Form.dfm */
 /* uBlockRemoteControllerForm.dfm */
 /* uConnectToServerForm.dfm */
-/* C:\Users\Max\Documents\RAD Studio\Projects\R414_norm_20\uMainMenuModernForm.dfm */
+/* uMainMenuModernForm.dfm */
 /* uRegistrationForm.dfm */
 /* uMainMenuForm.dfm */
 /* uCloseForm.dfm */
@@ -944,7 +944,7 @@ END
 /* uBlockLittleNoisyAmplifierForm.dfm */
 /* uRack1600Form.dfm */
 /* uRack1600BForm.dfm */
-/* uRack1500Form.dfm */
+/* C:\Users\Max\Documents\RAD Studio\Projects\R414_norm_20\uRack1500Form.dfm */
 /* uBlockWaveMeterForm.dfm */
 /* uRack1920Form.dfm */
 /* uRack1500bForm.dfm */
@@ -954,11 +954,11 @@ END
 /* uBlockGeneratorForm.dfm */
 /* uPreparationToWorkForm.dfm */
 /* uReportForm.dfm */
+/* uBlockPowerPanelForm.dfm */
 /* uVideoHelpForm.dfm */
 /* uRackP321MinForm.dfm */
 /* uHandsetForm.dfm */
 /* uBlockOscillographForm.dfm */
-/* uBlockPowerPanelForm.dfm */
 /* uRackP321Form.dfm */
 /* uP321DisplayForm.dfm */
 /* uBlockOscillographMinForm.dfm */

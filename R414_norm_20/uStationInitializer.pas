@@ -1628,9 +1628,9 @@ begin
   Station.HalfSetA.Rack1600.GeterodinFloatReserve := GetRandomSwitcherState;
   Station.HalfSetA.Rack1600.CableMdMainState := csDisconected;
   Station.HalfSetA.Rack1600.CableMdReservState := csDisconected;
-  Station.HalfSetA.Rack1600.SelectedMd := NotSelected;
-  Station.HalfSetA.Rack1600.SelectedUpch := NotSelected;
-  Station.HalfSetA.Rack1600.SelectedDmch := NotSelected;
+  Station.HalfSetA.Rack1600.SelectedMd := smdMain;
+  Station.HalfSetA.Rack1600.SelectedUpch := sUpchReserve;
+  Station.HalfSetA.Rack1600.SelectedDmch := sDmchReserve;
   Station.HalfSetA.Rack1600.butAutomatic := butPositionRight;
   Station.HalfSetA.Rack1600.butDmch := butPositionUp;
   Station.HalfSetA.Rack1600.butChannelControl := butPositionUp;
@@ -1649,9 +1649,9 @@ begin
   Station.HalfSetB.Rack1600.GeterodinFloatReserve := GetRandomSwitcherState;
   Station.HalfSetB.Rack1600.CableMdMainState := csDisconected;
   Station.HalfSetB.Rack1600.CableMdReservState := csDisconected;
-  Station.HalfSetB.Rack1600.SelectedMd := NotSelected;
-  Station.HalfSetB.Rack1600.SelectedUpch := NotSelected;
-  Station.HalfSetB.Rack1600.SelectedDmch := NotSelected;
+  Station.HalfSetB.Rack1600.SelectedMd := smdMain;
+  Station.HalfSetB.Rack1600.SelectedUpch := sUpchReserve;
+  Station.HalfSetB.Rack1600.SelectedDmch := sDmchReserve;
   Station.HalfSetB.Rack1600.butAutomatic := butPositionRight;
   Station.HalfSetB.Rack1600.butDmch := butPositionUp;
   Station.HalfSetB.Rack1600.butChannelControl := butPositionUp;

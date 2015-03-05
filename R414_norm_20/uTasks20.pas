@@ -904,25 +904,44 @@ uConstantsDM;
   CurrentSubTask:=SubTasks[CurrentSubTaskNum];
   end;
 
-  procedure TTaskSingleCheck.LastCheck();
-       begin
-           //заполни для задания!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-           //заполни для задания!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-           //заполни для задания!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-           //заполни для задания!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-           //заполни для задания!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-           //заполни для задания!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-       end;
-  
+  procedure TTaskSingleCheck.LastCheck;
+  var i: Integer;
+  var allRight: Boolean;
+  begin
+       allRight:= true;
+       ErrorKeeper.ErrorMsg := 'Общая проверка правильности настройки:' + #10#13;;
+    for I := 0 to Length(SubTasks) - 1 do
+     begin
+          if (SubTasks[i].CheckSubTask(FullCheck, Station, ClientState,ErrorKeeper) = False) then allRight := false;
+     end;
+
+    if (allRight = true) then
+      begin
+        IsTaskComplete:=true;
+        TimeEnd:=Time;
+      end
+      else
+      begin
+        ErrorKeeper.ShowError;
+      end;
+  end;
+
    //===
    function TTaskSingleCheckSubTask1.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
    begin
 
-         if (Station.HalfSetA.Rack1500.stCableLoad = csConnectedAtRack1500Sh1) and (Station.HalfSetA.Rack1500.stCableSh1 = csDisconected) then
+         if (Station.HalfSetA.Rack1500.stCableLoad = csConnectedAtRack1500Sh1)
+         and (Station.HalfSetA.Rack1500.stCableSh1 = csConnectedAtRack1500NoName) then
          begin
            Result:=true;
          end
-         else Result:=false;
+         else
+         begin
+            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+            if (Station.HalfSetA.Rack1500.stCableLoad <> csConnectedAtRack1500Sh1) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Кабель НАГРУЗКА не подключен к разъему ВЫХОД СВЧ' + #10#13;
+            if (Station.HalfSetA.Rack1500.stCableSh1 <> csConnectedAtRack1500NoName) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не подключен кабель 1840 к пустому разъему' + #10#13;
+           Result:=false;
+         end;
    end;
 
    constructor TTaskSingleCheckSubTask1.Create;
@@ -930,7 +949,7 @@ uConstantsDM;
    inherited Create;
 
         Name:='Подключить кабели на стойке 1500А';
-        Text:='На стойке 1500А от разьема ВЫХОД СВЧ. отключить кабель, идущий к дуплексеру и подключить к нему кабель НАГРУЗКА. Проверить подключены ли соотвествующие кабели к разъемам ВЫХОД АК 1500 и ВЫХОД АК 1600.';
+        Text:='На стойке 1500А от разьема ВЫХОД СВЧ. отключить кабель, идущий к дуплексеру и подключить к нему кабель НАГРУЗКА. Проверить подключены ли соотвествующие кабели к разъемам ВЫХОД АК 1500 и ВЫХОД АК 1600. Подключить кабель 1840 к пустому разъему';
         EventFormName:='1500 А';
         Time:= '';
    end;
@@ -943,7 +962,14 @@ uConstantsDM;
          begin
            Result:=true;
          end
-         else Result:=false;
+         else
+         begin
+            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+            if (Station.HalfSetA.Rack1500.swWave1610_0 <> ClientState.TransmitterWaveA) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна передачи напереключателе 1610О' + #10#13;
+            if (Station.HalfSetA.Rack1500.swWave161_R <> ClientState.TransmitterWaveA) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна передачи напереключателе 1610Р' + #10#13;
+            if (Station.HalfSetA.Rack1500.swWave1500 <> ClientState.TransmitterWaveA) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна передачи напереключателе 1500' + #10#13;
+           Result:=false;
+         end;
    end;
 
     constructor TTaskSingleCheckSubTask2.Create;
@@ -966,7 +992,14 @@ uConstantsDM;
          begin
            Result:=true;
          end
-         else Result:=false;
+         else
+         begin
+            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+            if (Station.HalfSetA.Duplexer.cbSh1 <> csConnectedAtDuplexeLeft) and (Station.HalfSetA.Duplexer.cbSh1 <> csConnectedAtDuplexeRight) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не подключен кабель от разъема стойки 1600 ВЫХОД' + #10#13;
+            if (Station.HalfSetA.Duplexer.cbSh2 <> csConnectedAtDuplexeRight) and (Station.HalfSetA.Duplexer.cbSh2 <> csConnectedAtDuplexeLeft) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не подключен кабель Ф33 Ш2' + #10#13;
+            if (Station.HalfSetA.Duplexer.cb1840 <> csDisconected) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не отключен кабель, идущий к дуплексеру' + #10#13;
+           Result:=false;
+         end;
    end;
 
           constructor TTaskSingleCheckSubTask3.Create;
@@ -988,7 +1021,13 @@ uConstantsDM;
          begin
            Result:=true;
          end
-         else Result:=false;
+         else
+         begin
+            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+            if (Station.HalfSetA.Duplexer.waveTransmit <> ClientState.TransmitterWaveA) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна передачи' + #10#13;
+            if (Station.HalfSetA.Duplexer.waveReceive <> ClientState.ReceiverWaveA) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна приема' + #10#13;
+           Result:=false;
+         end;
    end;
 
    constructor TTaskSingleCheckSubTask4.Create;
@@ -1010,7 +1049,7 @@ uConstantsDM;
          if (GeterodinWaves[ClientState.TransmitterWaveA][0] = Station.HalfSetA.Rack1500.GeterodinIntMain)
       and (((GeterodinWaves[ClientState.TransmitterWaveA][1] - 2) <= Station.HalfSetA.Rack1500.GeterodinFloatMain)
             and (Station.HalfSetA.Rack1500.GeterodinFloatMain <= (GeterodinWaves[ClientState.TransmitterWaveA][1] + 2)))
-            
+
             and (GeterodinWaves[ClientState.TransmitterWaveA][0] = Station.HalfSetA.Rack1500.GeterodinIntReserve)
       and (((GeterodinWaves[ClientState.TransmitterWaveA][1] - 2) <= Station.HalfSetA.Rack1500.GeterodinFloatReserve)
             and (Station.HalfSetA.Rack1500.GeterodinFloatReserve <= (GeterodinWaves[ClientState.TransmitterWaveA][1] + 2)))
@@ -1020,7 +1059,21 @@ uConstantsDM;
          Station.HalfSetA.Rack1500.GeterodinTunedReserve := True;
            Result:=true;
          end
-         else Result:=false;
+         else
+         begin
+            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+            if (GeterodinWaves[ClientState.TransmitterWaveA][0] <> Station.HalfSetA.Rack1500.GeterodinIntMain)
+                or (((GeterodinWaves[ClientState.TransmitterWaveA][1] - 2) > Station.HalfSetA.Rack1500.GeterodinFloatMain)
+                or (Station.HalfSetA.Rack1500.GeterodinFloatMain > (GeterodinWaves[ClientState.TransmitterWaveA][1] + 2)))
+            then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна передачи по волномеру основном канале. Для начала настройки нажмите на лампы МД-О и 1610-О и подключите кабель к разъему над переключателем 1610О' + #10#13;
+            if (GeterodinWaves[ClientState.TransmitterWaveA][0] <> Station.HalfSetA.Rack1500.GeterodinIntReserve)
+                or (((GeterodinWaves[ClientState.TransmitterWaveA][1] - 2) > Station.HalfSetA.Rack1500.GeterodinFloatReserve)
+                or (Station.HalfSetA.Rack1500.GeterodinFloatReserve > (GeterodinWaves[ClientState.TransmitterWaveA][1] + 2)))
+            then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна передачи по волномеру на резервном канале. Для начала настройки нажмите на лампы МД-Р и 1610-Р и подключите кабель к разъему над переключателем 1610Р' + #10#13;
+            if (Station.HalfSetA.Rack1500.SelectedMd <> smdMain) or (Station.HalfSetA.Rack1500.SelectedRetr <> sRetrMain) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не активированы лампы МД-О и 1610-О после настройки' + #10#13;
+
+           Result:=false;
+         end;
    end;
 
    constructor TTaskSingleCheckSubTask5.Create;
@@ -1028,8 +1081,8 @@ uConstantsDM;
    inherited Create;
 
         Name:='Настроить передатчик 1500 А по волномеру';
-        Text:='Нажать на кнопки-лампы МД-О и 1610-О, подключить волномер к основному каналу, на волномере установить шкалу в соответствии с номерами волн гетеродина.' 
-        + ' Нажать на кнопки-лампы МД-Р и 1610-Р, подключить волномер к резервному каналу, на волномере установить шкалу в соответствии с номерами волн гетеродина.'
+        Text:='Нажать на кнопки-лампы МД-О и 1610-О, подключить волномер к основному каналу, на волномере установить шкалу в соответствии с номерами волн гетеродина.' + #10#13
+        + ' Нажать на кнопки-лампы МД-Р и 1610-Р, подключить волномер к резервному каналу, на волномере установить шкалу в соответствии с номерами волн гетеродина.'+ #10#13
         + 'Нажать на кнопки-лампы МД-О и 1610-О';
         EventFormName:='1500 А';
         Time:= '';
@@ -1044,7 +1097,13 @@ uConstantsDM;
          begin
            Result:=true;
          end
-         else Result:=false;
+         else
+         begin
+            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+            if (Station.HalfSetA.Rack1500.btnAutomatic <> butPositionRight) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Тумблер АВТОМАТИКА не передней панели не включен' + #10#13;
+            if (Station.HalfSetA.Rack1500.DropError <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не сброшена авария' + #10#13;
+           Result:=false;
+         end;
    end;
 
    constructor TTaskSingleCheckSubTask6.Create;
@@ -1064,7 +1123,13 @@ uConstantsDM;
          begin
            Result:=true;
          end
-         else Result:=false;
+         else
+         begin
+            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+            if (Station.HalfSetA.Rack1920.stLBV2_TurnedOn <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Высокое напряжение не верхнем блоке не подано' + #10#13;
+            if (Station.HalfSetA.Rack1920.stLBV1_TurnedOn <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Высокое напряжение не нижнем блоке не подано' + #10#13;
+           Result:=false;
+         end;
    end;
 
    constructor TTaskSingleCheckSubTask7.Create;
@@ -1072,7 +1137,7 @@ uConstantsDM;
    inherited Create;
 
         Name:='Включить высокое напряжение на стойке 1920 А';
-        Text:='Включить высокое напряжение одновременным нажатием кнопок ВЫСОКОЕ ВКЛ. и ТОК 5 МА на стойке 1920 А';
+        Text:='Для двух блоков 1920 включить высокое напряжение одновременным нажатием кнопок ВЫСОКОЕ ВКЛ. и ТОК 5 МА на стойке 1920 А. Проследить подачу напряжения по стрелочному индикатору';
         EventFormName:='1920 А';
         Time:= '';
    end;
@@ -1084,7 +1149,14 @@ uConstantsDM;
          begin
            Result:=true;
          end
-         else Result:=false;
+         else
+         begin
+            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+            if (Station.HalfSetA.Rack1500.swModeControl <> 6) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Переключатель режима не установлен в положение МОЩН.-РАСФАЗ.' + #10#13;
+            if (Station.HalfSetA.Rack1500.butMode_R <> butPositionLeft) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Тумблер МД-Р не переключен в левое положение' + #10#13;
+            if (Station.HalfSetA.Rack1500.swPhaseMover <> 10) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Сигналы ЛБВ не сфазированы. Поворачивайте фазовращатель, пока разница в токах не будет нулевой' + #10#13;
+           Result:=false;
+         end;
    end;
 
    constructor TTaskSingleCheckSubTask8.Create;
@@ -1104,7 +1176,14 @@ uConstantsDM;
          begin
            Result:=true;
          end
-         else Result:=false;
+         else
+         begin
+            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+            if (Station.HalfSetA.Rack1600.wave1610_0 <> ClientState.ReceiverWaveA) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлены рабочие волны приема на пареключателе 1610О' + #10#13;
+            if (Station.HalfSetA.Rack1600.wave1610_R <> ClientState.ReceiverWaveA) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлены рабочие волны приема на пареключателе 1610Р' + #10#13;
+            if (Station.HalfSetA.Rack1600.wave1600 <> ClientState.ReceiverWaveA) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлены рабочие волны приема на пареключателе 1600' + #10#13;
+           Result:=false;
+         end;
    end;
 
    constructor TTaskSingleCheckSubTask9.Create;
@@ -1126,15 +1205,31 @@ uConstantsDM;
          and (GeterodinWaves[ClientState.ReceiverWaveA][0] = Station.HalfSetA.Rack1600.GeterodinIntMain)
       and (((GeterodinWaves[ClientState.ReceiverWaveA][1] - 2) <= Station.HalfSetA.Rack1600.GeterodinFloatMain)
             and (Station.HalfSetA.Rack1600.GeterodinFloatMain <= (GeterodinWaves[ClientState.ReceiverWaveA][1] + 2)))
-            
+
             and (GeterodinWaves[ClientState.ReceiverWaveA][0] = Station.HalfSetA.Rack1600.GeterodinIntReserve)
       and (((GeterodinWaves[ClientState.ReceiverWaveA][1] - 2) <= Station.HalfSetA.Rack1600.GeterodinFloatReserve)
             and (Station.HalfSetA.Rack1600.GeterodinFloatReserve <= (GeterodinWaves[ClientState.ReceiverWaveA][1] + 2)))
             then
          begin
+         Station.HalfSetA.Rack1600.GeterodinTunedMain := True;
+         Station.HalfSetA.Rack1600.GeterodinTunedReserve := True;
            Result:=true;
          end
-         else Result:=false;
+         else
+         begin
+            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+            if (GeterodinWaves[ClientState.ReceiverWaveA][0] <> Station.HalfSetA.Rack1600.GeterodinIntMain)
+              or (((GeterodinWaves[ClientState.ReceiverWaveA][1] - 2) > Station.HalfSetA.Rack1600.GeterodinFloatMain)
+              or (Station.HalfSetA.Rack1600.GeterodinFloatMain > (GeterodinWaves[ClientState.ReceiverWaveA][1] + 2)))
+            then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна приема по волномеру на основном канале. Для начала настройки нажмите на лампы 1610-О, УПЧ-О и ДМЧ-О и подключите кабель к разъему над переключателем 1610О' + #10#13;
+            if (GeterodinWaves[ClientState.ReceiverWaveA][0] <> Station.HalfSetA.Rack1600.GeterodinIntReserve)
+              or (((GeterodinWaves[ClientState.ReceiverWaveA][1] - 2) > Station.HalfSetA.Rack1600.GeterodinFloatReserve)
+              or (Station.HalfSetA.Rack1600.GeterodinFloatReserve > (GeterodinWaves[ClientState.ReceiverWaveA][1] + 2)))
+            then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна приема по волномеру на резервном канале. Для начала настройки нажмите на лампы 1601-Р, УПЧ-Р, ДМЧ-Р и подключите кабель к разъему над переключателем 1610Р' + #10#13;
+            if (Station.HalfSetA.Rack1600.SelectedMd <> smdMain) or (Station.HalfSetA.Rack1600.SelectedUpch <> sUpchMain) or (Station.HalfSetA.Rack1600.SelectedDmch <> sDmchMain) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не активированы лампы 1610-О, УПЧ-0 и ДМЧ-0 после настройки' + #10#13;
+
+           Result:=false;
+         end;
    end;
 
 
@@ -1143,8 +1238,8 @@ uConstantsDM;
    inherited Create;
 
         Name:='Настроить приемник 1600 А по волномеру';
-        Text:='Нажать на кнопки-лампы 1610-О, УПЧ-0 и ДМЧ-0, подключить волномер к основному каналу, на волномере установить шкалу в соответствии с номерами волн гетеродина.' 
-        + ' Нажать на кнопки-лампы 1601-Р, УПЧ-Р, ДМЧ-Р, подключить волномер к резервному каналу, на волномере установить шкалу в соответствии с номерами волн гетеродина.'
+        Text:='Нажать на кнопки-лампы 1610-О, УПЧ-0 и ДМЧ-0, подключить волномер к основному каналу, на волномере установить шкалу в соответствии с номерами волн гетеродина.' + #10#13
+        + ' Нажать на кнопки-лампы 1601-Р, УПЧ-Р, ДМЧ-Р, подключить волномер к резервному каналу, на волномере установить шкалу в соответствии с номерами волн гетеродина.'  + #10#13
         + 'Нажать на кнопки-лампы 1610-О, УПЧ-0 и ДМЧ-0';
         EventFormName:='1600 А';
         Time:= '';
@@ -1157,7 +1252,13 @@ uConstantsDM;
          begin
            Result:=true;
          end
-         else Result:=false;
+         else
+         begin
+            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+            if (Station.HalfSetA.Rack1600.butAutomatic <> butPositionLeft) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Тумблер АВТОМАТИКА не включен' + #10#13;
+            if (Station.HalfSetA.Rack1600.DropError <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Авария не сброшена' + #10#13;
+           Result:=false;
+         end;
    end;
 
    constructor TTaskSingleCheckSubTask11.Create;
@@ -1172,16 +1273,24 @@ uConstantsDM;
 
     //==================================================================================
 
+  {$REGION 'Полукомплект Б'}
 
 
-    function TTaskSingleCheckSubTask12.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
+   function TTaskSingleCheckSubTask12.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
    begin
 
-         if (Station.HalfSetB.Rack1500.stCableLoad = csConnectedAtRack1500Sh1) and (Station.HalfSetB.Rack1500.stCableSh1 = csDisconected) then
+         if (Station.HalfSetB.Rack1500.stCableLoad = csConnectedAtRack1500Sh1) 
+         and (Station.HalfSetB.Rack1500.stCableSh1 = csConnectedAtRack1500NoName) then
          begin
            Result:=true;
          end
-         else Result:=false;
+         else
+         begin
+            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+            if (Station.HalfSetB.Rack1500.stCableLoad <> csConnectedAtRack1500Sh1) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Кабель НАГРУЗКА не подключен к разъему ВЫХОД СВЧ' + #10#13;
+            if (Station.HalfSetB.Rack1500.stCableSh1 <> csConnectedAtRack1500NoName) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не подключен кабель 1840 к пустому разъему' + #10#13;
+           Result:=false;
+         end;
    end;
 
    constructor TTaskSingleCheckSubTask12.Create;
@@ -1189,7 +1298,7 @@ uConstantsDM;
    inherited Create;
 
         Name:='Подключить кабели на стойке 1500 Б';
-        Text:='На стойке 1500 Б от разьема ВЫХОД СВЧ. отключить кабель, идущий к дуплексеру и подключить к нему кабель НАГРУЗКА. Проверить подключены ли соотвествующие кабели к разъемам ВЫХОД АК 1500 и ВЫХОД АК 1600.';
+        Text:='На стойке 1500 Б от разьема ВЫХОД СВЧ. отключить кабель, идущий к дуплексеру и подключить к нему кабель НАГРУЗКА. Проверить подключены ли соотвествующие кабели к разъемам ВЫХОД АК 1500 и ВЫХОД АК 1600. Подключить кабель 1840 к пустому разъему';
         EventFormName:='1500 Б';
         Time:= '';
    end;
@@ -1202,7 +1311,14 @@ uConstantsDM;
          begin
            Result:=true;
          end
-         else Result:=false;
+         else
+         begin
+            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+            if (Station.HalfSetB.Rack1500.swWave1610_0 <> ClientState.TransmitterWaveB) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна передачи напереключателе 1610О' + #10#13;
+            if (Station.HalfSetB.Rack1500.swWave161_R <> ClientState.TransmitterWaveB) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна передачи напереключателе 1610Р' + #10#13;
+            if (Station.HalfSetB.Rack1500.swWave1500 <> ClientState.TransmitterWaveB) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна передачи напереключателе 1500' + #10#13;
+           Result:=false;
+         end;
    end;
 
     constructor TTaskSingleCheckSubTask13.Create;
@@ -1225,7 +1341,14 @@ uConstantsDM;
          begin
            Result:=true;
          end
-         else Result:=false;
+         else
+         begin
+            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+            if (Station.HalfSetB.Duplexer.cbSh1 <> csConnectedAtDuplexeLeft) and (Station.HalfSetB.Duplexer.cbSh1 <> csConnectedAtDuplexeRight) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не подключен кабель от разъема стойки 1600 ВЫХОД' + #10#13;
+            if (Station.HalfSetB.Duplexer.cbSh2 <> csConnectedAtDuplexeRight) and (Station.HalfSetB.Duplexer.cbSh2 <> csConnectedAtDuplexeLeft) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не подключен кабель Ф33 Ш2' + #10#13;
+            if (Station.HalfSetB.Duplexer.cb1840 <> csDisconected) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не отключен кабель, идущий к дуплексеру' + #10#13;
+           Result:=false;
+         end;
    end;
 
           constructor TTaskSingleCheckSubTask14.Create;
@@ -1247,7 +1370,13 @@ uConstantsDM;
          begin
            Result:=true;
          end
-         else Result:=false;
+         else
+         begin
+            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+            if (Station.HalfSetB.Duplexer.waveTransmit <> ClientState.TransmitterWaveB) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна передачи' + #10#13;
+            if (Station.HalfSetB.Duplexer.waveReceive <> ClientState.ReceiverWaveB) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна приема' + #10#13;
+           Result:=false;
+         end;
    end;
 
    constructor TTaskSingleCheckSubTask15.Create;
@@ -1279,7 +1408,21 @@ uConstantsDM;
          Station.HalfSetB.Rack1500.GeterodinTunedReserve := True;
            Result:=true;
          end
-         else Result:=false;
+         else
+         begin
+            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+            if (GeterodinWaves[ClientState.TransmitterWaveB][0] <> Station.HalfSetB.Rack1500.GeterodinIntMain)
+                or (((GeterodinWaves[ClientState.TransmitterWaveB][1] - 2) > Station.HalfSetB.Rack1500.GeterodinFloatMain)
+                or (Station.HalfSetB.Rack1500.GeterodinFloatMain > (GeterodinWaves[ClientState.TransmitterWaveB][1] + 2)))
+            then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна передачи по волномеру основном канале. Для начала настройки нажмите на лампы МД-О и 1610-О и подключите кабель к разъему над переключателем 1610О' + #10#13;
+            if (GeterodinWaves[ClientState.TransmitterWaveB][0] <> Station.HalfSetB.Rack1500.GeterodinIntReserve)
+                or (((GeterodinWaves[ClientState.TransmitterWaveB][1] - 2) > Station.HalfSetB.Rack1500.GeterodinFloatReserve)
+                or (Station.HalfSetB.Rack1500.GeterodinFloatReserve > (GeterodinWaves[ClientState.TransmitterWaveB][1] + 2)))
+            then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна передачи по волномеру на резервном канале. Для начала настройки нажмите на лампы МД-Р и 1610-Р и подключите кабель к разъему над переключателем 1610Р' + #10#13;
+            if (Station.HalfSetB.Rack1500.SelectedMd <> smdMain) or (Station.HalfSetB.Rack1500.SelectedRetr <> sRetrMain) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не активированы лампы МД-О и 1610-О после настройки' + #10#13;
+
+           Result:=false;
+         end;
    end;
 
    constructor TTaskSingleCheckSubTask16.Create;
@@ -1303,7 +1446,13 @@ uConstantsDM;
          begin
            Result:=true;
          end
-         else Result:=false;
+         else
+         begin
+            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+            if (Station.HalfSetB.Rack1500.btnAutomatic <> butPositionRight) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Тумблер АВТОМАТИКА не передней панели не включен' + #10#13;
+            if (Station.HalfSetB.Rack1500.DropError <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не сброшена авария' + #10#13;
+           Result:=false;
+         end;
    end;
 
    constructor TTaskSingleCheckSubTask17.Create;
@@ -1323,7 +1472,13 @@ uConstantsDM;
          begin
            Result:=true;
          end
-         else Result:=false;
+          else
+         begin
+            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+            if (Station.HalfSetB.Rack1920.stLBV2_TurnedOn <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Высокое напряжение не верхнем блоке не подано' + #10#13;
+            if (Station.HalfSetB.Rack1920.stLBV1_TurnedOn <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Высокое напряжение не нижнем блоке не подано' + #10#13;
+           Result:=false;
+         end;
    end;
 
    constructor TTaskSingleCheckSubTask18.Create;
@@ -1343,7 +1498,14 @@ uConstantsDM;
          begin
            Result:=true;
          end
-         else Result:=false;
+         else
+         begin
+            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+            if (Station.HalfSetB.Rack1500.swModeControl <> 6) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Переключатель режима не установлен в положение МОЩН.-РАСФАЗ.' + #10#13;
+            if (Station.HalfSetB.Rack1500.butMode_R <> butPositionLeft) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Тумблер МД-Р не переключен в левое положение' + #10#13;
+            if (Station.HalfSetB.Rack1500.swPhaseMover <> 10) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Сигналы ЛБВ не сфазированы. Поворачивайте фазовращатель, пока разница в токах не будет нулевой' + #10#13;
+           Result:=false;
+         end;
    end;
 
    constructor TTaskSingleCheckSubTask19.Create;
@@ -1363,7 +1525,14 @@ uConstantsDM;
          begin
            Result:=true;
          end
-         else Result:=false;
+         else
+         begin
+            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+            if (Station.HalfSetB.Rack1600.wave1610_0 <> ClientState.ReceiverWaveB) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлены рабочие волны приема на пареключателе 1610О' + #10#13;
+            if (Station.HalfSetB.Rack1600.wave1610_R <> ClientState.ReceiverWaveB) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлены рабочие волны приема на пареключателе 1610Р' + #10#13;
+            if (Station.HalfSetB.Rack1600.wave1600 <> ClientState.ReceiverWaveB) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлены рабочие волны приема на пареключателе 1600' + #10#13;
+           Result:=false;
+         end;
    end;
 
    constructor TTaskSingleCheckSubTask20.Create;
@@ -1391,9 +1560,25 @@ uConstantsDM;
             and (Station.HalfSetB.Rack1600.GeterodinFloatReserve <= (GeterodinWaves[ClientState.ReceiverWaveB][1] + 2)))
             then
          begin
+         Station.HalfSetB.Rack1600.GeterodinTunedMain := True;
+         Station.HalfSetB.Rack1600.GeterodinTunedReserve := True;
            Result:=true;
          end
-         else Result:=false;
+        else
+         begin
+            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+            if (GeterodinWaves[ClientState.ReceiverWaveB][0] <> Station.HalfSetB.Rack1600.GeterodinIntMain)
+              or (((GeterodinWaves[ClientState.ReceiverWaveB][1] - 2) > Station.HalfSetB.Rack1600.GeterodinFloatMain)
+              or (Station.HalfSetB.Rack1600.GeterodinFloatMain > (GeterodinWaves[ClientState.ReceiverWaveB][1] + 2)))
+            then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна приема по волномеру на основном канале. Для начала настройки нажмите на лампы 1610-О, УПЧ-О и ДМЧ-О и подключите кабель к разъему над переключателем 1610О' + #10#13;
+            if (GeterodinWaves[ClientState.ReceiverWaveB][0] <> Station.HalfSetB.Rack1600.GeterodinIntReserve)
+              or (((GeterodinWaves[ClientState.ReceiverWaveB][1] - 2) > Station.HalfSetB.Rack1600.GeterodinFloatReserve)
+              or (Station.HalfSetB.Rack1600.GeterodinFloatReserve > (GeterodinWaves[ClientState.ReceiverWaveB][1] + 2)))
+            then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна приема по волномеру на резервном канале. Для начала настройки нажмите на лампы 1601-Р, УПЧ-Р, ДМЧ-Р и подключите кабель к разъему над переключателем 1610Р' + #10#13;
+            if (Station.HalfSetB.Rack1600.SelectedMd <> smdMain) or (Station.HalfSetB.Rack1600.SelectedUpch <> sUpchMain) or (Station.HalfSetB.Rack1600.SelectedDmch <> sDmchMain) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не активированы лампы 1610-О, УПЧ-0 и ДМЧ-0 после настройки' + #10#13;
+
+           Result:=false;
+         end;
    end;
 
 
@@ -1416,7 +1601,13 @@ uConstantsDM;
          begin
            Result:=true;
          end
-         else Result:=false;
+         else
+         begin
+            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+            if (Station.HalfSetB.Rack1600.butAutomatic <> butPositionLeft) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Тумблер АВТОМАТИКА не включен' + #10#13;
+            if (Station.HalfSetB.Rack1600.DropError <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Авария не сброшена' + #10#13;
+           Result:=false;
+         end;
    end;
 
    constructor TTaskSingleCheckSubTask22.Create;
@@ -1429,6 +1620,10 @@ uConstantsDM;
         Time:= '';
    end;
 
+
+       {$ENDREGION}
+       
+
       function TTaskSingleCheckSubTask23.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
    begin
 
@@ -1436,7 +1631,12 @@ uConstantsDM;
          begin
            Result:=true;
          end
-         else Result:=false;
+         else
+         begin
+            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+            if (Station.HalfSetA.Rack1600.stMoshnost <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Лампа не горит. Проверьте ещё раз правильность настройки станции' + #10#13;
+           Result:=false;
+         end;
    end;
 
    constructor TTaskSingleCheckSubTask23.Create;
@@ -1445,7 +1645,7 @@ uConstantsDM;
 
         Name:='Проверить настройку на стойке 1600 А';
         Text:='Убедиться в правильности настройки: безымянная кнопка лампа на стойке 1600 А горит';
-        EventFormName:='1600 A';
+        EventFormName:='1600 А';
         Time:= '';
    end;
 
@@ -1456,7 +1656,12 @@ uConstantsDM;
          begin
            Result:=true;
          end
-         else Result:=false;
+         else
+         begin
+            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+            if (Station.HalfSetB.Rack1600.stMoshnost <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Лампа не горит. Проверьте ещё раз правильность настройки станции' + #10#13;
+           Result:=false;
+         end;
    end;
    constructor TTaskSingleCheckSubTask24.Create;
    begin
@@ -1484,7 +1689,13 @@ uConstantsDM;
          begin
            Result:=true;
          end
-         else Result:=false;
+         else
+         begin
+            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+            if (Station.Oscillograph.cblCableUsilitelState <> csConnectedAtPower) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не подключен серый провод' + #10#13;
+            if (Station.Oscillograph.cblCabelSyncState <> csConnectedAtSync) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не подключен черный провод' + #10#13;
+           Result:=false;
+         end;
    end;
    constructor TTaskSingleCheckSubTask25.Create;
    begin
@@ -1495,8 +1706,6 @@ uConstantsDM;
         EventFormName:='Осциллограф';
         Time:= '';
    end;
-
-
 
 
        function TTaskSingleCheckSubTask26.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
@@ -1696,7 +1905,32 @@ uConstantsDM;
 {$ENDREGION}
 
          end
-         else Result:=false;
+         else
+         begin
+            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
+            if (Station.Oscillograph.cblCabelSyncState <> csConnectedAtSync) or
+          (Station.Oscillograph.cblCableUsilitelState <> csConnectedAtPower) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'К осциллографу не подключены черный и серый провода, невозможно проверить девиацию' + #10#13;
+
+
+           if (Station.Deviation.Rack1200A_PRD <> stPassed) or (Station.Deviation.Rack1200A_PRM <> stPassed) then
+           begin
+           if (Station.HalfSetA.Rack1200Right.CableOscillographLineInput = csDisconected) or
+         (Station.HalfSetA.Rack1200Right.CableUzlovoiInput = csDisconected) then
+          begin
+            ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Вы забыли подключить провода к стойке 1200 Б ПРД для проверки девиации' + #10#13;
+          end;
+           ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Девиация на 2х трубках не проверена' + #10#13;
+
+           end
+           else
+           if (Station.HalfSetA.Rack1200Right.CableOscillographLineInput <> csDisconected) or
+         (Station.HalfSetA.Rack1200Right.CableUzlovoiInput <> csDisconected) then
+            begin
+         ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Вы забыли отключить провода от стойки 1200 Б ПРД после проверки девиации' + #10#13;
+            end;
+           Result:=false;
+         end;
    end;
    constructor TTaskSingleCheckSubTask26.Create;
    begin
@@ -1710,8 +1944,6 @@ uConstantsDM;
         EventFormName:='1200 ПРД А';
         Time:= '';
    end;
-
-
 
 
           function TTaskSingleCheckSubTask27.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
@@ -1731,7 +1963,32 @@ uConstantsDM;
 
 
          end
-         else Result:=false;
+         else
+         begin
+            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
+            if (Station.Oscillograph.cblCabelSyncState <> csConnectedAtSync) or
+          (Station.Oscillograph.cblCableUsilitelState <> csConnectedAtPower) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'К осциллографу не подключены черный и серый провода, невозможно проверить девиацию' + #10#13;
+
+
+           if (Station.Deviation.Rack1200B_PRD <> stPassed) or (Station.Deviation.Rack1200B_PRM <> stPassed) then
+           begin
+           if (Station.HalfSetB.Rack1200Right.CableOscillographLineInput = csDisconected) or
+         (Station.HalfSetB.Rack1200Right.CableUzlovoiInput = csDisconected) then
+          begin
+            ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Вы забыли подключить провода к стойке 1200 Б ПРД для проверки девиации' + #10#13;
+          end;
+           ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Девиация на 2х трубках не проверена' + #10#13;
+
+           end
+           else
+           if (Station.HalfSetB.Rack1200Right.CableOscillographLineInput <> csDisconected) or
+         (Station.HalfSetB.Rack1200Right.CableUzlovoiInput <> csDisconected) then
+            begin
+         ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Вы забыли отключить провода от стойки 1200 Б ПРД после проверки девиации' + #10#13;
+            end;
+           Result:=false;
+         end;
    end;
    constructor TTaskSingleCheckSubTask27.Create;
    begin

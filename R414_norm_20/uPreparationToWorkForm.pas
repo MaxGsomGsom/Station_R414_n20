@@ -127,10 +127,10 @@ begin
 
 
            //временно
-     edtTransmitterWaveA.Text:='11' ;
-      edtTransmitterWaveB.Text :='11' ;
+     edtTransmitterWaveA.Text:='11';
+      edtTransmitterWaveB.Text :='10' ;
       edtReceiverWaveA.Text :='22' ;
-      edtReceiverWaveB.Text :='22' ;
+      edtReceiverWaveB.Text :='20' ;
 
 
 
@@ -174,6 +174,11 @@ begin
                                                   // в соответствии с заданием
     StationInitializer.Free;
 
+
+    Station.WaveTransmitA := iTransmitterWaveA;
+    Station.WaveReceiveA := iReceiverWaveA;
+    Station.WaveTransmitB := iTransmitterWaveB;
+    Station.WaveReceiveB := iReceiverWaveB;  //костыль
 
     TaskController := TTaskController.Create(Station, NetWorker.ClientState); // Он проверяет станцию на соответствие заданию
     TaskController.SetCurrentTask();

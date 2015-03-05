@@ -1,5 +1,6 @@
 unit uStationStateDM;
 
+
 interface
 
 const
@@ -450,7 +451,6 @@ const
     private
       FHalfSetA: THalfSet;
       FHalfSetB: THalfSet;
-
 
 
       procedure Initialise; inline;

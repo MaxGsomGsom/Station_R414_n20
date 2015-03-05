@@ -34,7 +34,9 @@ uses
 
 procedure TButtonBackForm.FormCreate(Sender: TObject);
 begin
-                                              //Подгрузить картинку для
+
+  Caption:= 'Back';
+                                          //Подгрузить картинку для
                                               //изображения кнопки
   bmpArrowBack := Tbitmap.Create();
   bmpArrowBack.LoadFromFile('images/BackArrow.bmp');

@@ -229,6 +229,7 @@ begin
   TaskController.Subscribe(self);
   ButtonBackForm:= TButtonBackForm.Create(self);
   ButtonBackForm.Show;
+  TaskController.Subscribe(self);
 end;
 
 {$REGION 'Функция TRack1600Form.Reload()'}
