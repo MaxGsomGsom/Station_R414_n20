@@ -276,7 +276,7 @@ begin
   TaskController:=TaskController0;
   TaskController.Subscribe(self);
   ButtonBackForm:= TButtonBackForm.Create(self);
-  ButtonBackForm.Show;
+  ButtonBackForm.Show; TaskController.Subscribe(ButtonBackForm);
 end;
 
 
@@ -1753,6 +1753,9 @@ procedure TRack1500Form.Image15MouseMove(Sender: TObject; Shift: TShiftState; X,
 begin
   Image15.Hide;
 end;
+
+
+
 
 procedure TRack1500Form.Image11Click(Sender: TObject);
 begin

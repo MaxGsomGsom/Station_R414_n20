@@ -135,7 +135,8 @@ uses
   SysUtils,
   Windows,
   uTasksDM,
-  uStationR414Form;
+  uStationR414Form,
+  uButtonBackForm;
 
 constructor TTaskController.Create(Station: TStation; ClientState: TClientState);
 begin
@@ -213,11 +214,18 @@ function TTaskController.GetTaskTitle(TaskID: Integer): string;
      var
      img: TComponent;
      begin
+
+
+
           //код подписки на все события click всех элементов формы
           for img in CurForm0 do
           begin
           if (img is TImage) then
+          begin
             (img as TImage).OnMouseUp:= self.CheckTask;
+            //if (CurForm0.Caption = 'Back') then
+            //(img as TImage).OnMouseDown:= self.CheckTask;
+          end;
           end;
 
               CheckTask(TImage.Create(CurForm0), TMouseButton.mbLeft, KeysToShiftState(0), 0,0);
@@ -246,7 +254,9 @@ function TTaskController.GetTaskTitle(TaskID: Integer): string;
         Sender:=Sender0 as TControl;
         SubResult:= false;
 
-         if (((Sender as TComponent).Owner as TForm).Caption=CurrentTask.SubTasks[CurrentTask.CurrentSubTaskNum].EventFormName) then
+         if (((Sender as TComponent).Owner as TForm).Caption=CurrentTask.SubTasks[CurrentTask.CurrentSubTaskNum].EventFormName)
+          //or (((Sender as TComponent).Owner as TForm).Caption='Back')
+          then
          begin
              SubResult:=CurrentTask.SubTasks[CurrentTask.CurrentSubTaskNum].CheckSubTask(CurrentTask.FullCheck, self.Station, self.ClientState, self.ErrorKeeper);
          end;
