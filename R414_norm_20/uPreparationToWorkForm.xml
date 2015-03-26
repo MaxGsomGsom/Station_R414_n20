@@ -2291,6 +2291,10 @@
       <field name="lstTaskChoice" type="TListBox" visibility="published" />
       <field name="lblUsername" type="TLabel" visibility="published" />
       <field name="edtUserName" type="TEdit" visibility="published" />
+      <field name="lblPriorityText" type="TLabel" visibility="published" />
+      <field name="lblStationPriority" type="TLabel" visibility="published" />
+      <field name="lbl1" type="TLabel" visibility="published" />
+      <field name="lblLinkedR414" type="TLabel" visibility="published" />
       <procedure name="FormClose" visibility="published">
         <parameters>
           <parameter name="Sender" type="TObject" />
@@ -2319,6 +2323,8 @@
       </procedure>
       <procedure name="cbbWorkModeChange" visibility="published">
         <devnotes>
+          /////////////////////////////////
+          //////////////////////////////////////
            <summary>
              Сохраняет изменённый режим работы в состоянии клиента
            </summary>
@@ -2327,7 +2333,17 @@
           <parameter name="Sender" type="TObject" />
         </parameters>
       </procedure>
-      <field name="NetWorker" type="IClientNetWorker" visibility="private" />
+      <procedure name="ShowPriority" visibility="published">
+        <parameters>
+          <parameter name="Sender" type="TObject" />
+        </parameters>
+      </procedure>
+      <procedure name="StartNetTask" visibility="published">
+        <parameters>
+          <parameter name="Sender" type="TObject" />
+        </parameters>
+      </procedure>
+      <field name="NetWorker" type="TClientNetWorker" visibility="private" />
       <field name="NetworkSender" type="TNetworkSender" visibility="private" />
       <field name="TaskController" type="TTaskController" visibility="private" />
       <field name="Station" type="TStation" visibility="private" />
@@ -2335,7 +2351,7 @@
       <constructor name="CreateForm" visibility="public">
         <parameters>
           <parameter name="AOwner" type="TComponent" />
-          <parameter name="NetWorker" type="IClientNetWorker" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
         </parameters>
       </constructor>
       <destructor name="Destroy" visibility="public">

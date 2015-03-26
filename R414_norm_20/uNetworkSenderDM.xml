@@ -79,6 +79,7 @@
           <parameter name="RWaveA" type="Integer" />
           <parameter name="RWaveB" type="Integer" />
           <parameter name="TaskID" type="TTaskType" />
+          <parameter name="WorkMode" type="TWorkMode" />
         </parameters>
       </procedure>
     </members>

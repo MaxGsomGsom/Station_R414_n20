@@ -80,7 +80,7 @@
       <field name="FChangeText" type="TNotifyEvent" visibility="private" />
       <const name="Count_Tasks" visibility="private" type="Integer">
         <value>
-          $2
+          $3
         </value>
       </const>
       <function name="GetCountTasks" visibility="private">

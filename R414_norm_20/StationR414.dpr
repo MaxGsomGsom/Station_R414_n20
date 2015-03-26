@@ -58,7 +58,8 @@ uses
   uTaskControllerDM in 'uTaskControllerDM.pas',
   uStationInitializer in 'uStationInitializer.pas',
   uTasks20 in 'uTasks20.pas',
-  uErrorKeeper in 'uErrorKeeper.pas';
+  uErrorKeeper in 'uErrorKeeper.pas',
+  ChatForm in 'ChatForm.pas' {TChatForm};
 
 {$R *.res}
 

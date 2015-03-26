@@ -151,6 +151,7 @@ unit uDefinitionsDM;
     stKonez: Integer;
     offsetLeft: Integer;
     offsetTop: Integer;
+    stState: Integer;
   end;
 
   type pUdlinitelCable = packed record

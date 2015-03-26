@@ -22,7 +22,7 @@ type
     procedure edtUserNameKeyPress(Sender: TObject; var Key: Char);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
-    NetWorker: IClientNetWorker;
+    NetWorker: TClientNetWorker;
     procedure ShowError(strError: String);
     procedure HideError;
   public

@@ -42,7 +42,7 @@ type TTaskController = class
     
     const                       // Временно, пока нет самих заданий,
                                 // используем константы
-      Count_Tasks = 2;
+      Count_Tasks = 3;
 //      task_title_1 = 'Включение питания';
 //      task_title_2 =
 //        'Проверка работоспособности станции в режиме "Автономный контроль"';
@@ -177,6 +177,7 @@ function TTaskController.GetTaskTitle(TaskID: Integer): string;
     case TaskID of
       1: Result := 'Включение электропитания';
       2: Result := 'Проверка работоспособности станции в режиме "Автономный контроль"';
+      3: Result := 'Перевод станции в оконечный режим работы';
     end;
   end;
 
@@ -200,6 +201,7 @@ function TTaskController.GetTaskTitle(TaskID: Integer): string;
         case Self.ClientState.TaskID of
           ttPowerOn:  CurrentTask := TTaskPowerOn.Create(self.Station,self.ClientState,self.ErrorKeeper);
           ttCheckStationInStandaloneControlMode:  CurrentTask := TTaskSingleCheck.Create(self.Station,self.ClientState,Self.ErrorKeeper);
+          ttTransferToTerminalMode: CurrentTask := TTaskTerminalMode.Create(self.Station,self.ClientState,self.ErrorKeeper);
         else   CurrentTask := TTaskNone.Create(self.Station,self.ClientState,self.ErrorKeeper);
         end;
     end;

@@ -285,6 +285,7 @@
     <field name="stKonez" type="Integer" visibility="public" />
     <field name="offsetLeft" type="Integer" visibility="public" />
     <field name="offsetTop" type="Integer" visibility="public" />
+    <field name="stState" type="Integer" visibility="public" />
   </struct>
   <struct name="pUdlinitelCable" packed="true">
     <field name="stKonez1" type="pUdlinitelKonez" visibility="public" />

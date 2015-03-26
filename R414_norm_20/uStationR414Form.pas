@@ -30,7 +30,9 @@ uses
   uButtonBackForm,
   uFilterForm,
   uClientStateDM,
-  uStationR414MinForm;
+  uStationR414MinForm,
+  ChatForm,
+  uNetWorkerDM;
 
 
 type
@@ -189,6 +191,8 @@ type
     procedure AddSubTasks;
     procedure TaskComplete(Sender: TObject);
     procedure ChangeTaskTextBlock(Sender: TObject);
+    procedure StartNetTaskError(Sender: TObject);
+
   public
     { Public declarations }
     StationR414MinForm: TStationR414MinForm;
@@ -199,7 +203,7 @@ type
     procedure TuneTaskList;
     procedure SetBlockRed(IdEnum: TRacksEnum);
     procedure ReloadProgressExam;
-    constructor Create(Sender1: TComponent; Station1: TStation; TaskController1: TTaskController; ClientState1: TClientState); reintroduce;
+    constructor Create(Sender1: TComponent; Station1: TStation; TaskController1: TTaskController; NetWorker0: TClientNetWorker); reintroduce;
 
 
 
@@ -212,6 +216,8 @@ var
   CLientState: TClientState;
   Station: TStation;
   //ButtonBackForm: TButtonBackForm;
+  Chat: TTChatForm;
+  NetWorker: TClientNetWorker;
   end;
 
 
@@ -252,7 +258,8 @@ uses
   uHintForm,
   uConstantsDM,
   uTasksDM,
-  uRandomMethods;
+  uRandomMethods,
+  uRequestDM;
 
 {$R *.dfm}
 var
@@ -262,16 +269,21 @@ CurrentTaskForm: TCurrentTaskForm;
 
 
 
- constructor TStationR414Form.Create(Sender1: TComponent; Station1: TStation; TaskController1: TTaskController; ClientState1: TClientState);
+ constructor TStationR414Form.Create(Sender1: TComponent; Station1: TStation; TaskController1: TTaskController; NetWorker0: TClientNetWorker);
  begin
      inherited Create(Sender1);
      Station:= Station1;
      TaskController:= TaskController1;
-     ClientState:=ClientState1;
-
+     ClientState:=NetWorker0.ClientState;
+     NetWorker:=NetWorker0;
+     CLientState.OnStartNetTask:= StartNetTaskError;
      AddSubTasks;
-
-
+     if (NetWorker.ClientState.TaskID = ttTransferToTerminalMode) then
+      begin
+         Chat:=TTChatForm.Create(Self, ClientState, NetWorker);
+      Chat.Hide;
+      if (NetWorker0.ClientState.LinkedR414Connected) then Chat.Show;
+      end;
       TaskController.OnSubTaskComplete:=UpdSubTaskList;
       //UpdSubTaskList(nil);
 
@@ -355,6 +367,7 @@ begin
   BackgroundForm.Close;
   FilterForm.Close;
   CurrentTaskForm.Close;
+  Chat.Close;
 end;
 
 procedure TStationR414Form.FormCreate(Sender: TObject);
@@ -2458,5 +2471,11 @@ end;
       SetBlockRed(TRacksEnum.none);
      CurrentTaskForm.SetMyText( 'Задание выполнено. Нажмите кнопку "Завершить выполнение" для выхода и получения статистики');
  end;
+
+   procedure TStationR414Form.StartNetTaskError(Sender: TObject);
+  begin
+    ClientState.StartNetTaskStatus:='done';  // если уже запущено задание невозможно начать по сети задание
+    NetWorker.SendParams(KEY_STARTNETTASK, 'done');
+  end;
 
 end.

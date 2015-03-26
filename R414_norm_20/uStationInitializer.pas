@@ -260,6 +260,10 @@ begin
   uBlockRemoteControllerForm.cbUdlinitel2.stKonez2.stKonez := csDisconected;
   Station.cbGenerator.stConnectedToPlaceId := csDisconected;
   Station.cbInputYY.stConnectedToPlaceId := csDisconected;
+  cbUdlinitel1.stKonez1.stState:=csDisconected;
+  cbUdlinitel1.stKonez2.stState:=csDisconected;
+  cbUdlinitel2.stKonez1.stState:=csDisconected;
+  cbUdlinitel2.stKonez2.stState:=csDisconected;
 
   {$REGION 'Инициализация параметров стоек случайными значениями'}
   Station.HalfSetA.Rack1200Left.sw1240GTunedValue := GetRandomTuneValue;

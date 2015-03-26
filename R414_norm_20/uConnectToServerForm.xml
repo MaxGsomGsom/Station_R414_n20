@@ -2306,7 +2306,7 @@
           <parameter name="Action" type="TCloseAction" paramflags="var" />
         </parameters>
       </procedure>
-      <field name="NetWorker" type="IClientNetWorker" visibility="private" />
+      <field name="NetWorker" type="TClientNetWorker" visibility="private" />
       <procedure name="ShowError" visibility="private">
         <parameters>
           <parameter name="strError" type="string" />

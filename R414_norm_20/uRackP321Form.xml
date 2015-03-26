@@ -2327,9 +2327,9 @@
       <field name="P6_6" type="TImage" visibility="published" />
       <field name="ilGradPit" type="TImageList" visibility="published" />
       <field name="imgGradPit" type="TImage" visibility="published" />
-      <field name="imgCableGeneratorJumper" type="TImage" visibility="published" />
-      <field name="imgCableGeneratorConnected" type="TImage" visibility="published" />
-      <field name="imgCableInputYYConnected" type="TImage" visibility="published" />
+      <field name="imgCableGeneratorJumper1" type="TImage" visibility="published" />
+      <field name="imgCableGeneratorConnected1" type="TImage" visibility="published" />
+      <field name="imgCableInputYYConnected2" type="TImage" visibility="published" />
       <field name="imgDisplay" type="TImage" visibility="published" />
       <field name="imgHint1" type="TImage" visibility="published" />
       <field name="imgHint2" type="TImage" visibility="published" />
@@ -2342,7 +2342,9 @@
       <field name="imgSwGradGen2" type="TImage" visibility="published" />
       <field name="imgGradYY1" type="TImage" visibility="published" />
       <field name="imgGradYY2" type="TImage" visibility="published" />
-      <field name="imgCableInputYYJumper" type="TImage" visibility="published" />
+      <field name="imgCableInputYYJumper2" type="TImage" visibility="published" />
+      <field name="imgInputGen" type="TImage" visibility="published" />
+      <field name="imgInputYY" type="TImage" visibility="published" />
       <procedure name="FormClose" visibility="published">
         <parameters>
           <parameter name="Sender" type="TObject" />
@@ -2369,7 +2371,7 @@
       </procedure>
       <procedure name="ReloadHints" visibility="published">
       </procedure>
-      <procedure name="imgCableGeneratorJumperClick" visibility="published">
+      <procedure name="imgCableGeneratorJumper1Click" visibility="published">
         <parameters>
           <parameter name="Sender" type="TObject" />
         </parameters>
@@ -2472,7 +2474,7 @@
           <parameter name="Y" type="Integer" />
         </parameters>
       </procedure>
-      <procedure name="imgCableInputYYJumperClick" visibility="published">
+      <procedure name="imgCableInputYYJumper2Click" visibility="published">
         <parameters>
           <parameter name="Sender" type="TObject" />
         </parameters>
@@ -2481,6 +2483,26 @@
         <parameters>
           <parameter name="Sender" type="TObject" />
           <parameter name="Key" type="Char" paramflags="var" />
+        </parameters>
+      </procedure>
+      <procedure name="imgCableGeneratorConnected1Click" visibility="published">
+        <parameters>
+          <parameter name="Sender" type="TObject" />
+        </parameters>
+      </procedure>
+      <procedure name="imgCableInputYYConnected2Click" visibility="published">
+        <parameters>
+          <parameter name="Sender" type="TObject" />
+        </parameters>
+      </procedure>
+      <procedure name="imgInputGenClick" visibility="published">
+        <parameters>
+          <parameter name="Sender" type="TObject" />
+        </parameters>
+      </procedure>
+      <procedure name="imgInputYYClick" visibility="published">
+        <parameters>
+          <parameter name="Sender" type="TObject" />
         </parameters>
       </procedure>
       <procedure name="FreeCallDeInit" visibility="public">
@@ -2497,6 +2519,7 @@
           <parameter name="TaskController0" type="TTaskController" />
         </parameters>
       </constructor>
+      <field name="SelectedCable" type="Integer" visibility="public" />
       <field name="bmp" type="TBitmap" visibility="public" />
       <field name="arrNepGen" visibility="public">
         <array name="arrNepGen" visibility="public" low="1" high="11">
