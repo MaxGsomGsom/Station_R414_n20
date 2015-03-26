@@ -2726,6 +2726,11 @@
           <parameter name="Sender" type="TObject" />
         </parameters>
       </procedure>
+      <procedure name="StartNetTaskError" visibility="private">
+        <parameters>
+          <parameter name="Sender" type="TObject" />
+        </parameters>
+      </procedure>
       <field name="StationR414MinForm" type="TStationR414MinForm" visibility="public" />
       <procedure name="CheckProgress" visibility="public">
       </procedure>
@@ -2760,7 +2765,7 @@
           <parameter name="Sender1" type="TComponent" />
           <parameter name="Station1" type="TStation" />
           <parameter name="TaskController1" type="TTaskController" />
-          <parameter name="ClientState1" type="TClientState" />
+          <parameter name="NetWorker0" type="TClientNetWorker" />
         </parameters>
       </constructor>
       <field name="BgImages" visibility="public">
@@ -2772,6 +2777,8 @@
       <field name="TaskController" type="TTaskController" visibility="public" />
       <field name="CLientState" type="TClientState" visibility="public" />
       <field name="Station" type="TStation" visibility="public" />
+      <field name="Chat" type="TTChatForm" visibility="public" />
+      <field name="NetWorker" type="TClientNetWorker" visibility="public" />
     </members>
   </class>
   <variable name="CloseStationR414FormFlag" type="Byte" />

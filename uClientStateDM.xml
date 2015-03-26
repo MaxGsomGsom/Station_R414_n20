@@ -119,6 +119,12 @@
         </parameters>
       </function>
       <field name="ErrorKepeer" type="TErrorKeeper" visibility="public" />
+      <field name="FConnectedEvent" type="TEvent" visibility="public" />
+      <field name="FMessageEvent" type="TEvent" visibility="public" />
+      <field name="FStartNetTask" type="TEvent" visibility="public" />
+      <field name="FStartNetTaskOk" type="TEvent" visibility="public" />
+      <field name="LastMessage" type="string" visibility="public" />
+      <field name="StartNetTaskStatus" type="string" visibility="public" />
       <constructor name="Create" visibility="public">
         <parameters>
         </parameters>
@@ -192,6 +198,9 @@
       <property name="TransmitterWaveB" visibility="public" read="FTransmitterWaveB" write="SetTransmitterWaveB" type="Integer" />
       <property name="ReceiverWaveA" visibility="public" read="FReceiverWaveA" write="SetReceiverWaveA" type="Integer" />
       <property name="ReceiverWaveB" visibility="public" read="FReceiverWaveB" write="SetReceiverWaveB" type="Integer" />
+      <event name="OnConnectedEvent" visibility="public" read="FConnectedEvent" write="FConnectedEvent" type="TEvent" />
+      <event name="OnMessageEvent" visibility="public" read="FMessageEvent" write="FMessageEvent" type="TEvent" />
+      <event name="OnStartNetTask" visibility="public" read="FStartNetTask" write="FStartNetTask" type="TEvent" />
     </members>
   </class>
 </namespace>

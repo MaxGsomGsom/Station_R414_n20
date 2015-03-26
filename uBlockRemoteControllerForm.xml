@@ -3120,6 +3120,11 @@
           <parameter name="CanClose" type="Boolean" paramflags="var" />
         </parameters>
       </procedure>
+      <procedure name="White1Click" visibility="published">
+        <parameters>
+          <parameter name="Sender" type="TObject" />
+        </parameters>
+      </procedure>
       <procedure name="Reload" visibility="private">
       </procedure>
       <function name="IsGeneratorCableConnnected" visibility="private">

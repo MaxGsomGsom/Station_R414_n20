@@ -32,23 +32,31 @@ type
     lstTaskChoice: TListBox;
     lblUsername: TLabel;
     edtUserName: TEdit;
+    lblPriorityText: TLabel;
+    lblStationPriority: TLabel;
+    lbl1: TLabel;
+    lblLinkedR414: TLabel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnCancelClick(Sender: TObject);
     procedure btnStartClick(Sender: TObject);
     procedure lstTaskChoiceClick(Sender: TObject);
     procedure cbbWorkModeChange(Sender: TObject);
+    procedure ShowPriority(Sender: TObject);
+    procedure StartNetTask(Sender: TObject);
     //procedure FormHide(Sender: TObject);
 
   private
-    NetWorker: IClientNetWorker;
+    NetWorker: TClientNetWorker;
     NetworkSender: TNetworkSender;
     TaskController: TTaskController;
     Station: TStation;
     R414: TStationR414Form;
 
+
   public
-    constructor CreateForm(AOwner: TComponent; NetWorker: IClientNetWorker);
+    constructor CreateForm(AOwner: TComponent; NetWorker: TClientNetWorker);
     destructor Destroy; override;
+
   end;
 
 var
@@ -59,12 +67,13 @@ implementation
 
 uses
   uConstantsDM,
-  uStationInitializer;
+  uStationInitializer,
+  uRequestDM;
 
 {$R *.dfm}
 
 constructor TPreparationToWorkForm.CreateForm(AOwner: TComponent;
-    NetWorker: IClientNetWorker);
+    NetWorker: TClientNetWorker);
   var
     i: Integer;
     strTaskTitle: string;
@@ -74,7 +83,15 @@ begin
   Self.NetWorker := NetWorker;
   Self.edtUserName.Text := NetWorker.ClientState.UserName;
   Self.NetworkSender := TNetworkSender.Create(NetWorker);
+  ShowPriority(Self);
+  NetWorker.ClientState.OnConnectedEvent:=ShowPriority;
 
+   NetWorker.ClientState.OnStartNetTask:=StartNetTask;
+           //временно
+     edtTransmitterWaveA.Text:='11';
+      edtTransmitterWaveB.Text :='10' ;
+      edtReceiverWaveA.Text :='22' ;
+      edtReceiverWaveB.Text :='20' ;
   //Self.Station := TStation.Create;
   //Self.TaskController := TTaskController.Create(Station);
 
@@ -109,6 +126,7 @@ end;
 
 procedure TPreparationToWorkForm.btnCancelClick(Sender: TObject);
 begin
+  NetWorker.Disconnect;
   Self.Close;
 end;
 
@@ -123,17 +141,6 @@ var
 begin
   with NetWorker.ClientState do
   begin
-
-
-
-           //временно
-     edtTransmitterWaveA.Text:='11';
-      edtTransmitterWaveB.Text :='10' ;
-      edtReceiverWaveA.Text :='22' ;
-      edtReceiverWaveB.Text :='20' ;
-
-
-
 
     if not IsTaskSelected then
     begin
@@ -165,7 +172,22 @@ begin
     end;
 
     NetworkSender.SendInitialStationParams(iTransmitterWaveA, iTransmitterWaveB,
-      iReceiverWaveA, iReceiverWaveB, TaskID);
+      iReceiverWaveA, iReceiverWaveB, TaskID, WorkMode);
+
+    ////////////////////////////////////
+    if (NetWorker.ClientState.TaskID=ttTransferToTerminalMode) then begin
+
+     if not (NetWorker.ClientState.LinkedR414Connected) then
+     begin
+         ShowMessage('Для начала этого задания дождитесь подключения связанной станции');
+         Exit;
+     end;
+
+     NetWorker.SendParams(KEY_STARTNETTASK, 'call');
+     Exit;
+
+    end;
+    /////////////////////////////////////////
 
     Station := TStation.Create;                   // Станция
     StationInitializer := TStationInitializer.Create(Station);
@@ -175,16 +197,16 @@ begin
     StationInitializer.Free;
 
 
-    Station.WaveTransmitA := iTransmitterWaveA;
-    Station.WaveReceiveA := iReceiverWaveA;
-    Station.WaveTransmitB := iTransmitterWaveB;
+    Station.WaveTransmitA := iTransmitterWaveA;      //костыль!!!!!!!
+    Station.WaveReceiveA := iReceiverWaveA;        //костыль
+    Station.WaveTransmitB := iTransmitterWaveB;    //костыль
     Station.WaveReceiveB := iReceiverWaveB;  //костыль
 
     TaskController := TTaskController.Create(Station, NetWorker.ClientState); // Он проверяет станцию на соответствие заданию
     TaskController.SetCurrentTask();
     //Соответственно в деструкторе мы всё это дело убиваем
 
-    R414 := TStationR414Form.Create(Self, Station, TaskController, NetWorker.ClientState);
+    R414 := TStationR414Form.Create(Self, Station, TaskController, NetWorker);
     R414.Show;
     Hide;
   end;
@@ -243,5 +265,67 @@ begin
   if (lstTaskChoice.ItemIndex + 1) <> Ord(NetWorker.ClientState.TaskID) then
     NetWorker.ClientState.TaskID := TTaskType(lstTaskChoice.ItemIndex + 1);
 end;
+
+procedure TPreparationToWorkForm.ShowPriority;
+begin
+if (NetWorker.ClientState.LinkedR414Connected) then begin
+  if (NetWorker.ClientState.IsMainStation) then
+  begin
+    lblStationPriority.Caption:= 'Главная станция';
+  end
+  else
+  begin
+     lblStationPriority.Caption:= 'Подчиненная станция';
+  end;
+
+  lblLinkedR414.Caption:=NetWorker.ClientState.LinkedR414UserName;
+end;
+end;
+
+
+
+procedure TPreparationToWorkForm.StartNetTask(Sender: TObject);  //запрос на старт задания
+var
+StationInitializer: TStationInitializer;
+     begin
+       if (NetWorker.ClientState.StartNetTaskStatus='done') then
+       begin
+           ShowMessage('На сопряженной станции уже выполняется задание');
+         Exit;
+       end;
+
+
+    Station := TStation.Create;                   // Станция
+    StationInitializer := TStationInitializer.Create(Station);
+    StationInitializer.InitStationByTask(NetWorker.ClientState.TaskID);              // Инициализируем станцию
+
+                                                  // в соответствии с заданием
+    StationInitializer.Free;
+
+
+    Station.WaveTransmitA := NetWorker.ClientState.TransmitterWaveA;   //костыль!!!!!!!!!!
+    Station.WaveReceiveA := NetWorker.ClientState.ReceiverWaveA;      //костыль
+    Station.WaveTransmitB := NetWorker.ClientState.TransmitterWaveB;  //костыль
+    Station.WaveReceiveB := NetWorker.ClientState.ReceiverWaveB;  //костыль
+
+    TaskController := TTaskController.Create(Station, NetWorker.ClientState); // Он проверяет станцию на соответствие заданию
+    TaskController.SetCurrentTask();
+
+    R414 := TStationR414Form.Create(Self, Station, TaskController, NetWorker);
+    R414.Show;
+    Hide;
+
+      if (NetWorker.ClientState.StartNetTaskStatus='call') then
+      begin
+         NetWorker.SendParams(KEY_STARTNETTASK, 'return');
+         NetWorker.ClientState.StartNetTaskStatus:='done';
+      end
+      else if (NetWorker.ClientState.StartNetTaskStatus='return') then
+      begin
+          NetWorker.ClientState.StartNetTaskStatus:='done';
+      end;
+     end;
+
+
 
 end.

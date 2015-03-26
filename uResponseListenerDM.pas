@@ -82,5 +82,6 @@ procedure TResponseListener.DoResponseEvent;
 begin
   ResponseEvent(FResponse);            // Оповещаем подписчика,
                                        // что пришёл ответ сервера
+
 end;
 end.

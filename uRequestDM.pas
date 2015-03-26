@@ -15,13 +15,17 @@ const
   KEY_NAME = 'username';          // Позывной станции
   KEY_TYPE = 'type';              // Тип станции (cross/r414/r415/server)
   KEY_STATUS = 'status';          // Станция является подч-й или главной
-  KEY_CONNECTED = 'connected';    // Статус подключения (true / false - при дисконнекте)
+  KEY_CONNECTED = 'connected';
+  KEY_MESSAGE = 'messageText';
+  KEY_STARTNETTASK = 'startNetTask';
+      // Статус подключения (true / false - при дисконнекте)
 
   KEY_TRANSMITTER_WAVE_A = 'twavea';
   KEY_TRANSMITTER_WAVE_B = 'twaveb';
   KEY_RECEIVER_WAVE_A = 'rwavea';
   KEY_RECEIVER_WAVE_B = 'rwaveb';
   KEY_TASK_ID = 'taskid';
+  KEY_WORK_MODE = 'workmode';
 
 type
   TRequest = class

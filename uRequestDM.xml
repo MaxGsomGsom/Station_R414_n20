@@ -45,6 +45,16 @@
       connected
     </value>
   </const>
+  <const name="KEY_MESSAGE" type="string">
+    <value>
+      messageText
+    </value>
+  </const>
+  <const name="KEY_STARTNETTASK" type="string">
+    <value>
+      startNetTask
+    </value>
+  </const>
   <const name="KEY_TRANSMITTER_WAVE_A" type="string">
     <value>
       twavea
@@ -68,6 +78,11 @@
   <const name="KEY_TASK_ID" type="string">
     <value>
       taskid
+    </value>
+  </const>
+  <const name="KEY_WORK_MODE" type="string">
+    <value>
+      workmode
     </value>
   </const>
   <class name="TRequest">

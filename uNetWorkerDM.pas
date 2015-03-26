@@ -23,6 +23,7 @@ type IClientNetWorker = class
     function TryConnect(UserName: string): Integer; virtual; abstract;
     function Disconnect(): Integer; virtual; abstract;
     function SendParams(Key: string; Value: string): Integer; virtual; abstract;
+    function SendMessage(Value: string): Integer; virtual; abstract;
 
     property ClientState: TClientState read FClientState write FClientState;
     property ClientStateChangedEvent: TClientStateChangedEvent
@@ -43,6 +44,7 @@ type TClientNetWorker = class(IClientNetWorker)
     function TryConnect(strUserName: string): Integer; override;
     function Disconnect: Integer; override;
     function SendParams(Key: string; Value: string): Integer; override;
+    function SendMessage(Value: string): Integer; override;
     constructor Create(); reintroduce;
     destructor Destroy(); override;
 
@@ -159,6 +161,20 @@ uses
     Request.Free;                               // Чистим мусор
   end;
 
+  function TClientNetWorker.SendMessage(Value: string): Integer;
+  var
+    Request: TRequest;
+  begin
+    Request := TRequest.Create;                 // Создаём новый запрос
+    Request.Name := REQ_NAME_MESSAGE;
+    Request.AddKeyValue(KEY_TYPE, 'r414');      // Тип клиента
+
+    Request.AddKeyValue(KEY_MESSAGE, Value);            // Наши ключ и значение
+    //Request.AddKeyValue(KEY_NAME, ClientState.UserName);
+    TCPClient.IOHandler.WriteLn(Request.ConvertToText);
+    Request.Free;                               // Чистим мусор
+  end;
+
   function TClientNetWorker.IsConnect: Boolean;
   begin
      Result := (ClientState <> nil) and ClientState.Connected;
@@ -221,6 +237,8 @@ uses
             begin
               ClientState.LinkedR414Connected := True;
               ClientState.LinkedR414UserName := kvRecord.Value;
+              ClientState.OnConnectedEvent(Self);
+              //ClientStateChangedEvent;
             end
             else                                      // connected = false
             begin
@@ -229,13 +247,13 @@ uses
               ClientState.ReceiverWaveA := 0;
               ClientState.ReceiverWaveB := 0;
               ClientState.TaskID := ttNull;           // Заглушка, х.з., что сейчас ставить
-              ClientStateChangedEvent;            // Чтоб форма обновила поля,
+              //ClientState.ConnectedEvent(Self);            // Чтоб форма обновила поля,
                                                   // ибо при отключенном втором клиенте
                                                   // она этого делать не будет
               ClientState.LinkedR414Connected := False;
               ClientState.LinkedR414UserName := '';
             end;
-            ClientStateChangedEvent;
+            //ClientStateChangedEvent;
             break;
           end else
           if kvRecord.Key = KEY_TRANSMITTER_WAVE_A then
@@ -258,17 +276,27 @@ uses
           begin
             ClientState.TaskID := TTaskType(StrToInt(kvRecord.Value));
           end else
-          if kvRecord.Key = KEY_TYPE then;      // эта строчка просто пример того,
-                                                // как писать дальше
-          ClientStateChangedEvent;
+          if kvRecord.Key = KEY_WORK_MODE then
+          begin
+             ClientState.WorkMode := TWorkMode(StrToInt(kvRecord.Value));
+          end else
+          if kvRecord.Key = KEY_STARTNETTASK then
+          begin
+          ClientState.StartNetTaskStatus:=kvRecord.Value;
+            ClientState.OnStartNetTask(Self); //запуск задания с полученными параметрами от станции 1 на станции 2
+
+          end;
+          //ClientStateChangedEvent;
         except
           on E: Exception do;                   //Залогать, что серв прислал херню
         end;                                    // (Ошибка конвертации strValue);
       end;
+
     end else
     if Request.Name = REQ_NAME_MESSAGE then
     begin
-
+    ClientState.LastMessage:= Request.GetValue(KEY_MESSAGE);
+         ClientState.OnMessageEvent(Self);
     end;
     Request.Free;                                  // Убираем мусор
   end;

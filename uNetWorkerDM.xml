@@ -91,6 +91,12 @@
           <retval type="Integer" />
         </parameters>
       </function>
+      <function name="SendMessage" visibility="public" procflags="abstract virtual">
+        <parameters>
+          <parameter name="Value" type="string" />
+          <retval type="Integer" />
+        </parameters>
+      </function>
       <property name="ClientState" visibility="public" read="FClientState" write="FClientState" type="TClientState" />
       <event name="ClientStateChangedEvent" visibility="public" read="FClientStateChangedEvent" write="FClientStateChangedEvent" type="TClientStateChangedEvent" />
     </members>
@@ -101,6 +107,7 @@
       <methodref name="TryConnect" visibility="public" procflags="abstract virtual" />
       <methodref name="Disconnect" visibility="public" procflags="abstract virtual" />
       <methodref name="SendParams" visibility="public" procflags="abstract virtual" />
+      <methodref name="SendMessage" visibility="public" procflags="abstract virtual" />
       <propertyref name="ClientState" visibility="public" />
       <eventref name="ClientStateChangedEvent" visibility="public" />
       <ancestor name="TObject" namespace="System">
@@ -222,6 +229,12 @@
       <function name="SendParams" visibility="public" procflags="override">
         <parameters>
           <parameter name="Key" type="string" />
+          <parameter name="Value" type="string" />
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <function name="SendMessage" visibility="public" procflags="override">
+        <parameters>
           <parameter name="Value" type="string" />
           <retval type="Integer" />
         </parameters>

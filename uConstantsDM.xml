@@ -46,14 +46,14 @@
       ttCheckStationInStandaloneControlMode
     </value>
   </const>
-  <const name="ttSetConnectionWithCross" type="TTaskType">
-    <value>
-      ttSetConnectionWithCross
-    </value>
-  </const>
   <const name="ttTransferToTerminalMode" type="TTaskType">
     <value>
       ttTransferToTerminalMode
+    </value>
+  </const>
+  <const name="ttSetConnectionWithCross" type="TTaskType">
+    <value>
+      ttSetConnectionWithCross
     </value>
   </const>
   <enum name="TTaskType">
@@ -61,8 +61,8 @@
     <element name="ttNone" />
     <element name="ttPowerOn" />
     <element name="ttCheckStationInStandaloneControlMode" />
-    <element name="ttSetConnectionWithCross" />
     <element name="ttTransferToTerminalMode" />
+    <element name="ttSetConnectionWithCross" />
   </enum>
   <const name="COUNT_WORK_MODES" type="Integer">
     <value>
@@ -784,6 +784,51 @@
   <const name="cb1500Sa37" type="Integer">
     <value>
       $42
+    </value>
+  </const>
+  <const name="csChannel1Transmitter" type="Integer">
+    <value>
+      $43
+    </value>
+  </const>
+  <const name="csChannel1Reciever" type="Integer">
+    <value>
+      $44
+    </value>
+  </const>
+  <const name="csGGS1" type="Integer">
+    <value>
+      $45
+    </value>
+  </const>
+  <const name="csPVUTransmitter" type="Integer">
+    <value>
+      $46
+    </value>
+  </const>
+  <const name="csPVUReciever" type="Integer">
+    <value>
+      $47
+    </value>
+  </const>
+  <const name="csP321CGen" type="Integer">
+    <value>
+      $48
+    </value>
+  </const>
+  <const name="csP321CYY" type="Integer">
+    <value>
+      $49
+    </value>
+  </const>
+  <const name="csUd1" type="Integer">
+    <value>
+      $4A
+    </value>
+  </const>
+  <const name="csUd2" type="Integer">
+    <value>
+      $4B
     </value>
   </const>
   <const name="GeterodinWaves" type="Array" visibility="public" />

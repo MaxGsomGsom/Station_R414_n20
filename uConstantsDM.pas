@@ -26,8 +26,9 @@ type TTaskType = (
   //ttWorkWithLowFrequency,             // –абота с низкочастотным оборудованием
   ttCheckStationInStandaloneControlMode,// ѕроверка станции в режиме автономного
                                         // контрол€
-  ttSetConnectionWithCross,             // ”становка служебной св€зи с кроссом
-  ttTransferToTerminalMode);            // ѕеревод станции в оконечный режим
+                                        // ”становка служебной св€зи с кроссом
+  ttTransferToTerminalMode,
+  ttSetConnectionWithCross);            // ѕеревод станции в оконечный режим
 
 
 
@@ -228,6 +229,17 @@ type TTaskType = (
 
   cb1500Nagruzka = 65;
   cb1500Sa37 = 66;
+
+  csChannel1Transmitter=67;
+  csChannel1Reciever=68;
+  csGGS1=69;
+  csPVUTransmitter=70;
+  csPVUReciever=71;
+  csP321CGen=72;
+  csP321CYY=73;
+
+  csUd1=74;
+  csUd2=75;
   {$ENDREGION}
 
   function GetWorkModeTitle(WorkMode: TWorkMode): string;

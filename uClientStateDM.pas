@@ -6,6 +6,8 @@ uses
   uConstantsDM,
   uErrorKeeper;
 
+type TEvent = procedure(Sender: TObject) of object;
+
 type TClientState = class
 
   private
@@ -39,7 +41,12 @@ type TClientState = class
 
   public
     ErrorKepeer: TErrorKeeper;
-
+      FConnectedEvent: TEvent;
+      FMessageEvent: TEvent;
+      FStartNetTask: TEvent;
+      FStartNetTaskOk: TEvent;
+      LastMessage: string;
+      StartNetTaskStatus: string;
     constructor Create(); reintroduce;
 
     function TrySetWaves(const WaveTA, WaveTB, WaveRA, WaveRB: Integer): string;
@@ -75,6 +82,10 @@ type TClientState = class
                                     write SetReceiverWaveA;
     property ReceiverWaveB: Integer read FReceiverWaveB
                                     write SetReceiverWaveB;
+    property OnConnectedEvent: TEvent read FConnectedEvent write FConnectedEvent;
+    property OnMessageEvent: TEvent read FMessageEvent write FMessageEvent;
+    property OnStartNetTask: TEvent read FStartNetTask write FStartNetTask;
+
 end;
 
 
@@ -88,6 +99,8 @@ uses
   begin
     //TaskID := ttPowerOn;
     ErrorKepeer:= TErrorKeeper.Create;
+    LastMessage:='';
+    StartNetTaskStatus:='done';
   end;
 
   procedure TClientState.SetTaskID(const Value: TTaskType);
@@ -211,5 +224,6 @@ uses
     Result := Connected and LinkedR414Connected and R415Connected
       and CrossConnected;
   end;
+
 end.
 

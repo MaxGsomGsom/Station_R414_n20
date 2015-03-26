@@ -79,9 +79,9 @@ type
     P6_6: TImage;
     ilGradPit: TImageList;
     imgGradPit: TImage;
-    imgCableGeneratorJumper: TImage;
-    imgCableGeneratorConnected: TImage;
-    imgCableInputYYConnected: TImage;
+    imgCableGeneratorJumper1: TImage;
+    imgCableGeneratorConnected1: TImage;
+    imgCableInputYYConnected2: TImage;
     imgDisplay: TImage;
     imgHint1: TImage;
     imgHint2: TImage;
@@ -94,7 +94,9 @@ type
     imgSwGradGen2: TImage;
     imgGradYY1: TImage;
     imgGradYY2: TImage;
-    imgCableInputYYJumper: TImage;
+    imgCableInputYYJumper2: TImage;
+    imgInputGen: TImage;
+    imgInputYY: TImage;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
 
@@ -102,7 +104,7 @@ type
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure Reload;
     procedure ReloadHints;
-    procedure imgCableGeneratorJumperClick(Sender: TObject);
+    procedure imgCableGeneratorJumper1Click(Sender: TObject);
     procedure imgCableInputYYDisconnectedClick(Sender: TObject);
     procedure P1_1MouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
@@ -124,8 +126,12 @@ type
       Shift: TShiftState; X, Y: Integer);
     procedure imgGradYY1MouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
-    procedure imgCableInputYYJumperClick(Sender: TObject);
+    procedure imgCableInputYYJumper2Click(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
+    procedure imgCableGeneratorConnected1Click(Sender: TObject);
+    procedure imgCableInputYYConnected2Click(Sender: TObject);
+    procedure imgInputGenClick(Sender: TObject);
+    procedure imgInputYYClick(Sender: TObject);
 
   private
     { Private declarations }
@@ -141,7 +147,7 @@ type
 
 var
   //RackP321Form: TRackP321Form;
-
+   SelectedCable:Integer;
    bmp:tbitmap;
    arrNepGen: array [1..11] of TImage;
    arrNepGenYY: array [1..11] of TImage;
@@ -192,6 +198,7 @@ if (Half=2) then begin Self.Caption:='Ï-321 Á'; end
   TaskController.Subscribe(self);
   ButtonBackForm:= TButtonBackForm.Create(self);
   ButtonBackForm.Show;
+  SelectedCable:= csDisconected;
 end;
 
 procedure TRackP321Form.FreeCallInit;
@@ -635,8 +642,8 @@ begin
         Freq := Station.HalfSetA.P321.swFrequency;
         NepGen := Station.HalfSetA.P321.swNepGen;
         InputYY := Station.HalfSetA.P321.swNepGenYY;
-        imgCableGeneratorJumper.Visible := Boolean(Station.HalfSetA.P321.cblVihGen = csDisconected);
-        imgCableInputYYJumper.Visible := Boolean(Station.HalfSetA.P321.cblVhYY = csDisconected);
+        imgCableGeneratorJumper1.Visible := Boolean(Station.HalfSetA.P321.cblVihGen = csDisconected);
+        imgCableInputYYJumper2.Visible := Boolean(Station.HalfSetA.P321.cblVhYY = csDisconected);
         intA := Station.HalfSetA.P321.swGradPit;
         while intA > 7 do
         begin
@@ -660,8 +667,8 @@ begin
         Freq := Station.HalfSetB.P321.swFrequency;
         NepGen := Station.HalfSetB.P321.swNepGen;
         InputYY := Station.HalfSetB.P321.swNepGenYY;
-        imgCableGeneratorJumper.Visible := Boolean(Station.HalfSetB.P321.cblVihGen = csDisconected);
-        imgCableInputYYJumper.Visible := Boolean(Station.HalfSetB.P321.cblVhYY = csDisconected);
+        imgCableGeneratorJumper1.Visible := Boolean(Station.HalfSetB.P321.cblVihGen = csDisconected);
+        imgCableInputYYJumper2.Visible := Boolean(Station.HalfSetB.P321.cblVhYY = csDisconected);
         intA := Station.HalfSetA.P321.swGradPit;
         while intA > 7 do
         begin
@@ -685,8 +692,8 @@ begin
         Freq := Station.P321C.swFrequency;
         NepGen := Station.P321C.swNepGen;
         InputYY := Station.P321C.swNepGenYY;
-        imgCableGeneratorJumper.Visible := Boolean(Station.cbGenerator.stConnectedToPlaceId = csDisconected);
-        imgCableInputYYJumper.Visible := Boolean(Station.cbInputYY.stConnectedToPlaceId  = csDisconected);
+        imgCableGeneratorJumper1.Visible := Boolean(Station.cbGenerator.stConnectedToPlaceId = csDisconected);
+        imgCableInputYYJumper2.Visible := Boolean(Station.cbInputYY.stConnectedToPlaceId  = csDisconected);
         intA := Station.P321C.swGradPit;
         while intA > 7 do
         begin
@@ -698,6 +705,42 @@ begin
         imgSwGradGen2.Visible := Boolean(Station.P321C.swGradGen mod 2 = 1);
         imgSwGradGen1.Visible := Boolean(Station.P321C.swGradGen mod 2 = 0);
         imgGradPit.Invalidate;
+
+         if ((cbUdlinitel1.stKonez1.stState=csDisconected) or (cbUdlinitel1.stKonez2.stState=csDisconected)) then
+         begin
+               imgCableGeneratorJumper1.Visible := True;
+         end
+         else
+         begin
+               imgCableGeneratorJumper1.Visible := False;
+         end;
+
+         if (cbUdlinitel2.stKonez1.stState=csDisconected) or (cbUdlinitel2.stKonez2.stState=csDisconected) then
+         begin
+               imgCableInputYYJumper2.Visible := True;
+         end
+         else
+         begin
+               imgCableInputYYJumper2.Visible := False;
+         end;
+
+         if ((cbUdlinitel1.stKonez1.stState=csP321CGen) or (cbUdlinitel1.stKonez2.stState=csP321CGen)) then
+         begin
+               imgCableGeneratorConnected1.Visible:=True;
+         end
+         else
+         begin
+               imgCableGeneratorConnected1.Visible:=False;
+         end;
+
+         if ((cbUdlinitel2.stKonez1.stState=csP321CYY) or (cbUdlinitel2.stKonez2.stState=csP321CYY)) then
+         begin
+               imgCableInputYYConnected2.Visible:=True;
+         end
+         else
+         begin
+               imgCableInputYYConnected2.Visible:=False;
+         end;
       end;
   end;
 
@@ -850,7 +893,21 @@ begin
   PaintDisplay;
 end;
 
-procedure TRackP321Form.imgCableGeneratorJumperClick(Sender: TObject);
+procedure TRackP321Form.imgCableGeneratorConnected1Click(Sender: TObject);
+begin
+if (cbUdlinitel1.stKonez1.stState = csP321CGen) then
+  begin
+       cbUdlinitel1.stKonez1.stState:=csDisconected;
+  end;
+  if (cbUdlinitel1.stKonez2.stState = csP321CGen) then
+  begin
+       cbUdlinitel1.stKonez2.stState:=csDisconected;
+  end;
+
+  Reload;
+end;
+
+procedure TRackP321Form.imgCableGeneratorJumper1Click(Sender: TObject);
 var
   TmpCurFormId: Byte;
 begin
@@ -865,7 +922,20 @@ begin
 //    idP321C:
 //        _Pult.SelectedCable := stcblGenerator;
 //  end;
+        SelectedCable:=csUd1;
+  Reload;
+end;
 
+procedure TRackP321Form.imgCableInputYYConnected2Click(Sender: TObject);
+begin
+if (cbUdlinitel2.stKonez1.stState = csP321CYY) then
+  begin
+       cbUdlinitel2.stKonez1.stState:=csDisconected;
+  end;
+if (cbUdlinitel2.stKonez2.stState = csP321CYY) then
+  begin
+       cbUdlinitel2.stKonez2.stState:=csDisconected;
+  end;
   Reload;
 end;
 
@@ -888,7 +958,7 @@ begin
   Reload;
 end;
 
-procedure TRackP321Form.imgCableInputYYJumperClick(Sender: TObject);
+procedure TRackP321Form.imgCableInputYYJumper2Click(Sender: TObject);
 var
   TmpCurFormId: Byte;
 begin
@@ -903,7 +973,7 @@ begin
 //    idP321C:
 //        _Pult.SelectedCable := stcblInputYY;
 //  end;
-
+       SelectedCable:=csUd2;
   Reload;
 end;
 
@@ -977,6 +1047,44 @@ begin
 
   Reload;
   PaintDisplay;
+end;
+
+procedure TRackP321Form.imgInputGenClick(Sender: TObject);
+begin
+if (SelectedCable=csUd1) then
+   begin
+    if (cbUdlinitel1.stKonez1.stState<>csP321CGen) and (cbUdlinitel1.stKonez2.stState<>csP321CGen) then
+    begin
+          if (cbUdlinitel1.stKonez1.stState=csDisconected) then
+          begin
+          cbUdlinitel1.stKonez1.stState:=csP321CGen;
+          end
+          else if (cbUdlinitel1.stKonez2.stState=csDisconected) then
+          begin
+            cbUdlinitel1.stKonez2.stState:=csP321CGen;
+          end;
+    end;
+   end;
+       Reload;
+end;
+
+procedure TRackP321Form.imgInputYYClick(Sender: TObject);
+begin
+if (SelectedCable=csUd2) then
+   begin
+    if (cbUdlinitel2.stKonez1.stState<>csP321CYY) and (cbUdlinitel2.stKonez2.stState<>csP321CYY) then
+    begin
+          if (cbUdlinitel2.stKonez1.stState=csDisconected) then
+          begin
+          cbUdlinitel2.stKonez1.stState:=csP321CYY;
+          end
+          else if (cbUdlinitel2.stKonez2.stState=csDisconected) then
+          begin
+            cbUdlinitel2.stKonez2.stState:=csP321CYY;
+          end;
+    end;
+   end;
+   Reload;
 end;
 
 procedure TRackP321Form.imgMeasureButPositionUpClick(Sender: TObject);

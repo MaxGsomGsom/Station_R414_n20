@@ -392,7 +392,7 @@ begin
               (Station.HalfSetA.Rack1600.wave1610_R = TaskController.ClientState.ReceiverWaveA) and
               (Station.HalfSetA.Rack1600.wave1600 = TaskController.ClientState.ReceiverWaveA) and
               (Station.Is1500BTransmited) and
-              (Station.HalfSetA.LittleNoisyAmplifier.butNet2 = butPositionUp) or (Station.HalfSetA.LittleNoisyAmplifier.butMshu = butPositionRight) and
+              (Station.HalfSetA.LittleNoisyAmplifier.butNet2 = butPositionUp) and
               (Station.HalfSetA.LittleNoisyAmplifier.swWave = TaskController.ClientState.ReceiverWaveA) and
               (((Station.HalfSetA.Duplexer.cbSh1 = csConnectedAtDuplexeLeft) and
               (Station.HalfSetA.Duplexer.cbSh2 = csConnectedAtDuplexeRight)) or
@@ -567,7 +567,7 @@ begin
               (Station.HalfSetB.Rack1600.wave1610_R = TaskController.ClientState.ReceiverWaveB) and
               (Station.HalfSetB.Rack1600.wave1600 = TaskController.ClientState.ReceiverWaveB) and
               (Station.Is1500ATransmited = True) and
-              (Station.HalfSetB.LittleNoisyAmplifier.butNet2 = butPositionUp) or (Station.HalfSetB.LittleNoisyAmplifier.butMshu = butPositionRight) and
+              (Station.HalfSetB.LittleNoisyAmplifier.butNet2 = butPositionUp) and
               (Station.HalfSetB.LittleNoisyAmplifier.swWave = TaskController.ClientState.ReceiverWaveB) and
               (((Station.HalfSetB.Duplexer.cbSh1 = csConnectedAtDuplexeLeft) and
               (Station.HalfSetB.Duplexer.cbSh2 = csConnectedAtDuplexeRight)) or

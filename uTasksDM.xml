@@ -32,7 +32,7 @@
   </const>
   <const name="COUNT_TASKS" type="TTaskType">
     <value>
-      ttTransferToTerminalMode
+      ttSetConnectionWithCross
     </value>
   </const>
   <const name="Task1Description" type="string">

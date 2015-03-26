@@ -147,6 +147,8 @@
     <Transaction>2015.02.26 10:25:26.609.dfm,C:\Users\Max\Documents\RAD Studio\Projects\R414_norm_20\uRegistrationForm.dfm=</Transaction>
     <Transaction>2015.02.26 10:27:29.437.pas,C:\Users\Max\Documents\RAD Studio\Projects\R414_norm_20\uUsersForm.pas=</Transaction>
     <Transaction>2015.02.26 10:27:29.437.dfm,C:\Users\Max\Documents\RAD Studio\Projects\R414_norm_20\uUsersForm.dfm=</Transaction>
+    <Transaction>2015.03.19 13:57:44.603.pas,C:\Users\Max\Documents\RAD Studio\Projects\R414_norm_20\Unit1.pas=C:\Users\Max\Documents\RAD Studio\Projects\R414_norm_20\ChatForm.pas</Transaction>
+    <Transaction>2015.03.19 13:57:44.603.dfm,C:\Users\Max\Documents\RAD Studio\Projects\R414_norm_20\Unit1.dfm=C:\Users\Max\Documents\RAD Studio\Projects\R414_norm_20\ChatForm.dfm</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="main.optset"/>
@@ -287,5 +289,7 @@
     <File Path="uStationInitializer.pas"/>
     <File Path="uTasks20.pas"/>
     <File Path="uErrorKeeper.pas"/>
+    <File Path="ChatForm.pas"/>
+    <File Path="ChatForm.dfm"/>
   </ProjectSortOrder>
 </BorlandProject>

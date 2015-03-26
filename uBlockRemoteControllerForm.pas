@@ -632,6 +632,7 @@ type
     procedure pmSpawn1200BPrmClick(Sender: TObject);
     procedure pmSpawn1200BPrdClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+    procedure White1Click(Sender: TObject);
 
 
   private
@@ -786,6 +787,42 @@ begin
   imgInputYYConnected.Visible :=
     Boolean(Station.cbInputYY.stConnectedToPlaceId <> csDisconected);
   imgInputYYConnected.Invalidate;
+
+  if (cbUdlinitel1.stKonez1.stState=csDisconected) then
+  begin
+      Black1.Visible:=True;
+  end
+  else
+  begin
+       Black1.Visible:=False;
+  end;
+  if (cbUdlinitel1.stKonez2.stState=csDisconected) then
+  begin
+      Black2.Visible:=True;
+  end
+  else
+  begin
+       Black2.Visible:=False;
+  end;
+  if (cbUdlinitel2.stKonez1.stState=csDisconected) then
+  begin
+      White1.Visible:=True;
+  end
+  else
+  begin
+       White1.Visible:=False;
+  end;
+  if (cbUdlinitel2.stKonez2.stState=csDisconected) then
+  begin
+      White2.Visible:=True;
+  end
+  else
+  begin
+       White2.Visible:=False;
+  end;
+
+
+  Canvas.LineTo(30, 100);
 end;
 
 procedure T_Pult.tmrPvuCallTimer(Sender: TObject);
@@ -1346,6 +1383,11 @@ begin
   end;
 end;
 
+procedure T_Pult.White1Click(Sender: TObject);
+begin
+
+end;
+
 /// <summary>
 ///   ѕереводит станцию в 4-х проводный режим (дл€ режима Debug = True)
 /// </summary>
@@ -1602,6 +1644,7 @@ begin
               cbUdlinitel1.stKonez1.stKonez := btPlaceHolder;
               cbUdlinitel1.stKonez1.offsetLeft := btLeft;
               cbUdlinitel1.stKonez1.offsetTop := btTop - imgTopOffset;
+              cbUdlinitel1.stKonez1.stState := csConnected;
             end;
           end;
         stcblUdlinitel1ST2:
@@ -1611,6 +1654,7 @@ begin
               cbUdlinitel1.stKonez2.stKonez := btPlaceHolder;
               cbUdlinitel1.stKonez2.offsetLeft := btLeft;
               cbUdlinitel1.stKonez2.offsetTop := btTop - imgTopOffset;
+              cbUdlinitel1.stKonez2.stState := csConnected;
             end;
           end;
         stcblUdlinitel2ST1:
@@ -1620,6 +1664,7 @@ begin
               cbUdlinitel2.stKonez1.stKonez := btPlaceHolder;
               cbUdlinitel2.stKonez1.offsetLeft := btLeft;
               cbUdlinitel2.stKonez1.offsetTop := btTop - imgTopOffset;
+              cbUdlinitel2.stKonez1.stState := csConnected;
             end;
           end;
         stcblUdlinitel2ST2:
@@ -1629,6 +1674,7 @@ begin
             cbUdlinitel2.stKonez2.stKonez := btPlaceHolder;
             cbUdlinitel2.stKonez2.offsetLeft := btLeft;
             cbUdlinitel2.stKonez2.offsetTop := btTop - imgTopOffset;
+            cbUdlinitel2.stKonez2.stState := csConnected;
             end;
           end;
         stcblInputYY:
@@ -1753,6 +1799,7 @@ begin
   imgCable1_ST1.Visible := False;
   cbUdlinitel1.stKonez1.stKonez := csDisconected;
   SelectedCable := stcblUdlinitel1ST1;
+  cbUdlinitel1.stKonez1.stState := csDisconected;
 
   Reload;
 end;
@@ -1760,6 +1807,7 @@ end;
 procedure T_Pult.imgCable1_ST2Click(Sender: TObject);
 begin
   imgCable1_ST2.Visible := False;
+  cbUdlinitel1.stKonez2.stState := csDisconected;
   cbUdlinitel1.stKonez2.stKonez := csDisconected;
   SelectedCable := stcblUdlinitel1ST2;
 
@@ -1771,6 +1819,7 @@ begin
   imgCable2_ST1.Visible := False;
   cbUdlinitel2.stKonez1.stKonez := csDisconected;
   SelectedCable := stcblUdlinitel2ST1;
+  cbUdlinitel2.stKonez1.stState := csDisconected;
 
   Reload;
 end;
@@ -1779,6 +1828,7 @@ procedure T_Pult.imgCable2_ST2Click(Sender: TObject);
 begin
   imgCable2_ST2.Visible := False;
   cbUdlinitel2.stKonez2.stKonez := csDisconected;
+  cbUdlinitel2.stKonez2.stState := csDisconected;
   SelectedCable := stcblUdlinitel2ST2;
 
   Reload;
