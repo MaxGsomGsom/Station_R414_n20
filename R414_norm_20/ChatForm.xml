@@ -2306,12 +2306,12 @@
       <constructor name="Create" visibility="published">
         <parameters>
           <parameter name="AOwner" type="TComponent" />
-          <parameter name="ClientState0" type="TClientState" />
           <parameter name="NetWorker0" type="TClientNetWorker" />
+          <parameter name="TaskController" type="TTaskController" />
         </parameters>
       </constructor>
+      <field name="TaskController" type="TTaskController" visibility="private" />
       <field name="NetWorker" type="TClientNetWorker" visibility="public" />
-      <field name="ClientState" type="TClientState" visibility="public" />
     </members>
   </class>
 </namespace>

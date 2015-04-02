@@ -96,6 +96,14 @@
           <parameter name="CurForm0" type="TForm" />
         </parameters>
       </procedure>
+      <procedure name="NetCheckTask" visibility="public">
+      </procedure>
+      <procedure name="CheckRecievedParams" visibility="public">
+        <parameters>
+          <parameter name="Param" type="string" />
+          <parameter name="Value" type="string" />
+        </parameters>
+      </procedure>
       <event name="OnChangeText" visibility="public" read="FChangeText" write="FChangeText" type="TNotifyEvent" />
       <event name="OnSubTaskComplete" visibility="public" read="FSubTaskComplete" write="FSubTaskComplete" type="TNotifyEvent" />
       <event name="OnTaskComplete" visibility="public" read="FTaskComplete" write="FTaskComplete" type="TNotifyEvent" />
@@ -111,7 +119,7 @@
       <constructor name="Create" visibility="public">
         <parameters>
           <parameter name="Station" type="TStation" />
-          <parameter name="ClientState" type="TClientState" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
         </parameters>
       </constructor>
       <function name="GetTaskTitle" visibility="public">
@@ -138,7 +146,7 @@
       <property name="CountTasks" visibility="public" read="GetCountTasks" type="Integer" />
       <field name="CurrentTask" type="TTask" visibility="public" />
       <field name="CurrentForm" type="TForm" visibility="public" />
-      <field name="ClientState" type="TClientState" visibility="public" />
+      <field name="NetWorker" type="TClientNetWorker" visibility="public" />
       <field name="ErrorKeeper" type="TErrorKeeper" visibility="public" />
       <function name="GetNumberOfCallPassedThrough2ChannelMode" visibility="public">
         <parameters>

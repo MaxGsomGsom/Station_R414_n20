@@ -12,13 +12,14 @@ uses
   SysUtils,
   Windows,
   uStationStateDM,
-  uClientStateDM,
+  uNetWorkerDM,
   uErrorKeeper;
 
 
  type TSubTask = class
    public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; virtual; abstract;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean; virtual; abstract;
+   function NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean; virtual;
    constructor Create; virtual;
    var
    EventFormName: String;
@@ -38,15 +39,16 @@ type TTask = class
       IsTaskComplete: Boolean;
        Name: String;
        procedure LastCheck(); virtual;
-       
-  constructor Create(Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper); virtual;
+
+
+  constructor Create(Station: TStation; NetWorker: TClientNetWorker;  ErrorKeeper: TErrorKeeper); virtual;
   var
     CurrentSubTask: TSubTask;
     SubTasks: array of TSubTask;
     CurrentSubTaskNum: Integer;
     Sender: TObject;
     Station: TStation;
-    ClientState: TClientState;
+    NetWorker: TClientNetWorker;
     FullCheck: Boolean;
     ErrorKeeper: TErrorKeeper;
 
@@ -61,14 +63,14 @@ end;
    //================
   type TTaskNone = class (TTask)
     public
-   constructor Create(Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper);  override;
+   constructor Create(Station: TStation; NetWorker: TClientNetWorker;  ErrorKeeper: TErrorKeeper);  override;
    procedure LastCheck(); override;
   end;
 
 
   type TTaskNoneSubTask1 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean; override;
    constructor Create;  override;
   end;
   //=============
@@ -78,89 +80,89 @@ end;
 
     type TTaskPowerOn = class (TTask)
     public
-   constructor Create(Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper);  override;
+   constructor Create(Station: TStation; NetWorker: TClientNetWorker;  ErrorKeeper: TErrorKeeper);  override;
    procedure LastCheck(); override;
   end;
 
     type TTaskPowerOnSubTask1 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean; override;
    constructor Create;  override;
   end;
 
     type TTaskPowerOnSubTask2 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean; override;
    constructor Create;  override;
   end;
 
     type TTaskPowerOnSubTask3 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean; override;
    constructor Create;  override;
   end;
 
 
    type TTaskPowerOnSubTask4 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean; override;
    constructor Create;  override;
   end;
 
    type TTaskPowerOnSubTask5 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean; override;
    constructor Create;  override;
    var Conditions: array [0..3] of Boolean;
   end;
 
    type TTaskPowerOnSubTask6 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean; override;
    constructor Create;  override;
    var Conditions: array [0..3] of Boolean;
   end;
 
     type TTaskPowerOnSubTask7 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean; override;
    constructor Create;  override;
   end;
 
     type TTaskPowerOnSubTask8 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean; override;
    constructor Create;  override;
   end;
 
       type TTaskPowerOnSubTask9 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean; override;
    constructor Create;  override;
   end;
 
       type TTaskPowerOnSubTask10 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean; override;
    constructor Create;  override;
   end;
 
 
      type TTaskPowerOnSubTask11 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean; override;
    constructor Create;  override;
   end;
 
        type TTaskPowerOnSubTask12 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean; override;
    constructor Create;  override;
   end;
 
         type TTaskPowerOnSubTask13 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean; override;
    constructor Create;  override;
   end;
 
@@ -171,183 +173,183 @@ end;
 
    type TTaskSingleCheck = class (TTask)
     public
-   constructor Create(Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper);  override;
+   constructor Create(Station: TStation; NetWorker: TClientNetWorker;  ErrorKeeper: TErrorKeeper);  override;
    procedure LastCheck(); override;
   end;
 
     type TTaskSingleCheckSubTask1 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean; override;
    constructor Create;  override;
   end;
 
     type TTaskSingleCheckSubTask2 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean; override;
    constructor Create;  override;
   end;
 
     type TTaskSingleCheckSubTask3 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean; override;
    constructor Create;  override;
   end;
 
     type TTaskSingleCheckSubTask4 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean; override;
    constructor Create;  override;
   end;
 
     type TTaskSingleCheckSubTask5 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean; override;
    constructor Create;  override;
   end;
 
       type TTaskSingleCheckSubTask6 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean; override;
    constructor Create;  override;
   end;
 
       type TTaskSingleCheckSubTask7 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean; override;
    constructor Create;  override;
   end;
 
       type TTaskSingleCheckSubTask8 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean; override;
    constructor Create;  override;
   end;
 
       type TTaskSingleCheckSubTask9 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean; override;
    constructor Create;  override;
   end;
 
       type TTaskSingleCheckSubTask10 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean; override;
    constructor Create;  override;
   end;
 
       type TTaskSingleCheckSubTask11 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean; override;
    constructor Create;  override;
   end;
 
         type TTaskSingleCheckSubTask12 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean; override;
    constructor Create;  override;
   end;
 
         type TTaskSingleCheckSubTask13 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean; override;
    constructor Create;  override;
   end;
 
         type TTaskSingleCheckSubTask14 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean; override;
    constructor Create;  override;
   end;
 
         type TTaskSingleCheckSubTask15 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean; override;
    constructor Create;  override;
   end;
 
         type TTaskSingleCheckSubTask16 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean; override;
    constructor Create;  override;
   end;
 
           type TTaskSingleCheckSubTask17 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean; override;
    constructor Create;  override;
   end;
 
             type TTaskSingleCheckSubTask18 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean; override;
    constructor Create;  override;
   end;
 
             type TTaskSingleCheckSubTask19 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean; override;
    constructor Create;  override;
   end;
 
             type TTaskSingleCheckSubTask20 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean; override;
    constructor Create;  override;
   end;
 
             type TTaskSingleCheckSubTask21 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean; override;
    constructor Create;  override;
   end;
 
             type TTaskSingleCheckSubTask22 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean; override;
    constructor Create;  override;
   end;
 
              type TTaskSingleCheckSubTask23 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean; override;
    constructor Create;  override;
   end;
 
              type TTaskSingleCheckSubTask24 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean; override;
    constructor Create;  override;
   end;
 
 
                type TTaskSingleCheckSubTask25 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean; override;
    constructor Create;  override;
   end;
 
                type TTaskSingleCheckSubTask26 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean; override;
    constructor Create;  override;
   end;
 
 
                type TTaskSingleCheckSubTask27 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean; override;
    constructor Create;  override;
   end;
 
                  type TTaskSingleCheckSubTask28 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean; override;
    constructor Create;  override;
   end;
 
                  type TTaskSingleCheckSubTask29 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean; override;
    constructor Create;  override;
   end;
  {$ENDREGION}
@@ -355,13 +357,61 @@ end;
   {$REGION 'Оконечный режим. Заголовки'}
     type TTaskTerminalMode = class (TTask)
     public
-   constructor Create(Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper);  override;
+   constructor Create(Station: TStation; NetWorker: TClientNetWorker;  ErrorKeeper: TErrorKeeper);  override;
    procedure LastCheck(); override;
+   var
+   WeInTerminalMode: Boolean;
+   TheyInTerminalMode: Boolean;
+   IsMessageListenFromMainSent: Boolean;
+   IsMessageListenFromSubSent: Boolean;
   end;
 
     type TTaskTerminalModeSubTask1 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean; override;
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean; override;
+   function NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean; override;
+   constructor Create;  override;
+  end;
+
+    type TTaskTerminalModeSubTask2 = class (TSubTask)
+  public
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean; override;
+   constructor Create;  override;
+  end;
+
+    type TTaskTerminalModeSubTask3 = class (TSubTask)
+  public
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean; override;
+   constructor Create;  override;
+  end;
+
+    type TTaskTerminalModeSubTask4 = class (TSubTask)
+  public
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean; override;
+   constructor Create;  override;
+  end;
+
+    type TTaskTerminalModeSubTask5 = class (TSubTask)
+  public
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean; override;
+   constructor Create;  override;
+  end;
+
+    type TTaskTerminalModeSubTask6 = class (TSubTask)
+  public
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean; override;
+   constructor Create;  override;
+  end;
+
+    type TTaskTerminalModeSubTask7 = class (TSubTask)
+  public
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean; override;
+   constructor Create;  override;
+  end;
+
+    type TTaskTerminalModeSubTask8 = class (TSubTask)
+  public
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean; override;
    constructor Create;  override;
   end;
   {$ENDREGION}
@@ -374,12 +424,12 @@ uBlockPowerPanelForm,
 uConstantsDM;
 
  //создание задания
-  constructor TTask.Create(Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper);
+  constructor TTask.Create(Station: TStation; NetWorker: TClientNetWorker;  ErrorKeeper: TErrorKeeper);
   begin
   Self.ErrorKeeper:=ErrorKeeper;
   Self.Sender := Sender;
   Self.Station := Station;
-  Self.ClientState := ClientState;
+  Self.NetWorker := NetWorker;
     IsTaskComplete:= false;
        CurrentSubTaskNum:= 0;
         TimeStart:= Time;
@@ -396,13 +446,18 @@ uConstantsDM;
 
   end;
 
+  function TSubTask.NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean;
+  begin
+    Result:=True;
+  end;
+
 
 
 {$REGION 'Пустое задание'}
 
-  constructor TTaskNone.Create(Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper);
+  constructor TTaskNone.Create(Station: TStation; NetWorker: TClientNetWorker;  ErrorKeeper: TErrorKeeper);
   begin
-  inherited Create(Station, ClientState,ErrorKeeper);
+  inherited Create(Station, NetWorker, ErrorKeeper);
 
   Name:='Свободный осмотр станции';
 
@@ -415,10 +470,11 @@ uConstantsDM;
   CurrentSubTask:=SubTasks[CurrentSubTaskNum];
   end;
 
-   function TTaskNoneSubTask1.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
+   function TTaskNoneSubTask1.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean;
    begin
         result:=true;
    end;
+
 
    constructor TTaskNoneSubTask1.Create;
    begin
@@ -440,9 +496,9 @@ uConstantsDM;
 
 {$REGION 'Включение питания'}
 
-  constructor TTaskPowerOn.Create(Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper);
+  constructor TTaskPowerOn.Create(Station: TStation; NetWorker: TClientNetWorker;  ErrorKeeper: TErrorKeeper);
   begin
-  inherited Create(Station, ClientState,ErrorKeeper);
+  inherited Create(Station, NetWorker, ErrorKeeper);
   FullCheck := False;
    
   Name:='Включение питания';
@@ -475,7 +531,7 @@ uConstantsDM;
         ErrorKeeper.ErrorMsg := 'Общая проверка правильности настройки:' + #10#13;;
     for I := 0 to Length(SubTasks) - 1 do
      begin
-          if (SubTasks[i].CheckSubTask(FullCheck, Station, ClientState,ErrorKeeper) = False) then allRight := false;
+          if (SubTasks[i].CheckSubTask(FullCheck, Station, NetWorker, ErrorKeeper, Self) = False) then allRight := false;
      end;
 
     if (allRight = true) then
@@ -490,7 +546,7 @@ uConstantsDM;
   end;
 
    //===
-   function TTaskPowerOnSubTask1.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
+   function TTaskPowerOnSubTask1.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean;
    begin
 
          if (Station.PowerPanel.swNet=1) and (Station.PowerPanel.swPhase=4) then
@@ -518,7 +574,7 @@ uConstantsDM;
 
   //  ===
 
-   function TTaskPowerOnSubTask2.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
+   function TTaskPowerOnSubTask2.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean;
    begin
          if (Station.PowerPanel.sw1700Power=1) and (Station.PowerPanel.sw1900Power=1) and (Station.PowerPanel.sw1900Power_2=1)
          and  (Station.PowerPanel.sw1200Power_2=1) and (Station.PowerPanel.sw1200Power=1) and (Station.PowerPanel.sw1400=1) then
@@ -550,7 +606,7 @@ uConstantsDM;
    end;
          //==
 
-   function TTaskPowerOnSubTask3.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
+   function TTaskPowerOnSubTask3.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean;
    begin
          if (Station.HalfSetA.LittleNoisyAmplifier.butNet2=0)  and
          (Station.HalfSetA.LittleNoisyAmplifier.butNet=0) then
@@ -578,7 +634,7 @@ uConstantsDM;
 
    //==
 
-   function TTaskPowerOnSubTask4.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
+   function TTaskPowerOnSubTask4.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean;
    begin
          if (Station.HalfSetB.LittleNoisyAmplifier.butNet2=0)  and
          (Station.HalfSetB.LittleNoisyAmplifier.butNet=0) then
@@ -606,7 +662,7 @@ uConstantsDM;
 
    //==
 
-   function TTaskPowerOnSubTask5.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
+   function TTaskPowerOnSubTask5.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean;
    var I: Integer;
    begin
           if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
@@ -653,7 +709,7 @@ uConstantsDM;
 
    //==
 
-   function TTaskPowerOnSubTask6.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
+   function TTaskPowerOnSubTask6.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean;
    var I: Integer;
    begin
           if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
@@ -700,7 +756,7 @@ uConstantsDM;
 
    //==
 
-   function TTaskPowerOnSubTask7.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
+   function TTaskPowerOnSubTask7.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean;
    begin
          if (Station.HalfSetA.Rack1200Left.but1240K=butPositionUp) then
          begin
@@ -726,7 +782,7 @@ uConstantsDM;
 
    //==
 
-   function TTaskPowerOnSubTask8.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
+   function TTaskPowerOnSubTask8.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean;
    begin
          if (Station.HalfSetB.Rack1200Left.but1240K=butPositionUp) then
          begin
@@ -752,7 +808,7 @@ uConstantsDM;
 
    //==
 
-   function TTaskPowerOnSubTask9.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
+   function TTaskPowerOnSubTask9.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean;
    begin
          if (Station.Rack1710.butPower=butPositionRight) and (Station.Rack1710.butSpeaker=butPositionRight) then
          begin
@@ -779,7 +835,7 @@ uConstantsDM;
 
    //==
 
-   function TTaskPowerOnSubTask10.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
+   function TTaskPowerOnSubTask10.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean;
    begin
          if (Station.Rack1400.butPower = butPositionRight) and (Station.Rack1400.butSpeaker = butPositionRight) then
          begin
@@ -806,7 +862,7 @@ uConstantsDM;
 
    //==
 
-   function TTaskPowerOnSubTask11.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
+   function TTaskPowerOnSubTask11.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean;
    begin
          if (Station.P321C.butPower=butPositionUp) and (Station.P321C.butMeasure=butPositionUp) and (Station.P321C.but600Ohm=butPositionUp) then
          begin
@@ -834,7 +890,7 @@ uConstantsDM;
 
      //==
 
-   function TTaskPowerOnSubTask12.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
+   function TTaskPowerOnSubTask12.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean;
    begin
          if (Station.PowerSupply.butPower=butPositionUp) then
          begin
@@ -861,7 +917,7 @@ uConstantsDM;
 
      //==
 
-   function TTaskPowerOnSubTask13.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
+   function TTaskPowerOnSubTask13.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean;
    begin
          if (Station.Oscillograph.butLevelPosition = butPositionUp) then
          begin
@@ -891,7 +947,7 @@ uConstantsDM;
 
   constructor TTaskSingleCheck.Create;
   begin
-  inherited Create(Station, ClientState, ErrorKeeper);
+  inherited Create(Station, NetWorker, ErrorKeeper);
 
   Name:='Проверка работоспособности станции в режиме "Автономный контроль"';
 
@@ -939,7 +995,7 @@ uConstantsDM;
        ErrorKeeper.ErrorMsg := 'Общая проверка правильности настройки:' + #10#13;;
     for I := 0 to Length(SubTasks) - 1 do
      begin
-          if (SubTasks[i].CheckSubTask(FullCheck, Station, ClientState,ErrorKeeper) = False) then allRight := false;
+          if (SubTasks[i].CheckSubTask(FullCheck, Station, NetWorker, ErrorKeeper, Self) = False) then allRight := false;
      end;
 
     if (allRight = true) then
@@ -954,7 +1010,7 @@ uConstantsDM;
   end;
 
    //===
-   function TTaskSingleCheckSubTask1.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
+   function TTaskSingleCheckSubTask1.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean;
    begin
 
          if (Station.HalfSetA.Rack1500.stCableLoad = csConnectedAtRack1500Sh1)
@@ -982,19 +1038,20 @@ uConstantsDM;
    end;
 
 
-        function TTaskSingleCheckSubTask2.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
+        function TTaskSingleCheckSubTask2.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean;
    begin
 
-         if (Station.HalfSetA.Rack1500.swWave1610_0 = ClientState.TransmitterWaveA) and (Station.HalfSetA.Rack1500.swWave161_R = ClientState.TransmitterWaveA) and (Station.HalfSetA.Rack1500.swWave1500 = ClientState.TransmitterWaveA) then
+         if (Station.HalfSetA.Rack1500.swWave1610_0 = NetWorker.ClientState.TransmitterWaveA) and (Station.HalfSetA.Rack1500.swWave161_R = NetWorker.ClientState.TransmitterWaveA)
+         and (Station.HalfSetA.Rack1500.swWave1500 = NetWorker.ClientState.TransmitterWaveA) then
          begin
            Result:=true;
          end
          else
          begin
             if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
-            if (Station.HalfSetA.Rack1500.swWave1610_0 <> ClientState.TransmitterWaveA) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна передачи напереключателе 1610О' + #10#13;
-            if (Station.HalfSetA.Rack1500.swWave161_R <> ClientState.TransmitterWaveA) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна передачи напереключателе 1610Р' + #10#13;
-            if (Station.HalfSetA.Rack1500.swWave1500 <> ClientState.TransmitterWaveA) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна передачи напереключателе 1500' + #10#13;
+            if (Station.HalfSetA.Rack1500.swWave1610_0 <> NetWorker.ClientState.TransmitterWaveA) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна передачи напереключателе 1610О' + #10#13;
+            if (Station.HalfSetA.Rack1500.swWave161_R <> NetWorker.ClientState.TransmitterWaveA) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна передачи напереключателе 1610Р' + #10#13;
+            if (Station.HalfSetA.Rack1500.swWave1500 <> NetWorker.ClientState.TransmitterWaveA) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна передачи напереключателе 1500' + #10#13;
            Result:=false;
          end;
    end;
@@ -1010,17 +1067,17 @@ uConstantsDM;
    end;
 
 
-        function TTaskSingleCheckSubTask3.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
+        function TTaskSingleCheckSubTask3.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean;
    begin
 
-         if (Station.HalfSetA.LittleNoisyAmplifier.swWave = ClientState.ReceiverWaveA) then
+         if (Station.HalfSetA.LittleNoisyAmplifier.swWave = NetWorker.ClientState.ReceiverWaveA) then
          begin
            Result:=true;
          end
          else
          begin
             if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
-            if (Station.HalfSetA.LittleNoisyAmplifier.swWave <> ClientState.ReceiverWaveA) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна приема' + #10#13;
+            if (Station.HalfSetA.LittleNoisyAmplifier.swWave <> NetWorker.ClientState.ReceiverWaveA) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна приема' + #10#13;
            Result:=false;
          end;
    end;
@@ -1036,7 +1093,7 @@ uConstantsDM;
    end;
 
 
-   function TTaskSingleCheckSubTask4.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
+   function TTaskSingleCheckSubTask4.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean;
    begin
 
          if (((Station.HalfSetA.Duplexer.cbSh1 = csConnectedAtDuplexeLeft) and (Station.HalfSetA.Duplexer.cbSh2 = csConnectedAtDuplexeRight))
@@ -1067,18 +1124,18 @@ uConstantsDM;
    
 
 
-   function TTaskSingleCheckSubTask5.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
+   function TTaskSingleCheckSubTask5.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean;
    begin
 
-         if (Station.HalfSetA.Duplexer.waveTransmit = ClientState.TransmitterWaveA) and (Station.HalfSetA.Duplexer.waveReceive = ClientState.ReceiverWaveA) then
+         if (Station.HalfSetA.Duplexer.waveTransmit = NetWorker.ClientState.TransmitterWaveA) and (Station.HalfSetA.Duplexer.waveReceive = NetWorker.ClientState.ReceiverWaveA) then
          begin
            Result:=true;
          end
          else
          begin
             if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
-            if (Station.HalfSetA.Duplexer.waveTransmit <> ClientState.TransmitterWaveA) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна передачи' + #10#13;
-            if (Station.HalfSetA.Duplexer.waveReceive <> ClientState.ReceiverWaveA) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна приема' + #10#13;
+            if (Station.HalfSetA.Duplexer.waveTransmit <> NetWorker.ClientState.TransmitterWaveA) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна передачи' + #10#13;
+            if (Station.HalfSetA.Duplexer.waveReceive <> NetWorker.ClientState.ReceiverWaveA) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна приема' + #10#13;
            Result:=false;
          end;
    end;
@@ -1096,16 +1153,16 @@ uConstantsDM;
 
 
 
-    function TTaskSingleCheckSubTask6.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
+    function TTaskSingleCheckSubTask6.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean;
    begin
 
-         if (GeterodinWaves[ClientState.TransmitterWaveA][0] = Station.HalfSetA.Rack1500.GeterodinIntMain)
-      and (((GeterodinWaves[ClientState.TransmitterWaveA][1] - 2) <= Station.HalfSetA.Rack1500.GeterodinFloatMain)
-            and (Station.HalfSetA.Rack1500.GeterodinFloatMain <= (GeterodinWaves[ClientState.TransmitterWaveA][1] + 2)))
+         if (GeterodinWaves[NetWorker.ClientState.TransmitterWaveA][0] = Station.HalfSetA.Rack1500.GeterodinIntMain)
+      and (((GeterodinWaves[NetWorker.ClientState.TransmitterWaveA][1] - 2) <= Station.HalfSetA.Rack1500.GeterodinFloatMain)
+            and (Station.HalfSetA.Rack1500.GeterodinFloatMain <= (GeterodinWaves[NetWorker.ClientState.TransmitterWaveA][1] + 2)))
 
-            and (GeterodinWaves[ClientState.TransmitterWaveA][0] = Station.HalfSetA.Rack1500.GeterodinIntReserve)
-      and (((GeterodinWaves[ClientState.TransmitterWaveA][1] - 2) <= Station.HalfSetA.Rack1500.GeterodinFloatReserve)
-            and (Station.HalfSetA.Rack1500.GeterodinFloatReserve <= (GeterodinWaves[ClientState.TransmitterWaveA][1] + 2)))
+            and (GeterodinWaves[NetWorker.ClientState.TransmitterWaveA][0] = Station.HalfSetA.Rack1500.GeterodinIntReserve)
+      and (((GeterodinWaves[NetWorker.ClientState.TransmitterWaveA][1] - 2) <= Station.HalfSetA.Rack1500.GeterodinFloatReserve)
+            and (Station.HalfSetA.Rack1500.GeterodinFloatReserve <= (GeterodinWaves[NetWorker.ClientState.TransmitterWaveA][1] + 2)))
             and (Station.HalfSetA.Rack1500.SelectedMd = smdMain) and (Station.HalfSetA.Rack1500.SelectedRetr = sRetrMain) then
          begin
          Station.HalfSetA.Rack1500.GeterodinTunedMain := True;
@@ -1115,13 +1172,13 @@ uConstantsDM;
          else
          begin
             if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
-            if (GeterodinWaves[ClientState.TransmitterWaveA][0] <> Station.HalfSetA.Rack1500.GeterodinIntMain)
-                or (((GeterodinWaves[ClientState.TransmitterWaveA][1] - 2) > Station.HalfSetA.Rack1500.GeterodinFloatMain)
-                or (Station.HalfSetA.Rack1500.GeterodinFloatMain > (GeterodinWaves[ClientState.TransmitterWaveA][1] + 2)))
+            if (GeterodinWaves[NetWorker.ClientState.TransmitterWaveA][0] <> Station.HalfSetA.Rack1500.GeterodinIntMain)
+                or (((GeterodinWaves[NetWorker.ClientState.TransmitterWaveA][1] - 2) > Station.HalfSetA.Rack1500.GeterodinFloatMain)
+                or (Station.HalfSetA.Rack1500.GeterodinFloatMain > (GeterodinWaves[NetWorker.ClientState.TransmitterWaveA][1] + 2)))
             then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна передачи по волномеру основном канале. Для начала настройки нажмите на лампы МД-О и 1610-О и подключите кабель к разъему над переключателем 1610О' + #10#13;
-            if (GeterodinWaves[ClientState.TransmitterWaveA][0] <> Station.HalfSetA.Rack1500.GeterodinIntReserve)
-                or (((GeterodinWaves[ClientState.TransmitterWaveA][1] - 2) > Station.HalfSetA.Rack1500.GeterodinFloatReserve)
-                or (Station.HalfSetA.Rack1500.GeterodinFloatReserve > (GeterodinWaves[ClientState.TransmitterWaveA][1] + 2)))
+            if (GeterodinWaves[NetWorker.ClientState.TransmitterWaveA][0] <> Station.HalfSetA.Rack1500.GeterodinIntReserve)
+                or (((GeterodinWaves[NetWorker.ClientState.TransmitterWaveA][1] - 2) > Station.HalfSetA.Rack1500.GeterodinFloatReserve)
+                or (Station.HalfSetA.Rack1500.GeterodinFloatReserve > (GeterodinWaves[NetWorker.ClientState.TransmitterWaveA][1] + 2)))
             then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна передачи по волномеру на резервном канале. Для начала настройки нажмите на лампы МД-Р и 1610-Р и подключите кабель к разъему над переключателем 1610Р' + #10#13;
             if (Station.HalfSetA.Rack1500.SelectedMd <> smdMain) or (Station.HalfSetA.Rack1500.SelectedRetr <> sRetrMain) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не активированы лампы МД-О и 1610-О после настройки' + #10#13;
 
@@ -1143,7 +1200,7 @@ uConstantsDM;
 
    end;
 
-      function TTaskSingleCheckSubTask7.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
+      function TTaskSingleCheckSubTask7.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean;
    begin
 
          if (Station.HalfSetA.Rack1500.btnAutomatic = butPositionRight) and (Station.HalfSetA.Rack1500.DropError = True) then
@@ -1169,7 +1226,7 @@ uConstantsDM;
         Time:= '';
    end;
 
-      function TTaskSingleCheckSubTask8.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
+      function TTaskSingleCheckSubTask8.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean;
    begin
 
          if (Station.HalfSetA.Rack1920.stLBV2_TurnedOn = True) and (Station.HalfSetA.Rack1920.stLBV1_TurnedOn = True) then
@@ -1195,7 +1252,7 @@ uConstantsDM;
         Time:= '';
    end;
 
-      function TTaskSingleCheckSubTask9.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
+      function TTaskSingleCheckSubTask9.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean;
    begin
 
          if (Station.HalfSetA.Rack1500.swModeControl = 6) and (Station.HalfSetA.Rack1500.swPhaseMover = 10) and (Station.HalfSetA.Rack1500.butMode_R = butPositionLeft) then
@@ -1222,19 +1279,19 @@ uConstantsDM;
         Time:= '';
    end;
 
-    function TTaskSingleCheckSubTask10.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
+    function TTaskSingleCheckSubTask10.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean;
    begin
 
-         if (Station.HalfSetA.Rack1600.wave1610_0 = ClientState.ReceiverWaveA) and (Station.HalfSetA.Rack1600.wave1610_R = ClientState.ReceiverWaveA) and (Station.HalfSetA.Rack1600.wave1600 = ClientState.ReceiverWaveA) then
+         if (Station.HalfSetA.Rack1600.wave1610_0 = NetWorker.ClientState.ReceiverWaveA) and (Station.HalfSetA.Rack1600.wave1610_R = NetWorker.ClientState.ReceiverWaveA) and (Station.HalfSetA.Rack1600.wave1600 = NetWorker.ClientState.ReceiverWaveA) then
          begin
            Result:=true;
          end
          else
          begin
             if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
-            if (Station.HalfSetA.Rack1600.wave1610_0 <> ClientState.ReceiverWaveA) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлены рабочие волны приема на пареключателе 1610О' + #10#13;
-            if (Station.HalfSetA.Rack1600.wave1610_R <> ClientState.ReceiverWaveA) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлены рабочие волны приема на пареключателе 1610Р' + #10#13;
-            if (Station.HalfSetA.Rack1600.wave1600 <> ClientState.ReceiverWaveA) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлены рабочие волны приема на пареключателе 1600' + #10#13;
+            if (Station.HalfSetA.Rack1600.wave1610_0 <> NetWorker.ClientState.ReceiverWaveA) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлены рабочие волны приема на пареключателе 1610О' + #10#13;
+            if (Station.HalfSetA.Rack1600.wave1610_R <> NetWorker.ClientState.ReceiverWaveA) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлены рабочие волны приема на пареключателе 1610Р' + #10#13;
+            if (Station.HalfSetA.Rack1600.wave1600 <> NetWorker.ClientState.ReceiverWaveA) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлены рабочие волны приема на пареключателе 1600' + #10#13;
            Result:=false;
          end;
    end;
@@ -1251,17 +1308,17 @@ uConstantsDM;
 
 
    
-      function TTaskSingleCheckSubTask11.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
+      function TTaskSingleCheckSubTask11.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean;
    begin
 
          if (Station.HalfSetA.Rack1600.SelectedMd = smdMain) and (Station.HalfSetA.Rack1600.SelectedUpch = sUpchMain) and (Station.HalfSetA.Rack1600.SelectedDmch = sDmchMain)
-         and (GeterodinWaves[ClientState.ReceiverWaveA][0] = Station.HalfSetA.Rack1600.GeterodinIntMain)
-      and (((GeterodinWaves[ClientState.ReceiverWaveA][1] - 2) <= Station.HalfSetA.Rack1600.GeterodinFloatMain)
-            and (Station.HalfSetA.Rack1600.GeterodinFloatMain <= (GeterodinWaves[ClientState.ReceiverWaveA][1] + 2)))
+         and (GeterodinWaves[NetWorker.ClientState.ReceiverWaveA][0] = Station.HalfSetA.Rack1600.GeterodinIntMain)
+      and (((GeterodinWaves[NetWorker.ClientState.ReceiverWaveA][1] - 2) <= Station.HalfSetA.Rack1600.GeterodinFloatMain)
+            and (Station.HalfSetA.Rack1600.GeterodinFloatMain <= (GeterodinWaves[NetWorker.ClientState.ReceiverWaveA][1] + 2)))
 
-            and (GeterodinWaves[ClientState.ReceiverWaveA][0] = Station.HalfSetA.Rack1600.GeterodinIntReserve)
-      and (((GeterodinWaves[ClientState.ReceiverWaveA][1] - 2) <= Station.HalfSetA.Rack1600.GeterodinFloatReserve)
-            and (Station.HalfSetA.Rack1600.GeterodinFloatReserve <= (GeterodinWaves[ClientState.ReceiverWaveA][1] + 2)))
+            and (GeterodinWaves[NetWorker.ClientState.ReceiverWaveA][0] = Station.HalfSetA.Rack1600.GeterodinIntReserve)
+      and (((GeterodinWaves[NetWorker.ClientState.ReceiverWaveA][1] - 2) <= Station.HalfSetA.Rack1600.GeterodinFloatReserve)
+            and (Station.HalfSetA.Rack1600.GeterodinFloatReserve <= (GeterodinWaves[NetWorker.ClientState.ReceiverWaveA][1] + 2)))
             then
          begin
          Station.HalfSetA.Rack1600.GeterodinTunedMain := True;
@@ -1271,13 +1328,13 @@ uConstantsDM;
          else
          begin
             if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
-            if (GeterodinWaves[ClientState.ReceiverWaveA][0] <> Station.HalfSetA.Rack1600.GeterodinIntMain)
-              or (((GeterodinWaves[ClientState.ReceiverWaveA][1] - 2) > Station.HalfSetA.Rack1600.GeterodinFloatMain)
-              or (Station.HalfSetA.Rack1600.GeterodinFloatMain > (GeterodinWaves[ClientState.ReceiverWaveA][1] + 2)))
+            if (GeterodinWaves[NetWorker.ClientState.ReceiverWaveA][0] <> Station.HalfSetA.Rack1600.GeterodinIntMain)
+              or (((GeterodinWaves[NetWorker.ClientState.ReceiverWaveA][1] - 2) > Station.HalfSetA.Rack1600.GeterodinFloatMain)
+              or (Station.HalfSetA.Rack1600.GeterodinFloatMain > (GeterodinWaves[NetWorker.ClientState.ReceiverWaveA][1] + 2)))
             then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна приема по волномеру на основном канале. Для начала настройки нажмите на лампы 1610-О, УПЧ-О и ДМЧ-О и подключите кабель к разъему над переключателем 1610О' + #10#13;
-            if (GeterodinWaves[ClientState.ReceiverWaveA][0] <> Station.HalfSetA.Rack1600.GeterodinIntReserve)
-              or (((GeterodinWaves[ClientState.ReceiverWaveA][1] - 2) > Station.HalfSetA.Rack1600.GeterodinFloatReserve)
-              or (Station.HalfSetA.Rack1600.GeterodinFloatReserve > (GeterodinWaves[ClientState.ReceiverWaveA][1] + 2)))
+            if (GeterodinWaves[NetWorker.ClientState.ReceiverWaveA][0] <> Station.HalfSetA.Rack1600.GeterodinIntReserve)
+              or (((GeterodinWaves[NetWorker.ClientState.ReceiverWaveA][1] - 2) > Station.HalfSetA.Rack1600.GeterodinFloatReserve)
+              or (Station.HalfSetA.Rack1600.GeterodinFloatReserve > (GeterodinWaves[NetWorker.ClientState.ReceiverWaveA][1] + 2)))
             then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна приема по волномеру на резервном канале. Для начала настройки нажмите на лампы 1601-Р, УПЧ-Р, ДМЧ-Р и подключите кабель к разъему над переключателем 1610Р' + #10#13;
             if (Station.HalfSetA.Rack1600.SelectedMd <> smdMain) or (Station.HalfSetA.Rack1600.SelectedUpch <> sUpchMain) or (Station.HalfSetA.Rack1600.SelectedDmch <> sDmchMain) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не активированы лампы 1610-О, УПЧ-0 и ДМЧ-0 после настройки' + #10#13;
 
@@ -1298,7 +1355,7 @@ uConstantsDM;
         Time:= '';
    end;
 
-      function TTaskSingleCheckSubTask12.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
+      function TTaskSingleCheckSubTask12.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean;
    begin
 
          if (Station.HalfSetA.Rack1600.butAutomatic = butPositionLeft) and (Station.HalfSetA.Rack1600.DropError = True) then
@@ -1329,10 +1386,10 @@ uConstantsDM;
   {$REGION 'Полукомплект Б'}
 
 
-   function TTaskSingleCheckSubTask13.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
+   function TTaskSingleCheckSubTask13.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean;
    begin
 
-         if (Station.HalfSetB.Rack1500.stCableLoad = csConnectedAtRack1500Sh1) 
+         if (Station.HalfSetB.Rack1500.stCableLoad = csConnectedAtRack1500Sh1)
          and (Station.HalfSetB.Rack1500.stCableSh1 = csConnectedAtRack1500NoName) then
          begin
            Result:=true;
@@ -1357,19 +1414,20 @@ uConstantsDM;
    end;
 
 
-        function TTaskSingleCheckSubTask14.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
+        function TTaskSingleCheckSubTask14.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean;
    begin
 
-         if (Station.HalfSetB.Rack1500.swWave1610_0 = ClientState.TransmitterWaveB) and (Station.HalfSetB.Rack1500.swWave161_R = ClientState.TransmitterWaveB) and (Station.HalfSetB.Rack1500.swWave1500 = ClientState.TransmitterWaveB) then
+         if (Station.HalfSetB.Rack1500.swWave1610_0 = NetWorker.ClientState.TransmitterWaveB) and (Station.HalfSetB.Rack1500.swWave161_R = NetWorker.ClientState.TransmitterWaveB)
+         and (Station.HalfSetB.Rack1500.swWave1500 = NetWorker.ClientState.TransmitterWaveB) then
          begin
            Result:=true;
          end
          else
          begin
             if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
-            if (Station.HalfSetB.Rack1500.swWave1610_0 <> ClientState.TransmitterWaveB) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна передачи напереключателе 1610О' + #10#13;
-            if (Station.HalfSetB.Rack1500.swWave161_R <> ClientState.TransmitterWaveB) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна передачи напереключателе 1610Р' + #10#13;
-            if (Station.HalfSetB.Rack1500.swWave1500 <> ClientState.TransmitterWaveB) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна передачи напереключателе 1500' + #10#13;
+            if (Station.HalfSetB.Rack1500.swWave1610_0 <> NetWorker.ClientState.TransmitterWaveB) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна передачи напереключателе 1610О' + #10#13;
+            if (Station.HalfSetB.Rack1500.swWave161_R <> NetWorker.ClientState.TransmitterWaveB) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна передачи напереключателе 1610Р' + #10#13;
+            if (Station.HalfSetB.Rack1500.swWave1500 <> NetWorker.ClientState.TransmitterWaveB) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна передачи напереключателе 1500' + #10#13;
            Result:=false;
          end;
    end;
@@ -1385,17 +1443,17 @@ uConstantsDM;
    end;
 
 
-         function TTaskSingleCheckSubTask15.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
+         function TTaskSingleCheckSubTask15.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean;
    begin
 
-         if (Station.HalfSetB.LittleNoisyAmplifier.swWave = ClientState.ReceiverWaveB) then
+         if (Station.HalfSetB.LittleNoisyAmplifier.swWave = NetWorker.ClientState.ReceiverWaveB) then
          begin
            Result:=true;
          end
          else
          begin
             if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
-            if (Station.HalfSetB.LittleNoisyAmplifier.swWave <> ClientState.ReceiverWaveB) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна приема' + #10#13;
+            if (Station.HalfSetB.LittleNoisyAmplifier.swWave <> NetWorker.ClientState.ReceiverWaveB) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна приема' + #10#13;
            Result:=false;
          end;
    end;
@@ -1414,7 +1472,7 @@ uConstantsDM;
 
 
 
-   function TTaskSingleCheckSubTask16.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
+   function TTaskSingleCheckSubTask16.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean;
    begin
 
          if (((Station.HalfSetB.Duplexer.cbSh1 = csConnectedAtDuplexeLeft) and (Station.HalfSetB.Duplexer.cbSh2 = csConnectedAtDuplexeRight))
@@ -1445,18 +1503,18 @@ uConstantsDM;
    
 
 
-   function TTaskSingleCheckSubTask17.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
+   function TTaskSingleCheckSubTask17.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean;
    begin
 
-         if (Station.HalfSetB.Duplexer.waveTransmit = ClientState.TransmitterWaveB) and (Station.HalfSetB.Duplexer.waveReceive = ClientState.ReceiverWaveB) then
+         if (Station.HalfSetB.Duplexer.waveTransmit = NetWorker.ClientState.TransmitterWaveB) and (Station.HalfSetB.Duplexer.waveReceive = NetWorker.ClientState.ReceiverWaveB) then
          begin
            Result:=true;
          end
          else
          begin
             if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
-            if (Station.HalfSetB.Duplexer.waveTransmit <> ClientState.TransmitterWaveB) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна передачи' + #10#13;
-            if (Station.HalfSetB.Duplexer.waveReceive <> ClientState.ReceiverWaveB) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна приема' + #10#13;
+            if (Station.HalfSetB.Duplexer.waveTransmit <> NetWorker.ClientState.TransmitterWaveB) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна передачи' + #10#13;
+            if (Station.HalfSetB.Duplexer.waveReceive <> NetWorker.ClientState.ReceiverWaveB) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна приема' + #10#13;
            Result:=false;
          end;
    end;
@@ -1474,16 +1532,16 @@ uConstantsDM;
 
 
 
-    function TTaskSingleCheckSubTask18.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
+    function TTaskSingleCheckSubTask18.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean;
    begin
 
-         if (GeterodinWaves[ClientState.TransmitterWaveB][0] = Station.HalfSetB.Rack1500.GeterodinIntMain)
-      and (((GeterodinWaves[ClientState.TransmitterWaveB][1] - 2) <= Station.HalfSetB.Rack1500.GeterodinFloatMain)
-            and (Station.HalfSetB.Rack1500.GeterodinFloatMain <= (GeterodinWaves[ClientState.TransmitterWaveB][1] + 2)))
+         if (GeterodinWaves[NetWorker.ClientState.TransmitterWaveB][0] = Station.HalfSetB.Rack1500.GeterodinIntMain)
+      and (((GeterodinWaves[NetWorker.ClientState.TransmitterWaveB][1] - 2) <= Station.HalfSetB.Rack1500.GeterodinFloatMain)
+            and (Station.HalfSetB.Rack1500.GeterodinFloatMain <= (GeterodinWaves[NetWorker.ClientState.TransmitterWaveB][1] + 2)))
             
-            and (GeterodinWaves[ClientState.TransmitterWaveB][0] = Station.HalfSetB.Rack1500.GeterodinIntReserve)
-      and (((GeterodinWaves[ClientState.TransmitterWaveB][1] - 2) <= Station.HalfSetB.Rack1500.GeterodinFloatReserve)
-            and (Station.HalfSetB.Rack1500.GeterodinFloatReserve <= (GeterodinWaves[ClientState.TransmitterWaveB][1] + 2)))
+            and (GeterodinWaves[NetWorker.ClientState.TransmitterWaveB][0] = Station.HalfSetB.Rack1500.GeterodinIntReserve)
+      and (((GeterodinWaves[NetWorker.ClientState.TransmitterWaveB][1] - 2) <= Station.HalfSetB.Rack1500.GeterodinFloatReserve)
+            and (Station.HalfSetB.Rack1500.GeterodinFloatReserve <= (GeterodinWaves[NetWorker.ClientState.TransmitterWaveB][1] + 2)))
             and (Station.HalfSetB.Rack1500.SelectedMd = smdMain) and (Station.HalfSetB.Rack1500.SelectedRetr = sRetrMain) then
          begin
          Station.HalfSetB.Rack1500.GeterodinTunedMain := True;
@@ -1493,13 +1551,13 @@ uConstantsDM;
          else
          begin
             if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
-            if (GeterodinWaves[ClientState.TransmitterWaveB][0] <> Station.HalfSetB.Rack1500.GeterodinIntMain)
-                or (((GeterodinWaves[ClientState.TransmitterWaveB][1] - 2) > Station.HalfSetB.Rack1500.GeterodinFloatMain)
-                or (Station.HalfSetB.Rack1500.GeterodinFloatMain > (GeterodinWaves[ClientState.TransmitterWaveB][1] + 2)))
+            if (GeterodinWaves[NetWorker.ClientState.TransmitterWaveB][0] <> Station.HalfSetB.Rack1500.GeterodinIntMain)
+                or (((GeterodinWaves[NetWorker.ClientState.TransmitterWaveB][1] - 2) > Station.HalfSetB.Rack1500.GeterodinFloatMain)
+                or (Station.HalfSetB.Rack1500.GeterodinFloatMain > (GeterodinWaves[NetWorker.ClientState.TransmitterWaveB][1] + 2)))
             then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна передачи по волномеру основном канале. Для начала настройки нажмите на лампы МД-О и 1610-О и подключите кабель к разъему над переключателем 1610О' + #10#13;
-            if (GeterodinWaves[ClientState.TransmitterWaveB][0] <> Station.HalfSetB.Rack1500.GeterodinIntReserve)
-                or (((GeterodinWaves[ClientState.TransmitterWaveB][1] - 2) > Station.HalfSetB.Rack1500.GeterodinFloatReserve)
-                or (Station.HalfSetB.Rack1500.GeterodinFloatReserve > (GeterodinWaves[ClientState.TransmitterWaveB][1] + 2)))
+            if (GeterodinWaves[NetWorker.ClientState.TransmitterWaveB][0] <> Station.HalfSetB.Rack1500.GeterodinIntReserve)
+                or (((GeterodinWaves[NetWorker.ClientState.TransmitterWaveB][1] - 2) > Station.HalfSetB.Rack1500.GeterodinFloatReserve)
+                or (Station.HalfSetB.Rack1500.GeterodinFloatReserve > (GeterodinWaves[NetWorker.ClientState.TransmitterWaveB][1] + 2)))
             then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна передачи по волномеру на резервном канале. Для начала настройки нажмите на лампы МД-Р и 1610-Р и подключите кабель к разъему над переключателем 1610Р' + #10#13;
             if (Station.HalfSetB.Rack1500.SelectedMd <> smdMain) or (Station.HalfSetB.Rack1500.SelectedRetr <> sRetrMain) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не активированы лампы МД-О и 1610-О после настройки' + #10#13;
 
@@ -1521,7 +1579,7 @@ uConstantsDM;
 
    end;
 
-      function TTaskSingleCheckSubTask19.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
+      function TTaskSingleCheckSubTask19.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean;
    begin
 
          if (Station.HalfSetB.Rack1500.btnAutomatic = butPositionRight) and (Station.HalfSetB.Rack1500.DropError = True) then
@@ -1547,7 +1605,7 @@ uConstantsDM;
         Time:= '';
    end;
 
-      function TTaskSingleCheckSubTask20.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
+      function TTaskSingleCheckSubTask20.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean;
    begin
 
          if (Station.HalfSetB.Rack1920.stLBV2_TurnedOn = True) and (Station.HalfSetB.Rack1920.stLBV1_TurnedOn = True) then
@@ -1573,7 +1631,7 @@ uConstantsDM;
         Time:= '';
    end;
 
-      function TTaskSingleCheckSubTask21.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
+      function TTaskSingleCheckSubTask21.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean;
    begin
 
          if (Station.HalfSetB.Rack1500.swModeControl = 6) and (Station.HalfSetB.Rack1500.swPhaseMover = 10) and (Station.HalfSetB.Rack1500.butMode_R = butPositionLeft) then
@@ -1600,19 +1658,20 @@ uConstantsDM;
         Time:= '';
    end;
 
-    function TTaskSingleCheckSubTask22.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
+    function TTaskSingleCheckSubTask22.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean;
    begin
 
-         if (Station.HalfSetB.Rack1600.wave1610_0 = ClientState.ReceiverWaveB) and (Station.HalfSetB.Rack1600.wave1610_R = ClientState.ReceiverWaveB) and (Station.HalfSetB.Rack1600.wave1600 = ClientState.ReceiverWaveB) then
+         if (Station.HalfSetB.Rack1600.wave1610_0 = NetWorker.ClientState.ReceiverWaveB) and (Station.HalfSetB.Rack1600.wave1610_R = NetWorker.ClientState.ReceiverWaveB)
+         and (Station.HalfSetB.Rack1600.wave1600 = NetWorker.ClientState.ReceiverWaveB) then
          begin
            Result:=true;
          end
          else
          begin
             if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
-            if (Station.HalfSetB.Rack1600.wave1610_0 <> ClientState.ReceiverWaveB) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлены рабочие волны приема на пареключателе 1610О' + #10#13;
-            if (Station.HalfSetB.Rack1600.wave1610_R <> ClientState.ReceiverWaveB) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлены рабочие волны приема на пареключателе 1610Р' + #10#13;
-            if (Station.HalfSetB.Rack1600.wave1600 <> ClientState.ReceiverWaveB) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлены рабочие волны приема на пареключателе 1600' + #10#13;
+            if (Station.HalfSetB.Rack1600.wave1610_0 <> NetWorker.ClientState.ReceiverWaveB) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлены рабочие волны приема на пареключателе 1610О' + #10#13;
+            if (Station.HalfSetB.Rack1600.wave1610_R <> NetWorker.ClientState.ReceiverWaveB) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлены рабочие волны приема на пареключателе 1610Р' + #10#13;
+            if (Station.HalfSetB.Rack1600.wave1600 <> NetWorker.ClientState.ReceiverWaveB) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлены рабочие волны приема на пареключателе 1600' + #10#13;
            Result:=false;
          end;
    end;
@@ -1629,17 +1688,17 @@ uConstantsDM;
 
 
    
-      function TTaskSingleCheckSubTask23.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
+      function TTaskSingleCheckSubTask23.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean;
    begin
 
          if (Station.HalfSetB.Rack1600.SelectedMd = smdMain) and (Station.HalfSetB.Rack1600.SelectedUpch = sUpchMain) and (Station.HalfSetB.Rack1600.SelectedDmch = sDmchMain)
-         and (GeterodinWaves[ClientState.ReceiverWaveB][0] = Station.HalfSetB.Rack1600.GeterodinIntMain)
-      and (((GeterodinWaves[ClientState.ReceiverWaveB][1] - 2) <= Station.HalfSetB.Rack1600.GeterodinFloatMain)
-            and (Station.HalfSetB.Rack1600.GeterodinFloatMain <= (GeterodinWaves[ClientState.ReceiverWaveB][1] + 2)))
+         and (GeterodinWaves[NetWorker.ClientState.ReceiverWaveB][0] = Station.HalfSetB.Rack1600.GeterodinIntMain)
+      and (((GeterodinWaves[NetWorker.ClientState.ReceiverWaveB][1] - 2) <= Station.HalfSetB.Rack1600.GeterodinFloatMain)
+            and (Station.HalfSetB.Rack1600.GeterodinFloatMain <= (GeterodinWaves[NetWorker.ClientState.ReceiverWaveB][1] + 2)))
             
-            and (GeterodinWaves[ClientState.ReceiverWaveB][0] = Station.HalfSetB.Rack1600.GeterodinIntReserve)
-      and (((GeterodinWaves[ClientState.ReceiverWaveB][1] - 2) <= Station.HalfSetB.Rack1600.GeterodinFloatReserve)
-            and (Station.HalfSetB.Rack1600.GeterodinFloatReserve <= (GeterodinWaves[ClientState.ReceiverWaveB][1] + 2)))
+            and (GeterodinWaves[NetWorker.ClientState.ReceiverWaveB][0] = Station.HalfSetB.Rack1600.GeterodinIntReserve)
+      and (((GeterodinWaves[NetWorker.ClientState.ReceiverWaveB][1] - 2) <= Station.HalfSetB.Rack1600.GeterodinFloatReserve)
+            and (Station.HalfSetB.Rack1600.GeterodinFloatReserve <= (GeterodinWaves[NetWorker.ClientState.ReceiverWaveB][1] + 2)))
             then
          begin
          Station.HalfSetB.Rack1600.GeterodinTunedMain := True;
@@ -1649,13 +1708,13 @@ uConstantsDM;
         else
          begin
             if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
-            if (GeterodinWaves[ClientState.ReceiverWaveB][0] <> Station.HalfSetB.Rack1600.GeterodinIntMain)
-              or (((GeterodinWaves[ClientState.ReceiverWaveB][1] - 2) > Station.HalfSetB.Rack1600.GeterodinFloatMain)
-              or (Station.HalfSetB.Rack1600.GeterodinFloatMain > (GeterodinWaves[ClientState.ReceiverWaveB][1] + 2)))
+            if (GeterodinWaves[NetWorker.ClientState.ReceiverWaveB][0] <> Station.HalfSetB.Rack1600.GeterodinIntMain)
+              or (((GeterodinWaves[NetWorker.ClientState.ReceiverWaveB][1] - 2) > Station.HalfSetB.Rack1600.GeterodinFloatMain)
+              or (Station.HalfSetB.Rack1600.GeterodinFloatMain > (GeterodinWaves[NetWorker.ClientState.ReceiverWaveB][1] + 2)))
             then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна приема по волномеру на основном канале. Для начала настройки нажмите на лампы 1610-О, УПЧ-О и ДМЧ-О и подключите кабель к разъему над переключателем 1610О' + #10#13;
-            if (GeterodinWaves[ClientState.ReceiverWaveB][0] <> Station.HalfSetB.Rack1600.GeterodinIntReserve)
-              or (((GeterodinWaves[ClientState.ReceiverWaveB][1] - 2) > Station.HalfSetB.Rack1600.GeterodinFloatReserve)
-              or (Station.HalfSetB.Rack1600.GeterodinFloatReserve > (GeterodinWaves[ClientState.ReceiverWaveB][1] + 2)))
+            if (GeterodinWaves[NetWorker.ClientState.ReceiverWaveB][0] <> Station.HalfSetB.Rack1600.GeterodinIntReserve)
+              or (((GeterodinWaves[NetWorker.ClientState.ReceiverWaveB][1] - 2) > Station.HalfSetB.Rack1600.GeterodinFloatReserve)
+              or (Station.HalfSetB.Rack1600.GeterodinFloatReserve > (GeterodinWaves[NetWorker.ClientState.ReceiverWaveB][1] + 2)))
             then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна приема по волномеру на резервном канале. Для начала настройки нажмите на лампы 1601-Р, УПЧ-Р, ДМЧ-Р и подключите кабель к разъему над переключателем 1610Р' + #10#13;
             if (Station.HalfSetB.Rack1600.SelectedMd <> smdMain) or (Station.HalfSetB.Rack1600.SelectedUpch <> sUpchMain) or (Station.HalfSetB.Rack1600.SelectedDmch <> sDmchMain) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не активированы лампы 1610-О, УПЧ-0 и ДМЧ-0 после настройки' + #10#13;
 
@@ -1676,7 +1735,7 @@ uConstantsDM;
         Time:= '';
    end;
 
-      function TTaskSingleCheckSubTask24.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
+      function TTaskSingleCheckSubTask24.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean;
    begin
 
          if (Station.HalfSetB.Rack1600.butAutomatic = butPositionLeft) and (Station.HalfSetB.Rack1600.DropError = True) then
@@ -1706,7 +1765,7 @@ uConstantsDM;
        {$ENDREGION}
        
 
-      function TTaskSingleCheckSubTask25.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
+      function TTaskSingleCheckSubTask25.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean;
    begin
 
          if (Station.HalfSetA.Rack1600.stMoshnost = True) then
@@ -1731,7 +1790,7 @@ uConstantsDM;
         Time:= '';
    end;
 
-      function TTaskSingleCheckSubTask26.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
+      function TTaskSingleCheckSubTask26.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean;
    begin
 
          if (Station.HalfSetB.Rack1600.stMoshnost = True) then
@@ -1764,7 +1823,7 @@ uConstantsDM;
 
 
 
-          function TTaskSingleCheckSubTask27.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
+          function TTaskSingleCheckSubTask27.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean;
    begin
 
          if (Station.Oscillograph.cblCableUsilitelState = csConnectedAtPower) and (Station.Oscillograph.cblCabelSyncState = csConnectedAtSync) then
@@ -1790,7 +1849,7 @@ uConstantsDM;
    end;
 
 
-       function TTaskSingleCheckSubTask28.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
+       function TTaskSingleCheckSubTask28.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean;
    begin
 
          if (Station.HalfSetA.Rack1200Right.CableOscillographLineInput = csDisconected) and
@@ -2028,7 +2087,7 @@ uConstantsDM;
    end;
 
 
-          function TTaskSingleCheckSubTask29.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
+          function TTaskSingleCheckSubTask29.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean;
    begin
 
          if (Station.HalfSetB.Rack1200Right.CableOscillographLineInput = csDisconected) and
@@ -2099,20 +2158,34 @@ uConstantsDM;
 
 {$REGION 'Оконечный режим'}
 
-  constructor TTaskTerminalMode.Create(Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper);
+  constructor TTaskTerminalMode.Create(Station: TStation; NetWorker: TClientNetWorker;  ErrorKeeper: TErrorKeeper);
   begin
-  inherited Create(Station, ClientState, ErrorKeeper);
+  inherited Create(Station, NetWorker, ErrorKeeper);
   FullCheck := False;
+  WeInTerminalMode:=True;              //!!!!!!!!!!!!!!!!
+  TheyInTerminalMode:=True;           //
+  NetWorker.ClientState.CanSendChatMessages:=True;//
+  NetWorker.ClientState.CanGetChatMessages:=True;// !!!!!!!!!!!!!
+  IsMessageListenFromMainSent:=False;
+  IsMessageListenFromSubSent:=False;
 
   Name:='Перевод станции в оконечный режим работы';
 
-  SetLength(SubTasks, 1);
+  SetLength(SubTasks, 8);
 
   SubTasks[0]:= TTaskTerminalModeSubTask1.Create;
+  SubTasks[1]:= TTaskTerminalModeSubTask2.Create;
+  SubTasks[2]:= TTaskTerminalModeSubTask3.Create;
+  SubTasks[3]:= TTaskTerminalModeSubTask4.Create;
+  SubTasks[4]:= TTaskTerminalModeSubTask5.Create;
+  SubTasks[5]:= TTaskTerminalModeSubTask6.Create;
+  SubTasks[6]:= TTaskTerminalModeSubTask7.Create;
+  SubTasks[7]:= TTaskTerminalModeSubTask8.Create;
 
 
   CurrentSubTask:=SubTasks[CurrentSubTaskNum];
   end;
+
 
 
   procedure TTaskTerminalMode.LastCheck;
@@ -2123,7 +2196,7 @@ uConstantsDM;
         ErrorKeeper.ErrorMsg := 'Общая проверка правильности настройки:' + #10#13;;
     for I := 0 to Length(SubTasks) - 1 do
      begin
-          if (SubTasks[i].CheckSubTask(FullCheck, Station, ClientState,ErrorKeeper) = False) then allRight := false;
+          if (SubTasks[i].CheckSubTask(FullCheck, Station, NetWorker, ErrorKeeper, Self) = False) then allRight := false;
      end;
 
     if (allRight = true) then
@@ -2137,30 +2210,262 @@ uConstantsDM;
       end;
   end;
 
-   //===
-   function TTaskTerminalModeSubTask1.CheckSubTask(FullCheck: Boolean; Station: TStation; ClientState: TClientState; ErrorKeeper: TErrorKeeper): Boolean;
+   //===========================
+
+       function TTaskTerminalModeSubTask1.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean;
    begin
 
-         if (Station.PowerPanel.swNet=1) and (Station.PowerPanel.swPhase=4) then
+         if ((Owner as TTaskTerminalMode).WeInTerminalMode = True) and ((Owner as TTaskTerminalMode).TheyInTerminalMode = True)
+         and ((Owner as TTaskTerminalMode).IsMessageListenFromMainSent = True) and ((Owner as TTaskTerminalMode).IsMessageListenFromSubSent = True)then
          begin
            Result:=true;
          end
          else
          begin
             if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
-            if (Station.PowerPanel.swNet<>1) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включено питание станции' + #10#13;
-            if (Station.PowerPanel.swPhase<>4) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не проверено напряжение на фазах' + #10#13;
+            if ((Owner as TTaskTerminalMode).WeInTerminalMode <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Наша станция не настроена' + #10#13;
+            if ((Owner as TTaskTerminalMode).TheyInTerminalMode <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Сопряженная станция не настроена' + #10#13;
            Result:=false;
          end;
+   end;
+
+   function TTaskTerminalModeSubTask1.NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject):  Boolean;
+   begin
+              if ((Owner as TTaskTerminalMode).WeInTerminalMode = True) then
+              begin
+              if (NetWorker.ClientState.IsMainStation = True) and ((Owner as TTaskTerminalMode).IsMessageListenFromMainSent = False) then
+              begin
+                  (Owner as TTaskTerminalMode).IsMessageListenFromMainSent:=True;
+                  NetWorker.SendTaskParams('TheyInTerminalMode', 'True');
+                  NetWorker.SendTaskParams('IsMessageListenFromMainSent', 'True');
+              end;
+              if (NetWorker.ClientState.IsMainStation = False) and ((Owner as TTaskTerminalMode).IsMessageListenFromMainSent = True) and ((Owner as TTaskTerminalMode).IsMessageListenFromSubSent = False) then
+              begin
+                  (Owner as TTaskTerminalMode).IsMessageListenFromMainSent:=True;
+                  NetWorker.SendTaskParams('TheyInTerminalMode', 'True');
+                  NetWorker.SendTaskParams('IsMessageListenFromSubSent', 'True');
+              end;
+              end;
+              Result:=True;
    end;
 
    constructor TTaskTerminalModeSubTask1.Create;
    begin
    inherited Create;
 
-        Name:='ничего';
-        Text:='ничего';
-        EventFormName:='ничего';
+        Name:='Обменяться сообщениями';
+        Text:='';
+        EventFormName:='';
+        Time:= '';
+   end;
+
+
+//      function TTaskTerminalModeSubTask1.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean;
+//   begin
+//
+//         if (Station.HalfSetA.Rack1920.stLBV2_TurnedOn = False) and (Station.HalfSetA.Rack1920.stLBV1_TurnedOn = False) then
+//         begin
+//           Result:=true;
+//         end
+//         else
+//         begin
+//            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+//            if (Station.HalfSetA.Rack1920.stLBV2_TurnedOn <> False) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Высокое напряжение не верхнем блоке не отключено' + #10#13;
+//            if (Station.HalfSetA.Rack1920.stLBV1_TurnedOn <> False) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Высокое напряжение не нижнем блоке не отключено' + #10#13;
+//           Result:=false;
+//         end;
+//   end;
+//
+//   constructor TTaskTerminalModeSubTask1.Create;
+//   begin
+//   inherited Create;
+//
+//        Name:='Отключить высокое напряжение на стойке 1920 А';
+//        Text:='Для двух блоков 1920 отключить высокое напряжение нажатием кнопки ВЫСОКОЕ ВЫКЛ.';
+//        EventFormName:='1920 А';
+//        Time:= '';
+//   end;
+
+   //===========================
+      function TTaskTerminalModeSubTask2.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean;
+   begin
+
+         if (Station.HalfSetB.Rack1920.stLBV2_TurnedOn = False) and (Station.HalfSetB.Rack1920.stLBV1_TurnedOn = False) then
+         begin
+           Result:=true;
+         end
+         else
+         begin
+            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+            if (Station.HalfSetB.Rack1920.stLBV2_TurnedOn <> False) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Высокое напряжение не верхнем блоке не отключено' + #10#13;
+            if (Station.HalfSetB.Rack1920.stLBV1_TurnedOn <> False) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Высокое напряжение не нижнем блоке не отключено' + #10#13;
+           Result:=false;
+         end;
+   end;
+
+   constructor TTaskTerminalModeSubTask2.Create;
+   begin
+   inherited Create;
+
+        Name:='Отключить высокое напряжение на стойке 1920 Б';
+        Text:='Для двух блоков 1920 отключить высокое напряжение нажатием кнопки ВЫСОКОЕ ВЫКЛ.';
+        EventFormName:='1920 Б';
+        Time:= '';
+   end;
+
+   //========================
+   function TTaskTerminalModeSubTask3.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean;
+   begin
+
+         if (Station.HalfSetA.Rack1500.stCableSh1 = csConnectedAtRack1500Sh1) then
+         begin
+           Result:=true;
+         end
+         else
+         begin
+            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+            if (Station.HalfSetA.Rack1500.stCableSh1 <> csConnectedAtRack1500Sh1) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Кабель от дуплексера не подключен к выходу свч' + #10#13;
+           Result:=false;
+         end;
+   end;
+
+   constructor TTaskTerminalModeSubTask3.Create;
+   begin
+   inherited Create;
+
+        Name:='На стойке 1500 А подключить кабель от дуплексера';
+        Text:='На стойке 1500 А от разъема ВЫХОД СВЧ отключить кабель нагрузка, подключить кабель идущий к дуплексеру (разьем ПЕРЕДАЧА)';
+        EventFormName:='1500 А';
+        Time:= '';
+   end;
+
+   //========================
+   function TTaskTerminalModeSubTask4.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean;
+   begin
+
+         if (Station.HalfSetB.Rack1500.stCableSh1 = csConnectedAtRack1500Sh1) then
+         begin
+           Result:=true;
+         end
+         else
+         begin
+            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+            if (Station.HalfSetB.Rack1500.stCableSh1 <> csConnectedAtRack1500Sh1) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Кабель от дуплексера не подключен к выходу свч' + #10#13;
+           Result:=false;
+         end;
+   end;
+
+   constructor TTaskTerminalModeSubTask4.Create;
+   begin
+   inherited Create;
+
+        Name:='На стойке 1500 Б подключить кабель от дуплексера';
+        Text:='На стойке 1500 Б от разъема ВЫХОД СВЧ отключить кабель нагрузка, подключить кабель идущий к дуплексеру (разьем ПЕРЕДАЧА)';
+        EventFormName:='1500 Б';
+        Time:= '';
+   end;
+
+   //==================================
+      function TTaskTerminalModeSubTask5.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean;
+   begin
+         if (Station.HalfSetA.Duplexer.cb1840 = csConnectedAtDuplexeLeft) or (Station.HalfSetA.Duplexer.cb1840 = csConnectedAtDuplexeRight) then
+         begin
+           Result:=true;
+         end
+         else
+         begin
+            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+            if (Station.HalfSetA.Duplexer.cb1840 = csConnectedAtDuplexeLeft) or (Station.HalfSetA.Duplexer.cb1840 = csConnectedAtDuplexeRight) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не подключен кабель от дуплексера ко фходу Ф-33' + #10#13;
+           Result:=false;
+         end;
+   end;
+
+          constructor TTaskTerminalModeSubTask5.Create;
+   begin
+   inherited Create;
+
+        Name:='Подключить кабели к фильтру Ф-33 А';
+        Text:='На фильтре Ф-33 А отключить от входа кабель, идущий от разъема ВЫХОД АК стойки 1600 (с красным наконечником); подключить к входу кабель, идущий к дуплексеру (разъем ПРИЕМ)';
+        EventFormName:='Дуплексер А';
+        Time:= '';
+   end;
+
+   //===============================
+      function TTaskTerminalModeSubTask6.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean;
+   begin
+         if (Station.HalfSetB.Duplexer.cb1840 = csConnectedAtDuplexeLeft) or (Station.HalfSetB.Duplexer.cb1840 = csConnectedAtDuplexeRight) then
+         begin
+           Result:=true;
+         end
+         else
+         begin
+            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+            if (Station.HalfSetB.Duplexer.cb1840 = csConnectedAtDuplexeLeft) or (Station.HalfSetB.Duplexer.cb1840 = csConnectedAtDuplexeRight) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не подключен кабель от дуплексера ко фходу Ф-33' + #10#13;
+           Result:=false;
+         end;
+   end;
+
+          constructor TTaskTerminalModeSubTask6.Create;
+   begin
+   inherited Create;
+
+        Name:='Подключить кабели к фильтру Ф-33 Б';
+        Text:='На фильтре Ф-33 Б отключить от входа кабель, идущий от разъема ВЫХОД АК стойки 1600 (с красным наконечником); подключить к входу кабель, идущий к дуплексеру (разъем ПРИЕМ)';
+        EventFormName:='Дуплексер Б';
+        Time:= '';
+   end;
+
+   //===================
+      function TTaskTerminalModeSubTask7.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean;
+   begin
+
+         if (Station.HalfSetA.Rack1920.stLBV2_TurnedOn = True) and (Station.HalfSetA.Rack1920.stLBV1_TurnedOn = True) then
+         begin
+           Result:=true;
+         end
+          else
+         begin
+            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+            if (Station.HalfSetA.Rack1920.stLBV2_TurnedOn <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Высокое напряжение не верхнем блоке не подано' + #10#13;
+            if (Station.HalfSetA.Rack1920.stLBV1_TurnedOn <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Высокое напряжение не нижнем блоке не подано' + #10#13;
+           Result:=false;
+         end;
+   end;
+
+   constructor TTaskTerminalModeSubTask7.Create;
+   begin
+   inherited Create;
+
+        Name:='Включить высокое напряжение на стойке 1920 А';
+        Text:='Включить высокое напряжение одновременным нажатием кнопок ВЫСОКОЕ ВКЛ. и ТОК 5 МА на стойке 1920 А';
+        EventFormName:='1920 А';
+        Time:= '';
+   end;
+    //=====================
+
+       function TTaskTerminalModeSubTask8.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; Owner: TObject): Boolean;
+   begin
+
+         if (Station.HalfSetB.Rack1920.stLBV2_TurnedOn = True) and (Station.HalfSetB.Rack1920.stLBV1_TurnedOn = True) then
+         begin
+           Result:=true;
+         end
+          else
+         begin
+            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+            if (Station.HalfSetB.Rack1920.stLBV2_TurnedOn <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Высокое напряжение не верхнем блоке не подано' + #10#13;
+            if (Station.HalfSetB.Rack1920.stLBV1_TurnedOn <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Высокое напряжение не нижнем блоке не подано' + #10#13;
+           Result:=false;
+         end;
+   end;
+
+   constructor TTaskTerminalModeSubTask8.Create;
+   begin
+   inherited Create;
+
+        Name:='Включить высокое напряжение на стойке 1920 Б';
+        Text:='Включить высокое напряжение одновременным нажатием кнопок ВЫСОКОЕ ВКЛ. и ТОК 5 МА на стойке 1920 Б';
+        EventFormName:='1920 Б';
         Time:= '';
    end;
 
