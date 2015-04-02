@@ -202,7 +202,7 @@ begin
     Station.WaveTransmitB := iTransmitterWaveB;    //костыль
     Station.WaveReceiveB := iReceiverWaveB;  //костыль
 
-    TaskController := TTaskController.Create(Station, NetWorker.ClientState); // ќн провер€ет станцию на соответствие заданию
+    TaskController := TTaskController.Create(Station, NetWorker); // ќн провер€ет станцию на соответствие заданию
     TaskController.SetCurrentTask();
     //—оответственно в деструкторе мы всЄ это дело убиваем
 
@@ -308,7 +308,7 @@ StationInitializer: TStationInitializer;
     Station.WaveTransmitB := NetWorker.ClientState.TransmitterWaveB;  //костыль
     Station.WaveReceiveB := NetWorker.ClientState.ReceiverWaveB;  //костыль
 
-    TaskController := TTaskController.Create(Station, NetWorker.ClientState); // ќн провер€ет станцию на соответствие заданию
+    TaskController := TTaskController.Create(Station, NetWorker); // ќн провер€ет станцию на соответствие заданию
     TaskController.SetCurrentTask();
 
     R414 := TStationR414Form.Create(Self, Station, TaskController, NetWorker);

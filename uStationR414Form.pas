@@ -280,7 +280,7 @@ CurrentTaskForm: TCurrentTaskForm;
      AddSubTasks;
      if (NetWorker.ClientState.TaskID = ttTransferToTerminalMode) then
       begin
-         Chat:=TTChatForm.Create(Self, ClientState, NetWorker);
+         Chat:=TTChatForm.Create(Self, NetWorker, TaskController);
       Chat.Hide;
       if (NetWorker0.ClientState.LinkedR414Connected) then Chat.Show;
       end;

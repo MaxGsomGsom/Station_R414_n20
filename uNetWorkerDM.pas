@@ -13,22 +13,27 @@ uses
 type
   TClientStateChangedEvent = procedure() of object;
 
+type TEventKeyPair = procedure(Param: string; Value: string) of object;
+
 type IClientNetWorker = class
   private
     FClientState: TClientState;
     FClientStateChangedEvent: TClientStateChangedEvent; // Событие "Состояние
                                                         // клиента изменено"
+    FRecievedTaskParamsR414:TEventKeyPair;
   public
     function IsConnect(): Boolean; virtual; abstract;
     function TryConnect(UserName: string): Integer; virtual; abstract;
     function Disconnect(): Integer; virtual; abstract;
     function SendParams(Key: string; Value: string): Integer; virtual; abstract;
+    function SendTaskParams(Key: string; Value: string): Integer; virtual; abstract;
     function SendMessage(Value: string): Integer; virtual; abstract;
 
     property ClientState: TClientState read FClientState write FClientState;
     property ClientStateChangedEvent: TClientStateChangedEvent
       read FClientStateChangedEvent
       write FClientStateChangedEvent;
+    property OnRecievedTaskParamsR414: TEventKeyPair read FRecievedTaskParamsR414 write FRecievedTaskParamsR414;
 end;
 
 type TClientNetWorker = class(IClientNetWorker)
@@ -44,12 +49,19 @@ type TClientNetWorker = class(IClientNetWorker)
     function TryConnect(strUserName: string): Integer; override;
     function Disconnect: Integer; override;
     function SendParams(Key: string; Value: string): Integer; override;
+    function SendTaskParams(Key: string; Value: string): Integer; override;
     function SendMessage(Value: string): Integer; override;
     constructor Create(); reintroduce;
     destructor Destroy(); override;
 
     //property ClientState: TClientState read FClientState write FClientState;
 end;
+
+const
+  CLIENT_STATION_R414 = 'r414';
+  CLIENT_STATION_R414_TASK = 'r414_task';
+  STATION_STATUS_MAIN = 'main';
+  STATION_STATUS_SUBORDINATE = 'subordinate';
 
 implementation
 
@@ -153,7 +165,21 @@ uses
   begin
     Request := TRequest.Create;                 // Создаём новый запрос
     Request.Name := REQ_NAME_PARAMS;
-    Request.AddKeyValue(KEY_TYPE, 'r414');      // Тип клиента
+    Request.AddKeyValue(KEY_TYPE, CLIENT_STATION_R414);      // Тип клиента
+
+    Request.AddKeyValue(Key, Value);            // Наши ключ и значение
+
+    TCPClient.IOHandler.WriteLn(Request.ConvertToText);
+    Request.Free;                               // Чистим мусор
+  end;
+
+    function TClientNetWorker.SendTaskParams(Key: string; Value: string): Integer;
+  var
+    Request: TRequest;
+  begin
+    Request := TRequest.Create;                 // Создаём новый запрос
+    Request.Name := REQ_NAME_PARAMS;
+    Request.AddKeyValue(KEY_TYPE, CLIENT_STATION_R414_TASK);      // Тип клиента
 
     Request.AddKeyValue(Key, Value);            // Наши ключ и значение
 
@@ -167,7 +193,7 @@ uses
   begin
     Request := TRequest.Create;                 // Создаём новый запрос
     Request.Name := REQ_NAME_MESSAGE;
-    Request.AddKeyValue(KEY_TYPE, 'r414');      // Тип клиента
+    Request.AddKeyValue(KEY_TYPE, CLIENT_STATION_R414);      // Тип клиента
 
     Request.AddKeyValue(KEY_MESSAGE, Value);            // Наши ключ и значение
     //Request.AddKeyValue(KEY_NAME, ClientState.UserName);
@@ -287,6 +313,20 @@ uses
 
           end;
           //ClientStateChangedEvent;
+        except
+          on E: Exception do;                   //Залогать, что серв прислал херню
+        end;                                    // (Ошибка конвертации strValue);
+      end;
+
+      if strValue = CLIENT_STATION_R414_TASK then
+      begin
+        for i := 0 to Request.GetCountKeys - 1 do
+        try
+          kvRecord := Request.GetKeyValue(i);
+          if kvRecord.Key <> CLIENT_STATION_R414_TASK then             // Если связанная станция
+          begin                                       // прислала своё имя, то
+              OnRecievedTaskParamsR414(kvRecord.Key, kvRecord.Value);
+          end;
         except
           on E: Exception do;                   //Залогать, что серв прислал херню
         end;                                    // (Ошибка конвертации strValue);

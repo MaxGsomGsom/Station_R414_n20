@@ -918,10 +918,10 @@ END
 
 /* c:\program files (x86)\embarcadero\rad studio\7.0\lib\Debug\Character.res */
 /* c:\program files (x86)\embarcadero\rad studio\7.0\lib\controls.res */
-/* ChatForm.dfm */
+/* c:\program files (x86)\embarcadero\rad studio\7.0\lib\keyboardLayouts.res */
 /* c:\program files (x86)\embarcadero\rad studio\7.0\lib\mplayer.res */
-/* uCurrentTaskForm.dfm */
-/* uHintForm.dfm */
+/* C:\Users\Max\Documents\RAD Studio\Projects\R414_norm_20\ChatForm.dfm */
+/* C:\Users\Max\Documents\RAD Studio\Projects\R414_norm_20\uCurrentTaskForm.dfm */
 /* c:\program files (x86)\embarcadero\rad studio\7.0\lib\buttons.res */
 /* c:\program files (x86)\embarcadero\rad studio\7.0\lib\extdlgs.res */
 /* uSettingsForm.dfm */
@@ -929,45 +929,48 @@ END
 /* uAboutProgramForm.dfm */
 /* uAboutStationForm.dfm */
 /* uStatisticForm.dfm */
-/* uBlockPowerSupplyForm.dfm */
-/* uRack1200LeftForm.dfm */
-/* uRack1200RightForm.dfm */
-/* uRack1710Form.dfm */
-/* uRack1400Form.dfm */
-/* uBlockRemoteControllerForm.dfm */
-/* uConnectToServerForm.dfm */
+/* C:\Users\Max\Documents\RAD Studio\Projects\R414_norm_20\uBlockPowerPanelForm.dfm */
+/* C:\Users\Max\Documents\RAD Studio\Projects\R414_norm_20\uRackP321Form.dfm */
+/* C:\Users\Max\Documents\RAD Studio\Projects\R414_norm_20\uRack1200RightForm.dfm */
+/* C:\Users\Max\Documents\RAD Studio\Projects\R414_norm_20\uRack1200LeftForm.dfm */
+/* C:\Users\Max\Documents\RAD Studio\Projects\R414_norm_20\uBlockPowerSupplyForm.dfm */
+/* C:\Users\Max\Documents\RAD Studio\Projects\R414_norm_20\uBlockOscillographForm.dfm */
+/* C:\Users\Max\Documents\RAD Studio\Projects\R414_norm_20\uRack1400Form.dfm */
+/* C:\Users\Max\Documents\RAD Studio\Projects\R414_norm_20\uRack1710Form.dfm */
+/* C:\Users\Max\Documents\RAD Studio\Projects\R414_norm_20\uHandsetForm.dfm */
+/* C:\Users\Max\Documents\RAD Studio\Projects\R414_norm_20\uBlockRemoteControllerForm.dfm */
+/* C:\Users\Max\Documents\RAD Studio\Projects\R414_norm_20\uPreparationToWorkForm.dfm */
+/* C:\Users\Max\Documents\RAD Studio\Projects\R414_norm_20\uConnectToServerForm.dfm */
 /* uMainMenuModernForm.dfm */
 /* uRegistrationForm.dfm */
 /* uMainMenuForm.dfm */
-/* uCloseForm.dfm */
-/* uBlockDuplexerForm.dfm */
-/* uBlockLittleNoisyAmplifierForm.dfm */
-/* uRack1600Form.dfm */
-/* uRack1600BForm.dfm */
-/* uRack1500Form.dfm */
-/* uBlockWaveMeterForm.dfm */
-/* uRack1920Form.dfm */
-/* uRack1500bForm.dfm */
+/* C:\Users\Max\Documents\RAD Studio\Projects\R414_norm_20\uBlockLittleNoisyAmplifierForm.dfm */
+/* C:\Users\Max\Documents\RAD Studio\Projects\R414_norm_20\uBlockDuplexerForm.dfm */
+/* C:\Users\Max\Documents\RAD Studio\Projects\R414_norm_20\uRack1920Form.dfm */
+/* C:\Users\Max\Documents\RAD Studio\Projects\R414_norm_20\uRack1600Form.dfm */
+/* C:\Users\Max\Documents\RAD Studio\Projects\R414_norm_20\uRack1600BForm.dfm */
+/* C:\Users\Max\Documents\RAD Studio\Projects\R414_norm_20\uBlockWaveMeterForm.dfm */
 /* uLoaderForm.dfm */
 /* uUsersForm.dfm */
+/* C:\Users\Max\Documents\RAD Studio\Projects\R414_norm_20\uRack1500Form.dfm */
+/* C:\Users\Max\Documents\RAD Studio\Projects\R414_norm_20\uRack1500bForm.dfm */
+/* uCloseForm.dfm */
+/* uHintForm.dfm */
+/* C:\Users\Max\Documents\RAD Studio\Projects\R414_norm_20\uStationR414Form.dfm */
+/* C:\Users\Max\Documents\RAD Studio\Projects\R414_norm_20\uFilterForm.dfm */
 /* uEducationForm.dfm */
-/* uBlockGeneratorForm.dfm */
-/* uPreparationToWorkForm.dfm */
-/* uReportForm.dfm */
+/* C:\Users\Max\Documents\RAD Studio\Projects\R414_norm_20\uReportForm.dfm */
+/* C:\Users\Max\Documents\RAD Studio\Projects\R414_norm_20\uBlockGeneratorForm.dfm */
 /* uVideoHelpForm.dfm */
-/* uRackP321MinForm.dfm */
+/* C:\Users\Max\Documents\RAD Studio\Projects\R414_norm_20\uRackP321MinForm.dfm */
 /* uHandsetForm.dfm */
-/* uBlockOscillographForm.dfm */
-/* uBlockPowerPanelForm.dfm */
-/* uRackP321Form.dfm */
 /* uP321DisplayForm.dfm */
 /* uBlockOscillographMinForm.dfm */
 /* uRack1500MinForm.dfm */
 /* uWaveMeterPanelForm.dfm */
-/* uFilterForm.dfm */
-/* uStationR414MinForm.dfm */
-/* uButtonBackForm.dfm */
+/* ChatForm.dfm */
+/* C:\Users\Max\Documents\RAD Studio\Projects\R414_norm_20\uStationR414MinForm.dfm */
+/* C:\Users\Max\Documents\RAD Studio\Projects\R414_norm_20\uButtonBackForm.dfm */
 /* uBackgroundForm.dfm */
-/* uStationR414Form.dfm */
 /* C:\Users\Max\Documents\RAD Studio\Projects\R414_norm_20\StationR414.res */
 /* C:\Users\Max\Documents\RAD Studio\Projects\R414_norm_20\StationR414.drf */

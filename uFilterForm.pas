@@ -226,7 +226,7 @@ begin
   StationTime:= RecodeTime(StationTime,0,0,0,0);
   Update;
   tmrTimeUpdate.Enabled := True;
-  if TaskController.ClientState.WorkMode = wmExam then
+  if TaskController.NetWorker.ClientState.WorkMode = wmExam then
     btnHelp.Enabled := False
   else
     btnHelp.Enabled := True;

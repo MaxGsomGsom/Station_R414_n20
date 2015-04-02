@@ -68,6 +68,7 @@
     <members>
       <field name="FClientState" type="TClientState" visibility="private" />
       <field name="FClientStateChangedEvent" type="TClientStateChangedEvent" visibility="private" />
+      <field name="FRecievedTaskParamsR414" type="TEventKeyPair" visibility="private" />
       <function name="IsConnect" visibility="public" procflags="abstract virtual">
         <parameters>
           <retval type="Boolean" />
@@ -91,6 +92,13 @@
           <retval type="Integer" />
         </parameters>
       </function>
+      <function name="SendTaskParams" visibility="public" procflags="abstract virtual">
+        <parameters>
+          <parameter name="Key" type="string" />
+          <parameter name="Value" type="string" />
+          <retval type="Integer" />
+        </parameters>
+      </function>
       <function name="SendMessage" visibility="public" procflags="abstract virtual">
         <parameters>
           <parameter name="Value" type="string" />
@@ -99,6 +107,7 @@
       </function>
       <property name="ClientState" visibility="public" read="FClientState" write="FClientState" type="TClientState" />
       <event name="ClientStateChangedEvent" visibility="public" read="FClientStateChangedEvent" write="FClientStateChangedEvent" type="TClientStateChangedEvent" />
+      <event name="OnRecievedTaskParamsR414" visibility="public" read="FRecievedTaskParamsR414" write="FRecievedTaskParamsR414" type="TEventKeyPair" />
     </members>
   </class>
   <class name="TClientNetWorker">
@@ -107,9 +116,11 @@
       <methodref name="TryConnect" visibility="public" procflags="abstract virtual" />
       <methodref name="Disconnect" visibility="public" procflags="abstract virtual" />
       <methodref name="SendParams" visibility="public" procflags="abstract virtual" />
+      <methodref name="SendTaskParams" visibility="public" procflags="abstract virtual" />
       <methodref name="SendMessage" visibility="public" procflags="abstract virtual" />
       <propertyref name="ClientState" visibility="public" />
       <eventref name="ClientStateChangedEvent" visibility="public" />
+      <eventref name="OnRecievedTaskParamsR414" visibility="public" />
       <ancestor name="TObject" namespace="System">
         <methodref name="Create" visibility="public" procflags="constructor">
         </methodref>
@@ -233,6 +244,13 @@
           <retval type="Integer" />
         </parameters>
       </function>
+      <function name="SendTaskParams" visibility="public" procflags="override">
+        <parameters>
+          <parameter name="Key" type="string" />
+          <parameter name="Value" type="string" />
+          <retval type="Integer" />
+        </parameters>
+      </function>
       <function name="SendMessage" visibility="public" procflags="override">
         <parameters>
           <parameter name="Value" type="string" />
@@ -249,4 +267,24 @@
       </destructor>
     </members>
   </class>
+  <const name="CLIENT_STATION_R414" type="string">
+    <value>
+      r414
+    </value>
+  </const>
+  <const name="CLIENT_STATION_R414_TASK" type="string">
+    <value>
+      r414_task
+    </value>
+  </const>
+  <const name="STATION_STATUS_MAIN" type="string">
+    <value>
+      main
+    </value>
+  </const>
+  <const name="STATION_STATUS_SUBORDINATE" type="string">
+    <value>
+      subordinate
+    </value>
+  </const>
 </namespace>

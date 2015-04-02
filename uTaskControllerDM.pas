@@ -10,7 +10,7 @@ uses
   forms,
   Controls,
   Classes,
-  uClientStateDM,
+  uNetWorkerDM,
   StdCtrls,
   ExtCtrls,
   uAdditionalFormMethods,
@@ -65,13 +65,15 @@ type TTaskController = class
 
     procedure SetCurrentTask();
     procedure Subscribe (CurForm0: TForm);
+    procedure NetCheckTask();
+    procedure CheckRecievedParams(Param: string; Value: string);
 
            property OnChangeText: TNotifyEvent read FChangeText write FChangeText;
        property OnSubTaskComplete: TNotifyEvent read FSubTaskComplete write FSubTaskComplete;
        property OnTaskComplete: TNotifyEvent read FTaskComplete write FTaskComplete;
        procedure CheckTask(Sender0: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
-       
-    constructor Create(Station: TStation; ClientState: TClientState);
+
+    constructor Create(Station: TStation; NetWorker: TClientNetWorker);
     //destructor Destroy; override; // Переопредел-й виртуальный метод,
                                     // делает Tasks.Free
     function GetTaskTitle(TaskID: Integer): string;
@@ -83,7 +85,7 @@ type TTaskController = class
     var
     CurrentTask : TTask;
     CurrentForm: TForm;
-    ClientState: TClientState;
+    NetWorker: TClientNetWorker;
     ErrorKeeper: TErrorKeeper;
     //Tasks: array of TTask;
 
@@ -138,14 +140,15 @@ uses
   uStationR414Form,
   uButtonBackForm;
 
-constructor TTaskController.Create(Station: TStation; ClientState: TClientState);
+constructor TTaskController.Create(Station: TStation; NetWorker: TClientNetWorker);
 begin
   Inherited Create;
   Self.Station := Station;
 ErrorKeeper := TErrorKeeper.Create;
         ErrorKeeper.ErrorMsg := '';
 
-  self.ClientState:=ClientState;
+  self.NetWorker:=NetWorker;
+   NetWorker.OnRecievedTaskParamsR414:=Self.CheckRecievedParams;
   //self.ClientState = ClientState;
   //Создать объекты Task в Tasks      SetLength(Tasks, 1);
       //Tasks[0] = TTaskNone.Create
@@ -192,17 +195,17 @@ function TTaskController.GetTaskTitle(TaskID: Integer): string;
     procedure TTaskController.SetCurrentTask();
     begin
 
-    if Self.ClientState.WorkMode=TWorkMode.wmFree then
+    if Self.NetWorker.ClientState.WorkMode=TWorkMode.wmFree then
     begin
-          CurrentTask := TTaskNone.Create(self.Station,self.ClientState, self.ErrorKeeper);
+          CurrentTask := TTaskNone.Create(self.Station,self.NetWorker, self.ErrorKeeper);
     end
-    else if (Self.ClientState.WorkMode=TWorkMode.wmLearning) or (Self.ClientState.WorkMode=TWorkMode.wmTraining) then
+    else if (Self.NetWorker.ClientState.WorkMode=TWorkMode.wmLearning) or (Self.NetWorker.ClientState.WorkMode=TWorkMode.wmTraining) then
     begin
-        case Self.ClientState.TaskID of
-          ttPowerOn:  CurrentTask := TTaskPowerOn.Create(self.Station,self.ClientState,self.ErrorKeeper);
-          ttCheckStationInStandaloneControlMode:  CurrentTask := TTaskSingleCheck.Create(self.Station,self.ClientState,Self.ErrorKeeper);
-          ttTransferToTerminalMode: CurrentTask := TTaskTerminalMode.Create(self.Station,self.ClientState,self.ErrorKeeper);
-        else   CurrentTask := TTaskNone.Create(self.Station,self.ClientState,self.ErrorKeeper);
+        case Self.NetWorker.ClientState.TaskID of
+          ttPowerOn:  CurrentTask := TTaskPowerOn.Create(self.Station,self.NetWorker,self.ErrorKeeper);
+          ttCheckStationInStandaloneControlMode:  CurrentTask := TTaskSingleCheck.Create(self.Station,self.NetWorker,Self.ErrorKeeper);
+          ttTransferToTerminalMode: CurrentTask := TTaskTerminalMode.Create(self.Station,self.NetWorker,self.ErrorKeeper);
+        else   CurrentTask := TTaskNone.Create(self.Station,self.NetWorker,self.ErrorKeeper);
         end;
     end;
     end;
@@ -238,10 +241,30 @@ function TTaskController.GetTaskTitle(TaskID: Integer): string;
 
 
 
+   procedure TTaskController.NetCheckTask();
+   begin
+      CurrentTask.SubTasks[CurrentTask.CurrentSubTaskNum].NetCheckSubTask(CurrentTask.FullCheck, self.Station, self.NetWorker, self.ErrorKeeper, Self.CurrentTask);
+   end;
 
 
+  procedure TTaskController.CheckRecievedParams(Param: string; Value: string);
+  begin
+      try
 
+        if (Value='True') then
+        begin
+          //self.CurrentTask.FieldAddress(Param):=True;
+        end
+        else if (Value='False') then
+        begin
+          //self.CurrentTask.FieldAddress(Param):=False;
+        end;
 
+      finally
+
+      end;
+       CheckTask(Self, TMouseButton.mbLeft, KeysToShiftState(0),0,0);
+  end;
   
 
   //медот вызывающийся на каждое клик событие для проверки текущего задания
@@ -257,10 +280,10 @@ function TTaskController.GetTaskTitle(TaskID: Integer): string;
         SubResult:= false;
 
          if (((Sender as TComponent).Owner as TForm).Caption=CurrentTask.SubTasks[CurrentTask.CurrentSubTaskNum].EventFormName)
-          //or (((Sender as TComponent).Owner as TForm).Caption='Back')
+          or (CurrentTask.SubTasks[CurrentTask.CurrentSubTaskNum].EventFormName='')
           then
          begin
-             SubResult:=CurrentTask.SubTasks[CurrentTask.CurrentSubTaskNum].CheckSubTask(CurrentTask.FullCheck, self.Station, self.ClientState, self.ErrorKeeper);
+             SubResult:=CurrentTask.SubTasks[CurrentTask.CurrentSubTaskNum].CheckSubTask(CurrentTask.FullCheck, self.Station, self.NetWorker, self.ErrorKeeper, Self.CurrentTask);
          end;
 
          if SubResult then begin

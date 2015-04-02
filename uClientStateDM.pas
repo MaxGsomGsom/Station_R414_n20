@@ -45,6 +45,8 @@ type TClientState = class
       FMessageEvent: TEvent;
       FStartNetTask: TEvent;
       FStartNetTaskOk: TEvent;
+      CanSendChatMessages: Boolean;
+      CanGetChatMessages: Boolean;
       LastMessage: string;
       StartNetTaskStatus: string;
     constructor Create(); reintroduce;
@@ -101,6 +103,8 @@ uses
     ErrorKepeer:= TErrorKeeper.Create;
     LastMessage:='';
     StartNetTaskStatus:='done';
+    CanSendChatMessages:=False;
+    CanGetChatMessages:=False;
   end;
 
   procedure TClientState.SetTaskID(const Value: TTaskType);

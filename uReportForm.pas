@@ -84,7 +84,7 @@ uses
 
      lblTaskName.Caption:= TaskController.CurrentTask.Name;
      lbTaskTime.Caption:=  TimeToStr(TaskController.CurrentTask.TimeEnd - TaskController.CurrentTask.TimeStart);
-     lblWorkMode.Caption:= GetWorkModeTitle(TaskController.ClientState.WorkMode);
+     lblWorkMode.Caption:= GetWorkModeTitle(TaskController.NetWorker.ClientState.WorkMode);
 
  end;
 

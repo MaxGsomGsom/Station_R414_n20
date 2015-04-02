@@ -70,8 +70,19 @@
         <parameters>
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
-          <parameter name="ClientState" type="TClientState" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
+          <parameter name="Owner" type="TObject" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="NetCheckSubTask" visibility="public" procflags="virtual">
+        <parameters>
+          <parameter name="FullCheck" type="Boolean" />
+          <parameter name="Station" type="TStation" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
+          <parameter name="ErrorKeeper" type="TErrorKeeper" />
+          <parameter name="Owner" type="TObject" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -161,7 +172,7 @@
       <constructor name="Create" visibility="public">
         <parameters>
           <parameter name="Station" type="TStation" />
-          <parameter name="ClientState" type="TClientState" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
         </parameters>
       </constructor>
@@ -170,7 +181,7 @@
       <field name="CurrentSubTaskNum" type="Integer" visibility="public" />
       <field name="Sender" type="TObject" visibility="public" />
       <field name="Station" type="TStation" visibility="public" />
-      <field name="ClientState" type="TClientState" visibility="public" />
+      <field name="NetWorker" type="TClientNetWorker" visibility="public" />
       <field name="FullCheck" type="Boolean" visibility="public" />
       <field name="ErrorKeeper" type="TErrorKeeper" visibility="public" />
     </members>
@@ -248,7 +259,7 @@
       <constructor name="Create" visibility="public">
         <parameters>
           <parameter name="Station" type="TStation" />
-          <parameter name="ClientState" type="TClientState" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
         </parameters>
       </constructor>
@@ -259,6 +270,7 @@
   <class name="TTaskNoneSubTask1">
     <ancestor name="TSubTask" namespace="uTasks20">
       <methodref name="CheckSubTask" visibility="public" procflags="abstract virtual" />
+      <methodref name="NetCheckSubTask" visibility="public" procflags="virtual" />
       <methodref name="Create" visibility="public" procflags="constructor virtual" />
       <ancestor name="TObject" namespace="System">
         <methodref name="Create" visibility="public" procflags="constructor">
@@ -330,8 +342,9 @@
         <parameters>
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
-          <parameter name="ClientState" type="TClientState" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
+          <parameter name="Owner" type="TObject" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -414,7 +427,7 @@
       <constructor name="Create" visibility="public">
         <parameters>
           <parameter name="Station" type="TStation" />
-          <parameter name="ClientState" type="TClientState" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
         </parameters>
       </constructor>
@@ -425,6 +438,7 @@
   <class name="TTaskPowerOnSubTask1">
     <ancestor name="TSubTask" namespace="uTasks20">
       <methodref name="CheckSubTask" visibility="public" procflags="abstract virtual" />
+      <methodref name="NetCheckSubTask" visibility="public" procflags="virtual" />
       <methodref name="Create" visibility="public" procflags="constructor virtual" />
       <ancestor name="TObject" namespace="System">
         <methodref name="Create" visibility="public" procflags="constructor">
@@ -496,8 +510,9 @@
         <parameters>
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
-          <parameter name="ClientState" type="TClientState" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
+          <parameter name="Owner" type="TObject" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -510,6 +525,7 @@
   <class name="TTaskPowerOnSubTask2">
     <ancestor name="TSubTask" namespace="uTasks20">
       <methodref name="CheckSubTask" visibility="public" procflags="abstract virtual" />
+      <methodref name="NetCheckSubTask" visibility="public" procflags="virtual" />
       <methodref name="Create" visibility="public" procflags="constructor virtual" />
       <ancestor name="TObject" namespace="System">
         <methodref name="Create" visibility="public" procflags="constructor">
@@ -581,8 +597,9 @@
         <parameters>
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
-          <parameter name="ClientState" type="TClientState" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
+          <parameter name="Owner" type="TObject" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -595,6 +612,7 @@
   <class name="TTaskPowerOnSubTask3">
     <ancestor name="TSubTask" namespace="uTasks20">
       <methodref name="CheckSubTask" visibility="public" procflags="abstract virtual" />
+      <methodref name="NetCheckSubTask" visibility="public" procflags="virtual" />
       <methodref name="Create" visibility="public" procflags="constructor virtual" />
       <ancestor name="TObject" namespace="System">
         <methodref name="Create" visibility="public" procflags="constructor">
@@ -666,8 +684,9 @@
         <parameters>
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
-          <parameter name="ClientState" type="TClientState" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
+          <parameter name="Owner" type="TObject" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -680,6 +699,7 @@
   <class name="TTaskPowerOnSubTask4">
     <ancestor name="TSubTask" namespace="uTasks20">
       <methodref name="CheckSubTask" visibility="public" procflags="abstract virtual" />
+      <methodref name="NetCheckSubTask" visibility="public" procflags="virtual" />
       <methodref name="Create" visibility="public" procflags="constructor virtual" />
       <ancestor name="TObject" namespace="System">
         <methodref name="Create" visibility="public" procflags="constructor">
@@ -751,8 +771,9 @@
         <parameters>
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
-          <parameter name="ClientState" type="TClientState" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
+          <parameter name="Owner" type="TObject" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -765,6 +786,7 @@
   <class name="TTaskPowerOnSubTask5">
     <ancestor name="TSubTask" namespace="uTasks20">
       <methodref name="CheckSubTask" visibility="public" procflags="abstract virtual" />
+      <methodref name="NetCheckSubTask" visibility="public" procflags="virtual" />
       <methodref name="Create" visibility="public" procflags="constructor virtual" />
       <ancestor name="TObject" namespace="System">
         <methodref name="Create" visibility="public" procflags="constructor">
@@ -836,8 +858,9 @@
         <parameters>
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
-          <parameter name="ClientState" type="TClientState" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
+          <parameter name="Owner" type="TObject" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -855,6 +878,7 @@
   <class name="TTaskPowerOnSubTask6">
     <ancestor name="TSubTask" namespace="uTasks20">
       <methodref name="CheckSubTask" visibility="public" procflags="abstract virtual" />
+      <methodref name="NetCheckSubTask" visibility="public" procflags="virtual" />
       <methodref name="Create" visibility="public" procflags="constructor virtual" />
       <ancestor name="TObject" namespace="System">
         <methodref name="Create" visibility="public" procflags="constructor">
@@ -926,8 +950,9 @@
         <parameters>
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
-          <parameter name="ClientState" type="TClientState" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
+          <parameter name="Owner" type="TObject" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -945,6 +970,7 @@
   <class name="TTaskPowerOnSubTask7">
     <ancestor name="TSubTask" namespace="uTasks20">
       <methodref name="CheckSubTask" visibility="public" procflags="abstract virtual" />
+      <methodref name="NetCheckSubTask" visibility="public" procflags="virtual" />
       <methodref name="Create" visibility="public" procflags="constructor virtual" />
       <ancestor name="TObject" namespace="System">
         <methodref name="Create" visibility="public" procflags="constructor">
@@ -1016,8 +1042,9 @@
         <parameters>
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
-          <parameter name="ClientState" type="TClientState" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
+          <parameter name="Owner" type="TObject" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -1030,6 +1057,7 @@
   <class name="TTaskPowerOnSubTask8">
     <ancestor name="TSubTask" namespace="uTasks20">
       <methodref name="CheckSubTask" visibility="public" procflags="abstract virtual" />
+      <methodref name="NetCheckSubTask" visibility="public" procflags="virtual" />
       <methodref name="Create" visibility="public" procflags="constructor virtual" />
       <ancestor name="TObject" namespace="System">
         <methodref name="Create" visibility="public" procflags="constructor">
@@ -1101,8 +1129,9 @@
         <parameters>
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
-          <parameter name="ClientState" type="TClientState" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
+          <parameter name="Owner" type="TObject" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -1115,6 +1144,7 @@
   <class name="TTaskPowerOnSubTask9">
     <ancestor name="TSubTask" namespace="uTasks20">
       <methodref name="CheckSubTask" visibility="public" procflags="abstract virtual" />
+      <methodref name="NetCheckSubTask" visibility="public" procflags="virtual" />
       <methodref name="Create" visibility="public" procflags="constructor virtual" />
       <ancestor name="TObject" namespace="System">
         <methodref name="Create" visibility="public" procflags="constructor">
@@ -1186,8 +1216,9 @@
         <parameters>
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
-          <parameter name="ClientState" type="TClientState" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
+          <parameter name="Owner" type="TObject" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -1200,6 +1231,7 @@
   <class name="TTaskPowerOnSubTask10">
     <ancestor name="TSubTask" namespace="uTasks20">
       <methodref name="CheckSubTask" visibility="public" procflags="abstract virtual" />
+      <methodref name="NetCheckSubTask" visibility="public" procflags="virtual" />
       <methodref name="Create" visibility="public" procflags="constructor virtual" />
       <ancestor name="TObject" namespace="System">
         <methodref name="Create" visibility="public" procflags="constructor">
@@ -1271,8 +1303,9 @@
         <parameters>
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
-          <parameter name="ClientState" type="TClientState" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
+          <parameter name="Owner" type="TObject" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -1285,6 +1318,7 @@
   <class name="TTaskPowerOnSubTask11">
     <ancestor name="TSubTask" namespace="uTasks20">
       <methodref name="CheckSubTask" visibility="public" procflags="abstract virtual" />
+      <methodref name="NetCheckSubTask" visibility="public" procflags="virtual" />
       <methodref name="Create" visibility="public" procflags="constructor virtual" />
       <ancestor name="TObject" namespace="System">
         <methodref name="Create" visibility="public" procflags="constructor">
@@ -1356,8 +1390,9 @@
         <parameters>
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
-          <parameter name="ClientState" type="TClientState" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
+          <parameter name="Owner" type="TObject" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -1370,6 +1405,7 @@
   <class name="TTaskPowerOnSubTask12">
     <ancestor name="TSubTask" namespace="uTasks20">
       <methodref name="CheckSubTask" visibility="public" procflags="abstract virtual" />
+      <methodref name="NetCheckSubTask" visibility="public" procflags="virtual" />
       <methodref name="Create" visibility="public" procflags="constructor virtual" />
       <ancestor name="TObject" namespace="System">
         <methodref name="Create" visibility="public" procflags="constructor">
@@ -1441,8 +1477,9 @@
         <parameters>
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
-          <parameter name="ClientState" type="TClientState" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
+          <parameter name="Owner" type="TObject" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -1455,6 +1492,7 @@
   <class name="TTaskPowerOnSubTask13">
     <ancestor name="TSubTask" namespace="uTasks20">
       <methodref name="CheckSubTask" visibility="public" procflags="abstract virtual" />
+      <methodref name="NetCheckSubTask" visibility="public" procflags="virtual" />
       <methodref name="Create" visibility="public" procflags="constructor virtual" />
       <ancestor name="TObject" namespace="System">
         <methodref name="Create" visibility="public" procflags="constructor">
@@ -1526,8 +1564,9 @@
         <parameters>
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
-          <parameter name="ClientState" type="TClientState" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
+          <parameter name="Owner" type="TObject" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -1610,7 +1649,7 @@
       <constructor name="Create" visibility="public">
         <parameters>
           <parameter name="Station" type="TStation" />
-          <parameter name="ClientState" type="TClientState" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
         </parameters>
       </constructor>
@@ -1621,6 +1660,7 @@
   <class name="TTaskSingleCheckSubTask1">
     <ancestor name="TSubTask" namespace="uTasks20">
       <methodref name="CheckSubTask" visibility="public" procflags="abstract virtual" />
+      <methodref name="NetCheckSubTask" visibility="public" procflags="virtual" />
       <methodref name="Create" visibility="public" procflags="constructor virtual" />
       <ancestor name="TObject" namespace="System">
         <methodref name="Create" visibility="public" procflags="constructor">
@@ -1692,8 +1732,9 @@
         <parameters>
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
-          <parameter name="ClientState" type="TClientState" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
+          <parameter name="Owner" type="TObject" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -1706,6 +1747,7 @@
   <class name="TTaskSingleCheckSubTask2">
     <ancestor name="TSubTask" namespace="uTasks20">
       <methodref name="CheckSubTask" visibility="public" procflags="abstract virtual" />
+      <methodref name="NetCheckSubTask" visibility="public" procflags="virtual" />
       <methodref name="Create" visibility="public" procflags="constructor virtual" />
       <ancestor name="TObject" namespace="System">
         <methodref name="Create" visibility="public" procflags="constructor">
@@ -1777,8 +1819,9 @@
         <parameters>
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
-          <parameter name="ClientState" type="TClientState" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
+          <parameter name="Owner" type="TObject" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -1791,6 +1834,7 @@
   <class name="TTaskSingleCheckSubTask3">
     <ancestor name="TSubTask" namespace="uTasks20">
       <methodref name="CheckSubTask" visibility="public" procflags="abstract virtual" />
+      <methodref name="NetCheckSubTask" visibility="public" procflags="virtual" />
       <methodref name="Create" visibility="public" procflags="constructor virtual" />
       <ancestor name="TObject" namespace="System">
         <methodref name="Create" visibility="public" procflags="constructor">
@@ -1862,8 +1906,9 @@
         <parameters>
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
-          <parameter name="ClientState" type="TClientState" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
+          <parameter name="Owner" type="TObject" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -1876,6 +1921,7 @@
   <class name="TTaskSingleCheckSubTask4">
     <ancestor name="TSubTask" namespace="uTasks20">
       <methodref name="CheckSubTask" visibility="public" procflags="abstract virtual" />
+      <methodref name="NetCheckSubTask" visibility="public" procflags="virtual" />
       <methodref name="Create" visibility="public" procflags="constructor virtual" />
       <ancestor name="TObject" namespace="System">
         <methodref name="Create" visibility="public" procflags="constructor">
@@ -1947,8 +1993,9 @@
         <parameters>
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
-          <parameter name="ClientState" type="TClientState" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
+          <parameter name="Owner" type="TObject" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -1961,6 +2008,7 @@
   <class name="TTaskSingleCheckSubTask5">
     <ancestor name="TSubTask" namespace="uTasks20">
       <methodref name="CheckSubTask" visibility="public" procflags="abstract virtual" />
+      <methodref name="NetCheckSubTask" visibility="public" procflags="virtual" />
       <methodref name="Create" visibility="public" procflags="constructor virtual" />
       <ancestor name="TObject" namespace="System">
         <methodref name="Create" visibility="public" procflags="constructor">
@@ -2032,8 +2080,9 @@
         <parameters>
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
-          <parameter name="ClientState" type="TClientState" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
+          <parameter name="Owner" type="TObject" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -2046,6 +2095,7 @@
   <class name="TTaskSingleCheckSubTask6">
     <ancestor name="TSubTask" namespace="uTasks20">
       <methodref name="CheckSubTask" visibility="public" procflags="abstract virtual" />
+      <methodref name="NetCheckSubTask" visibility="public" procflags="virtual" />
       <methodref name="Create" visibility="public" procflags="constructor virtual" />
       <ancestor name="TObject" namespace="System">
         <methodref name="Create" visibility="public" procflags="constructor">
@@ -2117,8 +2167,9 @@
         <parameters>
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
-          <parameter name="ClientState" type="TClientState" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
+          <parameter name="Owner" type="TObject" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -2131,6 +2182,7 @@
   <class name="TTaskSingleCheckSubTask7">
     <ancestor name="TSubTask" namespace="uTasks20">
       <methodref name="CheckSubTask" visibility="public" procflags="abstract virtual" />
+      <methodref name="NetCheckSubTask" visibility="public" procflags="virtual" />
       <methodref name="Create" visibility="public" procflags="constructor virtual" />
       <ancestor name="TObject" namespace="System">
         <methodref name="Create" visibility="public" procflags="constructor">
@@ -2202,8 +2254,9 @@
         <parameters>
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
-          <parameter name="ClientState" type="TClientState" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
+          <parameter name="Owner" type="TObject" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -2216,6 +2269,7 @@
   <class name="TTaskSingleCheckSubTask8">
     <ancestor name="TSubTask" namespace="uTasks20">
       <methodref name="CheckSubTask" visibility="public" procflags="abstract virtual" />
+      <methodref name="NetCheckSubTask" visibility="public" procflags="virtual" />
       <methodref name="Create" visibility="public" procflags="constructor virtual" />
       <ancestor name="TObject" namespace="System">
         <methodref name="Create" visibility="public" procflags="constructor">
@@ -2287,8 +2341,9 @@
         <parameters>
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
-          <parameter name="ClientState" type="TClientState" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
+          <parameter name="Owner" type="TObject" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -2301,6 +2356,7 @@
   <class name="TTaskSingleCheckSubTask9">
     <ancestor name="TSubTask" namespace="uTasks20">
       <methodref name="CheckSubTask" visibility="public" procflags="abstract virtual" />
+      <methodref name="NetCheckSubTask" visibility="public" procflags="virtual" />
       <methodref name="Create" visibility="public" procflags="constructor virtual" />
       <ancestor name="TObject" namespace="System">
         <methodref name="Create" visibility="public" procflags="constructor">
@@ -2372,8 +2428,9 @@
         <parameters>
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
-          <parameter name="ClientState" type="TClientState" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
+          <parameter name="Owner" type="TObject" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -2386,6 +2443,7 @@
   <class name="TTaskSingleCheckSubTask10">
     <ancestor name="TSubTask" namespace="uTasks20">
       <methodref name="CheckSubTask" visibility="public" procflags="abstract virtual" />
+      <methodref name="NetCheckSubTask" visibility="public" procflags="virtual" />
       <methodref name="Create" visibility="public" procflags="constructor virtual" />
       <ancestor name="TObject" namespace="System">
         <methodref name="Create" visibility="public" procflags="constructor">
@@ -2457,8 +2515,9 @@
         <parameters>
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
-          <parameter name="ClientState" type="TClientState" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
+          <parameter name="Owner" type="TObject" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -2471,6 +2530,7 @@
   <class name="TTaskSingleCheckSubTask11">
     <ancestor name="TSubTask" namespace="uTasks20">
       <methodref name="CheckSubTask" visibility="public" procflags="abstract virtual" />
+      <methodref name="NetCheckSubTask" visibility="public" procflags="virtual" />
       <methodref name="Create" visibility="public" procflags="constructor virtual" />
       <ancestor name="TObject" namespace="System">
         <methodref name="Create" visibility="public" procflags="constructor">
@@ -2542,8 +2602,9 @@
         <parameters>
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
-          <parameter name="ClientState" type="TClientState" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
+          <parameter name="Owner" type="TObject" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -2556,6 +2617,7 @@
   <class name="TTaskSingleCheckSubTask12">
     <ancestor name="TSubTask" namespace="uTasks20">
       <methodref name="CheckSubTask" visibility="public" procflags="abstract virtual" />
+      <methodref name="NetCheckSubTask" visibility="public" procflags="virtual" />
       <methodref name="Create" visibility="public" procflags="constructor virtual" />
       <ancestor name="TObject" namespace="System">
         <methodref name="Create" visibility="public" procflags="constructor">
@@ -2627,8 +2689,9 @@
         <parameters>
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
-          <parameter name="ClientState" type="TClientState" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
+          <parameter name="Owner" type="TObject" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -2641,6 +2704,7 @@
   <class name="TTaskSingleCheckSubTask13">
     <ancestor name="TSubTask" namespace="uTasks20">
       <methodref name="CheckSubTask" visibility="public" procflags="abstract virtual" />
+      <methodref name="NetCheckSubTask" visibility="public" procflags="virtual" />
       <methodref name="Create" visibility="public" procflags="constructor virtual" />
       <ancestor name="TObject" namespace="System">
         <methodref name="Create" visibility="public" procflags="constructor">
@@ -2712,8 +2776,9 @@
         <parameters>
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
-          <parameter name="ClientState" type="TClientState" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
+          <parameter name="Owner" type="TObject" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -2726,6 +2791,7 @@
   <class name="TTaskSingleCheckSubTask14">
     <ancestor name="TSubTask" namespace="uTasks20">
       <methodref name="CheckSubTask" visibility="public" procflags="abstract virtual" />
+      <methodref name="NetCheckSubTask" visibility="public" procflags="virtual" />
       <methodref name="Create" visibility="public" procflags="constructor virtual" />
       <ancestor name="TObject" namespace="System">
         <methodref name="Create" visibility="public" procflags="constructor">
@@ -2797,8 +2863,9 @@
         <parameters>
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
-          <parameter name="ClientState" type="TClientState" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
+          <parameter name="Owner" type="TObject" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -2811,6 +2878,7 @@
   <class name="TTaskSingleCheckSubTask15">
     <ancestor name="TSubTask" namespace="uTasks20">
       <methodref name="CheckSubTask" visibility="public" procflags="abstract virtual" />
+      <methodref name="NetCheckSubTask" visibility="public" procflags="virtual" />
       <methodref name="Create" visibility="public" procflags="constructor virtual" />
       <ancestor name="TObject" namespace="System">
         <methodref name="Create" visibility="public" procflags="constructor">
@@ -2882,8 +2950,9 @@
         <parameters>
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
-          <parameter name="ClientState" type="TClientState" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
+          <parameter name="Owner" type="TObject" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -2896,6 +2965,7 @@
   <class name="TTaskSingleCheckSubTask16">
     <ancestor name="TSubTask" namespace="uTasks20">
       <methodref name="CheckSubTask" visibility="public" procflags="abstract virtual" />
+      <methodref name="NetCheckSubTask" visibility="public" procflags="virtual" />
       <methodref name="Create" visibility="public" procflags="constructor virtual" />
       <ancestor name="TObject" namespace="System">
         <methodref name="Create" visibility="public" procflags="constructor">
@@ -2967,8 +3037,9 @@
         <parameters>
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
-          <parameter name="ClientState" type="TClientState" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
+          <parameter name="Owner" type="TObject" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -2981,6 +3052,7 @@
   <class name="TTaskSingleCheckSubTask17">
     <ancestor name="TSubTask" namespace="uTasks20">
       <methodref name="CheckSubTask" visibility="public" procflags="abstract virtual" />
+      <methodref name="NetCheckSubTask" visibility="public" procflags="virtual" />
       <methodref name="Create" visibility="public" procflags="constructor virtual" />
       <ancestor name="TObject" namespace="System">
         <methodref name="Create" visibility="public" procflags="constructor">
@@ -3052,8 +3124,9 @@
         <parameters>
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
-          <parameter name="ClientState" type="TClientState" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
+          <parameter name="Owner" type="TObject" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -3066,6 +3139,7 @@
   <class name="TTaskSingleCheckSubTask18">
     <ancestor name="TSubTask" namespace="uTasks20">
       <methodref name="CheckSubTask" visibility="public" procflags="abstract virtual" />
+      <methodref name="NetCheckSubTask" visibility="public" procflags="virtual" />
       <methodref name="Create" visibility="public" procflags="constructor virtual" />
       <ancestor name="TObject" namespace="System">
         <methodref name="Create" visibility="public" procflags="constructor">
@@ -3137,8 +3211,9 @@
         <parameters>
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
-          <parameter name="ClientState" type="TClientState" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
+          <parameter name="Owner" type="TObject" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -3151,6 +3226,7 @@
   <class name="TTaskSingleCheckSubTask19">
     <ancestor name="TSubTask" namespace="uTasks20">
       <methodref name="CheckSubTask" visibility="public" procflags="abstract virtual" />
+      <methodref name="NetCheckSubTask" visibility="public" procflags="virtual" />
       <methodref name="Create" visibility="public" procflags="constructor virtual" />
       <ancestor name="TObject" namespace="System">
         <methodref name="Create" visibility="public" procflags="constructor">
@@ -3222,8 +3298,9 @@
         <parameters>
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
-          <parameter name="ClientState" type="TClientState" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
+          <parameter name="Owner" type="TObject" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -3236,6 +3313,7 @@
   <class name="TTaskSingleCheckSubTask20">
     <ancestor name="TSubTask" namespace="uTasks20">
       <methodref name="CheckSubTask" visibility="public" procflags="abstract virtual" />
+      <methodref name="NetCheckSubTask" visibility="public" procflags="virtual" />
       <methodref name="Create" visibility="public" procflags="constructor virtual" />
       <ancestor name="TObject" namespace="System">
         <methodref name="Create" visibility="public" procflags="constructor">
@@ -3307,8 +3385,9 @@
         <parameters>
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
-          <parameter name="ClientState" type="TClientState" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
+          <parameter name="Owner" type="TObject" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -3321,6 +3400,7 @@
   <class name="TTaskSingleCheckSubTask21">
     <ancestor name="TSubTask" namespace="uTasks20">
       <methodref name="CheckSubTask" visibility="public" procflags="abstract virtual" />
+      <methodref name="NetCheckSubTask" visibility="public" procflags="virtual" />
       <methodref name="Create" visibility="public" procflags="constructor virtual" />
       <ancestor name="TObject" namespace="System">
         <methodref name="Create" visibility="public" procflags="constructor">
@@ -3392,8 +3472,9 @@
         <parameters>
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
-          <parameter name="ClientState" type="TClientState" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
+          <parameter name="Owner" type="TObject" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -3406,6 +3487,7 @@
   <class name="TTaskSingleCheckSubTask22">
     <ancestor name="TSubTask" namespace="uTasks20">
       <methodref name="CheckSubTask" visibility="public" procflags="abstract virtual" />
+      <methodref name="NetCheckSubTask" visibility="public" procflags="virtual" />
       <methodref name="Create" visibility="public" procflags="constructor virtual" />
       <ancestor name="TObject" namespace="System">
         <methodref name="Create" visibility="public" procflags="constructor">
@@ -3477,8 +3559,9 @@
         <parameters>
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
-          <parameter name="ClientState" type="TClientState" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
+          <parameter name="Owner" type="TObject" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -3491,6 +3574,7 @@
   <class name="TTaskSingleCheckSubTask23">
     <ancestor name="TSubTask" namespace="uTasks20">
       <methodref name="CheckSubTask" visibility="public" procflags="abstract virtual" />
+      <methodref name="NetCheckSubTask" visibility="public" procflags="virtual" />
       <methodref name="Create" visibility="public" procflags="constructor virtual" />
       <ancestor name="TObject" namespace="System">
         <methodref name="Create" visibility="public" procflags="constructor">
@@ -3562,8 +3646,9 @@
         <parameters>
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
-          <parameter name="ClientState" type="TClientState" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
+          <parameter name="Owner" type="TObject" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -3576,6 +3661,7 @@
   <class name="TTaskSingleCheckSubTask24">
     <ancestor name="TSubTask" namespace="uTasks20">
       <methodref name="CheckSubTask" visibility="public" procflags="abstract virtual" />
+      <methodref name="NetCheckSubTask" visibility="public" procflags="virtual" />
       <methodref name="Create" visibility="public" procflags="constructor virtual" />
       <ancestor name="TObject" namespace="System">
         <methodref name="Create" visibility="public" procflags="constructor">
@@ -3647,8 +3733,9 @@
         <parameters>
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
-          <parameter name="ClientState" type="TClientState" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
+          <parameter name="Owner" type="TObject" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -3661,6 +3748,7 @@
   <class name="TTaskSingleCheckSubTask25">
     <ancestor name="TSubTask" namespace="uTasks20">
       <methodref name="CheckSubTask" visibility="public" procflags="abstract virtual" />
+      <methodref name="NetCheckSubTask" visibility="public" procflags="virtual" />
       <methodref name="Create" visibility="public" procflags="constructor virtual" />
       <ancestor name="TObject" namespace="System">
         <methodref name="Create" visibility="public" procflags="constructor">
@@ -3732,8 +3820,9 @@
         <parameters>
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
-          <parameter name="ClientState" type="TClientState" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
+          <parameter name="Owner" type="TObject" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -3746,6 +3835,7 @@
   <class name="TTaskSingleCheckSubTask26">
     <ancestor name="TSubTask" namespace="uTasks20">
       <methodref name="CheckSubTask" visibility="public" procflags="abstract virtual" />
+      <methodref name="NetCheckSubTask" visibility="public" procflags="virtual" />
       <methodref name="Create" visibility="public" procflags="constructor virtual" />
       <ancestor name="TObject" namespace="System">
         <methodref name="Create" visibility="public" procflags="constructor">
@@ -3817,8 +3907,9 @@
         <parameters>
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
-          <parameter name="ClientState" type="TClientState" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
+          <parameter name="Owner" type="TObject" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -3831,6 +3922,7 @@
   <class name="TTaskSingleCheckSubTask27">
     <ancestor name="TSubTask" namespace="uTasks20">
       <methodref name="CheckSubTask" visibility="public" procflags="abstract virtual" />
+      <methodref name="NetCheckSubTask" visibility="public" procflags="virtual" />
       <methodref name="Create" visibility="public" procflags="constructor virtual" />
       <ancestor name="TObject" namespace="System">
         <methodref name="Create" visibility="public" procflags="constructor">
@@ -3902,8 +3994,9 @@
         <parameters>
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
-          <parameter name="ClientState" type="TClientState" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
+          <parameter name="Owner" type="TObject" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -3916,6 +4009,7 @@
   <class name="TTaskSingleCheckSubTask28">
     <ancestor name="TSubTask" namespace="uTasks20">
       <methodref name="CheckSubTask" visibility="public" procflags="abstract virtual" />
+      <methodref name="NetCheckSubTask" visibility="public" procflags="virtual" />
       <methodref name="Create" visibility="public" procflags="constructor virtual" />
       <ancestor name="TObject" namespace="System">
         <methodref name="Create" visibility="public" procflags="constructor">
@@ -3987,8 +4081,9 @@
         <parameters>
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
-          <parameter name="ClientState" type="TClientState" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
+          <parameter name="Owner" type="TObject" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -4001,6 +4096,7 @@
   <class name="TTaskSingleCheckSubTask29">
     <ancestor name="TSubTask" namespace="uTasks20">
       <methodref name="CheckSubTask" visibility="public" procflags="abstract virtual" />
+      <methodref name="NetCheckSubTask" visibility="public" procflags="virtual" />
       <methodref name="Create" visibility="public" procflags="constructor virtual" />
       <ancestor name="TObject" namespace="System">
         <methodref name="Create" visibility="public" procflags="constructor">
@@ -4072,8 +4168,9 @@
         <parameters>
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
-          <parameter name="ClientState" type="TClientState" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
+          <parameter name="Owner" type="TObject" />
           <retval type="Boolean" />
         </parameters>
       </function>
@@ -4156,17 +4253,22 @@
       <constructor name="Create" visibility="public">
         <parameters>
           <parameter name="Station" type="TStation" />
-          <parameter name="ClientState" type="TClientState" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
         </parameters>
       </constructor>
       <procedure name="LastCheck" visibility="public" procflags="override">
       </procedure>
+      <field name="WeInTerminalMode" type="Boolean" visibility="public" />
+      <field name="TheyInTerminalMode" type="Boolean" visibility="public" />
+      <field name="IsMessageListenFromMainSent" type="Boolean" visibility="public" />
+      <field name="IsMessageListenFromSubSent" type="Boolean" visibility="public" />
     </members>
   </class>
   <class name="TTaskTerminalModeSubTask1">
     <ancestor name="TSubTask" namespace="uTasks20">
       <methodref name="CheckSubTask" visibility="public" procflags="abstract virtual" />
+      <methodref name="NetCheckSubTask" visibility="public" procflags="virtual" />
       <methodref name="Create" visibility="public" procflags="constructor virtual" />
       <ancestor name="TObject" namespace="System">
         <methodref name="Create" visibility="public" procflags="constructor">
@@ -4238,8 +4340,628 @@
         <parameters>
           <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
-          <parameter name="ClientState" type="TClientState" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
+          <parameter name="Owner" type="TObject" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="NetCheckSubTask" visibility="public" procflags="override">
+        <parameters>
+          <parameter name="FullCheck" type="Boolean" />
+          <parameter name="Station" type="TStation" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
+          <parameter name="ErrorKeeper" type="TErrorKeeper" />
+          <parameter name="Owner" type="TObject" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <constructor name="Create" visibility="public">
+        <parameters>
+        </parameters>
+      </constructor>
+    </members>
+  </class>
+  <class name="TTaskTerminalModeSubTask2">
+    <ancestor name="TSubTask" namespace="uTasks20">
+      <methodref name="CheckSubTask" visibility="public" procflags="abstract virtual" />
+      <methodref name="NetCheckSubTask" visibility="public" procflags="virtual" />
+      <methodref name="Create" visibility="public" procflags="constructor virtual" />
+      <ancestor name="TObject" namespace="System">
+        <methodref name="Create" visibility="public" procflags="constructor">
+        </methodref>
+        <methodref name="Free" visibility="public">
+        </methodref>
+        <methodref name="InitInstance" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="CleanupInstance" visibility="public">
+        </methodref>
+        <methodref name="ClassType" visibility="public">
+        </methodref>
+        <methodref name="ClassName" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="ClassNameIs" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="ClassParent" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="ClassInfo" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="InstanceSize" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="InheritsFrom" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="MethodAddress" visibility="public" procflags="class overload">
+        </methodref>
+        <methodref name="MethodAddress" visibility="public" procflags="class overload">
+        </methodref>
+        <methodref name="MethodName" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="FieldAddress" visibility="public" procflags="overload">
+        </methodref>
+        <methodref name="FieldAddress" visibility="public" procflags="overload">
+        </methodref>
+        <methodref name="GetInterface" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceEntry" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="GetInterfaceTable" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="UnitName" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="Equals" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="GetHashCode" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="ToString" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="SafeCallException" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="AfterConstruction" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="BeforeDestruction" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="Dispatch" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="DefaultHandler" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="NewInstance" visibility="public" procflags="class virtual">
+        </methodref>
+        <methodref name="FreeInstance" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="Destroy" visibility="public" procflags="destructor virtual">
+        </methodref>
+      </ancestor>
+    </ancestor>
+    <members>
+      <function name="CheckSubTask" visibility="public" procflags="override">
+        <parameters>
+          <parameter name="FullCheck" type="Boolean" />
+          <parameter name="Station" type="TStation" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
+          <parameter name="ErrorKeeper" type="TErrorKeeper" />
+          <parameter name="Owner" type="TObject" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <constructor name="Create" visibility="public">
+        <parameters>
+        </parameters>
+      </constructor>
+    </members>
+  </class>
+  <class name="TTaskTerminalModeSubTask3">
+    <ancestor name="TSubTask" namespace="uTasks20">
+      <methodref name="CheckSubTask" visibility="public" procflags="abstract virtual" />
+      <methodref name="NetCheckSubTask" visibility="public" procflags="virtual" />
+      <methodref name="Create" visibility="public" procflags="constructor virtual" />
+      <ancestor name="TObject" namespace="System">
+        <methodref name="Create" visibility="public" procflags="constructor">
+        </methodref>
+        <methodref name="Free" visibility="public">
+        </methodref>
+        <methodref name="InitInstance" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="CleanupInstance" visibility="public">
+        </methodref>
+        <methodref name="ClassType" visibility="public">
+        </methodref>
+        <methodref name="ClassName" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="ClassNameIs" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="ClassParent" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="ClassInfo" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="InstanceSize" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="InheritsFrom" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="MethodAddress" visibility="public" procflags="class overload">
+        </methodref>
+        <methodref name="MethodAddress" visibility="public" procflags="class overload">
+        </methodref>
+        <methodref name="MethodName" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="FieldAddress" visibility="public" procflags="overload">
+        </methodref>
+        <methodref name="FieldAddress" visibility="public" procflags="overload">
+        </methodref>
+        <methodref name="GetInterface" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceEntry" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="GetInterfaceTable" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="UnitName" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="Equals" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="GetHashCode" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="ToString" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="SafeCallException" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="AfterConstruction" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="BeforeDestruction" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="Dispatch" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="DefaultHandler" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="NewInstance" visibility="public" procflags="class virtual">
+        </methodref>
+        <methodref name="FreeInstance" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="Destroy" visibility="public" procflags="destructor virtual">
+        </methodref>
+      </ancestor>
+    </ancestor>
+    <members>
+      <function name="CheckSubTask" visibility="public" procflags="override">
+        <parameters>
+          <parameter name="FullCheck" type="Boolean" />
+          <parameter name="Station" type="TStation" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
+          <parameter name="ErrorKeeper" type="TErrorKeeper" />
+          <parameter name="Owner" type="TObject" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <constructor name="Create" visibility="public">
+        <parameters>
+        </parameters>
+      </constructor>
+    </members>
+  </class>
+  <class name="TTaskTerminalModeSubTask4">
+    <ancestor name="TSubTask" namespace="uTasks20">
+      <methodref name="CheckSubTask" visibility="public" procflags="abstract virtual" />
+      <methodref name="NetCheckSubTask" visibility="public" procflags="virtual" />
+      <methodref name="Create" visibility="public" procflags="constructor virtual" />
+      <ancestor name="TObject" namespace="System">
+        <methodref name="Create" visibility="public" procflags="constructor">
+        </methodref>
+        <methodref name="Free" visibility="public">
+        </methodref>
+        <methodref name="InitInstance" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="CleanupInstance" visibility="public">
+        </methodref>
+        <methodref name="ClassType" visibility="public">
+        </methodref>
+        <methodref name="ClassName" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="ClassNameIs" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="ClassParent" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="ClassInfo" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="InstanceSize" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="InheritsFrom" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="MethodAddress" visibility="public" procflags="class overload">
+        </methodref>
+        <methodref name="MethodAddress" visibility="public" procflags="class overload">
+        </methodref>
+        <methodref name="MethodName" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="FieldAddress" visibility="public" procflags="overload">
+        </methodref>
+        <methodref name="FieldAddress" visibility="public" procflags="overload">
+        </methodref>
+        <methodref name="GetInterface" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceEntry" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="GetInterfaceTable" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="UnitName" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="Equals" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="GetHashCode" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="ToString" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="SafeCallException" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="AfterConstruction" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="BeforeDestruction" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="Dispatch" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="DefaultHandler" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="NewInstance" visibility="public" procflags="class virtual">
+        </methodref>
+        <methodref name="FreeInstance" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="Destroy" visibility="public" procflags="destructor virtual">
+        </methodref>
+      </ancestor>
+    </ancestor>
+    <members>
+      <function name="CheckSubTask" visibility="public" procflags="override">
+        <parameters>
+          <parameter name="FullCheck" type="Boolean" />
+          <parameter name="Station" type="TStation" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
+          <parameter name="ErrorKeeper" type="TErrorKeeper" />
+          <parameter name="Owner" type="TObject" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <constructor name="Create" visibility="public">
+        <parameters>
+        </parameters>
+      </constructor>
+    </members>
+  </class>
+  <class name="TTaskTerminalModeSubTask5">
+    <ancestor name="TSubTask" namespace="uTasks20">
+      <methodref name="CheckSubTask" visibility="public" procflags="abstract virtual" />
+      <methodref name="NetCheckSubTask" visibility="public" procflags="virtual" />
+      <methodref name="Create" visibility="public" procflags="constructor virtual" />
+      <ancestor name="TObject" namespace="System">
+        <methodref name="Create" visibility="public" procflags="constructor">
+        </methodref>
+        <methodref name="Free" visibility="public">
+        </methodref>
+        <methodref name="InitInstance" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="CleanupInstance" visibility="public">
+        </methodref>
+        <methodref name="ClassType" visibility="public">
+        </methodref>
+        <methodref name="ClassName" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="ClassNameIs" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="ClassParent" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="ClassInfo" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="InstanceSize" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="InheritsFrom" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="MethodAddress" visibility="public" procflags="class overload">
+        </methodref>
+        <methodref name="MethodAddress" visibility="public" procflags="class overload">
+        </methodref>
+        <methodref name="MethodName" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="FieldAddress" visibility="public" procflags="overload">
+        </methodref>
+        <methodref name="FieldAddress" visibility="public" procflags="overload">
+        </methodref>
+        <methodref name="GetInterface" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceEntry" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="GetInterfaceTable" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="UnitName" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="Equals" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="GetHashCode" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="ToString" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="SafeCallException" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="AfterConstruction" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="BeforeDestruction" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="Dispatch" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="DefaultHandler" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="NewInstance" visibility="public" procflags="class virtual">
+        </methodref>
+        <methodref name="FreeInstance" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="Destroy" visibility="public" procflags="destructor virtual">
+        </methodref>
+      </ancestor>
+    </ancestor>
+    <members>
+      <function name="CheckSubTask" visibility="public" procflags="override">
+        <parameters>
+          <parameter name="FullCheck" type="Boolean" />
+          <parameter name="Station" type="TStation" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
+          <parameter name="ErrorKeeper" type="TErrorKeeper" />
+          <parameter name="Owner" type="TObject" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <constructor name="Create" visibility="public">
+        <parameters>
+        </parameters>
+      </constructor>
+    </members>
+  </class>
+  <class name="TTaskTerminalModeSubTask6">
+    <ancestor name="TSubTask" namespace="uTasks20">
+      <methodref name="CheckSubTask" visibility="public" procflags="abstract virtual" />
+      <methodref name="NetCheckSubTask" visibility="public" procflags="virtual" />
+      <methodref name="Create" visibility="public" procflags="constructor virtual" />
+      <ancestor name="TObject" namespace="System">
+        <methodref name="Create" visibility="public" procflags="constructor">
+        </methodref>
+        <methodref name="Free" visibility="public">
+        </methodref>
+        <methodref name="InitInstance" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="CleanupInstance" visibility="public">
+        </methodref>
+        <methodref name="ClassType" visibility="public">
+        </methodref>
+        <methodref name="ClassName" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="ClassNameIs" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="ClassParent" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="ClassInfo" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="InstanceSize" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="InheritsFrom" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="MethodAddress" visibility="public" procflags="class overload">
+        </methodref>
+        <methodref name="MethodAddress" visibility="public" procflags="class overload">
+        </methodref>
+        <methodref name="MethodName" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="FieldAddress" visibility="public" procflags="overload">
+        </methodref>
+        <methodref name="FieldAddress" visibility="public" procflags="overload">
+        </methodref>
+        <methodref name="GetInterface" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceEntry" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="GetInterfaceTable" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="UnitName" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="Equals" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="GetHashCode" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="ToString" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="SafeCallException" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="AfterConstruction" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="BeforeDestruction" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="Dispatch" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="DefaultHandler" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="NewInstance" visibility="public" procflags="class virtual">
+        </methodref>
+        <methodref name="FreeInstance" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="Destroy" visibility="public" procflags="destructor virtual">
+        </methodref>
+      </ancestor>
+    </ancestor>
+    <members>
+      <function name="CheckSubTask" visibility="public" procflags="override">
+        <parameters>
+          <parameter name="FullCheck" type="Boolean" />
+          <parameter name="Station" type="TStation" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
+          <parameter name="ErrorKeeper" type="TErrorKeeper" />
+          <parameter name="Owner" type="TObject" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <constructor name="Create" visibility="public">
+        <parameters>
+        </parameters>
+      </constructor>
+    </members>
+  </class>
+  <class name="TTaskTerminalModeSubTask7">
+    <ancestor name="TSubTask" namespace="uTasks20">
+      <methodref name="CheckSubTask" visibility="public" procflags="abstract virtual" />
+      <methodref name="NetCheckSubTask" visibility="public" procflags="virtual" />
+      <methodref name="Create" visibility="public" procflags="constructor virtual" />
+      <ancestor name="TObject" namespace="System">
+        <methodref name="Create" visibility="public" procflags="constructor">
+        </methodref>
+        <methodref name="Free" visibility="public">
+        </methodref>
+        <methodref name="InitInstance" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="CleanupInstance" visibility="public">
+        </methodref>
+        <methodref name="ClassType" visibility="public">
+        </methodref>
+        <methodref name="ClassName" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="ClassNameIs" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="ClassParent" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="ClassInfo" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="InstanceSize" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="InheritsFrom" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="MethodAddress" visibility="public" procflags="class overload">
+        </methodref>
+        <methodref name="MethodAddress" visibility="public" procflags="class overload">
+        </methodref>
+        <methodref name="MethodName" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="FieldAddress" visibility="public" procflags="overload">
+        </methodref>
+        <methodref name="FieldAddress" visibility="public" procflags="overload">
+        </methodref>
+        <methodref name="GetInterface" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceEntry" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="GetInterfaceTable" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="UnitName" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="Equals" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="GetHashCode" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="ToString" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="SafeCallException" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="AfterConstruction" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="BeforeDestruction" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="Dispatch" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="DefaultHandler" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="NewInstance" visibility="public" procflags="class virtual">
+        </methodref>
+        <methodref name="FreeInstance" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="Destroy" visibility="public" procflags="destructor virtual">
+        </methodref>
+      </ancestor>
+    </ancestor>
+    <members>
+      <function name="CheckSubTask" visibility="public" procflags="override">
+        <parameters>
+          <parameter name="FullCheck" type="Boolean" />
+          <parameter name="Station" type="TStation" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
+          <parameter name="ErrorKeeper" type="TErrorKeeper" />
+          <parameter name="Owner" type="TObject" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <constructor name="Create" visibility="public">
+        <parameters>
+        </parameters>
+      </constructor>
+    </members>
+  </class>
+  <class name="TTaskTerminalModeSubTask8">
+    <ancestor name="TSubTask" namespace="uTasks20">
+      <methodref name="CheckSubTask" visibility="public" procflags="abstract virtual" />
+      <methodref name="NetCheckSubTask" visibility="public" procflags="virtual" />
+      <methodref name="Create" visibility="public" procflags="constructor virtual" />
+      <ancestor name="TObject" namespace="System">
+        <methodref name="Create" visibility="public" procflags="constructor">
+        </methodref>
+        <methodref name="Free" visibility="public">
+        </methodref>
+        <methodref name="InitInstance" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="CleanupInstance" visibility="public">
+        </methodref>
+        <methodref name="ClassType" visibility="public">
+        </methodref>
+        <methodref name="ClassName" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="ClassNameIs" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="ClassParent" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="ClassInfo" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="InstanceSize" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="InheritsFrom" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="MethodAddress" visibility="public" procflags="class overload">
+        </methodref>
+        <methodref name="MethodAddress" visibility="public" procflags="class overload">
+        </methodref>
+        <methodref name="MethodName" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="FieldAddress" visibility="public" procflags="overload">
+        </methodref>
+        <methodref name="FieldAddress" visibility="public" procflags="overload">
+        </methodref>
+        <methodref name="GetInterface" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceEntry" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="GetInterfaceTable" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="UnitName" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="Equals" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="GetHashCode" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="ToString" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="SafeCallException" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="AfterConstruction" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="BeforeDestruction" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="Dispatch" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="DefaultHandler" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="NewInstance" visibility="public" procflags="class virtual">
+        </methodref>
+        <methodref name="FreeInstance" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="Destroy" visibility="public" procflags="destructor virtual">
+        </methodref>
+      </ancestor>
+    </ancestor>
+    <members>
+      <function name="CheckSubTask" visibility="public" procflags="override">
+        <parameters>
+          <parameter name="FullCheck" type="Boolean" />
+          <parameter name="Station" type="TStation" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
+          <parameter name="ErrorKeeper" type="TErrorKeeper" />
+          <parameter name="Owner" type="TObject" />
           <retval type="Boolean" />
         </parameters>
       </function>

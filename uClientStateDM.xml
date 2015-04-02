@@ -123,6 +123,8 @@
       <field name="FMessageEvent" type="TEvent" visibility="public" />
       <field name="FStartNetTask" type="TEvent" visibility="public" />
       <field name="FStartNetTaskOk" type="TEvent" visibility="public" />
+      <field name="CanSendChatMessages" type="Boolean" visibility="public" />
+      <field name="CanGetChatMessages" type="Boolean" visibility="public" />
       <field name="LastMessage" type="string" visibility="public" />
       <field name="StartNetTaskStatus" type="string" visibility="public" />
       <constructor name="Create" visibility="public">
