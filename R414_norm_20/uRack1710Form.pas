@@ -299,6 +299,27 @@ begin
   TaskController.Subscribe(self);
   ButtonBackForm:= TButtonBackForm.Create(self);
   ButtonBackForm.Show;
+
+
+
+  //Отключаем все ошибки -- временно
+  ImageBlock1DiodRed1.Hide;
+  ImageBlock1DiodRed2.Hide;
+  ImageBlock1DiodRed3.Hide;
+  ImageBlock1DiodRed4.Hide;
+  ImageBlock1DiodRed5.Hide;
+  ImageBlock1DiodRed6.Hide;
+  ImageBlock1DiodRed7.Hide;
+  ImageBlock1DiodRed8.Hide;
+  ImageBlock1DiodRed10.Hide;
+  Image5.Hide;
+  Image6.Hide;
+  Image7.Hide;
+  Image8.Hide;
+  Image9.Hide;
+  Image10.Hide;
+  Image11.Hide;
+  Image16.Hide;
 end;
 
 

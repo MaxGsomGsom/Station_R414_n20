@@ -281,16 +281,6 @@
       $3E8
     </value>
   </const>
-  <struct name="pUdlinitelKonez" packed="true">
-    <field name="stKonez" type="Integer" visibility="public" />
-    <field name="offsetLeft" type="Integer" visibility="public" />
-    <field name="offsetTop" type="Integer" visibility="public" />
-    <field name="stState" type="Integer" visibility="public" />
-  </struct>
-  <struct name="pUdlinitelCable" packed="true">
-    <field name="stKonez1" type="pUdlinitelKonez" visibility="public" />
-    <field name="stKonez2" type="pUdlinitelKonez" visibility="public" />
-  </struct>
   <struct name="pErrors" packed="true">
     <field name="ErrInRack" type="Integer" visibility="public" />
     <field name="ErrDescription" type="string" visibility="public" />

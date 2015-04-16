@@ -408,6 +408,18 @@ const
     offsetTop: Integer;
   end;
 
+  type pUdlinitelKonez = packed record
+    stKonez: Integer;
+    offsetLeft: Integer;
+    offsetTop: Integer;
+    stState: Integer;
+  end;
+
+  type pUdlinitelCable = packed record
+    stKonez1: pUdlinitelKonez;
+    stKonez2: pUdlinitelKonez;
+  end;
+
   /// <summary>
   ///   Полукомплект станции Р414
   /// </summary>
@@ -424,6 +436,7 @@ const
       Rack1200Left: pRack1200_PRM;
       Rack1200Right: pRack1200_PRD;
       P321: pP321;
+
 
       function IsTunedFor2ChannelMode: Boolean;
       function IsTunedFor4ChannelMode: Boolean;
@@ -444,6 +457,7 @@ const
     Rack1200B_PRD: Byte;
     Rack1200B_PRM: Byte;
   end;
+
   /// <summary>
   ///   Станция Р414 (блоки и настроенные состояния)
   /// </summary>
@@ -470,7 +484,8 @@ const
 
       WaveTransmitA, WaveReceiveA, WaveTransmitB, WaveReceiveB: Byte;
       Soprajenie: Byte;
-
+       CableWhite2: pUdlinitelCable;
+      CableBlack1: pUdlinitelCable;
       {***********************}
       WorkMode: Byte;   {TODO: Вырезать их из станции нафиг, они в ClientState}
       WorkType: Byte;

@@ -323,7 +323,7 @@ uses
         for i := 0 to Request.GetCountKeys - 1 do
         try
           kvRecord := Request.GetKeyValue(i);
-          if kvRecord.Key <> CLIENT_STATION_R414_TASK then             // Если связанная станция
+          if kvRecord.Key <> KEY_TYPE then             // Если связанная станция
           begin                                       // прислала своё имя, то
               OnRecievedTaskParamsR414(kvRecord.Key, kvRecord.Value);
           end;

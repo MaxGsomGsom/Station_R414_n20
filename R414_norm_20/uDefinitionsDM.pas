@@ -147,17 +147,7 @@ unit uDefinitionsDM;
 
   {$REGION 'ќписание пользовательских структур данных'}
 
-  type pUdlinitelKonez = packed record
-    stKonez: Integer;
-    offsetLeft: Integer;
-    offsetTop: Integer;
-    stState: Integer;
-  end;
 
-  type pUdlinitelCable = packed record
-    stKonez1: pUdlinitelKonez;
-    stKonez2: pUdlinitelKonez;
-  end;
 
 
   type pErrors = packed record

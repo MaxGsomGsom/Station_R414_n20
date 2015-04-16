@@ -402,6 +402,16 @@
     <field name="offsetLeft" type="Integer" visibility="public" />
     <field name="offsetTop" type="Integer" visibility="public" />
   </struct>
+  <struct name="pUdlinitelKonez" packed="true">
+    <field name="stKonez" type="Integer" visibility="public" />
+    <field name="offsetLeft" type="Integer" visibility="public" />
+    <field name="offsetTop" type="Integer" visibility="public" />
+    <field name="stState" type="Integer" visibility="public" />
+  </struct>
+  <struct name="pUdlinitelCable" packed="true">
+    <field name="stKonez1" type="pUdlinitelKonez" visibility="public" />
+    <field name="stKonez2" type="pUdlinitelKonez" visibility="public" />
+  </struct>
   <class name="THalfSet">
     <devnotes>
        <summary>
@@ -634,6 +644,8 @@
       <field name="WaveTransmitB" type="Byte" visibility="public" />
       <field name="WaveReceiveB" type="Byte" visibility="public" />
       <field name="Soprajenie" type="Byte" visibility="public" />
+      <field name="CableWhite2" type="pUdlinitelCable" visibility="public" />
+      <field name="CableBlack1" type="pUdlinitelCable" visibility="public" />
       <field name="WorkMode" type="Byte" visibility="public" />
       <field name="WorkType" type="Byte" visibility="public" />
       <field name="NetWorkMode" type="Byte" visibility="public" />

@@ -3125,6 +3125,18 @@
           <parameter name="Sender" type="TObject" />
         </parameters>
       </procedure>
+      <function name="CurrentChannel" visibility="published">
+        <parameters>
+          <parameter name="Placeholder" type="Integer" />
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <function name="CurrentPort" visibility="published">
+        <parameters>
+          <parameter name="Placeholder" type="Integer" />
+          <retval type="Integer" />
+        </parameters>
+      </function>
       <procedure name="Reload" visibility="private">
       </procedure>
       <function name="IsGeneratorCableConnnected" visibility="private">

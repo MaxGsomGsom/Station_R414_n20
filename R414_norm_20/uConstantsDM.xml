@@ -831,6 +831,11 @@
       $4B
     </value>
   </const>
+  <const name="csConnectedAtPult" type="Integer">
+    <value>
+      $4C
+    </value>
+  </const>
   <const name="GeterodinWaves" type="Array" visibility="public" />
   <function name="GetWorkModeTitle" visibility="public">
     <devnotes>
