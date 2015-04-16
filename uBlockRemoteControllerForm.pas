@@ -633,6 +633,8 @@ type
     procedure pmSpawn1200BPrdClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure White1Click(Sender: TObject);
+    function CurrentChannel(Placeholder: Integer): Integer;
+    function CurrentPort(Placeholder: Integer): Integer;
 
 
   private
@@ -1432,11 +1434,11 @@ procedure T_Pult.FormCreate(Sender: TObject);
 var
   btA: Byte;
 begin
-  cbUdlinitel1.stKonez1.stKonez := csDisconected;
-  cbUdlinitel1.stKonez2.stKonez := csDisconected;
+  //cbUdlinitel1.stKonez1.stKonez := csDisconected;
+  //cbUdlinitel1.stKonez2.stKonez := csDisconected;
 
-  cbUdlinitel2.stKonez1.stKonez := csDisconected;
-  cbUdlinitel2.stKonez2.stKonez := csDisconected;
+  //cbUdlinitel2.stKonez1.stKonez := csDisconected;
+  //cbUdlinitel2.stKonez2.stKonez := csDisconected;
 
   SelectedCable := NotSelected;
 
@@ -1600,6 +1602,8 @@ begin
     Result := False;
 end;
 
+
+//присоединение провода к разъему на пульте (канал=плейсхолдер=тег картинки)
 procedure T_Pult.Image143Click(Sender: TObject);
 const
   imgTopOffsetA = 144;
@@ -2030,6 +2034,7 @@ begin
   JmpFormId := idRack1200B1;
 end;
 
+//отсоединения кабеля от гнезда
 procedure T_Pult.CablePopUp;
 begin
   if SelectedCable <> NotSelected then
@@ -2083,5 +2088,52 @@ begin
 
   Reload;
 end;
+
+
+//   номер канала по плейсхолдеру
+function T_Pult.CurrentChannel(Placeholder: Integer): Integer;
+var temp: Integer;
+var channel: Integer;
+begin
+            if (Placeholder>=169) then  Placeholder:=Placeholder-168;
+            channel:=0;
+            temp:= Placeholder;
+            while temp>56 do
+            begin
+              temp:=temp-56;
+              channel:=channel+7;
+            end;
+
+            while temp>14 do
+            begin
+              temp:=temp-14;
+            end;
+
+            while temp>2 do
+            begin
+              temp:=temp-2;
+              channel:=channel+1;
+            end;
+
+            if temp=1 then channel:=channel+1;
+
+
+            Result:= temp;
+
+end;
+
+//номер порта по плейсхолдеру (как в stationstate)
+    function T_Pult.CurrentPort(Placeholder: Integer): Integer;
+    var temp: Integer;
+    begin
+          if (Placeholder>=169) then  Placeholder:=Placeholder-168;
+
+             temp:= Placeholder div 14;
+
+             while temp>4 do temp:=temp-4;
+
+
+            Result:= (Placeholder mod 2)+temp*2;
+    end;
 
 end.

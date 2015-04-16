@@ -394,10 +394,13 @@ begin
               (Station.Is1500BTransmited) and
               (Station.HalfSetA.LittleNoisyAmplifier.butNet2 = butPositionUp) and
               (Station.HalfSetA.LittleNoisyAmplifier.swWave = TaskController.NetWorker.ClientState.ReceiverWaveA) and
-              (((Station.HalfSetA.Duplexer.cbSh1 = csConnectedAtDuplexeLeft) and
-              (Station.HalfSetA.Duplexer.cbSh2 = csConnectedAtDuplexeRight)) or
-              ((Station.HalfSetA.Duplexer.cbSh1 = csConnectedAtDuplexeRight) and
-              (Station.HalfSetA.Duplexer.cbSh2 = csConnectedAtDuplexeLeft)))) then
+              (((Station.HalfSetA.Duplexer.cbSh2 = csConnectedAtDuplexeLeft) or
+              (Station.HalfSetA.Duplexer.cbSh2 = csConnectedAtDuplexeRight)) and
+              ((Station.HalfSetA.Duplexer.cbSh1 = csConnectedAtDuplexeLeft)or
+              (Station.HalfSetA.Duplexer.cbSh1 = csConnectedAtDuplexeRight) or
+              (Station.HalfSetA.Duplexer.cb1840 = csConnectedAtDuplexeLeft) or
+              (Station.HalfSetA.Duplexer.cb1840 = csConnectedAtDuplexeRight))))
+              then
               begin
                 imgLineOk.Visible := True;
                 Station.HalfSetA.Rack1600.stMoshnost := True;
@@ -569,10 +572,12 @@ begin
               (Station.Is1500ATransmited = True) and
               (Station.HalfSetB.LittleNoisyAmplifier.butNet2 = butPositionUp) and
               (Station.HalfSetB.LittleNoisyAmplifier.swWave = TaskController.NetWorker.ClientState.ReceiverWaveB) and
-              (((Station.HalfSetB.Duplexer.cbSh1 = csConnectedAtDuplexeLeft) and
-              (Station.HalfSetB.Duplexer.cbSh2 = csConnectedAtDuplexeRight)) or
-              ((Station.HalfSetB.Duplexer.cbSh1 = csConnectedAtDuplexeRight) and
-              (Station.HalfSetB.Duplexer.cbSh2 = csConnectedAtDuplexeLeft)))) then
+              (((Station.HalfSetA.Duplexer.cbSh2 = csConnectedAtDuplexeLeft) or
+              (Station.HalfSetA.Duplexer.cbSh2 = csConnectedAtDuplexeRight)) and
+              ((Station.HalfSetA.Duplexer.cbSh1 = csConnectedAtDuplexeLeft)or
+              (Station.HalfSetA.Duplexer.cbSh1 = csConnectedAtDuplexeRight) or
+              (Station.HalfSetA.Duplexer.cb1840 = csConnectedAtDuplexeLeft) or
+              (Station.HalfSetA.Duplexer.cb1840 = csConnectedAtDuplexeRight)))) then
               begin
                 imgLineOk.Visible := True;
                 Station.HalfSetB.Rack1600.stMoshnost := True;

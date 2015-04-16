@@ -190,7 +190,7 @@ begin
     /////////////////////////////////////////
 
     Station := TStation.Create;                   // Станция
-    StationInitializer := TStationInitializer.Create(Station);
+    StationInitializer := TStationInitializer.Create(Station, NetWorker);
     StationInitializer.InitStationByTask(NetWorker.ClientState.TaskID);              // Инициализируем станцию
 
                                                   // в соответствии с заданием
@@ -296,7 +296,7 @@ StationInitializer: TStationInitializer;
 
 
     Station := TStation.Create;                   // Станция
-    StationInitializer := TStationInitializer.Create(Station);
+    StationInitializer := TStationInitializer.Create(Station, NetWorker);
     StationInitializer.InitStationByTask(NetWorker.ClientState.TaskID);              // Инициализируем станцию
 
                                                   // в соответствии с заданием

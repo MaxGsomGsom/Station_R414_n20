@@ -15,7 +15,8 @@ uses
   ExtCtrls,
   uAdditionalFormMethods,
   uTasks20,
-  uErrorKeeper;
+  uErrorKeeper,
+  uNetParamsList;
 
 
 
@@ -243,27 +244,18 @@ function TTaskController.GetTaskTitle(TaskID: Integer): string;
 
    procedure TTaskController.NetCheckTask();
    begin
-      CurrentTask.SubTasks[CurrentTask.CurrentSubTaskNum].NetCheckSubTask(CurrentTask.FullCheck, self.Station, self.NetWorker, self.ErrorKeeper, Self.CurrentTask);
+      CurrentTask.SubTasks[CurrentTask.CurrentSubTaskNum].NetCheckSubTask(CurrentTask.FullCheck, self.Station, self.NetWorker, self.ErrorKeeper, Self.CurrentTask.TaskNetParams);
    end;
 
 
   procedure TTaskController.CheckRecievedParams(Param: string; Value: string);
+  var
+  paramPointer: ^Boolean;
   begin
-      try
 
-        if (Value='True') then
-        begin
-          //self.CurrentTask.FieldAddress(Param):=True;
-        end
-        else if (Value='False') then
-        begin
-          //self.CurrentTask.FieldAddress(Param):=False;
-        end;
+        self.CurrentTask.TaskNetParams.ChangeValue(Param, Value);
 
-      finally
-
-      end;
-       CheckTask(Self, TMouseButton.mbLeft, KeysToShiftState(0),0,0);
+       CheckTask(nil, TMouseButton.mbLeft, KeysToShiftState(0),0,0);
   end;
   
 
@@ -272,18 +264,28 @@ function TTaskController.GetTaskTitle(TaskID: Integer): string;
   var
   SubResult: Boolean;
   Sender: TObject;
+  IsEventCheck: Boolean;
   begin
           if (CurrentTask.IsTaskComplete=false) then
              begin
 
-        Sender:=Sender0 as TControl;
-        SubResult:= false;
+         if not (Sender0 = nil) then
+         begin
+              Sender:=Sender0 as TComponent;
+              SubResult:= false;
+              IsEventCheck:= False;
+         end
+         else
+         begin
+             IsEventCheck:=True;
+         end;
 
-         if (((Sender as TComponent).Owner as TForm).Caption=CurrentTask.SubTasks[CurrentTask.CurrentSubTaskNum].EventFormName)
+
+         if (IsEventCheck=True) or (((Sender as TComponent).Owner as TForm).Caption=CurrentTask.SubTasks[CurrentTask.CurrentSubTaskNum].EventFormName)
           or (CurrentTask.SubTasks[CurrentTask.CurrentSubTaskNum].EventFormName='')
           then
          begin
-             SubResult:=CurrentTask.SubTasks[CurrentTask.CurrentSubTaskNum].CheckSubTask(CurrentTask.FullCheck, self.Station, self.NetWorker, self.ErrorKeeper, Self.CurrentTask);
+             SubResult:=CurrentTask.SubTasks[CurrentTask.CurrentSubTaskNum].CheckSubTask(CurrentTask.FullCheck, self.Station, self.NetWorker, self.ErrorKeeper, Self.CurrentTask.TaskNetParams);
          end;
 
          if SubResult then begin

@@ -72,6 +72,7 @@
     </ancestor>
     <members>
       <field name="FStation" type="TStation" visibility="private" />
+      <field name="NetWorker" type="TClientNetWorker" visibility="private" />
       <procedure name="GenerateRandomWaves" visibility="private">
         <devnotes>
            <summary>
@@ -116,10 +117,13 @@
            </summary>
         </devnotes>
       </procedure>
+      <procedure name="InitForTerminalMode" visibility="private">
+      </procedure>
       <property name="Station" visibility="public" read="FStation" write="FStation" type="TStation" />
       <constructor name="Create" visibility="public">
         <parameters>
           <parameter name="Station" type="TStation" />
+          <parameter name="NetWorker" type="TClientNetWorker" />
         </parameters>
       </constructor>
       <procedure name="InitForStartParametersSetupTask" visibility="public">

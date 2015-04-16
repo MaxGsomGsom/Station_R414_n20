@@ -59,7 +59,8 @@ uses
   uStationInitializer in 'uStationInitializer.pas',
   uTasks20 in 'uTasks20.pas',
   uErrorKeeper in 'uErrorKeeper.pas',
-  ChatForm in 'ChatForm.pas' {TChatForm};
+  ChatForm in 'ChatForm.pas' {TChatForm},
+  uNetParamsList in 'uNetParamsList.pas';
 
 {$R *.res}
 

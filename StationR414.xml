@@ -14,8 +14,8 @@
   <contains name="DateUtils" />
   <contains name="Consts" />
   <contains name="ComStrs" />
-  <contains name="RTLConsts" />
   <contains name="SysConst" />
+  <contains name="RTLConsts" />
   <contains name="uCloseForm" />
   <contains name="uHintForm" />
   <contains name="MPlayer" />
@@ -106,14 +106,14 @@
   <contains name="CommDlg" />
   <contains name="StdActns" />
   <contains name="Dwmapi" />
-  <contains name="Generics.Collections" />
-  <contains name="Generics.Defaults" />
   <contains name="Wincodec" />
   <contains name="Masks" />
   <contains name="ZLib" />
   <contains name="CommCtrl" />
   <contains name="Messages" />
   <contains name="ActiveX" />
+  <contains name="Generics.Collections" />
+  <contains name="Generics.Defaults" />
   <contains name="ImageHlp" />
   <contains name="StrUtils" />
   <contains name="Math" />
@@ -181,6 +181,7 @@
   <contains name="VarUtils" />
   <contains name="SysUtils" />
   <contains name="Windows" />
+  <contains name="uNetParamsList" />
   <contains name="ChatForm" />
   <contains name="uErrorKeeper" />
   <contains name="uTasks20" />

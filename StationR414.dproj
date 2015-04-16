@@ -199,6 +199,7 @@
 			<DCCReference Include="ChatForm.pas">
 				<Form>TChatForm</Form>
 			</DCCReference>
+			<DCCReference Include="uNetParamsList.pas"/>
 			<None Include="ModelSupport_StationR414\default.txaPackage"/>
 			<None Include="ModelSupport_StationR414\default.txvpck"/>
 			<None Include="ModelSupport_StationR414\StationR414\default.txvpck"/>
