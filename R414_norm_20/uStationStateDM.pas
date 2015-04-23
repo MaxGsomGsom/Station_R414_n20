@@ -480,7 +480,7 @@ const
       WaveMeter: pWaveMeter;
       PowerPanel: pPowerPanel;
 
-      cbGenerator, cbInputYY: pP321Cables;
+      //cbGenerator, cbInputYY: pP321Cables;
 
       WaveTransmitA, WaveReceiveA, WaveTransmitB, WaveReceiveB: Byte;
       Soprajenie: Byte;
@@ -534,6 +534,13 @@ const
 
       function IsP321ShuntsConnectedAt2ChannelMode: Boolean;
       function IsP321ShuntsConnectedAt4ChannelMode: Boolean;
+
+      function IsNeedToTuneChannelBlocksA: Boolean;
+      function GetTransmitBlockTunedValueNeed: Byte;
+      function CurrentChannel(Placeholder: Integer): Integer;
+      function CurrentPort(Placeholder: Integer): Integer;
+
+function IsNeedToTuneChannelBlocksB: Boolean;
   end;
 
 //var
@@ -679,8 +686,8 @@ begin
     and (Rack1500.DropError = True)
     and (Rack1500.GeterodinTunedMain = True)
     and (Rack1500.GeterodinTunedReserve = True)
-    and (Rack1500.stCableLoad = csConnectedAtRack1500Sh1)
-    and (Rack1500.stCableSh1 = csConnectedAtRack1500NoName)
+    and (Rack1500.stCableLoad <> csDisconected)
+    and (Rack1500.stCableSh1 <> csDisconected)
     and (Rack1920.butPower = butPositionUp)
     and (Rack1920.butPower2 = butPositionUp)
     and (Rack1920.but1910 = butPositionUp)
@@ -1009,16 +1016,19 @@ end;
 function TStation.GetTransmitBlockTune: Byte;
 var
   ChannelBlockId: Byte;
+  curConez: Integer;
 begin
   Result := 0;
   ChannelBlockId := 1;
-  if cbInputYY.stConnectedToPlaceId <> csDisconected then
+  if CableWhite2.stKonez1.stState = csConnected then curConez := CableWhite2.stKonez1.stKonez
+  else curConez := CableWhite2.stKonez2.stKonez;
+  if (CableWhite2.stKonez1.stState = csConnected) or (CableWhite2.stKonez2.stState = csConnected) then
   begin
-    case cbInputYY.stConnectedToPlaceId of
+    case curConez of
       0..168:
         begin
           //A
-          case cbInputYY.stConnectedToPlaceId  of
+          case curConez  of
             15, 16:
               begin
                 Result := HalfSetA.Rack1200Left.sw1240VTune;
@@ -1108,7 +1118,7 @@ begin
       169..336:
         begin
           //B
-          case cbInputYY.stConnectedToPlaceId of
+          case curConez of
             183, 184:
               begin
                 Result := HalfSetB.Rack1200Left.sw1240VTune;
@@ -1199,6 +1209,210 @@ begin
   end;
 end;
 
+
+
+/// <summary>
+///   Возвращает необходимое значение подстройки канала (при котором канал настроен)
+/// </summary>
+function TStation.GetTransmitBlockTunedValueNeed: Byte;
+var
+  intA: Integer;
+  ChannelBlockId: Byte;
+  curConez: Integer;
+begin
+  Result := 0;
+  ChannelBlockId := 1;
+
+  if CableWhite2.stKonez1.stState = csConnected then curConez := CableWhite2.stKonez1.stKonez
+  else curConez := CableWhite2.stKonez2.stKonez;
+  if (CableWhite2.stKonez1.stState = csConnected) or (CableWhite2.stKonez2.stState = csConnected) then
+  begin
+    case curConez of
+      0..168:
+        begin
+          //A
+          case curConez  of
+            15, 16:
+              begin
+                Result := HalfSetA.Rack1200Left.sw1240VTunedValue;
+              end;
+            17, 18:
+              begin
+                Result := HalfSetA.Rack1200Left.sw1240V2TunedValue;
+              end;
+            19, 20:
+              begin
+                Result := HalfSetA.Rack1200Right.sw1240V1TunedValue;
+              end;
+            21, 22:
+              begin
+                Result := HalfSetA.Rack1200Right.sw1240V2TunedValue;
+              end;
+            23, 24:
+              begin
+                Result := HalfSetA.Rack1200Right.sw1240V3TunedValue;
+              end;
+            25, 26:
+              begin
+                Result := HalfSetA.Rack1200Right.sw1240GTunedValue;
+              end;
+            27, 28:
+              begin
+                Result := HalfSetA.Rack1200Left.sw1240G1TunedValue;
+              end;
+            71, 72:
+              begin
+                Result := HalfSetA.Rack1200Left.sw1240G2TunedValue;
+              end;
+            73, 74:
+              begin
+                Result := HalfSetA.Rack1200Left.sw1240G3TunedValue;
+              end;
+            75, 76:
+              begin
+                Result := HalfSetA.Rack1200Left.sw1240G4TunedValue;
+              end;
+            77, 78:
+              begin
+                Result := HalfSetA.Rack1200Right.sw1240G1TunedValue;
+              end;
+            79, 80:
+              begin
+                Result := HalfSetA.Rack1200Right.sw1240G2TunedValue;
+              end;
+            81, 82:
+              begin
+                Result := HalfSetA.Rack1200Right.sw1240G3TunedValue;
+              end;
+            83, 84:
+              begin
+                Result := HalfSetA.Rack1200Right.sw1240G4TunedValue;
+              end;
+            127, 128:
+              begin
+                Result := HalfSetA.Rack1200Left.sw1240G5TunedValue;
+              end;
+            129, 130:
+              begin
+                Result := HalfSetA.Rack1200Left.sw1240G6TunedValue;
+              end;
+            131, 132:
+              begin
+                Result := HalfSetA.Rack1200Left.sw1240G7TunedValue;
+              end;
+            133, 134:
+              begin
+                Result := HalfSetA.Rack1200Left.sw1240G8TunedValue;
+              end;
+            135, 136:
+              begin
+                Result := HalfSetA.Rack1200Right.sw1240G5TunedValue;
+              end;
+            137, 138:
+              begin
+                Result := HalfSetA.Rack1200Right.sw1240G6TunedValue;
+              end;
+            139, 140:
+              begin
+                Result := HalfSetA.Rack1200Right.sw1240G7TunedValue;
+              end;
+          end;
+        end;
+      169..336:
+        begin
+          //B
+          case curConez of
+            183, 184:
+              begin
+                Result := HalfSetB.Rack1200Left.sw1240VTunedValue;
+              end;
+            185, 186:
+              begin
+                Result := HalfSetB.Rack1200Left.sw1240V2TunedValue;
+              end;
+            187, 188:
+              begin
+                Result := HalfSetB.Rack1200Right.sw1240V1TunedValue;
+              end;
+            189, 190:
+              begin
+                Result := HalfSetB.Rack1200Right.sw1240V2TunedValue;
+              end;
+            191, 192:
+              begin
+                Result := HalfSetB.Rack1200Right.sw1240V3TunedValue;
+              end;
+            193, 194:
+              begin
+                Result := HalfSetB.Rack1200Right.sw1240GTunedValue;
+              end;
+            195, 196:
+              begin
+                Result := HalfSetB.Rack1200Left.sw1240G1TunedValue;
+              end;
+            239, 240:
+              begin
+                Result := HalfSetB.Rack1200Left.sw1240G2TunedValue;
+              end;
+            241, 242:
+              begin
+                Result := HalfSetB.Rack1200Left.sw1240G3TunedValue;
+              end;
+            243, 244:
+              begin
+                Result := HalfSetB.Rack1200Left.sw1240G4TunedValue;
+              end;
+            245, 246:
+              begin
+                Result := HalfSetB.Rack1200Right.sw1240G1TunedValue;
+              end;
+            247, 248:
+              begin
+                Result := HalfSetB.Rack1200Right.sw1240G2TunedValue;
+              end;
+            249, 250:
+              begin
+                Result := HalfSetB.Rack1200Right.sw1240G3TunedValue;
+              end;
+            251, 252:
+              begin
+                Result := HalfSetB.Rack1200Right.sw1240G4TunedValue;
+              end;
+            295, 296:
+              begin
+                Result := HalfSetB.Rack1200Left.sw1240G5TunedValue;
+              end;
+            297, 298:
+              begin
+                Result := HalfSetB.Rack1200Left.sw1240G6TunedValue;
+              end;
+            299, 300:
+              begin
+                Result := HalfSetB.Rack1200Left.sw1240G7TunedValue;
+              end;
+            301, 302:
+              begin
+                Result := HalfSetB.Rack1200Left.sw1240G8TunedValue;
+              end;
+            303, 304:
+              begin
+                Result := HalfSetB.Rack1200Right.sw1240G5TunedValue;
+              end;
+            305, 306:
+              begin
+                Result := HalfSetB.Rack1200Right.sw1240G6TunedValue;
+              end;
+            307, 308:
+              begin
+                Result := HalfSetB.Rack1200Right.sw1240G7TunedValue;
+              end;
+          end;
+        end;
+    end;
+  end;
+end;
+
+
 function TStation.Is1500ATransmited: Boolean;
 begin
   Result := (HalfSetA.Rack1500.GeterodinTunedMain
@@ -1238,9 +1452,9 @@ begin
     and (P321C.swGradYY = 31)
     and (P321C.swFrequency = 4)
     and (P321C.cblVihGen <> csDisconected)
-    and (P321C.cblVhYY <> csDisconected)
-    and (cbGenerator.stConnectedToPlaceId <> csDisconected)
-    and (cbInputYY.stConnectedToPlaceId <> csDisconected);
+    and (P321C.cblVhYY <> csDisconected) and
+    ((CableBlack1.stKonez1.stState = csP321CGen) or (CableBlack1.stKonez2.stState = csP321CGen))
+    and ((CableWhite2.stKonez1.stState = csP321CYY) or (CableWhite2.stKonez2.stState = csP321CYY));
 end;
 
 /// <summary>
@@ -1520,33 +1734,106 @@ end;
 
 function TStation.IsP321ShuntsConnectedAt2ChannelMode: Boolean;
 begin
-  Result := (cbInputYY.stConnectedToPlaceId mod 2 = 0)
-    and (cbGenerator.stConnectedToPlaceId mod 2 = 0)
-    and ((cbGenerator.stConnectedToPlaceId < 337)
-    and (1 < cbGenerator.stConnectedToPlaceId))
-    and ((cbInputYY.stConnectedToPlaceId < 337)
-    and (1 < cbInputYY.stConnectedToPlaceId))
-    and (Abs(cbGenerator.stConnectedToPlaceId
-      - cbInputYY.stConnectedToPlaceId) = 168);
+  Result := ((CableWhite2.stKonez1.stKonez mod 2 = 0) or  (CableWhite2.stKonez2.stKonez mod 2 = 0))
+    and ((CableBlack1.stKonez1.stKonez mod 2 = 0) or (CableBlack1.stKonez1.stKonez mod 2 = 0))
+    and ((CableBlack1.stKonez1.stKonez < 337) or (CableBlack1.stKonez2.stKonez < 337))
+    and ((1 < CableBlack1.stKonez1.stKonez) or (1 < CableBlack1.stKonez2.stKonez))
+    and ((CableWhite2.stKonez1.stKonez < 337) or (CableWhite2.stKonez2.stKonez < 337))
+    and ((1 < CableWhite2.stKonez1.stKonez) or (1 < CableWhite2.stKonez2.stKonez))
+    and ((Abs(CableBlack1.stKonez1.stKonez - CableWhite2.stKonez1.stKonez) = 168) or (Abs(CableBlack1.stKonez1.stKonez - CableWhite2.stKonez2.stKonez) = 168) or
+    (Abs(CableBlack1.stKonez2.stKonez - CableWhite2.stKonez1.stKonez) = 168) or (Abs(CableBlack1.stKonez2.stKonez - CableWhite2.stKonez2.stKonez) = 168));
 end;
 
 function TStation.IsP321ShuntsConnectedAt4ChannelMode: Boolean;
 begin
-  Result := ((IsNeedToTuneChannelBlocksA = True)
-            and ((cbGenerator.stConnectedToPlaceId < 337)
-            and (1 < cbGenerator.stConnectedToPlaceId))
-            and ((cbInputYY.stConnectedToPlaceId < 337)
-            and (1 < cbInputYY.stConnectedToPlaceId))
-            and (Abs(cbGenerator.stConnectedToPlaceId
-                      - cbInputYY.stConnectedToPlaceId) = 167))
-          or
-            ((IsNeedToTuneChannelBlocksB = True)
-            and ((cbGenerator.stConnectedToPlaceId < 337)
-            and (1 < cbGenerator.stConnectedToPlaceId))
-            and ((cbInputYY.stConnectedToPlaceId < 337)
-            and (1 < cbInputYY.stConnectedToPlaceId))
-            and (Abs(cbGenerator.stConnectedToPlaceId
-                      - cbInputYY.stConnectedToPlaceId) = 169));
+
+Result := ((IsNeedToTuneChannelBlocksA = True) or (IsNeedToTuneChannelBlocksB = True)) and
+(((CurrentChannel(CableBlack1.stKonez1.stKonez)>0) and (CurrentChannel(CableBlack1.stKonez1.stKonez) = CurrentChannel(CableWhite2.stKonez1.stKonez))) or
+((CurrentChannel(CableBlack1.stKonez1.stKonez)>0) and (CurrentChannel(CableBlack1.stKonez1.stKonez) = CurrentChannel(CableWhite2.stKonez2.stKonez))) or
+((CurrentChannel(CableBlack1.stKonez2.stKonez)>0) and (CurrentChannel(CableBlack1.stKonez2.stKonez) = CurrentChannel(CableWhite2.stKonez1.stKonez)))  or
+((CurrentChannel(CableBlack1.stKonez2.stKonez)>0) and (CurrentChannel(CableBlack1.stKonez2.stKonez) = CurrentChannel(CableWhite2.stKonez2.stKonez)))) and
+
+((CurrentPort(CableBlack1.stKonez1.stKonez) = 3) or (CurrentPort(CableBlack1.stKonez2.stKonez) = 3)) and
+ ((CurrentPort(CableWhite2.stKonez1.stKonez) = 4) or (CurrentPort(CableWhite2.stKonez2.stKonez) = 4));
+
+
+//  Result := ((IsNeedToTuneChannelBlocksA = True)
+//            and ((CableBlack1.stKonez1.stKonez < 337) or (CableBlack1.stKonez2.stKonez < 337))
+//    and ((1 < CableBlack1.stKonez1.stKonez) or (1 < CableBlack1.stKonez2.stKonez))
+//    and ((CableWhite2.stKonez1.stKonez < 337) or (CableWhite2.stKonez2.stKonez < 337))
+//    and ((1 < CableWhite2.stKonez1.stKonez) or (1 < CableWhite2.stKonez2.stKonez))
+//    and ((Abs(CableBlack1.stKonez1.stKonez - CableWhite2.stKonez1.stKonez) = 167) or (Abs(CableBlack1.stKonez1.stKonez - CableWhite2.stKonez2.stKonez) = 167) or
+//    (Abs(CableBlack1.stKonez2.stKonez - CableWhite2.stKonez1.stKonez) = 167) or (Abs(CableBlack1.stKonez2.stKonez - CableWhite2.stKonez2.stKonez) = 167)) )
+//          or
+//     ((IsNeedToTuneChannelBlocksB = True)
+//     and ((CableBlack1.stKonez1.stKonez < 337) or (CableBlack1.stKonez2.stKonez < 337))
+//    and ((1 < CableBlack1.stKonez1.stKonez) or (1 < CableBlack1.stKonez2.stKonez))
+//    and ((CableWhite2.stKonez1.stKonez < 337) or (CableWhite2.stKonez2.stKonez < 337))
+//    and ((1 < CableWhite2.stKonez1.stKonez) or (1 < CableWhite2.stKonez2.stKonez))
+//    and ((Abs(CableBlack1.stKonez1.stKonez - CableWhite2.stKonez1.stKonez) = 169) or (Abs(CableBlack1.stKonez1.stKonez - CableWhite2.stKonez2.stKonez) = 169) or
+//    (Abs(CableBlack1.stKonez2.stKonez - CableWhite2.stKonez1.stKonez) = 169) or (Abs(CableBlack1.stKonez2.stKonez - CableWhite2.stKonez2.stKonez) = 169)));
+
+    end;
+
+function TStation.IsNeedToTuneChannelBlocksA: Boolean;
+begin
+  Result := Boolean((1 < CableWhite2.stKonez1.stKonez) and (CableWhite2.stKonez1.stKonez < 169) and (CableWhite2.stKonez1.stState = csConnected) or
+  (1 < CableWhite2.stKonez2.stKonez) and (CableWhite2.stKonez2.stKonez < 169) and (CableWhite2.stKonez2.stState = csConnected));
 end;
+
+function TStation.IsNeedToTuneChannelBlocksB: Boolean;
+begin
+  Result := Boolean((168 < CableWhite2.stKonez1.stKonez) and (CableWhite2.stKonez1.stKonez < 337) and (CableWhite2.stKonez1.stState = csConnected) or
+  (168 < CableWhite2.stKonez2.stKonez) and (CableWhite2.stKonez2.stKonez < 337) and (CableWhite2.stKonez2.stState = csConnected));
+end;
+
+
+
+//   номер канала по плейсхолдеру
+function TStation.CurrentChannel(Placeholder: Integer): Integer;
+var temp: Integer;
+var channel: Integer;
+begin
+            if (Placeholder>=169) then  Placeholder:=Placeholder-168;
+            channel:=0;
+            temp:= Placeholder;
+            while temp>56 do
+            begin
+              temp:=temp-56;
+              channel:=channel+7;
+            end;
+
+            while temp>14 do
+            begin
+              temp:=temp-14;
+            end;
+
+            while temp>=2 do
+            begin
+              temp:=temp-2;
+              channel:=channel+1;
+            end;
+
+            if temp=1 then channel:=channel+1;
+
+
+            Result:= channel;
+
+end;
+
+//номер порта по плейсхолдеру (как в stationstate)
+    function TStation.CurrentPort(Placeholder: Integer): Integer;
+    var temp: Integer;
+    begin
+          if (Placeholder>=169) then  Placeholder:=Placeholder-168;
+
+             temp:= (Placeholder-1) div 14;
+
+             while temp>4 do temp:=temp-4;
+
+
+            Result:= ((Placeholder-1) mod 2)+1+temp*2;
+    end;
+
 
 end.

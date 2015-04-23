@@ -512,26 +512,6 @@
       <parameter name="MKT_ID" type="Byte" />
     </parameters>
   </procedure>
-  <function name="GetTransmitBlockTunedValue" visibility="public">
-    <devnotes>
-       <summary>
-         Возвращает необходимое значение подстройки канала (при котором канал настроен)
-       </summary>
-    </devnotes>
-    <parameters>
-      <retval type="Byte" />
-    </parameters>
-  </function>
-  <function name="IsNeedToTuneChannelBlocksA" visibility="public">
-    <parameters>
-      <retval type="Boolean" />
-    </parameters>
-  </function>
-  <function name="IsNeedToTuneChannelBlocksB" visibility="public">
-    <parameters>
-      <retval type="Boolean" />
-    </parameters>
-  </function>
   <function name="BoolToByteInv" visibility="public">
     <parameters>
       <parameter name="tmpBool" type="Boolean" />

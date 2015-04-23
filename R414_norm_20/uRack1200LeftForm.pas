@@ -292,6 +292,8 @@ type
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure FormCreate(Sender: TObject);
     procedure imgbut1240KClick(Sender: TObject);
+    //procedure img1240GMainTuneClick(Sender: TObject);
+    //procedure img1240VTuneClick(Sender: TObject);
   private
     { Private declarations }
     procedure SetCableOscillographSyncState(btStateCode: Byte);
@@ -727,16 +729,19 @@ begin
               and Station.IsP321ReadyToMeasure()) then
           begin
             imgInd1240V1_Line.Visible :=
-              Boolean((Station.cbGenerator.stConnectedToPlaceId = 15)
-              and (Station.cbInputYY.stConnectedToPlaceId = 184)
-              or (Station.cbGenerator.stConnectedToPlaceId = 183)
-              and (Station.cbInputYY.stConnectedToPlaceId = 16));
+            Boolean(((Station.CableBlack1.stKonez1.stKonez = 15) or (Station.CableBlack1.stKonez2.stKonez = 15))
+              and ((Station.CableWhite2.stKonez1.stKonez = 184) or (Station.CableWhite2.stKonez2.stKonez = 184))
+              or ((Station.CableBlack1.stKonez1.stKonez = 183) or (Station.CableBlack1.stKonez2.stKonez = 183))
+              and ((Station.CableWhite2.stKonez1.stKonez = 16) or (Station.CableWhite2.stKonez2.stKonez = 16)));
+
+
 
             imgInd1240V2_Line.Visible :=
-              Boolean((Station.cbGenerator.stConnectedToPlaceId = 17)
-              and (Station.cbInputYY.stConnectedToPlaceId = 186)
-              or (Station.cbGenerator.stConnectedToPlaceId = 185)
-              and (Station.cbInputYY.stConnectedToPlaceId = 18));
+            Boolean(((Station.CableBlack1.stKonez1.stKonez = 17) or (Station.CableBlack1.stKonez2.stKonez = 17))
+              and ((Station.CableWhite2.stKonez1.stKonez = 186) or (Station.CableWhite2.stKonez2.stKonez = 186))
+              or ((Station.CableBlack1.stKonez1.stKonez = 185) or (Station.CableBlack1.stKonez2.stKonez = 185))
+              and ((Station.CableWhite2.stKonez1.stKonez = 18) or (Station.CableWhite2.stKonez2.stKonez = 18)));
+
             InvalidateAll;
             Exit;
           end
@@ -752,16 +757,18 @@ begin
               and Station.IsP321ReadyToMeasure) then
           begin
             imgInd1240V1_Line.Visible :=
-              Boolean((Station.cbGenerator.stConnectedToPlaceId = 16)
-              and (Station.cbInputYY.stConnectedToPlaceId = 184)
-              or (Station.cbGenerator.stConnectedToPlaceId = 184)
-              and (Station.cbInputYY.stConnectedToPlaceId = 16));
+            Boolean(((Station.CableBlack1.stKonez1.stKonez = 16) or (Station.CableBlack1.stKonez2.stKonez = 16))
+              and ((Station.CableWhite2.stKonez1.stKonez = 184) or (Station.CableWhite2.stKonez2.stKonez = 184))
+              or ((Station.CableBlack1.stKonez1.stKonez = 184) or (Station.CableBlack1.stKonez2.stKonez = 184))
+              and ((Station.CableWhite2.stKonez1.stKonez = 16) or (Station.CableWhite2.stKonez2.stKonez = 16)));
+
 
             imgInd1240V2_Line.Visible :=
-              Boolean((Station.cbGenerator.stConnectedToPlaceId = 18)
-              and (Station.cbInputYY.stConnectedToPlaceId = 186)
-              or (Station.cbGenerator.stConnectedToPlaceId = 186)
-              and (Station.cbInputYY.stConnectedToPlaceId = 18));
+            Boolean(((Station.CableBlack1.stKonez1.stKonez = 18) or (Station.CableBlack1.stKonez2.stKonez = 18))
+              and ((Station.CableWhite2.stKonez1.stKonez = 186) or (Station.CableWhite2.stKonez2.stKonez = 186))
+              or ((Station.CableBlack1.stKonez1.stKonez = 186) or (Station.CableBlack1.stKonez2.stKonez = 186))
+              and ((Station.CableWhite2.stKonez1.stKonez = 18) or (Station.CableWhite2.stKonez2.stKonez = 18)));
+
             InvalidateAll;
             Exit;
           end
@@ -987,17 +994,19 @@ begin
                 and Station.IsP321ReadyToMeasure()) then
             begin
               imgInd1240V1_Line.Visible :=
-                Boolean((Station.cbGenerator.stConnectedToPlaceId = 15)
-                and (Station.cbInputYY.stConnectedToPlaceId = 184)
-                or (Station.cbGenerator.stConnectedToPlaceId = 183)
-                and (Station.cbInputYY.stConnectedToPlaceId = 16));
+                Boolean(((Station.CableBlack1.stKonez1.stKonez = 15) or (Station.CableBlack1.stKonez2.stKonez = 15))
+              and ((Station.CableWhite2.stKonez1.stKonez = 184) or (Station.CableWhite2.stKonez2.stKonez = 184))
+              or ((Station.CableBlack1.stKonez1.stKonez = 183) or (Station.CableBlack1.stKonez2.stKonez = 183))
+              and ((Station.CableWhite2.stKonez1.stKonez = 16) or (Station.CableWhite2.stKonez2.stKonez = 16)));
               imgInd1240V2_Line.Visible :=
-                Boolean((Station.cbGenerator.stConnectedToPlaceId = 17)
-                and (Station.cbInputYY.stConnectedToPlaceId = 186)
-                or (Station.cbGenerator.stConnectedToPlaceId = 185)
-                and (Station.cbInputYY.stConnectedToPlaceId = 18));
+                Boolean(((Station.CableBlack1.stKonez1.stKonez = 17) or (Station.CableBlack1.stKonez2.stKonez = 17))
+              and ((Station.CableWhite2.stKonez1.stKonez = 186) or (Station.CableWhite2.stKonez2.stKonez = 186))
+              or ((Station.CableBlack1.stKonez1.stKonez = 185) or (Station.CableBlack1.stKonez2.stKonez = 185))
+              and ((Station.CableWhite2.stKonez1.stKonez = 18) or (Station.CableWhite2.stKonez2.stKonez = 18)));
               InvalidateAll;
               Exit;
+
+
             end
             else
               HideLevel;
@@ -1011,15 +1020,15 @@ begin
               and Station.IsP321ReadyToMeasure)  then
             begin
               imgInd1240V1_Line.Visible :=
-                Boolean((Station.cbGenerator.stConnectedToPlaceId = 16)
-                  and (Station.cbInputYY.stConnectedToPlaceId = 184)
-                  or (Station.cbGenerator.stConnectedToPlaceId = 184)
-                  and (Station.cbInputYY.stConnectedToPlaceId = 16));
+                Boolean(((Station.CableBlack1.stKonez1.stKonez = 16) or (Station.CableBlack1.stKonez2.stKonez = 16))
+              and ((Station.CableWhite2.stKonez1.stKonez = 184) or (Station.CableWhite2.stKonez2.stKonez = 184))
+              or ((Station.CableBlack1.stKonez1.stKonez = 184) or (Station.CableBlack1.stKonez2.stKonez = 184))
+              and ((Station.CableWhite2.stKonez1.stKonez = 16) or (Station.CableWhite2.stKonez2.stKonez = 16)));
               imgInd1240V2_Line.Visible :=
-              Boolean((Station.cbGenerator.stConnectedToPlaceId = 18)
-              and (Station.cbInputYY.stConnectedToPlaceId = 186)
-              or (Station.cbGenerator.stConnectedToPlaceId = 186)
-              and (Station.cbInputYY.stConnectedToPlaceId = 18));
+              Boolean(((Station.CableBlack1.stKonez1.stKonez = 18) or (Station.CableBlack1.stKonez2.stKonez = 18))
+              and ((Station.CableWhite2.stKonez1.stKonez = 186) or (Station.CableWhite2.stKonez2.stKonez = 186))
+              or ((Station.CableBlack1.stKonez1.stKonez = 186) or (Station.CableBlack1.stKonez2.stKonez = 186))
+              and ((Station.CableWhite2.stKonez1.stKonez = 18) or (Station.CableWhite2.stKonez2.stKonez = 18)));
               InvalidateAll;
               Exit;
             end
@@ -1608,6 +1617,7 @@ begin
   Reload;
 end;
 
+
 procedure TRack1200LeftForm.img1240GMainTuneMouseDown(Sender: TObject;
   Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
 begin
@@ -1873,6 +1883,7 @@ begin
   Reload;
   //RackP321Form.PaintDisplay;
 end;
+
 
 procedure TRack1200LeftForm.img1240VTuneMouseDown(Sender: TObject;
   Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
