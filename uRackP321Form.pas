@@ -490,7 +490,7 @@ var
     begin
       ilDisplay.GetBitmap(0, RackP321MinForm.imgDisplay.Picture.Bitmap);
     end;
-    RackP321MinForm.imgDisplay.Invalidate;
+    //RackP321MinForm.imgDisplay.Invalidate;
   end;
 
   procedure ShowNull;
@@ -501,119 +501,121 @@ var
   end;
 
 begin
-//  if Station.IsPluggedIn then
-//  begin
-//    case Station.P321C.swNepGenYY of
-//      csBlockPowerPanelForm:
-//        begin
-//          ilDisplay.GetBitmap(Station.P321C.swGradPit - 1, imgDisplay.Picture.Bitmap);
-//        end;
-//      csGenerator:
-//        begin
-//          ilDisplay.GetBitmap(Station.P321C.swGradGen - 1, imgDisplay.Picture.Bitmap);
-//        end;
-//      csInputYY:
-//        begin
-//          ilDisplay.GetBitmap(Station.P321C.swGradYY - 1, imgDisplay.Picture.Bitmap);
-//        end;
-//      6:
-//        begin
-//          //Проверим правильно ли выставлены параметры
-//          if (Station.P321C.swNepGen = 5) and
-//          (Station.P321C.swGradPit = 31) and
-//          (Station.P321C.swGradGen = 31) and
-//          (Station.P321C.swGradYY = 31) and
-//          (Station.P321C.swFrequency = 4) then
-//          begin
-//            //Параметры выставлены верно
-//            //Подключены ли кабели
-//            if (Station.cbGenerator.stConnectedToPlaceId <> csDisconected) and
-//            (Station.cbInputYY.stConnectedToPlaceId <> csDisconected) then
-//            begin
-//              //Кабели подключены
-//              //Отображение расстройки стоек 1200
-//              //ShowMessage(IntToStr(Station.cbGenerator.stConnectedToPlaceId));
-//              //ShowMessage(IntToStr(Station.cbInputYY.stConnectedToPlaceId));
-//              if (Station.IsPolukomplektATuned and Station.IsPolukomplektBTuned) then
-//              begin
-//                //==============Двух канальный режим===================
-//                if (Station.IsChannelBlocksTunedAt2ChannelMode) then
-//                begin
-//                  if Station.IsP321ShuntsConnectedAt2ChannelMode then
-//                  begin
-//                    CurTuneValue := Station.GetTransmitBlockTune;
-//                    NeededTuneValue := GetTransmitBlockTunedValue;
-//                    if (CurTuneValue = NeededTuneValue) then
-//                    begin
-//                      //Блок настроен
-//                      ilDisplay.GetBitmap(20, imgDisplay.Picture.Bitmap);
-//                    end
-//                    else
-//                      if (CurTuneValue < NeededTuneValue) then
-//                      begin
-//                        ilDisplay.GetBitmap(20 - (NeededTuneValue - CurTuneValue), imgDisplay.Picture.Bitmap);
-//                      end
-//                      else
-//                        ilDisplay.GetBitmap(20 + (CurTuneValue - NeededTuneValue), imgDisplay.Picture.Bitmap);
-//                    ReloadP321Image;
-//                    Exit;
-//                  end
-//                  else
-//                    ShowNull;
-//                end;
-//                //==============Четырех канальный режим===================
-//                if (Station.IsChannelBlocksTunedAt4ChannelMode) then
-//                begin
-//                  if Station.IsP321ShuntsConnectedAt4ChannelMode then
-//                  begin
-//                    CurTuneValue := Station.GetTransmitBlockTune;
-//                    NeededTuneValue := GetTransmitBlockTunedValue;
-//                    if ((CurTuneValue - NeededTuneValue) = 0) then
-//                    begin
-//                      //Блок настроен
-//                      ilDisplay.GetBitmap(14, imgDisplay.Picture.Bitmap);
-//                    end
-//                    else
-//                      if (CurTuneValue < NeededTuneValue) then
-//                      begin
-//                        ilDisplay.GetBitmap(14 - (NeededTuneValue - CurTuneValue), imgDisplay.Picture.Bitmap);
-//                      end
-//                      else
-//                        ilDisplay.GetBitmap(14 + (CurTuneValue - NeededTuneValue), imgDisplay.Picture.Bitmap);
-//                    ReloadP321Image;
-//                    Exit;
-//                  end
-//                  else
-//                    ShowNull;
-//                end
-//                else
-//                begin
-//                  AddError(idP321C, 'Параметры настройки оборудования не соответствуют ни 2-х ни 4-х канальному режиму, снятие показаний не возможно');
-//                end;
-//
-//                if (Station.IsChannelBlocksTunedAt2ChannelMode = False) and (Station.IsChannelBlocksTunedAt2ChannelMode = False) then
-//                begin
-//                  ShowNull;
-//                end;
-//              end
-//              else
-//              begin
-//                ShowNull;
-//                AddError(idP321A, AnalyseTune(Station.HalfSetA.Rack1500, Station.HalfSetA.Rack1920, Station.HalfSetA.Rack1600, Station.HalfSetA.LittleNoisyAmplifier, Station.HalfSetA.Duplexer, 'A') +
-//                AnalyseTune(Station.HalfSetA.Rack1500, Station.HalfSetA.Rack1920, Station.HalfSetA.Rack1600, Station.HalfSetA.LittleNoisyAmplifier, Station.HalfSetA.Duplexer, 'B'));
-//              end;
-//            end;
-//          end
-//          else
-//          begin
-//            AddError(idP321C, 'Параметры P-321 настроены не верно, снятие показаний не возможно');
-//          end;
-//        end;
-//    else
-//      ilDisplay.GetBitmap(0, imgDisplay.Picture.Bitmap);
-//    end;
-//    ReloadP321Image;
-//  end;
+  if Station.IsPluggedIn then
+  begin
+    case Station.P321C.swNepGenYY of
+      csBlockPowerPanelForm:
+        begin
+          ilDisplay.GetBitmap(Station.P321C.swGradPit - 1, imgDisplay.Picture.Bitmap);
+        end;
+      csGenerator:
+        begin
+          ilDisplay.GetBitmap(Station.P321C.swGradGen - 1, imgDisplay.Picture.Bitmap);
+        end;
+      csInputYY:
+        begin
+          ilDisplay.GetBitmap(Station.P321C.swGradYY - 1, imgDisplay.Picture.Bitmap);
+        end;
+      6:
+        begin
+          //Проверим правильно ли выставлены параметры
+          if (Station.P321C.swNepGen = 5) and
+          (Station.P321C.swGradPit = 31) and
+          (Station.P321C.swGradGen = 31) and
+          (Station.P321C.swGradYY = 31) and
+          (Station.P321C.swFrequency = 4) then
+          begin
+            //Параметры выставлены верно
+            //Подключены ли кабели
+            if ((Station.CableBlack1.stKonez1.stState = csP321CGen) or (Station.CableBlack1.stKonez2.stState = csP321CGen)) and
+            ((Station.CableWhite2.stKonez1.stState = csP321CYY) or (Station.CableWhite2.stKonez2.stState = csP321CYY)) then
+            begin
+              //Кабели подключены
+              //Отображение расстройки стоек 1200
+              //ShowMessage(IntToStr(Station.cbGenerator.stConnectedToPlaceId));
+              //ShowMessage(IntToStr(Station.cbInputYY.stConnectedToPlaceId));
+              if (Station.IsPolukomplektATuned and Station.IsPolukomplektBTuned) then     !!!!!!!!!!!!!!!!!!!!!!
+              // (true) then
+              begin
+                //==============Двух канальный режим===================
+                if (Station.IsChannelBlocksTunedAt2ChannelMode) then
+                begin
+                  if Station.IsP321ShuntsConnectedAt2ChannelMode then
+                  begin
+                    CurTuneValue := Station.GetTransmitBlockTune;
+                    NeededTuneValue := Station.GetTransmitBlockTunedValueNeed;
+                    if (CurTuneValue = NeededTuneValue) then
+                    begin
+                      //Блок настроен
+                      ilDisplay.GetBitmap(14, imgDisplay.Picture.Bitmap);
+                    end
+                    else
+                      if (CurTuneValue < NeededTuneValue) then
+                      begin
+                        ilDisplay.GetBitmap(14 - (NeededTuneValue - CurTuneValue), imgDisplay.Picture.Bitmap);
+                      end
+                      else
+                        ilDisplay.GetBitmap(14 + (CurTuneValue - NeededTuneValue), imgDisplay.Picture.Bitmap);
+                    ReloadP321Image;
+                    Exit;
+                  end
+                  else
+                    ShowNull;
+                end;
+                //==============Четырех канальный режим===================
+                if (Station.IsChannelBlocksTunedAt4ChannelMode) then
+                begin
+                  if Station.IsP321ShuntsConnectedAt4ChannelMode then
+                  if True then
+                  begin
+                    CurTuneValue := Station.GetTransmitBlockTune;
+                    NeededTuneValue := Station.GetTransmitBlockTunedValueNeed;
+                    if ((CurTuneValue - NeededTuneValue) = 0) then
+                    begin
+                      //Блок настроен
+                      ilDisplay.GetBitmap(20, imgDisplay.Picture.Bitmap);
+                    end
+                    else
+                      if (CurTuneValue < NeededTuneValue) then
+                      begin
+                        ilDisplay.GetBitmap(20 - (NeededTuneValue - CurTuneValue), imgDisplay.Picture.Bitmap);
+                      end
+                      else
+                        ilDisplay.GetBitmap(20 + (CurTuneValue - NeededTuneValue), imgDisplay.Picture.Bitmap);
+                    ReloadP321Image;
+                    Exit;
+                  end
+                  else
+                    ShowNull;
+                end
+                else
+                begin
+                  //AddError(idP321C, 'Параметры настройки оборудования не соответствуют ни 2-х ни 4-х канальному режиму, снятие показаний не возможно');
+                end;
+
+                if (Station.IsChannelBlocksTunedAt2ChannelMode = False) and (Station.IsChannelBlocksTunedAt2ChannelMode = False) then
+                begin
+                  ShowNull;
+                end;
+              end
+              else
+              begin
+                ShowNull;
+                //AddError(idP321A, AnalyseTune(Station.HalfSetA.Rack1500, Station.HalfSetA.Rack1920, Station.HalfSetA.Rack1600, Station.HalfSetA.LittleNoisyAmplifier, Station.HalfSetA.Duplexer, 'A') +
+                //AnalyseTune(Station.HalfSetA.Rack1500, Station.HalfSetA.Rack1920, Station.HalfSetA.Rack1600, Station.HalfSetA.LittleNoisyAmplifier, Station.HalfSetA.Duplexer, 'B'));
+              end;
+            end;
+          end
+          else
+          begin
+            //AddError(idP321C, 'Параметры P-321 настроены не верно, снятие показаний не возможно');
+          end;
+        end;
+    else
+      ilDisplay.GetBitmap(0, imgDisplay.Picture.Bitmap);
+    end;
+    ReloadP321Image;
+  end;
 end;
 
 procedure TRackP321Form.Reload;
@@ -692,8 +694,8 @@ begin
         Freq := Station.P321C.swFrequency;
         NepGen := Station.P321C.swNepGen;
         InputYY := Station.P321C.swNepGenYY;
-        imgCableGeneratorJumper1.Visible := Boolean(Station.cbGenerator.stConnectedToPlaceId = csDisconected);
-        imgCableInputYYJumper2.Visible := Boolean(Station.cbInputYY.stConnectedToPlaceId  = csDisconected);
+        //imgCableGeneratorJumper1.Visible := Boolean((Station.CableBlack1.stKonez1.stState=csDisconected) or (Station.CableBlack1.stKonez2.stState=csDisconected));
+        //imgCableInputYYJumper2.Visible := Boolean(Station.CableWhite2.stKonez1.stState=csDisconected) or (Station.CableWhite2.stKonez2.stState=csDisconected);
         intA := Station.P321C.swGradPit;
         while intA > 7 do
         begin
@@ -706,7 +708,7 @@ begin
         imgSwGradGen1.Visible := Boolean(Station.P321C.swGradGen mod 2 = 0);
         imgGradPit.Invalidate;
 
-         if ((cbUdlinitel1.stKonez1.stState=csDisconected) or (cbUdlinitel1.stKonez2.stState=csDisconected)) then
+         if ((Station.CableBlack1.stKonez1.stState=csDisconected) or (Station.CableBlack1.stKonez2.stState=csDisconected)) then
          begin
                imgCableGeneratorJumper1.Visible := True;
          end
@@ -715,7 +717,7 @@ begin
                imgCableGeneratorJumper1.Visible := False;
          end;
 
-         if (cbUdlinitel2.stKonez1.stState=csDisconected) or (cbUdlinitel2.stKonez2.stState=csDisconected) then
+         if (Station.CableWhite2.stKonez1.stState=csDisconected) or (Station.CableWhite2.stKonez2.stState=csDisconected) then
          begin
                imgCableInputYYJumper2.Visible := True;
          end
@@ -724,7 +726,7 @@ begin
                imgCableInputYYJumper2.Visible := False;
          end;
 
-         if ((cbUdlinitel1.stKonez1.stState=csP321CGen) or (cbUdlinitel1.stKonez2.stState=csP321CGen)) then
+         if ((Station.CableBlack1.stKonez1.stState=csP321CGen) or (Station.CableBlack1.stKonez2.stState=csP321CGen)) then
          begin
                imgCableGeneratorConnected1.Visible:=True;
          end
@@ -733,7 +735,7 @@ begin
                imgCableGeneratorConnected1.Visible:=False;
          end;
 
-         if ((cbUdlinitel2.stKonez1.stState=csP321CYY) or (cbUdlinitel2.stKonez2.stState=csP321CYY)) then
+         if ((Station.CableWhite2.stKonez1.stState=csP321CYY) or (Station.CableWhite2.stKonez2.stState=csP321CYY)) then
          begin
                imgCableInputYYConnected2.Visible:=True;
          end
@@ -895,13 +897,13 @@ end;
 
 procedure TRackP321Form.imgCableGeneratorConnected1Click(Sender: TObject);
 begin
-if (cbUdlinitel1.stKonez1.stState = csP321CGen) then
+if (Station.CableBlack1.stKonez1.stState = csP321CGen) then
   begin
-       cbUdlinitel1.stKonez1.stState:=csDisconected;
+       Station.CableBlack1.stKonez1.stState:=csDisconected;
   end;
-  if (cbUdlinitel1.stKonez2.stState = csP321CGen) then
+  if (Station.CableBlack1.stKonez2.stState = csP321CGen) then
   begin
-       cbUdlinitel1.stKonez2.stState:=csDisconected;
+       Station.CableBlack1.stKonez2.stState:=csDisconected;
   end;
 
   Reload;
@@ -928,14 +930,15 @@ end;
 
 procedure TRackP321Form.imgCableInputYYConnected2Click(Sender: TObject);
 begin
-if (cbUdlinitel2.stKonez1.stState = csP321CYY) then
+if (Station.CableWhite2.stKonez1.stState = csP321CYY) then
   begin
-       cbUdlinitel2.stKonez1.stState:=csDisconected;
+       Station.CableWhite2.stKonez1.stState:=csDisconected;
   end;
-if (cbUdlinitel2.stKonez2.stState = csP321CYY) then
+if (Station.CableWhite2.stKonez2.stState = csP321CYY) then
   begin
-       cbUdlinitel2.stKonez2.stState:=csDisconected;
+       Station.CableWhite2.stKonez2.stState:=csDisconected;
   end;
+
   Reload;
 end;
 
@@ -1053,15 +1056,17 @@ procedure TRackP321Form.imgInputGenClick(Sender: TObject);
 begin
 if (SelectedCable=csUd1) then
    begin
-    if (cbUdlinitel1.stKonez1.stState<>csP321CGen) and (cbUdlinitel1.stKonez2.stState<>csP321CGen) then
+    if (Station.CableBlack1.stKonez1.stState<>csP321CGen) and (Station.CableBlack1.stKonez2.stState<>csP321CGen) then
     begin
-          if (cbUdlinitel1.stKonez1.stState=csDisconected) then
+          if (Station.CableBlack1.stKonez1.stState=csDisconected) then
           begin
-          cbUdlinitel1.stKonez1.stState:=csP321CGen;
+          Station.CableBlack1.stKonez1.stState:=csP321CGen;
+          Station.CableBlack1.stKonez1.stKonez :=0;
           end
-          else if (cbUdlinitel1.stKonez2.stState=csDisconected) then
+          else if (Station.CableBlack1.stKonez2.stState=csDisconected) then
           begin
-            cbUdlinitel1.stKonez2.stState:=csP321CGen;
+            Station.CableBlack1.stKonez2.stState:=csP321CGen;
+            Station.CableBlack1.stKonez2.stKonez :=0;
           end;
     end;
    end;
@@ -1072,15 +1077,17 @@ procedure TRackP321Form.imgInputYYClick(Sender: TObject);
 begin
 if (SelectedCable=csUd2) then
    begin
-    if (cbUdlinitel2.stKonez1.stState<>csP321CYY) and (cbUdlinitel2.stKonez2.stState<>csP321CYY) then
+    if (Station.CableWhite2.stKonez1.stState<>csP321CYY) and (Station.CableWhite2.stKonez2.stState<>csP321CYY) then
     begin
-          if (cbUdlinitel2.stKonez1.stState=csDisconected) then
+          if (Station.CableWhite2.stKonez1.stState=csDisconected) then
           begin
-          cbUdlinitel2.stKonez1.stState:=csP321CYY;
+          Station.CableWhite2.stKonez1.stState:=csP321CYY;
+          Station.CableWhite2.stKonez1.stKonez :=0;
           end
-          else if (cbUdlinitel2.stKonez2.stState=csDisconected) then
+          else if (Station.CableWhite2.stKonez2.stState=csDisconected) then
           begin
-            cbUdlinitel2.stKonez2.stState:=csP321CYY;
+            Station.CableWhite2.stKonez2.stState:=csP321CYY;
+            Station.CableWhite2.stKonez2.stKonez :=0;
           end;
     end;
    end;

@@ -2818,7 +2818,7 @@ uConstantsDM;
    inherited Create;
 
         Name:='Доложить корреспонденту.';
-        Text:='Доложить корреспонденту о начале затухания ТЧ. Старшая станция: "1460, я 1450. Приступаем к регулировке остатчного затухания каналов. Дайте генератор по первому каналу полукомплекта А. Даю вам." Подчиненная станция: "Вас понял. Даю генератор".';
+        Text:='Доложить корреспонденту о начале проверки затухания ТЧ. Старшая станция: "1460, я 1450. Приступаем к регулировке остатчного затухания каналов. Дайте генератор по первому каналу полукомплекта А. Даю вам." Подчиненная станция: "Вас понял. Даю генератор".';
         EventFormName:='';
         Time:= '';
    end;
@@ -2830,7 +2830,8 @@ uConstantsDM;
 
        function TTaskTerminalModeSubTask17.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
-         if (Station.P321C.but600Ohm = butPositionUp) and (Station.P321C.swNepGen = 5) and (Station.P321C.swNepGenYY = 6) and ((Station.CableBlack1.stKonez1.stState = csP321CGen) or (Station.CableBlack1.stKonez2.stState = csP321CGen))
+         if (Station.P321C.but600Ohm = butPositionUp) and (Station.P321C.swNepGen = 5) and (Station.P321C.swNepGenYY = 6) and
+         ((Station.CableBlack1.stKonez1.stState = csP321CGen) or (Station.CableBlack1.stKonez2.stState = csP321CGen))
          and ((Station.CableWhite2.stKonez1.stState = csP321CYY) or (Station.CableWhite2.stKonez2.stState = csP321CYY))  then
          begin   //проверить условия
             TaskNetParams.ChangeValue('WeGiveGenerator1', 'True');

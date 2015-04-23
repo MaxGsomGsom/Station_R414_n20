@@ -123,6 +123,8 @@ type
     imgEnterToRackRightSelected: TImage;
     imgWaveMeterMain: TImage;
     imgWaveMeterReserv: TImage;
+    imgTuneHelp: TImage;
+    imgTuneHelp2: TImage;
     {$ENDREGION}
 
   {$REGION 'Обработка событий формы'}
@@ -277,6 +279,16 @@ begin
   TaskController.Subscribe(self);
   ButtonBackForm:= TButtonBackForm.Create(self);
   ButtonBackForm.Show; TaskController.Subscribe(ButtonBackForm);
+  if (TaskController.NetWorker.ClientState.WorkMode = TWorkMode.wmLearning) then
+  begin
+    imgTuneHelp.Visible := True;
+    imgTuneHelp2.Visible := True;
+  end
+  else begin
+      imgTuneHelp.Visible := False;
+    imgTuneHelp2.Visible := False;
+  end;
+
 end;
 
 

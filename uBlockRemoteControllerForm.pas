@@ -633,8 +633,6 @@ type
     procedure pmSpawn1200BPrdClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure White1Click(Sender: TObject);
-    function CurrentChannel(Placeholder: Integer): Integer;
-    function CurrentPort(Placeholder: Integer): Integer;
 
 
   private
@@ -665,8 +663,6 @@ var
   btLeft, btTop, imgTopOffset, imgLeftOffset, btPlaceHolder: Integer;
   end;
 
- var
-   cbUdlinitel1, cbUdlinitel2: pUdlinitelCable;
 
 
 implementation
@@ -726,71 +722,71 @@ begin
 
 
     //==========================Вход Указателя уровня (УУ)======================
-  if cbUdlinitel1.stKonez1.stKonez <> csDisconected then
+  if Station.CableBlack1.stKonez1.stKonez <> csDisconected then
   begin
-    imgCable1_ST1.Left := cbUdlinitel1.stKonez1.offsetLeft;
-    imgCable1_ST1.Top := cbUdlinitel1.stKonez1.offsetTop;
+    imgCable1_ST1.Left := Station.CableBlack1.stKonez1.offsetLeft;
+    imgCable1_ST1.Top := Station.CableBlack1.stKonez1.offsetTop;
   end;
-  Black1.Visible := Boolean(cbUdlinitel1.stKonez1.stKonez = csDisconected);
+  Black1.Visible := Boolean(Station.CableBlack1.stKonez1.stKonez = csDisconected);
   imgCable1_ST1.Visible :=
-    Boolean(cbUdlinitel1.stKonez1.stKonez <> csDisconected);
+    Boolean(Station.CableBlack1.stKonez1.stKonez <> csDisconected);
   imgCable1_ST1.Invalidate;
   Black1.Invalidate;
 
-  if cbUdlinitel1.stKonez2.stKonez <> csDisconected then
+  if Station.CableBlack1.stKonez2.stKonez <> csDisconected then
   begin
-    imgCable1_ST2.Left := cbUdlinitel1.stKonez2.offsetLeft;
-    imgCable1_ST2.Top := cbUdlinitel1.stKonez2.offsetTop;
+    imgCable1_ST2.Left := Station.CableBlack1.stKonez2.offsetLeft;
+    imgCable1_ST2.Top := Station.CableBlack1.stKonez2.offsetTop;
   end;
   Black2.Visible :=
-    Boolean(cbUdlinitel1.stKonez2.stKonez = csDisconected);
+    Boolean(Station.CableBlack1.stKonez2.stKonez = csDisconected);
   imgCable1_ST2.Visible :=
-    Boolean(cbUdlinitel1.stKonez2.stKonez <> csDisconected);
+    Boolean(Station.CableBlack1.stKonez2.stKonez <> csDisconected);
   imgCable1_ST2.Invalidate;
   Black2.Invalidate;
 
-  if cbUdlinitel2.stKonez1.stKonez <> csDisconected then
+  if Station.CableWhite2.stKonez1.stKonez <> csDisconected then
   begin
-    imgCable2_ST1.Left := cbUdlinitel2.stKonez1.offsetLeft;
-    imgCable2_ST1.Top := cbUdlinitel2.stKonez1.offsetTop;
+    imgCable2_ST1.Left := Station.CableWhite2.stKonez1.offsetLeft;
+    imgCable2_ST1.Top := Station.CableWhite2.stKonez1.offsetTop;
   end;
   White1.Visible :=
-    Boolean(cbUdlinitel2.stKonez1.stKonez = csDisconected);
+    Boolean(Station.CableWhite2.stKonez1.stKonez = csDisconected);
   imgCable2_ST1.Visible :=
-    Boolean(cbUdlinitel2.stKonez1.stKonez <> csDisconected);
+    Boolean(Station.CableWhite2.stKonez1.stKonez <> csDisconected);
   imgCable2_ST1.Invalidate;
   White1.Invalidate;
 
-  if cbUdlinitel2.stKonez2.stKonez <> csDisconected then
+  if Station.CableWhite2.stKonez2.stKonez <> csDisconected then
   begin
-    imgCable2_ST2.Left := cbUdlinitel2.stKonez2.offsetLeft;
-    imgCable2_ST2.Top := cbUdlinitel2.stKonez2.offsetTop;
+    imgCable2_ST2.Left := Station.CableWhite2.stKonez2.offsetLeft;
+    imgCable2_ST2.Top := Station.CableWhite2.stKonez2.offsetTop;
   end;
-  White2.Visible := Boolean(cbUdlinitel2.stKonez2.stKonez = csDisconected);
+  White2.Visible := Boolean(Station.CableWhite2.stKonez2.stKonez = csDisconected);
   imgCable2_ST2.Visible :=
-    Boolean(cbUdlinitel2.stKonez2.stKonez <> csDisconected);
+    Boolean(Station.CableWhite2.stKonez2.stKonez <> csDisconected);
   imgCable2_ST2.Invalidate;
   White2.Invalidate;
 
-  if Station.cbGenerator.stConnectedToPlaceId <> csDisconected then
-  begin
-    imgGeneratorConnected.Left := Station.cbGenerator.offsetLeft;
-    imgGeneratorConnected.Top := Station.cbGenerator.offsetTop;
-  end;
-  imgGeneratorConnected.Visible :=
-    Boolean(Station.cbGenerator.stConnectedToPlaceId <> csDisconected);
-  imgGeneratorConnected.Invalidate;
+//  if Station.cbGenerator.stConnectedToPlaceId <> csDisconected then
+//  begin
+//    imgGeneratorConnected.Left := Station.cbGenerator.offsetLeft;
+//    imgGeneratorConnected.Top := Station.cbGenerator.offsetTop;
+//  end;
+//  imgGeneratorConnected.Visible :=
+//    Boolean(Station.cbGenerator.stConnectedToPlaceId <> csDisconected);
+//  imgGeneratorConnected.Invalidate;
+//
+//  if Station.cbInputYY.stConnectedToPlaceId <> csDisconected then
+//  begin
+//    imgInputYYConnected.Left := Station.cbInputYY.offsetLeft;
+//    imgInputYYConnected.Top := Station.cbInputYY.offsetTop;
+//  end;
+//  imgInputYYConnected.Visible :=
+//    Boolean(Station.cbInputYY.stConnectedToPlaceId <> csDisconected);
+//  imgInputYYConnected.Invalidate;
 
-  if Station.cbInputYY.stConnectedToPlaceId <> csDisconected then
-  begin
-    imgInputYYConnected.Left := Station.cbInputYY.offsetLeft;
-    imgInputYYConnected.Top := Station.cbInputYY.offsetTop;
-  end;
-  imgInputYYConnected.Visible :=
-    Boolean(Station.cbInputYY.stConnectedToPlaceId <> csDisconected);
-  imgInputYYConnected.Invalidate;
-
-  if (cbUdlinitel1.stKonez1.stState=csDisconected) then
+  if (Station.CableBlack1.stKonez1.stState=csDisconected) then
   begin
       Black1.Visible:=True;
   end
@@ -798,7 +794,7 @@ begin
   begin
        Black1.Visible:=False;
   end;
-  if (cbUdlinitel1.stKonez2.stState=csDisconected) then
+  if (Station.CableBlack1.stKonez2.stState=csDisconected) then
   begin
       Black2.Visible:=True;
   end
@@ -806,7 +802,7 @@ begin
   begin
        Black2.Visible:=False;
   end;
-  if (cbUdlinitel2.stKonez1.stState=csDisconected) then
+  if (Station.CableWhite2.stKonez1.stState=csDisconected) then
   begin
       White1.Visible:=True;
   end
@@ -814,7 +810,7 @@ begin
   begin
        White1.Visible:=False;
   end;
-  if (cbUdlinitel2.stKonez2.stState=csDisconected) then
+  if (Station.CableWhite2.stKonez2.stState=csDisconected) then
   begin
       White2.Visible:=True;
   end
@@ -889,57 +885,57 @@ begin
     //=======================4-х канальный режим==============================
     if Station.IsChannelBlocksTunedAt4ChannelMode and (Station.RemoteController.SwPVU = 2) then
     begin
-      if (IsUdlinitelCableConnectedAtModulator(cbUdlinitel1)) then
+      if (IsUdlinitelCableConnectedAtModulator(Station.CableBlack1)) then
       begin
         //Определим какой именно конец подключен к модулятору
-        if IsUdlinitelCableKonezConnectedAtModulator(cbUdlinitel1, 1) then
+        if IsUdlinitelCableKonezConnectedAtModulator(Station.CableBlack1, 1) then
         begin
           //Подключен первый конец первого удлинительного кабеля
           //Проверим куда подключен второй конец кабеля
-          if cbUdlinitel1.stKonez2.stKonez = cell_PVU_PRD then
+          if Station.CableBlack1.stKonez2.stKonez = cell_PVU_PRD then
           begin
             //Кабель подключен на передачу
             //Проверяем второй кабель
-            if IsUdlinitelCableConnectedAtDeModulator(cbUdlinitel2) then
+            if IsUdlinitelCableConnectedAtDeModulator(Station.CableWhite2) then
             begin
               //Определим какой именно конец подключен к демодулятору
-              if IsUdlinitelCableKonezConnectedAtDeModulator(cbUdlinitel2, 1) then
+              if IsUdlinitelCableKonezConnectedAtDeModulator(Station.CableWhite2, 1) then
               begin
                 //Проверим состояние другого конца кабеля
-                if IsUdlinitelCableKonezConnectedAtHighOhmInputCell(cbUdlinitel2, 2) then
+                if IsUdlinitelCableKonezConnectedAtHighOhmInputCell(Station.CableWhite2, 2) then
                 begin
                   //Проверим одинаковые ли каналы
-                  if GetChannelIdByCellId(cbUdlinitel1.stKonez1.stKonez) = GetChannelIdByCellId(cbUdlinitel2.stKonez1.stKonez) then
+                  if GetChannelIdByCellId(Station.CableBlack1.stKonez1.stKonez) = GetChannelIdByCellId(Station.CableWhite2.stKonez1.stKonez) then
                   begin
                     //Проверим настроен ли канал
-                    if Station.IsChannelTuned(GetChannelIdByCellId(cbUdlinitel1.stKonez1.stKonez)) then
+                    if Station.IsChannelTuned(GetChannelIdByCellId(Station.CableBlack1.stKonez1.stKonez)) then
                     begin
                       BeepEx;
                       //Какой именно полукомплект настроен
-                      if GetPolukomplektCodeByCableKonez(cbUdlinitel2.stKonez1) = 2 then
-                        stCallPassed.FourChannelMode.ChannelB[GetChannelIdByCellId(cbUdlinitel1.stKonez1.stKonez)].State := stPassed;
-                      if GetPolukomplektCodeByCableKonez(cbUdlinitel2.stKonez1) = 1 then
-                        stCallPassed.FourChannelMode.ChannelA[GetChannelIdByCellId(cbUdlinitel1.stKonez1.stKonez)].State := stPassed;
+                      if GetPolukomplektCodeByCableKonez(Station.CableWhite2.stKonez1) = 2 then
+                        stCallPassed.FourChannelMode.ChannelB[GetChannelIdByCellId(Station.CableBlack1.stKonez1.stKonez)].State := stPassed;
+                      if GetPolukomplektCodeByCableKonez(Station.CableWhite2.stKonez1) = 1 then
+                        stCallPassed.FourChannelMode.ChannelA[GetChannelIdByCellId(Station.CableBlack1.stKonez1.stKonez)].State := stPassed;
                     end;
                   end;
                 end;
               end;
-              if IsUdlinitelCableKonezConnectedAtDeModulator(cbUdlinitel2, 2) then
+              if IsUdlinitelCableKonezConnectedAtDeModulator(Station.CableWhite2, 2) then
               begin
                 //Проверим состояние другого конца кабеля
-                if IsUdlinitelCableKonezConnectedAtHighOhmInputCell(cbUdlinitel2, 1) then
+                if IsUdlinitelCableKonezConnectedAtHighOhmInputCell(Station.CableWhite2, 1) then
                 begin
                   //Проверим одинаковые ли каналы
-                  if GetChannelIdByCellId(cbUdlinitel1.stKonez1.stKonez) = GetChannelIdByCellId(cbUdlinitel2.stKonez2.stKonez) then
+                  if GetChannelIdByCellId(Station.CableBlack1.stKonez1.stKonez) = GetChannelIdByCellId(Station.CableWhite2.stKonez2.stKonez) then
                   begin
                     //Проверим настроен ли канал
-                    if Station.IsChannelTuned(GetChannelIdByCellId(cbUdlinitel1.stKonez1.stKonez)) then
+                    if Station.IsChannelTuned(GetChannelIdByCellId(Station.CableBlack1.stKonez1.stKonez)) then
                     begin
                       BeepEx;
-                      if GetPolukomplektCodeByCableKonez(cbUdlinitel2.stKonez2) = 2 then
-                        stCallPassed.FourChannelMode.ChannelB[GetChannelIdByCellId(cbUdlinitel1.stKonez1.stKonez)].State := stPassed;
-                      if GetPolukomplektCodeByCableKonez(cbUdlinitel2.stKonez2) = 1 then
-                        stCallPassed.FourChannelMode.ChannelA[GetChannelIdByCellId(cbUdlinitel1.stKonez1.stKonez)].State := stPassed;
+                      if GetPolukomplektCodeByCableKonez(Station.CableWhite2.stKonez2) = 2 then
+                        stCallPassed.FourChannelMode.ChannelB[GetChannelIdByCellId(Station.CableBlack1.stKonez1.stKonez)].State := stPassed;
+                      if GetPolukomplektCodeByCableKonez(Station.CableWhite2.stKonez2) = 1 then
+                        stCallPassed.FourChannelMode.ChannelA[GetChannelIdByCellId(Station.CableBlack1.stKonez1.stKonez)].State := stPassed;
                     end;
                   end;
                 end;
@@ -947,53 +943,53 @@ begin
             end;
           end;
         end;
-        if IsUdlinitelCableKonezConnectedAtModulator(cbUdlinitel1, 2) then
+        if IsUdlinitelCableKonezConnectedAtModulator(Station.CableBlack1, 2) then
         begin
           //Подключен второй конец первого удлинительного кабеля
           //Проверим куда подключен первый конец кабеля
-          if cbUdlinitel1.stKonez1.stKonez = cell_PVU_PRD then
+          if Station.CableBlack1.stKonez1.stKonez = cell_PVU_PRD then
           begin
             //Кабель подключен на передачу
             //Проверяем второй кабель
-            if IsUdlinitelCableConnectedAtDeModulator(cbUdlinitel2) then
+            if IsUdlinitelCableConnectedAtDeModulator(Station.CableWhite2) then
             begin
               //Определим какой именно конец подключен к демодулятору
-              if IsUdlinitelCableKonezConnectedAtDeModulator(cbUdlinitel2, 1) then
+              if IsUdlinitelCableKonezConnectedAtDeModulator(Station.CableWhite2, 1) then
               begin
                 //Проверим состояние другого конца кабеля
-                if IsUdlinitelCableKonezConnectedAtHighOhmInputCell(cbUdlinitel2, 2) then
+                if IsUdlinitelCableKonezConnectedAtHighOhmInputCell(Station.CableWhite2, 2) then
                 begin
                   //Проверим одинаковые ли каналы
-                  if GetChannelIdByCellId(cbUdlinitel1.stKonez2.stKonez) = GetChannelIdByCellId(cbUdlinitel2.stKonez1.stKonez) then
+                  if GetChannelIdByCellId(Station.CableBlack1.stKonez2.stKonez) = GetChannelIdByCellId(Station.CableWhite2.stKonez1.stKonez) then
                   begin
                   //Проверим настроен ли канал
-                    if Station.IsChannelTuned(GetChannelIdByCellId(cbUdlinitel1.stKonez2.stKonez)) then
+                    if Station.IsChannelTuned(GetChannelIdByCellId(Station.CableBlack1.stKonez2.stKonez)) then
                     begin
                       BeepEx;
-                      if GetPolukomplektCodeByCableKonez(cbUdlinitel2.stKonez1) = 2 then
-                        stCallPassed.FourChannelMode.ChannelB[GetChannelIdByCellId(cbUdlinitel1.stKonez2.stKonez)].State := stPassed;
-                      if GetPolukomplektCodeByCableKonez(cbUdlinitel2.stKonez1) = 1 then
-                        stCallPassed.FourChannelMode.ChannelA[GetChannelIdByCellId(cbUdlinitel1.stKonez2.stKonez)].State := stPassed;
+                      if GetPolukomplektCodeByCableKonez(Station.CableWhite2.stKonez1) = 2 then
+                        stCallPassed.FourChannelMode.ChannelB[GetChannelIdByCellId(Station.CableBlack1.stKonez2.stKonez)].State := stPassed;
+                      if GetPolukomplektCodeByCableKonez(Station.CableWhite2.stKonez1) = 1 then
+                        stCallPassed.FourChannelMode.ChannelA[GetChannelIdByCellId(Station.CableBlack1.stKonez2.stKonez)].State := stPassed;
                     end;
                   end;
                 end;
               end;
-              if IsUdlinitelCableKonezConnectedAtDeModulator(cbUdlinitel2, 2) then
+              if IsUdlinitelCableKonezConnectedAtDeModulator(Station.CableWhite2, 2) then
               begin
                 //Проверим состояние другого конца кабеля
-                if IsUdlinitelCableKonezConnectedAtHighOhmInputCell(cbUdlinitel2, 1) then
+                if IsUdlinitelCableKonezConnectedAtHighOhmInputCell(Station.CableWhite2, 1) then
                 begin
                   //Проверим одинаковые ли каналы
-                  if GetChannelIdByCellId(cbUdlinitel1.stKonez2.stKonez) = GetChannelIdByCellId(cbUdlinitel2.stKonez2.stKonez) then
+                  if GetChannelIdByCellId(Station.CableBlack1.stKonez2.stKonez) = GetChannelIdByCellId(Station.CableWhite2.stKonez2.stKonez) then
                   begin
                     //Проверим настроен ли канал
-                    if Station.IsChannelTuned(GetChannelIdByCellId(cbUdlinitel1.stKonez2.stKonez)) then
+                    if Station.IsChannelTuned(GetChannelIdByCellId(Station.CableBlack1.stKonez2.stKonez)) then
                     begin
                       BeepEx;
-                      if GetPolukomplektCodeByCableKonez(cbUdlinitel2.stKonez2) = 2 then
-                        stCallPassed.FourChannelMode.ChannelB[GetChannelIdByCellId(cbUdlinitel1.stKonez2.stKonez)].State := stPassed;
-                      if GetPolukomplektCodeByCableKonez(cbUdlinitel2.stKonez2) = 1 then
-                        stCallPassed.FourChannelMode.ChannelA[GetChannelIdByCellId(cbUdlinitel1.stKonez2.stKonez)].State := stPassed;
+                      if GetPolukomplektCodeByCableKonez(Station.CableWhite2.stKonez2) = 2 then
+                        stCallPassed.FourChannelMode.ChannelB[GetChannelIdByCellId(Station.CableBlack1.stKonez2.stKonez)].State := stPassed;
+                      if GetPolukomplektCodeByCableKonez(Station.CableWhite2.stKonez2) = 1 then
+                        stCallPassed.FourChannelMode.ChannelA[GetChannelIdByCellId(Station.CableBlack1.stKonez2.stKonez)].State := stPassed;
                     end;
                   end;
                 end;
@@ -1003,56 +999,56 @@ begin
         end;
       end;
 
-      if (IsUdlinitelCableConnectedAtModulator(cbUdlinitel2)) then
+      if (IsUdlinitelCableConnectedAtModulator(Station.CableWhite2)) then
       begin
         //Определим какой именно конец подключен к модулятору
-        if IsUdlinitelCableKonezConnectedAtModulator(cbUdlinitel2, 1) then
+        if IsUdlinitelCableKonezConnectedAtModulator(Station.CableWhite2, 1) then
         begin
           //Подключен первый конец первого удлинительного кабеля
           //Проверим куда подключен второй конец кабеля
-          if cbUdlinitel2.stKonez2.stKonez = cell_PVU_PRD then
+          if Station.CableWhite2.stKonez2.stKonez = cell_PVU_PRD then
           begin
             //Кабель подключен на передачу
             //Проверяем второй кабель
-            if IsUdlinitelCableConnectedAtDeModulator(cbUdlinitel1) then
+            if IsUdlinitelCableConnectedAtDeModulator(Station.CableBlack1) then
             begin
               //Определим какой именно конец подключен к демодулятору
-              if IsUdlinitelCableKonezConnectedAtDeModulator(cbUdlinitel1, 1) then
+              if IsUdlinitelCableKonezConnectedAtDeModulator(Station.CableBlack1, 1) then
               begin
                 //Проверим состояние другого конца кабеля
-                if IsUdlinitelCableKonezConnectedAtHighOhmInputCell(cbUdlinitel1, 2) then
+                if IsUdlinitelCableKonezConnectedAtHighOhmInputCell(Station.CableBlack1, 2) then
                 begin
                   //Проверим одинаковые ли каналы
-                  if GetChannelIdByCellId(cbUdlinitel2.stKonez1.stKonez) = GetChannelIdByCellId(cbUdlinitel1.stKonez1.stKonez) then
+                  if GetChannelIdByCellId(Station.CableWhite2.stKonez1.stKonez) = GetChannelIdByCellId(Station.CableBlack1.stKonez1.stKonez) then
                   begin
                     //Проверим настроен ли канал
-                    if Station.IsChannelTuned(GetChannelIdByCellId(cbUdlinitel2.stKonez1.stKonez)) then
+                    if Station.IsChannelTuned(GetChannelIdByCellId(Station.CableWhite2.stKonez1.stKonez)) then
                     begin
                       BeepEx;
-                      if GetPolukomplektCodeByCableKonez(cbUdlinitel1.stKonez1) = 2 then
-                        stCallPassed.FourChannelMode.ChannelB[GetChannelIdByCellId(cbUdlinitel2.stKonez1.stKonez)].State := stPassed;
-                      if GetPolukomplektCodeByCableKonez(cbUdlinitel1.stKonez1) = 1 then
-                        stCallPassed.FourChannelMode.ChannelA[GetChannelIdByCellId(cbUdlinitel2.stKonez1.stKonez)].State := stPassed;
+                      if GetPolukomplektCodeByCableKonez(Station.CableBlack1.stKonez1) = 2 then
+                        stCallPassed.FourChannelMode.ChannelB[GetChannelIdByCellId(Station.CableWhite2.stKonez1.stKonez)].State := stPassed;
+                      if GetPolukomplektCodeByCableKonez(Station.CableBlack1.stKonez1) = 1 then
+                        stCallPassed.FourChannelMode.ChannelA[GetChannelIdByCellId(Station.CableWhite2.stKonez1.stKonez)].State := stPassed;
                     end;
                   end;
                 end;
               end;
-              if IsUdlinitelCableKonezConnectedAtDeModulator(cbUdlinitel1, 2) then
+              if IsUdlinitelCableKonezConnectedAtDeModulator(Station.CableBlack1, 2) then
               begin
                 //Проверим состояние другого конца кабеля
-                if IsUdlinitelCableKonezConnectedAtHighOhmInputCell(cbUdlinitel1, 1) then
+                if IsUdlinitelCableKonezConnectedAtHighOhmInputCell(Station.CableBlack1, 1) then
                 begin
                   //Проверим одинаковые ли каналы
-                  if GetChannelIdByCellId(cbUdlinitel2.stKonez1.stKonez) = GetChannelIdByCellId(cbUdlinitel1.stKonez2.stKonez) then
+                  if GetChannelIdByCellId(Station.CableWhite2.stKonez1.stKonez) = GetChannelIdByCellId(Station.CableBlack1.stKonez2.stKonez) then
                   begin
                     //Проверим настроен ли канал
-                    if Station.IsChannelTuned(GetChannelIdByCellId(cbUdlinitel2.stKonez1.stKonez)) then
+                    if Station.IsChannelTuned(GetChannelIdByCellId(Station.CableWhite2.stKonez1.stKonez)) then
                     begin
                       BeepEx;
-                      if GetPolukomplektCodeByCableKonez(cbUdlinitel1.stKonez2) = 2 then
-                        stCallPassed.FourChannelMode.ChannelB[GetChannelIdByCellId(cbUdlinitel2.stKonez1.stKonez)].State := stPassed;
-                      if GetPolukomplektCodeByCableKonez(cbUdlinitel1.stKonez2) = 1 then
-                        stCallPassed.FourChannelMode.ChannelA[GetChannelIdByCellId(cbUdlinitel2.stKonez1.stKonez)].State := stPassed;
+                      if GetPolukomplektCodeByCableKonez(Station.CableBlack1.stKonez2) = 2 then
+                        stCallPassed.FourChannelMode.ChannelB[GetChannelIdByCellId(Station.CableWhite2.stKonez1.stKonez)].State := stPassed;
+                      if GetPolukomplektCodeByCableKonez(Station.CableBlack1.stKonez2) = 1 then
+                        stCallPassed.FourChannelMode.ChannelA[GetChannelIdByCellId(Station.CableWhite2.stKonez1.stKonez)].State := stPassed;
                     end;
                   end;
                 end;
@@ -1060,53 +1056,53 @@ begin
             end;
           end;
         end;
-        if IsUdlinitelCableKonezConnectedAtModulator(cbUdlinitel2, 2) then
+        if IsUdlinitelCableKonezConnectedAtModulator(Station.CableWhite2, 2) then
         begin
           //Подключен второй конец первого удлинительного кабеля
           //Проверим куда подключен первый конец кабеля
-          if cbUdlinitel2.stKonez1.stKonez = cell_PVU_PRD then
+          if Station.CableWhite2.stKonez1.stKonez = cell_PVU_PRD then
           begin
             //Кабель подключен на передачу
             //Проверяем второй кабель
-            if IsUdlinitelCableConnectedAtDeModulator(cbUdlinitel1) then
+            if IsUdlinitelCableConnectedAtDeModulator(Station.CableBlack1) then
             begin
               //Определим какой именно конец подключен к демодулятору
-              if IsUdlinitelCableKonezConnectedAtDeModulator(cbUdlinitel1, 1) then
+              if IsUdlinitelCableKonezConnectedAtDeModulator(Station.CableBlack1, 1) then
               begin
                 //Проверим состояние другого конца кабеля
-                if IsUdlinitelCableKonezConnectedAtHighOhmInputCell(cbUdlinitel1, 2) then
+                if IsUdlinitelCableKonezConnectedAtHighOhmInputCell(Station.CableBlack1, 2) then
                 begin
                   //Проверим одинаковые ли каналы
-                  if GetChannelIdByCellId(cbUdlinitel2.stKonez2.stKonez) = GetChannelIdByCellId(cbUdlinitel1.stKonez1.stKonez) then
+                  if GetChannelIdByCellId(Station.CableWhite2.stKonez2.stKonez) = GetChannelIdByCellId(Station.CableBlack1.stKonez1.stKonez) then
                   begin
                     //Проверим настроен ли канал
-                    if Station.IsChannelTuned(GetChannelIdByCellId(cbUdlinitel2.stKonez2.stKonez)) then
+                    if Station.IsChannelTuned(GetChannelIdByCellId(Station.CableWhite2.stKonez2.stKonez)) then
                     begin
                       BeepEx;
-                      if GetPolukomplektCodeByCableKonez(cbUdlinitel1.stKonez1) = 2 then
-                        stCallPassed.FourChannelMode.ChannelB[GetChannelIdByCellId(cbUdlinitel2.stKonez2.stKonez)].State := stPassed;
-                      if GetPolukomplektCodeByCableKonez(cbUdlinitel1.stKonez1) = 1 then
-                        stCallPassed.FourChannelMode.ChannelA[GetChannelIdByCellId(cbUdlinitel2.stKonez2.stKonez)].State := stPassed;
+                      if GetPolukomplektCodeByCableKonez(Station.CableBlack1.stKonez1) = 2 then
+                        stCallPassed.FourChannelMode.ChannelB[GetChannelIdByCellId(Station.CableWhite2.stKonez2.stKonez)].State := stPassed;
+                      if GetPolukomplektCodeByCableKonez(Station.CableBlack1.stKonez1) = 1 then
+                        stCallPassed.FourChannelMode.ChannelA[GetChannelIdByCellId(Station.CableWhite2.stKonez2.stKonez)].State := stPassed;
                     end;
                   end;
                 end;
               end;
-              if IsUdlinitelCableKonezConnectedAtDeModulator(cbUdlinitel1, 2) then
+              if IsUdlinitelCableKonezConnectedAtDeModulator(Station.CableBlack1, 2) then
               begin
                 //Проверим состояние другого конца кабеля
-                if IsUdlinitelCableKonezConnectedAtHighOhmInputCell(cbUdlinitel1, 1) then
+                if IsUdlinitelCableKonezConnectedAtHighOhmInputCell(Station.CableBlack1, 1) then
                 begin
                   //Проверим одинаковые ли каналы
-                  if GetChannelIdByCellId(cbUdlinitel2.stKonez2.stKonez) = GetChannelIdByCellId(cbUdlinitel1.stKonez2.stKonez) then
+                  if GetChannelIdByCellId(Station.CableWhite2.stKonez2.stKonez) = GetChannelIdByCellId(Station.CableBlack1.stKonez2.stKonez) then
                   begin
                     //Проверим настроен ли канал
-                    if Station.IsChannelTuned(GetChannelIdByCellId(cbUdlinitel2.stKonez2.stKonez)) then
+                    if Station.IsChannelTuned(GetChannelIdByCellId(Station.CableWhite2.stKonez2.stKonez)) then
                     begin
                       BeepEx;
-                      if GetPolukomplektCodeByCableKonez(cbUdlinitel1.stKonez2) = 2 then
-                        stCallPassed.FourChannelMode.ChannelB[GetChannelIdByCellId(cbUdlinitel2.stKonez2.stKonez)].State := stPassed;
-                      if GetPolukomplektCodeByCableKonez(cbUdlinitel1.stKonez2) = 1 then
-                        stCallPassed.FourChannelMode.ChannelA[GetChannelIdByCellId(cbUdlinitel2.stKonez2.stKonez)].State := stPassed;
+                      if GetPolukomplektCodeByCableKonez(Station.CableBlack1.stKonez2) = 2 then
+                        stCallPassed.FourChannelMode.ChannelB[GetChannelIdByCellId(Station.CableWhite2.stKonez2.stKonez)].State := stPassed;
+                      if GetPolukomplektCodeByCableKonez(Station.CableBlack1.stKonez2) = 1 then
+                        stCallPassed.FourChannelMode.ChannelA[GetChannelIdByCellId(Station.CableWhite2.stKonez2.stKonez)].State := stPassed;
                     end;
                   end;
                 end;
@@ -1121,37 +1117,37 @@ begin
     //=======================2-х канальный режим==============================
     if Station.IsChannelBlocksTunedAt2ChannelMode() and (Station.RemoteController.SwPVU = 1) then
     begin
-      if (IsUdlinitelCableConnectedAtDeModulator(cbUdlinitel1)) then
+      if (IsUdlinitelCableConnectedAtDeModulator(Station.CableBlack1)) then
       begin
         //Определим какой именно конец подключен к модулятору
-        if IsUdlinitelCableKonezConnectedAtDeModulator(cbUdlinitel1, 1) then
+        if IsUdlinitelCableKonezConnectedAtDeModulator(Station.CableBlack1, 1) then
         begin
           //Подключен первый конец первого удлинительного кабеля
           //Проверим куда подключен второй конец кабеля
-          if cbUdlinitel1.stKonez2.stKonez = cell_PVU_PRM then
+          if Station.CableBlack1.stKonez2.stKonez = cell_PVU_PRM then
           begin
             //Кабель подключен на передачу
             //Проверяем второй кабель
-            if IsUdlinitelCableConnectedAtDeModulator(cbUdlinitel2) then
+            if IsUdlinitelCableConnectedAtDeModulator(Station.CableWhite2) then
             begin
               //Определим какой именно конец подключен к демодулятору
-              if IsUdlinitelCableKonezConnectedAtDeModulator(cbUdlinitel2, 1) then
+              if IsUdlinitelCableKonezConnectedAtDeModulator(Station.CableWhite2, 1) then
               begin
                 //Проверим состояние другого конца кабеля
-                if IsUdlinitelCableKonezConnectedAtHighOhmInputCell(cbUdlinitel2, 2) or IsUdlinitelCableConnectedAtReserveLineCell(cbUdlinitel2) then
+                if IsUdlinitelCableKonezConnectedAtHighOhmInputCell(Station.CableWhite2, 2) or IsUdlinitelCableConnectedAtReserveLineCell(Station.CableWhite2) then
                 begin
                   //Проверим одинаковые ли каналы
-                  if GetChannelIdByCellId(cbUdlinitel1.stKonez1.stKonez) = GetChannelIdByCellId(cbUdlinitel2.stKonez1.stKonez) then
+                  if GetChannelIdByCellId(Station.CableBlack1.stKonez1.stKonez) = GetChannelIdByCellId(Station.CableWhite2.stKonez1.stKonez) then
                   begin
                     //Проверим настроен ли канал
-                    if Station.IsChannelTuned(GetChannelIdByCellId(cbUdlinitel1.stKonez1.stKonez)) then
+                    if Station.IsChannelTuned(GetChannelIdByCellId(Station.CableBlack1.stKonez1.stKonez)) then
                     begin
-                      LightCallDiod(cbUdlinitel2);
-                      if GetPolukomplektCodeByCableKonez(cbUdlinitel2.stKonez1) = 2 then
-                        stCallPassed.TwoChannelMode.ChannelB[GetChannelIdByCellId(cbUdlinitel1.stKonez1.stKonez)].State := stPassed;
-                      if GetPolukomplektCodeByCableKonez(cbUdlinitel2.stKonez2) = 1 then
-                        stCallPassed.TwoChannelMode.ChannelA[GetChannelIdByCellId(cbUdlinitel1.stKonez1.stKonez)].State := stPassed;
-                      if IsUdlinitelCableKonezConnectedAtHighOhmInputCell(cbUdlinitel2, 2) then
+                      LightCallDiod(Station.CableWhite2);
+                      if GetPolukomplektCodeByCableKonez(Station.CableWhite2.stKonez1) = 2 then
+                        stCallPassed.TwoChannelMode.ChannelB[GetChannelIdByCellId(Station.CableBlack1.stKonez1.stKonez)].State := stPassed;
+                      if GetPolukomplektCodeByCableKonez(Station.CableWhite2.stKonez2) = 1 then
+                        stCallPassed.TwoChannelMode.ChannelA[GetChannelIdByCellId(Station.CableBlack1.stKonez1.stKonez)].State := stPassed;
+                      if IsUdlinitelCableKonezConnectedAtHighOhmInputCell(Station.CableWhite2, 2) then
                         BeepEx(dwFreq, dwLong)
                       else
                         Beep;
@@ -1159,23 +1155,23 @@ begin
                   end;
                 end;
               end;
-              if IsUdlinitelCableKonezConnectedAtDeModulator(cbUdlinitel2, 2) then
+              if IsUdlinitelCableKonezConnectedAtDeModulator(Station.CableWhite2, 2) then
               begin
                 //Проверим состояние другого конца кабеля
-                if IsUdlinitelCableKonezConnectedAtHighOhmInputCell(cbUdlinitel2, 1) or IsUdlinitelCableConnectedAtReserveLineCell(cbUdlinitel2) then
+                if IsUdlinitelCableKonezConnectedAtHighOhmInputCell(Station.CableWhite2, 1) or IsUdlinitelCableConnectedAtReserveLineCell(Station.CableWhite2) then
                 begin
                   //Проверим одинаковые ли каналы
-                  if GetChannelIdByCellId(cbUdlinitel1.stKonez1.stKonez) = GetChannelIdByCellId(cbUdlinitel2.stKonez2.stKonez) then
+                  if GetChannelIdByCellId(Station.CableBlack1.stKonez1.stKonez) = GetChannelIdByCellId(Station.CableWhite2.stKonez2.stKonez) then
                   begin
                     //Проверим настроен ли канал
-                    if Station.IsChannelTuned(GetChannelIdByCellId(cbUdlinitel1.stKonez1.stKonez)) then
+                    if Station.IsChannelTuned(GetChannelIdByCellId(Station.CableBlack1.stKonez1.stKonez)) then
                     begin
-                      LightCallDiod(cbUdlinitel2);
-                      if GetPolukomplektCodeByCableKonez(cbUdlinitel2.stKonez2) = 1 then
-                        stCallPassed.TwoChannelMode.ChannelA[GetChannelIdByCellId(cbUdlinitel1.stKonez1.stKonez)].State := stPassed;
-                      if GetPolukomplektCodeByCableKonez(cbUdlinitel2.stKonez2) = 2 then
-                        stCallPassed.TwoChannelMode.ChannelB[GetChannelIdByCellId(cbUdlinitel1.stKonez1.stKonez)].State := stPassed;
-                      if IsUdlinitelCableKonezConnectedAtHighOhmInputCell(cbUdlinitel2, 1) then
+                      LightCallDiod(Station.CableWhite2);
+                      if GetPolukomplektCodeByCableKonez(Station.CableWhite2.stKonez2) = 1 then
+                        stCallPassed.TwoChannelMode.ChannelA[GetChannelIdByCellId(Station.CableBlack1.stKonez1.stKonez)].State := stPassed;
+                      if GetPolukomplektCodeByCableKonez(Station.CableWhite2.stKonez2) = 2 then
+                        stCallPassed.TwoChannelMode.ChannelB[GetChannelIdByCellId(Station.CableBlack1.stKonez1.stKonez)].State := stPassed;
+                      if IsUdlinitelCableKonezConnectedAtHighOhmInputCell(Station.CableWhite2, 1) then
                         BeepEx(dwFreq, dwLong)
                       else
                         Beep;
@@ -1186,34 +1182,34 @@ begin
             end;
           end;
         end;
-        if IsUdlinitelCableKonezConnectedAtDeModulator(cbUdlinitel1, 2) then
+        if IsUdlinitelCableKonezConnectedAtDeModulator(Station.CableBlack1, 2) then
         begin
           //Подключен второй конец первого удлинительного кабеля
           //Проверим куда подключен первый конец кабеля
-          if cbUdlinitel1.stKonez1.stKonez = cell_PVU_PRM then
+          if Station.CableBlack1.stKonez1.stKonez = cell_PVU_PRM then
           begin
             //Кабель подключен на передачу
             //Проверяем второй кабель
-            if IsUdlinitelCableConnectedAtDeModulator(cbUdlinitel2) then
+            if IsUdlinitelCableConnectedAtDeModulator(Station.CableWhite2) then
             begin
               //Определим какой именно конец подключен к демодулятору
-              if IsUdlinitelCableKonezConnectedAtDeModulator(cbUdlinitel2, 1) then
+              if IsUdlinitelCableKonezConnectedAtDeModulator(Station.CableWhite2, 1) then
               begin
                 //Проверим состояние другого конца кабеля
-                if IsUdlinitelCableKonezConnectedAtHighOhmInputCell(cbUdlinitel2, 2) or IsUdlinitelCableConnectedAtReserveLineCell(cbUdlinitel2) then
+                if IsUdlinitelCableKonezConnectedAtHighOhmInputCell(Station.CableWhite2, 2) or IsUdlinitelCableConnectedAtReserveLineCell(Station.CableWhite2) then
                 begin
                   //Проверим одинаковые ли каналы
-                  if GetChannelIdByCellId(cbUdlinitel1.stKonez2.stKonez) = GetChannelIdByCellId(cbUdlinitel2.stKonez1.stKonez) then
+                  if GetChannelIdByCellId(Station.CableBlack1.stKonez2.stKonez) = GetChannelIdByCellId(Station.CableWhite2.stKonez1.stKonez) then
                   begin
                     //Проверим настроен ли канал
-                    if Station.IsChannelTuned(GetChannelIdByCellId(cbUdlinitel1.stKonez2.stKonez)) then
+                    if Station.IsChannelTuned(GetChannelIdByCellId(Station.CableBlack1.stKonez2.stKonez)) then
                     begin
-                      LightCallDiod(cbUdlinitel2);
-                      if GetPolukomplektCodeByCableKonez(cbUdlinitel2.stKonez1) = 2 then
-                        stCallPassed.TwoChannelMode.ChannelB[GetChannelIdByCellId(cbUdlinitel1.stKonez2.stKonez)].State := stPassed;
-                      if GetPolukomplektCodeByCableKonez(cbUdlinitel2.stKonez1) = 1 then
-                        stCallPassed.TwoChannelMode.ChannelA[GetChannelIdByCellId(cbUdlinitel1.stKonez2.stKonez)].State := stPassed;
-                      if IsUdlinitelCableKonezConnectedAtHighOhmInputCell(cbUdlinitel2, 2) then
+                      LightCallDiod(Station.CableWhite2);
+                      if GetPolukomplektCodeByCableKonez(Station.CableWhite2.stKonez1) = 2 then
+                        stCallPassed.TwoChannelMode.ChannelB[GetChannelIdByCellId(Station.CableBlack1.stKonez2.stKonez)].State := stPassed;
+                      if GetPolukomplektCodeByCableKonez(Station.CableWhite2.stKonez1) = 1 then
+                        stCallPassed.TwoChannelMode.ChannelA[GetChannelIdByCellId(Station.CableBlack1.stKonez2.stKonez)].State := stPassed;
+                      if IsUdlinitelCableKonezConnectedAtHighOhmInputCell(Station.CableWhite2, 2) then
                         BeepEx(dwFreq, dwLong)
                       else
                         Beep;
@@ -1221,23 +1217,23 @@ begin
                   end;
                 end;
               end;
-              if IsUdlinitelCableKonezConnectedAtDeModulator(cbUdlinitel2, 2) then
+              if IsUdlinitelCableKonezConnectedAtDeModulator(Station.CableWhite2, 2) then
               begin
                 //Проверим состояние другого конца кабеля
-                if IsUdlinitelCableKonezConnectedAtHighOhmInputCell(cbUdlinitel2, 1) or IsUdlinitelCableConnectedAtReserveLineCell(cbUdlinitel2) then
+                if IsUdlinitelCableKonezConnectedAtHighOhmInputCell(Station.CableWhite2, 1) or IsUdlinitelCableConnectedAtReserveLineCell(Station.CableWhite2) then
                 begin
                   //Проверим одинаковые ли каналы
-                  if GetChannelIdByCellId(cbUdlinitel1.stKonez2.stKonez) = GetChannelIdByCellId(cbUdlinitel2.stKonez2.stKonez) then
+                  if GetChannelIdByCellId(Station.CableBlack1.stKonez2.stKonez) = GetChannelIdByCellId(Station.CableWhite2.stKonez2.stKonez) then
                   begin
                     //Проверим настроен ли канал
-                    if Station.IsChannelTuned(GetChannelIdByCellId(cbUdlinitel1.stKonez2.stKonez)) then
+                    if Station.IsChannelTuned(GetChannelIdByCellId(Station.CableBlack1.stKonez2.stKonez)) then
                     begin
-                      LightCallDiod(cbUdlinitel2);
-                      if GetPolukomplektCodeByCableKonez(cbUdlinitel2.stKonez2) = 2 then
-                        stCallPassed.TwoChannelMode.ChannelB[GetChannelIdByCellId(cbUdlinitel1.stKonez2.stKonez)].State := stPassed;
-                      if GetPolukomplektCodeByCableKonez(cbUdlinitel2.stKonez2) = 1 then
-                        stCallPassed.TwoChannelMode.ChannelA[GetChannelIdByCellId(cbUdlinitel1.stKonez2.stKonez)].State := stPassed;
-                      if IsUdlinitelCableKonezConnectedAtHighOhmInputCell(cbUdlinitel2, 1) then
+                      LightCallDiod(Station.CableWhite2);
+                      if GetPolukomplektCodeByCableKonez(Station.CableWhite2.stKonez2) = 2 then
+                        stCallPassed.TwoChannelMode.ChannelB[GetChannelIdByCellId(Station.CableBlack1.stKonez2.stKonez)].State := stPassed;
+                      if GetPolukomplektCodeByCableKonez(Station.CableWhite2.stKonez2) = 1 then
+                        stCallPassed.TwoChannelMode.ChannelA[GetChannelIdByCellId(Station.CableBlack1.stKonez2.stKonez)].State := stPassed;
+                      if IsUdlinitelCableKonezConnectedAtHighOhmInputCell(Station.CableWhite2, 1) then
                         BeepEx(dwFreq, dwLong)
                       else
                         Beep;
@@ -1250,37 +1246,37 @@ begin
         end;
       end;
 
-      if (IsUdlinitelCableConnectedAtDeModulator(cbUdlinitel2)) then
+      if (IsUdlinitelCableConnectedAtDeModulator(Station.CableWhite2)) then
       begin
         //Определим какой именно конец подключен к модулятору
-        if IsUdlinitelCableKonezConnectedAtDeModulator(cbUdlinitel2, 1) then
+        if IsUdlinitelCableKonezConnectedAtDeModulator(Station.CableWhite2, 1) then
         begin
           //Подключен первый конец первого удлинительного кабеля
           //Проверим куда подключен второй конец кабеля
-          if cbUdlinitel2.stKonez2.stKonez = cell_PVU_PRM then
+          if Station.CableWhite2.stKonez2.stKonez = cell_PVU_PRM then
           begin
             //Кабель подключен на передачу
             //Проверяем второй кабель
-            if IsUdlinitelCableConnectedAtDeModulator(cbUdlinitel1) then
+            if IsUdlinitelCableConnectedAtDeModulator(Station.CableBlack1) then
             begin
               //Определим какой именно конец подключен к демодулятору
-              if IsUdlinitelCableKonezConnectedAtDeModulator(cbUdlinitel1, 1) then
+              if IsUdlinitelCableKonezConnectedAtDeModulator(Station.CableBlack1, 1) then
               begin
                 //Проверим состояние другого конца кабеля
-                if IsUdlinitelCableKonezConnectedAtHighOhmInputCell(cbUdlinitel1, 2) or IsUdlinitelCableConnectedAtReserveLineCell(cbUdlinitel1) then
+                if IsUdlinitelCableKonezConnectedAtHighOhmInputCell(Station.CableBlack1, 2) or IsUdlinitelCableConnectedAtReserveLineCell(Station.CableBlack1) then
                 begin
                   //Проверим одинаковые ли каналы
-                  if GetChannelIdByCellId(cbUdlinitel2.stKonez1.stKonez) = GetChannelIdByCellId(cbUdlinitel1.stKonez1.stKonez) then
+                  if GetChannelIdByCellId(Station.CableWhite2.stKonez1.stKonez) = GetChannelIdByCellId(Station.CableBlack1.stKonez1.stKonez) then
                   begin
                     //Проверим настроен ли канал
-                    if Station.IsChannelTuned(GetChannelIdByCellId(cbUdlinitel2.stKonez1.stKonez)) then
+                    if Station.IsChannelTuned(GetChannelIdByCellId(Station.CableWhite2.stKonez1.stKonez)) then
                     begin
-                      LightCallDiod(cbUdlinitel1);
-                      if GetPolukomplektCodeByCableKonez(cbUdlinitel1.stKonez1) = 2 then
-                        stCallPassed.TwoChannelMode.ChannelB[GetChannelIdByCellId(cbUdlinitel2.stKonez1.stKonez)].State := stPassed;
-                      if GetPolukomplektCodeByCableKonez(cbUdlinitel1.stKonez1) = 1 then
-                        stCallPassed.TwoChannelMode.ChannelA[GetChannelIdByCellId(cbUdlinitel2.stKonez1.stKonez)].State := stPassed;
-                      if IsUdlinitelCableKonezConnectedAtHighOhmInputCell(cbUdlinitel1, 2) then
+                      LightCallDiod(Station.CableBlack1);
+                      if GetPolukomplektCodeByCableKonez(Station.CableBlack1.stKonez1) = 2 then
+                        stCallPassed.TwoChannelMode.ChannelB[GetChannelIdByCellId(Station.CableWhite2.stKonez1.stKonez)].State := stPassed;
+                      if GetPolukomplektCodeByCableKonez(Station.CableBlack1.stKonez1) = 1 then
+                        stCallPassed.TwoChannelMode.ChannelA[GetChannelIdByCellId(Station.CableWhite2.stKonez1.stKonez)].State := stPassed;
+                      if IsUdlinitelCableKonezConnectedAtHighOhmInputCell(Station.CableBlack1, 2) then
                         BeepEx(dwFreq, dwLong)
                       else
                         Beep;
@@ -1288,23 +1284,23 @@ begin
                   end;
                 end;
               end;
-              if IsUdlinitelCableKonezConnectedAtDeModulator(cbUdlinitel1, 2) then
+              if IsUdlinitelCableKonezConnectedAtDeModulator(Station.CableBlack1, 2) then
               begin
                 //Проверим состояние другого конца кабеля
-                if IsUdlinitelCableKonezConnectedAtHighOhmInputCell(cbUdlinitel1, 1) or IsUdlinitelCableConnectedAtReserveLineCell(cbUdlinitel1)then
+                if IsUdlinitelCableKonezConnectedAtHighOhmInputCell(Station.CableBlack1, 1) or IsUdlinitelCableConnectedAtReserveLineCell(Station.CableBlack1)then
                 begin
                   //Проверим одинаковые ли каналы
-                  if GetChannelIdByCellId(cbUdlinitel2.stKonez1.stKonez) = GetChannelIdByCellId(cbUdlinitel1.stKonez2.stKonez) then
+                  if GetChannelIdByCellId(Station.CableWhite2.stKonez1.stKonez) = GetChannelIdByCellId(Station.CableBlack1.stKonez2.stKonez) then
                   begin
                     //Проверим настроен ли канал
-                    if Station.IsChannelTuned(GetChannelIdByCellId(cbUdlinitel2.stKonez1.stKonez)) then
+                    if Station.IsChannelTuned(GetChannelIdByCellId(Station.CableWhite2.stKonez1.stKonez)) then
                     begin
-                      LightCallDiod(cbUdlinitel1);
-                      if GetPolukomplektCodeByCableKonez(cbUdlinitel1.stKonez2) = 1 then
-                        stCallPassed.TwoChannelMode.ChannelA[GetChannelIdByCellId(cbUdlinitel2.stKonez1.stKonez)].State := stPassed;
-                      if GetPolukomplektCodeByCableKonez(cbUdlinitel1.stKonez2) = 2 then
-                        stCallPassed.TwoChannelMode.ChannelB[GetChannelIdByCellId(cbUdlinitel2.stKonez1.stKonez)].State := stPassed;
-                      if IsUdlinitelCableKonezConnectedAtHighOhmInputCell(cbUdlinitel1, 1) then
+                      LightCallDiod(Station.CableBlack1);
+                      if GetPolukomplektCodeByCableKonez(Station.CableBlack1.stKonez2) = 1 then
+                        stCallPassed.TwoChannelMode.ChannelA[GetChannelIdByCellId(Station.CableWhite2.stKonez1.stKonez)].State := stPassed;
+                      if GetPolukomplektCodeByCableKonez(Station.CableBlack1.stKonez2) = 2 then
+                        stCallPassed.TwoChannelMode.ChannelB[GetChannelIdByCellId(Station.CableWhite2.stKonez1.stKonez)].State := stPassed;
+                      if IsUdlinitelCableKonezConnectedAtHighOhmInputCell(Station.CableBlack1, 1) then
                         BeepEx(dwFreq, dwLong)
                       else
                         Beep;
@@ -1315,34 +1311,34 @@ begin
             end;
           end;
         end;
-        if IsUdlinitelCableKonezConnectedAtDeModulator(cbUdlinitel2, 2) then
+        if IsUdlinitelCableKonezConnectedAtDeModulator(Station.CableWhite2, 2) then
         begin
           //Подключен второй конец первого удлинительного кабеля
           //Проверим куда подключен первый конец кабеля
-          if cbUdlinitel2.stKonez1.stKonez = cell_PVU_PRM then
+          if Station.CableWhite2.stKonez1.stKonez = cell_PVU_PRM then
           begin
             //Кабель подключен на передачу
             //Проверяем второй кабель
-            if IsUdlinitelCableConnectedAtDeModulator(cbUdlinitel1) then
+            if IsUdlinitelCableConnectedAtDeModulator(Station.CableBlack1) then
             begin
               //Определим какой именно конец подключен к демодулятору
-              if IsUdlinitelCableKonezConnectedAtDeModulator(cbUdlinitel1, 1) then
+              if IsUdlinitelCableKonezConnectedAtDeModulator(Station.CableBlack1, 1) then
               begin
                 //Проверим состояние другого конца кабеля
-                if IsUdlinitelCableKonezConnectedAtHighOhmInputCell(cbUdlinitel1, 2) or IsUdlinitelCableConnectedAtReserveLineCell(cbUdlinitel1) then
+                if IsUdlinitelCableKonezConnectedAtHighOhmInputCell(Station.CableBlack1, 2) or IsUdlinitelCableConnectedAtReserveLineCell(Station.CableBlack1) then
                 begin
                   //Проверим одинаковые ли каналы
-                  if GetChannelIdByCellId(cbUdlinitel2.stKonez2.stKonez) = GetChannelIdByCellId(cbUdlinitel1.stKonez1.stKonez) then
+                  if GetChannelIdByCellId(Station.CableWhite2.stKonez2.stKonez) = GetChannelIdByCellId(Station.CableBlack1.stKonez1.stKonez) then
                   begin
                     //Проверим настроен ли канал
-                    if Station.IsChannelTuned(GetChannelIdByCellId(cbUdlinitel2.stKonez2.stKonez)) then
+                    if Station.IsChannelTuned(GetChannelIdByCellId(Station.CableWhite2.stKonez2.stKonez)) then
                     begin
-                      LightCallDiod(cbUdlinitel1);
-                      if GetPolukomplektCodeByCableKonez(cbUdlinitel1.stKonez1) = 1 then
-                        stCallPassed.TwoChannelMode.ChannelA[GetChannelIdByCellId(cbUdlinitel2.stKonez2.stKonez)].State := stPassed;
-                      if GetPolukomplektCodeByCableKonez(cbUdlinitel1.stKonez1) = 2 then
-                        stCallPassed.TwoChannelMode.ChannelB[GetChannelIdByCellId(cbUdlinitel2.stKonez2.stKonez)].State := stPassed;
-                      if IsUdlinitelCableKonezConnectedAtHighOhmInputCell(cbUdlinitel1, 2) then
+                      LightCallDiod(Station.CableBlack1);
+                      if GetPolukomplektCodeByCableKonez(Station.CableBlack1.stKonez1) = 1 then
+                        stCallPassed.TwoChannelMode.ChannelA[GetChannelIdByCellId(Station.CableWhite2.stKonez2.stKonez)].State := stPassed;
+                      if GetPolukomplektCodeByCableKonez(Station.CableBlack1.stKonez1) = 2 then
+                        stCallPassed.TwoChannelMode.ChannelB[GetChannelIdByCellId(Station.CableWhite2.stKonez2.stKonez)].State := stPassed;
+                      if IsUdlinitelCableKonezConnectedAtHighOhmInputCell(Station.CableBlack1, 2) then
                         BeepEx(dwFreq, dwLong)
                       else
                         Beep;
@@ -1350,23 +1346,23 @@ begin
                   end;
                 end;
               end;
-              if IsUdlinitelCableKonezConnectedAtDeModulator(cbUdlinitel1, 2) then
+              if IsUdlinitelCableKonezConnectedAtDeModulator(Station.CableBlack1, 2) then
               begin
                 //Проверим состояние другого конца кабеля
-                if IsUdlinitelCableKonezConnectedAtHighOhmInputCell(cbUdlinitel1, 1) or IsUdlinitelCableConnectedAtReserveLineCell(cbUdlinitel1) then
+                if IsUdlinitelCableKonezConnectedAtHighOhmInputCell(Station.CableBlack1, 1) or IsUdlinitelCableConnectedAtReserveLineCell(Station.CableBlack1) then
                 begin
                   //Проверим одинаковые ли каналы
-                  if GetChannelIdByCellId(cbUdlinitel2.stKonez2.stKonez) = GetChannelIdByCellId(cbUdlinitel1.stKonez2.stKonez) then
+                  if GetChannelIdByCellId(Station.CableWhite2.stKonez2.stKonez) = GetChannelIdByCellId(Station.CableBlack1.stKonez2.stKonez) then
                   begin
                     //Проверим настроен ли канал
-                    if Station.IsChannelTuned(GetChannelIdByCellId(cbUdlinitel2.stKonez2.stKonez)) then
+                    if Station.IsChannelTuned(GetChannelIdByCellId(Station.CableWhite2.stKonez2.stKonez)) then
                     begin
-                      LightCallDiod(cbUdlinitel1);
-                      if GetPolukomplektCodeByCableKonez(cbUdlinitel1.stKonez2) = 1 then
-                        stCallPassed.TwoChannelMode.ChannelA[GetChannelIdByCellId(cbUdlinitel2.stKonez2.stKonez)].State := stPassed;
-                      if GetPolukomplektCodeByCableKonez(cbUdlinitel1.stKonez2) = 2 then
-                        stCallPassed.TwoChannelMode.ChannelB[GetChannelIdByCellId(cbUdlinitel2.stKonez2.stKonez)].State := stPassed;
-                      if IsUdlinitelCableKonezConnectedAtHighOhmInputCell(cbUdlinitel1, 1) then
+                      LightCallDiod(Station.CableBlack1);
+                      if GetPolukomplektCodeByCableKonez(Station.CableBlack1.stKonez2) = 1 then
+                        stCallPassed.TwoChannelMode.ChannelA[GetChannelIdByCellId(Station.CableWhite2.stKonez2.stKonez)].State := stPassed;
+                      if GetPolukomplektCodeByCableKonez(Station.CableBlack1.stKonez2) = 2 then
+                        stCallPassed.TwoChannelMode.ChannelB[GetChannelIdByCellId(Station.CableWhite2.stKonez2.stKonez)].State := stPassed;
+                      if IsUdlinitelCableKonezConnectedAtHighOhmInputCell(Station.CableBlack1, 1) then
                         BeepEx(dwFreq, dwLong)
                       else
                         Beep;
@@ -1434,11 +1430,11 @@ procedure T_Pult.FormCreate(Sender: TObject);
 var
   btA: Byte;
 begin
-  //cbUdlinitel1.stKonez1.stKonez := csDisconected;
-  //cbUdlinitel1.stKonez2.stKonez := csDisconected;
+  //Station.CableBlack1.stKonez1.stKonez := csDisconected;
+  //Station.CableBlack1.stKonez2.stKonez := csDisconected;
 
-  //cbUdlinitel2.stKonez1.stKonez := csDisconected;
-  //cbUdlinitel2.stKonez2.stKonez := csDisconected;
+  //Station.CableWhite2.stKonez1.stKonez := csDisconected;
+  //Station.CableWhite2.stKonez2.stKonez := csDisconected;
 
   SelectedCable := NotSelected;
 
@@ -1588,18 +1584,18 @@ function T_Pult.IsPlaceHolderEmpty(PlaceHolderId: Integer): Boolean;
 begin
   Result := True;
   //Последовательная проверка всех кабелей
-  if cbUdlinitel1.stKonez1.stKonez = PlaceHolderId then
+  if Station.CableBlack1.stKonez1.stKonez = PlaceHolderId then
     Result := False;
-  if cbUdlinitel1.stKonez2.stKonez = PlaceHolderId then
+  if Station.CableBlack1.stKonez2.stKonez = PlaceHolderId then
     Result := False;
-  if cbUdlinitel2.stKonez1.stKonez = PlaceHolderId then
+  if Station.CableWhite2.stKonez1.stKonez = PlaceHolderId then
     Result := False;
-  if cbUdlinitel2.stKonez2.stKonez = PlaceHolderId then
+  if Station.CableWhite2.stKonez2.stKonez = PlaceHolderId then
     Result := False;
-  if Station.cbGenerator.stConnectedToPlaceId = PlaceHolderId then
-    Result := False;
-  if Station.cbInputYY.stConnectedToPlaceId = PlaceHolderId then
-    Result := False;
+//  if Station.cbGenerator.stConnectedToPlaceId = PlaceHolderId then
+//    Result := False;
+//  if Station.cbInputYY.stConnectedToPlaceId = PlaceHolderId then
+//    Result := False;
 end;
 
 
@@ -1643,64 +1639,68 @@ begin
       case SelectedCable of
         stcblUdlinitel1ST1:
           begin
-            if cbUdlinitel1.stKonez1.stKonez = csDisconected then
+            if Station.CableBlack1.stKonez1.stKonez = csDisconected then
             begin
-              cbUdlinitel1.stKonez1.stKonez := btPlaceHolder;
-              cbUdlinitel1.stKonez1.offsetLeft := btLeft;
-              cbUdlinitel1.stKonez1.offsetTop := btTop - imgTopOffset;
-              cbUdlinitel1.stKonez1.stState := csConnected;
+              Station.CableBlack1.stKonez1.stKonez := btPlaceHolder;
+              Station.CableBlack1.stKonez1.offsetLeft := btLeft;
+              Station.CableBlack1.stKonez1.offsetTop := btTop - imgTopOffset;
+              Station.CableBlack1.stKonez1.stState := csConnected;
+              Station.P321C.cblVihGen := csConnected;
             end;
           end;
         stcblUdlinitel1ST2:
           begin
-            if cbUdlinitel1.stKonez2.stKonez = csDisconected then
+            if Station.CableBlack1.stKonez2.stKonez = csDisconected then
             begin
-              cbUdlinitel1.stKonez2.stKonez := btPlaceHolder;
-              cbUdlinitel1.stKonez2.offsetLeft := btLeft;
-              cbUdlinitel1.stKonez2.offsetTop := btTop - imgTopOffset;
-              cbUdlinitel1.stKonez2.stState := csConnected;
+              Station.CableBlack1.stKonez2.stKonez := btPlaceHolder;
+              Station.CableBlack1.stKonez2.offsetLeft := btLeft;
+              Station.CableBlack1.stKonez2.offsetTop := btTop - imgTopOffset;
+              Station.CableBlack1.stKonez2.stState := csConnected;
+              Station.P321C.cblVihGen := csConnected;
             end;
           end;
         stcblUdlinitel2ST1:
           begin
-            if cbUdlinitel2.stKonez1.stKonez = csDisconected then
+            if Station.CableWhite2.stKonez1.stKonez = csDisconected then
             begin
-              cbUdlinitel2.stKonez1.stKonez := btPlaceHolder;
-              cbUdlinitel2.stKonez1.offsetLeft := btLeft;
-              cbUdlinitel2.stKonez1.offsetTop := btTop - imgTopOffset;
-              cbUdlinitel2.stKonez1.stState := csConnected;
+              Station.CableWhite2.stKonez1.stKonez := btPlaceHolder;
+              Station.CableWhite2.stKonez1.offsetLeft := btLeft;
+              Station.CableWhite2.stKonez1.offsetTop := btTop - imgTopOffset;
+              Station.CableWhite2.stKonez1.stState := csConnected;
+              Station.P321C.cblVhYY := csConnected;
             end;
           end;
         stcblUdlinitel2ST2:
           begin
-            if cbUdlinitel2.stKonez2.stKonez = csDisconected then
+            if Station.CableWhite2.stKonez2.stKonez = csDisconected then
             begin
-            cbUdlinitel2.stKonez2.stKonez := btPlaceHolder;
-            cbUdlinitel2.stKonez2.offsetLeft := btLeft;
-            cbUdlinitel2.stKonez2.offsetTop := btTop - imgTopOffset;
-            cbUdlinitel2.stKonez2.stState := csConnected;
+            Station.CableWhite2.stKonez2.stKonez := btPlaceHolder;
+            Station.CableWhite2.stKonez2.offsetLeft := btLeft;
+            Station.CableWhite2.stKonez2.offsetTop := btTop - imgTopOffset;
+            Station.CableWhite2.stKonez2.stState := csConnected;
+            Station.P321C.cblVhYY := csConnected;
             end;
           end;
-        stcblInputYY:
-          begin
-            if Station.cbInputYY.stConnectedToPlaceId = csDisconected then
-            begin
-              Station.cbInputYY.stConnectedToPlaceId := btPlaceHolder;
-              Station.cbInputYY.offsetLeft := btLeft;
-              Station.cbInputYY.offsetTop := btTop - imgTopOffset;
-              Station.P321C.cblVhYY := csConnected;
-            end;
-          end;
-        stcblGenerator:
-          begin
-            if Station.cbGenerator.stConnectedToPlaceId = csDisconected then
-            begin
-              Station.cbGenerator.stConnectedToPlaceId := btPlaceHolder;
-              Station.cbGenerator.offsetLeft := btLeft;
-              Station.cbGenerator.offsetTop := btTop - imgTopOffset;
-              Station.P321C.cblVihGen := csConnected;
-            end;
-          end;
+//        stcblInputYY:
+//          begin
+//            if Station.cbInputYY.stConnectedToPlaceId = csDisconected then
+//            begin
+//              Station.cbInputYY.stConnectedToPlaceId := btPlaceHolder;
+//              Station.cbInputYY.offsetLeft := btLeft;
+//              Station.cbInputYY.offsetTop := btTop - imgTopOffset;
+//              Station.P321C.cblVhYY := csConnected;
+//            end;
+//          end;
+//        stcblGenerator:
+//          begin
+//            if Station.cbGenerator.stConnectedToPlaceId = csDisconected then
+//            begin
+//              Station.cbGenerator.stConnectedToPlaceId := btPlaceHolder;
+//              Station.cbGenerator.offsetLeft := btLeft;
+//              Station.cbGenerator.offsetTop := btTop - imgTopOffset;
+//              Station.P321C.cblVihGen := csConnected;
+//            end;
+//          end;
       end;
     end;
   end;
@@ -1801,9 +1801,9 @@ end;
 procedure T_Pult.imgCable1_ST1Click(Sender: TObject);
 begin
   imgCable1_ST1.Visible := False;
-  cbUdlinitel1.stKonez1.stKonez := csDisconected;
+  Station.CableBlack1.stKonez1.stKonez := csDisconected;
   SelectedCable := stcblUdlinitel1ST1;
-  cbUdlinitel1.stKonez1.stState := csDisconected;
+  Station.CableBlack1.stKonez1.stState := csDisconected;
 
   Reload;
 end;
@@ -1811,8 +1811,8 @@ end;
 procedure T_Pult.imgCable1_ST2Click(Sender: TObject);
 begin
   imgCable1_ST2.Visible := False;
-  cbUdlinitel1.stKonez2.stState := csDisconected;
-  cbUdlinitel1.stKonez2.stKonez := csDisconected;
+  Station.CableBlack1.stKonez2.stState := csDisconected;
+  Station.CableBlack1.stKonez2.stKonez := csDisconected;
   SelectedCable := stcblUdlinitel1ST2;
 
   Reload;
@@ -1821,9 +1821,9 @@ end;
 procedure T_Pult.imgCable2_ST1Click(Sender: TObject);
 begin
   imgCable2_ST1.Visible := False;
-  cbUdlinitel2.stKonez1.stKonez := csDisconected;
+  Station.CableWhite2.stKonez1.stKonez := csDisconected;
   SelectedCable := stcblUdlinitel2ST1;
-  cbUdlinitel2.stKonez1.stState := csDisconected;
+  Station.CableWhite2.stKonez1.stState := csDisconected;
 
   Reload;
 end;
@@ -1831,8 +1831,8 @@ end;
 procedure T_Pult.imgCable2_ST2Click(Sender: TObject);
 begin
   imgCable2_ST2.Visible := False;
-  cbUdlinitel2.stKonez2.stKonez := csDisconected;
-  cbUdlinitel2.stKonez2.stState := csDisconected;
+  Station.CableWhite2.stKonez2.stKonez := csDisconected;
+  Station.CableWhite2.stKonez2.stState := csDisconected;
   SelectedCable := stcblUdlinitel2ST2;
 
   Reload;
@@ -1861,7 +1861,7 @@ end;
 
 procedure T_Pult.imgGeneratorConnectedClick(Sender: TObject);
 begin
-  Station.cbGenerator.stConnectedToPlaceId := csDisconected;
+  //Station.cbGenerator.stConnectedToPlaceId := csDisconected;
   Station.P321C.cblVihGen := csDisconected;
   SelectedCable := stcblGenerator;//Убирая с экрана вилку, считаем её выделенной
 
@@ -1870,7 +1870,7 @@ end;
 
 procedure T_Pult.imgInputYYConnectedClick(Sender: TObject);
 begin
-  Station.cbInputYY.stConnectedToPlaceId := csDisconected;
+  //Station.cbInputYY.stConnectedToPlaceId := csDisconected;
   Station.P321C.cblVhYY := csDisconected;
   SelectedCable := stcblInputYY; //Убирая с экрана вилку, считаем её выделенной
 
@@ -2046,42 +2046,46 @@ begin
       case SelectedCable of
         stcblUdlinitel1ST1:
           begin
-            cbUdlinitel1.stKonez1.stKonez := btPlaceHolder;
-            cbUdlinitel1.stKonez1.offsetLeft := btLeft;
-            cbUdlinitel1.stKonez1.offsetTop := btTop - imgTopOffset;
+            Station.CableBlack1.stKonez1.stKonez := btPlaceHolder;
+            Station.CableBlack1.stKonez1.offsetLeft := btLeft;
+            Station.CableBlack1.stKonez1.offsetTop := btTop - imgTopOffset;
+            Station.P321C.cblVihGen := csConnected;
           end;
         stcblUdlinitel1ST2:
           begin
-            cbUdlinitel1.stKonez2.stKonez := btPlaceHolder;
-            cbUdlinitel1.stKonez2.offsetLeft := btLeft;
-            cbUdlinitel1.stKonez2.offsetTop := btTop - imgTopOffset;
+            Station.CableBlack1.stKonez2.stKonez := btPlaceHolder;
+            Station.CableBlack1.stKonez2.offsetLeft := btLeft;
+            Station.CableBlack1.stKonez2.offsetTop := btTop - imgTopOffset;
+            Station.P321C.cblVihGen := csConnected;
           end;
         stcblUdlinitel2ST1:
           begin
-            cbUdlinitel2.stKonez1.stKonez := btPlaceHolder;
-            cbUdlinitel2.stKonez1.offsetLeft := btLeft;
-            cbUdlinitel2.stKonez1.offsetTop := btTop - imgTopOffset;
+            Station.CableWhite2.stKonez1.stKonez := btPlaceHolder;
+            Station.CableWhite2.stKonez1.offsetLeft := btLeft;
+            Station.CableWhite2.stKonez1.offsetTop := btTop - imgTopOffset;
+            Station.P321C.cblVhYY := csConnected;
           end;
         stcblUdlinitel2ST2:
           begin
-            cbUdlinitel2.stKonez2.stKonez := btPlaceHolder;
-            cbUdlinitel2.stKonez2.offsetLeft := btLeft;
-            cbUdlinitel2.stKonez2.offsetTop := btTop - imgTopOffset;
-          end;
-        stcblInputYY:
-          begin
-            Station.cbInputYY.stConnectedToPlaceId := btPlaceHolder;
-            Station.cbInputYY.offsetLeft := btLeft;
-            Station.cbInputYY.offsetTop := btTop;// - imgTopOffset;
+            Station.CableWhite2.stKonez2.stKonez := btPlaceHolder;
+            Station.CableWhite2.stKonez2.offsetLeft := btLeft;
+            Station.CableWhite2.stKonez2.offsetTop := btTop - imgTopOffset;
             Station.P321C.cblVhYY := csConnected;
           end;
-        stcblGenerator:
-          begin
-            Station.cbGenerator.stConnectedToPlaceId := btPlaceHolder;
-            Station.cbGenerator.offsetLeft := btLeft;
-            Station.cbGenerator.offsetTop := btTop;// - imgTopOffset;
-            Station.P321C.cblVihGen := csConnected;
-          end;
+//        stcblInputYY:
+//          begin
+//            Station.cbInputYY.stConnectedToPlaceId := btPlaceHolder;
+//            Station.cbInputYY.offsetLeft := btLeft;
+//            Station.cbInputYY.offsetTop := btTop;// - imgTopOffset;
+//            Station.P321C.cblVhYY := csConnected;
+//          end;
+//        stcblGenerator:
+//          begin
+//            Station.cbGenerator.stConnectedToPlaceId := btPlaceHolder;
+//            Station.cbGenerator.offsetLeft := btLeft;
+//            Station.cbGenerator.offsetTop := btTop;// - imgTopOffset;
+//            Station.P321C.cblVihGen := csConnected;
+//          end;
       end;
     end;
   end;
@@ -2089,51 +2093,5 @@ begin
   Reload;
 end;
 
-
-//   номер канала по плейсхолдеру
-function T_Pult.CurrentChannel(Placeholder: Integer): Integer;
-var temp: Integer;
-var channel: Integer;
-begin
-            if (Placeholder>=169) then  Placeholder:=Placeholder-168;
-            channel:=0;
-            temp:= Placeholder;
-            while temp>56 do
-            begin
-              temp:=temp-56;
-              channel:=channel+7;
-            end;
-
-            while temp>14 do
-            begin
-              temp:=temp-14;
-            end;
-
-            while temp>2 do
-            begin
-              temp:=temp-2;
-              channel:=channel+1;
-            end;
-
-            if temp=1 then channel:=channel+1;
-
-
-            Result:= temp;
-
-end;
-
-//номер порта по плейсхолдеру (как в stationstate)
-    function T_Pult.CurrentPort(Placeholder: Integer): Integer;
-    var temp: Integer;
-    begin
-          if (Placeholder>=169) then  Placeholder:=Placeholder-168;
-
-             temp:= Placeholder div 14;
-
-             while temp>4 do temp:=temp-4;
-
-
-            Result:= (Placeholder mod 2)+temp*2;
-    end;
 
 end.

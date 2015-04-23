@@ -2368,6 +2368,8 @@
       <field name="imgEnterToRackRightSelected" type="TImage" visibility="published" />
       <field name="imgWaveMeterMain" type="TImage" visibility="published" />
       <field name="imgWaveMeterReserv" type="TImage" visibility="published" />
+      <field name="imgTuneHelp" type="TImage" visibility="published" />
+      <field name="imgTuneHelp2" type="TImage" visibility="published" />
       <procedure name="FormClose" visibility="published">
         <devnotes>
           /StationR414Form.XT := 24;
