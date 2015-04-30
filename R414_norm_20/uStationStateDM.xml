@@ -296,12 +296,12 @@
   <struct name="pChannels" packed="true">
     <field name="A" visibility="public">
       <array name="A" visibility="public" low="1" high="21">
-        <element type="pChannelsEx" />
+        <element type="pChannel" />
       </array>
     </field>
     <field name="B" visibility="public">
       <array name="B" visibility="public" low="1" high="21">
-        <element type="pChannelsEx" />
+        <element type="pChannel" />
       </array>
     </field>
   </struct>
@@ -871,6 +871,12 @@
         </parameters>
       </function>
       <function name="CurrentPort" visibility="public">
+        <parameters>
+          <parameter name="Placeholder" type="Integer" />
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <function name="CurrentHalf" visibility="public">
         <parameters>
           <parameter name="Placeholder" type="Integer" />
           <retval type="Integer" />

@@ -5,12 +5,12 @@
   <contains name="IdGlobalCore" />
   <contains name="IdAllAuthentications" />
   <contains name="IdResourceStringsProtocols" />
+  <contains name="pnglang" />
   <contains name="IdAssignedNumbers" />
   <contains name="IdResourceStringsCore" />
   <contains name="IdStackConsts" />
   <contains name="IdResourceStrings" />
   <contains name="IdStream" />
-  <contains name="pnglang" />
   <contains name="DateUtils" />
   <contains name="Consts" />
   <contains name="ComStrs" />
@@ -143,9 +143,7 @@
   <contains name="Mapi" />
   <contains name="ExtDlgs" />
   <contains name="ComObj" />
-  <contains name="Buttons" />
   <contains name="Sockets" />
-  <contains name="jpeg" />
   <contains name="IdIOHandlerStack" />
   <contains name="IdIOHandler" />
   <contains name="IdComponent" />
@@ -154,6 +152,8 @@
   <contains name="IdWship6" />
   <contains name="IdWinsock2" />
   <contains name="IdGlobal" />
+  <contains name="Buttons" />
+  <contains name="jpeg" />
   <contains name="pngimage" />
   <contains name="Clipbrd" />
   <contains name="Dialogs" />

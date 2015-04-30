@@ -2273,26 +2273,30 @@
     </ancestor>
     <members>
       <field name="imgBG" type="TImage" visibility="published" />
-      <field name="btnShow" type="TButton" visibility="published" />
-      <field name="btnHide" type="TButton" visibility="published" />
-      <field name="imgDisplay" type="TImage" visibility="published" />
-      <procedure name="btnShowClick" visibility="published">
+      <field name="lbl1" type="TLabel" visibility="published" />
+      <procedure name="imgBGClick" visibility="published">
         <parameters>
           <parameter name="Sender" type="TObject" />
         </parameters>
       </procedure>
-      <procedure name="btnHideClick" visibility="published">
+      <constructor name="Create" visibility="published">
         <parameters>
-          <parameter name="Sender" type="TObject" />
+          <parameter name="AOwner" type="TComponent" />
+          <parameter name="Station0" type="TStation" />
+          <parameter name="TaskController0" type="TTaskController" />
         </parameters>
-      </procedure>
+      </constructor>
       <procedure name="FormClose" visibility="published">
         <parameters>
           <parameter name="Sender" type="TObject" />
           <parameter name="Action" type="TCloseAction" paramflags="var" />
         </parameters>
       </procedure>
+      <procedure name="UpdP321" visibility="public">
+      </procedure>
+      <field name="Station" type="TStation" visibility="public" />
+      <field name="TaskController" type="TTaskController" visibility="public" />
+      <field name="P321Form" type="TRackP321Form" visibility="public" />
     </members>
   </class>
-  <variable name="RackP321MinForm" type="TRackP321MinForm" />
 </namespace>

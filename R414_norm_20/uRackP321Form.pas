@@ -176,7 +176,6 @@ uses
   uEducationForm,
   uBlockRemoteControllerForm,
   uP321DisplayForm,
-  uRackP321MinForm,
   uConstantsDM;
 
 {$R *.dfm}
@@ -199,6 +198,10 @@ if (Half=2) then begin Self.Caption:='П-321 Б'; end
   ButtonBackForm:= TButtonBackForm.Create(self);
   ButtonBackForm.Show;
   SelectedCable:= csDisconected;
+
+
+
+  
 end;
 
 procedure TRackP321Form.FreeCallInit;
@@ -488,7 +491,7 @@ var
     end
     else
     begin
-      ilDisplay.GetBitmap(0, RackP321MinForm.imgDisplay.Picture.Bitmap);
+      //ilDisplay.GetBitmap(0, RackP321MinForm.imgDisplay.Picture.Bitmap);
     end;
     //RackP321MinForm.imgDisplay.Invalidate;
   end;
@@ -534,7 +537,7 @@ begin
               //Отображение расстройки стоек 1200
               //ShowMessage(IntToStr(Station.cbGenerator.stConnectedToPlaceId));
               //ShowMessage(IntToStr(Station.cbInputYY.stConnectedToPlaceId));
-              if (Station.IsPolukomplektATuned and Station.IsPolukomplektBTuned) then     !!!!!!!!!!!!!!!!!!!!!!
+              if (Station.IsPolukomplektATuned and Station.IsPolukomplektBTuned) then
               // (true) then
               begin
                 //==============Двух канальный режим===================
@@ -566,7 +569,7 @@ begin
                 if (Station.IsChannelBlocksTunedAt4ChannelMode) then
                 begin
                   if Station.IsP321ShuntsConnectedAt4ChannelMode then
-                  if True then
+                  //if True then
                   begin
                     CurTuneValue := Station.GetTransmitBlockTune;
                     NeededTuneValue := Station.GetTransmitBlockTunedValueNeed;

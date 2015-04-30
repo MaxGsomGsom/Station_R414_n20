@@ -20,7 +20,8 @@ uses
   uAdditionalFormMethods,
   uTaskControllerDM,
   uStationStateDM,
-  uButtonBackForm;
+  uButtonBackForm,
+  uRackP321MinForm;
 
 type
   TRack1200LeftForm = class(TForm)
@@ -308,6 +309,7 @@ var
   ButtonBackForm: TButtonBackForm;
   Station: TStation;
   TaskController: TTaskController;
+  P321Mini: TRackP321MinForm;
 
   const
   idRack1200A1=1;
@@ -347,6 +349,15 @@ begin
   TaskController.Subscribe(self);
   ButtonBackForm:= TButtonBackForm.Create(self);
   ButtonBackForm.Show;
+
+
+  if (TaskController.NetWorker.ClientState.TaskID = ttTransferToTerminalMode) then
+  begin
+       P321Mini:= TRackP321MinForm.Create(Self, Station, TaskController);
+       P321Mini.Show;
+  end;
+
+
 end;
 
 procedure TRack1200LeftForm.SetCableOscillographSyncState(btStateCode: Byte);
@@ -1780,6 +1791,10 @@ begin
         if (Button = mbRight)
           and (Station.HalfSetA.Rack1200Left.sw1240V2Tune > 1) then
           Dec(station.HalfSetA.Rack1200Left.sw1240V2Tune, 1);
+
+          if (Station.HalfSetA.Rack1200Left.sw1240V2Tune = Station.HalfSetA.Rack1200Left.sw1240V2TunedValue) then
+          Station.RemoteController.Channels.A[2].stChannelState := stChannelTuned
+          else Station.RemoteController.Channels.A[2].stChannelState := stChannelNotTuned;
       end;
 
     idRack1200B1:
@@ -1789,6 +1804,10 @@ begin
           Inc(station.HalfSetB.Rack1200Left.sw1240V2Tune, 1);
         if (Button = mbRight) and (Station.HalfSetB.Rack1200Left.sw1240V2Tune > 1) then
           Dec(station.HalfSetB.Rack1200Left.sw1240V2Tune, 1);
+
+          if (Station.HalfSetB.Rack1200Left.sw1240V2Tune = Station.HalfSetB.Rack1200Left.sw1240V2TunedValue) then
+          Station.RemoteController.Channels.B[2].stChannelState := stChannelTuned
+          else Station.RemoteController.Channels.B[2].stChannelState := stChannelNotTuned;
       end;
   end;
 
@@ -1896,6 +1915,14 @@ begin
           Inc(station.HalfSetA.Rack1200Left.sw1240VTune, 1);
         if (Button = mbRight) and (Station.HalfSetA.Rack1200Left.sw1240VTune > 1) then
           Dec(station.HalfSetA.Rack1200Left.sw1240VTune, 1);
+
+
+          if (Station.HalfSetA.Rack1200Left.sw1240VTune = Station.HalfSetA.Rack1200Left.sw1240VTunedValue) then
+          Station.RemoteController.Channels.A[1].stChannelState := stChannelTuned
+          else Station.RemoteController.Channels.A[1].stChannelState := stChannelNotTuned;
+
+          P321Mini.UpdP321;
+
       end;
 
     idRack1200B1:
@@ -1905,6 +1932,12 @@ begin
           Inc(station.HalfSetB.Rack1200Left.sw1240VTune, 1);
         if (Button = mbRight) and (Station.HalfSetB.Rack1200Left.sw1240VTune > 1) then
           Dec(station.HalfSetB.Rack1200Left.sw1240VTune, 1);
+
+          if (Station.HalfSetB.Rack1200Left.sw1240VTune = Station.HalfSetB.Rack1200Left.sw1240VTunedValue) then
+          Station.RemoteController.Channels.B[1].stChannelState := stChannelTuned
+          else Station.RemoteController.Channels.B[1].stChannelState := stChannelNotTuned;
+
+          P321Mini.UpdP321;
       end;
   end;
 
@@ -2571,6 +2604,7 @@ procedure TRack1200LeftForm.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
   ReturnFromRack;
+  P321Mini.Close;
 end;
 
 procedure TRack1200LeftForm.img1240V_DC2Click(Sender: TObject);
