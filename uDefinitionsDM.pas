@@ -7,7 +7,6 @@ unit uDefinitionsDM;
     StdCtrls,
     WinSock,
     uP321DisplayForm,
-    uRackP321MinForm,
     uBlockOscillographMinForm,
     uWaveMeterPanelForm,
     ExtCtrls,

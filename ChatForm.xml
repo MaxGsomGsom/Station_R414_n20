@@ -2310,6 +2310,12 @@
           <parameter name="TaskController" type="TTaskController" />
         </parameters>
       </constructor>
+      <procedure name="FormKeyPress" visibility="published">
+        <parameters>
+          <parameter name="Sender" type="TObject" />
+          <parameter name="Key" type="Char" paramflags="var" />
+        </parameters>
+      </procedure>
       <field name="TaskController" type="TTaskController" visibility="private" />
       <field name="NetWorker" type="TClientNetWorker" visibility="public" />
     </members>

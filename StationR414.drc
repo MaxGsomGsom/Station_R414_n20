@@ -918,36 +918,37 @@ END
 
 /* c:\program files (x86)\embarcadero\rad studio\7.0\lib\Debug\Character.res */
 /* c:\program files (x86)\embarcadero\rad studio\7.0\lib\controls.res */
-/* c:\program files (x86)\embarcadero\rad studio\7.0\lib\keyboardLayouts.res */
 /* c:\program files (x86)\embarcadero\rad studio\7.0\lib\mplayer.res */
+/* c:\program files (x86)\embarcadero\rad studio\7.0\lib\keyboardLayouts.res */
+/* C:\Users\Max\Documents\RAD Studio\Projects\R414_norm_20\ChatForm.dfm */
 /* uCurrentTaskForm.dfm */
-/* uHintForm.dfm */
 /* c:\program files (x86)\embarcadero\rad studio\7.0\lib\buttons.res */
+/* uHintForm.dfm */
 /* c:\program files (x86)\embarcadero\rad studio\7.0\lib\extdlgs.res */
 /* uSettingsForm.dfm */
 /* uPassWordForm.dfm */
 /* uAboutProgramForm.dfm */
 /* uAboutStationForm.dfm */
 /* uStatisticForm.dfm */
-/* C:\Users\Max\Documents\RAD Studio\Projects\R414_norm_20\uRackP321Form.dfm */
-/* uBlockPowerSupplyForm.dfm */
-/* uRack1200LeftForm.dfm */
-/* uRack1200RightForm.dfm */
-/* uRack1710Form.dfm */
-/* uRack1400Form.dfm */
-/* uBlockRemoteControllerForm.dfm */
 /* uConnectToServerForm.dfm */
 /* uMainMenuModernForm.dfm */
 /* uRegistrationForm.dfm */
 /* uMainMenuForm.dfm */
 /* uCloseForm.dfm */
 /* uBlockDuplexerForm.dfm */
+/* uRack1400Form.dfm */
+/* uRack1200LeftForm.dfm */
+/* uRack1200RightForm.dfm */
+/* uRack1710Form.dfm */
 /* uBlockLittleNoisyAmplifierForm.dfm */
 /* uRack1600Form.dfm */
 /* uRack1600BForm.dfm */
 /* uRack1500Form.dfm */
 /* uBlockWaveMeterForm.dfm */
 /* uRack1920Form.dfm */
+/* uBlockPowerSupplyForm.dfm */
+/* uBlockRemoteControllerForm.dfm */
+/* uRackP321MinForm.dfm */
 /* uRack1500bForm.dfm */
 /* uLoaderForm.dfm */
 /* uUsersForm.dfm */
@@ -957,15 +958,14 @@ END
 /* uReportForm.dfm */
 /* uFilterForm.dfm */
 /* uVideoHelpForm.dfm */
-/* uRackP321MinForm.dfm */
-/* uBlockPowerPanelForm.dfm */
 /* uHandsetForm.dfm */
 /* uBlockOscillographForm.dfm */
+/* uBlockPowerPanelForm.dfm */
+/* uRackP321Form.dfm */
 /* uP321DisplayForm.dfm */
 /* uBlockOscillographMinForm.dfm */
 /* uRack1500MinForm.dfm */
 /* uWaveMeterPanelForm.dfm */
-/* ChatForm.dfm */
 /* uStationR414MinForm.dfm */
 /* uButtonBackForm.dfm */
 /* uBackgroundForm.dfm */

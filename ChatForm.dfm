@@ -12,6 +12,7 @@ object TChatForm: TTChatForm
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnKeyPress = FormKeyPress
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
@@ -7872,6 +7873,7 @@ object TChatForm: TTChatForm
     Caption = #1054#1090#1087#1088#1072#1074#1080#1090#1100
     TabOrder = 0
     OnClick = btn1SendMessageClick
+    OnKeyPress = FormKeyPress
   end
   object edt1MessageInput: TEdit
     Left = 148
@@ -7879,6 +7881,7 @@ object TChatForm: TTChatForm
     Width = 260
     Height = 21
     TabOrder = 1
+    OnKeyPress = FormKeyPress
   end
   object lst1AllMessages: TListBox
     Left = 77

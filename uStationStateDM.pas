@@ -308,8 +308,8 @@ const
   end;
 
   type pChannels = packed record
-    A: array [1..21] of pChannelsEx;
-    B: array [1..21] of pChannelsEx;
+    A: array [1..21] of pChannel;
+    B: array [1..21] of pChannel;
   end;
 
   type pRemoteController = packed record
@@ -539,6 +539,7 @@ const
       function GetTransmitBlockTunedValueNeed: Byte;
       function CurrentChannel(Placeholder: Integer): Integer;
       function CurrentPort(Placeholder: Integer): Integer;
+      function CurrentHalf(Placeholder: Integer): Integer;
 
 function IsNeedToTuneChannelBlocksB: Boolean;
   end;
@@ -721,9 +722,9 @@ begin
     and (LittleNoisyAmplifier.swWave = RequiredWaveReceive)
     and ((LittleNoisyAmplifier.butNet = butPositionUp)
     and (LittleNoisyAmplifier.butNet2 = butPositionUp))
-    and (((Duplexer.cbSh1 = csConnectedAtDuplexeLeft)
+    and (((Duplexer.cb1840 = csConnectedAtDuplexeLeft)
         and (Duplexer.cbSh2 = csConnectedAtDuplexeRight))
-      or ((Duplexer.cbSh1 = csConnectedAtDuplexeRight)
+      or ((Duplexer.cb1840 = csConnectedAtDuplexeRight)
         and (Duplexer.cbSh2 = csConnectedAtDuplexeLeft)));
 end;
 
@@ -1833,6 +1834,14 @@ end;
 
 
             Result:= ((Placeholder-1) mod 2)+1+temp*2;
+    end;
+
+    function TStation.CurrentHalf(Placeholder: Integer): Integer;
+    var temp: Integer;
+    begin
+          if (Placeholder>=169) then  Result:=2
+          else   Result:=1;
+
     end;
 
 

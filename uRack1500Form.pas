@@ -2513,7 +2513,7 @@ end;
 
 procedure TRack1500Form.btnWaveMeterReservClick(Sender: TObject);
 begin
-         case CurFormId of
+  case CurFormId of
     idRack1500A:
       begin
       Station.HalfSetA.Rack1500.CableMdMainState := csDisconected;

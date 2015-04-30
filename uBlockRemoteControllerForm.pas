@@ -688,6 +688,8 @@ begin
   TaskController.Subscribe(self);
   ButtonBackForm:= TButtonBackForm.Create(self);
   ButtonBackForm.Show;
+
+  Self.Caption:='Ïףכüע';
 end;
 
 procedure T_Pult.Reload;

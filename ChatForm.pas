@@ -20,6 +20,7 @@ type
     procedure btn1SendMessageClick(Sender: TObject);
     procedure LinkedNickSet(Sender: TObject);
     constructor Create(AOwner:TComponent;  NetWorker0: TClientNetWorker; TaskController: TTaskController); reintroduce;
+    procedure FormKeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
     TaskController: TTaskController;
@@ -58,12 +59,22 @@ begin
   NetWorker.SendMessage(edt1MessageInput.Text);
 lst1AllMessages.AddItem(NetWorker.ClientState.UserName+': '+ edt1MessageInput.Text, TObject.Create);
  edt1MessageInput.Text:='';
+ lst1AllMessages.ScrollBy(99999, 0);
 end
 else
 begin
     lst1AllMessages.AddItem('Связь не настроена', TObject.Create);
 end;
 
+
+end;
+
+procedure TTChatForm.FormKeyPress(Sender: TObject; var Key: Char);
+begin
+if (Ord(Key) = VK_RETURN) then
+begin
+  self.btn1SendMessageClick(Self);
+end;
 
 end;
 

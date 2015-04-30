@@ -261,8 +261,8 @@ begin
     Station.RemoteController.indCallLineVisible[i] := False;
   for i := 1 to 21 do
   begin
-    Station.RemoteController.Channels.A[i].State := stChannelNotTuned;
-    Station.RemoteController.Channels.B[i].State := stChannelNotTuned;
+    Station.RemoteController.Channels.A[i].stChannelState := stChannelNotTuned;
+    Station.RemoteController.Channels.B[i].stChannelState := stChannelNotTuned;
   end;
 
 

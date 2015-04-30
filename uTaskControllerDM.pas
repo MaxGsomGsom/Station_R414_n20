@@ -307,7 +307,7 @@ function TTaskController.GetTaskTitle(TaskID: Integer): string;
           self.FSubTaskComplete(nil);
           self.FChangeText(nil);
           ErrorKeeper.ErrorMsg := '';
-          CheckTask(Sender0, TMouseButton.mbLeft, KeysToShiftState(0), 0,0);
+          //CheckTask(Sender0, TMouseButton.mbLeft, KeysToShiftState(0), 0,0);
           end;
           end;
           end;
@@ -4077,6 +4077,7 @@ end;
       if  (self.CurrentTask.CurrentSubTask.EventFormName='Волномер А') then result:=Wavemeter_A;
       if  (self.CurrentTask.CurrentSubTask.EventFormName='Волномер Б') then result:=Wavemeter_B;
       if  (self.CurrentTask.CurrentSubTask.EventFormName='Осциллограф') then result:=Oscillograph_rack;
+      if  (self.CurrentTask.CurrentSubTask.EventFormName='Пульт') then result:=Console_A;
 
 
    end;
