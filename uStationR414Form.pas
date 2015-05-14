@@ -1920,6 +1920,7 @@ var
   Rack1500A: TRack1500Form;
 begin
   Rack1500A := TRack1500Form.Create(self, 1, Station, TaskController);
+  SpawnForm((Sender as TImage).Tag);
   //Rack1500a.Show;
   Rack1500A.VertScrollBar.Position:=0;
 end;
@@ -2030,6 +2031,7 @@ var Rack1500A: TRack1500Form;
 begin
   Rack1500A:= TRack1500Form.Create(self, 1, Station, TaskController);
   CurBlockSelected := 5;
+  SpawnForm((Sender as TImage).Tag);
   //Rack1500A.Show;
   Rack1500A.VertScrollBar.Position:=948;
 end;

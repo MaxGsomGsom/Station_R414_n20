@@ -2343,6 +2343,19 @@
       <field name="imgWaveMeterMain" type="TImage" visibility="published" />
       <field name="imgWaveMeterMain1" type="TImage" visibility="published" />
       <field name="imgWaveMeterReserv1" type="TImage" visibility="published" />
+      <field name="imgSWCH9" type="TImage" visibility="published" />
+      <field name="imgSWCH8" type="TImage" visibility="published" />
+      <field name="imgSWCH7" type="TImage" visibility="published" />
+      <field name="imgSWCH6" type="TImage" visibility="published" />
+      <field name="imgSWCH5" type="TImage" visibility="published" />
+      <field name="imgSWCH4" type="TImage" visibility="published" />
+      <field name="imgSWCH3" type="TImage" visibility="published" />
+      <field name="imgSWCH2" type="TImage" visibility="published" />
+      <field name="imgSWCH10" type="TImage" visibility="published" />
+      <field name="imgSWCH1" type="TImage" visibility="published" />
+      <field name="imgSWCH0" type="TImage" visibility="published" />
+      <field name="img1" type="TImage" visibility="published" />
+      <field name="img2" type="TImage" visibility="published" />
       <procedure name="FormClose" visibility="published">
         <parameters>
           <parameter name="Sender" type="TObject" />
@@ -2661,6 +2674,17 @@
         </parameters>
       </constructor>
       <field name="Rack1600back" type="TRack1600BForm" visibility="public" />
+      <field name="imgsSWCH" visibility="public">
+        <array name="imgsSWCH" visibility="public" low="0" high="10">
+          <element />
+        </array>
+      </field>
+      <field name="imgsWindow" visibility="public">
+        <array name="imgsWindow" visibility="public" low="0" high="10">
+          <element />
+        </array>
+      </field>
+      <field name="deltaWaveO" type="Integer" visibility="public" />
       <const name="idRack1600A" visibility="public" type="Integer">
         <value>
           $1
