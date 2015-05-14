@@ -2163,7 +2163,7 @@ begin
   Station.HalfSetA.Rack1600.butAutomatic := butPositionLeft;
   Station.HalfSetA.Rack1600.butDmch := butPositionDown;
   Station.HalfSetA.Rack1600.butChannelControl := butPositionDown;
-  Station.HalfSetA.Rack1600.swChannelControl := 9;
+  Station.HalfSetA.Rack1600.swChannelControl := 6;
   Station.HalfSetA.Rack1600.wave1610_0 := NetWorker.ClientState.ReceiverWaveA;
   Station.HalfSetA.Rack1600.wave1610_R := NetWorker.ClientState.ReceiverWaveA;
   Station.HalfSetA.Rack1600.wave1600 := NetWorker.ClientState.ReceiverWaveA;
@@ -2184,7 +2184,7 @@ begin
   Station.HalfSetB.Rack1600.butAutomatic := butPositionLeft;
   Station.HalfSetB.Rack1600.butDmch := butPositionDown;
   Station.HalfSetB.Rack1600.butChannelControl := butPositionDown;
-  Station.HalfSetB.Rack1600.swChannelControl := 9;
+  Station.HalfSetB.Rack1600.swChannelControl := 6;
   Station.HalfSetB.Rack1600.wave1610_0 := NetWorker.ClientState.ReceiverWaveB;
   Station.HalfSetB.Rack1600.wave1610_R := NetWorker.ClientState.ReceiverWaveB;
   Station.HalfSetB.Rack1600.wave1600 := NetWorker.ClientState.ReceiverWaveB;

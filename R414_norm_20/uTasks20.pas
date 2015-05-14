@@ -527,6 +527,30 @@ end;
    function NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
+   type TTaskTerminalModeSubTask27 = class (TSubTask)
+  public
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   constructor Create;  override;
+  end;
+   type TTaskTerminalModeSubTask28 = class (TSubTask)
+  public
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   constructor Create;  override;
+  end;
+   type TTaskTerminalModeSubTask29 = class (TSubTask)
+  public
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   constructor Create;  override;
+  end;
+   type TTaskTerminalModeSubTask30 = class (TSubTask)
+  public
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   constructor Create;  override;
+  end;
   {$ENDREGION}
 
 implementation
@@ -2303,13 +2327,19 @@ uConstantsDM;
   TaskNetParams.AddKeyValue('MessageMainEndTune2', 'False');
   TaskNetParams.AddKeyValue('MessageSubEndTune2', 'False');
 
+  TaskNetParams.AddKeyValue('MessageStartFrequencyMain1_1', 'False');
+  TaskNetParams.AddKeyValue('MessageStartFrequencySub1_1', 'False');
+  TaskNetParams.AddKeyValue('MessageEndFrequencyMain1_2', 'False');
+  TaskNetParams.AddKeyValue('MessageEndFrequencyMain1_2', 'False');
+
+
 
   NetWorker.ClientState.CanSendChatMessages:=False;
   NetWorker.ClientState.CanGetChatMessages:=False;
 
   Name:='Перевод станции в оконечный режим работы. Имерение параметров';
 
-  SetLength(SubTasks, 26);
+  SetLength(SubTasks, 30);
 
   SubTasks[0]:= TTaskTerminalModeSubTask1.Create;
   SubTasks[1]:= TTaskTerminalModeSubTask2.Create;
@@ -2337,6 +2367,10 @@ uConstantsDM;
     SubTasks[23]:= TTaskTerminalModeSubTask24.Create;
     SubTasks[24]:= TTaskTerminalModeSubTask25.Create;
     SubTasks[25]:= TTaskTerminalModeSubTask26.Create;
+    SubTasks[26]:= TTaskTerminalModeSubTask27.Create;
+    SubTasks[27]:= TTaskTerminalModeSubTask28.Create;
+    SubTasks[28]:= TTaskTerminalModeSubTask29.Create;
+    SubTasks[29]:= TTaskTerminalModeSubTask30.Create;
 
 
   CurrentSubTask:=SubTasks[CurrentSubTaskNum];
@@ -2705,6 +2739,8 @@ uConstantsDM;
          if (TaskNetParams.GetBoolValue('MessageCheckLvlFromMainSent') = True) and (TaskNetParams.GetBoolValue('MessageCheckLvlFromSubSent') = True)
          then
          begin
+         Station.HalfSetA.Rack1600.wave1610_0:=Station.HalfSetA.Rack1600.wave1610_0-(Random(3)+2);
+         Station.HalfSetB.Rack1600.wave1610_0:=Station.HalfSetB.Rack1600.wave1610_0-(Random(3)+2);
            Result:=true;
          end
          else
@@ -2747,7 +2783,7 @@ uConstantsDM;
 
        function TTaskTerminalModeSubTask13.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
-         if (True) and (Station.HalfSetA.Rack1600.butDmch = butPositionDown) and (Station.HalfSetA.Rack1600.butChannelControl = butPositionDown) then
+         if ((NetWorker.ClientState.ReceiverWaveA-Station.HalfSetA.Rack1600.wave1610_0)=0) then
          begin
 
            Result:=true;
@@ -2776,7 +2812,7 @@ uConstantsDM;
 
        function TTaskTerminalModeSubTask14.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
-         if (True) and (Station.HalfSetB.Rack1600.butDmch = butPositionDown) and (Station.HalfSetB.Rack1600.butChannelControl = butPositionDown) then
+         if ((NetWorker.ClientState.ReceiverWaveB-Station.HalfSetB.Rack1600.wave1610_0)=0) then
          begin
             TaskNetParams.ChangeValue('OurRecieverTuned', 'True');
            Result:=true;
@@ -3294,6 +3330,215 @@ uConstantsDM;
    end;
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+   //=============================
+
+
+       function TTaskTerminalModeSubTask27.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+   begin
+
+         if (TaskNetParams.GetBoolValue('MessageStartFrequencyMain1_1') = True) and (TaskNetParams.GetBoolValue('MessageStartFrequencySub1_1') = True)
+         then
+         begin
+           Result:=true;
+         end
+         else
+         begin
+            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+            if (TaskNetParams.GetBoolValue('MessageStartFrequencyMain1_1') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Старшая станция не отправила сообщение' + #10#13;
+            if (TaskNetParams.GetBoolValue('MessageStartFrequencySub1_1') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Подчиненная станция не отправила сообщение' + #10#13;
+           Result:=false;
+         end;
+   end;
+
+   function TTaskTerminalModeSubTask27.NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
+   begin
+
+              if (NetWorker.ClientState.IsMainStation = True) then
+              begin
+                TaskNetParams.ChangeValue('MessageStartFrequencyMain1_1', 'True');
+                  NetWorker.SendTaskParams('MessageStartFrequencyMain1_1', 'True');
+              end;
+              if (NetWorker.ClientState.IsMainStation = False) and (TaskNetParams.GetBoolValue('MessageStartFrequencyMain1_1') = True) then
+              begin
+              TaskNetParams.ChangeValue('MessageStartFrequencySub1_1', 'True');
+                  NetWorker.SendTaskParams('MessageStartFrequencySub1_1', 'True');
+              end;
+
+              Result:=True;
+   end;
+
+   constructor TTaskTerminalModeSubTask27.Create;
+   begin
+   inherited Create;
+
+        Name:='Доложить корреспонденту.';
+        Text:='Доложить корреспонденту о начале измерения частотной характеристики. Старшая станция: "Приступаем к измерению частотной характеристики. ';
+        Text:=Text+' Дайте генератор с частотой 0.3кГц по первому каналу полукомплекта А. Даю вам." Подчиненная станция: "Вас понял. Даю генератор".';
+        EventFormName:='';
+        Time:= '';
+   end;
+
+
+    //=============================
+
+
+       function TTaskTerminalModeSubTask28.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+   begin
+
+         if (Station.P321C.swFrequency = 1) and (TaskNetParams.GetBoolValue('MessageEndFrequencyMain1_1') = True) and (TaskNetParams.GetBoolValue('MessageEndFrequencySub1_1') = True)
+         then
+         begin
+           Result:=true;
+         end
+         else
+         begin
+            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+            if (TaskNetParams.GetBoolValue('MessageEndFrequencyMain1_1') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Старшая станция не отправила сообщение' + #10#13;
+            if (TaskNetParams.GetBoolValue('MessageEndFrequencySub1_1') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Подчиненная станция не отправила сообщение' + #10#13;
+            if (Station.P321C.swFrequency <> 1) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Переключатель КГЦ не устанвлен в нужное положение' + #10#13;
+           Result:=false;
+         end;
+   end;
+
+   function TTaskTerminalModeSubTask28.NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
+   begin
+               if (Station.P321C.swFrequency = 1) then
+               begin
+                    if (NetWorker.ClientState.IsMainStation = True) then
+                    begin
+                      TaskNetParams.ChangeValue('MessageEndFrequencyMain1_1', 'True');
+                        NetWorker.SendTaskParams('MessageEndFrequencyMain1_1', 'True');
+                    end;
+                    if (NetWorker.ClientState.IsMainStation = False) and (TaskNetParams.GetBoolValue('MessageEndFrequencyMain1_1') = True) then
+                    begin
+                    TaskNetParams.ChangeValue('MessageEndFrequencySub1_1', 'True');
+                        NetWorker.SendTaskParams('MessageEndFrequencySub1_1', 'True');
+                    end;
+               end;
+              Result:=True;
+   end;
+
+   constructor TTaskTerminalModeSubTask28.Create;
+   begin
+   inherited Create;
+
+        Name:='Измерить частотную характеристику.';
+        Text:='На приборе П-321С переключатель КГЦ установить в положение 0.3, измерить частотную характеристику. Доложить корреспонденту. Старшая станция: "Отклонение ...". Подчиненная станция: "Отклонение ...".';
+        EventFormName:='П-321 С';
+        Time:= '';
+   end;
+
+
+
+   //=============================
+
+
+       function TTaskTerminalModeSubTask29.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+   begin
+
+         if (TaskNetParams.GetBoolValue('MessageStartFrequencyMain1_2') = True) and (TaskNetParams.GetBoolValue('MessageStartFrequencySub1_2') = True)
+         then
+         begin
+           Result:=true;
+         end
+         else
+         begin
+            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+            if (TaskNetParams.GetBoolValue('MessageStartFrequencyMain1_2') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Старшая станция не отправила сообщение' + #10#13;
+            if (TaskNetParams.GetBoolValue('MessageStartFrequencySub1_2') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Подчиненная станция не отправила сообщение' + #10#13;
+           Result:=false;
+         end;
+   end;
+
+   function TTaskTerminalModeSubTask29.NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
+   begin
+
+              if (NetWorker.ClientState.IsMainStation = True) then
+              begin
+                TaskNetParams.ChangeValue('MessageStartFrequencyMain1_2', 'True');
+                  NetWorker.SendTaskParams('MessageStartFrequencyMain1_2', 'True');
+              end;
+              if (NetWorker.ClientState.IsMainStation = False) and (TaskNetParams.GetBoolValue('MessageStartFrequencyMain1_1') = True) then
+              begin
+              TaskNetParams.ChangeValue('MessageStartFrequencySub1_2', 'True');
+                  NetWorker.SendTaskParams('MessageStartFrequencySub1_2', 'True');
+              end;
+
+              Result:=True;
+   end;
+
+   constructor TTaskTerminalModeSubTask29.Create;
+   begin
+   inherited Create;
+
+        Name:='Доложить корреспонденту.';
+        Text:='Доложить корреспонденту . Старшая станция: "Дайте генератор с частотой 0.4кГц по первому каналу полукомплекта А. Даю вам." Подчиненная станция: "Вас понял. Даю генератор".';
+        EventFormName:='';
+        Time:= '';
+   end;
+
+
+    //=============================
+
+
+       function TTaskTerminalModeSubTask30.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+   begin
+
+         if (Station.P321C.swFrequency = 2) and (TaskNetParams.GetBoolValue('MessageEndFrequencyMain1_2') = True) and (TaskNetParams.GetBoolValue('MessageEndFrequencySub1_2') = True)
+         then
+         begin
+           Result:=true;
+         end
+         else
+         begin
+            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+            if (TaskNetParams.GetBoolValue('MessageEndFrequencyMain1_2') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Старшая станция не отправила сообщение' + #10#13;
+            if (TaskNetParams.GetBoolValue('MessageEndFrequencySub1_2') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Подчиненная станция не отправила сообщение' + #10#13;
+            if (Station.P321C.swFrequency <> 1) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Переключатель КГЦ не устанвлен в нужное положение' + #10#13;
+           Result:=false;
+         end;
+   end;
+
+   function TTaskTerminalModeSubTask30.NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
+   begin
+               if (Station.P321C.swFrequency = 2) then
+               begin
+                    if (NetWorker.ClientState.IsMainStation = True) then
+                    begin
+                      TaskNetParams.ChangeValue('MessageEndFrequencyMain1_2', 'True');
+                        NetWorker.SendTaskParams('MessageEndFrequencyMain1_2', 'True');
+                    end;
+                    if (NetWorker.ClientState.IsMainStation = False) and (TaskNetParams.GetBoolValue('MessageEndFrequencyMain1_2') = True) then
+                    begin
+                    TaskNetParams.ChangeValue('MessageEndFrequencySub1_2', 'True');
+                        NetWorker.SendTaskParams('MessageEndFrequencySub1_2', 'True');
+                    end;
+               end;
+              Result:=True;
+   end;
+
+   constructor TTaskTerminalModeSubTask30.Create;
+   begin
+   inherited Create;
+
+        Name:='Измерить частотную характеристику.';
+        Text:='На приборе П-321С переключатель КГЦ установить в положение 0.4, измерить частотную характеристику. Доложить корреспонденту. Старшая станция: "Отклонение ...". Подчиненная станция: "Отклонение ...".';
+        EventFormName:='П-321 С';
+        Time:= '';
+   end;
 
 {$ENDREGION}
 

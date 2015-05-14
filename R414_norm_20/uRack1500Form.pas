@@ -279,7 +279,7 @@ begin
   TaskController.Subscribe(self);
   ButtonBackForm:= TButtonBackForm.Create(self);
   ButtonBackForm.Show; TaskController.Subscribe(ButtonBackForm);
-  if (TaskController.NetWorker.ClientState.WorkMode = TWorkMode.wmLearning) then
+  if (True) or (TaskController.NetWorker.ClientState.WorkMode = TWorkMode.wmLearning) then
   begin
     imgTuneHelp.Visible := True;
     imgTuneHelp2.Visible := True;
@@ -419,8 +419,8 @@ begin
   if Ord(Key) = 27 then
   begin
     //Инициация события "Закрытие окна стойки"
-    StationR414FormminiHWND := FindWindow(StationR414FormminiClassName, StationR414FormminiObjectName);
-    PostMessage(StationR414FormminiHWND, MM_RACK_WAS_CLOSED, 0, 0);
+    //StationR414FormminiHWND := FindWindow(StationR414FormminiClassName, StationR414FormminiObjectName);
+    //PostMessage(StationR414FormminiHWND, MM_RACK_WAS_CLOSED, 0, 0);
   end;
 end;
 

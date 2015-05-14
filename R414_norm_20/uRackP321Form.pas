@@ -519,7 +519,7 @@ begin
         begin
           ilDisplay.GetBitmap(Station.P321C.swGradYY - 1, imgDisplay.Picture.Bitmap);
         end;
-      6:
+        6:
         begin
           //Проверим правильно ли выставлены параметры
           if (Station.P321C.swNepGen = 5) and
@@ -607,6 +607,58 @@ begin
                 //AddError(idP321A, AnalyseTune(Station.HalfSetA.Rack1500, Station.HalfSetA.Rack1920, Station.HalfSetA.Rack1600, Station.HalfSetA.LittleNoisyAmplifier, Station.HalfSetA.Duplexer, 'A') +
                 //AnalyseTune(Station.HalfSetA.Rack1500, Station.HalfSetA.Rack1920, Station.HalfSetA.Rack1600, Station.HalfSetA.LittleNoisyAmplifier, Station.HalfSetA.Duplexer, 'B'));
               end;
+            end;
+          end
+          else if (Station.P321C.swNepGen = 5) and
+          (Station.P321C.swGradPit = 31) and
+          (Station.P321C.swGradGen = 31) and
+          (Station.P321C.swGradYY = 31) //and
+          //((Station.P321C.swFrequency = 1) or (Station.P321C.swFrequency = 2)
+          //or (Station.P321C.swFrequency = 3) or (Station.P321C.swFrequency = 10)
+          //or (Station.P321C.swFrequency = 12) or (Station.P321C.swFrequency = 13))
+          then
+          begin
+            //Параметры выставлены верно
+            //Подключены ли кабели
+            if ((Station.CableBlack1.stKonez1.stState = csP321CGen) or (Station.CableBlack1.stKonez2.stState = csP321CGen)) and
+            ((Station.CableWhite2.stKonez1.stState = csP321CYY) or (Station.CableWhite2.stKonez2.stState = csP321CYY)) then
+            begin
+              //Кабели подключены
+              if (Station.IsPolukomplektATuned and Station.IsPolukomplektBTuned) then
+              begin
+                //==============Четырех канальный режим===================
+                if (Station.IsChannelBlocksTunedAt4ChannelMode) then
+                begin
+                  if Station.IsP321ShuntsConnectedAt4ChannelMode then
+                  begin
+                        //выбор отклонения в зависимости от частоты
+                      if (Station.P321C.swFrequency <= 3) then
+                          CurTuneValue:= 4-Station.P321C.swFrequency*2
+                      else if (Station.P321C.swFrequency>=10) then
+                          CurTuneValue:= Station.P321C.swFrequency*2-9
+                      else  CurTuneValue:=0;
+
+
+
+                    ilDisplay.GetBitmap(20 - CurTuneValue, imgDisplay.Picture.Bitmap);
+
+                    ReloadP321Image;
+                    Exit;
+
+                  end
+                  else
+                    ShowNull;
+                end;
+
+                if (Station.IsChannelBlocksTunedAt2ChannelMode = False) and (Station.IsChannelBlocksTunedAt2ChannelMode = False) then
+                begin
+                  ShowNull;
+                end;
+              end
+              else
+              begin
+                ShowNull;
+               end;
             end;
           end
           else
