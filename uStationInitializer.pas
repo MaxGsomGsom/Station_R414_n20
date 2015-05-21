@@ -2169,6 +2169,7 @@ begin
   Station.HalfSetA.Rack1600.wave1600 := NetWorker.ClientState.ReceiverWaveA;
   Station.HalfSetA.Rack1600.DropError := True;
   Station.HalfSetA.Rack1600.stMoshnost := True;
+  Station.HalfSetA.Rack1600.deltaWaveO:= GetRandomTuneValue;
 
   Station.HalfSetB.Rack1600.GeterodinTunedMain := True;
   Station.HalfSetB.Rack1600.GeterodinTunedReserve := True;
@@ -2190,6 +2191,7 @@ begin
   Station.HalfSetB.Rack1600.wave1600 := NetWorker.ClientState.ReceiverWaveB;
   Station.HalfSetB.Rack1600.DropError := True;
   Station.HalfSetB.Rack1600.stMoshnost := True;
+  Station.HalfSetB.Rack1600.deltaWaveO:= GetRandomTuneValue;
 
   Station.HalfSetA.Rack1600B.but1622Main := butPositionUp;
   Station.HalfSetA.Rack1600B.but1622Reserve := butPositionUp;

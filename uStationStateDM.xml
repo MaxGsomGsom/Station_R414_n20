@@ -107,6 +107,7 @@
     <field name="wave1610_R" type="Byte" visibility="public" />
     <field name="wave1600" type="Byte" visibility="public" />
     <field name="DropError" type="Boolean" visibility="public" />
+    <field name="deltaWaveO" type="Integer" visibility="public" />
     <field name="stMoshnost" type="Boolean" visibility="public" />
     <field name="stDmchTuneValue" type="Byte" visibility="public" />
   </struct>

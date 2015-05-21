@@ -2684,7 +2684,6 @@
           <element />
         </array>
       </field>
-      <field name="deltaWaveO" type="Integer" visibility="public" />
       <const name="idRack1600A" visibility="public" type="Integer">
         <value>
           $1
