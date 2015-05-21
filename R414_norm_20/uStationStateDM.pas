@@ -97,6 +97,7 @@ const
     wave1610_R: Byte;
     wave1600: Byte;
     DropError: Boolean;
+    deltaWaveO: Integer;
 
     stMoshnost: Boolean;
     stDmchTuneValue: Byte;

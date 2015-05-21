@@ -2783,7 +2783,7 @@ uConstantsDM;
 
        function TTaskTerminalModeSubTask13.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
-         if ((NetWorker.ClientState.ReceiverWaveA-Station.HalfSetA.Rack1600.wave1610_0)=0) then
+         if (Station.HalfSetA.Rack1600.deltaWaveO=0) then
          begin
 
            Result:=true;
@@ -2812,7 +2812,7 @@ uConstantsDM;
 
        function TTaskTerminalModeSubTask14.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
-         if ((NetWorker.ClientState.ReceiverWaveB-Station.HalfSetB.Rack1600.wave1610_0)=0) then
+         if (Station.HalfSetB.Rack1600.deltaWaveO=0) then
          begin
             TaskNetParams.ChangeValue('OurRecieverTuned', 'True');
            Result:=true;

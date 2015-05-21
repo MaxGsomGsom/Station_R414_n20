@@ -2466,6 +2466,7 @@ end;
      CurrentTaskForm.SetMyText(TaskController.CurrentTask.CurrentSubTask.Text);
      CurrentTaskForm.TaskInfo.Color:= clLime;
      CurrentTaskForm.ReturnWhite:= 3;
+     CurrentTaskForm.Repaint;
  end;
 
  procedure TStationR414Form.TaskComplete(Sender: TObject);

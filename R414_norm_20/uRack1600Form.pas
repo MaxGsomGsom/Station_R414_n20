@@ -206,7 +206,7 @@ type
   Rack1600back: TRack1600BForm;
   imgsSWCH: array [0..10] of ^TImage;
   imgsWindow: array [0..10] of ^TImage;
-  deltaWaveO: Integer;
+
 
   const
   idRack1600A=1;
@@ -246,10 +246,38 @@ begin
   ButtonBackForm:= TButtonBackForm.Create(self);
   ButtonBackForm.Show;
   TaskController.Subscribe(self);
+
+
+   imgsWindow[0] := @imgWindow0;
+  imgsWindow[1] := @imgWindow1;
+  imgsWindow[2] := @imgWindow2;
+  imgsWindow[3] := @imgWindow3;
+  imgsWindow[4] := @imgWindow4;
+  imgsWindow[5] := @imgWindow5;
+  imgsWindow[6] := @imgWindow6;
+  imgsWindow[7] := @imgWindow7;
+  imgsWindow[8] := @imgWindow8;
+  imgsWindow[9] := @imgWindow9;
+  imgsWindow[10] := @imgWindow10;
+
+
+  imgsSWCH[0] := @imgSWCH0;
+  imgsSWCH[1] := @imgSWCH1;
+  imgsSWCH[2] := @imgSWCH2;
+  imgsSWCH[3] := @imgSWCH3;
+  imgsSWCH[4] := @imgSWCH4;
+  imgsSWCH[5] := @imgSWCH5;
+  imgsSWCH[6] := @imgSWCH6;
+  imgsSWCH[7] := @imgSWCH7;
+  imgsSWCH[8] := @imgSWCH8;
+  imgsSWCH[9] := @imgSWCH9;
+  imgsSWCH[10] := @imgSWCH10;
 end;
 
 {$REGION '‘ункци€ TRack1600Form.Reload()'}
 procedure TRack1600Form.Reload;
+var
+tempDelta, I: integer;
 begin
   case CurFormId of
     idRack1600A:
@@ -269,7 +297,41 @@ begin
         imgChannelSwitcher.Invalidate;
         lbl1600.Caption := IntToStr(Station.HalfSetA.Rack1600.wave1600);
 
-        img1610_0_sw.Visible := Boolean(Station.HalfSetA.Rack1600.wave1610_0 mod 2);
+
+
+         for I := 0 to 10 do
+           begin
+             imgsWindow[I].Visible:=false;
+             imgsSWCH[I].Visible:=false;
+           end;
+
+        if  (Station.IsPolukomplektATuned) and
+          (Station.HalfSetA.Rack1600.butDmch = butPositionUp) and (Station.HalfSetA.Rack1600.SelectedMd = smdMain) and
+        (Station.HalfSetA.Rack1600.SelectedUpch = sUpchMain) and (Station.HalfSetA.Rack1600.SelectedDmch = sDmchMain)
+        and (Station.HalfSetA.Rack1600.butChannelControl = butPositionUp) and (Station.HalfSetA.Rack1600.swChannelControl=9) then
+        begin
+
+        if(Station.HalfSetA.Rack1600.deltaWaveO>5) then tempDelta:=5
+        else if (Station.HalfSetA.Rack1600.deltaWaveO<-5) then tempDelta:=-5
+        else tempDelta:=  Station.HalfSetA.Rack1600.deltaWaveO;
+
+
+
+              img1610_0_sw.Visible := Boolean(Station.HalfSetA.Rack1600.deltaWaveO mod 2);
+
+              imgsWindow[Abs(Station.HalfSetA.Rack1600.deltaWaveO)].Visible:=true;
+              imgsSWCH[5-Abs(tempDelta)].Visible:=true;
+
+        end
+        else
+        begin
+             img1610_0_sw.Visible := Boolean(Station.HalfSetA.Rack1600.wave1610_0 mod 2);
+
+             imgsWindow[0].Visible:=true;
+             imgsSWCH[0].Visible:=true;
+
+        end;
+
         img1610_R_sw.Visible := Boolean(Station.HalfSetA.Rack1600.wave1610_R mod 2);
         img1600_sw.Visible := Boolean(Station.HalfSetA.Rack1600.wave1600 mod 2);
 
@@ -330,7 +392,43 @@ begin
         imgChannelSwitcher.Invalidate;
         lbl1600.Caption := IntToStr(Station.HalfSetB.Rack1600.wave1600);
 
-        img1610_0_sw.Visible := Boolean(Station.HalfSetB.Rack1600.wave1610_0 mod 2);
+
+
+        for I := 0 to 10 do
+           begin
+             imgsWindow[I].Visible:=false;
+             imgsSWCH[I].Visible:=false;
+           end;
+
+        if (Station.IsPolukomplektBTuned) and
+          (Station.HalfSetB.Rack1600.butDmch = butPositionUp) and (Station.HalfSetB.Rack1600.SelectedMd = smdMain) and
+        (Station.HalfSetB.Rack1600.SelectedUpch = sUpchMain) and (Station.HalfSetB.Rack1600.SelectedDmch = sDmchMain)
+        and (Station.HalfSetB.Rack1600.butChannelControl = butPositionUp) and (Station.HalfSetB.Rack1600.swChannelControl=9) then
+        begin
+
+        if (Station.HalfSetB.Rack1600.deltaWaveO>5) then tempDelta:=5
+        else if (Station.HalfSetB.Rack1600.deltaWaveO<-5) then tempDelta:=-5
+        else tempDelta:=  Station.HalfSetB.Rack1600.deltaWaveO;
+
+
+              img1610_0_sw.Visible := Boolean(Station.HalfSetB.Rack1600.deltaWaveO mod 2);
+
+              imgsWindow[Abs(Station.HalfSetB.Rack1600.deltaWaveO)].Visible:=true;
+              imgsSWCH[5-Abs(tempDelta)].Visible:=true;
+
+        end
+        else
+        begin
+             img1610_0_sw.Visible := Boolean(Station.HalfSetB.Rack1600.wave1610_0 mod 2);
+
+             imgsWindow[0].Visible:=true;
+             imgsSWCH[0].Visible:=true;
+
+        end;
+
+
+
+
         img1610_R_sw.Visible := Boolean(Station.HalfSetB.Rack1600.wave1610_R mod 2);
         img1600_sw.Visible := Boolean(Station.HalfSetB.Rack1600.wave1600 mod 2);
 
@@ -779,61 +877,36 @@ begin
   Self.Width := imgBG.Width + 20;
   MoveFormInScreenCenter(Self);
 
-  case CurFormId of
-    idRack1600A: deltaWaveO:= TaskController.NetWorker.ClientState.ReceiverWaveA-Station.HalfSetA.Rack1600.wave1610_0;
-    idRack1600B:  deltaWaveO:= TaskController.NetWorker.ClientState.ReceiverWaveB-Station.HalfSetB.Rack1600.wave1610_0;
-  end;
-
-  imgsWindow[0] := @imgWindow0;
-  imgsWindow[1] := @imgWindow1;
-  imgsWindow[2] := @imgWindow2;
-  imgsWindow[3] := @imgWindow3;
-  imgsWindow[4] := @imgWindow4;
-  imgsWindow[5] := @imgWindow5;
-  imgsWindow[6] := @imgWindow6;
-  imgsWindow[7] := @imgWindow7;
-  imgsWindow[8] := @imgWindow8;
-  imgsWindow[9] := @imgWindow9;
-  imgsWindow[10] := @imgWindow10;
+//  case CurFormId of
+//    idRack1600A: deltaWaveO:= TaskController.NetWorker.ClientState.ReceiverWaveA-Station.HalfSetA.Rack1600.wave1610_0;
+//    idRack1600B:  deltaWaveO:= TaskController.NetWorker.ClientState.ReceiverWaveB-Station.HalfSetB.Rack1600.wave1610_0;
+//  end;
 
 
-  imgsSWCH[0] := @imgSWCH0;
-  imgsSWCH[1] := @imgSWCH1;
-  imgsSWCH[2] := @imgSWCH2;
-  imgsSWCH[3] := @imgSWCH3;
-  imgsSWCH[4] := @imgSWCH4;
-  imgsSWCH[5] := @imgSWCH5;
-  imgsSWCH[6] := @imgSWCH6;
-  imgsSWCH[7] := @imgSWCH7;
-  imgsSWCH[8] := @imgSWCH8;
-  imgsSWCH[9] := @imgSWCH9;
-  imgsSWCH[10] := @imgSWCH10;
-
-
-  if (Station.IsPluggedIn) then
-  begin
-    case CurFormId of
-    idRack1600A:
-    begin
-          if (Station.HalfSetA.Rack1600.swChannelControl=9) and (Station.IsPolukomplektATuned) and (Abs(deltaWaveO)<=5)  then
-          begin
-           imgsWindow[Abs(deltaWaveO)].Visible:=true;
-           imgsSWCH[(5-Abs(deltaWaveO))].Visible:=true;
-          end;
-    end;
-    idRack1600B:
-    begin
-          if (Station.HalfSetB.Rack1600.swChannelControl=9) and (Station.IsPolukomplektBTuned) and (Abs(deltaWaveO)<=5)  then
-          begin
-           imgsWindow[Abs(deltaWaveO)].Visible:=true;
-           imgsSWCH[(5-Abs(deltaWaveO))].Visible:=true;
-          end;
-    end;
-
-    end;
-
-
-   end;
+//  if (Station.IsPluggedIn) then
+//  begin
+//    case CurFormId of
+//    idRack1600A:
+//    begin
+//          if (Station.HalfSetA.Rack1600.swChannelControl=9) and (Station.IsPolukomplektATuned) and (Abs(deltaWaveO)<=5)  then
+//          begin
+//           imgsWindow[Abs(deltaWaveO)].Visible:=true;
+//           imgsSWCH[(5-Abs(deltaWaveO))].Visible:=true;
+//          end;
+//    end;
+//    idRack1600B:
+//    begin
+//          if (Station.HalfSetB.Rack1600.swChannelControl=9) and (Station.IsPolukomplektBTuned) and (Abs(deltaWaveO)<=5)  then
+//          begin
+//           imgsWindow[Abs(deltaWaveO)].Visible:=true;
+//           imgsSWCH[(5-Abs(deltaWaveO))].Visible:=true;
+//          end;
+//    end;
+//
+//    end;
+//
+//
+//   end;
 
 end;
 
@@ -1094,7 +1167,30 @@ begin
   case CurFormId of
     idRack1600A:
       begin
-        if Button = mbMiddle then
+
+
+        if (Station.IsPluggedIn) and (Station.IsPolukomplektATuned) and
+          (Station.HalfSetA.Rack1600.butDmch = butPositionUp) and (Station.HalfSetA.Rack1600.SelectedMd = smdMain) and
+        (Station.HalfSetA.Rack1600.SelectedUpch = sUpchMain) and (Station.HalfSetA.Rack1600.SelectedDmch = sDmchMain)
+        and (Station.HalfSetA.Rack1600.butChannelControl = butPositionUp) and (Station.HalfSetA.Rack1600.swChannelControl=9) then
+        begin
+
+        if (Button = mbLeft) and (Station.HalfSetA.Rack1600.deltaWaveO < 10) then
+        begin
+          Inc(Station.HalfSetA.Rack1600.deltaWaveO, 1);
+        end;
+        if (Button = mbRight) and (Station.HalfSetA.Rack1600.deltaWaveO > -10) then
+        begin
+          Dec(Station.HalfSetA.Rack1600.deltaWaveO, 1);
+        end;
+
+
+        end
+        else
+        begin
+
+
+            if Button = mbMiddle then
         begin
           if not(InputQuery('¬ведите значение волны', PName, strDigit)) then
             Exit;
@@ -1119,28 +1215,35 @@ begin
         end;
 
 
-        //===========================
-
-
-        if (Station.IsPluggedIn) and (Station.IsPolukomplektATuned) and
-          (Station.HalfSetA.Rack1600.butDmch = butPositionUp) and (Station.HalfSetA.Rack1600.SelectedMd = smdMain) and
-        (Station.HalfSetA.Rack1600.SelectedUpch = sUpchMain) and (Station.HalfSetA.Rack1600.SelectedDmch = sDmchMain)
-        and (Station.HalfSetA.Rack1600.butChannelControl = butPositionUp) and (Station.HalfSetA.Rack1600.swChannelControl=9) then
-        begin
-
-        if (Abs(deltaWaveO)<=5) then imgsWindow[Abs(deltaWaveO)].Visible:=false;
-        if (Abs(deltaWaveO)<=5) then imgsSWCH[(5-Abs(deltaWaveO))].Visible:=false;
-        deltaWaveO:= TaskController.NetWorker.ClientState.ReceiverWaveA-Station.HalfSetA.Rack1600.wave1610_0;
-        if (Abs(deltaWaveO)<=5) then imgsWindow[Abs(deltaWaveO)].Visible:=True;
-        if (Abs(deltaWaveO)<=5) then imgsSWCH[(5-Abs(deltaWaveO))].Visible:=true;
-
         end;
 
       end;
 
     idRack1600B:
       begin
-        if Button = mbMiddle then
+
+
+
+        if (Station.IsPluggedIn) and (Station.IsPolukomplektBTuned) and
+          (Station.HalfSetB.Rack1600.butDmch = butPositionUp) and (Station.HalfSetB.Rack1600.SelectedMd = smdMain) and
+        (Station.HalfSetB.Rack1600.SelectedUpch = sUpchMain) and (Station.HalfSetB.Rack1600.SelectedDmch = sDmchMain)
+        and (Station.HalfSetB.Rack1600.butChannelControl = butPositionUp) and (Station.HalfSetB.Rack1600.swChannelControl=9) then
+        begin
+
+        if (Button = mbLeft) and (Station.HalfSetB.Rack1600.deltaWaveO < 10) then
+        begin
+          Inc(Station.HalfSetB.Rack1600.deltaWaveO, 1);
+        end;
+        if (Button = mbRight) and (Station.HalfSetB.Rack1600.deltaWaveO > -10) then
+        begin
+          Dec(Station.HalfSetB.Rack1600.deltaWaveO, 1);
+        end;
+
+        end
+        else
+        begin
+
+          if Button = mbMiddle then
         begin
           if not(InputQuery('¬ведите значение волны', PName, strDigit)) then
             Exit;
@@ -1164,21 +1267,6 @@ begin
           Dec(Station.HalfSetB.Rack1600.wave1610_0, 1);
         end;
 
-
-        //===========================
-
-
-        if (Station.IsPluggedIn) and (Station.IsPolukomplektATuned) and
-          (Station.HalfSetB.Rack1600.butDmch = butPositionUp) and (Station.HalfSetB.Rack1600.SelectedMd = smdMain) and
-        (Station.HalfSetB.Rack1600.SelectedUpch = sUpchMain) and (Station.HalfSetB.Rack1600.SelectedDmch = sDmchMain)
-        and (Station.HalfSetB.Rack1600.butChannelControl = butPositionUp) and (Station.HalfSetB.Rack1600.swChannelControl=9) then
-        begin
-
-        if (Abs(deltaWaveO)<=5) then imgsWindow[Abs(deltaWaveO)].Visible:=false;
-        if (Abs(deltaWaveO)<=5) then imgsSWCH[(5-Abs(deltaWaveO))].Visible:=false;
-        deltaWaveO:= TaskController.NetWorker.ClientState.ReceiverWaveB-Station.HalfSetB.Rack1600.wave1610_0;
-        if (Abs(deltaWaveO)<=5) then imgsWindow[Abs(deltaWaveO)].Visible:=True;
-        if (Abs(deltaWaveO)<=5) then imgsSWCH[(5-Abs(deltaWaveO))].Visible:=true;
 
         end;
 

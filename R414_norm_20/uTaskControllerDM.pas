@@ -256,6 +256,7 @@ function TTaskController.GetTaskTitle(TaskID: Integer): string;
         self.CurrentTask.TaskNetParams.ChangeValue(Param, Value);
 
        CheckTask(nil, TMouseButton.mbLeft, KeysToShiftState(0),0,0);
+
   end;
   
 
