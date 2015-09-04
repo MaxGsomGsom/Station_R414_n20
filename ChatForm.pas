@@ -14,6 +14,7 @@ type
     img1OpenChat: TImage;
     LinkedNick: TLabel;
     lblUserName: TLabel;
+    lblRole: TLabel;
     procedure FormShow(Sender: TObject);
     procedure ShowMessage(Sender: TObject);
     procedure img1OpenChatClick(Sender: TObject);
@@ -45,6 +46,15 @@ begin
      NetWorker:=NetWorker0;
      lblUserName.Caption:= NetWorker.ClientState.UserName+':';
      Self.TaskController:=TaskController;
+
+     if (NetWorker.ClientState.MainStation = True) then
+begin
+lblRole.Caption := 'Главная';
+end
+else
+begin
+lblRole.Caption := 'Подчиненная';
+end;
   end;
 
 
@@ -96,6 +106,15 @@ var Req: TRequest;
 begin
 Self.Visible:= NetWorker.ClientState.LinkedR414Connected ;
 LinkedNick.Caption:='Связанная станция: '+NetWorker.ClientState.LinkedR414UserName;
+if (NetWorker.ClientState.MainStation = True) then
+begin
+lblRole.Caption := 'Главная';
+end
+else
+begin
+lblRole.Caption := 'Подчиненная';
+end;
+
 end;
 
 procedure TTChatForm.ShowMessage(Sender: TObject);

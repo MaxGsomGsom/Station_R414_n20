@@ -115,7 +115,7 @@ type
      bmp1: tbitmap;
      bmp2:tbitmap;
      bmp3:tbitmap;
-     i1,i2,k,s1,s2,Nazad,T:integer;
+     //i1,i2,k,s1,s2,Nazad,T:integer;
     //
 
      Moment,Start:boolean;
@@ -192,13 +192,13 @@ end;
 procedure TBlockWaveMeterForm.FormCreate(Sender: TObject);
 begin
   i:=0;
-  i1:=0;
-  i2:=0;
-  k:=0;
-  s1:=15;
-  s2:=0;
-  Nazad:=0;
-  T:=0;
+//  i1:=0;
+//  i2:=0;
+//  k:=0;
+//  s1:=15;
+//  s2:=0;
+//  Nazad:=0;
+//  T:=0;
   NachZnachS:=false;
   bmp1:= tbitmap.Create;
 

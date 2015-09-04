@@ -108,6 +108,9 @@ type
     imgMshuA: TImage;
     imgP321A: TImage;
     N2: TMenuItem;
+    img70: TImage;
+    img1500Blow: TImage;
+    img1400Blow: TImage;
     {$ENDREGION}
     {$REGION 'Объявление стандартных событий формы'}
     procedure imgOscillographClick(Sender: TObject);
@@ -183,6 +186,9 @@ type
               Shift: TShiftState; X, Y: Integer);
     procedure N2Click(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
+    procedure img70Click(Sender: TObject);
+    procedure img1500BlowClick(Sender: TObject);
+    procedure img1400BlowClick(Sender: TObject);
     {$ENDREGION}
 
   private
@@ -361,13 +367,18 @@ begin
   //executer.CloseAllInformationForms;    //Закрыть форму с текстом задания и
                                         //форму с частотами и таймером
   //CanClose := True;
-
+   (Owner as TForm).Show;
   //(Owner as TPreparationToWorkForm).Show;
   StationR414MinForm.Close;
   BackgroundForm.Close;
   FilterForm.Close;
+  //FilterForm := nil;
   CurrentTaskForm.Close;
-  Chat.Close;
+  if (Chat <> nil) then
+  begin
+    Chat.Close;
+  end;
+  //Close;
 end;
 
 procedure TStationR414Form.FormCreate(Sender: TObject);
@@ -1911,7 +1922,7 @@ var Rack1920B: TRack1920Form;
 begin
 Rack1920B:=TRack1920Form.Create(self, 2, Station, TaskController);
   SpawnForm((Sender as TImage).Tag);
-  Rack1920B.VertScrollBar.Position := 0;
+  Rack1920B.VertScrollBar.Position := 1500;
 end;
 
 
@@ -1964,6 +1975,14 @@ WaveMeterA:=TBlockWaveMeterForm.Create(self, 0, Station, TaskController);
   SpawnForm((Sender as TImage).Tag);
 end;
 
+procedure TStationR414Form.img1400BlowClick(Sender: TObject);
+var RackB1400: TRack1400Form;
+begin
+RackB1400:=TRack1400Form.Create(self, Station, TaskController);
+  SpawnForm((Sender as TImage).Tag);
+  RackB1400.VertScrollBar.Position:=2283;
+end;
+
 procedure TStationR414Form.img14Click(Sender: TObject);
 var
 Rack1200B_PRM:TRack1200LeftForm;
@@ -1973,6 +1992,14 @@ Rack1200B_PRM:= TRack1200LeftForm.Create(Self, 2, Station, TaskController);
 
   SpawnForm((Sender as TImage).Tag);
   Rack1200B_PRM.VertScrollBar.Position:=0;
+end;
+
+procedure TStationR414Form.img1500BlowClick(Sender: TObject);
+var Rack1500B: TRack1500Form;
+begin
+Rack1500B:=TRack1500Form.Create(self, 2, Station, TaskController);
+  SpawnForm((Sender as TImage).Tag);
+  Rack1500B.VertScrollBar.Position := 948;
 end;
 
 procedure TStationR414Form.img15Click(Sender: TObject);
@@ -2182,7 +2209,7 @@ var RackB1400: TRack1400Form;
 begin
 RackB1400:=TRack1400Form.Create(self, Station, TaskController);
   SpawnForm((Sender as TImage).Tag);
-  RackB1400.VertScrollBar.Position:=2283;
+  RackB1400.VertScrollBar.Position:=0;
 end;
 
 procedure TStationR414Form.imgDuplexerAClick(Sender: TObject);
@@ -2230,6 +2257,8 @@ begin
   SpawnForm(idRack1600A);
   Rack1600A.VertScrollBar.Position := 0;
 end;
+
+
 
 procedure TStationR414Form.img27Click(Sender: TObject);
 var Rack1200A_PRM: TRack1200LeftForm;
@@ -2281,6 +2310,16 @@ Rack1200A_PRD:= TRack1200RightForm.Create(self, 1, Station, TaskController);
   Rack1200A_PRD.VertScrollBar.Position:=1772;
 end;
 
+procedure TStationR414Form.img70Click(Sender: TObject);
+  var
+Rack1600A: TRack1600Form;
+begin
+  Rack1600A:= TRack1600Form.Create(self, 1, Station, TaskController);
+  SpawnForm(idRack1600A);
+  Rack1600A.VertScrollBar.Position := 700;
+end;
+
+
 procedure TStationR414Form.img7Click(Sender: TObject);
 var Rack1200A_PRD: TRack1200RightForm;
 begin
@@ -2327,7 +2366,8 @@ procedure TStationR414Form.imgOscillographClick(Sender: TObject);
 var BlockOscillograph: TBlockOscillographForm;
 begin
 BlockOscillograph:= TBlockOscillographForm.Create(self, Station, TaskController);
-  SpawnForm((Sender as TImage).Tag);
+SpawnForm((Sender as TImage).Tag);
+
 end;
 {$ENDREGION}
 

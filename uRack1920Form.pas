@@ -1371,6 +1371,7 @@ begin
   end;
 end;
 
+
 procedure TRack1920Form.TurnOnLBV1(Delay: Boolean = True);
 var
   btA: Byte;
@@ -1387,7 +1388,7 @@ begin
       imgsZamedlSys[btA - 1].Visible := False;
     Application.ProcessMessages;
     if Delay then
-      Sleep(800);
+      Sleep(500);
   end;
   case CurFormId of
     idRack1920A:
@@ -1413,7 +1414,7 @@ begin
       imgsZamedlSys[btA - 1].Visible := False;
     Application.ProcessMessages;
     if Delay then
-      Sleep(800);
+      Sleep(500);
   end;
   case CurFormId of
     idRack1920A:
@@ -1617,16 +1618,6 @@ begin
           end;
 
 
-        if Station.HalfSetA.Rack1920.butHighOn = butPositionDown then
-          Station.HalfSetA.Rack1920.butHighOn := butPositionUp
-        else
-        begin
-          Station.HalfSetA.Rack1920.butHighOn := butPositionDown;
-          Station.HalfSetA.Rack1920.butHighOff := butPositionUp;
-        end;
-
-        Reload;
-
         if (not(Station.Is1920A1ReadyToTurnHighON)) then
         begin
           if Station.WorkType = wtLearn then
@@ -1640,7 +1631,18 @@ begin
         else
         begin
             TurnOnLBV1;
-          end;
+
+          Station.HalfSetA.Rack1920.butHighOn := butPositionDown;
+          Station.HalfSetA.Rack1920.butHighOff := butPositionUp;
+
+           Reload;
+
+        end;
+
+
+
+
+
       end;
     idRack1920B:
       begin
@@ -1657,16 +1659,6 @@ begin
           end;
 
 
-        if Station.HalfSetB.Rack1920.butHighOn = butPositionDown then
-          Station.HalfSetB.Rack1920.butHighOn := butPositionUp
-        else
-        begin
-          Station.HalfSetB.Rack1920.butHighOn := butPositionDown;
-          Station.HalfSetB.Rack1920.butHighOff := butPositionUp;
-        end;
-
-        Reload;
-
         if (not(Station.Is1920B1ReadyToTurnHighON)) then
         begin
           if Station.WorkType = wtLearn then
@@ -1680,6 +1672,11 @@ begin
         else
           begin
             TurnOnLBV1;
+
+         Station.HalfSetB.Rack1920.butHighOn := butPositionDown;
+          Station.HalfSetB.Rack1920.butHighOff := butPositionUp;
+
+        Reload;
           end;
       end;
   end;

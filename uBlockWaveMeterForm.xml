@@ -2453,13 +2453,6 @@
       <field name="bmp1" type="TBitmap" visibility="public" />
       <field name="bmp2" type="TBitmap" visibility="public" />
       <field name="bmp3" type="TBitmap" visibility="public" />
-      <field name="i1" type="Integer" visibility="public" />
-      <field name="i2" type="Integer" visibility="public" />
-      <field name="k" type="Integer" visibility="public" />
-      <field name="s1" type="Integer" visibility="public" />
-      <field name="s2" type="Integer" visibility="public" />
-      <field name="Nazad" type="Integer" visibility="public" />
-      <field name="T" type="Integer" visibility="public" />
       <field name="Moment" type="Boolean" visibility="public" />
       <field name="Start" type="Boolean" visibility="public" />
       <field name="x1" type="Integer" visibility="public" />

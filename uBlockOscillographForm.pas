@@ -159,6 +159,7 @@ begin
   ButtonBackForm.Show;
 
   MoveFormInScreenCenter(self);
+  Self.Left := Screen.Width  - Self.Width ;
 end;
 
 
@@ -620,7 +621,7 @@ begin
   Height := Image1.Height;
   Width := Image1.Width;
 
-  Self.Left := Screen.Width div 2 - Self.Width div 2;
+  Self.Left := Screen.Width  - Self.Width ;
   Reload;
 end;
 

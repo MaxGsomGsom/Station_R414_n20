@@ -222,10 +222,10 @@ begin
 
   CommonInit;
   case TaskType of
-    //ttNone:
-    //  begin
-    //   InitForStartParametersSetupTask;
-    //  end;
+    ttNone:
+      begin
+       InitForStartParametersSetupTask;
+      end;
     ttPowerOn:
       begin
         InitForPowerOnTask;
