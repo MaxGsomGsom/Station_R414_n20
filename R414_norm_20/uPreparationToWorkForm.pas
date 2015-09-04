@@ -126,9 +126,17 @@ end;
 
 procedure TPreparationToWorkForm.btnCancelClick(Sender: TObject);
 begin
-  NetWorker.Disconnect;
-  Self.Close;
+  try
+    NetWorker.Disconnect;
+
+  finally
+
+  end;
+     Self.Close;
+
 end;
+
+
 
 procedure TPreparationToWorkForm.btnStartClick(Sender: TObject);
 var

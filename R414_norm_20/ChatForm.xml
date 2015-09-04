@@ -2278,6 +2278,7 @@
       <field name="img1OpenChat" type="TImage" visibility="published" />
       <field name="LinkedNick" type="TLabel" visibility="published" />
       <field name="lblUserName" type="TLabel" visibility="published" />
+      <field name="lblRole" type="TLabel" visibility="published" />
       <procedure name="FormShow" visibility="published">
         <parameters>
           <parameter name="Sender" type="TObject" />

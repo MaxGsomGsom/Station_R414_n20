@@ -2604,7 +2604,7 @@ procedure TRack1200LeftForm.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
   ReturnFromRack;
-  P321Mini.Close;
+  //P321Mini.Close;
 end;
 
 procedure TRack1200LeftForm.img1240V_DC2Click(Sender: TObject);

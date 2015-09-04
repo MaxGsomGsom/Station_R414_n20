@@ -111,6 +111,8 @@ type
     imgSWCH0: TImage;
     img1: TImage;
     img2: TImage;
+    imgTuneHelp: TImage;
+    imgTuneHelp2: TImage;
     {$ENDREGION}
 
     {$REGION 'ќбъ€вление обработчиков событий формы'}
@@ -272,6 +274,17 @@ begin
   imgsSWCH[8] := @imgSWCH8;
   imgsSWCH[9] := @imgSWCH9;
   imgsSWCH[10] := @imgSWCH10;
+
+
+  if (True) or (TaskController.NetWorker.ClientState.WorkMode = TWorkMode.wmLearning) then
+  begin
+    imgTuneHelp.Visible := True;
+    imgTuneHelp2.Visible := True;
+  end
+  else begin
+      imgTuneHelp.Visible := False;
+    imgTuneHelp2.Visible := False;
+  end;
 end;
 
 {$REGION '‘ункци€ TRack1600Form.Reload()'}
@@ -980,7 +993,11 @@ case CurFormId of
       end;
   end;
   imgCableMdMain.Hide;
-  WaveMeterForm.Close;
+  if (WaveMeterForm<> nil) then
+  begin
+      WaveMeterForm.Close;
+  end;
+
      Reload;
 end;
 
@@ -999,7 +1016,10 @@ case CurFormId of
       end;
   end;
   imgCableMdMain.Hide;
-  WaveMeterForm.Close;
+   if (WaveMeterForm<> nil) then
+  begin
+      WaveMeterForm.Close;
+  end;
      Reload;
 end;
 
@@ -1108,6 +1128,7 @@ begin
           try
             btDigit := StrToInt(strDigit);
             Station.HalfSetA.Rack1600.wave1600 := btDigit;
+            imgSw1610.OnMouseUp(Self, mbLeft, [], 0,0);
           except
             Application.MessageBox(PChar('¬ведите число от ' + IntToStr(MIN_WAVE_VALUE) + ' до ' + IntToStr(MAX_WAVE_VALUE) + '!'),
             PChar(PName), MB_OK + MB_ICONSTOP);
@@ -1136,6 +1157,7 @@ begin
           try
             btDigit := StrToInt(strDigit);
             Station.HalfSetB.Rack1600.wave1600 := btDigit;
+            imgSw1610.OnMouseUp(Self, mbLeft, [], 0,0);
           except
             Application.MessageBox(PChar('¬ведите число от ' + IntToStr(MIN_WAVE_VALUE) + ' до ' + IntToStr(MAX_WAVE_VALUE) + '!'),
             PChar(PName), MB_OK + MB_ICONSTOP);
@@ -1199,6 +1221,7 @@ begin
           try
             btDigit := StrToInt(strDigit);
             Station.HalfSetA.Rack1600.wave1610_0 := btDigit;
+            imgSw1610_0.OnMouseUp(Self, mbLeft, [], 0,0);
           except
             Application.MessageBox(PChar('¬ведите число от ' + IntToStr(MIN_WAVE_VALUE) + ' до ' + IntToStr(MAX_WAVE_VALUE) + '!'),
             PChar(PName), MB_OK + MB_ICONSTOP);
@@ -1252,6 +1275,7 @@ begin
           try
             btDigit := StrToInt(strDigit);
             Station.HalfSetB.Rack1600.wave1610_0 := btDigit;
+            imgSw1610_0.OnMouseUp(Self, mbLeft, [], 0,0);
           except
             Application.MessageBox(PChar('¬ведите число от ' + IntToStr(MIN_WAVE_VALUE) + ' до ' + IntToStr(MAX_WAVE_VALUE) + '!'),
             PChar(PName), MB_OK + MB_ICONSTOP);
@@ -1296,6 +1320,7 @@ begin
           try
             btDigit := StrToInt(strDigit);
             Station.HalfSetA.Rack1600.wave1610_R := btDigit;
+            imgSw1610_R.OnMouseUp(Self, mbLeft, [], 0,0);
           except
             Application.MessageBox(PChar('¬ведите число от ' + IntToStr(MIN_WAVE_VALUE) + ' до ' + IntToStr(MAX_WAVE_VALUE) + '!'),
             PChar(PName), MB_OK + MB_ICONSTOP);
@@ -1324,6 +1349,7 @@ begin
           try
             btDigit := StrToInt(strDigit);
             Station.HalfSetB.Rack1600.wave1610_R := btDigit;
+            imgSw1610_R.OnMouseUp(Self, mbLeft, [], 0,0);
           except
             Application.MessageBox(PChar('¬ведите число от ' + IntToStr(MIN_WAVE_VALUE) + ' до ' + IntToStr(MAX_WAVE_VALUE) + '!'),
             PChar(PName), MB_OK + MB_ICONSTOP);

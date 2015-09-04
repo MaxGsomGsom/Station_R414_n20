@@ -7865,6 +7865,13 @@ object TChatForm: TTChatForm
     Height = 13
     Caption = #1055#1086#1079#1099#1074#1085#1086#1081':'
   end
+  object lblRole: TLabel
+    Left = 403
+    Top = 137
+    Width = 31
+    Height = 13
+    Caption = 'lblRole'
+  end
   object btn1SendMessage: TButton
     Left = 414
     Top = 16

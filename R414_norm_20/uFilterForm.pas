@@ -248,9 +248,10 @@ Report: TReportForm;
 begin
   //if (TaskController.CurrentTask.IsComplete) then
   if (TaskController.CurrentTask.FullCheck = False) then begin
-  (Owner.Owner as TForm).Show;
+  //(Owner.Owner as TForm).Show;
 
   (Owner as TStationR414Form).Close;
+  //Close;
   end
   else
   begin

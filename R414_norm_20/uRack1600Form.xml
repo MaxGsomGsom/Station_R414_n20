@@ -2356,6 +2356,8 @@
       <field name="imgSWCH0" type="TImage" visibility="published" />
       <field name="img1" type="TImage" visibility="published" />
       <field name="img2" type="TImage" visibility="published" />
+      <field name="imgTuneHelp" type="TImage" visibility="published" />
+      <field name="imgTuneHelp2" type="TImage" visibility="published" />
       <procedure name="FormClose" visibility="published">
         <parameters>
           <parameter name="Sender" type="TObject" />

@@ -59,7 +59,7 @@ type TClientState = class
     function IsReadyToWork(): Boolean;
     function IsAllClientsConnected: Boolean;
 
-    property MainStation: Boolean write FMainStation;
+    property MainStation: Boolean read FMainStation write FMainStation;
 
     property Connected: Boolean read FConnected write FConnected;
     property LinkedR414Connected: Boolean read FLinkedR414Connected

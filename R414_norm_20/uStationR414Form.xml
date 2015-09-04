@@ -2342,6 +2342,9 @@
       <field name="imgMshuA" type="TImage" visibility="published" />
       <field name="imgP321A" type="TImage" visibility="published" />
       <field name="N2" type="TMenuItem" visibility="published" />
+      <field name="img70" type="TImage" visibility="published" />
+      <field name="img1500Blow" type="TImage" visibility="published" />
+      <field name="img1400Blow" type="TImage" visibility="published" />
       <procedure name="imgOscillographClick" visibility="published">
         <parameters>
           <parameter name="Sender" type="TObject" />
@@ -2707,6 +2710,21 @@
         <parameters>
           <parameter name="Sender" type="TObject" />
           <parameter name="Key" type="Char" paramflags="var" />
+        </parameters>
+      </procedure>
+      <procedure name="img70Click" visibility="published">
+        <parameters>
+          <parameter name="Sender" type="TObject" />
+        </parameters>
+      </procedure>
+      <procedure name="img1500BlowClick" visibility="published">
+        <parameters>
+          <parameter name="Sender" type="TObject" />
+        </parameters>
+      </procedure>
+      <procedure name="img1400BlowClick" visibility="published">
+        <parameters>
+          <parameter name="Sender" type="TObject" />
         </parameters>
       </procedure>
       <procedure name="UpdSubTaskList" visibility="private">
