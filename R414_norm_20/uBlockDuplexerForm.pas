@@ -446,12 +446,14 @@ begin
             Exit;
           try
             btDigit := StrToInt(strDigit);
+            Station.HalfSetA.Duplexer.waveReceive := btDigit;
+            imgSwWaveReceive.OnMouseUp(TImage.Create(self), mbLeft, [], 0,0);
           except
             Application.MessageBox(PChar('¬ведите число от ' + IntToStr(MIN_WAVE_VALUE) + ' до ' + IntToStr(MAX_WAVE_VALUE) + '!'),
             PChar(PName), MB_OK + MB_ICONSTOP);
             Exit;
           end;
-          Station.HalfSetA.Duplexer.waveReceive := btDigit;
+
         end;
         if ((Button = mbLeft) and (Station.HalfSetA.Duplexer.waveReceive < MAX_WAVE_VALUE)) or
         ((Button = mbRight) and (Station.HalfSetA.Duplexer.waveReceive > MIN_WAVE_VALUE)) then
@@ -493,12 +495,14 @@ begin
             Exit;
           try
             btDigit := StrToInt(strDigit);
+            Station.HalfSetB.Duplexer.waveReceive := btDigit;
+            imgSwWaveReceive.OnMouseUp(TImage.Create(self), mbLeft, [], 0,0);
           except
             Application.MessageBox(PChar('¬ведите число от ' + IntToStr(MIN_WAVE_VALUE) + ' до ' + IntToStr(MAX_WAVE_VALUE) + '!'),
             PChar(PName), MB_OK + MB_ICONSTOP);
             Exit;
           end;
-          Station.HalfSetB.Duplexer.waveReceive := btDigit;
+
         end;
         if ((Button = mbLeft) and (Station.HalfSetB.Duplexer.waveReceive < MAX_WAVE_VALUE)) or
         ((Button = mbRight) and (Station.HalfSetB.Duplexer.waveReceive > MIN_WAVE_VALUE)) then
@@ -551,12 +555,14 @@ begin
             Exit;
           try
             btDigit := StrToInt(strDigit);
+            Station.HalfSetA.Duplexer.waveTransmit := btDigit;
+            imgSwWaveTransmit.OnMouseUp(TImage.Create(self), mbLeft, [], 0,0);
           except
             Application.MessageBox(PChar('¬ведите число от ' + IntToStr(MIN_WAVE_VALUE) + ' до ' + IntToStr(MAX_WAVE_VALUE) + '!'),
             PChar(PName), MB_OK + MB_ICONSTOP);
             Exit;
           end;
-          Station.HalfSetA.Duplexer.waveTransmit := btDigit;
+
         end;
 
         if ((Button = mbLeft) and (Station.HalfSetA.Duplexer.waveTransmit < MAX_WAVE_VALUE)) or
@@ -599,12 +605,13 @@ begin
             Exit;
           try
             btDigit := StrToInt(strDigit);
+            Station.HalfSetB.Duplexer.waveTransmit := btDigit;
+            imgSwWaveTransmit.OnMouseUp(TImage.Create(self), mbLeft, [], 0,0);
           except
             Application.MessageBox(PChar('¬ведите число от ' + IntToStr(MIN_WAVE_VALUE) + ' до ' + IntToStr(MAX_WAVE_VALUE) + '!'),
             PChar(PName), MB_OK + MB_ICONSTOP);
             Exit;
           end;
-          Station.HalfSetB.Duplexer.waveTransmit := btDigit;
         end;
 
         if ((Button = mbLeft) and (Station.HalfSetB.Duplexer.waveTransmit < MAX_WAVE_VALUE)) or

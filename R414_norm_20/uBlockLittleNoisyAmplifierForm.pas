@@ -373,6 +373,7 @@ begin
           try
             btDigit := StrToInt(strDigit);
             Station.HalfSetA.LittleNoisyAmplifier.swWave := btDigit;
+            Image3.OnMouseUp(TImage.Create(self), mbLeft, [], 0,0);
           except
             Application.MessageBox(PChar('¬ведите число от ' + IntToStr(MIN_WAVE_VALUE) + ' до ' + IntToStr(MAX_WAVE_VALUE) + '!'),
             PChar(PName), MB_OK + MB_ICONSTOP);
@@ -406,6 +407,7 @@ begin
           try
             btDigit := StrToInt(strDigit);
             Station.HalfSetB.LittleNoisyAmplifier.swWave := btDigit;
+            Image3.OnMouseUp(TImage.Create(self), mbLeft, [], 0,0);
           except
             Application.MessageBox(PChar('¬ведите число от ' + IntToStr(MIN_WAVE_VALUE) + ' до ' + IntToStr(MAX_WAVE_VALUE) + '!'),
             PChar(PName), MB_OK + MB_ICONSTOP);

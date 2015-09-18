@@ -197,7 +197,7 @@ type
     procedure AddSubTasks;
     procedure TaskComplete(Sender: TObject);
     procedure ChangeTaskTextBlock(Sender: TObject);
-    procedure StartNetTaskError(Sender: TObject);
+    //procedure StartNetTaskError(Sender: TObject);
 
   public
     { Public declarations }
@@ -282,7 +282,7 @@ CurrentTaskForm: TCurrentTaskForm;
      TaskController:= TaskController1;
      ClientState:=NetWorker0.ClientState;
      NetWorker:=NetWorker0;
-     CLientState.OnStartNetTask:= StartNetTaskError;
+     //CLientState.OnStartNetTask:= StartNetTaskError;
      AddSubTasks;
      if (NetWorker.ClientState.TaskID = ttTransferToTerminalMode) then
       begin
@@ -2515,10 +2515,10 @@ end;
      CurrentTaskForm.SetMyText( '«адание выполнено. Ќажмите кнопку "«авершить выполнение" дл€ выхода и получени€ статистики');
  end;
 
-   procedure TStationR414Form.StartNetTaskError(Sender: TObject);
-  begin
-    ClientState.StartNetTaskStatus:='done';  // если уже запущено задание невозможно начать по сети задание
-    NetWorker.SendParams(KEY_STARTNETTASK, 'done');
-  end;
+  // procedure TStationR414Form.StartNetTaskError(Sender: TObject);
+  //begin
+    //ClientState.StartNetTaskStatus:='done';  // если уже запущено задание невозможно начать по сети задание
+    //NetWorker.SendParams(KEY_STARTNETTASK, 'done');
+  //end;
 
 end.

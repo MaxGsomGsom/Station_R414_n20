@@ -18,6 +18,7 @@ const
   KEY_CONNECTED = 'connected';
   KEY_MESSAGE = 'messageText';
   KEY_STARTNETTASK = 'startNetTask';
+
       // Статус подключения (true / false - при дисконнекте)
 
   KEY_TRANSMITTER_WAVE_A = 'twavea';

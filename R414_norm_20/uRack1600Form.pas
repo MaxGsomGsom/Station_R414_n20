@@ -1128,7 +1128,7 @@ begin
           try
             btDigit := StrToInt(strDigit);
             Station.HalfSetA.Rack1600.wave1600 := btDigit;
-            imgSw1610.OnMouseUp(Self, mbLeft, [], 0,0);
+            imgSw1610.OnMouseUp(TImage.Create(self), mbLeft, [], 0,0);
           except
             Application.MessageBox(PChar('¬ведите число от ' + IntToStr(MIN_WAVE_VALUE) + ' до ' + IntToStr(MAX_WAVE_VALUE) + '!'),
             PChar(PName), MB_OK + MB_ICONSTOP);
@@ -1157,7 +1157,7 @@ begin
           try
             btDigit := StrToInt(strDigit);
             Station.HalfSetB.Rack1600.wave1600 := btDigit;
-            imgSw1610.OnMouseUp(Self, mbLeft, [], 0,0);
+            imgSw1610.OnMouseUp(TImage.Create(self), mbLeft, [], 0,0);
           except
             Application.MessageBox(PChar('¬ведите число от ' + IntToStr(MIN_WAVE_VALUE) + ' до ' + IntToStr(MAX_WAVE_VALUE) + '!'),
             PChar(PName), MB_OK + MB_ICONSTOP);
@@ -1221,7 +1221,7 @@ begin
           try
             btDigit := StrToInt(strDigit);
             Station.HalfSetA.Rack1600.wave1610_0 := btDigit;
-            imgSw1610_0.OnMouseUp(Self, mbLeft, [], 0,0);
+            imgSw1610_0.OnMouseUp(TImage.Create(self), mbLeft, [], 0,0);
           except
             Application.MessageBox(PChar('¬ведите число от ' + IntToStr(MIN_WAVE_VALUE) + ' до ' + IntToStr(MAX_WAVE_VALUE) + '!'),
             PChar(PName), MB_OK + MB_ICONSTOP);
@@ -1275,7 +1275,7 @@ begin
           try
             btDigit := StrToInt(strDigit);
             Station.HalfSetB.Rack1600.wave1610_0 := btDigit;
-            imgSw1610_0.OnMouseUp(Self, mbLeft, [], 0,0);
+            imgSw1610_0.OnMouseUp(TImage.Create(self), mbLeft, [], 0,0);
           except
             Application.MessageBox(PChar('¬ведите число от ' + IntToStr(MIN_WAVE_VALUE) + ' до ' + IntToStr(MAX_WAVE_VALUE) + '!'),
             PChar(PName), MB_OK + MB_ICONSTOP);
@@ -1320,7 +1320,7 @@ begin
           try
             btDigit := StrToInt(strDigit);
             Station.HalfSetA.Rack1600.wave1610_R := btDigit;
-            imgSw1610_R.OnMouseUp(Self, mbLeft, [], 0,0);
+            imgSw1610_R.OnMouseUp(TImage.Create(self), mbLeft, [], 0,0);
           except
             Application.MessageBox(PChar('¬ведите число от ' + IntToStr(MIN_WAVE_VALUE) + ' до ' + IntToStr(MAX_WAVE_VALUE) + '!'),
             PChar(PName), MB_OK + MB_ICONSTOP);
@@ -1349,7 +1349,7 @@ begin
           try
             btDigit := StrToInt(strDigit);
             Station.HalfSetB.Rack1600.wave1610_R := btDigit;
-            imgSw1610_R.OnMouseUp(Self, mbLeft, [], 0,0);
+            imgSw1610_R.OnMouseUp(TImage.Create(self), mbLeft, [], 0,0);
           except
             Application.MessageBox(PChar('¬ведите число от ' + IntToStr(MIN_WAVE_VALUE) + ' до ' + IntToStr(MAX_WAVE_VALUE) + '!'),
             PChar(PName), MB_OK + MB_ICONSTOP);

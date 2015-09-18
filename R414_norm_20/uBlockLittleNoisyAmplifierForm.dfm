@@ -29,8 +29,6 @@ object BlockLittleNoisyAmplifierForm: TBlockLittleNoisyAmplifierForm
   OnMouseWheelDown = FormMouseWheelDown
   OnMouseWheelUp = FormMouseWheelUp
   OnShow = FormShow
-  ExplicitWidth = 320
-  ExplicitHeight = 240
   PixelsPerInch = 96
   TextHeight = 13
   object Image1: TImage

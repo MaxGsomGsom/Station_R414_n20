@@ -44,11 +44,13 @@ type TClientState = class
       FConnectedEvent: TEvent;
       FMessageEvent: TEvent;
       FStartNetTask: TEvent;
+      FDisconnect:  TEvent;
       FStartNetTaskOk: TEvent;
       CanSendChatMessages: Boolean;
       CanGetChatMessages: Boolean;
       LastMessage: string;
-      StartNetTaskStatus: string;
+      NetStatus: string;
+      LastNetCommand: string;
     constructor Create(); reintroduce;
 
     function TrySetWaves(const WaveTA, WaveTB, WaveRA, WaveRB: Integer): string;
@@ -87,6 +89,7 @@ type TClientState = class
     property OnConnectedEvent: TEvent read FConnectedEvent write FConnectedEvent;
     property OnMessageEvent: TEvent read FMessageEvent write FMessageEvent;
     property OnStartNetTask: TEvent read FStartNetTask write FStartNetTask;
+    property OnDisconnect: TEvent read FDisconnect write FDisconnect;
 
 end;
 
@@ -102,7 +105,8 @@ uses
     //TaskID := ttPowerOn;
     ErrorKepeer:= TErrorKeeper.Create;
     LastMessage:='';
-    StartNetTaskStatus:='done';
+    NetStatus:='open';
+    LastNetCommand:='open';
     CanSendChatMessages:=False;
     CanGetChatMessages:=False;
   end;
