@@ -153,10 +153,16 @@ uses
   /// </summary>
   function TClientNetWorker.Disconnect: Integer;
   begin
+  try
     TCPClient.Disconnect;
     ResponseListener.Free;                            // Слушатель теперь не нужен
     ClientState.Free;                                 // Обнуляем информацию
     ClientState := TClientState.Create;               // о состоянии клиента
+    except
+
+  end;
+
+  //SendParams(KEY_DISCONNECT, 'disconnect');
   end;
 
   function TClientNetWorker.SendParams(Key: string; Value: string): Integer;
@@ -278,6 +284,7 @@ uses
                                                   // она этого делать не будет
               ClientState.LinkedR414Connected := False;
               ClientState.LinkedR414UserName := '';
+              ClientState.OnDisconnect(Self);
             end;
             //ClientStateChangedEvent;
             break;
@@ -308,7 +315,7 @@ uses
           end else
           if kvRecord.Key = KEY_STARTNETTASK then
           begin
-          ClientState.StartNetTaskStatus:=kvRecord.Value;
+          ClientState.LastNetCommand:=kvRecord.Value;
             ClientState.OnStartNetTask(Self); //запуск задания с полученными параметрами от станции 1 на станции 2
 
           end;

@@ -220,8 +220,8 @@ function TTaskController.GetTaskTitle(TaskID: Integer): string;
      var
      img: TComponent;
      begin
-
-
+                          
+           //CurForm0.OnClose := self.CheckBeforeClose;
 
           //код подписки на все события click всех элементов формы
           for img in CurForm0 do
@@ -234,12 +234,15 @@ function TTaskController.GetTaskTitle(TaskID: Integer): string;
           end;
           end;
 
-              CheckTask(TImage.Create(CurForm0), TMouseButton.mbLeft, KeysToShiftState(0), 0,0);
+          CheckTask(TImage.Create(CurForm0), TMouseButton.mbLeft, [], 0,0);
 
      end;
 
 
-
+//   procedure CheckBeforeClose(Sender: TObject; Action:TCloseAction);
+//   begin
+//         CheckTask(TImage.Create(CurForm0), TMouseButton.mbLeft, [], 0,0);
+//   end;
 
 
    procedure TTaskController.NetCheckTask();
@@ -255,7 +258,7 @@ function TTaskController.GetTaskTitle(TaskID: Integer): string;
 
         self.CurrentTask.TaskNetParams.ChangeValue(Param, Value);
 
-       CheckTask(nil, TMouseButton.mbLeft, KeysToShiftState(0),0,0);
+       CheckTask(nil, TMouseButton.mbLeft, [],0,0);
 
   end;
   
@@ -275,15 +278,20 @@ function TTaskController.GetTaskTitle(TaskID: Integer): string;
               Sender:=Sender0 as TComponent;
               SubResult:= false;
               IsEventCheck:= False;
+
+              if ((CurrentTask.SubTasks[CurrentTask.CurrentSubTaskNum].EventFormName='')) then   MessageBox(HWND_MESSAGE, 'fdg', '46', 0);
+
          end
          else
          begin
              IsEventCheck:=True;
          end;
 
+         
+
 
          if (IsEventCheck=True) or (((Sender as TComponent).Owner as TForm).Caption=CurrentTask.SubTasks[CurrentTask.CurrentSubTaskNum].EventFormName)
-          or (CurrentTask.SubTasks[CurrentTask.CurrentSubTaskNum].EventFormName='')
+          //or (CurrentTask.SubTasks[CurrentTask.CurrentSubTaskNum].EventFormName='')
           then
          begin
              SubResult:=CurrentTask.SubTasks[CurrentTask.CurrentSubTaskNum].CheckSubTask(CurrentTask.FullCheck, self.Station, self.NetWorker, self.ErrorKeeper, Self.CurrentTask.TaskNetParams);

@@ -122,11 +122,13 @@
       <field name="FConnectedEvent" type="TEvent" visibility="public" />
       <field name="FMessageEvent" type="TEvent" visibility="public" />
       <field name="FStartNetTask" type="TEvent" visibility="public" />
+      <field name="FDisconnect" type="TEvent" visibility="public" />
       <field name="FStartNetTaskOk" type="TEvent" visibility="public" />
       <field name="CanSendChatMessages" type="Boolean" visibility="public" />
       <field name="CanGetChatMessages" type="Boolean" visibility="public" />
       <field name="LastMessage" type="string" visibility="public" />
-      <field name="StartNetTaskStatus" type="string" visibility="public" />
+      <field name="NetStatus" type="string" visibility="public" />
+      <field name="LastNetCommand" type="string" visibility="public" />
       <constructor name="Create" visibility="public">
         <parameters>
         </parameters>
@@ -203,6 +205,7 @@
       <event name="OnConnectedEvent" visibility="public" read="FConnectedEvent" write="FConnectedEvent" type="TEvent" />
       <event name="OnMessageEvent" visibility="public" read="FMessageEvent" write="FMessageEvent" type="TEvent" />
       <event name="OnStartNetTask" visibility="public" read="FStartNetTask" write="FStartNetTask" type="TEvent" />
+      <event name="OnDisconnect" visibility="public" read="FDisconnect" write="FDisconnect" type="TEvent" />
     </members>
   </class>
 </namespace>

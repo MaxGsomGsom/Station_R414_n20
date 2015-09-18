@@ -723,10 +723,12 @@ begin
     and (LittleNoisyAmplifier.swWave = RequiredWaveReceive)
     and ((LittleNoisyAmplifier.butNet = butPositionUp)
     and (LittleNoisyAmplifier.butNet2 = butPositionUp))
-    and (((Duplexer.cb1840 = csConnectedAtDuplexeLeft)
-        and (Duplexer.cbSh2 = csConnectedAtDuplexeRight))
-      or ((Duplexer.cb1840 = csConnectedAtDuplexeRight)
-        and (Duplexer.cbSh2 = csConnectedAtDuplexeLeft)));
+    and (Duplexer.cbSh2 <> csDisconected) and
+   ((Duplexer.cb1840 <>  csDisconected)  or  (Duplexer.cbSh1 <>  csDisconected))
+//    and (((Duplexer.cb1840 = csConnectedAtDuplexeLeft)
+//        and (Duplexer.cbSh2 = csConnectedAtDuplexeRight))
+//      or ((Duplexer.cb1840 = csConnectedAtDuplexeRight)
+//        and (Duplexer.cbSh2 = csConnectedAtDuplexeLeft)));
 end;
 
 

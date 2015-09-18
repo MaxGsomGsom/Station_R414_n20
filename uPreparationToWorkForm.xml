@@ -2343,6 +2343,11 @@
           <parameter name="Sender" type="TObject" />
         </parameters>
       </procedure>
+      <procedure name="Disconnect" visibility="published">
+        <parameters>
+          <parameter name="Sender" type="TObject" />
+        </parameters>
+      </procedure>
       <field name="NetWorker" type="TClientNetWorker" visibility="private" />
       <field name="NetworkSender" type="TNetworkSender" visibility="private" />
       <field name="TaskController" type="TTaskController" visibility="private" />

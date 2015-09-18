@@ -786,6 +786,14 @@ begin
           Boolean(station.HalfSetB.Rack1920.butHighOn2 = butPositionUp);
         imgHighOn2Clicked.Visible :=
           Boolean(station.HalfSetB.Rack1920.butHighOn2 = butPositionDown);
+
+
+          imgHighOff.Visible := Boolean(station.HalfSetB.Rack1920.butHighOff = butPositionUp);
+        if imgHighOff.Visible then
+          imgHighOff.BringToFront;
+        imgHighOffClicked.Visible := Boolean(station.HalfSetB.Rack1920.butHighOff = butPositionDown);
+        if imgHighOffClicked.Visible then
+          imgHighOffClicked.BringToFront;
         
         imgHighOff2.Visible :=
           Boolean(station.HalfSetB.Rack1920.butHighOff2 = butPositionUp);
@@ -1039,14 +1047,20 @@ begin
     if Delay then
     begin
       Application.ProcessMessages;
-      Sleep(600);
+      Sleep(500);
     end;
   end;
   if Delay then
-    Sleep(600);
+    Sleep(500);
   imgsNaprAnodKV[1].Visible := False;
   imgsCollectorScopes[1].Visible := False;
-  Station.HalfSetB.Rack1920.stLBV1_TurnedOn := False;
+  case CurFormId of
+    idRack1920A:
+      Station.HalfSetA.Rack1920.butCurrent5MA := butPositionUp;
+    idRack1920B:
+      Station.HalfSetB.Rack1920.butCurrent5MA := butPositionUp;
+  end;
+
 end;
 
 procedure TRack1920Form.Current5MANotGiven_LBV2(Delay: Boolean = True);
@@ -1074,14 +1088,21 @@ begin
     if Delay then
     begin
       Application.ProcessMessages;
-      Sleep(600);
+      Sleep(500);
     end;
   end;
   if Delay then
-    Sleep(600);
+    Sleep(500);
   imgsNaprAnodKV[1].Visible := False;
   imgsCollectorScopes[1].Visible := False;
-  Station.HalfSetB.Rack1920.stLBV2_TurnedOn := False;
+
+
+  case CurFormId of
+    idRack1920A:
+      Station.HalfSetA.Rack1920.butCurrent5MA2 := butPositionUp;
+    idRack1920B:
+      Station.HalfSetB.Rack1920.butCurrent5MA2 := butPositionUp;
+  end;
 end;
 
 procedure TRack1920Form.Current5MAGiven_LBV1(Delay: Boolean = True);
@@ -1111,15 +1132,21 @@ begin
     if btA > 1 then
       imgsCollectorScopes[btA - 1].Visible := False;
     if Delay then
-      Sleep(800);
+      Sleep(500);
     Application.ProcessMessages;
   end;
 
   case CurFormId of
     idRack1920A:
+    begin
+      Station.HalfSetA.Rack1920.butCurrent5MA := butPositionDown;
       Station.HalfSetA.Rack1920.stLBV1_TurnedOn := True;
+    end;
     idRack1920B:
+    begin
+      Station.HalfSetB.Rack1920.butCurrent5MA := butPositionDown;
       Station.HalfSetB.Rack1920.stLBV1_TurnedOn := True;
+    end;
   end;
 
   if Delay then
@@ -1153,15 +1180,29 @@ begin
     if btA > 1 then
       imgsCollectorScopes[btA - 1].Visible := False;
     if Delay then
-      Sleep(800);
+      Sleep(500);
     Application.ProcessMessages;
   end;
 
+//  case CurFormId of
+//    idRack1920A:
+//      Station.HalfSetA.Rack1920.stLBV2_TurnedOn := True;
+//    idRack1920B:
+//      Station.HalfSetB.Rack1920.stLBV2_TurnedOn := True;
+//  end;
+
+
   case CurFormId of
     idRack1920A:
+    begin
+      Station.HalfSetA.Rack1920.butCurrent5MA2 := butPositionDown;
       Station.HalfSetA.Rack1920.stLBV2_TurnedOn := True;
+    end;
     idRack1920B:
+    begin
+      Station.HalfSetB.Rack1920.butCurrent5MA2 := butPositionDown;
       Station.HalfSetB.Rack1920.stLBV2_TurnedOn := True;
+    end;
   end;
 
   if Delay then
@@ -1174,14 +1215,15 @@ begin
        case CurFormId of
     idRack1920A:
       begin
-        Station.HalfSetA.Rack1920.butCurrent5MA2 := butPositionDown;
+        //Station.HalfSetA.Rack1920.butCurrent5MA2 := butPositionDown;
 
-        Reload;
+        //Reload;
 
         if (Station.Is1920A2ReadyToTurnHighON)
           and (Station.HalfSetA.Rack1920.stZamedleniePodano_LVB2) then
         begin
           Current5MAGiven_LBV2;
+          Reload;
         end
         else
         begin
@@ -1194,14 +1236,15 @@ begin
       end;
     idRack1920B:
       begin
-        Station.HalfSetB.Rack1920.butCurrent5MA2 := butPositionDown;
+        //Station.HalfSetB.Rack1920.butCurrent5MA2 := butPositionDown;
 
-        Reload;
+        //Reload;
 
         if (Station.Is1920B2ReadyToTurnHighON)
           and (Station.HalfSetB.Rack1920.stZamedleniePodano_LVB2) then
         begin
           Current5MAGiven_LBV2;
+          Reload;
         end
         else
         begin
@@ -1217,23 +1260,23 @@ end;
 
 procedure TRack1920Form.imgCurrent5MA2ClickedClick(Sender: TObject);
 begin
-  case CurFormId of
-    idRack1920A:
-      begin
-        Station.HalfSetA.Rack1920.butCurrent5MA2 := butPositionUp;
-        if Station.HalfSetA.Rack1920.stLBV2_TurnedOn then
-          Current5MANotGiven_LBV2;
-      end;
-
-    idRack1920B:
-      begin
-        Station.HalfSetB.Rack1920.butCurrent5MA2 := butPositionUp;
-        if Station.HalfSetB.Rack1920.stLBV2_TurnedOn then
-          Current5MANotGiven_LBV2;
-      end;
-  end;
-
-  Reload;
+//  case CurFormId of
+//    idRack1920A:
+//      begin
+//        Station.HalfSetA.Rack1920.butCurrent5MA2 := butPositionUp;
+//        if Station.HalfSetA.Rack1920.stLBV2_TurnedOn then
+//          Current5MANotGiven_LBV2;
+//      end;
+//
+//    idRack1920B:
+//      begin
+//        Station.HalfSetB.Rack1920.butCurrent5MA2 := butPositionUp;
+//        if Station.HalfSetB.Rack1920.stLBV2_TurnedOn then
+//          Current5MANotGiven_LBV2;
+//      end;
+//  end;
+//
+//  Reload;
 end;
 
 procedure TRack1920Form.imgCurrent5MAClick(Sender: TObject);
@@ -1241,14 +1284,15 @@ begin
   case CurFormId of
     idRack1920A:
       begin  
-        Station.HalfSetA.Rack1920.butCurrent5MA := butPositionDown;
+       // Station.HalfSetA.Rack1920.butCurrent5MA := butPositionDown;
 
-        Reload;
+        //Reload;
     
         if (Station.Is1920A1ReadyToTurnHighON)
           and (Station.HalfSetA.Rack1920.stZamedleniePodano_LVB1) then
         begin
           Current5MAGiven_LBV1;
+          Reload;
         end
         else
         begin
@@ -1261,14 +1305,15 @@ begin
       end;
     idRack1920B:
       begin
-        Station.HalfSetB.Rack1920.butCurrent5MA := butPositionDown;
+        //Station.HalfSetB.Rack1920.butCurrent5MA := butPositionDown;
 
-        Reload;
+        //Reload;
     
         if (Station.Is1920B1ReadyToTurnHighON)
           and (Station.HalfSetB.Rack1920.stZamedleniePodano_LVB1) then
         begin
           Current5MAGiven_LBV1;
+          Reload;
         end
         else
         begin
@@ -1284,22 +1329,22 @@ end;
 
 procedure TRack1920Form.imgCurrent5MAClickedClick(Sender: TObject);
 begin
-  case CurFormId of
-    idRack1920B:
-      begin  
-        Station.HalfSetB.Rack1920.butCurrent5MA := butPositionUp;
-        if Station.HalfSetB.Rack1920.stLBV1_TurnedOn then
-          Current5MANotGiven_LBV1;
-      end;
-    idRack1920A:
-      begin  
-        Station.HalfSetA.Rack1920.butCurrent5MA := butPositionUp;
-        if Station.HalfSetA.Rack1920.stLBV1_TurnedOn then
-          Current5MANotGiven_LBV1;
-      end;
-  end;
-
-  Reload;
+//  case CurFormId of
+//    idRack1920B:
+//      begin
+//        Station.HalfSetB.Rack1920.butCurrent5MA := butPositionUp;
+//        if Station.HalfSetB.Rack1920.stLBV1_TurnedOn then
+//          Current5MANotGiven_LBV1;
+//      end;
+//    idRack1920A:
+//      begin
+//        Station.HalfSetA.Rack1920.butCurrent5MA := butPositionUp;
+//        if Station.HalfSetA.Rack1920.stLBV1_TurnedOn then
+//          Current5MANotGiven_LBV1;
+//      end;
+//  end;
+//
+//  Reload;
 end;
 
 procedure TRack1920Form.TurnOffLBV1(Delay: Boolean = True);
@@ -1317,10 +1362,10 @@ begin
     imgsZamedlSys[btA - 1].Visible := True;
     Application.ProcessMessages;
     if Delay then
-      Sleep(600);
+      Sleep(500);
   end;
   if Delay then
-    Sleep(600);
+    Sleep(500);
   imgsZamedlSys[1].Visible := False;
 
   case CurFormId of
@@ -1352,10 +1397,10 @@ begin
     imgsZamedlSys[btA - 1].Visible := True;
     Application.ProcessMessages;
     if Delay then
-      Sleep(600);
+      Sleep(500);
   end;
   if Delay then
-    Sleep(600);
+    Sleep(500);
   imgsZamedlSys[1].Visible := False;
   case CurFormId of
     idRack1920A:
@@ -1436,10 +1481,12 @@ begin
         Station.HalfSetA.Rack1920.butHighOff2 := butPositionDown;
         Station.HalfSetA.Rack1920.butHighOn2 := butPositionUp;
 
-        if (Station.Is1920A2ReadyToTurnHighON) and (imgZamedlSys1_3.Visible) then
+        if (Station.Is1920A2ReadyToTurnHighON) and (imgZamedlSys1_3.Visible)  and (Station.HalfSetA.Rack1920.butCurrent5MA2 = butPositionDown) then
           Current5MANotGiven_LBV2;
         if (Station.HalfSetA.Rack1920.stLBV2_TurnedOn) then
           TurnOffLBV2;
+
+          Reload;
       end;
 
     idRack1920B:
@@ -1447,10 +1494,12 @@ begin
         Station.HalfSetB.Rack1920.butHighOff2 := butPositionDown;
         Station.HalfSetB.Rack1920.butHighOn2 := butPositionUp;
 
-        if (Station.Is1920B2ReadyToTurnHighON) and (imgZamedlSys1_3.Visible) then
+        if (Station.Is1920B2ReadyToTurnHighON) and (imgZamedlSys1_3.Visible)  and (Station.HalfSetB.Rack1920.butCurrent5MA2 = butPositionDown) then
           Current5MANotGiven_LBV2;
         if (Station.HalfSetB.Rack1920.stLBV2_TurnedOn) then
           TurnOffLBV2;
+
+          Reload;
       end;
   end;
 
@@ -1459,14 +1508,14 @@ end;
 
 procedure TRack1920Form.imgHighOff2ClickedClick(Sender: TObject);
 begin
-  case CurFormId of
-    idRack1920A:
-      Station.HalfSetA.Rack1920.butHighOff2 := butPositionUp;
-    idRack1920B:
-      Station.HalfSetB.Rack1920.butHighOff2 := butPositionUp;
-  end;
-
-  Reload;
+//  case CurFormId of
+//    idRack1920A:
+//      Station.HalfSetA.Rack1920.butHighOff2 := butPositionUp;
+//    idRack1920B:
+//      Station.HalfSetB.Rack1920.butHighOff2 := butPositionUp;
+//  end;
+//
+//  Reload;
 end;
 
 procedure TRack1920Form.imgHighOffClick(Sender: TObject);
@@ -1477,20 +1526,24 @@ begin
         Station.HalfSetA.Rack1920.butHighOff := butPositionDown;
         Station.HalfSetA.Rack1920.butHighOn := butPositionUp;
 
-        if (Station.Is1920A1ReadyToTurnHighON) and (imgZamedlSys3.Visible) then
-          Current5MANotGiven_LBV1;    
+        if (Station.Is1920A1ReadyToTurnHighON) and (imgZamedlSys3.Visible) and (Station.HalfSetA.Rack1920.butCurrent5MA = butPositionDown) then
+          Current5MANotGiven_LBV1;
         if (Station.HalfSetA.Rack1920.stLBV1_TurnedOn) then
           TurnOffLBV1;
+
+          Reload;
       end;
     idRack1920B:
       begin
         Station.HalfSetB.Rack1920.butHighOff := butPositionDown;
         Station.HalfSetB.Rack1920.butHighOn := butPositionUp;
 
-        if (Station.Is1920B1ReadyToTurnHighON) and (imgZamedlSys3.Visible) then
+        if (Station.Is1920B1ReadyToTurnHighON) and (imgZamedlSys3.Visible) and (Station.HalfSetB.Rack1920.butCurrent5MA = butPositionDown) then
           Current5MANotGiven_LBV1;    
         if (Station.HalfSetB.Rack1920.stLBV1_TurnedOn) then
           TurnOffLBV1;
+
+          Reload;
       end;      
   end;
 
@@ -1499,14 +1552,14 @@ end;
 
 procedure TRack1920Form.imgHighOffClickedClick(Sender: TObject);
 begin
-  case CurFormId of
-    idRack1920A:
-      Station.HalfSetA.Rack1920.butHighOff := butPositionUp;
-    idRack1920B:
-      Station.HalfSetB.Rack1920.butHighOff := butPositionUp;
-  end;
-
-  Reload;
+//  case CurFormId of
+//    idRack1920A:
+//      Station.HalfSetA.Rack1920.butHighOff := butPositionUp;
+//    idRack1920B:
+//      Station.HalfSetB.Rack1920.butHighOff := butPositionUp;
+//  end;
+//
+//  Reload;
 end;
 
 procedure TRack1920Form.imgHighOn2Click(Sender: TObject);
@@ -1529,15 +1582,15 @@ begin
           end;
 
 
-        if Station.HalfSetA.Rack1920.butHighOn2 = butPositionDown then
-          Station.HalfSetA.Rack1920.butHighOn2 := butPositionUp
-        else
-        begin
-          Station.HalfSetA.Rack1920.butHighOn2 := butPositionDown;
-          Station.HalfSetA.Rack1920.butHighOff2 := butPositionUp;
-        end;
-
-        Reload;
+//        if Station.HalfSetA.Rack1920.butHighOn2 = butPositionDown then
+//          Station.HalfSetA.Rack1920.butHighOn2 := butPositionUp
+//        else
+//        begin
+//          Station.HalfSetA.Rack1920.butHighOn2 := butPositionDown;
+//          Station.HalfSetA.Rack1920.butHighOff2 := butPositionUp;
+//        end;
+//
+//        Reload;
 
         if (not(Station.Is1920A2ReadyToTurnHighON)) then
         begin
@@ -1551,7 +1604,12 @@ begin
         end
         else
         begin
+            Station.HalfSetA.Rack1920.butHighOn2 := butPositionDown;
+          Station.HalfSetA.Rack1920.butHighOff2 := butPositionUp;
+
             TurnOnLBV2;
+
+            Reload;
           end;
       end;
     idRack1920B:
@@ -1569,15 +1627,15 @@ begin
           end;
 
 
-        if Station.HalfSetB.Rack1920.butHighOn2 = butPositionDown then
-          Station.HalfSetB.Rack1920.butHighOn2 := butPositionUp
-        else
-        begin
-          Station.HalfSetB.Rack1920.butHighOn2 := butPositionDown;
-          Station.HalfSetB.Rack1920.butHighOff2 := butPositionUp;
-        end;
-
-        Reload;
+//        if Station.HalfSetB.Rack1920.butHighOn2 = butPositionDown then
+//          Station.HalfSetB.Rack1920.butHighOn2 := butPositionUp
+//        else
+//        begin
+//          Station.HalfSetB.Rack1920.butHighOn2 := butPositionDown;
+//          Station.HalfSetB.Rack1920.butHighOff2 := butPositionUp;
+//        end;
+//
+//        Reload;
 
         if (not(Station.Is1920B2ReadyToTurnHighON)) then
         begin
@@ -1591,7 +1649,14 @@ begin
         end
         else
           begin
+
+
+          Station.HalfSetB.Rack1920.butHighOn2 := butPositionDown;
+          Station.HalfSetB.Rack1920.butHighOff2 := butPositionUp;
+
             TurnOnLBV2;
+
+            Reload;
           end;
       end;
   end;
@@ -1681,6 +1746,8 @@ begin
       end;
   end;
 end;
+
+
 
 procedure TRack1920Form.FormMouseWheelUp(Sender: TObject; Shift: TShiftState;
   MousePos: TPoint; var Handled: Boolean);

@@ -43,6 +43,7 @@ type
     procedure cbbWorkModeChange(Sender: TObject);
     procedure ShowPriority(Sender: TObject);
     procedure StartNetTask(Sender: TObject);
+    procedure Disconnect(Sender: TObject);
     //procedure FormHide(Sender: TObject);
 
   private
@@ -87,6 +88,7 @@ begin
   NetWorker.ClientState.OnConnectedEvent:=ShowPriority;
 
    NetWorker.ClientState.OnStartNetTask:=StartNetTask;
+   NetWorker.ClientState.OnDisconnect:=Disconnect;
            //временно
      edtTransmitterWaveA.Text:='11';
       edtTransmitterWaveB.Text :='10' ;
@@ -126,13 +128,9 @@ end;
 
 procedure TPreparationToWorkForm.btnCancelClick(Sender: TObject);
 begin
-  try
-    NetWorker.Disconnect;
 
-  finally
-
-  end;
-     Self.Close;
+  NetWorker.Disconnect;
+  Self.Close;
 
 end;
 
@@ -183,6 +181,8 @@ begin
       iReceiverWaveA, iReceiverWaveB, TaskID, WorkMode);
 
     ////////////////////////////////////
+    NetWorker.ClientState.NetStatus:='open';
+
     if (NetWorker.ClientState.TaskID=ttTransferToTerminalMode) then begin
 
      if not (NetWorker.ClientState.LinkedR414Connected) then
@@ -191,9 +191,15 @@ begin
          Exit;
      end;
 
+
      NetWorker.SendParams(KEY_STARTNETTASK, 'call');
+
      Exit;
 
+    end
+    else if True then
+    begin
+        NetWorker.ClientState.NetStatus:='doneLocal';
     end;
     /////////////////////////////////////////
 
@@ -255,12 +261,12 @@ end;
 
 procedure TPreparationToWorkForm.FormClose(Sender: TObject;
   var Action: TCloseAction);
-begin                                         // «акрываем форму только при
-  Action := caFree;                           // выходе в главное меню
-  try
-    if Owner <> nil then (Owner as TForm).Show;     // ќткрываем главное меню
-  finally
-  end;
+begin
+  Action := caFree;
+
+    (Owner as TForm).Show;     // ќткрываем главное меню
+    NetWorker.Disconnect;
+
 end;
 
 
@@ -291,47 +297,70 @@ end;
 end;
 
 
+procedure TPreparationToWorkForm.Disconnect(Sender: TObject);
+begin
+     NetWorker.ClientState.LinkedR414Connected := False;
+     lblLinkedR414.Caption:='';
+     lblStationPriority.Caption:='';
+end;
+
+
+
+
 
 procedure TPreparationToWorkForm.StartNetTask(Sender: TObject);  //запрос на старт задани€
 var
 StationInitializer: TStationInitializer;
      begin
-       if (NetWorker.ClientState.StartNetTaskStatus='done') then
+       if (NetWorker.ClientState.LastNetCommand='doneLocal') or (NetWorker.ClientState.LastNetCommand='done') then
        begin
            ShowMessage('Ќа сопр€женной станции уже выполн€етс€ задание');
          Exit;
+       end
+       else if (NetWorker.ClientState.LastNetCommand='call') and (NetWorker.ClientState.NetStatus='doneLocal') then
+       begin
+           NetWorker.SendParams(KEY_STARTNETTASK, 'doneLocal');
+       end
+       else if (NetWorker.ClientState.LastNetCommand='call') and (NetWorker.ClientState.NetStatus='done') then
+       begin
+           NetWorker.SendParams(KEY_STARTNETTASK, 'done');
+       end
+       else if (NetWorker.ClientState.LastNetCommand='call') or (NetWorker.ClientState.LastNetCommand='return') then
+       begin
+
+          Station := TStation.Create;                   // —танци€
+          StationInitializer := TStationInitializer.Create(Station, NetWorker);
+          StationInitializer.InitStationByTask(NetWorker.ClientState.TaskID);              // »нициализируем станцию
+
+                                                        // в соответствии с заданием
+          StationInitializer.Free;
+
+
+          Station.WaveTransmitA := NetWorker.ClientState.TransmitterWaveA;   //костыль!!!!!!!!!!
+          Station.WaveReceiveA := NetWorker.ClientState.ReceiverWaveA;      //костыль
+          Station.WaveTransmitB := NetWorker.ClientState.TransmitterWaveB;  //костыль
+          Station.WaveReceiveB := NetWorker.ClientState.ReceiverWaveB;  //костыль
+
+          TaskController := TTaskController.Create(Station, NetWorker); // ќн провер€ет станцию на соответствие заданию
+          TaskController.SetCurrentTask();
+
+          R414 := TStationR414Form.Create(Self, Station, TaskController, NetWorker);
+          R414.Show;
+          Hide;
+
+          if (NetWorker.ClientState.LastNetCommand='call') then
+          begin
+             NetWorker.SendParams(KEY_STARTNETTASK, 'return');
+             NetWorker.ClientState.NetStatus:='done';
+          end
+          else if (NetWorker.ClientState.LastNetCommand='return') then
+          begin
+              NetWorker.ClientState.NetStatus:='done';
+          end;
        end;
 
 
-    Station := TStation.Create;                   // —танци€
-    StationInitializer := TStationInitializer.Create(Station, NetWorker);
-    StationInitializer.InitStationByTask(NetWorker.ClientState.TaskID);              // »нициализируем станцию
 
-                                                  // в соответствии с заданием
-    StationInitializer.Free;
-
-
-    Station.WaveTransmitA := NetWorker.ClientState.TransmitterWaveA;   //костыль!!!!!!!!!!
-    Station.WaveReceiveA := NetWorker.ClientState.ReceiverWaveA;      //костыль
-    Station.WaveTransmitB := NetWorker.ClientState.TransmitterWaveB;  //костыль
-    Station.WaveReceiveB := NetWorker.ClientState.ReceiverWaveB;  //костыль
-
-    TaskController := TTaskController.Create(Station, NetWorker); // ќн провер€ет станцию на соответствие заданию
-    TaskController.SetCurrentTask();
-
-    R414 := TStationR414Form.Create(Self, Station, TaskController, NetWorker);
-    R414.Show;
-    Hide;
-
-      if (NetWorker.ClientState.StartNetTaskStatus='call') then
-      begin
-         NetWorker.SendParams(KEY_STARTNETTASK, 'return');
-         NetWorker.ClientState.StartNetTaskStatus:='done';
-      end
-      else if (NetWorker.ClientState.StartNetTaskStatus='return') then
-      begin
-          NetWorker.ClientState.StartNetTaskStatus:='done';
-      end;
      end;
 
 

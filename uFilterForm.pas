@@ -263,6 +263,9 @@ begin
         (Owner as TStationR414Form).Close;
       end
   end;
+
+  ClientState.NetStatus:='open';
+
 end;
 
 /// <summary>

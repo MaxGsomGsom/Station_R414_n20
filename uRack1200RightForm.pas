@@ -1071,13 +1071,31 @@ procedure TRack1200RightForm.ShowOscill;
   var
   Oscill: TBlockOscillographForm;
   begin
-    if (Station.HalfSetA.Rack1200Right.CableOscillographLineInput <> csDisconected) and
+
+
+    case CurFormId of
+    idRack1200A2:
+      begin
+        if (Station.HalfSetA.Rack1200Right.CableOscillographLineInput <> csDisconected) and
          (Station.HalfSetA.Rack1200Right.CableUzlovoiInput <> csDisconected) and (Oscill.Showing=False) then
          begin
                Oscill := TBlockOscillographForm.Create(Self, Station, TaskController);
                Oscill.Left := Screen.Width - self.Width;
                Oscill.Show;
          end;
+      end;
+
+    idRack1200B2:
+      begin
+        if (Station.HalfSetB.Rack1200Right.CableOscillographLineInput <> csDisconected) and
+         (Station.HalfSetB.Rack1200Right.CableUzlovoiInput <> csDisconected) and (Oscill.Showing=False) then
+         begin
+               Oscill := TBlockOscillographForm.Create(Self, Station, TaskController);
+               Oscill.Left := Screen.Width - self.Width;
+               Oscill.Show;
+         end;
+      end;
+  end;
   end;
 
 
