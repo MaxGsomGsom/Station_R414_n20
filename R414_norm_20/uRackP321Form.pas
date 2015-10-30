@@ -476,6 +476,12 @@ const
   csBlockPowerPanelForm = 1;
   csGenerator = 2;
   csInputYY = 3;
+  swNepGenYY4 = 6;
+  swNepGenYY2 = 7;
+
+  swNepGen4 = 5;
+  swNepGen2 = 8;
+
 var
   CurTuneValue: Byte;
   NeededTuneValue: Byte;
@@ -519,11 +525,10 @@ begin
         begin
           ilDisplay.GetBitmap(Station.P321C.swGradYY - 1, imgDisplay.Picture.Bitmap);
         end;
-        6:
+        swNepGenYY4, swNepGenYY2:
         begin
           //Проверим правильно ли выставлены параметры
-          if (Station.P321C.swNepGen = 5) and
-          (Station.P321C.swGradPit = 31) and
+          if (Station.P321C.swGradPit = 31) and
           (Station.P321C.swGradGen = 31) and
           (Station.P321C.swGradYY = 31) and
           (Station.P321C.swFrequency = 4) then
@@ -541,7 +546,7 @@ begin
               // (true) then
               begin
                 //==============Двух канальный режим===================
-                if (Station.IsChannelBlocksTunedAt2ChannelMode) then
+                if (Station.IsChannelBlocksTunedAt2ChannelMode) and (Station.P321C.swNepGen = swNepGen4) and (Station.P321C.swNepGenYY = swNepGenYY2) then
                 begin
                   if Station.IsP321ShuntsConnectedAt2ChannelMode then
                   begin
@@ -566,7 +571,7 @@ begin
                     ShowNull;
                 end;
                 //==============Четырех канальный режим===================
-                if (Station.IsChannelBlocksTunedAt4ChannelMode) then
+                if (Station.IsChannelBlocksTunedAt4ChannelMode) and (Station.P321C.swNepGen = swNepGen4) and (Station.P321C.swNepGenYY = swNepGenYY4) then
                 begin
                   if Station.IsP321ShuntsConnectedAt4ChannelMode then
                   //if True then

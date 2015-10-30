@@ -1070,6 +1070,8 @@ begin
   end;
 
   InvalidateAll;
+
+  if  (P321Mini <> nil) then P321Mini.UpdP321;
 end;
 
 procedure TRack1200LeftForm.FormCloseQuery(Sender: TObject;
@@ -1792,9 +1794,14 @@ begin
           and (Station.HalfSetA.Rack1200Left.sw1240V2Tune > 1) then
           Dec(station.HalfSetA.Rack1200Left.sw1240V2Tune, 1);
 
-          if (Station.HalfSetA.Rack1200Left.sw1240V2Tune = Station.HalfSetA.Rack1200Left.sw1240V2TunedValue) then
-          Station.RemoteController.Channels.A[2].stChannelState := stChannelTuned
-          else Station.RemoteController.Channels.A[2].stChannelState := stChannelNotTuned;
+          if (Station.HalfSetA.IsTunedFor4ChannelMode  or  Station.HalfSetA.IsTunedFor2ChannelMode) then
+          begin
+
+              if (Station.HalfSetA.Rack1200Left.sw1240VTune = Station.GetTransmitBlockTunedValueNeed) then
+            //if (Station.HalfSetA.Rack1200Left.sw1240V2Tune = Station.HalfSetA.Rack1200Left.sw1240V2TunedValue) then
+            Station.RemoteController.Channels.A[2].stChannelState := stChannelTuned
+            else Station.RemoteController.Channels.A[2].stChannelState := stChannelNotTuned;
+          end;
       end;
 
     idRack1200B1:
@@ -1805,9 +1812,16 @@ begin
         if (Button = mbRight) and (Station.HalfSetB.Rack1200Left.sw1240V2Tune > 1) then
           Dec(station.HalfSetB.Rack1200Left.sw1240V2Tune, 1);
 
-          if (Station.HalfSetB.Rack1200Left.sw1240V2Tune = Station.HalfSetB.Rack1200Left.sw1240V2TunedValue) then
-          Station.RemoteController.Channels.B[2].stChannelState := stChannelTuned
-          else Station.RemoteController.Channels.B[2].stChannelState := stChannelNotTuned;
+          if (Station.HalfSetB.IsTunedFor4ChannelMode  or  Station.HalfSetB.IsTunedFor2ChannelMode) then
+          begin
+
+            if (Station.HalfSetB.Rack1200Left.sw1240VTune = Station.GetTransmitBlockTunedValueNeed) then
+
+            //if (Station.HalfSetB.Rack1200Left.sw1240V2Tune = Station.HalfSetB.Rack1200Left.sw1240V2TunedValue) then
+            Station.RemoteController.Channels.B[2].stChannelState := stChannelTuned
+            else Station.RemoteController.Channels.B[2].stChannelState := stChannelNotTuned;
+
+          end;
       end;
   end;
 
@@ -1916,12 +1930,19 @@ begin
         if (Button = mbRight) and (Station.HalfSetA.Rack1200Left.sw1240VTune > 1) then
           Dec(station.HalfSetA.Rack1200Left.sw1240VTune, 1);
 
+          if (Station.HalfSetA.IsTunedFor4ChannelMode  or  Station.HalfSetA.IsTunedFor2ChannelMode) then
+          begin
 
-          if (Station.HalfSetA.Rack1200Left.sw1240VTune = Station.HalfSetA.Rack1200Left.sw1240VTunedValue) then
-          Station.RemoteController.Channels.A[1].stChannelState := stChannelTuned
-          else Station.RemoteController.Channels.A[1].stChannelState := stChannelNotTuned;
+            if (Station.HalfSetA.Rack1200Left.sw1240VTune = Station.GetTransmitBlockTunedValueNeed) then
+            //if (Station.HalfSetA.Rack1200Left.sw1240VTune = Station.HalfSetA.Rack1200Left.sw1240VTunedValue) then
+            Station.RemoteController.Channels.A[1].stChannelState := stChannelTuned
+            else Station.RemoteController.Channels.A[1].stChannelState := stChannelNotTuned;
 
-          P321Mini.UpdP321;
+          end;
+          //Station.HalfSetA.Rack1200Left.
+
+
+          //P321Mini.UpdP321;
 
       end;
 
@@ -1933,11 +1954,17 @@ begin
         if (Button = mbRight) and (Station.HalfSetB.Rack1200Left.sw1240VTune > 1) then
           Dec(station.HalfSetB.Rack1200Left.sw1240VTune, 1);
 
-          if (Station.HalfSetB.Rack1200Left.sw1240VTune = Station.HalfSetB.Rack1200Left.sw1240VTunedValue) then
-          Station.RemoteController.Channels.B[1].stChannelState := stChannelTuned
-          else Station.RemoteController.Channels.B[1].stChannelState := stChannelNotTuned;
 
-          P321Mini.UpdP321;
+          if (Station.HalfSetB.IsTunedFor4ChannelMode  or  Station.HalfSetB.IsTunedFor2ChannelMode) then
+          begin
+
+              if (Station.HalfSetB.Rack1200Left.sw1240VTune = Station.GetTransmitBlockTunedValueNeed) then
+            //if (Station.HalfSetB.Rack1200Left.sw1240VTune = Station.HalfSetB.Rack1200Left.sw1240VTunedValue) then
+            Station.RemoteController.Channels.B[1].stChannelState := stChannelTuned
+            else Station.RemoteController.Channels.B[1].stChannelState := stChannelNotTuned;
+          end;
+
+          //P321Mini.UpdP321;
       end;
   end;
 
@@ -2604,7 +2631,7 @@ procedure TRack1200LeftForm.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
   ReturnFromRack;
-  //P321Mini.Close;
+  if (P321Mini <> nil) then P321Mini.Close;
 end;
 
 procedure TRack1200LeftForm.img1240V_DC2Click(Sender: TObject);

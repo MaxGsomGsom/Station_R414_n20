@@ -65,7 +65,7 @@ begin
 if (NetWorker.ClientState.CanSendChatMessages=True) then
 begin
   TaskController.NetCheckTask();
-  TaskController.CheckTask(Self, TMouseButton.mbLeft, KeysToShiftState(0),0,0);
+  TaskController.CheckTask(nil, TMouseButton.mbLeft, [],0,0);
   NetWorker.SendMessage(edt1MessageInput.Text);
 lst1AllMessages.AddItem(NetWorker.ClientState.UserName+': '+ edt1MessageInput.Text, TObject.Create);
  edt1MessageInput.Text:='';

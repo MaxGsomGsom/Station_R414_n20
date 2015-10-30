@@ -247,7 +247,7 @@ begin
           InitForTerminalMode;
       end;
   end;
-  SetStationTo4ChannelMode;
+  //SetStationTo4ChannelMode;
 end;
 
 /// <summary>
@@ -1927,9 +1927,9 @@ begin
   Station.HalfSetA.Rack1200Left.CableSinusOscill := csDisconected;
   Station.HalfSetA.Rack1200Left.st1240G_ports := stPluggedIn;
   Station.HalfSetA.Rack1200Left.st1240V1_4PDC_1_ports := stPluggedIn;
-  Station.HalfSetA.Rack1200Left.st1240V1_4PDC_2_ports := stPluggedIn;
+  Station.HalfSetA.Rack1200Left.st1240V1_4PDC_2_ports := stPluggedInCross;
   Station.HalfSetA.Rack1200Left.st1240V2_4PDC_1_ports := stPluggedIn;
-  Station.HalfSetA.Rack1200Left.st1240V2_4PDC_2_ports := stPluggedIn;
+  Station.HalfSetA.Rack1200Left.st1240V2_4PDC_2_ports := stPluggedInCross;
   Station.HalfSetA.Rack1200Left.sw1240GMainTune := GetRandomTuneValue;
   Station.HalfSetA.Rack1200Left.sw1240GMain2Tune := GetRandomTuneValue;
   Station.HalfSetA.Rack1200Left.sw1240GPrmPrdTune := GetRandomTuneValue;
@@ -1977,7 +1977,7 @@ begin
   Station.HalfSetB.Rack1200Left.CableSinusOscill := csDisconected;
   Station.HalfSetB.Rack1200Left.st1240G_ports := stPluggedIn;
   Station.HalfSetB.Rack1200Left.st1240V1_4PDC_1_ports := stPluggedIn;
-  Station.HalfSetB.Rack1200Left.st1240V1_4PDC_2_ports := stPluggedIn;
+  Station.HalfSetB.Rack1200Left.st1240V1_4PDC_2_ports := stPluggedInCross;
   Station.HalfSetB.Rack1200Left.st1240V2_4PDC_1_ports := stPluggedIn;
   Station.HalfSetB.Rack1200Left.st1240V2_4PDC_2_ports := stPluggedIn;
   Station.HalfSetB.Rack1200Left.sw1240GMainTune := GetRandomTuneValue;
@@ -2017,7 +2017,7 @@ begin
   Station.HalfSetA.Rack1200Right.st1240V2_Zaglushka_KDC := stPluggedIn;
   Station.HalfSetA.Rack1200Right.But1240V3 := GetRandomButtonState;
   Station.HalfSetA.Rack1200Right.Sw1240V3 := GetRandomSwitcherState;
-  Station.HalfSetA.Rack1200Right.st1240V3_Zaglushka_4PDC := stPluggedIn;
+  Station.HalfSetA.Rack1200Right.st1240V3_Zaglushka_4PDC := stPluggedInCross;
   Station.HalfSetA.Rack1200Right.st1240V3_Zaglushka_KDC := stPluggedIn;
   Station.HalfSetA.Rack1200Right.But1240G := GetRandomButtonState;
   Station.HalfSetA.Rack1200Right.But1240G1 := GetRandomButtonState;
@@ -2058,7 +2058,7 @@ begin
   Station.HalfSetB.Rack1200Right.But1240V := GetRandomButtonState;
   Station.HalfSetB.Rack1200Right.Sw1240V := GetRandomSwitcherState;
   Station.HalfSetB.Rack1200Right.st1240V_Zaglushka_4PDC := stPluggedIn;
-  Station.HalfSetB.Rack1200Right.st1240V_Zaglushka_KDC := stPluggedIn;
+  Station.HalfSetB.Rack1200Right.st1240V_Zaglushka_KDC := stPluggedInCross;
   Station.HalfSetB.Rack1200Right.But1240V2 := GetRandomButtonState;
   Station.HalfSetB.Rack1200Right.Sw1240V2 := GetRandomSwitcherState;
   Station.HalfSetB.Rack1200Right.st1240V2_Zaglushka_4PDC := stPluggedIn;

@@ -426,24 +426,24 @@ end;
     type TTaskTerminalModeSubTask11 = class (TSubTask)
   public
    function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
-   function NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
-  type TTaskTerminalModeSubTask12 = class (TSubTask)
+    type TTaskTerminalModeSubTask12 = class (TSubTask)
   public
    function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    function NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
-    type TTaskTerminalModeSubTask13 = class (TSubTask)
+  type TTaskTerminalModeSubTask13 = class (TSubTask)
   public
    function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
-   type TTaskTerminalModeSubTask14 = class (TSubTask)
+    type TTaskTerminalModeSubTask14 = class (TSubTask)
   public
    function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
@@ -452,7 +452,6 @@ end;
    type TTaskTerminalModeSubTask15 = class (TSubTask)
   public
    function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
-   function NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
@@ -466,10 +465,11 @@ end;
    type TTaskTerminalModeSubTask17 = class (TSubTask)
   public
    function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
-    type TTaskTerminalModeSubTask18 = class (TSubTask)
+   type TTaskTerminalModeSubTask18 = class (TSubTask)
   public
    function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
@@ -478,20 +478,19 @@ end;
     type TTaskTerminalModeSubTask19 = class (TSubTask)
   public
    function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
-   function NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
     type TTaskTerminalModeSubTask20 = class (TSubTask)
   public
    function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
     type TTaskTerminalModeSubTask21 = class (TSubTask)
   public
    function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
-   function NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
@@ -505,29 +504,30 @@ end;
     type TTaskTerminalModeSubTask23 = class (TSubTask)
   public
    function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
     type TTaskTerminalModeSubTask24 = class (TSubTask)
   public
    function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
-   function NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
     type TTaskTerminalModeSubTask25 = class (TSubTask)
   public
    function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
     type TTaskTerminalModeSubTask26 = class (TSubTask)
   public
    function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
-   function NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
-   type TTaskTerminalModeSubTask27 = class (TSubTask)
+
+    type TTaskTerminalModeSubTask27 = class (TSubTask)
   public
    function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    function NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
@@ -546,6 +546,12 @@ end;
    constructor Create;  override;
   end;
    type TTaskTerminalModeSubTask30 = class (TSubTask)
+  public
+   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   constructor Create;  override;
+  end;
+   type TTaskTerminalModeSubTask31 = class (TSubTask)
   public
    function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    function NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
@@ -2299,7 +2305,9 @@ uConstantsDM;
   begin
   inherited Create(Station, NetWorker, ErrorKeeper);
   FullCheck := False;
+
   TaskNetParams:= TNetParamsList.Create;
+
   TaskNetParams.AddKeyValue('WeInTerminalMode', 'False');
   TaskNetParams.AddKeyValue('TheyInTerminalMode', 'False');
   TaskNetParams.AddKeyValue('MessageListenFromMainSent', 'False');
@@ -2339,7 +2347,7 @@ uConstantsDM;
 
   Name:='Перевод станции в оконечный режим работы. Имерение параметров';
 
-  SetLength(SubTasks, 30);
+  SetLength(SubTasks, 31);
 
   SubTasks[0]:= TTaskTerminalModeSubTask1.Create;
   SubTasks[1]:= TTaskTerminalModeSubTask2.Create;
@@ -2371,6 +2379,7 @@ uConstantsDM;
     SubTasks[27]:= TTaskTerminalModeSubTask28.Create;
     SubTasks[28]:= TTaskTerminalModeSubTask29.Create;
     SubTasks[29]:= TTaskTerminalModeSubTask30.Create;
+    SubTasks[30]:= TTaskTerminalModeSubTask30.Create;
 
 
   CurrentSubTask:=SubTasks[CurrentSubTaskNum];
@@ -2678,10 +2687,37 @@ uConstantsDM;
         Time:= '';
    end;
 
+    //=============================
+
+        function TTaskTerminalModeSubTask11.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+   begin
+         if (Station.IsChannelBlocksTunedAt4ChannelMode = True) then
+         begin
+           Result:=true;
+         end
+          else
+         begin
+            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+            if (True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Станция не настроена в 2х или 4х проводный режим' + #10#13;
+
+           Result:=false;
+         end;
+   end;
+
+   constructor TTaskTerminalModeSubTask11.Create;
+   begin
+   inherited Create;
+
+        Name:='Настроить станцию в 4х проводный режим';
+        Text:='Настроить блоки 1200 ПРМ и ПРД обоих полукомплектов в 4х проводный режим';
+        EventFormName:='1200 ПРД Б';
+        Time:= '';
+   end;
+
    //=============================
 
 
-       function TTaskTerminalModeSubTask11.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+       function TTaskTerminalModeSubTask12.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
          if (TaskNetParams.GetBoolValue('WeInTerminalMode') = True) and (TaskNetParams.GetBoolValue('TheyInTerminalMode') = True)
@@ -2698,7 +2734,7 @@ uConstantsDM;
          end;
    end;
 
-   function TTaskTerminalModeSubTask11.NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
+   function TTaskTerminalModeSubTask12.NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
    begin
               if (TaskNetParams.GetBoolValue('WeInTerminalMode') = True) then
               begin
@@ -2718,7 +2754,7 @@ uConstantsDM;
               Result:=True;
    end;
 
-   constructor TTaskTerminalModeSubTask11.Create;
+   constructor TTaskTerminalModeSubTask12.Create;
    begin
    inherited Create;
 
@@ -2733,14 +2769,14 @@ uConstantsDM;
      //=============================
 
 
-       function TTaskTerminalModeSubTask12.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+       function TTaskTerminalModeSubTask13.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
          if (TaskNetParams.GetBoolValue('MessageCheckLvlFromMainSent') = True) and (TaskNetParams.GetBoolValue('MessageCheckLvlFromSubSent') = True)
          then
          begin
-         Station.HalfSetA.Rack1600.wave1610_0:=Station.HalfSetA.Rack1600.wave1610_0-(Random(3)+2);
-         Station.HalfSetB.Rack1600.wave1610_0:=Station.HalfSetB.Rack1600.wave1610_0-(Random(3)+2);
+         //Station.HalfSetA.Rack1600.wave1610_0:=Station.HalfSetA.Rack1600.wave1610_0-(Random(3)+2);
+         //Station.HalfSetB.Rack1600.wave1610_0:=Station.HalfSetB.Rack1600.wave1610_0-(Random(3)+2);
            Result:=true;
          end
          else
@@ -2752,7 +2788,7 @@ uConstantsDM;
          end;
    end;
 
-   function TTaskTerminalModeSubTask12.NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
+   function TTaskTerminalModeSubTask13.NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
    begin
 
               if (NetWorker.ClientState.IsMainStation = True) then
@@ -2769,7 +2805,7 @@ uConstantsDM;
               Result:=True;
    end;
 
-   constructor TTaskTerminalModeSubTask12.Create;
+   constructor TTaskTerminalModeSubTask13.Create;
    begin
    inherited Create;
 
@@ -2781,7 +2817,7 @@ uConstantsDM;
 
     //=====================
 
-       function TTaskTerminalModeSubTask13.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+       function TTaskTerminalModeSubTask14.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
          if (Station.HalfSetA.Rack1600.deltaWaveO=0) then
          begin
@@ -2797,7 +2833,7 @@ uConstantsDM;
          end;
    end;
 
-   constructor TTaskTerminalModeSubTask13.Create;
+   constructor TTaskTerminalModeSubTask14.Create;
    begin
    inherited Create;
 
@@ -2810,7 +2846,7 @@ uConstantsDM;
 
      //=====================
 
-       function TTaskTerminalModeSubTask14.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+       function TTaskTerminalModeSubTask15.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
          if (Station.HalfSetB.Rack1600.deltaWaveO=0) then
          begin
@@ -2826,7 +2862,7 @@ uConstantsDM;
          end;
    end;
 
-   constructor TTaskTerminalModeSubTask14.Create;
+   constructor TTaskTerminalModeSubTask15.Create;
    begin
    inherited Create;
 
@@ -2842,7 +2878,7 @@ uConstantsDM;
      //=============================
 
 
-       function TTaskTerminalModeSubTask15.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+       function TTaskTerminalModeSubTask16.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
          if (TaskNetParams.GetBoolValue('OurRecieverTuned') = True) and (TaskNetParams.GetBoolValue('TheirRecieverTuned') = True) and
@@ -2860,7 +2896,7 @@ uConstantsDM;
          end;
    end;
 
-   function TTaskTerminalModeSubTask15.NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
+   function TTaskTerminalModeSubTask16.NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
    begin
 
               if (NetWorker.ClientState.IsMainStation = True) then
@@ -2879,7 +2915,7 @@ uConstantsDM;
               Result:=True;
    end;
 
-   constructor TTaskTerminalModeSubTask15.Create;
+   constructor TTaskTerminalModeSubTask16.Create;
    begin
    inherited Create;
 
@@ -2894,7 +2930,7 @@ uConstantsDM;
     //=============================
 
 
-       function TTaskTerminalModeSubTask16.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+       function TTaskTerminalModeSubTask17.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
          if (TaskNetParams.GetBoolValue('MessageGeneratorFromMainSent1') = True) and (TaskNetParams.GetBoolValue('MessageGeneratorFromSubSent1') = True)
@@ -2911,7 +2947,7 @@ uConstantsDM;
          end;
    end;
 
-   function TTaskTerminalModeSubTask16.NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
+   function TTaskTerminalModeSubTask17.NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
    begin
 
               if (NetWorker.ClientState.IsMainStation = True) then
@@ -2928,7 +2964,7 @@ uConstantsDM;
               Result:=True;
    end;
 
-   constructor TTaskTerminalModeSubTask16.Create;
+   constructor TTaskTerminalModeSubTask17.Create;
    begin
    inherited Create;
 
@@ -2943,11 +2979,11 @@ uConstantsDM;
 
    //=====================
 
-       function TTaskTerminalModeSubTask17.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+       function TTaskTerminalModeSubTask18.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
          if (Station.P321C.but600Ohm = butPositionUp) and (Station.P321C.swNepGen = 5) and (Station.P321C.swNepGenYY = 6) and
-         ((Station.CableBlack1.stKonez1.stState = csP321CGen) or (Station.CableBlack1.stKonez2.stState = csP321CGen))
-         and ((Station.CableWhite2.stKonez1.stState = csP321CYY) or (Station.CableWhite2.stKonez2.stState = csP321CYY))  then
+          ((Station.CableBlack1.stKonez1.stState = csP321CGen) or (Station.CableBlack1.stKonez2.stState = csP321CGen))
+          and ((Station.CableWhite2.stKonez1.stState = csP321CYY) or (Station.CableWhite2.stKonez2.stState = csP321CYY))  then
          begin
            Result:=true;
          end
@@ -2960,13 +2996,15 @@ uConstantsDM;
          end;
    end;
 
-   constructor TTaskTerminalModeSubTask17.Create;
+   constructor TTaskTerminalModeSubTask18.Create;
    begin
    inherited Create;
 
         Name:='Подготовить П-321С к работе';
+
         Text:='Подготовить П-321С к работе. Переключатель НЕП.ГЕН. перевести в положение 1.5 Нп, переключатель НЕП.УУ. в положение +1, переключатель КГЦ в положение 0.8, ';
         Text:=Text+'тумблер входного сопротивления в полодение 600 Ом. Подключить черный провод к ВЫХ.ГЕН., белый провод к ВХ.УУ.';
+
         EventFormName:='П-321 С';
         Time:= '';
    end;
@@ -2976,7 +3014,7 @@ uConstantsDM;
 
    //=====================
 
-       function TTaskTerminalModeSubTask18.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+       function TTaskTerminalModeSubTask19.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
          if ((Station.CurrentChannel(Station.CableBlack1.stKonez1.stKonez) = 1) or (Station.CurrentChannel(Station.CableBlack1.stKonez2.stKonez) = 1))
          and ( (Station.CurrentPort(Station.CableBlack1.stKonez1.stKonez) = 3) or (Station.CurrentPort(Station.CableBlack1.stKonez2.stKonez) = 3))
@@ -2994,7 +3032,7 @@ uConstantsDM;
          end;
    end;
 
-   constructor TTaskTerminalModeSubTask18.Create;
+   constructor TTaskTerminalModeSubTask19.Create;
    begin
    inherited Create;
 
@@ -3008,7 +3046,7 @@ uConstantsDM;
       //=============================
 
 
-       function TTaskTerminalModeSubTask19.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+       function TTaskTerminalModeSubTask20.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
          if (TaskNetParams.GetBoolValue('MessageMainStartTune1') = True) and (TaskNetParams.GetBoolValue('MessageSubStartTune1') = True)
@@ -3025,7 +3063,7 @@ uConstantsDM;
          end;
    end;
 
-   function TTaskTerminalModeSubTask19.NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
+   function TTaskTerminalModeSubTask20.NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
    begin
 
               if (NetWorker.ClientState.IsMainStation = True) then
@@ -3042,7 +3080,7 @@ uConstantsDM;
               Result:=True;
    end;
 
-   constructor TTaskTerminalModeSubTask19.Create;
+   constructor TTaskTerminalModeSubTask20.Create;
    begin
    inherited Create;
 
@@ -3054,7 +3092,7 @@ uConstantsDM;
 
      //=====================
 
-       function TTaskTerminalModeSubTask20.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+   function TTaskTerminalModeSubTask21.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
          if (Station.RemoteController.Channels.A[1].stChannelState = stChannelTuned)  then
          begin
@@ -3069,7 +3107,7 @@ uConstantsDM;
          end;
    end;
 
-   constructor TTaskTerminalModeSubTask20.Create;
+   constructor TTaskTerminalModeSubTask21.Create;
    begin
    inherited Create;
 
@@ -3083,7 +3121,7 @@ uConstantsDM;
     //=============================
 
 
-       function TTaskTerminalModeSubTask21.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+       function TTaskTerminalModeSubTask22.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
          if (TaskNetParams.GetBoolValue('MessageMainEndTune1') = True) and (TaskNetParams.GetBoolValue('MessageSubEndTune1') = True)
@@ -3100,7 +3138,7 @@ uConstantsDM;
          end;
    end;
 
-   function TTaskTerminalModeSubTask21.NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
+   function TTaskTerminalModeSubTask22.NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
    begin
 
               if (NetWorker.ClientState.IsMainStation = True) then
@@ -3117,7 +3155,7 @@ uConstantsDM;
               Result:=True;
    end;
 
-   constructor TTaskTerminalModeSubTask21.Create;
+   constructor TTaskTerminalModeSubTask22.Create;
    begin
    inherited Create;
 
@@ -3131,7 +3169,7 @@ uConstantsDM;
     //=============================
 
 
-       function TTaskTerminalModeSubTask22.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+       function TTaskTerminalModeSubTask23.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
          if (TaskNetParams.GetBoolValue('MessageGeneratorFromMainSent2') = True) and (TaskNetParams.GetBoolValue('MessageGeneratorFromSubSent2') = True)
@@ -3148,7 +3186,7 @@ uConstantsDM;
          end;
    end;
 
-   function TTaskTerminalModeSubTask22.NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
+   function TTaskTerminalModeSubTask23.NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
    begin
 
               if (NetWorker.ClientState.IsMainStation = True) then
@@ -3165,7 +3203,7 @@ uConstantsDM;
               Result:=True;
    end;
 
-   constructor TTaskTerminalModeSubTask22.Create;
+   constructor TTaskTerminalModeSubTask23.Create;
    begin
    inherited Create;
 
@@ -3178,7 +3216,7 @@ uConstantsDM;
 
     //=====================
 
-       function TTaskTerminalModeSubTask23.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+       function TTaskTerminalModeSubTask24.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
          if ((Station.CurrentChannel(Station.CableBlack1.stKonez1.stKonez) = 2) or (Station.CurrentChannel(Station.CableBlack1.stKonez2.stKonez) = 2))
          and ( (Station.CurrentPort(Station.CableBlack1.stKonez1.stKonez) = 3) or (Station.CurrentPort(Station.CableBlack1.stKonez2.stKonez) = 3))
@@ -3196,7 +3234,7 @@ uConstantsDM;
          end;
    end;
 
-   constructor TTaskTerminalModeSubTask23.Create;
+   constructor TTaskTerminalModeSubTask24.Create;
    begin
    inherited Create;
 
@@ -3210,7 +3248,7 @@ uConstantsDM;
       //=============================
 
 
-       function TTaskTerminalModeSubTask24.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+       function TTaskTerminalModeSubTask25.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
          if (TaskNetParams.GetBoolValue('MessageMainStartTune2') = True) and (TaskNetParams.GetBoolValue('MessageSubStartTune2') = True)
@@ -3227,7 +3265,7 @@ uConstantsDM;
          end;
    end;
 
-   function TTaskTerminalModeSubTask24.NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
+   function TTaskTerminalModeSubTask25.NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
    begin
 
               if (NetWorker.ClientState.IsMainStation = True) then
@@ -3244,7 +3282,7 @@ uConstantsDM;
               Result:=True;
    end;
 
-   constructor TTaskTerminalModeSubTask24.Create;
+   constructor TTaskTerminalModeSubTask25.Create;
    begin
    inherited Create;
 
@@ -3256,7 +3294,7 @@ uConstantsDM;
 
      //=====================
 
-       function TTaskTerminalModeSubTask25.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+       function TTaskTerminalModeSubTask26.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
          if (Station.RemoteController.Channels.A[2].stChannelState = stChannelTuned)  then
          begin
@@ -3271,7 +3309,7 @@ uConstantsDM;
          end;
    end;
 
-   constructor TTaskTerminalModeSubTask25.Create;
+   constructor TTaskTerminalModeSubTask26.Create;
    begin
    inherited Create;
 
@@ -3285,7 +3323,7 @@ uConstantsDM;
     //=============================
 
 
-       function TTaskTerminalModeSubTask26.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+       function TTaskTerminalModeSubTask27.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
          if (TaskNetParams.GetBoolValue('MessageMainEndTune2') = True) and (TaskNetParams.GetBoolValue('MessageSubEndTune2') = True)
@@ -3302,7 +3340,7 @@ uConstantsDM;
          end;
    end;
 
-   function TTaskTerminalModeSubTask26.NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
+   function TTaskTerminalModeSubTask27.NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
    begin
 
               if (NetWorker.ClientState.IsMainStation = True) then
@@ -3319,7 +3357,7 @@ uConstantsDM;
               Result:=True;
    end;
 
-   constructor TTaskTerminalModeSubTask26.Create;
+   constructor TTaskTerminalModeSubTask27.Create;
    begin
    inherited Create;
 
@@ -3346,7 +3384,7 @@ uConstantsDM;
    //=============================
 
 
-       function TTaskTerminalModeSubTask27.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+       function TTaskTerminalModeSubTask28.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
          if (TaskNetParams.GetBoolValue('MessageStartFrequencyMain1_1') = True) and (TaskNetParams.GetBoolValue('MessageStartFrequencySub1_1') = True)
@@ -3363,7 +3401,7 @@ uConstantsDM;
          end;
    end;
 
-   function TTaskTerminalModeSubTask27.NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
+   function TTaskTerminalModeSubTask28.NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
    begin
 
               if (NetWorker.ClientState.IsMainStation = True) then
@@ -3380,7 +3418,7 @@ uConstantsDM;
               Result:=True;
    end;
 
-   constructor TTaskTerminalModeSubTask27.Create;
+   constructor TTaskTerminalModeSubTask28.Create;
    begin
    inherited Create;
 
@@ -3395,7 +3433,7 @@ uConstantsDM;
     //=============================
 
 
-       function TTaskTerminalModeSubTask28.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+       function TTaskTerminalModeSubTask29.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
          if (Station.P321C.swFrequency = 1) and (TaskNetParams.GetBoolValue('MessageEndFrequencyMain1_1') = True) and (TaskNetParams.GetBoolValue('MessageEndFrequencySub1_1') = True)
@@ -3413,7 +3451,7 @@ uConstantsDM;
          end;
    end;
 
-   function TTaskTerminalModeSubTask28.NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
+   function TTaskTerminalModeSubTask29.NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
    begin
                if (Station.P321C.swFrequency = 1) then
                begin
@@ -3431,7 +3469,7 @@ uConstantsDM;
               Result:=True;
    end;
 
-   constructor TTaskTerminalModeSubTask28.Create;
+   constructor TTaskTerminalModeSubTask29.Create;
    begin
    inherited Create;
 
@@ -3446,7 +3484,7 @@ uConstantsDM;
    //=============================
 
 
-       function TTaskTerminalModeSubTask29.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+       function TTaskTerminalModeSubTask30.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
          if (TaskNetParams.GetBoolValue('MessageStartFrequencyMain1_2') = True) and (TaskNetParams.GetBoolValue('MessageStartFrequencySub1_2') = True)
@@ -3463,7 +3501,7 @@ uConstantsDM;
          end;
    end;
 
-   function TTaskTerminalModeSubTask29.NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
+   function TTaskTerminalModeSubTask30.NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
    begin
 
               if (NetWorker.ClientState.IsMainStation = True) then
@@ -3480,7 +3518,7 @@ uConstantsDM;
               Result:=True;
    end;
 
-   constructor TTaskTerminalModeSubTask29.Create;
+   constructor TTaskTerminalModeSubTask30.Create;
    begin
    inherited Create;
 
@@ -3494,7 +3532,7 @@ uConstantsDM;
     //=============================
 
 
-       function TTaskTerminalModeSubTask30.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+       function TTaskTerminalModeSubTask31.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
          if (Station.P321C.swFrequency = 2) and (TaskNetParams.GetBoolValue('MessageEndFrequencyMain1_2') = True) and (TaskNetParams.GetBoolValue('MessageEndFrequencySub1_2') = True)
@@ -3512,7 +3550,7 @@ uConstantsDM;
          end;
    end;
 
-   function TTaskTerminalModeSubTask30.NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
+   function TTaskTerminalModeSubTask31.NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
    begin
                if (Station.P321C.swFrequency = 2) then
                begin
@@ -3530,7 +3568,7 @@ uConstantsDM;
               Result:=True;
    end;
 
-   constructor TTaskTerminalModeSubTask30.Create;
+   constructor TTaskTerminalModeSubTask31.Create;
    begin
    inherited Create;
 

@@ -279,7 +279,7 @@ function TTaskController.GetTaskTitle(TaskID: Integer): string;
               SubResult:= false;
               IsEventCheck:= False;
 
-              if ((CurrentTask.SubTasks[CurrentTask.CurrentSubTaskNum].EventFormName='')) then   MessageBox(HWND_MESSAGE, 'fdg', '46', 0);
+              if ((CurrentTask.SubTasks[CurrentTask.CurrentSubTaskNum].EventFormName='')) then   MessageBox(HWND_MESSAGE, 'errrrrrrrooooooor', '46', 0);
 
          end
          else

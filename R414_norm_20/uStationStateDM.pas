@@ -1738,15 +1738,28 @@ end;
 
 function TStation.IsP321ShuntsConnectedAt2ChannelMode: Boolean;
 begin
-  Result := ((CableWhite2.stKonez1.stKonez mod 2 = 0) or  (CableWhite2.stKonez2.stKonez mod 2 = 0))
-    and ((CableBlack1.stKonez1.stKonez mod 2 = 0) or (CableBlack1.stKonez1.stKonez mod 2 = 0))
-    and ((CableBlack1.stKonez1.stKonez < 337) or (CableBlack1.stKonez2.stKonez < 337))
-    and ((1 < CableBlack1.stKonez1.stKonez) or (1 < CableBlack1.stKonez2.stKonez))
-    and ((CableWhite2.stKonez1.stKonez < 337) or (CableWhite2.stKonez2.stKonez < 337))
-    and ((1 < CableWhite2.stKonez1.stKonez) or (1 < CableWhite2.stKonez2.stKonez))
-    and ((Abs(CableBlack1.stKonez1.stKonez - CableWhite2.stKonez1.stKonez) = 168) or (Abs(CableBlack1.stKonez1.stKonez - CableWhite2.stKonez2.stKonez) = 168) or
-    (Abs(CableBlack1.stKonez2.stKonez - CableWhite2.stKonez1.stKonez) = 168) or (Abs(CableBlack1.stKonez2.stKonez - CableWhite2.stKonez2.stKonez) = 168));
-end;
+
+Result := ((IsNeedToTuneChannelBlocksA = True) or (IsNeedToTuneChannelBlocksB = True)) and
+(((CurrentChannel(CableBlack1.stKonez1.stKonez)>0) and (CurrentChannel(CableBlack1.stKonez1.stKonez) = CurrentChannel(CableWhite2.stKonez1.stKonez))) or
+((CurrentChannel(CableBlack1.stKonez1.stKonez)>0) and (CurrentChannel(CableBlack1.stKonez1.stKonez) = CurrentChannel(CableWhite2.stKonez2.stKonez))) or
+((CurrentChannel(CableBlack1.stKonez2.stKonez)>0) and (CurrentChannel(CableBlack1.stKonez2.stKonez) = CurrentChannel(CableWhite2.stKonez1.stKonez)))  or
+((CurrentChannel(CableBlack1.stKonez2.stKonez)>0) and (CurrentChannel(CableBlack1.stKonez2.stKonez) = CurrentChannel(CableWhite2.stKonez2.stKonez)))) and
+
+((CurrentPort(CableBlack1.stKonez1.stKonez) = 3) or (CurrentPort(CableBlack1.stKonez2.stKonez) = 3)) and
+ ((CurrentPort(CableWhite2.stKonez1.stKonez) = 4) or (CurrentPort(CableWhite2.stKonez2.stKonez) = 4));
+
+//  Result := ((CableWhite2.stKonez1.stKonez mod 2 = 0) or  (CableWhite2.stKonez2.stKonez mod 2 = 0))
+//    and ((CableBlack1.stKonez1.stKonez mod 2 = 0) or (CableBlack1.stKonez1.stKonez mod 2 = 0))
+//    and ((CableBlack1.stKonez1.stKonez < 337) or (CableBlack1.stKonez2.stKonez < 337))
+//    and ((1 < CableBlack1.stKonez1.stKonez) or (1 < CableBlack1.stKonez2.stKonez))
+//    and ((CableWhite2.stKonez1.stKonez < 337) or (CableWhite2.stKonez2.stKonez < 337))
+//    and ((1 < CableWhite2.stKonez1.stKonez) or (1 < CableWhite2.stKonez2.stKonez))
+//    and ((Abs(CableBlack1.stKonez1.stKonez - CableWhite2.stKonez1.stKonez) = 168) or (Abs(CableBlack1.stKonez1.stKonez - CableWhite2.stKonez2.stKonez) = 168) or
+//    (Abs(CableBlack1.stKonez2.stKonez - CableWhite2.stKonez1.stKonez) = 168) or (Abs(CableBlack1.stKonez2.stKonez - CableWhite2.stKonez2.stKonez) = 168));
+
+    end;
+
+
 
 function TStation.IsP321ShuntsConnectedAt4ChannelMode: Boolean;
 begin
