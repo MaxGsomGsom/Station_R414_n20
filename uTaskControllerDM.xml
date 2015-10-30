@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <namespace name="uTaskControllerDM">
+  <variable name="TTask" type="erroneous type" />
   <class name="TTaskController">
     <devnotes>
        <summary>
@@ -144,7 +145,7 @@
         </parameters>
       </function>
       <property name="CountTasks" visibility="public" read="GetCountTasks" type="Integer" />
-      <field name="CurrentTask" type="TTask" visibility="public" />
+      <field name="CurrentTask" type="erroneous type" visibility="public" />
       <field name="CurrentForm" type="TForm" visibility="public" />
       <field name="NetWorker" type="TClientNetWorker" visibility="public" />
       <field name="ErrorKeeper" type="TErrorKeeper" visibility="public" />

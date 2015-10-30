@@ -40,7 +40,8 @@ uses
 
 procedure TRackP321MinForm.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-P321Form.Close;
+if (P321Form <> nil) then P321Form.Close;
+
 end;
 
 
@@ -69,7 +70,7 @@ end;
 
 procedure TRackP321MinForm.UpdP321;
 begin
-  if (P321Form <> nil) then P321Form.Reload;
+  if (P321Form <> nil) then P321Form.PaintDisplay;
 
 end;
 
