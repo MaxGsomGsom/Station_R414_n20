@@ -247,7 +247,7 @@ begin
           InitForTerminalMode;
       end;
   end;
-  //SetStationTo4ChannelMode;
+  SetStationTo4ChannelMode;
 end;
 
 /// <summary>
@@ -2291,7 +2291,7 @@ begin
   Station.P321C.but600Ohm := butPositionUp;
   Station.P321C.cblVihGen := csDisconected;
   Station.P321C.cblVhYY := csDisconected;
-  Station.P321C.swGradPit := 31;
+  Station.P321C.swGradPit := Random(9) + 10;
 
   Station.HalfSetA.P321.swNepGen := 1;
   Station.HalfSetA.P321.swFrequency := 1;
@@ -2309,11 +2309,11 @@ begin
 
   Station.HalfSetA.P321.swGradGen := GetRandomWaveValue;
   Station.HalfSetB.P321.swGradGen := GetRandomWaveValue;
-  Station.P321C.swGradGen := 31;
+  Station.P321C.swGradGen := Random(9) + 10;
 
   Station.HalfSetA.P321.swGradYY := GetRandomWaveValue;
   Station.HalfSetB.P321.swGradYY := GetRandomWaveValue;
-  Station.P321C.swGradYY := 31;
+  Station.P321C.swGradYY := Random(9) + 10;
 
   Station.RemoteController.SwPVU := GetRandomSwitcherState;
   Station.RemoteController.butCall1 := GetRandomButtonState;

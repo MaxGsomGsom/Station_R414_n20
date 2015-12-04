@@ -546,7 +546,7 @@ begin
               // (true) then
               begin
                 //==============ƒвух канальный режим===================
-                if (Station.IsChannelBlocksTunedAt2ChannelMode) and (Station.P321C.swNepGen = swNepGen4) and (Station.P321C.swNepGenYY = swNepGenYY2) then
+                if (Station.IsChannelBlocksTunedAt2ChannelMode) and (Station.P321C.swNepGen = swNepGen2) and (Station.P321C.swNepGenYY = swNepGenYY2) then
                 begin
                   if Station.IsP321ShuntsConnectedAt2ChannelMode then
                   begin
@@ -614,13 +614,10 @@ begin
               end;
             end;
           end
-          else if (Station.P321C.swNepGen = 5) and
+          else if (Station.P321C.swNepGen = swNepGen4) and
           (Station.P321C.swGradPit = 31) and
           (Station.P321C.swGradGen = 31) and
-          (Station.P321C.swGradYY = 31) //and
-          //((Station.P321C.swFrequency = 1) or (Station.P321C.swFrequency = 2)
-          //or (Station.P321C.swFrequency = 3) or (Station.P321C.swFrequency = 10)
-          //or (Station.P321C.swFrequency = 12) or (Station.P321C.swFrequency = 13))
+          (Station.P321C.swGradYY = 31)
           then
           begin
             //ѕараметры выставлены верно
@@ -638,7 +635,7 @@ begin
                   begin
                         //выбор отклонени€ в зависимости от частоты
                       if (Station.P321C.swFrequency <= 3) then
-                          CurTuneValue:= 4-Station.P321C.swFrequency*2
+                          CurTuneValue:= 6-Station.P321C.swFrequency*2
                       else if (Station.P321C.swFrequency>=10) then
                           CurTuneValue:= Station.P321C.swFrequency*2-9
                       else  CurTuneValue:=0;

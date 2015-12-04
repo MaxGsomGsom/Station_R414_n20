@@ -2337,8 +2337,10 @@ uConstantsDM;
 
   TaskNetParams.AddKeyValue('MessageStartFrequencyMain1_1', 'False');
   TaskNetParams.AddKeyValue('MessageStartFrequencySub1_1', 'False');
+  TaskNetParams.AddKeyValue('MessageEndFrequencyMain1_1', 'False');
+  TaskNetParams.AddKeyValue('MessageEndFrequencySub1_1', 'False');
   TaskNetParams.AddKeyValue('MessageEndFrequencyMain1_2', 'False');
-  TaskNetParams.AddKeyValue('MessageEndFrequencyMain1_2', 'False');
+  TaskNetParams.AddKeyValue('MessageEndFrequencySub1_2', 'False');
 
 
 
@@ -2691,6 +2693,7 @@ uConstantsDM;
 
         function TTaskTerminalModeSubTask11.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
+
          if (Station.IsChannelBlocksTunedAt4ChannelMode = True) then
          begin
            Result:=true;
@@ -2709,7 +2712,7 @@ uConstantsDM;
    inherited Create;
 
         Name:='Настроить станцию в 4х проводный режим';
-        Text:='Настроить блоки 1200 ПРМ и ПРД обоих полукомплектов в 4х проводный режим';
+        Text:='!!!!Настроить блоки 1200 ПРМ и ПРД обоих полукомплектов в 4х проводный режим';
         EventFormName:='1200 ПРД Б';
         Time:= '';
    end;
@@ -2744,7 +2747,7 @@ uConstantsDM;
                   NetWorker.SendTaskParams('TheyInTerminalMode', 'True');
                   NetWorker.SendTaskParams('MessageListenFromMainSent', 'True');
               end;
-              if (NetWorker.ClientState.IsMainStation = False) and (TaskNetParams.GetBoolValue('MessageListenFromMainSent') = True) then
+              if (NetWorker.ClientState.IsMainStation = False) then //and (TaskNetParams.GetBoolValue('MessageListenFromMainSent') = True) then
               begin
               TaskNetParams.ChangeValue('MessageListenFromSubSent', 'True');
                   NetWorker.SendTaskParams('TheyInTerminalMode', 'True');
@@ -3002,7 +3005,7 @@ uConstantsDM;
 
         Name:='Подготовить П-321С к работе';
 
-        Text:='Подготовить П-321С к работе. Переключатель НЕП.ГЕН. перевести в положение 1.5 Нп, переключатель НЕП.УУ. в положение +1, переключатель КГЦ в положение 0.8, ';
+        Text:='Подготовить П-321С к работе. Настроить ГРАД.ПИТ., ГРАД.ГЕН., ГРАД.УУ. Переключатель НЕП.ГЕН. перевести в положение -1.5 Нп, переключатель НЕП.УУ. в положение +1, переключатель КГЦ в положение 0.8, ';
         Text:=Text+'тумблер входного сопротивления в полодение 600 Ом. Подключить черный провод к ВЫХ.ГЕН., белый провод к ВХ.УУ.';
 
         EventFormName:='П-321 С';
@@ -3085,7 +3088,7 @@ uConstantsDM;
    inherited Create;
 
         Name:='Доложить корреспонденту.';
-        Text:='Убедиться в необходимости настройки: на приборе П-321 стрелка отклонена от значения -0.5 Нп. Доложить корреспонденту о начале регулировки. Старшая станция: "Вижу, регулирую". Подчиненная станция: "Вижу, регулирую".';
+        Text:='Убедиться в необходимости подстройки канала: на приборе П-321 стрелка отклонена от значения -0.5 Нп. Доложить корреспонденту о начале регулировки. Старшая станция: "Вижу, регулирую". Подчиненная станция: "Вижу, регулирую".';
         EventFormName:='';
         Time:= '';
    end;

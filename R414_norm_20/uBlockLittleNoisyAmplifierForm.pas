@@ -342,7 +342,7 @@ begin
         end;
         if (button=mbRight)and(Station.HalfSetB.LittleNoisyAmplifier.swWave>MIN_WAVE_VALUE) then
         begin
-          dec(Station.HalfSetA.LittleNoisyAmplifier.swWave);
+          dec(Station.HalfSetB.LittleNoisyAmplifier.swWave);
           label1.Caption:=inttostr(Station.HalfSetB.LittleNoisyAmplifier.swWave);
           Image2.Hide;
           Image3.Show;
@@ -390,7 +390,7 @@ begin
         if (button=mbRight)and(Station.HalfSetA.LittleNoisyAmplifier.swWave>MIN_WAVE_VALUE) then
         begin
           dec(Station.HalfSetA.LittleNoisyAmplifier.swWave);
-
+          label1.Caption:=inttostr(Station.HalfSetA.LittleNoisyAmplifier.swWave);
           Image3.Hide;
           Image2.Show;
         end;
@@ -424,7 +424,7 @@ begin
         if (button=mbRight)and(Station.HalfSetB.LittleNoisyAmplifier.swWave>MIN_WAVE_VALUE) then
         begin
           dec(Station.HalfSetB.LittleNoisyAmplifier.swWave);
-
+          label1.Caption:=inttostr(Station.HalfSetB.LittleNoisyAmplifier.swWave);
           Image3.Hide;
           Image2.Show;
         end;
