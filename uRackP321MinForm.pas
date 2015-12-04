@@ -70,7 +70,7 @@ end;
 
 procedure TRackP321MinForm.UpdP321;
 begin
-  if (P321Form <> nil) then P321Form.PaintDisplay;
+  if (P321Form <> nil) then P321Form.PaintDisplay();
 
 end;
 

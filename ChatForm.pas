@@ -69,7 +69,7 @@ begin
   NetWorker.SendMessage(edt1MessageInput.Text);
 lst1AllMessages.AddItem(NetWorker.ClientState.UserName+': '+ edt1MessageInput.Text, TObject.Create);
  edt1MessageInput.Text:='';
- lst1AllMessages.ScrollBy(99999, 0);
+ lst1AllMessages.ScrollBy(99999, 99999);
 end
 else
 begin
@@ -120,7 +120,15 @@ end;
 procedure TTChatForm.ShowMessage(Sender: TObject);
 begin
 if (NetWorker.ClientState.CanGetChatMessages=True) then
+begin
   lst1AllMessages.AddItem(NetWorker.ClientState.LinkedR414UserName+': '+ NetWorker.ClientState.LastMessage, TObject.Create);
+  lst1AllMessages.ScrollBy(99999, 99999);
+end
+else
+begin
+  lst1AllMessages.AddItem('<Другая станция пытается с вами связаться>', TObject.Create);
+end;
+
 end;
 
 end.

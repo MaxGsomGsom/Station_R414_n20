@@ -293,6 +293,8 @@ type
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure FormCreate(Sender: TObject);
     procedure imgbut1240KClick(Sender: TObject);
+    procedure img1240VTuneClick(Sender: TObject);
+    procedure img1240V2TuneClick(Sender: TObject);
     //procedure img1240GMainTuneClick(Sender: TObject);
     //procedure img1240VTuneClick(Sender: TObject);
   private
@@ -1069,9 +1071,9 @@ begin
       end;
   end;
 
-  InvalidateAll;
-
   if  (P321Mini <> nil) then P321Mini.UpdP321;
+
+  InvalidateAll;
 end;
 
 procedure TRack1200LeftForm.FormCloseQuery(Sender: TObject;
@@ -1781,6 +1783,11 @@ begin
   Reload;
 end;
 
+procedure TRack1200LeftForm.img1240V2TuneClick(Sender: TObject);
+begin
+  Reload;
+end;
+
 procedure TRack1200LeftForm.img1240V2TuneMouseDown(Sender: TObject;
   Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
 begin
@@ -1917,6 +1924,11 @@ begin
   //RackP321Form.PaintDisplay;
 end;
 
+
+procedure TRack1200LeftForm.img1240VTuneClick(Sender: TObject);
+begin
+    Reload;
+end;
 
 procedure TRack1200LeftForm.img1240VTuneMouseDown(Sender: TObject;
   Button: TMouseButton; Shift: TShiftState; X, Y: Integer);

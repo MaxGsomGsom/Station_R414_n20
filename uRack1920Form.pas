@@ -1483,7 +1483,7 @@ begin
 
         if (Station.Is1920A2ReadyToTurnHighON) and (imgZamedlSys1_3.Visible)  and (Station.HalfSetA.Rack1920.butCurrent5MA2 = butPositionDown) then
           Current5MANotGiven_LBV2;
-        if (Station.HalfSetA.Rack1920.stLBV2_TurnedOn) then
+        if (Station.HalfSetA.Rack1920.stZamedleniePodano_LVB2) then
           TurnOffLBV2;
 
           Reload;
@@ -1496,7 +1496,7 @@ begin
 
         if (Station.Is1920B2ReadyToTurnHighON) and (imgZamedlSys1_3.Visible)  and (Station.HalfSetB.Rack1920.butCurrent5MA2 = butPositionDown) then
           Current5MANotGiven_LBV2;
-        if (Station.HalfSetB.Rack1920.stLBV2_TurnedOn) then
+        if (Station.HalfSetB.Rack1920.stZamedleniePodano_LVB2) then
           TurnOffLBV2;
 
           Reload;
@@ -1528,7 +1528,7 @@ begin
 
         if (Station.Is1920A1ReadyToTurnHighON) and (imgZamedlSys3.Visible) and (Station.HalfSetA.Rack1920.butCurrent5MA = butPositionDown) then
           Current5MANotGiven_LBV1;
-        if (Station.HalfSetA.Rack1920.stLBV1_TurnedOn) then
+        if (Station.HalfSetA.Rack1920.stZamedleniePodano_LVB1) then
           TurnOffLBV1;
 
           Reload;
@@ -1540,7 +1540,7 @@ begin
 
         if (Station.Is1920B1ReadyToTurnHighON) and (imgZamedlSys3.Visible) and (Station.HalfSetB.Rack1920.butCurrent5MA = butPositionDown) then
           Current5MANotGiven_LBV1;    
-        if (Station.HalfSetB.Rack1920.stLBV1_TurnedOn) then
+        if (Station.HalfSetB.Rack1920.stZamedleniePodano_LVB1) then
           TurnOffLBV1;
 
           Reload;
