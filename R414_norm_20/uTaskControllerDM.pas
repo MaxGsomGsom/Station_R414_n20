@@ -220,7 +220,7 @@ function TTaskController.GetTaskTitle(TaskID: Integer): string;
      var
      img: TComponent;
      begin
-                          
+
            //CurForm0.OnClose := self.CheckBeforeClose;
 
           //код подписки на все события click всех элементов формы
@@ -234,7 +234,8 @@ function TTaskController.GetTaskTitle(TaskID: Integer): string;
           end;
           end;
 
-          CheckTask(TImage.Create(CurForm0), TMouseButton.mbLeft, [], 0,0);
+          CurForm0.OnShow := self.CheckTask;
+          //CheckTask(TImage.Create(CurForm0), TMouseButton.mbLeft, [], 0,0);
 
      end;
 

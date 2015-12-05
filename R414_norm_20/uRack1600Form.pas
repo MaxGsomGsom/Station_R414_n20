@@ -244,7 +244,7 @@ begin
   if (Half=1) then begin Self.Caption:='1600 À'; end
   else Self.Caption:='1600 Á';
   TaskController:=TaskController0;
-  TaskController.Subscribe(self);
+  //TaskController.Subscribe(self);
   ButtonBackForm:= TButtonBackForm.Create(self);
   ButtonBackForm.Show;
   TaskController.Subscribe(self);
@@ -332,7 +332,14 @@ begin
 
               img1610_0_sw.Visible := Boolean(Station.HalfSetA.Rack1600.deltaWaveO mod 2);
 
-              imgsWindow[Abs(Station.HalfSetA.Rack1600.deltaWaveO)].Visible:=true;
+              if (Station.HalfSetA.Rack1600.deltaWaveO>10) then
+              begin
+                 imgsWindow[10].Visible:=true;
+              end
+              else
+              begin
+                 imgsWindow[Abs(Station.HalfSetA.Rack1600.deltaWaveO)].Visible:=true;
+              end;
               imgsSWCH[5-Abs(tempDelta)].Visible:=true;
 
         end
@@ -426,7 +433,15 @@ begin
 
               img1610_0_sw.Visible := Boolean(Station.HalfSetB.Rack1600.deltaWaveO mod 2);
 
-              imgsWindow[Abs(Station.HalfSetB.Rack1600.deltaWaveO)].Visible:=true;
+              if (Station.HalfSetB.Rack1600.deltaWaveO>10) then
+              begin
+                 imgsWindow[10].Visible:=true;
+              end
+              else
+              begin
+                 imgsWindow[Abs(Station.HalfSetB.Rack1600.deltaWaveO)].Visible:=true;
+              end;
+
               imgsSWCH[5-Abs(tempDelta)].Visible:=true;
 
         end

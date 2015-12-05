@@ -22,7 +22,8 @@ uses
   uConstantsDM,
   uTaskControllerDM,
   uStationStateDM,
-  uButtonBackForm;
+  uButtonBackForm,
+  uRackP321MinForm;
 
 type
   TRack1200RightForm = class(TForm)
@@ -275,6 +276,8 @@ type
     procedure imgJmpToRightClick(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure FormCreate(Sender: TObject);
+    procedure img1240VTuneClick(Sender: TObject);
+    procedure img1240V2TuneClick(Sender: TObject);
 
 
   private
@@ -297,9 +300,12 @@ var
     ButtonBackForm: TButtonBackForm;
   Station: TStation;
   TaskController: TTaskController;
+  P321Mini: TRackP321MinForm;
+
   const
   idRack1200A2=1;
   idRack1200B2=2;
+
 
   end;
 
@@ -331,6 +337,15 @@ begin
   TaskController.Subscribe(self);
   ButtonBackForm:= TButtonBackForm.Create(self);
   ButtonBackForm.Show;
+
+
+    if (TaskController.NetWorker.ClientState.TaskID = ttTransferToTerminalMode) then
+  begin
+       P321Mini:= TRackP321MinForm.Create(Self, Station, TaskController);
+       P321Mini.Show;
+  end;
+
+
 end;
 
 procedure TRack1200RightForm.Reload;
@@ -443,6 +458,9 @@ procedure TRack1200RightForm.Reload;
   end;
 
 begin
+
+  if  (P321Mini <> nil) then P321Mini.UpdP321;
+
   case CurFormId of
     idRack1200A2:
       begin
@@ -1343,6 +1361,11 @@ begin
   //RackP321Form.PaintDisplay;
 end;
 
+procedure TRack1200RightForm.img1240V2TuneClick(Sender: TObject);
+begin
+  Reload;
+end;
+
 procedure TRack1200RightForm.img1240V2TuneMouseDown(Sender: TObject;
   Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
 begin
@@ -1547,6 +1570,11 @@ begin
 
   Reload;
   //RackP321Form.PaintDisplay;
+end;
+
+procedure TRack1200RightForm.img1240VTuneClick(Sender: TObject);
+begin
+ Reload;
 end;
 
 procedure TRack1200RightForm.img1240VTuneMouseDown(Sender: TObject;

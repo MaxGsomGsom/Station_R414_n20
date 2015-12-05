@@ -515,6 +515,9 @@ procedure TRack1200LeftForm.Reload;
 var
   btTune: Byte;
 begin
+
+  if  (P321Mini <> nil) then P321Mini.UpdP321;
+
   case CurFormId of
     idRack1200A1:
       begin
@@ -1070,8 +1073,6 @@ begin
         end;
       end;
   end;
-
-  if  (P321Mini <> nil) then P321Mini.UpdP321;
 
   InvalidateAll;
 end;

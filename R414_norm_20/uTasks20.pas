@@ -1062,14 +1062,14 @@ uConstantsDM;
 
    function TTaskPowerOnSubTask13.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
-         if (Station.Oscillograph.butLevelPosition = butPositionUp) then
+         if (Station.Oscillograph.but1Khz = butPositionUp) then
          begin
            Result:=true;
          end
          else
          begin
             if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
-            if (Station.Oscillograph.butLevelPosition<>butPositionUp) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включен тумблер питания' + #10#13;
+            if (Station.Oscillograph.but1Khz<>butPositionUp) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включен тумблер питания' + #10#13;
            Result:=false;
          end;
    end;
@@ -1078,8 +1078,8 @@ uConstantsDM;
    begin
    inherited Create;
 
-        Name:='Включить питание осциллографа ???';
-        Text:='На осциллографе установить тумблер питания на позицию ВКЛ.';
+        Name:='Включить питание осциллографа';
+        Text:='На осциллографе установить тумблер питания (в правом нижнем углу) на позицию ВКЛ.';
         EventFormName:='Осциллограф';
         Time:= '';
    end;
@@ -2712,7 +2712,7 @@ uConstantsDM;
    inherited Create;
 
         Name:='Настроить станцию в 4х проводный режим';
-        Text:='!!!!Настроить блоки 1200 ПРМ и ПРД обоих полукомплектов в 4х проводный режим';
+        Text:='!!!(пропуск) Настроить блоки 1200 ПРМ и ПРД обоих полукомплектов в 4х проводный режим';
         EventFormName:='1200 ПРД Б';
         Time:= '';
    end;
