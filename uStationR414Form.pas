@@ -2254,7 +2254,7 @@ var
 Rack1600A: TRack1600Form;
 begin
   Rack1600A:= TRack1600Form.Create(self, 1, Station, TaskController);
-  SpawnForm(idRack1600A);
+  SpawnForm((Sender as TImage).Tag);
   Rack1600A.VertScrollBar.Position := 0;
 end;
 
@@ -2315,7 +2315,7 @@ procedure TStationR414Form.img70Click(Sender: TObject);
 Rack1600A: TRack1600Form;
 begin
   Rack1600A:= TRack1600Form.Create(self, 1, Station, TaskController);
-  SpawnForm(idRack1600A);
+  SpawnForm((Sender as TImage).Tag);
   Rack1600A.VertScrollBar.Position := 700;
 end;
 

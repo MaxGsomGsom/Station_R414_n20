@@ -2888,6 +2888,16 @@
           <parameter name="Sender" type="TObject" />
         </parameters>
       </procedure>
+      <procedure name="img1240VTuneClick" visibility="published">
+        <parameters>
+          <parameter name="Sender" type="TObject" />
+        </parameters>
+      </procedure>
+      <procedure name="img1240V2TuneClick" visibility="published">
+        <parameters>
+          <parameter name="Sender" type="TObject" />
+        </parameters>
+      </procedure>
       <procedure name="SetCableOscillographSyncState" visibility="private">
         <parameters>
           <parameter name="btStateCode" type="Byte" />

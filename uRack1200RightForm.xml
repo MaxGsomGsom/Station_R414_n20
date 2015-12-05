@@ -2877,6 +2877,16 @@
           <parameter name="Sender" type="TObject" />
         </parameters>
       </procedure>
+      <procedure name="img1240VTuneClick" visibility="published">
+        <parameters>
+          <parameter name="Sender" type="TObject" />
+        </parameters>
+      </procedure>
+      <procedure name="img1240V2TuneClick" visibility="published">
+        <parameters>
+          <parameter name="Sender" type="TObject" />
+        </parameters>
+      </procedure>
       <procedure name="SetCableUzlovoiInputState" visibility="private">
         <parameters>
           <parameter name="btStateCode" type="Byte" />
@@ -2910,6 +2920,7 @@
       <field name="ButtonBackForm" type="TButtonBackForm" visibility="public" />
       <field name="Station" type="TStation" visibility="public" />
       <field name="TaskController" type="TTaskController" visibility="public" />
+      <field name="P321Mini" type="TRackP321MinForm" visibility="public" />
       <const name="idRack1200A2" visibility="public" type="Integer">
         <value>
           $1
