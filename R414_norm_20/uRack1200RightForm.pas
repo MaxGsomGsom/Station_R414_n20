@@ -1100,6 +1100,7 @@ procedure TRack1200RightForm.ShowOscill;
                Oscill := TBlockOscillographForm.Create(Self, Station, TaskController);
                Oscill.Left := Screen.Width - self.Width;
                Oscill.Show;
+               Oscill.BringToFront();
          end;
       end;
 
@@ -1111,6 +1112,7 @@ procedure TRack1200RightForm.ShowOscill;
                Oscill := TBlockOscillographForm.Create(Self, Station, TaskController);
                Oscill.Left := Screen.Width - self.Width;
                Oscill.Show;
+               Oscill.BringToFront();
          end;
       end;
   end;

@@ -2299,7 +2299,7 @@
       <field name="Image12" type="TImage" visibility="published" />
       <field name="Image13" type="TImage" visibility="published" />
       <field name="Image14" type="TImage" visibility="published" />
-      <field name="Image15" type="TImage" visibility="published" />
+      <field name="ImageHlp1" type="TImage" visibility="published" />
       <field name="Image16" type="TImage" visibility="published" />
       <field name="imgWarningLight" type="TImage" visibility="published" />
       <field name="Image18" type="TImage" visibility="published" />
@@ -2370,6 +2370,7 @@
       <field name="imgWaveMeterReserv" type="TImage" visibility="published" />
       <field name="imgTuneHelp" type="TImage" visibility="published" />
       <field name="imgTuneHelp2" type="TImage" visibility="published" />
+      <field name="ImageHlp2" type="TImage" visibility="published" />
       <procedure name="FormClose" visibility="published">
         <devnotes>
           /StationR414Form.XT := 24;
@@ -2515,7 +2516,7 @@
           <parameter name="Sender" type="TObject" />
         </parameters>
       </procedure>
-      <procedure name="Image15MouseMove" visibility="published">
+      <procedure name="ImageHlp1MouseMove" visibility="published">
         <parameters>
           <parameter name="Sender" type="TObject" />
           <parameter name="Shift" type="TShiftState" />

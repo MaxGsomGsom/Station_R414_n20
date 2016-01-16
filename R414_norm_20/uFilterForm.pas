@@ -127,7 +127,7 @@ begin
   //begin
   //   ShowVideoHelpInLearningMode(GetNumberHelp(CurBlockSelected), False);
   //end
-  TaskController.ErrorKeeper.ShowHelp;
+  TaskController.ShowHelp;
 end;
 
 /// <summary>
@@ -249,8 +249,8 @@ begin
   //if (TaskController.CurrentTask.IsComplete) then
   if (TaskController.CurrentTask.FullCheck = False) then begin
   //(Owner.Owner as TForm).Show;
-
   (Owner as TStationR414Form).Close;
+  ClientState.NetStatus:='open';
   //Close;
   end
   else
@@ -259,12 +259,13 @@ begin
     if (TaskController.CurrentTask.IsTaskComplete=True) then
       begin
         Report:=TReportForm.Create(Owner.Owner, TaskController);
-        Report.Show;
         (Owner as TStationR414Form).Close;
+        Report.Show;
+        Report.BringToFront();
+        ClientState.NetStatus:='open';
       end
   end;
 
-  ClientState.NetStatus:='open';
 
 end;
 

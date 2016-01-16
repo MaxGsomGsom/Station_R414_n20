@@ -581,9 +581,9 @@ uConstantsDM;
   
        procedure TTask.LastCheck();
        begin
-         
+
        end;
-       
+
     constructor TSubTask.Create;
   begin
 
@@ -700,7 +700,7 @@ uConstantsDM;
          begin
             if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
             if (Station.PowerPanel.swNet<>1) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включено питание станции' + #10#13;
-            if (Station.PowerPanel.swPhase<>4) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не проверено напряжение на фазах' + #10#13;
+            //if (Station.PowerPanel.swPhase<>4) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не проверено напряжение на фазах' + #10#13;
            Result:=false;
          end;
    end;
@@ -1390,7 +1390,7 @@ uConstantsDM;
    inherited Create;
 
         Name:='Включить высокое напряжение на стойке 1920 А';
-        Text:='Для двух блоков 1920 включить высокое напряжение одновременным нажатием кнопок ВЫСОКОЕ ВКЛ. и ТОК 5 МА на стойке 1920 А. Проследить подачу напряжения по стрелочному индикатору';
+        Text:='Для двух блоков 1920 включить высокое напряжение поочередным нажатием кнопок ВЫСОКОЕ ВКЛ. и ТОК 5 МА на стойке 1920 А. Проследить подачу напряжения по стрелочному индикатору';
         EventFormName:='1920 А';
         Time:= '';
    end;
@@ -1769,7 +1769,7 @@ uConstantsDM;
    inherited Create;
 
         Name:='Включить высокое напряжение на стойке 1920 Б';
-        Text:='Включить высокое напряжение одновременным нажатием кнопок ВЫСОКОЕ ВКЛ. и ТОК 5 МА на стойке 1920 Б';
+        Text:='Включить высокое напряжение поочередным нажатием кнопок ВЫСОКОЕ ВКЛ. и ТОК 5 МА на стойке 1920 Б';
         EventFormName:='1920 Б';
         Time:= '';
    end;
@@ -2202,16 +2202,16 @@ uConstantsDM;
            if (Station.HalfSetA.Rack1200Right.CableOscillographLineInput = csDisconected) or
          (Station.HalfSetA.Rack1200Right.CableUzlovoiInput = csDisconected) then
           begin
-            ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Вы забыли подключить провода к стойке 1200 Б ПРД для проверки девиации' + #10#13;
+            ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Вы забыли подключить провода к стойке 1200 А ПРД для проверки девиации' + #10#13;
           end;
            ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Девиация на 2х трубках не проверена' + #10#13;
 
            end
            else
            if (Station.HalfSetA.Rack1200Right.CableOscillographLineInput <> csDisconected) or
-         (Station.HalfSetA.Rack1200Right.CableUzlovoiInput <> csDisconected) then
+              (Station.HalfSetA.Rack1200Right.CableUzlovoiInput <> csDisconected) then
             begin
-         ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Вы забыли отключить провода от стойки 1200 Б ПРД после проверки девиации' + #10#13;
+              ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Вы забыли отключить провода от стойки 1200 А ПРД после проверки девиации' + #10#13;
             end;
            Result:=false;
          end;

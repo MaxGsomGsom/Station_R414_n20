@@ -354,7 +354,13 @@ end;
 
 
 
+
+
+
 procedure TStationR414Form.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+var
+  I: Integer;
+  F: TComponent;
 //var executer: TForms_executer;
 begin
   //CanClose := False;
@@ -378,6 +384,16 @@ begin
   begin
     Chat.Close;
   end;
+
+
+  for F in Self do
+    if (F is TForm) then
+         begin
+
+            (F as TForm).Close();
+
+        end;
+
   //Close;
 end;
 

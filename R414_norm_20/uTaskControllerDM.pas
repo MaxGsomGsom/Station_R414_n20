@@ -65,9 +65,11 @@ type TTaskController = class
 
 
     procedure SetCurrentTask();
+    procedure ShowHelp();
     procedure Subscribe (CurForm0: TForm);
     procedure NetCheckTask();
     procedure CheckRecievedParams(Param: string; Value: string);
+    procedure CheckBeforeClose(Sender: TObject; var Action: TCloseAction);
 
            property OnChangeText: TNotifyEvent read FChangeText write FChangeText;
        property OnSubTaskComplete: TNotifyEvent read FSubTaskComplete write FSubTaskComplete;
@@ -213,6 +215,31 @@ function TTaskController.GetTaskTitle(TaskID: Integer): string;
 
 
 
+      procedure TTaskController.CheckBeforeClose(Sender: TObject; var Action: TCloseAction);
+   begin
+         CheckTask(TImage.Create(nil), TMouseButton.mbLeft, [], 0,0);
+   end;
+
+
+
+  procedure TTaskController.ShowHelp;
+  var i: Integer;
+  var allRight: Boolean;
+  begin
+
+        ErrorKeeper.ErrorMsg := '';
+    for I := 0 to CurrentTask.CurrentSubTaskNum do
+     begin
+          CurrentTask.SubTasks[i].CheckSubTask(True, Station, NetWorker, ErrorKeeper, CurrentTask.TaskNetParams);
+     end;
+
+
+   ErrorKeeper.ShowHelp;
+
+  end;
+
+
+
 
 
 
@@ -221,7 +248,7 @@ function TTaskController.GetTaskTitle(TaskID: Integer): string;
      img: TComponent;
      begin
 
-           //CurForm0.OnClose := self.CheckBeforeClose;
+           CurForm0.OnClose := self.CheckBeforeClose;
 
           //код подписки на все события click всех элементов формы
           for img in CurForm0 do
@@ -234,16 +261,12 @@ function TTaskController.GetTaskTitle(TaskID: Integer): string;
           end;
           end;
 
-          CurForm0.OnShow := self.CheckTask;
+          //CurForm0.OnShow := self.CheckTask;
           //CheckTask(TImage.Create(CurForm0), TMouseButton.mbLeft, [], 0,0);
 
      end;
 
 
-//   procedure CheckBeforeClose(Sender: TObject; Action:TCloseAction);
-//   begin
-//         CheckTask(TImage.Create(CurForm0), TMouseButton.mbLeft, [], 0,0);
-//   end;
 
 
    procedure TTaskController.NetCheckTask();
