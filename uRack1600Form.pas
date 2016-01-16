@@ -113,6 +113,7 @@ type
     img2: TImage;
     imgTuneHelp: TImage;
     imgTuneHelp2: TImage;
+    imgHlp1: TImage;
     {$ENDREGION}
 
     {$REGION 'ќбъ€вление обработчиков событий формы'}
@@ -276,14 +277,16 @@ begin
   imgsSWCH[10] := @imgSWCH10;
 
 
-  if (True) or (TaskController.NetWorker.ClientState.WorkMode = TWorkMode.wmLearning) then
+  if (TaskController.NetWorker.ClientState.WorkMode = TWorkMode.wmLearning) then
   begin
     imgTuneHelp.Visible := True;
     imgTuneHelp2.Visible := True;
+    imgHlp1.Visible := True;
   end
   else begin
       imgTuneHelp.Visible := False;
     imgTuneHelp2.Visible := False;
+    imgHlp1.Visible := False;
   end;
 end;
 

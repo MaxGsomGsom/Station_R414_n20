@@ -54,7 +54,7 @@ type
     Image12: TImage;
     Image13: TImage;
     Image14: TImage;
-    Image15: TImage;
+    ImageHlp1: TImage;
     Image16: TImage;
     imgWarningLight: TImage;
     Image18: TImage;
@@ -125,6 +125,7 @@ type
     imgWaveMeterReserv: TImage;
     imgTuneHelp: TImage;
     imgTuneHelp2: TImage;
+    ImageHlp2: TImage;
     {$ENDREGION}
 
   {$REGION 'Обработка событий формы'}
@@ -163,7 +164,7 @@ type
       Shift: TShiftState; X, Y: Integer);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure Image15MouseMove(Sender: TObject; Shift: TShiftState; X,
+    procedure ImageHlp1MouseMove(Sender: TObject; Shift: TShiftState; X,
       Y: Integer);
     procedure Image12MouseMove(Sender: TObject; Shift: TShiftState; X,
       Y: Integer);
@@ -279,14 +280,18 @@ begin
   TaskController.Subscribe(self);
   ButtonBackForm:= TButtonBackForm.Create(self);
   ButtonBackForm.Show; TaskController.Subscribe(ButtonBackForm);
-  if (True) or (TaskController.NetWorker.ClientState.WorkMode = TWorkMode.wmLearning) then
+  if (TaskController.NetWorker.ClientState.WorkMode = TWorkMode.wmLearning) then
   begin
     imgTuneHelp.Visible := True;
     imgTuneHelp2.Visible := True;
+    ImageHlp1.Visible := True;
+    ImageHlp2.Visible := True;
   end
   else begin
       imgTuneHelp.Visible := False;
     imgTuneHelp2.Visible := False;
+    ImageHlp1.Visible := False;
+    ImageHlp2.Visible := False;
   end;
 
 end;
@@ -1608,8 +1613,8 @@ begin
 
     Vidimost:=true;
   end;
-  if (Station.WorkMode = mdExternalView) then
-    Image15.Show;
+  //if (Station.WorkMode = mdExternalView) then
+  //  ImageHlp1.Show;
 end;
 
 procedure TRack1500Form.imgCableMdMainConnectedClick(Sender: TObject);
@@ -1775,10 +1780,10 @@ begin
   end;
 end;
 
-procedure TRack1500Form.Image15MouseMove(Sender: TObject; Shift: TShiftState; X,
+procedure TRack1500Form.ImageHlp1MouseMove(Sender: TObject; Shift: TShiftState; X,
   Y: Integer);
 begin
-  Image15.Hide;
+  //ImageHlp1.Hide;
 end;
 
 
@@ -1791,13 +1796,13 @@ begin
       begin
         //StationR414Form.SpawnForm(idRack1500Aback);
         Rack1500back := TRack1500bForm.Create(Self, CurFormId, Station, TaskController);
-        Image15.BringToFront;
+        //ImageHlp1.BringToFront;
       end;
     idRack1500B:
       begin
         //StationR414Form.SpawnForm(idRack1500Bback);
         Rack1500back := TRack1500bForm.Create(Self, CurFormId, Station, TaskController);
-        Image15.BringToFront;
+        //ImageHlp1.BringToFront;
       end;
   end;
 end;
@@ -1820,13 +1825,13 @@ begin
       begin
         //StationR414Form.SpawnForm(idRack1500Aback);
         Rack1500back := TRack1500bForm.Create(Self, CurFormId, Station, TaskController);
-        Image15.BringToFront;
+        //ImageHlp1.BringToFront;
       end;
     idRack1500B:
       begin
         //StationR414Form.SpawnForm(idRack1500Bback);
         Rack1500back := TRack1500bForm.Create(Self, CurFormId, Station, TaskController);
-        Image15.BringToFront;
+        //ImageHlp1.BringToFront;
       end;
   end;
 end;
@@ -1834,8 +1839,8 @@ end;
 procedure TRack1500Form.Image12MouseMove(Sender: TObject; Shift: TShiftState; X,
   Y: Integer);
 begin
-  if (Station.WorkMode = mdExternalView) then
-    Image15.Show;
+  //if (Station.WorkMode = mdExternalView) then
+    //ImageHlp1.Show;
 end;
 
 {$ENDREGION}

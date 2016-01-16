@@ -91,6 +91,8 @@
       <property name="Station" visibility="private" read="FStation" write="FStation" type="TStation" />
       <procedure name="SetCurrentTask" visibility="public">
       </procedure>
+      <procedure name="ShowHelp" visibility="public">
+      </procedure>
       <procedure name="Subscribe" visibility="public">
         <parameters>
           <parameter name="CurForm0" type="TForm" />
@@ -102,6 +104,12 @@
         <parameters>
           <parameter name="Param" type="string" />
           <parameter name="Value" type="string" />
+        </parameters>
+      </procedure>
+      <procedure name="CheckBeforeClose" visibility="public">
+        <parameters>
+          <parameter name="Sender" type="TObject" />
+          <parameter name="Action" type="TCloseAction" paramflags="var" />
         </parameters>
       </procedure>
       <event name="OnChangeText" visibility="public" read="FChangeText" write="FChangeText" type="TNotifyEvent" />
