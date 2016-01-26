@@ -19,8 +19,8 @@ uses
 
  type TSubTask = class
    public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; virtual; abstract;
-   function NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; virtual;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; virtual; abstract;
+   function NetCheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; virtual;
    constructor Create; virtual;
    var
    EventFormName: String;
@@ -28,6 +28,9 @@ uses
    Name: String;
    Time: String;
    IsComplete: Boolean;
+
+   MainTaskText: string;
+   SubTaskText: string;
 
  end;
 
@@ -51,7 +54,6 @@ type TTask = class
     Sender: TObject;
     Station: TStation;
     NetWorker: TClientNetWorker;
-    FullCheck: Boolean;
     ErrorKeeper: TErrorKeeper;
 
 
@@ -72,7 +74,7 @@ end;
 
   type TTaskNoneSubTask1 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
   //=============
@@ -88,83 +90,83 @@ end;
 
     type TTaskPowerOnSubTask1 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
     type TTaskPowerOnSubTask2 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
     type TTaskPowerOnSubTask3 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
 
    type TTaskPowerOnSubTask4 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
    type TTaskPowerOnSubTask5 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
    var Conditions: array [0..3] of Boolean;
   end;
 
    type TTaskPowerOnSubTask6 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
    var Conditions: array [0..3] of Boolean;
   end;
 
     type TTaskPowerOnSubTask7 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
     type TTaskPowerOnSubTask8 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
       type TTaskPowerOnSubTask9 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
       type TTaskPowerOnSubTask10 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
 
      type TTaskPowerOnSubTask11 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
        type TTaskPowerOnSubTask12 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
         type TTaskPowerOnSubTask13 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
@@ -181,177 +183,177 @@ end;
 
     type TTaskSingleCheckSubTask1 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
     type TTaskSingleCheckSubTask2 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
     type TTaskSingleCheckSubTask3 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
     type TTaskSingleCheckSubTask4 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
     type TTaskSingleCheckSubTask5 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
       type TTaskSingleCheckSubTask6 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
       type TTaskSingleCheckSubTask7 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
       type TTaskSingleCheckSubTask8 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
       type TTaskSingleCheckSubTask9 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
       type TTaskSingleCheckSubTask10 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
       type TTaskSingleCheckSubTask11 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
         type TTaskSingleCheckSubTask12 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
         type TTaskSingleCheckSubTask13 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
         type TTaskSingleCheckSubTask14 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
         type TTaskSingleCheckSubTask15 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
         type TTaskSingleCheckSubTask16 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
           type TTaskSingleCheckSubTask17 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
             type TTaskSingleCheckSubTask18 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
             type TTaskSingleCheckSubTask19 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
             type TTaskSingleCheckSubTask20 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
             type TTaskSingleCheckSubTask21 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
             type TTaskSingleCheckSubTask22 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
              type TTaskSingleCheckSubTask23 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
              type TTaskSingleCheckSubTask24 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
 
                type TTaskSingleCheckSubTask25 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
                type TTaskSingleCheckSubTask26 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
 
                type TTaskSingleCheckSubTask27 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
                  type TTaskSingleCheckSubTask28 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
                  type TTaskSingleCheckSubTask29 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
  {$ENDREGION}
@@ -365,196 +367,196 @@ end;
 
     type TTaskTerminalModeSubTask1 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
     type TTaskTerminalModeSubTask2 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
     type TTaskTerminalModeSubTask3 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
     type TTaskTerminalModeSubTask4 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
     type TTaskTerminalModeSubTask5 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
     type TTaskTerminalModeSubTask6 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
     type TTaskTerminalModeSubTask7 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
     type TTaskTerminalModeSubTask8 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
     type TTaskTerminalModeSubTask9 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
     type TTaskTerminalModeSubTask10 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
     type TTaskTerminalModeSubTask11 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
     type TTaskTerminalModeSubTask12 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
-   function NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function NetCheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
   type TTaskTerminalModeSubTask13 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
-   function NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function NetCheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
     type TTaskTerminalModeSubTask14 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
    type TTaskTerminalModeSubTask15 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
    type TTaskTerminalModeSubTask16 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
-   function NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function NetCheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
    type TTaskTerminalModeSubTask17 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
-   function NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function NetCheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
    type TTaskTerminalModeSubTask18 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
     type TTaskTerminalModeSubTask19 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
     type TTaskTerminalModeSubTask20 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
-   function NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function NetCheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
     type TTaskTerminalModeSubTask21 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
     type TTaskTerminalModeSubTask22 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
-   function NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function NetCheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
     type TTaskTerminalModeSubTask23 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
-   function NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function NetCheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
     type TTaskTerminalModeSubTask24 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
     type TTaskTerminalModeSubTask25 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
-   function NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function NetCheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
     type TTaskTerminalModeSubTask26 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
 
     type TTaskTerminalModeSubTask27 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
-   function NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function NetCheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
    type TTaskTerminalModeSubTask28 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
-   function NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function NetCheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
    type TTaskTerminalModeSubTask29 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
-   function NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function NetCheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
    type TTaskTerminalModeSubTask30 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
-   function NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function NetCheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
    type TTaskTerminalModeSubTask31 = class (TSubTask)
   public
-   function CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
-   function NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function NetCheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
   {$ENDREGION}
@@ -574,8 +576,8 @@ uConstantsDM;
   Self.Station := Station;
   Self.NetWorker := NetWorker;
     IsTaskComplete:= false;
-       CurrentSubTaskNum:= 0;
-        TimeStart:= Time;
+    CurrentSubTaskNum:= 0;
+    TimeStart:= Time;
 
   end;
   
@@ -586,10 +588,11 @@ uConstantsDM;
 
     constructor TSubTask.Create;
   begin
-
+      SubTaskText:='';
+      MainTaskText:='';
   end;
 
-  function TSubTask.NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+  function TSubTask.NetCheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
   begin
     Result:=True;
   end;
@@ -613,7 +616,7 @@ uConstantsDM;
   CurrentSubTask:=SubTasks[CurrentSubTaskNum];
   end;
 
-   function TTaskNoneSubTask1.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+   function TTaskNoneSubTask1.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
         result:=true;
    end;
@@ -642,7 +645,7 @@ uConstantsDM;
   constructor TTaskPowerOn.Create(Station: TStation; NetWorker: TClientNetWorker;  ErrorKeeper: TErrorKeeper);
   begin
   inherited Create(Station, NetWorker, ErrorKeeper);
-  FullCheck := False;
+
    
   Name:='Включение питания';
 
@@ -674,7 +677,7 @@ uConstantsDM;
         ErrorKeeper.ErrorMsg := 'Общая проверка правильности настройки:' + #10#13;;
     for I := 0 to Length(SubTasks) - 1 do
      begin
-          if (SubTasks[i].CheckSubTask(FullCheck, Station, NetWorker, ErrorKeeper, Self.TaskNetParams) = False) then allRight := false;
+          if (SubTasks[i].CheckSubTask(Station, NetWorker, ErrorKeeper, Self.TaskNetParams) = False) then allRight := false;
      end;
 
     if (allRight = true) then
@@ -689,7 +692,7 @@ uConstantsDM;
   end;
 
    //===
-   function TTaskPowerOnSubTask1.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+   function TTaskPowerOnSubTask1.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
          if (Station.PowerPanel.swNet=1) and (Station.PowerPanel.swPhase=4) then
@@ -698,7 +701,7 @@ uConstantsDM;
          end
          else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (Station.PowerPanel.swNet<>1) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включено питание станции' + #10#13;
             //if (Station.PowerPanel.swPhase<>4) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не проверено напряжение на фазах' + #10#13;
            Result:=false;
@@ -717,7 +720,7 @@ uConstantsDM;
 
   //  ===
 
-   function TTaskPowerOnSubTask2.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+   function TTaskPowerOnSubTask2.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
          if (Station.PowerPanel.sw1700Power=1) and (Station.PowerPanel.sw1900Power=1) and (Station.PowerPanel.sw1900Power_2=1)
          and  (Station.PowerPanel.sw1200Power_2=1) and (Station.PowerPanel.sw1200Power=1) and (Station.PowerPanel.sw1400=1) then
@@ -726,7 +729,7 @@ uConstantsDM;
          end
          else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (Station.PowerPanel.sw1700Power<>1) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включено питание блока 1700' + #10#13;
             if (Station.PowerPanel.sw1900Power<>1) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включено питание блока 1900А' + #10#13;
             if (Station.PowerPanel.sw1900Power_2<>1) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включено питание блока 1900Б' + #10#13;
@@ -749,7 +752,7 @@ uConstantsDM;
    end;
          //==
 
-   function TTaskPowerOnSubTask3.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+   function TTaskPowerOnSubTask3.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
          if (Station.HalfSetA.LittleNoisyAmplifier.butNet2=0)  and
          (Station.HalfSetA.LittleNoisyAmplifier.butNet=0) then
@@ -758,7 +761,7 @@ uConstantsDM;
          end
          else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (Station.HalfSetA.LittleNoisyAmplifier.butNet2<>0) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включен тумблер СЕТЬ' + #10#13;
             if (Station.HalfSetA.LittleNoisyAmplifier.butNet<>0) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включен тумблер СЕТЬ' + #10#13;
            Result:=false;
@@ -777,7 +780,7 @@ uConstantsDM;
 
    //==
 
-   function TTaskPowerOnSubTask4.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+   function TTaskPowerOnSubTask4.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
          if (Station.HalfSetB.LittleNoisyAmplifier.butNet2=0)  and
          (Station.HalfSetB.LittleNoisyAmplifier.butNet=0) then
@@ -786,7 +789,7 @@ uConstantsDM;
          end
          else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (Station.HalfSetB.LittleNoisyAmplifier.butNet2<>0) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включен тумблер СЕТЬ' + #10#13;
             if (Station.HalfSetB.LittleNoisyAmplifier.butNet<>0) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включен тумблер СЕТЬ' + #10#13;
            Result:=false;
@@ -805,10 +808,10 @@ uConstantsDM;
 
    //==
 
-   function TTaskPowerOnSubTask5.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+   function TTaskPowerOnSubTask5.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    var I: Integer;
    begin
-          if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
           Conditions[0]:=False;
           Conditions[1]:=False;
           Conditions[2]:=False;
@@ -852,10 +855,10 @@ uConstantsDM;
 
    //==
 
-   function TTaskPowerOnSubTask6.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+   function TTaskPowerOnSubTask6.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    var I: Integer;
    begin
-          if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
           Conditions[0]:=False;
           Conditions[1]:=False;
           Conditions[2]:=False;
@@ -899,7 +902,7 @@ uConstantsDM;
 
    //==
 
-   function TTaskPowerOnSubTask7.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+   function TTaskPowerOnSubTask7.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
          if (Station.HalfSetA.Rack1200Left.but1240K=butPositionUp) then
          begin
@@ -907,7 +910,7 @@ uConstantsDM;
          end
          else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (Station.HalfSetA.Rack1200Left.but1240K<>butPositionUp) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включен тумблер на блоке 1240к' + #10#13;
            Result:=false;
          end;
@@ -925,7 +928,7 @@ uConstantsDM;
 
    //==
 
-   function TTaskPowerOnSubTask8.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+   function TTaskPowerOnSubTask8.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
          if (Station.HalfSetB.Rack1200Left.but1240K=butPositionUp) then
          begin
@@ -933,7 +936,7 @@ uConstantsDM;
          end
          else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (Station.HalfSetB.Rack1200Left.but1240K<>butPositionUp) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включен тумблер на блоке 1240к' + #10#13;
            Result:=false;
          end;
@@ -951,7 +954,7 @@ uConstantsDM;
 
    //==
 
-   function TTaskPowerOnSubTask9.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+   function TTaskPowerOnSubTask9.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
          if (Station.Rack1710.butPower=butPositionRight) and (Station.Rack1710.butSpeaker=butPositionRight) then
          begin
@@ -959,7 +962,7 @@ uConstantsDM;
          end
          else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (Station.Rack1710.butPower<>butPositionRight) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включен тумблер питания на блоке 470' + #10#13;
             if (Station.Rack1710.butSpeaker<>butPositionRight) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включен тумблер ГРОМКОГОВОРИТЕЛЬ на блоке 470' + #10#13;
            Result:=false;
@@ -978,7 +981,7 @@ uConstantsDM;
 
    //==
 
-   function TTaskPowerOnSubTask10.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+   function TTaskPowerOnSubTask10.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
          if (Station.Rack1400.butPower = butPositionRight) and (Station.Rack1400.butSpeaker = butPositionRight) then
          begin
@@ -986,7 +989,7 @@ uConstantsDM;
          end
          else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (Station.Rack1400.butPower<>butPositionRight) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включен тумблер питания на блоке 470' + #10#13;
             if (Station.Rack1400.butSpeaker<>butPositionRight) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включен тумблер ГРОМКОГОВОРИТЕЛЬ на блоке 470' + #10#13;
            Result:=false;
@@ -1005,7 +1008,7 @@ uConstantsDM;
 
    //==
 
-   function TTaskPowerOnSubTask11.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+   function TTaskPowerOnSubTask11.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
          if (Station.P321C.butPower=butPositionUp) and (Station.P321C.butMeasure=butPositionUp) and (Station.P321C.but600Ohm=butPositionUp) then
          begin
@@ -1013,7 +1016,7 @@ uConstantsDM;
          end
          else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (Station.P321C.butPower<>butPositionUp) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включен тумблер питания' + #10#13;
             if (Station.P321C.butMeasure<>butPositionUp) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включен тумблер ИЗМЕРЕНИЕ' + #10#13;
             if (Station.P321C.but600Ohm<>butPositionUp) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включен тумблер 600ом' + #10#13;
@@ -1033,16 +1036,16 @@ uConstantsDM;
 
      //==
 
-   function TTaskPowerOnSubTask12.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+   function TTaskPowerOnSubTask12.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
-         if (Station.PowerSupply.butPower=butPositionUp) then
+         if (Station.P323ISH.butPower=butPositionUp) then
          begin
            Result:=true;
          end
          else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
-            if (Station.PowerSupply.butPower<>butPositionUp) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включен тумблер питания' + #10#13;
+
+            if (Station.P323ISH.butPower<>butPositionUp) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включен тумблер питания' + #10#13;
            Result:=false;
          end;
    end;
@@ -1060,7 +1063,7 @@ uConstantsDM;
 
      //==
 
-   function TTaskPowerOnSubTask13.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+   function TTaskPowerOnSubTask13.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
          if (Station.Oscillograph.but1Khz = butPositionUp) then
          begin
@@ -1068,7 +1071,7 @@ uConstantsDM;
          end
          else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (Station.Oscillograph.but1Khz<>butPositionUp) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включен тумблер питания' + #10#13;
            Result:=false;
          end;
@@ -1138,7 +1141,7 @@ uConstantsDM;
        ErrorKeeper.ErrorMsg := 'Общая проверка правильности настройки:' + #10#13;;
     for I := 0 to Length(SubTasks) - 1 do
      begin
-          if (SubTasks[i].CheckSubTask(FullCheck, Station, NetWorker, ErrorKeeper, Self.TaskNetParams) = False) then allRight := false;
+          if (SubTasks[i].CheckSubTask(Station, NetWorker, ErrorKeeper, Self.TaskNetParams) = False) then allRight := false;
      end;
 
     if (allRight = true) then
@@ -1153,7 +1156,7 @@ uConstantsDM;
   end;
 
    //===
-   function TTaskSingleCheckSubTask1.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+   function TTaskSingleCheckSubTask1.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
          if (Station.HalfSetA.Rack1500.stCableLoad = csConnectedAtRack1500Sh1)
@@ -1163,7 +1166,7 @@ uConstantsDM;
          end
          else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (Station.HalfSetA.Rack1500.stCableLoad <> csConnectedAtRack1500Sh1) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Кабель НАГРУЗКА не подключен к разъему ВЫХОД СВЧ' + #10#13;
             if (Station.HalfSetA.Rack1500.stCableSh1 <> csConnectedAtRack1500NoName) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не подключен кабель 1840 к пустому разъему' + #10#13;
            Result:=false;
@@ -1181,7 +1184,7 @@ uConstantsDM;
    end;
 
 
-        function TTaskSingleCheckSubTask2.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+        function TTaskSingleCheckSubTask2.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
          if (Station.HalfSetA.Rack1500.swWave1610_0 = NetWorker.ClientState.TransmitterWaveA) and (Station.HalfSetA.Rack1500.swWave161_R = NetWorker.ClientState.TransmitterWaveA)
@@ -1191,7 +1194,7 @@ uConstantsDM;
          end
          else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (Station.HalfSetA.Rack1500.swWave1610_0 <> NetWorker.ClientState.TransmitterWaveA) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна передачи напереключателе 1610О' + #10#13;
             if (Station.HalfSetA.Rack1500.swWave161_R <> NetWorker.ClientState.TransmitterWaveA) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна передачи напереключателе 1610Р' + #10#13;
             if (Station.HalfSetA.Rack1500.swWave1500 <> NetWorker.ClientState.TransmitterWaveA) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна передачи напереключателе 1500' + #10#13;
@@ -1210,7 +1213,7 @@ uConstantsDM;
    end;
 
 
-        function TTaskSingleCheckSubTask3.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+        function TTaskSingleCheckSubTask3.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
          if (Station.HalfSetA.LittleNoisyAmplifier.swWave = NetWorker.ClientState.ReceiverWaveA) then
@@ -1219,7 +1222,7 @@ uConstantsDM;
          end
          else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (Station.HalfSetA.LittleNoisyAmplifier.swWave <> NetWorker.ClientState.ReceiverWaveA) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна приема' + #10#13;
            Result:=false;
          end;
@@ -1236,7 +1239,7 @@ uConstantsDM;
    end;
 
 
-   function TTaskSingleCheckSubTask4.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+   function TTaskSingleCheckSubTask4.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
          if (((Station.HalfSetA.Duplexer.cbSh1 = csConnectedAtDuplexeLeft) and (Station.HalfSetA.Duplexer.cbSh2 = csConnectedAtDuplexeRight))
@@ -1247,7 +1250,7 @@ uConstantsDM;
          end
          else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (Station.HalfSetA.Duplexer.cbSh1 <> csConnectedAtDuplexeLeft) and (Station.HalfSetA.Duplexer.cbSh1 <> csConnectedAtDuplexeRight) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не подключен кабель от разъема стойки 1600 ВЫХОД' + #10#13;
             if (Station.HalfSetA.Duplexer.cbSh2 <> csConnectedAtDuplexeRight) and (Station.HalfSetA.Duplexer.cbSh2 <> csConnectedAtDuplexeLeft) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не подключен кабель Ф33 Ш2' + #10#13;
             if (Station.HalfSetA.Duplexer.cb1840 <> csDisconected) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не отключен кабель, идущий к дуплексеру' + #10#13;
@@ -1267,7 +1270,7 @@ uConstantsDM;
    
 
 
-   function TTaskSingleCheckSubTask5.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+   function TTaskSingleCheckSubTask5.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
          if (Station.HalfSetA.Duplexer.waveTransmit = NetWorker.ClientState.TransmitterWaveA) and (Station.HalfSetA.Duplexer.waveReceive = NetWorker.ClientState.ReceiverWaveA) then
@@ -1276,7 +1279,7 @@ uConstantsDM;
          end
          else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (Station.HalfSetA.Duplexer.waveTransmit <> NetWorker.ClientState.TransmitterWaveA) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна передачи' + #10#13;
             if (Station.HalfSetA.Duplexer.waveReceive <> NetWorker.ClientState.ReceiverWaveA) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна приема' + #10#13;
            Result:=false;
@@ -1296,7 +1299,7 @@ uConstantsDM;
 
 
 
-    function TTaskSingleCheckSubTask6.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+    function TTaskSingleCheckSubTask6.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
          if (GeterodinWaves[NetWorker.ClientState.TransmitterWaveA][0] = Station.HalfSetA.Rack1500.GeterodinIntMain)
@@ -1314,7 +1317,7 @@ uConstantsDM;
          end
          else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (GeterodinWaves[NetWorker.ClientState.TransmitterWaveA][0] <> Station.HalfSetA.Rack1500.GeterodinIntMain)
                 or (((GeterodinWaves[NetWorker.ClientState.TransmitterWaveA][1] - 2) > Station.HalfSetA.Rack1500.GeterodinFloatMain)
                 or (Station.HalfSetA.Rack1500.GeterodinFloatMain > (GeterodinWaves[NetWorker.ClientState.TransmitterWaveA][1] + 2)))
@@ -1343,7 +1346,7 @@ uConstantsDM;
 
    end;
 
-      function TTaskSingleCheckSubTask7.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+      function TTaskSingleCheckSubTask7.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
          if (Station.HalfSetA.Rack1500.btnAutomatic = butPositionRight) and (Station.HalfSetA.Rack1500.DropError = True) then
@@ -1352,7 +1355,7 @@ uConstantsDM;
          end
          else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (Station.HalfSetA.Rack1500.btnAutomatic <> butPositionRight) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Тумблер АВТОМАТИКА не передней панели не включен' + #10#13;
             if (Station.HalfSetA.Rack1500.DropError <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не сброшена авария' + #10#13;
            Result:=false;
@@ -1369,7 +1372,7 @@ uConstantsDM;
         Time:= '';
    end;
 
-      function TTaskSingleCheckSubTask8.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+      function TTaskSingleCheckSubTask8.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
          if (Station.HalfSetA.Rack1920.stLBV2_TurnedOn = True) and (Station.HalfSetA.Rack1920.stLBV1_TurnedOn = True) then
@@ -1378,7 +1381,7 @@ uConstantsDM;
          end
          else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (Station.HalfSetA.Rack1920.stLBV2_TurnedOn <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Высокое напряжение не верхнем блоке не подано' + #10#13;
             if (Station.HalfSetA.Rack1920.stLBV1_TurnedOn <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Высокое напряжение не нижнем блоке не подано' + #10#13;
            Result:=false;
@@ -1395,7 +1398,7 @@ uConstantsDM;
         Time:= '';
    end;
 
-      function TTaskSingleCheckSubTask9.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+      function TTaskSingleCheckSubTask9.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
          if (Station.HalfSetA.Rack1500.swModeControl = 6) and (Station.HalfSetA.Rack1500.swPhaseMover = 10) and (Station.HalfSetA.Rack1500.butMode_R = butPositionLeft) then
@@ -1404,7 +1407,7 @@ uConstantsDM;
          end
          else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (Station.HalfSetA.Rack1500.swModeControl <> 6) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Переключатель режима не установлен в положение МОЩН.-РАСФАЗ.' + #10#13;
             if (Station.HalfSetA.Rack1500.butMode_R <> butPositionLeft) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Тумблер МД-Р не переключен в левое положение' + #10#13;
             if (Station.HalfSetA.Rack1500.swPhaseMover <> 10) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Сигналы ЛБВ не сфазированы. Поворачивайте фазовращатель, пока разница в токах не будет нулевой' + #10#13;
@@ -1422,7 +1425,7 @@ uConstantsDM;
         Time:= '';
    end;
 
-    function TTaskSingleCheckSubTask10.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+    function TTaskSingleCheckSubTask10.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
          if (Station.HalfSetA.Rack1600.wave1610_0 = NetWorker.ClientState.ReceiverWaveA) and (Station.HalfSetA.Rack1600.wave1610_R = NetWorker.ClientState.ReceiverWaveA) and (Station.HalfSetA.Rack1600.wave1600 = NetWorker.ClientState.ReceiverWaveA) then
@@ -1431,7 +1434,7 @@ uConstantsDM;
          end
          else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (Station.HalfSetA.Rack1600.wave1610_0 <> NetWorker.ClientState.ReceiverWaveA) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлены рабочие волны приема на пареключателе 1610О' + #10#13;
             if (Station.HalfSetA.Rack1600.wave1610_R <> NetWorker.ClientState.ReceiverWaveA) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлены рабочие волны приема на пареключателе 1610Р' + #10#13;
             if (Station.HalfSetA.Rack1600.wave1600 <> NetWorker.ClientState.ReceiverWaveA) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлены рабочие волны приема на пареключателе 1600' + #10#13;
@@ -1451,7 +1454,7 @@ uConstantsDM;
 
 
    
-      function TTaskSingleCheckSubTask11.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+      function TTaskSingleCheckSubTask11.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
          if (Station.HalfSetA.Rack1600.SelectedMd = smdMain) and (Station.HalfSetA.Rack1600.SelectedUpch = sUpchMain) and (Station.HalfSetA.Rack1600.SelectedDmch = sDmchMain)
@@ -1470,7 +1473,7 @@ uConstantsDM;
          end
          else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (GeterodinWaves[NetWorker.ClientState.ReceiverWaveA][0] <> Station.HalfSetA.Rack1600.GeterodinIntMain)
               or (((GeterodinWaves[NetWorker.ClientState.ReceiverWaveA][1] - 2) > Station.HalfSetA.Rack1600.GeterodinFloatMain)
               or (Station.HalfSetA.Rack1600.GeterodinFloatMain > (GeterodinWaves[NetWorker.ClientState.ReceiverWaveA][1] + 2)))
@@ -1498,7 +1501,7 @@ uConstantsDM;
         Time:= '';
    end;
 
-      function TTaskSingleCheckSubTask12.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+      function TTaskSingleCheckSubTask12.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
          if (Station.HalfSetA.Rack1600.butAutomatic = butPositionLeft) and (Station.HalfSetA.Rack1600.DropError = True) then
@@ -1507,7 +1510,7 @@ uConstantsDM;
          end
          else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (Station.HalfSetA.Rack1600.butAutomatic <> butPositionLeft) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Тумблер АВТОМАТИКА не включен' + #10#13;
             if (Station.HalfSetA.Rack1600.DropError <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Авария не сброшена' + #10#13;
            Result:=false;
@@ -1529,7 +1532,7 @@ uConstantsDM;
   {$REGION 'Полукомплект Б'}
 
 
-   function TTaskSingleCheckSubTask13.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+   function TTaskSingleCheckSubTask13.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
          if (Station.HalfSetB.Rack1500.stCableLoad = csConnectedAtRack1500Sh1)
@@ -1539,7 +1542,7 @@ uConstantsDM;
          end
          else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (Station.HalfSetB.Rack1500.stCableLoad <> csConnectedAtRack1500Sh1) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Кабель НАГРУЗКА не подключен к разъему ВЫХОД СВЧ' + #10#13;
             if (Station.HalfSetB.Rack1500.stCableSh1 <> csConnectedAtRack1500NoName) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не подключен кабель 1840 к пустому разъему' + #10#13;
            Result:=false;
@@ -1557,7 +1560,7 @@ uConstantsDM;
    end;
 
 
-        function TTaskSingleCheckSubTask14.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+        function TTaskSingleCheckSubTask14.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
          if (Station.HalfSetB.Rack1500.swWave1610_0 = NetWorker.ClientState.TransmitterWaveB) and (Station.HalfSetB.Rack1500.swWave161_R = NetWorker.ClientState.TransmitterWaveB)
@@ -1567,7 +1570,7 @@ uConstantsDM;
          end
          else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (Station.HalfSetB.Rack1500.swWave1610_0 <> NetWorker.ClientState.TransmitterWaveB) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна передачи напереключателе 1610О' + #10#13;
             if (Station.HalfSetB.Rack1500.swWave161_R <> NetWorker.ClientState.TransmitterWaveB) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна передачи напереключателе 1610Р' + #10#13;
             if (Station.HalfSetB.Rack1500.swWave1500 <> NetWorker.ClientState.TransmitterWaveB) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна передачи напереключателе 1500' + #10#13;
@@ -1586,7 +1589,7 @@ uConstantsDM;
    end;
 
 
-         function TTaskSingleCheckSubTask15.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+         function TTaskSingleCheckSubTask15.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
          if (Station.HalfSetB.LittleNoisyAmplifier.swWave = NetWorker.ClientState.ReceiverWaveB) then
@@ -1595,7 +1598,7 @@ uConstantsDM;
          end
          else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (Station.HalfSetB.LittleNoisyAmplifier.swWave <> NetWorker.ClientState.ReceiverWaveB) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна приема' + #10#13;
            Result:=false;
          end;
@@ -1615,7 +1618,7 @@ uConstantsDM;
 
 
 
-   function TTaskSingleCheckSubTask16.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+   function TTaskSingleCheckSubTask16.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
          if (((Station.HalfSetB.Duplexer.cbSh1 = csConnectedAtDuplexeLeft) and (Station.HalfSetB.Duplexer.cbSh2 = csConnectedAtDuplexeRight))
@@ -1626,7 +1629,7 @@ uConstantsDM;
          end
          else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (Station.HalfSetB.Duplexer.cbSh1 <> csConnectedAtDuplexeLeft) and (Station.HalfSetB.Duplexer.cbSh1 <> csConnectedAtDuplexeRight) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не подключен кабель от разъема стойки 1600 ВЫХОД' + #10#13;
             if (Station.HalfSetB.Duplexer.cbSh2 <> csConnectedAtDuplexeRight) and (Station.HalfSetB.Duplexer.cbSh2 <> csConnectedAtDuplexeLeft) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не подключен кабель Ф33 Ш2' + #10#13;
             if (Station.HalfSetB.Duplexer.cb1840 <> csDisconected) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не отключен кабель, идущий к дуплексеру' + #10#13;
@@ -1646,7 +1649,7 @@ uConstantsDM;
    
 
 
-   function TTaskSingleCheckSubTask17.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+   function TTaskSingleCheckSubTask17.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
          if (Station.HalfSetB.Duplexer.waveTransmit = NetWorker.ClientState.TransmitterWaveB) and (Station.HalfSetB.Duplexer.waveReceive = NetWorker.ClientState.ReceiverWaveB) then
@@ -1655,7 +1658,7 @@ uConstantsDM;
          end
          else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (Station.HalfSetB.Duplexer.waveTransmit <> NetWorker.ClientState.TransmitterWaveB) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна передачи' + #10#13;
             if (Station.HalfSetB.Duplexer.waveReceive <> NetWorker.ClientState.ReceiverWaveB) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна приема' + #10#13;
            Result:=false;
@@ -1675,7 +1678,7 @@ uConstantsDM;
 
 
 
-    function TTaskSingleCheckSubTask18.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+    function TTaskSingleCheckSubTask18.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
          if (GeterodinWaves[NetWorker.ClientState.TransmitterWaveB][0] = Station.HalfSetB.Rack1500.GeterodinIntMain)
@@ -1693,7 +1696,7 @@ uConstantsDM;
          end
          else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (GeterodinWaves[NetWorker.ClientState.TransmitterWaveB][0] <> Station.HalfSetB.Rack1500.GeterodinIntMain)
                 or (((GeterodinWaves[NetWorker.ClientState.TransmitterWaveB][1] - 2) > Station.HalfSetB.Rack1500.GeterodinFloatMain)
                 or (Station.HalfSetB.Rack1500.GeterodinFloatMain > (GeterodinWaves[NetWorker.ClientState.TransmitterWaveB][1] + 2)))
@@ -1722,7 +1725,7 @@ uConstantsDM;
 
    end;
 
-      function TTaskSingleCheckSubTask19.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+      function TTaskSingleCheckSubTask19.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
          if (Station.HalfSetB.Rack1500.btnAutomatic = butPositionRight) and (Station.HalfSetB.Rack1500.DropError = True) then
@@ -1731,7 +1734,7 @@ uConstantsDM;
          end
          else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (Station.HalfSetB.Rack1500.btnAutomatic <> butPositionRight) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Тумблер АВТОМАТИКА не передней панели не включен' + #10#13;
             if (Station.HalfSetB.Rack1500.DropError <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не сброшена авария' + #10#13;
            Result:=false;
@@ -1748,7 +1751,7 @@ uConstantsDM;
         Time:= '';
    end;
 
-      function TTaskSingleCheckSubTask20.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+      function TTaskSingleCheckSubTask20.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
          if (Station.HalfSetB.Rack1920.stLBV2_TurnedOn = True) and (Station.HalfSetB.Rack1920.stLBV1_TurnedOn = True) then
@@ -1757,7 +1760,7 @@ uConstantsDM;
          end
           else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (Station.HalfSetB.Rack1920.stLBV2_TurnedOn <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Высокое напряжение не верхнем блоке не подано' + #10#13;
             if (Station.HalfSetB.Rack1920.stLBV1_TurnedOn <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Высокое напряжение не нижнем блоке не подано' + #10#13;
            Result:=false;
@@ -1774,7 +1777,7 @@ uConstantsDM;
         Time:= '';
    end;
 
-      function TTaskSingleCheckSubTask21.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+      function TTaskSingleCheckSubTask21.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
          if (Station.HalfSetB.Rack1500.swModeControl = 6) and (Station.HalfSetB.Rack1500.swPhaseMover = 10) and (Station.HalfSetB.Rack1500.butMode_R = butPositionLeft) then
@@ -1783,7 +1786,7 @@ uConstantsDM;
          end
          else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (Station.HalfSetB.Rack1500.swModeControl <> 6) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Переключатель режима не установлен в положение МОЩН.-РАСФАЗ.' + #10#13;
             if (Station.HalfSetB.Rack1500.butMode_R <> butPositionLeft) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Тумблер МД-Р не переключен в левое положение' + #10#13;
             if (Station.HalfSetB.Rack1500.swPhaseMover <> 10) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Сигналы ЛБВ не сфазированы. Поворачивайте фазовращатель, пока разница в токах не будет нулевой' + #10#13;
@@ -1801,7 +1804,7 @@ uConstantsDM;
         Time:= '';
    end;
 
-    function TTaskSingleCheckSubTask22.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+    function TTaskSingleCheckSubTask22.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
          if (Station.HalfSetB.Rack1600.wave1610_0 = NetWorker.ClientState.ReceiverWaveB) and (Station.HalfSetB.Rack1600.wave1610_R = NetWorker.ClientState.ReceiverWaveB)
@@ -1811,7 +1814,7 @@ uConstantsDM;
          end
          else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (Station.HalfSetB.Rack1600.wave1610_0 <> NetWorker.ClientState.ReceiverWaveB) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлены рабочие волны приема на пареключателе 1610О' + #10#13;
             if (Station.HalfSetB.Rack1600.wave1610_R <> NetWorker.ClientState.ReceiverWaveB) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлены рабочие волны приема на пареключателе 1610Р' + #10#13;
             if (Station.HalfSetB.Rack1600.wave1600 <> NetWorker.ClientState.ReceiverWaveB) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлены рабочие волны приема на пареключателе 1600' + #10#13;
@@ -1831,7 +1834,7 @@ uConstantsDM;
 
 
    
-      function TTaskSingleCheckSubTask23.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+      function TTaskSingleCheckSubTask23.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
          if (Station.HalfSetB.Rack1600.SelectedMd = smdMain) and (Station.HalfSetB.Rack1600.SelectedUpch = sUpchMain) and (Station.HalfSetB.Rack1600.SelectedDmch = sDmchMain)
@@ -1850,7 +1853,7 @@ uConstantsDM;
          end
         else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (GeterodinWaves[NetWorker.ClientState.ReceiverWaveB][0] <> Station.HalfSetB.Rack1600.GeterodinIntMain)
               or (((GeterodinWaves[NetWorker.ClientState.ReceiverWaveB][1] - 2) > Station.HalfSetB.Rack1600.GeterodinFloatMain)
               or (Station.HalfSetB.Rack1600.GeterodinFloatMain > (GeterodinWaves[NetWorker.ClientState.ReceiverWaveB][1] + 2)))
@@ -1878,7 +1881,7 @@ uConstantsDM;
         Time:= '';
    end;
 
-      function TTaskSingleCheckSubTask24.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+      function TTaskSingleCheckSubTask24.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
          if (Station.HalfSetB.Rack1600.butAutomatic = butPositionLeft) and (Station.HalfSetB.Rack1600.DropError = True) then
@@ -1887,7 +1890,7 @@ uConstantsDM;
          end
          else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (Station.HalfSetB.Rack1600.butAutomatic <> butPositionLeft) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Тумблер АВТОМАТИКА не включен' + #10#13;
             if (Station.HalfSetB.Rack1600.DropError <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Авария не сброшена' + #10#13;
            Result:=false;
@@ -1908,7 +1911,7 @@ uConstantsDM;
        {$ENDREGION}
        
 
-      function TTaskSingleCheckSubTask25.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+      function TTaskSingleCheckSubTask25.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
          if (Station.HalfSetA.Rack1600.stMoshnost = True) then
@@ -1917,7 +1920,7 @@ uConstantsDM;
          end
          else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (Station.HalfSetA.Rack1600.stMoshnost <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Лампа не горит. Проверьте ещё раз правильность настройки станции' + #10#13;
            Result:=false;
          end;
@@ -1933,7 +1936,7 @@ uConstantsDM;
         Time:= '';
    end;
 
-      function TTaskSingleCheckSubTask26.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+      function TTaskSingleCheckSubTask26.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
          if (Station.HalfSetB.Rack1600.stMoshnost = True) then
@@ -1942,7 +1945,7 @@ uConstantsDM;
          end
          else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (Station.HalfSetB.Rack1600.stMoshnost <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Лампа не горит. Проверьте ещё раз правильность настройки станции' + #10#13;
            Result:=false;
          end;
@@ -1966,18 +1969,38 @@ uConstantsDM;
 
 
 
-          function TTaskSingleCheckSubTask27.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+          function TTaskSingleCheckSubTask27.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
-         if (Station.Oscillograph.cblCableUsilitelState = csConnectedAtPower) and (Station.Oscillograph.cblCabelSyncState = csConnectedAtSync) then
+         if (Station.Oscillograph.cblCableUsilitelState = csConnectedAtPower) and (Station.Oscillograph.cblCabelSyncState = csConnectedAtSync) and
+         (Station.Oscillograph.swPowerType = 2) and
+        (Station.Oscillograph.swVvsDel = 7) and
+        (Station.Oscillograph.swHz = 2) and
+        (Station.Oscillograph.swSyncType = 2) and
+        (Station.Oscillograph.butLevelPosition = butPositionUp) and
+        (Station.Oscillograph.but1Khz = butPositionUp) and
+        (Station.Oscillograph.swRazvertkaShortTune = 11) and
+        (Station.Oscillograph.swCalibrator = 1)
+         then
          begin
            Result:=true;
          end
          else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (Station.Oscillograph.cblCableUsilitelState <> csConnectedAtPower) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не подключен серый провод' + #10#13;
             if (Station.Oscillograph.cblCabelSyncState <> csConnectedAtSync) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не подключен черный провод' + #10#13;
+
+             If (Station.Oscillograph.swPowerType <> 2) or
+                (Station.Oscillograph.swVvsDel <> 7) or
+                (Station.Oscillograph.swHz <> 2) or
+                (Station.Oscillograph.swSyncType <> 2) or
+                (Station.Oscillograph.butLevelPosition <> butPositionUp) or
+                (Station.Oscillograph.but1Khz <> butPositionUp) or
+                (Station.Oscillograph.swRazvertkaShortTune <> 11) or
+                (Station.Oscillograph.swCalibrator <> 1)
+                then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Осциллограф настроен неверно' + #10#13;
+
            Result:=false;
          end;
    end;
@@ -1985,29 +2008,20 @@ uConstantsDM;
    begin
    inherited Create;
 
-        Name:='Проверка девиации: подключить провода к осциллографу';
-        Text:='На осциллографе подключить серый провод в левое нижнее гнездо Y, подключить чёрный провод в правое верхнее гнездо X';
+        Name:='Проверка девиации: подключить осциллограф';
+        Text:='На осциллографе подключить серый провод в левое нижнее гнездо Y, подключить чёрный провод в правое верхнее гнездо X.'+ #10#13;
+        Text:= Text + 'Проверить настройки осциллографа: '+#10#13+' 1КГц - в верхней позиции ВКЛ. '+#10#13+' КАЛИБРАТОР - 20 '+#10#13+' СИНХРОНИЗАЦИЯ - СЕТЬ '+#10#13+' УРОВЕНЬ - в верхней позиции ВКЛ. '+#10#13+' РАЗВЕРТКА - 20мкс '+#10#13;
+        Text:= Text + 'ПЕРЕКЛЮЧАТЕЛЬ РЕЖИМА РАЗВЕРТКИ - в средней позиции "Z" '+#10#13+' V/ДЕЛ. - 0.1 '+#10#13+' ТИП ПИТАНИЯ - в средней позиции';
         EventFormName:='Осциллограф';
         Time:= '';
    end;
 
 
-       function TTaskSingleCheckSubTask28.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+       function TTaskSingleCheckSubTask28.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
          if (Station.HalfSetA.Rack1200Right.CableOscillographLineInput = csDisconected) and
          (Station.HalfSetA.Rack1200Right.CableUzlovoiInput = csDisconected) and
-
-
-//         (Station.Oscillograph.swPowerType = 2) and
-//        (Station.Oscillograph.swVvsDel = 7) and
-//        (Station.Oscillograph.swHz = 2) and
-//        (Station.Oscillograph.swSyncType = 2) and
-//        (Station.Oscillograph.swPowerType = 2) and
-//        (Station.Oscillograph.butLevelPosition = butPositionUp) and
-//        (Station.Oscillograph.but1Khz = butPositionUp) and
-//        (Station.Oscillograph.swRazvertkaShortTune = 11) and
-//        (Station.Oscillograph.swCalibrator = 1) and
 
         (Station.Oscillograph.cblCabelSyncState = csConnectedAtSync) and
           (Station.Oscillograph.cblCableUsilitelState = csConnectedAtPower) and
@@ -2017,181 +2031,10 @@ uConstantsDM;
          begin
            Result:=true;
 
-
-{$REGION ''}
-
-//  if (Station.HalfSetA.Rack1500.swPhaseMover <> 10) then
-//  begin
-//    AddAnalyseTuneError('1500(' + Litera + '): Расфазировка не устранена ');
-//  end;
-//  if (Station.HalfSetA.Rack1500.btnAutomatic <> butPositionRight) then
-//  begin
-//    AddAnalyseTuneError('1500(' + Litera + '): Автоматика не включена');
-//  end;
-//  if (Station.HalfSetA.Rack1500.swWave1610_0 <> Station.WaveTransmitA) then
-//  begin
-//    AddAnalyseTuneError('1500(' + Litera + '): Волна блока 1610 выставлена не верно');
-//  end;
-//  if (Station.HalfSetA.Rack1500.swWave1500 <> Station.WaveTransmitA) then
-//  begin
-//    AddAnalyseTuneError('1500(' + Litera + '): Волна блока 1500 выставлена не верно');
-//  end;
-//  if (Station.HalfSetA.Rack1500.swWave161_R <> Station.WaveTransmitA) then
-//  begin
-//    AddAnalyseTuneError('1500(' + Litera + '): Волна 1610-Р выставлена не верно');
-//  end;
-//  if (((Station.HalfSetA.Rack1500.SelectedMd <> smdMain) and (Station.HalfSetA.Rack1500.SelectedRetr <> sRetrMain)) and
-//  ((Station.HalfSetA.Rack1500.SelectedMd <> smdRetr) and (Station.HalfSetA.Rack1500.SelectedRetr <> sRetrReserv))) then
-//  begin
-//    AddAnalyseTuneError('1500(' + Litera + '): Не выбран передающий полукомплект оборудования');
-//  end;
-//  if (Station.HalfSetA.Rack1500.DropError <> True) then
-//  begin
-//    AddAnalyseTuneError('1500(' + Litera + '): Ошибка не сброшена');
-//  end;
-//  if (Station.HalfSetA.Rack1500.GeterodinTunedMain <> True) then
-//  begin
-//    AddAnalyseTuneError('1500(' + Litera + '): гетеродин освного полукомплекта не настроен');
-//  end;
-//  if (Station.HalfSetA.Rack1500.GeterodinTunedReserve <> True) then
-//  begin
-//    AddAnalyseTuneError('1500(' + Litera + '): гетеродин резервного полукомплекта не настроен');
-//  end;
-//  if (Station.HalfSetA.Rack1500.stCableLoad <> csConnectedAtRack1500Sh1) then
-//  begin
-//    AddAnalyseTuneError('1500(' + Litera + '): Кабель нагрузки болтается в воздухе');
-//  end;
-//  if (Station.HalfSetA.Rack1500.stCableSh1 <> csConnectedAtRack1500NoName) then
-//  begin
-//    AddAnalyseTuneError('1500(' + Litera + '): Кабель Ш1 подключен не верно');
-//  end;
-//  if (Station.HalfSetA.Rack1920.butPower <> butPositionUp) then
-//  begin
-//    AddAnalyseTuneError('1920(' + Litera + '): Питание на ЛБВ 1 не поступает');
-//  end;
-//  if (Station.HalfSetA.Rack1920.butPower2 <> butPositionUp) then
-//  begin
-//    AddAnalyseTuneError('1920(' + Litera + '): Питание на ЛБВ 2 не поступает');
-//  end;
-//  if (Station.HalfSetA.Rack1920.but1910 <> butPositionUp) then
-//  begin
-//    AddAnalyseTuneError('1920(' + Litera + '): Переключатель питания блока 1910 не включено');
-//  end;
-//  if (Station.HalfSetA.Rack1920.but1910A <> butPositionUp) then
-//  begin
-//    AddAnalyseTuneError('1920(' + Litera + '): Перключатель питания резервного блока 1910 не включен');
-//  end;
-//  if (Station.HalfSetA.Rack1920.but1930 <> butPositionUp) then
-//  begin
-//    AddAnalyseTuneError('1920(' + Litera + '): Перключатель питания блока 1930 не включен');
-//  end;
-//  if (Station.HalfSetA.Rack1920.but1960_1 <> butPositionUp) then
-//  begin
-//    AddAnalyseTuneError('1920(' + Litera + '): Перключатель питания блока 1960 не включен');
-//  end;
-//  if (Station.HalfSetA.Rack1920.butHighOn <> butPositionDown) then
-//  begin
-//    AddAnalyseTuneError('1920(' + Litera + '): Кнопка подачи питания на ЛБВ1 не нажата');
-//  end;
-//  if (Station.HalfSetA.Rack1920.butHighOn2 <> butPositionDown) then
-//  begin
-//    AddAnalyseTuneError('1920(' + Litera + '): Кнопка подачи питания на ЛБВ2 не нажата');
-//  end;
-//  if (Station.HalfSetA.Rack1920.butHighOff <> butPositionUp) then
-//  begin
-//    AddAnalyseTuneError('1920(' + Litera + '): Кнопка отключения питания ЛБВ 1 нажата');
-//  end;
-//  if (Station.HalfSetA.Rack1920.butHighOff2 <> butPositionUp) then
-//  begin
-//    AddAnalyseTuneError('1920(' + Litera + '): Кнопка отключения питания ЛБВ 2 нажата');
-//  end;
-//  if (Station.HalfSetA.Rack1920.butCurrent5MA <> butPositionDown) then
-//  begin
-//    AddAnalyseTuneError('1920(' + Litera + '): Кнопка подачи тока на ЛБВ 1 не нажата');
-//  end;
-//  if (Station.HalfSetA.Rack1920.butCurrent5MA2 <> butPositionDown) then
-//  begin
-//    AddAnalyseTuneError('1920(' + Litera + '): Кнопка подачи тока на ЛБВ 2 не нажата');
-//  end;
-//  if (not(Station.HalfSetA.Rack1920.stZamedleniePodano_LVB1)) then
-//  begin
-//    AddAnalyseTuneError('1920(' + Litera + '): Замедление на ЛБВ 1 не подано');
-//  end;
-//  if (not(Station.HalfSetA.Rack1920.stZamedleniePodano_LVB2)) then
-//  begin
-//    AddAnalyseTuneError('1920(' + Litera + '): Замедление на ЛБВ 2 не подано');
-//  end;
-//  if (not(Station.HalfSetA.Rack1920.stLBV1_TurnedOn)) then
-//  begin
-//    AddAnalyseTuneError('1920(' + Litera + '): ЛБВ 1 не включена');
-//  end;
-//  if (not(Station.HalfSetA.Rack1920.stLBV2_TurnedOn)) then
-//  begin
-//    AddAnalyseTuneError('1920(' + Litera + '): ЛБВ 2 не включена');
-//  end;
-//  if (Station.HalfSetA.Rack1600.GeterodinTunedMain <> True) then
-//  begin
-//    AddAnalyseTuneError('1600(' + Litera + '): основной гетеродин не настроен');
-//  end;
-//  if (Station.HalfSetA.Rack1600.GeterodinTunedReserve <> True) then
-//  begin
-//    AddAnalyseTuneError('1600(' + Litera + '): запасной гетеродин не настроен');
-//  end;
-//  if (Station.HalfSetA.Rack1600.butAutomatic <> butPositionLeft) then
-//  begin
-//    AddAnalyseTuneError('1600(' + Litera + '): Автоматика не включена');
-//  end;
-//  if (((Station.HalfSetA.Rack1600.SelectedMd <> smdMain) and (Station.HalfSetA.Rack1600.SelectedUpch <> sUpchMain) and (Station.HalfSetA.Rack1600.SelectedDmch <> sDmchMain)) and
-//  ((Station.HalfSetA.Rack1600.SelectedMd <> smdRetr) and (Station.HalfSetA.Rack1600.SelectedUpch <> sUpchReserve) and (Station.HalfSetA.Rack1600.SelectedDmch <> sDmchReserve))) then
-//  begin
-//    AddAnalyseTuneError('1600(' + Litera + '): Не выбран ни один из полукомплектов');
-//  end;
-//  if (Station.HalfSetA.Rack1600.wave1610_0 <> Station.WaveReceiveA) then
-//  begin
-//    AddAnalyseTuneError('1600(' + Litera + '): Волна на блоке 1610 выставлена не верно');
-//  end;
-//  if (Station.HalfSetA.Rack1600.wave1600 <> Station.WaveReceiveA) then
-//  begin
-//    AddAnalyseTuneError('1600(' + Litera + '): Волна на блоке 1600 выставлена не верно');
-//  end;
-//  if (Station.HalfSetA.Rack1600.wave1610_R <> Station.WaveReceiveA) then
-//  begin
-//    AddAnalyseTuneError('1600(' + Litera + '): Волна на блоке 1610-Р выставлена не верно');
-//  end;
-//  if (Station.HalfSetA.Rack1600.DropError <> True) then
-//  begin
-//    AddAnalyseTuneError('1600(' + Litera + '): Ошибка не сброшена');
-//  end;
-//  if (Station.HalfSetA.Rack1600.stMoshnost <> True) then
-//  begin
-//    AddAnalyseTuneError('1600(' + Litera + '): Нет мощности на входе блока 1600!');
-//  end;
-//  if (Station.HalfSetA.LittleNoisyAmplifier.swWave <> Station.WaveReceiveA) then
-//  begin
-//    AddAnalyseTuneError('Волна в МШУ(' + Litera + ') выставлена не верно');
-//  end;
-//  if ((Station.HalfSetA.LittleNoisyAmplifier.butNet <> butPositionUp) and (Station.HalfSetA.LittleNoisyAmplifier.butNet2 <> butPositionUp)) then
-//  begin
-//    AddAnalyseTuneError('МШУ (' + Litera + '): Переключатели включения основного или резервного блоков не включен');
-//  end;
-//  if (((Station.HalfSetA.Duplexer.cbSh1 <> csConnectedAtDuplexeLeft) and (Station.HalfSetA.Duplexer.cbSh2 <> csConnectedAtDuplexeRight)) and
-//    ((Station.HalfSetA.Duplexer.cbSh1 <> csConnectedAtDuplexeRight) and (Station.HalfSetA.Duplexer.cbSh2 <> csConnectedAtDuplexeLeft))) then
-//  begin
-//    AddAnalyseTuneError('Дуплексер (' + Litera + ') кабели соеденены не верно');
-//  end;
-//  if not(Station.IsPowerPanelPoweredOn) then
-//  begin
-//    AddAnalyseTuneError('Питание в щите подано не на все блоки(не верно)');
-//  end;
-//
-//  if strError <> '' then
-//    strError := 'Ошибки настройки полукомплекта (' + Litera + '): '+ strError;
-{$ENDREGION}
-
          end
          else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
 
             if (Station.Oscillograph.cblCabelSyncState <> csConnectedAtSync) or
           (Station.Oscillograph.cblCableUsilitelState <> csConnectedAtPower) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'К осциллографу не подключены черный и серый провода, невозможно проверить девиацию' + #10#13;
@@ -2230,7 +2073,7 @@ uConstantsDM;
    end;
 
 
-          function TTaskSingleCheckSubTask29.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+          function TTaskSingleCheckSubTask29.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
          if (Station.HalfSetB.Rack1200Right.CableOscillographLineInput = csDisconected) and
@@ -2249,7 +2092,7 @@ uConstantsDM;
          end
          else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
 
             if (Station.Oscillograph.cblCabelSyncState <> csConnectedAtSync) or
           (Station.Oscillograph.cblCableUsilitelState <> csConnectedAtPower) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'К осциллографу не подключены черный и серый провода, невозможно проверить девиацию' + #10#13;
@@ -2304,7 +2147,7 @@ uConstantsDM;
   constructor TTaskTerminalMode.Create(Station: TStation; NetWorker: TClientNetWorker;  ErrorKeeper: TErrorKeeper);
   begin
   inherited Create(Station, NetWorker, ErrorKeeper);
-  FullCheck := False;
+
 
   TaskNetParams:= TNetParamsList.Create;
 
@@ -2339,6 +2182,9 @@ uConstantsDM;
   TaskNetParams.AddKeyValue('MessageStartFrequencySub1_1', 'False');
   TaskNetParams.AddKeyValue('MessageEndFrequencyMain1_1', 'False');
   TaskNetParams.AddKeyValue('MessageEndFrequencySub1_1', 'False');
+
+  TaskNetParams.AddKeyValue('MessageStartFrequencyMain1_2', 'False');
+  TaskNetParams.AddKeyValue('MessageStartFrequencySub1_2', 'False');
   TaskNetParams.AddKeyValue('MessageEndFrequencyMain1_2', 'False');
   TaskNetParams.AddKeyValue('MessageEndFrequencySub1_2', 'False');
 
@@ -2397,7 +2243,7 @@ uConstantsDM;
         ErrorKeeper.ErrorMsg := 'Общая проверка правильности настройки:' + #10#13;;
     for I := 0 to Length(SubTasks) - 1 do
      begin
-          if (SubTasks[i].CheckSubTask(FullCheck, Station, NetWorker, ErrorKeeper, Self.TaskNetParams) = False) then allRight := false;
+          if (SubTasks[i].CheckSubTask(Station, NetWorker, ErrorKeeper, Self.TaskNetParams) = False) then allRight := false;
      end;
 
     if (allRight = true) then
@@ -2415,7 +2261,7 @@ uConstantsDM;
 
 
 
-      function TTaskTerminalModeSubTask1.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+      function TTaskTerminalModeSubTask1.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
          if (Station.HalfSetA.Rack1920.butHighOff = butPositionDown) and (Station.HalfSetA.Rack1920.butHighOff2 = butPositionDown) then
@@ -2426,9 +2272,8 @@ uConstantsDM;
          end
          else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
-            if (Station.HalfSetA.Rack1920.butHighOff <> butPositionDown) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Высокое напряжение не верхнем блоке не отключено' + #10#13;
-            if (Station.HalfSetA.Rack1920.butHighOff2 <> butPositionDown) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Высокое напряжение не нижнем блоке не отключено' + #10#13;
+            //if (Station.HalfSetA.Rack1920.butHighOff <> butPositionDown) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Высокое напряжение не верхнем блоке не отключено' + #10#13;
+            //if (Station.HalfSetA.Rack1920.butHighOff2 <> butPositionDown) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Высокое напряжение не нижнем блоке не отключено' + #10#13;
            Result:=false;
          end;
    end;
@@ -2444,7 +2289,7 @@ uConstantsDM;
    end;
 
    //===========================
-      function TTaskTerminalModeSubTask2.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+      function TTaskTerminalModeSubTask2.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
         if (Station.HalfSetB.Rack1920.butHighOff = butPositionDown) and (Station.HalfSetB.Rack1920.butHighOff2 = butPositionDown) then
@@ -2455,9 +2300,9 @@ uConstantsDM;
          end
          else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
-            if (Station.HalfSetB.Rack1920.butHighOff <> butPositionDown) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Высокое напряжение не верхнем блоке не отключено' + #10#13;
-            if (Station.HalfSetB.Rack1920.butHighOff2 <> butPositionDown) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Высокое напряжение не нижнем блоке не отключено' + #10#13;
+
+            //if (Station.HalfSetB.Rack1920.butHighOff <> butPositionDown) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Высокое напряжение не верхнем блоке не отключено' + #10#13;
+            //if (Station.HalfSetB.Rack1920.butHighOff2 <> butPositionDown) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Высокое напряжение не нижнем блоке не отключено' + #10#13;
            Result:=false;
          end;
    end;
@@ -2473,7 +2318,7 @@ uConstantsDM;
    end;
 
    //========================
-   function TTaskTerminalModeSubTask3.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+   function TTaskTerminalModeSubTask3.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
          if (Station.HalfSetA.Rack1500.stCableSh1 = csConnectedAtRack1500Sh1) and (Station.HalfSetA.Rack1500.stCableLoad = csConnectedAtRack1500NoName) then
@@ -2482,7 +2327,7 @@ uConstantsDM;
          end
          else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (Station.HalfSetA.Rack1500.stCableSh1 <> csConnectedAtRack1500Sh1) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Кабель от дуплексера не подключен к выходу свч' + #10#13;
            Result:=false;
          end;
@@ -2499,7 +2344,7 @@ uConstantsDM;
    end;
 
    //========================
-   function TTaskTerminalModeSubTask4.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+   function TTaskTerminalModeSubTask4.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
          if (Station.HalfSetB.Rack1500.stCableSh1 = csConnectedAtRack1500Sh1) and (Station.HalfSetB.Rack1500.stCableLoad = csConnectedAtRack1500NoName) then
@@ -2508,7 +2353,7 @@ uConstantsDM;
          end
          else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (Station.HalfSetB.Rack1500.stCableSh1 <> csConnectedAtRack1500Sh1) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Кабель от дуплексера не подключен к выходу свч' + #10#13;
            Result:=false;
          end;
@@ -2525,7 +2370,7 @@ uConstantsDM;
    end;
 
    //==================================
-      function TTaskTerminalModeSubTask5.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+      function TTaskTerminalModeSubTask5.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
          if ((Station.HalfSetA.Duplexer.cb1840 = csConnectedAtDuplexeLeft) and (Station.HalfSetA.Duplexer.cbSh2 = csConnectedAtDuplexeRight))
           or ((Station.HalfSetA.Duplexer.cb1840 = csConnectedAtDuplexeRight) and (Station.HalfSetA.Duplexer.cbSh2 = csConnectedAtDuplexeLeft)) then
@@ -2534,7 +2379,7 @@ uConstantsDM;
          end
          else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (Station.HalfSetA.Duplexer.cb1840 = csDisconected) or (Station.HalfSetA.Duplexer.cbSh2 = csDisconected) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не подключен кабель от дуплексера ко фходу Ф-33' + #10#13;
            Result:=false;
          end;
@@ -2551,7 +2396,7 @@ uConstantsDM;
    end;
 
    //===============================
-      function TTaskTerminalModeSubTask6.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+      function TTaskTerminalModeSubTask6.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
          if ((Station.HalfSetB.Duplexer.cb1840 = csConnectedAtDuplexeLeft) and (Station.HalfSetB.Duplexer.cbSh2 = csConnectedAtDuplexeRight))
           or ((Station.HalfSetB.Duplexer.cb1840 = csConnectedAtDuplexeRight) and (Station.HalfSetB.Duplexer.cbSh2 = csConnectedAtDuplexeLeft)) then
@@ -2560,7 +2405,7 @@ uConstantsDM;
          end
          else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (Station.HalfSetB.Duplexer.cb1840 = csDisconected) or (Station.HalfSetB.Duplexer.cbSh2 = csDisconected) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не подключен кабель от дуплексера ко фходу Ф-33' + #10#13;
            Result:=false;
          end;
@@ -2577,7 +2422,7 @@ uConstantsDM;
    end;
 
    //===================
-      function TTaskTerminalModeSubTask7.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+      function TTaskTerminalModeSubTask7.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
          if (Station.HalfSetA.Rack1920.stLBV2_TurnedOn = True) and (Station.HalfSetA.Rack1920.stLBV1_TurnedOn = True) then
@@ -2586,7 +2431,7 @@ uConstantsDM;
          end
           else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (Station.HalfSetA.Rack1920.stLBV2_TurnedOn <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Высокое напряжение не верхнем блоке не подано' + #10#13;
             if (Station.HalfSetA.Rack1920.stLBV1_TurnedOn <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Высокое напряжение не нижнем блоке не подано' + #10#13;
            Result:=false;
@@ -2604,7 +2449,7 @@ uConstantsDM;
    end;
     //=====================
 
-       function TTaskTerminalModeSubTask8.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+       function TTaskTerminalModeSubTask8.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
          if (Station.HalfSetB.Rack1920.stLBV2_TurnedOn = True) and (Station.HalfSetB.Rack1920.stLBV1_TurnedOn = True) then
@@ -2613,7 +2458,7 @@ uConstantsDM;
          end
           else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (Station.HalfSetB.Rack1920.stLBV2_TurnedOn <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Высокое напряжение не верхнем блоке не подано' + #10#13;
             if (Station.HalfSetB.Rack1920.stLBV1_TurnedOn <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Высокое напряжение не нижнем блоке не подано' + #10#13;
            Result:=false;
@@ -2632,7 +2477,7 @@ uConstantsDM;
 
    //=====================
 
-       function TTaskTerminalModeSubTask9.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+       function TTaskTerminalModeSubTask9.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
          if (Station.HalfSetA.Rack1600.stMoshnost = True) then
@@ -2642,7 +2487,7 @@ uConstantsDM;
          end
           else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (Station.HalfSetA.Rack1600.stMoshnost <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Связь не нестроена, лампа-табло не горит' + #10#13;
 
            Result:=false;
@@ -2661,7 +2506,7 @@ uConstantsDM;
 
    //=====================
 
-       function TTaskTerminalModeSubTask10.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+       function TTaskTerminalModeSubTask10.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
          if (Station.HalfSetB.Rack1600.stMoshnost = True) then
          begin
@@ -2672,7 +2517,7 @@ uConstantsDM;
          end
           else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (Station.HalfSetB.Rack1600.stMoshnost <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Связь не нестроена, лампа-табло не горит' + #10#13;
 
            Result:=false;
@@ -2691,7 +2536,7 @@ uConstantsDM;
 
     //=============================
 
-        function TTaskTerminalModeSubTask11.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+        function TTaskTerminalModeSubTask11.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
          if (Station.IsChannelBlocksTunedAt4ChannelMode = True) then
@@ -2700,7 +2545,7 @@ uConstantsDM;
          end
           else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Станция не настроена в 2х или 4х проводный режим' + #10#13;
 
            Result:=false;
@@ -2720,7 +2565,7 @@ uConstantsDM;
    //=============================
 
 
-       function TTaskTerminalModeSubTask12.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+       function TTaskTerminalModeSubTask12.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
          if (TaskNetParams.GetBoolValue('WeInTerminalMode') = True) and (TaskNetParams.GetBoolValue('TheyInTerminalMode') = True)
@@ -2730,14 +2575,14 @@ uConstantsDM;
          end
          else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (TaskNetParams.GetBoolValue('WeInTerminalMode') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Наша станция не настроена' + #10#13;
             if (TaskNetParams.GetBoolValue('TheyInTerminalMode') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Сопряженная станция не настроена' + #10#13;
            Result:=false;
          end;
    end;
 
-   function TTaskTerminalModeSubTask12.NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
+   function TTaskTerminalModeSubTask12.NetCheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
    begin
               if (TaskNetParams.GetBoolValue('WeInTerminalMode') = True) then
               begin
@@ -2765,6 +2610,9 @@ uConstantsDM;
         Text:='Вызвать корреспондента по служебному каналу. Старшая станция "1460, я 1450. Как меня слышите". Подчиненная станция: "Слышу Вас хорошо"';
         EventFormName:='';
         Time:= '';
+
+        MainTaskText:= '1460, я 1450. Как меня слышите?';
+        SubTaskText:='Слышу Вас хорошо.';
    end;
 
 
@@ -2772,7 +2620,7 @@ uConstantsDM;
      //=============================
 
 
-       function TTaskTerminalModeSubTask13.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+       function TTaskTerminalModeSubTask13.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
          if (TaskNetParams.GetBoolValue('MessageCheckLvlFromMainSent') = True) and (TaskNetParams.GetBoolValue('MessageCheckLvlFromSubSent') = True)
@@ -2784,14 +2632,14 @@ uConstantsDM;
          end
          else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (TaskNetParams.GetBoolValue('MessageCheckLvlFromMainSent') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Старшая станция не отправила сообщение' + #10#13;
             if (TaskNetParams.GetBoolValue('MessageCheckLvlFromSubSent') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Подчиненная станция не отправила сообщение' + #10#13;
            Result:=false;
          end;
    end;
 
-   function TTaskTerminalModeSubTask13.NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
+   function TTaskTerminalModeSubTask13.NetCheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
    begin
 
               if (NetWorker.ClientState.IsMainStation = True) then
@@ -2816,11 +2664,14 @@ uConstantsDM;
         Text:='Доложить корреспонденту. Главная станция: "Выставить "0" ДМЧ и измерить запас уровня СВЧ сигнала". Подчиненная станция: "Вас понял. Выполняю".';
         EventFormName:='';
         Time:= '';
+
+        MainTaskText:= 'Выставить "0" ДМЧ и измерить запас уровня СВЧ сигнала.';
+        SubTaskText:='Вас понял. Выполняю.';
    end;
 
     //=====================
 
-       function TTaskTerminalModeSubTask14.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+       function TTaskTerminalModeSubTask14.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
          if (Station.HalfSetA.Rack1600.deltaWaveO=0) then
          begin
@@ -2829,7 +2680,7 @@ uConstantsDM;
          end
           else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (True <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Приемник не нестроен' + #10#13;
 
            Result:=false;
@@ -2849,7 +2700,7 @@ uConstantsDM;
 
      //=====================
 
-       function TTaskTerminalModeSubTask15.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+       function TTaskTerminalModeSubTask15.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
          if (Station.HalfSetB.Rack1600.deltaWaveO=0) then
          begin
@@ -2858,7 +2709,7 @@ uConstantsDM;
          end
           else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (True <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Приемник не нестроен' + #10#13;
 
            Result:=false;
@@ -2881,7 +2732,7 @@ uConstantsDM;
      //=============================
 
 
-       function TTaskTerminalModeSubTask16.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+       function TTaskTerminalModeSubTask16.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
          if (TaskNetParams.GetBoolValue('OurRecieverTuned') = True) and (TaskNetParams.GetBoolValue('TheirRecieverTuned') = True) and
@@ -2892,14 +2743,14 @@ uConstantsDM;
          end
          else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (TaskNetParams.GetBoolValue('MessageRecieverTunedFromMainSent') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Старшая станция не отправила сообщение' + #10#13;
             if (TaskNetParams.GetBoolValue('MessageRecieverTunedFromSubSent') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Подчиненная станция не отправила сообщение' + #10#13;
            Result:=false;
          end;
    end;
 
-   function TTaskTerminalModeSubTask16.NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
+   function TTaskTerminalModeSubTask16.NetCheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
    begin
 
               if (NetWorker.ClientState.IsMainStation = True) then
@@ -2927,13 +2778,16 @@ uConstantsDM;
         Text:=Text+'Старшая станция: "1460, я 1450. "0" ДМЧ выставил. Запас СВЧ уровня: полукомплект А - 15 дБ, полукомплект Б - 20 дБ". Подчненная станция - аналогично.';
         EventFormName:='';
         Time:= '';
+
+        MainTaskText:= '1460, я 1450. "0" ДМЧ выставил. Запас СВЧ уровня: полукомплект А - 15 дБ, полукомплект Б - 20 дБ.';
+        SubTaskText:='1450, я 1460. "0" ДМЧ выставил. Запас СВЧ уровня: полукомплект А - 15 дБ, полукомплект Б - 20 дБ.';
    end;
 
 
     //=============================
 
 
-       function TTaskTerminalModeSubTask17.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+       function TTaskTerminalModeSubTask17.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
          if (TaskNetParams.GetBoolValue('MessageGeneratorFromMainSent1') = True) and (TaskNetParams.GetBoolValue('MessageGeneratorFromSubSent1') = True)
@@ -2943,14 +2797,14 @@ uConstantsDM;
          end
          else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (TaskNetParams.GetBoolValue('MessageGeneratorFromMainSent1') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Старшая станция не отправила сообщение' + #10#13;
             if (TaskNetParams.GetBoolValue('MessageGeneratorFromSubSent1') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Подчиненная станция не отправила сообщение' + #10#13;
            Result:=false;
          end;
    end;
 
-   function TTaskTerminalModeSubTask17.NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
+   function TTaskTerminalModeSubTask17.NetCheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
    begin
 
               if (NetWorker.ClientState.IsMainStation = True) then
@@ -2975,6 +2829,9 @@ uConstantsDM;
         Text:='Доложить корреспонденту о начале проверки затухания ТЧ. Старшая станция: "1460, я 1450. Приступаем к регулировке остатчного затухания каналов. Дайте генератор по первому каналу полукомплекта А. Даю вам." Подчиненная станция: "Вас понял. Даю генератор".';
         EventFormName:='';
         Time:= '';
+
+        MainTaskText:= '1460, я 1450. Приступаем к регулировке остатчного затухания каналов. Дайте генератор по первому каналу полукомплекта А. Даю вам.';
+        SubTaskText:='Вас понял. Даю генератор.';
    end;
 
 
@@ -2982,7 +2839,7 @@ uConstantsDM;
 
    //=====================
 
-       function TTaskTerminalModeSubTask18.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+       function TTaskTerminalModeSubTask18.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
          if (Station.P321C.but600Ohm = butPositionUp) and (Station.P321C.swNepGen = 5) and (Station.P321C.swNepGenYY = 6) and
           ((Station.CableBlack1.stKonez1.stState = csP321CGen) or (Station.CableBlack1.stKonez2.stState = csP321CGen))
@@ -2992,7 +2849,7 @@ uConstantsDM;
          end
           else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (True <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Приемник не нестроен' + #10#13;
 
            Result:=false;
@@ -3017,7 +2874,7 @@ uConstantsDM;
 
    //=====================
 
-       function TTaskTerminalModeSubTask19.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+       function TTaskTerminalModeSubTask19.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
          if ((Station.CurrentChannel(Station.CableBlack1.stKonez1.stKonez) = 1) or (Station.CurrentChannel(Station.CableBlack1.stKonez2.stKonez) = 1))
          and ( (Station.CurrentPort(Station.CableBlack1.stKonez1.stKonez) = 3) or (Station.CurrentPort(Station.CableBlack1.stKonez2.stKonez) = 3))
@@ -3028,7 +2885,7 @@ uConstantsDM;
          end
           else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (True <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Приемник не нестроен' + #10#13;
 
            Result:=false;
@@ -3049,7 +2906,7 @@ uConstantsDM;
       //=============================
 
 
-       function TTaskTerminalModeSubTask20.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+       function TTaskTerminalModeSubTask20.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
          if (TaskNetParams.GetBoolValue('MessageMainStartTune1') = True) and (TaskNetParams.GetBoolValue('MessageSubStartTune1') = True)
@@ -3059,14 +2916,14 @@ uConstantsDM;
          end
          else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (TaskNetParams.GetBoolValue('MessageMainStartTune1') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Старшая станция не отправила сообщение' + #10#13;
             if (TaskNetParams.GetBoolValue('MessageSubStartTune1') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Подчиненная станция не отправила сообщение' + #10#13;
            Result:=false;
          end;
    end;
 
-   function TTaskTerminalModeSubTask20.NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
+   function TTaskTerminalModeSubTask20.NetCheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
    begin
 
               if (NetWorker.ClientState.IsMainStation = True) then
@@ -3091,11 +2948,14 @@ uConstantsDM;
         Text:='Убедиться в необходимости подстройки канала: на приборе П-321 стрелка отклонена от значения -0.5 Нп. Доложить корреспонденту о начале регулировки. Старшая станция: "Вижу, регулирую". Подчиненная станция: "Вижу, регулирую".';
         EventFormName:='';
         Time:= '';
+
+        MainTaskText:= 'Вижу, регулирую.';
+        SubTaskText:='Вижу, регулирую.';
    end;
 
      //=====================
 
-   function TTaskTerminalModeSubTask21.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+   function TTaskTerminalModeSubTask21.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
          if (Station.RemoteController.Channels.A[1].stChannelState = stChannelTuned)  then
          begin
@@ -3103,7 +2963,7 @@ uConstantsDM;
          end
           else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (Station.RemoteController.Channels.A[1].stChannelState <> stChannelTuned) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Канал 1 не нестроен' + #10#13;
 
            Result:=false;
@@ -3115,7 +2975,7 @@ uConstantsDM;
    inherited Create;
 
         Name:='Отрегулировать канал 1';
-        Text:='На стойке 1200 А ПРМ отрегулировать затухание канала 1 потенциометром УРОВЕНЬ на канальном блоке 1220.';
+        Text:='На стойке 1200 А ПРМ отрегулировать затухание канала 1 потенциометром УРОВЕНЬ на канальном блоке 1220 до -0.5.';
         EventFormName:='1200 ПРМ А';
         Time:= '';
    end;
@@ -3124,7 +2984,7 @@ uConstantsDM;
     //=============================
 
 
-       function TTaskTerminalModeSubTask22.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+       function TTaskTerminalModeSubTask22.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
          if (TaskNetParams.GetBoolValue('MessageMainEndTune1') = True) and (TaskNetParams.GetBoolValue('MessageSubEndTune1') = True)
@@ -3134,14 +2994,14 @@ uConstantsDM;
          end
          else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (TaskNetParams.GetBoolValue('MessageMainEndTune1') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Старшая станция не отправила сообщение' + #10#13;
             if (TaskNetParams.GetBoolValue('MessageSubEndTune1') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Подчиненная станция не отправила сообщение' + #10#13;
            Result:=false;
          end;
    end;
 
-   function TTaskTerminalModeSubTask22.NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
+   function TTaskTerminalModeSubTask22.NetCheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
    begin
 
               if (NetWorker.ClientState.IsMainStation = True) then
@@ -3166,13 +3026,16 @@ uConstantsDM;
         Text:='Доложить о завершении настройки канала 1. Старшая станция: "Готово". Подчиненная станция: "Готово".';
         EventFormName:='';
         Time:= '';
+
+        MainTaskText:= 'Готово.';
+        SubTaskText:='Готово.';
    end;
 
 
     //=============================
 
 
-       function TTaskTerminalModeSubTask23.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+       function TTaskTerminalModeSubTask23.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
          if (TaskNetParams.GetBoolValue('MessageGeneratorFromMainSent2') = True) and (TaskNetParams.GetBoolValue('MessageGeneratorFromSubSent2') = True)
@@ -3182,14 +3045,14 @@ uConstantsDM;
          end
          else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (TaskNetParams.GetBoolValue('MessageGeneratorFromMainSent2') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Старшая станция не отправила сообщение' + #10#13;
             if (TaskNetParams.GetBoolValue('MessageGeneratorFromSubSent2') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Подчиненная станция не отправила сообщение' + #10#13;
            Result:=false;
          end;
    end;
 
-   function TTaskTerminalModeSubTask23.NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
+   function TTaskTerminalModeSubTask23.NetCheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
    begin
 
               if (NetWorker.ClientState.IsMainStation = True) then
@@ -3214,12 +3077,15 @@ uConstantsDM;
         Text:='Доложить о начале регулировки канала 2. Старшая станция: "Дайте генератор по второму каналу. Даю вам". Подчиненная станция: "Вас поял. Даю генератор".';
         EventFormName:='';
         Time:= '';
+
+        MainTaskText:= 'Дайте генератор по второму каналу. Даю вам.';
+        SubTaskText:='Вас поял. Даю генератор.';
    end;
 
 
     //=====================
 
-       function TTaskTerminalModeSubTask24.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+       function TTaskTerminalModeSubTask24.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
          if ((Station.CurrentChannel(Station.CableBlack1.stKonez1.stKonez) = 2) or (Station.CurrentChannel(Station.CableBlack1.stKonez2.stKonez) = 2))
          and ( (Station.CurrentPort(Station.CableBlack1.stKonez1.stKonez) = 3) or (Station.CurrentPort(Station.CableBlack1.stKonez2.stKonez) = 3))
@@ -3230,7 +3096,7 @@ uConstantsDM;
          end
           else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (True <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Приемник не нестроен' + #10#13;
 
            Result:=false;
@@ -3251,7 +3117,7 @@ uConstantsDM;
       //=============================
 
 
-       function TTaskTerminalModeSubTask25.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+       function TTaskTerminalModeSubTask25.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
          if (TaskNetParams.GetBoolValue('MessageMainStartTune2') = True) and (TaskNetParams.GetBoolValue('MessageSubStartTune2') = True)
@@ -3261,14 +3127,14 @@ uConstantsDM;
          end
          else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (TaskNetParams.GetBoolValue('MessageMainStartTune2') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Старшая станция не отправила сообщение' + #10#13;
             if (TaskNetParams.GetBoolValue('MessageSubStartTune2') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Подчиненная станция не отправила сообщение' + #10#13;
            Result:=false;
          end;
    end;
 
-   function TTaskTerminalModeSubTask25.NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
+   function TTaskTerminalModeSubTask25.NetCheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
    begin
 
               if (NetWorker.ClientState.IsMainStation = True) then
@@ -3293,11 +3159,14 @@ uConstantsDM;
         Text:='Убедиться в необходимости настройки: на приборе П-321 стрелка отклонена от значения -0.5 Нп. Доложить корреспонденту о начале регулировки. Старшая станция: "Вижу, регулирую". Подчиненная станция: "Вижу, регулирую".';
         EventFormName:='';
         Time:= '';
+
+        MainTaskText:= 'Вижу, регулирую.';
+        SubTaskText:='Вижу, регулирую.';
    end;
 
      //=====================
 
-       function TTaskTerminalModeSubTask26.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+       function TTaskTerminalModeSubTask26.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
          if (Station.RemoteController.Channels.A[2].stChannelState = stChannelTuned)  then
          begin
@@ -3305,7 +3174,7 @@ uConstantsDM;
          end
           else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (Station.RemoteController.Channels.A[2].stChannelState <> stChannelTuned) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Канал 1 не нестроен' + #10#13;
 
            Result:=false;
@@ -3317,7 +3186,7 @@ uConstantsDM;
    inherited Create;
 
         Name:='Отрегулировать канал 2';
-        Text:='На стойке 1200 А ПРМ отрегулировать затухание канала 2 потенциометром УРОВЕНЬ на канальном блоке 1220.';
+        Text:='На стойке 1200 А ПРМ отрегулировать затухание канала 2 потенциометром УРОВЕНЬ на канальном блоке 1220 до -0.5.';
         EventFormName:='1200 ПРМ А';
         Time:= '';
    end;
@@ -3326,7 +3195,7 @@ uConstantsDM;
     //=============================
 
 
-       function TTaskTerminalModeSubTask27.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+       function TTaskTerminalModeSubTask27.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
          if (TaskNetParams.GetBoolValue('MessageMainEndTune2') = True) and (TaskNetParams.GetBoolValue('MessageSubEndTune2') = True)
@@ -3336,14 +3205,14 @@ uConstantsDM;
          end
          else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (TaskNetParams.GetBoolValue('MessageMainEndTune2') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Старшая станция не отправила сообщение' + #10#13;
             if (TaskNetParams.GetBoolValue('MessageSubEndTune2') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Подчиненная станция не отправила сообщение' + #10#13;
            Result:=false;
          end;
    end;
 
-   function TTaskTerminalModeSubTask27.NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
+   function TTaskTerminalModeSubTask27.NetCheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
    begin
 
               if (NetWorker.ClientState.IsMainStation = True) then
@@ -3368,12 +3237,10 @@ uConstantsDM;
         Text:='Доложить о завершении настройки канала 2. Старшая станция: "Готово". Подчиненная станция: "Готово".';
         EventFormName:='';
         Time:= '';
+
+        MainTaskText:= 'Готово.';
+        SubTaskText:='Готово.';
    end;
-
-
-
-
-
 
 
 
@@ -3387,24 +3254,25 @@ uConstantsDM;
    //=============================
 
 
-       function TTaskTerminalModeSubTask28.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+       function TTaskTerminalModeSubTask28.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
-         if (TaskNetParams.GetBoolValue('MessageStartFrequencyMain1_1') = True) and (TaskNetParams.GetBoolValue('MessageStartFrequencySub1_1') = True)
+         if (Station.P321C.swFrequency = 1) and (TaskNetParams.GetBoolValue('MessageStartFrequencyMain1_1') = True) and (TaskNetParams.GetBoolValue('MessageStartFrequencySub1_1') = True)
          then
          begin
            Result:=true;
          end
          else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (TaskNetParams.GetBoolValue('MessageStartFrequencyMain1_1') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Старшая станция не отправила сообщение' + #10#13;
             if (TaskNetParams.GetBoolValue('MessageStartFrequencySub1_1') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Подчиненная станция не отправила сообщение' + #10#13;
+            if (Station.P321C.swFrequency <> 1) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Переключатель КГЦ не устанвлен в нужное положение' + #10#13;
            Result:=false;
          end;
    end;
 
-   function TTaskTerminalModeSubTask28.NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
+   function TTaskTerminalModeSubTask28.NetCheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
    begin
 
               if (NetWorker.ClientState.IsMainStation = True) then
@@ -3426,9 +3294,9 @@ uConstantsDM;
    inherited Create;
 
         Name:='Доложить корреспонденту.';
-        Text:='Доложить корреспонденту о начале измерения частотной характеристики. Старшая станция: "Приступаем к измерению частотной характеристики. ';
+        Text:='На приборе П-321С переключатель КГЦ установить в положение 0.3. Доложить корреспонденту о начале измерения частотной характеристики. Старшая станция: "Приступаем к измерению частотной характеристики. ';
         Text:=Text+' Дайте генератор с частотой 0.3кГц по первому каналу полукомплекта А. Даю вам." Подчиненная станция: "Вас понял. Даю генератор".';
-        EventFormName:='';
+        EventFormName:='П-321 С';
         Time:= '';
    end;
 
@@ -3436,28 +3304,25 @@ uConstantsDM;
     //=============================
 
 
-       function TTaskTerminalModeSubTask29.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+       function TTaskTerminalModeSubTask29.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
-         if (Station.P321C.swFrequency = 1) and (TaskNetParams.GetBoolValue('MessageEndFrequencyMain1_1') = True) and (TaskNetParams.GetBoolValue('MessageEndFrequencySub1_1') = True)
+         if (TaskNetParams.GetBoolValue('MessageEndFrequencyMain1_1') = True) and (TaskNetParams.GetBoolValue('MessageEndFrequencySub1_1') = True)
          then
          begin
            Result:=true;
          end
          else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (TaskNetParams.GetBoolValue('MessageEndFrequencyMain1_1') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Старшая станция не отправила сообщение' + #10#13;
             if (TaskNetParams.GetBoolValue('MessageEndFrequencySub1_1') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Подчиненная станция не отправила сообщение' + #10#13;
-            if (Station.P321C.swFrequency <> 1) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Переключатель КГЦ не устанвлен в нужное положение' + #10#13;
            Result:=false;
          end;
    end;
 
-   function TTaskTerminalModeSubTask29.NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
+   function TTaskTerminalModeSubTask29.NetCheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
    begin
-               if (Station.P321C.swFrequency = 1) then
-               begin
                     if (NetWorker.ClientState.IsMainStation = True) then
                     begin
                       TaskNetParams.ChangeValue('MessageEndFrequencyMain1_1', 'True');
@@ -3467,7 +3332,6 @@ uConstantsDM;
                     begin
                     TaskNetParams.ChangeValue('MessageEndFrequencySub1_1', 'True');
                         NetWorker.SendTaskParams('MessageEndFrequencySub1_1', 'True');
-                    end;
                end;
               Result:=True;
    end;
@@ -3477,34 +3341,35 @@ uConstantsDM;
    inherited Create;
 
         Name:='Измерить частотную характеристику.';
-        Text:='На приборе П-321С переключатель КГЦ установить в положение 0.3, измерить частотную характеристику. Доложить корреспонденту. Старшая станция: "Отклонение ...". Подчиненная станция: "Отклонение ...".';
-        EventFormName:='П-321 С';
+        Text:='Измерить частотную характеристику. Доложить корреспонденту. Старшая станция: "Отклонение ...". Подчиненная станция: "Отклонение ...".';
+        EventFormName:='';
         Time:= '';
    end;
 
 
 
-   //=============================
+    //=============================
 
 
-       function TTaskTerminalModeSubTask30.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+       function TTaskTerminalModeSubTask30.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
-         if (TaskNetParams.GetBoolValue('MessageStartFrequencyMain1_2') = True) and (TaskNetParams.GetBoolValue('MessageStartFrequencySub1_2') = True)
+         if (Station.P321C.swFrequency = 2) and (TaskNetParams.GetBoolValue('MessageStartFrequencyMain1_2') = True) and (TaskNetParams.GetBoolValue('MessageStartFrequencySub1_2') = True)
          then
          begin
            Result:=true;
          end
          else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (TaskNetParams.GetBoolValue('MessageStartFrequencyMain1_2') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Старшая станция не отправила сообщение' + #10#13;
             if (TaskNetParams.GetBoolValue('MessageStartFrequencySub1_2') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Подчиненная станция не отправила сообщение' + #10#13;
+            if (Station.P321C.swFrequency <> 1) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Переключатель КГЦ не устанвлен в нужное положение' + #10#13;
            Result:=false;
          end;
    end;
 
-   function TTaskTerminalModeSubTask30.NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
+   function TTaskTerminalModeSubTask30.NetCheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
    begin
 
               if (NetWorker.ClientState.IsMainStation = True) then
@@ -3512,7 +3377,7 @@ uConstantsDM;
                 TaskNetParams.ChangeValue('MessageStartFrequencyMain1_2', 'True');
                   NetWorker.SendTaskParams('MessageStartFrequencyMain1_2', 'True');
               end;
-              if (NetWorker.ClientState.IsMainStation = False) and (TaskNetParams.GetBoolValue('MessageStartFrequencyMain1_1') = True) then
+              if (NetWorker.ClientState.IsMainStation = False) and (TaskNetParams.GetBoolValue('MessageStartFrequencyMain1_2') = True) then
               begin
               TaskNetParams.ChangeValue('MessageStartFrequencySub1_2', 'True');
                   NetWorker.SendTaskParams('MessageStartFrequencySub1_2', 'True');
@@ -3526,8 +3391,9 @@ uConstantsDM;
    inherited Create;
 
         Name:='Доложить корреспонденту.';
-        Text:='Доложить корреспонденту . Старшая станция: "Дайте генератор с частотой 0.4кГц по первому каналу полукомплекта А. Даю вам." Подчиненная станция: "Вас понял. Даю генератор".';
-        EventFormName:='';
+        Text:='На приборе П-321С переключатель КГЦ установить в положение 0.4. Доложить корреспонденту о начале измерения частотной характеристики. Старшая станция: "Приступаем к измерению частотной характеристики. ';
+        Text:=Text+' Дайте генератор с частотой 0.4кГц по первому каналу полукомплекта А. Даю вам." Подчиненная станция: "Вас понял. Даю генератор".';
+        EventFormName:='П-321 С';
         Time:= '';
    end;
 
@@ -3535,28 +3401,25 @@ uConstantsDM;
     //=============================
 
 
-       function TTaskTerminalModeSubTask31.CheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+       function TTaskTerminalModeSubTask31.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
-         if (Station.P321C.swFrequency = 2) and (TaskNetParams.GetBoolValue('MessageEndFrequencyMain1_2') = True) and (TaskNetParams.GetBoolValue('MessageEndFrequencySub1_2') = True)
+         if (TaskNetParams.GetBoolValue('MessageEndFrequencyMain1_2') = True) and (TaskNetParams.GetBoolValue('MessageEndFrequencySub1_2') = True)
          then
          begin
            Result:=true;
          end
          else
          begin
-            if (FullCheck = False) then ErrorKeeper.ErrorMsg := '' ;
+
             if (TaskNetParams.GetBoolValue('MessageEndFrequencyMain1_2') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Старшая станция не отправила сообщение' + #10#13;
             if (TaskNetParams.GetBoolValue('MessageEndFrequencySub1_2') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Подчиненная станция не отправила сообщение' + #10#13;
-            if (Station.P321C.swFrequency <> 1) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Переключатель КГЦ не устанвлен в нужное положение' + #10#13;
            Result:=false;
          end;
    end;
 
-   function TTaskTerminalModeSubTask31.NetCheckSubTask(FullCheck: Boolean; Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
+   function TTaskTerminalModeSubTask31.NetCheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
    begin
-               if (Station.P321C.swFrequency = 2) then
-               begin
                     if (NetWorker.ClientState.IsMainStation = True) then
                     begin
                       TaskNetParams.ChangeValue('MessageEndFrequencyMain1_2', 'True');
@@ -3566,7 +3429,6 @@ uConstantsDM;
                     begin
                     TaskNetParams.ChangeValue('MessageEndFrequencySub1_2', 'True');
                         NetWorker.SendTaskParams('MessageEndFrequencySub1_2', 'True');
-                    end;
                end;
               Result:=True;
    end;
@@ -3576,10 +3438,11 @@ uConstantsDM;
    inherited Create;
 
         Name:='Измерить частотную характеристику.';
-        Text:='На приборе П-321С переключатель КГЦ установить в положение 0.4, измерить частотную характеристику. Доложить корреспонденту. Старшая станция: "Отклонение ...". Подчиненная станция: "Отклонение ...".';
-        EventFormName:='П-321 С';
+        Text:='Измерить частотную характеристику. Доложить корреспонденту. Старшая станция: "Отклонение ...". Подчиненная станция: "Отклонение ...".';
+        EventFormName:='';
         Time:= '';
    end;
+
 
 {$ENDREGION}
 

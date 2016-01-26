@@ -836,6 +836,11 @@
       $4C
     </value>
   </const>
+  <const name="csP323ISH" type="Integer">
+    <value>
+      $4D
+    </value>
+  </const>
   <const name="GeterodinWaves" type="Array" visibility="public" />
   <function name="GetWorkModeTitle" visibility="public">
     <devnotes>

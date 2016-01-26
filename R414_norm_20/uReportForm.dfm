@@ -13,7 +13,7 @@ object ReportForm: TReportForm
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
-  Position = poDesktopCenter
+  Position = poScreenCenter
   OnCloseQuery = FormCloseQuery
   OnShow = FormShow
   PixelsPerInch = 96

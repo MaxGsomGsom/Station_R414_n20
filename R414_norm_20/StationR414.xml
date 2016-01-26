@@ -1,5 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <namespace name="StationR414">
+  <devnotes>
+    /  FormsArr[idRack1600Aback] := Rack1600BForm;
+    /  FormsArr[idRack1600Bback] := Rack1600BForm;
+  </devnotes>
   <contains name="JConsts" />
   <contains name="ComConst" />
   <contains name="IdGlobalCore" />
@@ -12,15 +16,15 @@
   <contains name="IdResourceStrings" />
   <contains name="IdStream" />
   <contains name="DateUtils" />
-  <contains name="Consts" />
   <contains name="ComStrs" />
-  <contains name="SysConst" />
+  <contains name="Consts" />
   <contains name="RTLConsts" />
-  <contains name="uCloseForm" />
-  <contains name="uHintForm" />
+  <contains name="SysConst" />
+  <contains name="KeyboardTypes" />
   <contains name="MPlayer" />
   <contains name="SQLite3" />
   <contains name="SQLiteTable3" />
+  <contains name="uCloseForm" />
   <contains name="StdActnMenus" />
   <contains name="ThemedActnCtrls" />
   <contains name="ActnPopup" />
@@ -83,18 +87,20 @@
   <contains name="IdException" />
   <contains name="IdStreamVCL" />
   <contains name="IdBaseComponent" />
-  <contains name="KeyboardTypes" />
+  <contains name="uHintForm" />
   <contains name="TpcShrd" />
   <contains name="Imm" />
-  <contains name="WideStrUtils" />
-  <contains name="Dlgs" />
   <contains name="RichEdit" />
   <contains name="ToolWin" />
-  <contains name="StdCtrls" />
+  <contains name="WideStrUtils" />
+  <contains name="Dlgs" />
   <contains name="ListActns" />
+  <contains name="ZLib" />
   <contains name="Contnrs" />
   <contains name="ImgList" />
   <contains name="WinSpool" />
+  <contains name="Wincodec" />
+  <contains name="Masks" />
   <contains name="ShellAPI" />
   <contains name="RegStr" />
   <contains name="WinInet" />
@@ -105,11 +111,9 @@
   <contains name="ShlObj" />
   <contains name="CommDlg" />
   <contains name="StdActns" />
-  <contains name="Dwmapi" />
-  <contains name="Wincodec" />
-  <contains name="Masks" />
-  <contains name="ZLib" />
   <contains name="CommCtrl" />
+  <contains name="Dwmapi" />
+  <contains name="StdCtrls" />
   <contains name="Messages" />
   <contains name="ActiveX" />
   <contains name="Generics.Collections" />
@@ -235,7 +239,7 @@
   <contains name="uBlockPowerPanelForm" />
   <contains name="uBlockOscillographForm" />
   <contains name="uBlockRemoteControllerForm" />
-  <contains name="uBlockPowerSupplyForm" />
+  <contains name="uBlockP323ISHForm" />
   <contains name="uRack1500bForm" />
   <contains name="uStationR414Form" />
   <contains name="Forms" />

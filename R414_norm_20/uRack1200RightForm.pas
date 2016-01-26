@@ -2650,6 +2650,7 @@ procedure TRack1200RightForm.FormCloseQuery(Sender: TObject;
   var CanClose: Boolean);
 begin
   TaskController.CheckFormBeforeClosing(CanClose);
+  if (P321Mini <> nil) then P321Mini.Close;
 end;
 
 procedure TRack1200RightForm.FormCreate(Sender: TObject);

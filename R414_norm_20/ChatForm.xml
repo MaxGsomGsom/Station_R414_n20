@@ -2284,6 +2284,11 @@
           <parameter name="Sender" type="TObject" />
         </parameters>
       </procedure>
+      <procedure name="ChangeChatInputText" visibility="published">
+        <parameters>
+          <parameter name="SubTask" type="TSubTask" />
+        </parameters>
+      </procedure>
       <procedure name="ShowMessage" visibility="published">
         <parameters>
           <parameter name="Sender" type="TObject" />

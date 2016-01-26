@@ -138,7 +138,7 @@ uses
   uRack1200LeftForm,
   uRack1200RightForm,
   uEducationForm,
-  uBlockPowerSupplyForm,
+  uBlockP323ISHForm,
   uBlockRemoteControllerForm,
   uRackP321Form;
 
@@ -159,7 +159,7 @@ begin
   ButtonBackForm.Show;
 
   MoveFormInScreenCenter(self);
-  Self.Left := Screen.Width  - Self.Width ;
+  Self.Left := Screen.Width  - Self.Width - 50 ;
 end;
 
 
@@ -596,13 +596,13 @@ end;
 
 procedure TBlockOscillographForm.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
- if not (Handset = nil) then Handset.Close;
   ReturnFromRack;
 end;
 
 procedure TBlockOscillographForm.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
 begin
   TaskController.CheckFormBeforeClosing(CanClose);
+   if (Handset <> nil) then Handset.Close;
 end;
 
 procedure TBlockOscillographForm.FormKeyPress(Sender: TObject; var Key: Char);
@@ -621,7 +621,7 @@ begin
   Height := Image1.Height;
   Width := Image1.Width;
 
-  Self.Left := Screen.Width  - Self.Width ;
+  Self.Left := Screen.Width  - Self.Width - 50 ;
   Reload;
 end;
 
