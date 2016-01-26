@@ -243,7 +243,7 @@ uses
   uRack1600BForm,
   uRack1200LeftForm,
   uRack1200RightForm,
-  uBlockPowerSupplyForm,
+  uBlockP323ISHForm,
   uBlockRemoteControllerForm,
   uBlockOscillographForm,
   uBlockPowerPanelForm,
@@ -2354,9 +2354,9 @@ Rack1200A_PRD:= TRack1200RightForm.Create(self, 1, Station, TaskController);
 end;
 
 procedure TStationR414Form.imgPowerClick(Sender: TObject);
-var PowerSupply: TBlockPowerSupplyForm;
+var PowerSupply: TBlockP323ISHForm;
 begin
-PowerSupply:=TBlockPowerSupplyForm.Create(self, Station, TaskController);
+PowerSupply:=TBlockP323ISHForm.Create(self, Station, TaskController);
   SpawnForm((Sender as TImage).Tag);
 end;
 
@@ -2523,6 +2523,9 @@ end;
      CurrentTaskForm.TaskInfo.Color:= clLime;
      CurrentTaskForm.ReturnWhite:= 3;
      CurrentTaskForm.Repaint;
+
+
+     if (Chat<> nil) then Chat.ChangeChatInputText(TaskController.CurrentTask.CurrentSubTask);
  end;
 
  procedure TStationR414Form.TaskComplete(Sender: TObject);

@@ -354,8 +354,11 @@ const
     cblCableUsilitelConnectedTo: Byte;
   end;
 
-  type pPowerSupply = packed record
+  type pP323ISH = packed record
     butPower: Byte;
+    swResist: Byte;
+    swLimits: Byte;
+    swMode: Byte;
   end;
 
   type pRack1400 = packed record
@@ -477,7 +480,7 @@ const
       RemoteController: pRemoteController;
       P321C: pP321;
       Oscillograph: pOscillograph;
-      PowerSupply: pPowerSupply;
+      P323ISH: pP323ISH;
       WaveMeter: pWaveMeter;
       PowerPanel: pPowerPanel;
 

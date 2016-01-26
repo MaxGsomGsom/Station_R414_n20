@@ -6,7 +6,7 @@ uses
   Forms,
   uStationR414Form in 'uStationR414Form.pas' {StationR414Form},
   uRack1500bForm in 'uRack1500bForm.pas' {Rack1500bForm},
-  uBlockPowerSupplyForm in 'uBlockPowerSupplyForm.pas' {BlockPowerSupplyForm},
+  uBlockP323ISHForm in 'uBlockP323ISHForm.pas' {BlockP323ISHForm},
   uBlockRemoteControllerForm in 'uBlockRemoteControllerForm.pas' {_Pult},
   uBlockOscillographForm in 'uBlockOscillographForm.pas' {BlockOscillographForm},
   uBlockPowerPanelForm in 'uBlockPowerPanelForm.pas' {BlockPowerPanelForm},

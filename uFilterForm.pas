@@ -245,15 +245,20 @@ end;
 procedure TFilterForm.btnCompleteClick(Sender: TObject);
 var
 Report: TReportForm;
+lastSubtaskNum: Integer;
 begin
-  //if (TaskController.CurrentTask.IsComplete) then
-  if (TaskController.CurrentTask.FullCheck = False) then begin
-  //(Owner.Owner as TForm).Show;
-  (Owner as TStationR414Form).Close;
-  ClientState.NetStatus:='open';
-  //Close;
-  end
-  else
+//  //if (TaskController.CurrentTask.IsComplete) then
+//  if (TaskController.CurrentTask.FullCheck = False) then begin
+//  //(Owner.Owner as TForm).Show;
+//  (Owner as TStationR414Form).Close;
+//  ClientState.NetStatus:='open';
+//  //Close;
+//  end
+//  else
+//  begin
+lastSubtaskNum:= Length(TaskController.CurrentTask.SubTasks)-1;
+
+if (TaskController.CurrentTask.SubTasks[lastSubtaskNum].IsComplete = true) then
   begin
     TaskController.CurrentTask.LastCheck;
     if (TaskController.CurrentTask.IsTaskComplete=True) then
@@ -263,7 +268,12 @@ begin
         Report.Show;
         Report.BringToFront();
         ClientState.NetStatus:='open';
-      end
+      end;
+  end
+  else
+  begin
+    (Owner as TStationR414Form).Close;
+    ClientState.NetStatus:='open';
   end;
 
 

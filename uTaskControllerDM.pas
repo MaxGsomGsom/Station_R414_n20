@@ -39,7 +39,6 @@ type TTaskController = class
       FTaskComplete: TNotifyEvent;
       FChangeText: TNotifyEvent;
 
-       
     
     const                       // Временно, пока нет самих заданий,
                                 // используем константы
@@ -71,7 +70,7 @@ type TTaskController = class
     procedure CheckRecievedParams(Param: string; Value: string);
     procedure CheckBeforeClose(Sender: TObject; var Action: TCloseAction);
 
-           property OnChangeText: TNotifyEvent read FChangeText write FChangeText;
+       property OnChangeText: TNotifyEvent read FChangeText write FChangeText;
        property OnSubTaskComplete: TNotifyEvent read FSubTaskComplete write FSubTaskComplete;
        property OnTaskComplete: TNotifyEvent read FTaskComplete write FTaskComplete;
        procedure CheckTask(Sender0: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
@@ -230,7 +229,7 @@ function TTaskController.GetTaskTitle(TaskID: Integer): string;
         ErrorKeeper.ErrorMsg := '';
     for I := 0 to CurrentTask.CurrentSubTaskNum do
      begin
-          CurrentTask.SubTasks[i].CheckSubTask(True, Station, NetWorker, ErrorKeeper, CurrentTask.TaskNetParams);
+          CurrentTask.SubTasks[i].CheckSubTask(Station, NetWorker, ErrorKeeper, CurrentTask.TaskNetParams);
      end;
 
 
@@ -271,7 +270,7 @@ function TTaskController.GetTaskTitle(TaskID: Integer): string;
 
    procedure TTaskController.NetCheckTask();
    begin
-      CurrentTask.SubTasks[CurrentTask.CurrentSubTaskNum].NetCheckSubTask(CurrentTask.FullCheck, self.Station, self.NetWorker, self.ErrorKeeper, Self.CurrentTask.TaskNetParams);
+      CurrentTask.SubTasks[CurrentTask.CurrentSubTaskNum].NetCheckSubTask(self.Station, self.NetWorker, self.ErrorKeeper, Self.CurrentTask.TaskNetParams);
    end;
 
 
@@ -318,7 +317,7 @@ function TTaskController.GetTaskTitle(TaskID: Integer): string;
           //or (CurrentTask.SubTasks[CurrentTask.CurrentSubTaskNum].EventFormName='')
           then
          begin
-             SubResult:=CurrentTask.SubTasks[CurrentTask.CurrentSubTaskNum].CheckSubTask(CurrentTask.FullCheck, self.Station, self.NetWorker, self.ErrorKeeper, Self.CurrentTask.TaskNetParams);
+             SubResult:=CurrentTask.SubTasks[CurrentTask.CurrentSubTaskNum].CheckSubTask(self.Station, self.NetWorker, self.ErrorKeeper, Self.CurrentTask.TaskNetParams);
          end;
 
          if SubResult then begin
@@ -327,7 +326,6 @@ function TTaskController.GetTaskTitle(TaskID: Integer): string;
 
           if (CurrentTask.CurrentSubTaskNum=Length(CurrentTask.SubTasks)-1) then
           begin
-            Self.CurrentTask.FullCheck:= True;
             self.FSubTaskComplete(nil);
             self.FTaskComplete(nil);
 

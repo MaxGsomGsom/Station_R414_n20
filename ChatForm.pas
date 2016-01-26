@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, pngimage, ExtCtrls,IdTCPClient, IdTCPConnection, uNetWorkerDM, IdIOHandler, uRequestDM, uClientStateDM, uTaskControllerDM, KeyboardTypes, Keyboard;
+  Dialogs, StdCtrls, pngimage, ExtCtrls,IdTCPClient, IdTCPConnection, uNetWorkerDM, IdIOHandler, uRequestDM, uClientStateDM, uTaskControllerDM, KeyboardTypes, Keyboard, uTasks20;
 
 type
   TTChatForm = class(TForm)
@@ -16,6 +16,7 @@ type
     lblUserName: TLabel;
     lblRole: TLabel;
     procedure FormShow(Sender: TObject);
+    procedure ChangeChatInputText(SubTask: TSubTask);
     procedure ShowMessage(Sender: TObject);
     procedure img1OpenChatClick(Sender: TObject);
     procedure btn1SendMessageClick(Sender: TObject);
@@ -55,7 +56,28 @@ else
 begin
 lblRole.Caption := 'Подчиненная';
 end;
+
   end;
+
+
+
+procedure TTChatForm.ChangeChatInputText(SubTask: TSubTask);
+begin
+
+
+  if (NetWorker.ClientState.MainStation = True) then
+  begin
+      if (SubTask.MainTaskText <> '') then edt1MessageInput.Text:= SubTask.MainTaskText;
+  end
+  else
+  begin
+      if (SubTask.SubTaskText <> '') then edt1MessageInput.Text:= SubTask.SubTaskText;
+  end;
+
+
+end;
+
+
 
 
 

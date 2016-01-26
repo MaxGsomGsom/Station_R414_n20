@@ -47,7 +47,7 @@ uses
   uRack1400Form,
   uBlockOscillographForm,
   uBlockRemoteControllerForm,
-  uBlockPowerSupplyForm,
+  uBlockP323ISHForm,
   uRack1710Form,
   uRack1200RightForm,
   uRack1200LeftForm,

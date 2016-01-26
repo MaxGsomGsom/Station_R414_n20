@@ -53,7 +53,7 @@ uses
   uBlockOscillographForm,
   uBlockRemoteControllerForm,
   uBlockPowerPanelForm,
-  uBlockPowerSupplyForm,
+  uBlockP323ISHForm,
   uRack1500bForm,
   uRack1600BForm,
   uHandsetForm,

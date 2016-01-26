@@ -68,7 +68,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="abstract virtual">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -78,7 +77,6 @@
       </function>
       <function name="NetCheckSubTask" visibility="public" procflags="virtual">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -95,6 +93,8 @@
       <field name="Name" type="string" visibility="public" />
       <field name="Time" type="string" visibility="public" />
       <field name="IsComplete" type="Boolean" visibility="public" />
+      <field name="MainTaskText" type="string" visibility="public" />
+      <field name="SubTaskText" type="string" visibility="public" />
     </members>
   </class>
   <class name="TTask">
@@ -183,7 +183,6 @@
       <field name="Sender" type="TObject" visibility="public" />
       <field name="Station" type="TStation" visibility="public" />
       <field name="NetWorker" type="TClientNetWorker" visibility="public" />
-      <field name="FullCheck" type="Boolean" visibility="public" />
       <field name="ErrorKeeper" type="TErrorKeeper" visibility="public" />
     </members>
   </class>
@@ -341,7 +340,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -509,7 +507,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -596,7 +593,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -683,7 +679,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -770,7 +765,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -857,7 +851,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -949,7 +942,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -1041,7 +1033,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -1128,7 +1119,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -1215,7 +1205,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -1302,7 +1291,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -1389,7 +1377,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -1476,7 +1463,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -1563,7 +1549,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -1731,7 +1716,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -1818,7 +1802,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -1905,7 +1888,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -1992,7 +1974,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -2079,7 +2060,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -2166,7 +2146,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -2253,7 +2232,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -2340,7 +2318,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -2427,7 +2404,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -2514,7 +2490,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -2601,7 +2576,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -2688,7 +2662,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -2775,7 +2748,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -2862,7 +2834,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -2949,7 +2920,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -3036,7 +3006,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -3123,7 +3092,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -3210,7 +3178,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -3297,7 +3264,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -3384,7 +3350,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -3471,7 +3436,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -3558,7 +3522,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -3645,7 +3608,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -3732,7 +3694,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -3819,7 +3780,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -3906,7 +3866,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -3993,7 +3952,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -4080,7 +4038,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -4167,7 +4124,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -4335,7 +4291,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -4422,7 +4377,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -4509,7 +4463,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -4596,7 +4549,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -4683,7 +4635,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -4770,7 +4721,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -4857,7 +4807,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -4944,7 +4893,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -5031,7 +4979,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -5118,7 +5065,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -5205,7 +5151,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -5292,7 +5237,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -5302,7 +5246,6 @@
       </function>
       <function name="NetCheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -5389,7 +5332,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -5399,7 +5341,6 @@
       </function>
       <function name="NetCheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -5486,7 +5427,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -5573,7 +5513,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -5660,7 +5599,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -5670,7 +5608,6 @@
       </function>
       <function name="NetCheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -5757,7 +5694,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -5767,7 +5703,6 @@
       </function>
       <function name="NetCheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -5854,7 +5789,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -5941,7 +5875,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -6028,7 +5961,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -6038,7 +5970,6 @@
       </function>
       <function name="NetCheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -6125,7 +6056,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -6212,7 +6142,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -6222,7 +6151,6 @@
       </function>
       <function name="NetCheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -6309,7 +6237,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -6319,7 +6246,6 @@
       </function>
       <function name="NetCheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -6406,7 +6332,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -6493,7 +6418,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -6503,7 +6427,6 @@
       </function>
       <function name="NetCheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -6590,7 +6513,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -6677,7 +6599,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -6687,7 +6608,6 @@
       </function>
       <function name="NetCheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -6774,7 +6694,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -6784,7 +6703,6 @@
       </function>
       <function name="NetCheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -6871,7 +6789,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -6881,7 +6798,6 @@
       </function>
       <function name="NetCheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -6968,7 +6884,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -6978,7 +6893,6 @@
       </function>
       <function name="NetCheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -7065,7 +6979,6 @@
     <members>
       <function name="CheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
@@ -7075,7 +6988,6 @@
       </function>
       <function name="NetCheckSubTask" visibility="public" procflags="override">
         <parameters>
-          <parameter name="FullCheck" type="Boolean" />
           <parameter name="Station" type="TStation" />
           <parameter name="NetWorker" type="TClientNetWorker" />
           <parameter name="ErrorKeeper" type="TErrorKeeper" />
