@@ -559,6 +559,32 @@ end;
    function NetCheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
+
+   type TTaskTerminalModeSubTask32 = class (TSubTask)
+  public
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   constructor Create;  override;
+  end;
+
+   type TTaskTerminalModeSubTask33 = class (TSubTask)
+  public
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function NetCheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   constructor Create;  override;
+  end;
+
+   type TTaskTerminalModeSubTask34 = class (TSubTask)
+  public
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   constructor Create;  override;
+  end;
+
+   type TTaskTerminalModeSubTask35 = class (TSubTask)
+  public
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function NetCheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   constructor Create;  override;
+  end;
   {$ENDREGION}
 
 implementation
@@ -702,8 +728,8 @@ uConstantsDM;
          else
          begin
 
-            if (Station.PowerPanel.swNet<>1) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включено питание станции' + #10#13;
-            //if (Station.PowerPanel.swPhase<>4) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не проверено напряжение на фазах' + #10#13;
+            if (Station.PowerPanel.swNet<>1) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не включено питание станции' + #10#13;
+            //if (Station.PowerPanel.swPhase<>4) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не проверено напряжение на фазах' + #10#13;
            Result:=false;
          end;
    end;
@@ -730,12 +756,12 @@ uConstantsDM;
          else
          begin
 
-            if (Station.PowerPanel.sw1700Power<>1) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включено питание блока 1700' + #10#13;
-            if (Station.PowerPanel.sw1900Power<>1) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включено питание блока 1900А' + #10#13;
-            if (Station.PowerPanel.sw1900Power_2<>1) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включено питание блока 1900Б' + #10#13;
-            if (Station.PowerPanel.sw1200Power<>1) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включено питание блока 1200А' + #10#13;
-            if (Station.PowerPanel.sw1200Power_2<>1) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включено питание блока 1200Б' + #10#13;
-            if (Station.PowerPanel.sw1400<>1) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включено питание блока 1400' + #10#13;
+            if (Station.PowerPanel.sw1700Power<>1) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не включено питание блока 1700' + #10#13;
+            if (Station.PowerPanel.sw1900Power<>1) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не включено питание блока 1900А' + #10#13;
+            if (Station.PowerPanel.sw1900Power_2<>1) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не включено питание блока 1900Б' + #10#13;
+            if (Station.PowerPanel.sw1200Power<>1) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не включено питание блока 1200А' + #10#13;
+            if (Station.PowerPanel.sw1200Power_2<>1) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не включено питание блока 1200Б' + #10#13;
+            if (Station.PowerPanel.sw1400<>1) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не включено питание блока 1400' + #10#13;
            Result:=false;
          end;
 
@@ -762,8 +788,8 @@ uConstantsDM;
          else
          begin
 
-            if (Station.HalfSetA.LittleNoisyAmplifier.butNet2<>0) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включен тумблер СЕТЬ' + #10#13;
-            if (Station.HalfSetA.LittleNoisyAmplifier.butNet<>0) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включен тумблер СЕТЬ' + #10#13;
+            if (Station.HalfSetA.LittleNoisyAmplifier.butNet2<>0) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не включен тумблер СЕТЬ' + #10#13;
+            if (Station.HalfSetA.LittleNoisyAmplifier.butNet<>0) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не включен тумблер СЕТЬ' + #10#13;
            Result:=false;
          end;
    end;
@@ -790,8 +816,8 @@ uConstantsDM;
          else
          begin
 
-            if (Station.HalfSetB.LittleNoisyAmplifier.butNet2<>0) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включен тумблер СЕТЬ' + #10#13;
-            if (Station.HalfSetB.LittleNoisyAmplifier.butNet<>0) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включен тумблер СЕТЬ' + #10#13;
+            if (Station.HalfSetB.LittleNoisyAmplifier.butNet2<>0) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не включен тумблер СЕТЬ' + #10#13;
+            if (Station.HalfSetB.LittleNoisyAmplifier.butNet<>0) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не включен тумблер СЕТЬ' + #10#13;
            Result:=false;
          end;
    end;
@@ -818,13 +844,13 @@ uConstantsDM;
           Conditions[3]:=False;
 
           if (Station.HalfSetA.Rack1920.but1930=butPositionUp) then begin Conditions[0]:=True;  end
-          else ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включен тумблер на блоке 1930' + #10#13;
+          else ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не включен тумблер на блоке 1930' + #10#13;
           if (Station.HalfSetA.Rack1920.but1910=butPositionUp) and (Station.HalfSetA.Rack1920.but1910A=butPositionUp) then begin Conditions[1]:=True;  end
-          else ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включены тумблеры на блоках 1910' + #10#13;
+          else ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не включены тумблеры на блоках 1910' + #10#13;
           if (Station.HalfSetA.Rack1920.butPower=butPositionUp) and (Station.HalfSetA.Rack1920.butPower2=butPositionUp) then begin Conditions[2]:=True;  end
-          else ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включены тумблеры на блоках 1920' + #10#13;
+          else ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не включены тумблеры на блоках 1920' + #10#13;
           if (Station.HalfSetA.Rack1920.but1960_1=butPositionUp) then begin Conditions[3]:=True;  end
-          else ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включен тумблер на блоке 1960' + #10#13;
+          else ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не включен тумблер на блоке 1960' + #10#13;
 
           Result:= false;
 
@@ -832,7 +858,7 @@ uConstantsDM;
             begin
                 if (Conditions[i]=False) and (Conditions[i+1]=True) then
                  begin
-                    ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + #10#13 +'Неверная последоваельность включения тумблеров' + #10#13 + 'Правильно: 1930, 1910, 1920, 1960';
+                    ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + #10#13 +'Неверная последоваельность включения тумблеров' + #10#13 + 'Правильно: 1930, 1910, 1920, 1960';
                     ErrorKeeper.ShowError;
                     Break;
                   end;
@@ -865,13 +891,13 @@ uConstantsDM;
           Conditions[3]:=False;
 
           if (Station.HalfSetB.Rack1920.but1930=butPositionUp) then begin Conditions[0]:=True;  end
-          else ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включен тумблер на блоке 1930' + #10#13;
+          else ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не включен тумблер на блоке 1930' + #10#13;
           if (Station.HalfSetB.Rack1920.but1910=butPositionUp) and (Station.HalfSetB.Rack1920.but1910A=butPositionUp) then begin Conditions[1]:=True;  end
-          else ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включены тумблеры на блоках 1910' + #10#13;
+          else ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не включены тумблеры на блоках 1910' + #10#13;
           if (Station.HalfSetB.Rack1920.butPower=butPositionUp) and (Station.HalfSetB.Rack1920.butPower2=butPositionUp) then begin Conditions[2]:=True;  end
-          else ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включены тумблеры на блоках 1920' + #10#13;
+          else ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не включены тумблеры на блоках 1920' + #10#13;
           if (Station.HalfSetB.Rack1920.but1960_1=butPositionUp) then begin Conditions[3]:=True;  end
-          else ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включен тумблер на блоке 1960' + #10#13;
+          else ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не включен тумблер на блоке 1960' + #10#13;
 
           Result:= false;
 
@@ -879,7 +905,7 @@ uConstantsDM;
             begin
                 if (Conditions[i]=False) and (Conditions[i+1]=True) then
                  begin
-                    ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + #10#13 +'Неверная последоваельность включения тумблеров' + #10#13 + 'Правильно: 1930, 1910, 1920, 1960';
+                    ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + #10#13 +'Неверная последоваельность включения тумблеров' + #10#13 + 'Правильно: 1930, 1910, 1920, 1960';
                     ErrorKeeper.ShowError;
                     Break;
                   end;
@@ -911,7 +937,7 @@ uConstantsDM;
          else
          begin
 
-            if (Station.HalfSetA.Rack1200Left.but1240K<>butPositionUp) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включен тумблер на блоке 1240к' + #10#13;
+            if (Station.HalfSetA.Rack1200Left.but1240K<>butPositionUp) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не включен тумблер на блоке 1240к' + #10#13;
            Result:=false;
          end;
    end;
@@ -937,7 +963,7 @@ uConstantsDM;
          else
          begin
 
-            if (Station.HalfSetB.Rack1200Left.but1240K<>butPositionUp) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включен тумблер на блоке 1240к' + #10#13;
+            if (Station.HalfSetB.Rack1200Left.but1240K<>butPositionUp) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не включен тумблер на блоке 1240к' + #10#13;
            Result:=false;
          end;
    end;
@@ -963,8 +989,8 @@ uConstantsDM;
          else
          begin
 
-            if (Station.Rack1710.butPower<>butPositionRight) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включен тумблер питания на блоке 470' + #10#13;
-            if (Station.Rack1710.butSpeaker<>butPositionRight) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включен тумблер ГРОМКОГОВОРИТЕЛЬ на блоке 470' + #10#13;
+            if (Station.Rack1710.butPower<>butPositionRight) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не включен тумблер питания на блоке 470' + #10#13;
+            if (Station.Rack1710.butSpeaker<>butPositionRight) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не включен тумблер ГРОМКОГОВОРИТЕЛЬ на блоке 470' + #10#13;
            Result:=false;
          end;
    end;
@@ -990,8 +1016,8 @@ uConstantsDM;
          else
          begin
 
-            if (Station.Rack1400.butPower<>butPositionRight) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включен тумблер питания на блоке 470' + #10#13;
-            if (Station.Rack1400.butSpeaker<>butPositionRight) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включен тумблер ГРОМКОГОВОРИТЕЛЬ на блоке 470' + #10#13;
+            if (Station.Rack1400.butPower<>butPositionRight) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не включен тумблер питания на блоке 470' + #10#13;
+            if (Station.Rack1400.butSpeaker<>butPositionRight) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не включен тумблер ГРОМКОГОВОРИТЕЛЬ на блоке 470' + #10#13;
            Result:=false;
          end;
    end;
@@ -1017,9 +1043,9 @@ uConstantsDM;
          else
          begin
 
-            if (Station.P321C.butPower<>butPositionUp) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включен тумблер питания' + #10#13;
-            if (Station.P321C.butMeasure<>butPositionUp) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включен тумблер ИЗМЕРЕНИЕ' + #10#13;
-            if (Station.P321C.but600Ohm<>butPositionUp) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включен тумблер 600ом' + #10#13;
+            if (Station.P321C.butPower<>butPositionUp) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не включен тумблер питания' + #10#13;
+            if (Station.P321C.butMeasure<>butPositionUp) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не включен тумблер ИЗМЕРЕНИЕ' + #10#13;
+            if (Station.P321C.but600Ohm<>butPositionUp) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не включен тумблер 600ом' + #10#13;
            Result:=false;
          end;
    end;
@@ -1045,7 +1071,7 @@ uConstantsDM;
          else
          begin
 
-            if (Station.P323ISH.butPower<>butPositionUp) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включен тумблер питания' + #10#13;
+            if (Station.P323ISH.butPower<>butPositionUp) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не включен тумблер питания' + #10#13;
            Result:=false;
          end;
    end;
@@ -1072,7 +1098,7 @@ uConstantsDM;
          else
          begin
 
-            if (Station.Oscillograph.but1Khz<>butPositionUp) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не включен тумблер питания' + #10#13;
+            if (Station.Oscillograph.but1Khz<>butPositionUp) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не включен тумблер питания' + #10#13;
            Result:=false;
          end;
    end;
@@ -1167,8 +1193,8 @@ uConstantsDM;
          else
          begin
 
-            if (Station.HalfSetA.Rack1500.stCableLoad <> csConnectedAtRack1500Sh1) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Кабель НАГРУЗКА не подключен к разъему ВЫХОД СВЧ' + #10#13;
-            if (Station.HalfSetA.Rack1500.stCableSh1 <> csConnectedAtRack1500NoName) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не подключен кабель 1840 к пустому разъему' + #10#13;
+            if (Station.HalfSetA.Rack1500.stCableLoad <> csConnectedAtRack1500Sh1) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Кабель НАГРУЗКА не подключен к разъему ВЫХОД СВЧ' + #10#13;
+            if (Station.HalfSetA.Rack1500.stCableSh1 <> csConnectedAtRack1500NoName) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не подключен кабель 1840 к пустому разъему' + #10#13;
            Result:=false;
          end;
    end;
@@ -1195,9 +1221,9 @@ uConstantsDM;
          else
          begin
 
-            if (Station.HalfSetA.Rack1500.swWave1610_0 <> NetWorker.ClientState.TransmitterWaveA) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна передачи напереключателе 1610О' + #10#13;
-            if (Station.HalfSetA.Rack1500.swWave161_R <> NetWorker.ClientState.TransmitterWaveA) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна передачи напереключателе 1610Р' + #10#13;
-            if (Station.HalfSetA.Rack1500.swWave1500 <> NetWorker.ClientState.TransmitterWaveA) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна передачи напереключателе 1500' + #10#13;
+            if (Station.HalfSetA.Rack1500.swWave1610_0 <> NetWorker.ClientState.TransmitterWaveA) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не установлена рабочая волна передачи напереключателе 1610О' + #10#13;
+            if (Station.HalfSetA.Rack1500.swWave161_R <> NetWorker.ClientState.TransmitterWaveA) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не установлена рабочая волна передачи напереключателе 1610Р' + #10#13;
+            if (Station.HalfSetA.Rack1500.swWave1500 <> NetWorker.ClientState.TransmitterWaveA) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не установлена рабочая волна передачи напереключателе 1500' + #10#13;
            Result:=false;
          end;
    end;
@@ -1223,7 +1249,7 @@ uConstantsDM;
          else
          begin
 
-            if (Station.HalfSetA.LittleNoisyAmplifier.swWave <> NetWorker.ClientState.ReceiverWaveA) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна приема' + #10#13;
+            if (Station.HalfSetA.LittleNoisyAmplifier.swWave <> NetWorker.ClientState.ReceiverWaveA) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не установлена рабочая волна приема' + #10#13;
            Result:=false;
          end;
    end;
@@ -1251,9 +1277,9 @@ uConstantsDM;
          else
          begin
 
-            if (Station.HalfSetA.Duplexer.cbSh1 <> csConnectedAtDuplexeLeft) and (Station.HalfSetA.Duplexer.cbSh1 <> csConnectedAtDuplexeRight) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не подключен кабель от разъема стойки 1600 ВЫХОД' + #10#13;
-            if (Station.HalfSetA.Duplexer.cbSh2 <> csConnectedAtDuplexeRight) and (Station.HalfSetA.Duplexer.cbSh2 <> csConnectedAtDuplexeLeft) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не подключен кабель Ф33 Ш2' + #10#13;
-            if (Station.HalfSetA.Duplexer.cb1840 <> csDisconected) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не отключен кабель, идущий к дуплексеру' + #10#13;
+            if (Station.HalfSetA.Duplexer.cbSh1 <> csConnectedAtDuplexeLeft) and (Station.HalfSetA.Duplexer.cbSh1 <> csConnectedAtDuplexeRight) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не подключен кабель от разъема стойки 1600 ВЫХОД' + #10#13;
+            if (Station.HalfSetA.Duplexer.cbSh2 <> csConnectedAtDuplexeRight) and (Station.HalfSetA.Duplexer.cbSh2 <> csConnectedAtDuplexeLeft) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не подключен кабель Ф33 Ш2' + #10#13;
+            if (Station.HalfSetA.Duplexer.cb1840 <> csDisconected) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не отключен кабель, идущий к дуплексеру' + #10#13;
            Result:=false;
          end;
    end;
@@ -1280,8 +1306,8 @@ uConstantsDM;
          else
          begin
 
-            if (Station.HalfSetA.Duplexer.waveTransmit <> NetWorker.ClientState.TransmitterWaveA) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна передачи' + #10#13;
-            if (Station.HalfSetA.Duplexer.waveReceive <> NetWorker.ClientState.ReceiverWaveA) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна приема' + #10#13;
+            if (Station.HalfSetA.Duplexer.waveTransmit <> NetWorker.ClientState.TransmitterWaveA) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не установлена рабочая волна передачи' + #10#13;
+            if (Station.HalfSetA.Duplexer.waveReceive <> NetWorker.ClientState.ReceiverWaveA) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не установлена рабочая волна приема' + #10#13;
            Result:=false;
          end;
    end;
@@ -1321,12 +1347,12 @@ uConstantsDM;
             if (GeterodinWaves[NetWorker.ClientState.TransmitterWaveA][0] <> Station.HalfSetA.Rack1500.GeterodinIntMain)
                 or (((GeterodinWaves[NetWorker.ClientState.TransmitterWaveA][1] - 2) > Station.HalfSetA.Rack1500.GeterodinFloatMain)
                 or (Station.HalfSetA.Rack1500.GeterodinFloatMain > (GeterodinWaves[NetWorker.ClientState.TransmitterWaveA][1] + 2)))
-            then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна передачи по волномеру основном канале. Для начала настройки нажмите на лампы МД-О и 1610-О и подключите кабель к разъему над переключателем 1610О' + #10#13;
+            then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не установлена рабочая волна передачи по волномеру основном канале. Для начала настройки нажмите на лампы МД-О и 1610-О и подключите кабель к разъему над переключателем 1610О' + #10#13;
             if (GeterodinWaves[NetWorker.ClientState.TransmitterWaveA][0] <> Station.HalfSetA.Rack1500.GeterodinIntReserve)
                 or (((GeterodinWaves[NetWorker.ClientState.TransmitterWaveA][1] - 2) > Station.HalfSetA.Rack1500.GeterodinFloatReserve)
                 or (Station.HalfSetA.Rack1500.GeterodinFloatReserve > (GeterodinWaves[NetWorker.ClientState.TransmitterWaveA][1] + 2)))
-            then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна передачи по волномеру на резервном канале. Для начала настройки нажмите на лампы МД-Р и 1610-Р и подключите кабель к разъему над переключателем 1610Р' + #10#13;
-            if (Station.HalfSetA.Rack1500.SelectedMd <> smdMain) or (Station.HalfSetA.Rack1500.SelectedRetr <> sRetrMain) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не активированы лампы МД-О и 1610-О после настройки' + #10#13;
+            then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не установлена рабочая волна передачи по волномеру на резервном канале. Для начала настройки нажмите на лампы МД-Р и 1610-Р и подключите кабель к разъему над переключателем 1610Р' + #10#13;
+            if (Station.HalfSetA.Rack1500.SelectedMd <> smdMain) or (Station.HalfSetA.Rack1500.SelectedRetr <> sRetrMain) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не активированы лампы МД-О и 1610-О после настройки' + #10#13;
 
            Result:=false;
          end;
@@ -1356,8 +1382,8 @@ uConstantsDM;
          else
          begin
 
-            if (Station.HalfSetA.Rack1500.btnAutomatic <> butPositionRight) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Тумблер АВТОМАТИКА не передней панели не включен' + #10#13;
-            if (Station.HalfSetA.Rack1500.DropError <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не сброшена авария' + #10#13;
+            if (Station.HalfSetA.Rack1500.btnAutomatic <> butPositionRight) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Тумблер АВТОМАТИКА не передней панели не включен' + #10#13;
+            if (Station.HalfSetA.Rack1500.DropError <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не сброшена авария' + #10#13;
            Result:=false;
          end;
    end;
@@ -1382,8 +1408,8 @@ uConstantsDM;
          else
          begin
 
-            if (Station.HalfSetA.Rack1920.stLBV2_TurnedOn <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Высокое напряжение не верхнем блоке не подано' + #10#13;
-            if (Station.HalfSetA.Rack1920.stLBV1_TurnedOn <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Высокое напряжение не нижнем блоке не подано' + #10#13;
+            if (Station.HalfSetA.Rack1920.stLBV2_TurnedOn <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Высокое напряжение не верхнем блоке не подано' + #10#13;
+            if (Station.HalfSetA.Rack1920.stLBV1_TurnedOn <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Высокое напряжение не нижнем блоке не подано' + #10#13;
            Result:=false;
          end;
    end;
@@ -1408,9 +1434,9 @@ uConstantsDM;
          else
          begin
 
-            if (Station.HalfSetA.Rack1500.swModeControl <> 6) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Переключатель режима не установлен в положение МОЩН.-РАСФАЗ.' + #10#13;
-            if (Station.HalfSetA.Rack1500.butMode_R <> butPositionLeft) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Тумблер МД-Р не переключен в левое положение' + #10#13;
-            if (Station.HalfSetA.Rack1500.swPhaseMover <> 10) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Сигналы ЛБВ не сфазированы. Поворачивайте фазовращатель, пока разница в токах не будет нулевой' + #10#13;
+            if (Station.HalfSetA.Rack1500.swModeControl <> 6) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Переключатель режима не установлен в положение МОЩН.-РАСФАЗ.' + #10#13;
+            if (Station.HalfSetA.Rack1500.butMode_R <> butPositionLeft) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Тумблер МД-Р не переключен в левое положение' + #10#13;
+            if (Station.HalfSetA.Rack1500.swPhaseMover <> 10) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Сигналы ЛБВ не сфазированы. Поворачивайте фазовращатель, пока разница в токах не будет нулевой' + #10#13;
            Result:=false;
          end;
    end;
@@ -1435,9 +1461,9 @@ uConstantsDM;
          else
          begin
 
-            if (Station.HalfSetA.Rack1600.wave1610_0 <> NetWorker.ClientState.ReceiverWaveA) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлены рабочие волны приема на пареключателе 1610О' + #10#13;
-            if (Station.HalfSetA.Rack1600.wave1610_R <> NetWorker.ClientState.ReceiverWaveA) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлены рабочие волны приема на пареключателе 1610Р' + #10#13;
-            if (Station.HalfSetA.Rack1600.wave1600 <> NetWorker.ClientState.ReceiverWaveA) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлены рабочие волны приема на пареключателе 1600' + #10#13;
+            if (Station.HalfSetA.Rack1600.wave1610_0 <> NetWorker.ClientState.ReceiverWaveA) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не установлены рабочие волны приема на пареключателе 1610О' + #10#13;
+            if (Station.HalfSetA.Rack1600.wave1610_R <> NetWorker.ClientState.ReceiverWaveA) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не установлены рабочие волны приема на пареключателе 1610Р' + #10#13;
+            if (Station.HalfSetA.Rack1600.wave1600 <> NetWorker.ClientState.ReceiverWaveA) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не установлены рабочие волны приема на пареключателе 1600' + #10#13;
            Result:=false;
          end;
    end;
@@ -1477,12 +1503,12 @@ uConstantsDM;
             if (GeterodinWaves[NetWorker.ClientState.ReceiverWaveA][0] <> Station.HalfSetA.Rack1600.GeterodinIntMain)
               or (((GeterodinWaves[NetWorker.ClientState.ReceiverWaveA][1] - 2) > Station.HalfSetA.Rack1600.GeterodinFloatMain)
               or (Station.HalfSetA.Rack1600.GeterodinFloatMain > (GeterodinWaves[NetWorker.ClientState.ReceiverWaveA][1] + 2)))
-            then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна приема по волномеру на основном канале. Для начала настройки нажмите на лампы 1610-О, УПЧ-О и ДМЧ-О и подключите кабель к разъему над переключателем 1610О' + #10#13;
+            then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не установлена рабочая волна приема по волномеру на основном канале. Для начала настройки нажмите на лампы 1610-О, УПЧ-О и ДМЧ-О и подключите кабель к разъему над переключателем 1610О' + #10#13;
             if (GeterodinWaves[NetWorker.ClientState.ReceiverWaveA][0] <> Station.HalfSetA.Rack1600.GeterodinIntReserve)
               or (((GeterodinWaves[NetWorker.ClientState.ReceiverWaveA][1] - 2) > Station.HalfSetA.Rack1600.GeterodinFloatReserve)
               or (Station.HalfSetA.Rack1600.GeterodinFloatReserve > (GeterodinWaves[NetWorker.ClientState.ReceiverWaveA][1] + 2)))
-            then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна приема по волномеру на резервном канале. Для начала настройки нажмите на лампы 1601-Р, УПЧ-Р, ДМЧ-Р и подключите кабель к разъему над переключателем 1610Р' + #10#13;
-            if (Station.HalfSetA.Rack1600.SelectedMd <> smdMain) or (Station.HalfSetA.Rack1600.SelectedUpch <> sUpchMain) or (Station.HalfSetA.Rack1600.SelectedDmch <> sDmchMain) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не активированы лампы 1610-О, УПЧ-0 и ДМЧ-0 после настройки' + #10#13;
+            then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не установлена рабочая волна приема по волномеру на резервном канале. Для начала настройки нажмите на лампы 1601-Р, УПЧ-Р, ДМЧ-Р и подключите кабель к разъему над переключателем 1610Р' + #10#13;
+            if (Station.HalfSetA.Rack1600.SelectedMd <> smdMain) or (Station.HalfSetA.Rack1600.SelectedUpch <> sUpchMain) or (Station.HalfSetA.Rack1600.SelectedDmch <> sDmchMain) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не активированы лампы 1610-О, УПЧ-0 и ДМЧ-0 после настройки' + #10#13;
 
            Result:=false;
          end;
@@ -1511,8 +1537,8 @@ uConstantsDM;
          else
          begin
 
-            if (Station.HalfSetA.Rack1600.butAutomatic <> butPositionLeft) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Тумблер АВТОМАТИКА не включен' + #10#13;
-            if (Station.HalfSetA.Rack1600.DropError <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Авария не сброшена' + #10#13;
+            if (Station.HalfSetA.Rack1600.butAutomatic <> butPositionLeft) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Тумблер АВТОМАТИКА не включен' + #10#13;
+            if (Station.HalfSetA.Rack1600.DropError <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Авария не сброшена' + #10#13;
            Result:=false;
          end;
    end;
@@ -1543,8 +1569,8 @@ uConstantsDM;
          else
          begin
 
-            if (Station.HalfSetB.Rack1500.stCableLoad <> csConnectedAtRack1500Sh1) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Кабель НАГРУЗКА не подключен к разъему ВЫХОД СВЧ' + #10#13;
-            if (Station.HalfSetB.Rack1500.stCableSh1 <> csConnectedAtRack1500NoName) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не подключен кабель 1840 к пустому разъему' + #10#13;
+            if (Station.HalfSetB.Rack1500.stCableLoad <> csConnectedAtRack1500Sh1) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Кабель НАГРУЗКА не подключен к разъему ВЫХОД СВЧ' + #10#13;
+            if (Station.HalfSetB.Rack1500.stCableSh1 <> csConnectedAtRack1500NoName) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не подключен кабель 1840 к пустому разъему' + #10#13;
            Result:=false;
          end;
    end;
@@ -1571,9 +1597,9 @@ uConstantsDM;
          else
          begin
 
-            if (Station.HalfSetB.Rack1500.swWave1610_0 <> NetWorker.ClientState.TransmitterWaveB) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна передачи напереключателе 1610О' + #10#13;
-            if (Station.HalfSetB.Rack1500.swWave161_R <> NetWorker.ClientState.TransmitterWaveB) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна передачи напереключателе 1610Р' + #10#13;
-            if (Station.HalfSetB.Rack1500.swWave1500 <> NetWorker.ClientState.TransmitterWaveB) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна передачи напереключателе 1500' + #10#13;
+            if (Station.HalfSetB.Rack1500.swWave1610_0 <> NetWorker.ClientState.TransmitterWaveB) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не установлена рабочая волна передачи напереключателе 1610О' + #10#13;
+            if (Station.HalfSetB.Rack1500.swWave161_R <> NetWorker.ClientState.TransmitterWaveB) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не установлена рабочая волна передачи напереключателе 1610Р' + #10#13;
+            if (Station.HalfSetB.Rack1500.swWave1500 <> NetWorker.ClientState.TransmitterWaveB) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не установлена рабочая волна передачи напереключателе 1500' + #10#13;
            Result:=false;
          end;
    end;
@@ -1599,7 +1625,7 @@ uConstantsDM;
          else
          begin
 
-            if (Station.HalfSetB.LittleNoisyAmplifier.swWave <> NetWorker.ClientState.ReceiverWaveB) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна приема' + #10#13;
+            if (Station.HalfSetB.LittleNoisyAmplifier.swWave <> NetWorker.ClientState.ReceiverWaveB) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не установлена рабочая волна приема' + #10#13;
            Result:=false;
          end;
    end;
@@ -1630,9 +1656,9 @@ uConstantsDM;
          else
          begin
 
-            if (Station.HalfSetB.Duplexer.cbSh1 <> csConnectedAtDuplexeLeft) and (Station.HalfSetB.Duplexer.cbSh1 <> csConnectedAtDuplexeRight) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не подключен кабель от разъема стойки 1600 ВЫХОД' + #10#13;
-            if (Station.HalfSetB.Duplexer.cbSh2 <> csConnectedAtDuplexeRight) and (Station.HalfSetB.Duplexer.cbSh2 <> csConnectedAtDuplexeLeft) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не подключен кабель Ф33 Ш2' + #10#13;
-            if (Station.HalfSetB.Duplexer.cb1840 <> csDisconected) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не отключен кабель, идущий к дуплексеру' + #10#13;
+            if (Station.HalfSetB.Duplexer.cbSh1 <> csConnectedAtDuplexeLeft) and (Station.HalfSetB.Duplexer.cbSh1 <> csConnectedAtDuplexeRight) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не подключен кабель от разъема стойки 1600 ВЫХОД' + #10#13;
+            if (Station.HalfSetB.Duplexer.cbSh2 <> csConnectedAtDuplexeRight) and (Station.HalfSetB.Duplexer.cbSh2 <> csConnectedAtDuplexeLeft) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не подключен кабель Ф33 Ш2' + #10#13;
+            if (Station.HalfSetB.Duplexer.cb1840 <> csDisconected) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не отключен кабель, идущий к дуплексеру' + #10#13;
            Result:=false;
          end;
    end;
@@ -1659,8 +1685,8 @@ uConstantsDM;
          else
          begin
 
-            if (Station.HalfSetB.Duplexer.waveTransmit <> NetWorker.ClientState.TransmitterWaveB) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна передачи' + #10#13;
-            if (Station.HalfSetB.Duplexer.waveReceive <> NetWorker.ClientState.ReceiverWaveB) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна приема' + #10#13;
+            if (Station.HalfSetB.Duplexer.waveTransmit <> NetWorker.ClientState.TransmitterWaveB) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не установлена рабочая волна передачи' + #10#13;
+            if (Station.HalfSetB.Duplexer.waveReceive <> NetWorker.ClientState.ReceiverWaveB) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не установлена рабочая волна приема' + #10#13;
            Result:=false;
          end;
    end;
@@ -1700,12 +1726,12 @@ uConstantsDM;
             if (GeterodinWaves[NetWorker.ClientState.TransmitterWaveB][0] <> Station.HalfSetB.Rack1500.GeterodinIntMain)
                 or (((GeterodinWaves[NetWorker.ClientState.TransmitterWaveB][1] - 2) > Station.HalfSetB.Rack1500.GeterodinFloatMain)
                 or (Station.HalfSetB.Rack1500.GeterodinFloatMain > (GeterodinWaves[NetWorker.ClientState.TransmitterWaveB][1] + 2)))
-            then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна передачи по волномеру основном канале. Для начала настройки нажмите на лампы МД-О и 1610-О и подключите кабель к разъему над переключателем 1610О' + #10#13;
+            then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не установлена рабочая волна передачи по волномеру основном канале. Для начала настройки нажмите на лампы МД-О и 1610-О и подключите кабель к разъему над переключателем 1610О' + #10#13;
             if (GeterodinWaves[NetWorker.ClientState.TransmitterWaveB][0] <> Station.HalfSetB.Rack1500.GeterodinIntReserve)
                 or (((GeterodinWaves[NetWorker.ClientState.TransmitterWaveB][1] - 2) > Station.HalfSetB.Rack1500.GeterodinFloatReserve)
                 or (Station.HalfSetB.Rack1500.GeterodinFloatReserve > (GeterodinWaves[NetWorker.ClientState.TransmitterWaveB][1] + 2)))
-            then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна передачи по волномеру на резервном канале. Для начала настройки нажмите на лампы МД-Р и 1610-Р и подключите кабель к разъему над переключателем 1610Р' + #10#13;
-            if (Station.HalfSetB.Rack1500.SelectedMd <> smdMain) or (Station.HalfSetB.Rack1500.SelectedRetr <> sRetrMain) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не активированы лампы МД-О и 1610-О после настройки' + #10#13;
+            then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не установлена рабочая волна передачи по волномеру на резервном канале. Для начала настройки нажмите на лампы МД-Р и 1610-Р и подключите кабель к разъему над переключателем 1610Р' + #10#13;
+            if (Station.HalfSetB.Rack1500.SelectedMd <> smdMain) or (Station.HalfSetB.Rack1500.SelectedRetr <> sRetrMain) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не активированы лампы МД-О и 1610-О после настройки' + #10#13;
 
            Result:=false;
          end;
@@ -1735,8 +1761,8 @@ uConstantsDM;
          else
          begin
 
-            if (Station.HalfSetB.Rack1500.btnAutomatic <> butPositionRight) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Тумблер АВТОМАТИКА не передней панели не включен' + #10#13;
-            if (Station.HalfSetB.Rack1500.DropError <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не сброшена авария' + #10#13;
+            if (Station.HalfSetB.Rack1500.btnAutomatic <> butPositionRight) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Тумблер АВТОМАТИКА не передней панели не включен' + #10#13;
+            if (Station.HalfSetB.Rack1500.DropError <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не сброшена авария' + #10#13;
            Result:=false;
          end;
    end;
@@ -1761,8 +1787,8 @@ uConstantsDM;
           else
          begin
 
-            if (Station.HalfSetB.Rack1920.stLBV2_TurnedOn <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Высокое напряжение не верхнем блоке не подано' + #10#13;
-            if (Station.HalfSetB.Rack1920.stLBV1_TurnedOn <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Высокое напряжение не нижнем блоке не подано' + #10#13;
+            if (Station.HalfSetB.Rack1920.stLBV2_TurnedOn <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Высокое напряжение не верхнем блоке не подано' + #10#13;
+            if (Station.HalfSetB.Rack1920.stLBV1_TurnedOn <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Высокое напряжение не нижнем блоке не подано' + #10#13;
            Result:=false;
          end;
    end;
@@ -1787,9 +1813,9 @@ uConstantsDM;
          else
          begin
 
-            if (Station.HalfSetB.Rack1500.swModeControl <> 6) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Переключатель режима не установлен в положение МОЩН.-РАСФАЗ.' + #10#13;
-            if (Station.HalfSetB.Rack1500.butMode_R <> butPositionLeft) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Тумблер МД-Р не переключен в левое положение' + #10#13;
-            if (Station.HalfSetB.Rack1500.swPhaseMover <> 10) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Сигналы ЛБВ не сфазированы. Поворачивайте фазовращатель, пока разница в токах не будет нулевой' + #10#13;
+            if (Station.HalfSetB.Rack1500.swModeControl <> 6) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Переключатель режима не установлен в положение МОЩН.-РАСФАЗ.' + #10#13;
+            if (Station.HalfSetB.Rack1500.butMode_R <> butPositionLeft) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Тумблер МД-Р не переключен в левое положение' + #10#13;
+            if (Station.HalfSetB.Rack1500.swPhaseMover <> 10) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Сигналы ЛБВ не сфазированы. Поворачивайте фазовращатель, пока разница в токах не будет нулевой' + #10#13;
            Result:=false;
          end;
    end;
@@ -1815,9 +1841,9 @@ uConstantsDM;
          else
          begin
 
-            if (Station.HalfSetB.Rack1600.wave1610_0 <> NetWorker.ClientState.ReceiverWaveB) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлены рабочие волны приема на пареключателе 1610О' + #10#13;
-            if (Station.HalfSetB.Rack1600.wave1610_R <> NetWorker.ClientState.ReceiverWaveB) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлены рабочие волны приема на пареключателе 1610Р' + #10#13;
-            if (Station.HalfSetB.Rack1600.wave1600 <> NetWorker.ClientState.ReceiverWaveB) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлены рабочие волны приема на пареключателе 1600' + #10#13;
+            if (Station.HalfSetB.Rack1600.wave1610_0 <> NetWorker.ClientState.ReceiverWaveB) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не установлены рабочие волны приема на пареключателе 1610О' + #10#13;
+            if (Station.HalfSetB.Rack1600.wave1610_R <> NetWorker.ClientState.ReceiverWaveB) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не установлены рабочие волны приема на пареключателе 1610Р' + #10#13;
+            if (Station.HalfSetB.Rack1600.wave1600 <> NetWorker.ClientState.ReceiverWaveB) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не установлены рабочие волны приема на пареключателе 1600' + #10#13;
            Result:=false;
          end;
    end;
@@ -1857,12 +1883,12 @@ uConstantsDM;
             if (GeterodinWaves[NetWorker.ClientState.ReceiverWaveB][0] <> Station.HalfSetB.Rack1600.GeterodinIntMain)
               or (((GeterodinWaves[NetWorker.ClientState.ReceiverWaveB][1] - 2) > Station.HalfSetB.Rack1600.GeterodinFloatMain)
               or (Station.HalfSetB.Rack1600.GeterodinFloatMain > (GeterodinWaves[NetWorker.ClientState.ReceiverWaveB][1] + 2)))
-            then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна приема по волномеру на основном канале. Для начала настройки нажмите на лампы 1610-О, УПЧ-О и ДМЧ-О и подключите кабель к разъему над переключателем 1610О' + #10#13;
+            then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не установлена рабочая волна приема по волномеру на основном канале. Для начала настройки нажмите на лампы 1610-О, УПЧ-О и ДМЧ-О и подключите кабель к разъему над переключателем 1610О' + #10#13;
             if (GeterodinWaves[NetWorker.ClientState.ReceiverWaveB][0] <> Station.HalfSetB.Rack1600.GeterodinIntReserve)
               or (((GeterodinWaves[NetWorker.ClientState.ReceiverWaveB][1] - 2) > Station.HalfSetB.Rack1600.GeterodinFloatReserve)
               or (Station.HalfSetB.Rack1600.GeterodinFloatReserve > (GeterodinWaves[NetWorker.ClientState.ReceiverWaveB][1] + 2)))
-            then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не установлена рабочая волна приема по волномеру на резервном канале. Для начала настройки нажмите на лампы 1601-Р, УПЧ-Р, ДМЧ-Р и подключите кабель к разъему над переключателем 1610Р' + #10#13;
-            if (Station.HalfSetB.Rack1600.SelectedMd <> smdMain) or (Station.HalfSetB.Rack1600.SelectedUpch <> sUpchMain) or (Station.HalfSetB.Rack1600.SelectedDmch <> sDmchMain) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не активированы лампы 1610-О, УПЧ-0 и ДМЧ-0 после настройки' + #10#13;
+            then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не установлена рабочая волна приема по волномеру на резервном канале. Для начала настройки нажмите на лампы 1601-Р, УПЧ-Р, ДМЧ-Р и подключите кабель к разъему над переключателем 1610Р' + #10#13;
+            if (Station.HalfSetB.Rack1600.SelectedMd <> smdMain) or (Station.HalfSetB.Rack1600.SelectedUpch <> sUpchMain) or (Station.HalfSetB.Rack1600.SelectedDmch <> sDmchMain) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не активированы лампы 1610-О, УПЧ-0 и ДМЧ-0 после настройки' + #10#13;
 
            Result:=false;
          end;
@@ -1891,8 +1917,8 @@ uConstantsDM;
          else
          begin
 
-            if (Station.HalfSetB.Rack1600.butAutomatic <> butPositionLeft) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Тумблер АВТОМАТИКА не включен' + #10#13;
-            if (Station.HalfSetB.Rack1600.DropError <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Авария не сброшена' + #10#13;
+            if (Station.HalfSetB.Rack1600.butAutomatic <> butPositionLeft) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Тумблер АВТОМАТИКА не включен' + #10#13;
+            if (Station.HalfSetB.Rack1600.DropError <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Авария не сброшена' + #10#13;
            Result:=false;
          end;
    end;
@@ -1921,7 +1947,7 @@ uConstantsDM;
          else
          begin
 
-            if (Station.HalfSetA.Rack1600.stMoshnost <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Лампа не горит. Проверьте ещё раз правильность настройки станции' + #10#13;
+            if (Station.HalfSetA.Rack1600.stMoshnost <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Лампа не горит. Проверьте ещё раз правильность настройки станции' + #10#13;
            Result:=false;
          end;
    end;
@@ -1946,7 +1972,7 @@ uConstantsDM;
          else
          begin
 
-            if (Station.HalfSetB.Rack1600.stMoshnost <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Лампа не горит. Проверьте ещё раз правильность настройки станции' + #10#13;
+            if (Station.HalfSetB.Rack1600.stMoshnost <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Лампа не горит. Проверьте ещё раз правильность настройки станции' + #10#13;
            Result:=false;
          end;
    end;
@@ -1988,8 +2014,8 @@ uConstantsDM;
          else
          begin
 
-            if (Station.Oscillograph.cblCableUsilitelState <> csConnectedAtPower) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не подключен серый провод' + #10#13;
-            if (Station.Oscillograph.cblCabelSyncState <> csConnectedAtSync) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не подключен черный провод' + #10#13;
+            if (Station.Oscillograph.cblCableUsilitelState <> csConnectedAtPower) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не подключен серый провод' + #10#13;
+            if (Station.Oscillograph.cblCabelSyncState <> csConnectedAtSync) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не подключен черный провод' + #10#13;
 
              If (Station.Oscillograph.swPowerType <> 2) or
                 (Station.Oscillograph.swVvsDel <> 7) or
@@ -1999,7 +2025,7 @@ uConstantsDM;
                 (Station.Oscillograph.but1Khz <> butPositionUp) or
                 (Station.Oscillograph.swRazvertkaShortTune <> 11) or
                 (Station.Oscillograph.swCalibrator <> 1)
-                then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Осциллограф настроен неверно' + #10#13;
+                then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Осциллограф настроен неверно' + #10#13;
 
            Result:=false;
          end;
@@ -2037,7 +2063,7 @@ uConstantsDM;
 
 
             if (Station.Oscillograph.cblCabelSyncState <> csConnectedAtSync) or
-          (Station.Oscillograph.cblCableUsilitelState <> csConnectedAtPower) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'К осциллографу не подключены черный и серый провода, невозможно проверить девиацию' + #10#13;
+          (Station.Oscillograph.cblCableUsilitelState <> csConnectedAtPower) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'К осциллографу не подключены черный и серый провода, невозможно проверить девиацию' + #10#13;
 
 
            if (Station.Deviation.Rack1200A_PRD <> stPassed) or (Station.Deviation.Rack1200A_PRM <> stPassed) then
@@ -2045,16 +2071,16 @@ uConstantsDM;
            if (Station.HalfSetA.Rack1200Right.CableOscillographLineInput = csDisconected) or
          (Station.HalfSetA.Rack1200Right.CableUzlovoiInput = csDisconected) then
           begin
-            ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Вы забыли подключить провода к стойке 1200 А ПРД для проверки девиации' + #10#13;
+            ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Вы забыли подключить провода к стойке 1200 А ПРД для проверки девиации' + #10#13;
           end;
-           ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Девиация на 2х трубках не проверена' + #10#13;
+           ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Девиация на 2х трубках не проверена' + #10#13;
 
            end
            else
            if (Station.HalfSetA.Rack1200Right.CableOscillographLineInput <> csDisconected) or
               (Station.HalfSetA.Rack1200Right.CableUzlovoiInput <> csDisconected) then
             begin
-              ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Вы забыли отключить провода от стойки 1200 А ПРД после проверки девиации' + #10#13;
+              ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Вы забыли отключить провода от стойки 1200 А ПРД после проверки девиации' + #10#13;
             end;
            Result:=false;
          end;
@@ -2095,7 +2121,7 @@ uConstantsDM;
 
 
             if (Station.Oscillograph.cblCabelSyncState <> csConnectedAtSync) or
-          (Station.Oscillograph.cblCableUsilitelState <> csConnectedAtPower) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'К осциллографу не подключены черный и серый провода, невозможно проверить девиацию' + #10#13;
+          (Station.Oscillograph.cblCableUsilitelState <> csConnectedAtPower) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'К осциллографу не подключены черный и серый провода, невозможно проверить девиацию' + #10#13;
 
 
            if (Station.Deviation.Rack1200B_PRD <> stPassed) or (Station.Deviation.Rack1200B_PRM <> stPassed) then
@@ -2103,16 +2129,16 @@ uConstantsDM;
            if (Station.HalfSetB.Rack1200Right.CableOscillographLineInput = csDisconected) or
          (Station.HalfSetB.Rack1200Right.CableUzlovoiInput = csDisconected) then
           begin
-            ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Вы забыли подключить провода к стойке 1200 Б ПРД для проверки девиации' + #10#13;
+            ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Вы забыли подключить провода к стойке 1200 Б ПРД для проверки девиации' + #10#13;
           end;
-           ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Девиация на 2х трубках не проверена' + #10#13;
+           ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Девиация на 2х трубках не проверена' + #10#13;
 
            end
            else
            if (Station.HalfSetB.Rack1200Right.CableOscillographLineInput <> csDisconected) or
          (Station.HalfSetB.Rack1200Right.CableUzlovoiInput <> csDisconected) then
             begin
-         ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Вы забыли отключить провода от стойки 1200 Б ПРД после проверки девиации' + #10#13;
+         ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Вы забыли отключить провода от стойки 1200 Б ПРД после проверки девиации' + #10#13;
             end;
            Result:=false;
          end;
@@ -2188,6 +2214,12 @@ uConstantsDM;
   TaskNetParams.AddKeyValue('MessageEndFrequencyMain1_2', 'False');
   TaskNetParams.AddKeyValue('MessageEndFrequencySub1_2', 'False');
 
+   TaskNetParams.AddKeyValue('MessageStartNoiseMain1', 'False');
+   TaskNetParams.AddKeyValue('MessageStartNoiseSub1', 'False');
+
+   TaskNetParams.AddKeyValue('MessageEndNoiseMain1', 'False');
+   TaskNetParams.AddKeyValue('MessageEndNoiseSub1', 'False');
+
 
 
   NetWorker.ClientState.CanSendChatMessages:=False;
@@ -2195,7 +2227,7 @@ uConstantsDM;
 
   Name:='Перевод станции в оконечный режим работы. Имерение параметров';
 
-  SetLength(SubTasks, 31);
+  SetLength(SubTasks, 35);
 
   SubTasks[0]:= TTaskTerminalModeSubTask1.Create;
   SubTasks[1]:= TTaskTerminalModeSubTask2.Create;
@@ -2227,7 +2259,11 @@ uConstantsDM;
     SubTasks[27]:= TTaskTerminalModeSubTask28.Create;
     SubTasks[28]:= TTaskTerminalModeSubTask29.Create;
     SubTasks[29]:= TTaskTerminalModeSubTask30.Create;
-    SubTasks[30]:= TTaskTerminalModeSubTask30.Create;
+    SubTasks[30]:= TTaskTerminalModeSubTask31.Create;
+    SubTasks[31]:= TTaskTerminalModeSubTask32.Create;
+    SubTasks[32]:= TTaskTerminalModeSubTask33.Create;
+    SubTasks[33]:= TTaskTerminalModeSubTask34.Create;
+    SubTasks[34]:= TTaskTerminalModeSubTask35.Create;
 
 
   CurrentSubTask:=SubTasks[CurrentSubTaskNum];
@@ -2272,8 +2308,8 @@ uConstantsDM;
          end
          else
          begin
-            //if (Station.HalfSetA.Rack1920.butHighOff <> butPositionDown) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Высокое напряжение не верхнем блоке не отключено' + #10#13;
-            //if (Station.HalfSetA.Rack1920.butHighOff2 <> butPositionDown) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Высокое напряжение не нижнем блоке не отключено' + #10#13;
+            //if (Station.HalfSetA.Rack1920.butHighOff <> butPositionDown) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Высокое напряжение не верхнем блоке не отключено' + #10#13;
+            //if (Station.HalfSetA.Rack1920.butHighOff2 <> butPositionDown) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Высокое напряжение не нижнем блоке не отключено' + #10#13;
            Result:=false;
          end;
    end;
@@ -2301,8 +2337,8 @@ uConstantsDM;
          else
          begin
 
-            //if (Station.HalfSetB.Rack1920.butHighOff <> butPositionDown) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Высокое напряжение не верхнем блоке не отключено' + #10#13;
-            //if (Station.HalfSetB.Rack1920.butHighOff2 <> butPositionDown) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Высокое напряжение не нижнем блоке не отключено' + #10#13;
+            //if (Station.HalfSetB.Rack1920.butHighOff <> butPositionDown) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Высокое напряжение не верхнем блоке не отключено' + #10#13;
+            //if (Station.HalfSetB.Rack1920.butHighOff2 <> butPositionDown) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Высокое напряжение не нижнем блоке не отключено' + #10#13;
            Result:=false;
          end;
    end;
@@ -2328,7 +2364,7 @@ uConstantsDM;
          else
          begin
 
-            if (Station.HalfSetA.Rack1500.stCableSh1 <> csConnectedAtRack1500Sh1) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Кабель от дуплексера не подключен к выходу свч' + #10#13;
+            if (Station.HalfSetA.Rack1500.stCableSh1 <> csConnectedAtRack1500Sh1) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Кабель от дуплексера не подключен к выходу свч' + #10#13;
            Result:=false;
          end;
    end;
@@ -2354,7 +2390,7 @@ uConstantsDM;
          else
          begin
 
-            if (Station.HalfSetB.Rack1500.stCableSh1 <> csConnectedAtRack1500Sh1) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Кабель от дуплексера не подключен к выходу свч' + #10#13;
+            if (Station.HalfSetB.Rack1500.stCableSh1 <> csConnectedAtRack1500Sh1) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Кабель от дуплексера не подключен к выходу свч' + #10#13;
            Result:=false;
          end;
    end;
@@ -2380,7 +2416,7 @@ uConstantsDM;
          else
          begin
 
-            if (Station.HalfSetA.Duplexer.cb1840 = csDisconected) or (Station.HalfSetA.Duplexer.cbSh2 = csDisconected) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не подключен кабель от дуплексера ко фходу Ф-33' + #10#13;
+            if (Station.HalfSetA.Duplexer.cb1840 = csDisconected) or (Station.HalfSetA.Duplexer.cbSh2 = csDisconected) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не подключен кабель от дуплексера ко фходу Ф-33' + #10#13;
            Result:=false;
          end;
    end;
@@ -2406,7 +2442,7 @@ uConstantsDM;
          else
          begin
 
-            if (Station.HalfSetB.Duplexer.cb1840 = csDisconected) or (Station.HalfSetB.Duplexer.cbSh2 = csDisconected) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Не подключен кабель от дуплексера ко фходу Ф-33' + #10#13;
+            if (Station.HalfSetB.Duplexer.cb1840 = csDisconected) or (Station.HalfSetB.Duplexer.cbSh2 = csDisconected) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Не подключен кабель от дуплексера ко фходу Ф-33' + #10#13;
            Result:=false;
          end;
    end;
@@ -2432,8 +2468,8 @@ uConstantsDM;
           else
          begin
 
-            if (Station.HalfSetA.Rack1920.stLBV2_TurnedOn <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Высокое напряжение не верхнем блоке не подано' + #10#13;
-            if (Station.HalfSetA.Rack1920.stLBV1_TurnedOn <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Высокое напряжение не нижнем блоке не подано' + #10#13;
+            if (Station.HalfSetA.Rack1920.stLBV2_TurnedOn <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Высокое напряжение не верхнем блоке не подано' + #10#13;
+            if (Station.HalfSetA.Rack1920.stLBV1_TurnedOn <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Высокое напряжение не нижнем блоке не подано' + #10#13;
            Result:=false;
          end;
    end;
@@ -2459,8 +2495,8 @@ uConstantsDM;
           else
          begin
 
-            if (Station.HalfSetB.Rack1920.stLBV2_TurnedOn <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Высокое напряжение не верхнем блоке не подано' + #10#13;
-            if (Station.HalfSetB.Rack1920.stLBV1_TurnedOn <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Высокое напряжение не нижнем блоке не подано' + #10#13;
+            if (Station.HalfSetB.Rack1920.stLBV2_TurnedOn <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Высокое напряжение не верхнем блоке не подано' + #10#13;
+            if (Station.HalfSetB.Rack1920.stLBV1_TurnedOn <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Высокое напряжение не нижнем блоке не подано' + #10#13;
            Result:=false;
          end;
    end;
@@ -2488,7 +2524,7 @@ uConstantsDM;
           else
          begin
 
-            if (Station.HalfSetA.Rack1600.stMoshnost <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Связь не нестроена, лампа-табло не горит' + #10#13;
+            if (Station.HalfSetA.Rack1600.stMoshnost <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Связь не нестроена, лампа-табло не горит' + #10#13;
 
            Result:=false;
          end;
@@ -2518,7 +2554,7 @@ uConstantsDM;
           else
          begin
 
-            if (Station.HalfSetB.Rack1600.stMoshnost <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Связь не нестроена, лампа-табло не горит' + #10#13;
+            if (Station.HalfSetB.Rack1600.stMoshnost <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Связь не нестроена, лампа-табло не горит' + #10#13;
 
            Result:=false;
          end;
@@ -2546,7 +2582,7 @@ uConstantsDM;
           else
          begin
 
-            if (True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Станция не настроена в 2х или 4х проводный режим' + #10#13;
+            if (True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Станция не настроена в 2х или 4х проводный режим' + #10#13;
 
            Result:=false;
          end;
@@ -2576,8 +2612,8 @@ uConstantsDM;
          else
          begin
 
-            if (TaskNetParams.GetBoolValue('WeInTerminalMode') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Наша станция не настроена' + #10#13;
-            if (TaskNetParams.GetBoolValue('TheyInTerminalMode') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Сопряженная станция не настроена' + #10#13;
+            if (TaskNetParams.GetBoolValue('WeInTerminalMode') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Наша станция не настроена' + #10#13;
+            if (TaskNetParams.GetBoolValue('TheyInTerminalMode') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Сопряженная станция не настроена' + #10#13;
            Result:=false;
          end;
    end;
@@ -2633,8 +2669,8 @@ uConstantsDM;
          else
          begin
 
-            if (TaskNetParams.GetBoolValue('MessageCheckLvlFromMainSent') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Старшая станция не отправила сообщение' + #10#13;
-            if (TaskNetParams.GetBoolValue('MessageCheckLvlFromSubSent') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Подчиненная станция не отправила сообщение' + #10#13;
+            if (TaskNetParams.GetBoolValue('MessageCheckLvlFromMainSent') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Старшая станция не отправила сообщение' + #10#13;
+            if (TaskNetParams.GetBoolValue('MessageCheckLvlFromSubSent') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Подчиненная станция не отправила сообщение' + #10#13;
            Result:=false;
          end;
    end;
@@ -2681,7 +2717,7 @@ uConstantsDM;
           else
          begin
 
-            if (True <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Приемник не нестроен' + #10#13;
+            if (True <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Приемник не нестроен' + #10#13;
 
            Result:=false;
          end;
@@ -2710,7 +2746,7 @@ uConstantsDM;
           else
          begin
 
-            if (True <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Приемник не нестроен' + #10#13;
+            if (True <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Приемник не нестроен' + #10#13;
 
            Result:=false;
          end;
@@ -2744,8 +2780,8 @@ uConstantsDM;
          else
          begin
 
-            if (TaskNetParams.GetBoolValue('MessageRecieverTunedFromMainSent') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Старшая станция не отправила сообщение' + #10#13;
-            if (TaskNetParams.GetBoolValue('MessageRecieverTunedFromSubSent') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Подчиненная станция не отправила сообщение' + #10#13;
+            if (TaskNetParams.GetBoolValue('MessageRecieverTunedFromMainSent') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Старшая станция не отправила сообщение' + #10#13;
+            if (TaskNetParams.GetBoolValue('MessageRecieverTunedFromSubSent') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Подчиненная станция не отправила сообщение' + #10#13;
            Result:=false;
          end;
    end;
@@ -2798,8 +2834,8 @@ uConstantsDM;
          else
          begin
 
-            if (TaskNetParams.GetBoolValue('MessageGeneratorFromMainSent1') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Старшая станция не отправила сообщение' + #10#13;
-            if (TaskNetParams.GetBoolValue('MessageGeneratorFromSubSent1') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Подчиненная станция не отправила сообщение' + #10#13;
+            if (TaskNetParams.GetBoolValue('MessageGeneratorFromMainSent1') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Старшая станция не отправила сообщение' + #10#13;
+            if (TaskNetParams.GetBoolValue('MessageGeneratorFromSubSent1') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Подчиненная станция не отправила сообщение' + #10#13;
            Result:=false;
          end;
    end;
@@ -2850,7 +2886,7 @@ uConstantsDM;
           else
          begin
 
-            if (True <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Приемник не нестроен' + #10#13;
+            if (True <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Приемник не нестроен' + #10#13;
 
            Result:=false;
          end;
@@ -2886,7 +2922,7 @@ uConstantsDM;
           else
          begin
 
-            if (True <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Приемник не нестроен' + #10#13;
+            if (True <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Приемник не нестроен' + #10#13;
 
            Result:=false;
          end;
@@ -2917,8 +2953,8 @@ uConstantsDM;
          else
          begin
 
-            if (TaskNetParams.GetBoolValue('MessageMainStartTune1') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Старшая станция не отправила сообщение' + #10#13;
-            if (TaskNetParams.GetBoolValue('MessageSubStartTune1') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Подчиненная станция не отправила сообщение' + #10#13;
+            if (TaskNetParams.GetBoolValue('MessageMainStartTune1') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Старшая станция не отправила сообщение' + #10#13;
+            if (TaskNetParams.GetBoolValue('MessageSubStartTune1') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Подчиненная станция не отправила сообщение' + #10#13;
            Result:=false;
          end;
    end;
@@ -2964,7 +3000,7 @@ uConstantsDM;
           else
          begin
 
-            if (Station.RemoteController.Channels.A[1].stChannelState <> stChannelTuned) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Канал 1 не нестроен' + #10#13;
+            if (Station.RemoteController.Channels.A[1].stChannelState <> stChannelTuned) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Канал 1 не нестроен' + #10#13;
 
            Result:=false;
          end;
@@ -2995,8 +3031,8 @@ uConstantsDM;
          else
          begin
 
-            if (TaskNetParams.GetBoolValue('MessageMainEndTune1') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Старшая станция не отправила сообщение' + #10#13;
-            if (TaskNetParams.GetBoolValue('MessageSubEndTune1') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Подчиненная станция не отправила сообщение' + #10#13;
+            if (TaskNetParams.GetBoolValue('MessageMainEndTune1') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Старшая станция не отправила сообщение' + #10#13;
+            if (TaskNetParams.GetBoolValue('MessageSubEndTune1') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Подчиненная станция не отправила сообщение' + #10#13;
            Result:=false;
          end;
    end;
@@ -3046,8 +3082,8 @@ uConstantsDM;
          else
          begin
 
-            if (TaskNetParams.GetBoolValue('MessageGeneratorFromMainSent2') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Старшая станция не отправила сообщение' + #10#13;
-            if (TaskNetParams.GetBoolValue('MessageGeneratorFromSubSent2') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Подчиненная станция не отправила сообщение' + #10#13;
+            if (TaskNetParams.GetBoolValue('MessageGeneratorFromMainSent2') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Старшая станция не отправила сообщение' + #10#13;
+            if (TaskNetParams.GetBoolValue('MessageGeneratorFromSubSent2') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Подчиненная станция не отправила сообщение' + #10#13;
            Result:=false;
          end;
    end;
@@ -3097,7 +3133,7 @@ uConstantsDM;
           else
          begin
 
-            if (True <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Приемник не нестроен' + #10#13;
+            if (True <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Приемник не нестроен' + #10#13;
 
            Result:=false;
          end;
@@ -3128,8 +3164,8 @@ uConstantsDM;
          else
          begin
 
-            if (TaskNetParams.GetBoolValue('MessageMainStartTune2') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Старшая станция не отправила сообщение' + #10#13;
-            if (TaskNetParams.GetBoolValue('MessageSubStartTune2') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Подчиненная станция не отправила сообщение' + #10#13;
+            if (TaskNetParams.GetBoolValue('MessageMainStartTune2') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Старшая станция не отправила сообщение' + #10#13;
+            if (TaskNetParams.GetBoolValue('MessageSubStartTune2') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Подчиненная станция не отправила сообщение' + #10#13;
            Result:=false;
          end;
    end;
@@ -3175,7 +3211,7 @@ uConstantsDM;
           else
          begin
 
-            if (Station.RemoteController.Channels.A[2].stChannelState <> stChannelTuned) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Канал 1 не нестроен' + #10#13;
+            if (Station.RemoteController.Channels.A[2].stChannelState <> stChannelTuned) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Канал 1 не нестроен' + #10#13;
 
            Result:=false;
          end;
@@ -3206,8 +3242,8 @@ uConstantsDM;
          else
          begin
 
-            if (TaskNetParams.GetBoolValue('MessageMainEndTune2') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Старшая станция не отправила сообщение' + #10#13;
-            if (TaskNetParams.GetBoolValue('MessageSubEndTune2') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Подчиненная станция не отправила сообщение' + #10#13;
+            if (TaskNetParams.GetBoolValue('MessageMainEndTune2') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Старшая станция не отправила сообщение' + #10#13;
+            if (TaskNetParams.GetBoolValue('MessageSubEndTune2') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Подчиненная станция не отправила сообщение' + #10#13;
            Result:=false;
          end;
    end;
@@ -3265,9 +3301,9 @@ uConstantsDM;
          else
          begin
 
-            if (TaskNetParams.GetBoolValue('MessageStartFrequencyMain1_1') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Старшая станция не отправила сообщение' + #10#13;
-            if (TaskNetParams.GetBoolValue('MessageStartFrequencySub1_1') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Подчиненная станция не отправила сообщение' + #10#13;
-            if (Station.P321C.swFrequency <> 1) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Переключатель КГЦ не устанвлен в нужное положение' + #10#13;
+            if (TaskNetParams.GetBoolValue('MessageStartFrequencyMain1_1') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Старшая станция не отправила сообщение' + #10#13;
+            if (TaskNetParams.GetBoolValue('MessageStartFrequencySub1_1') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Подчиненная станция не отправила сообщение' + #10#13;
+            if (Station.P321C.swFrequency <> 1) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Переключатель КГЦ не устанвлен в нужное положение' + #10#13;
            Result:=false;
          end;
    end;
@@ -3298,6 +3334,9 @@ uConstantsDM;
         Text:=Text+' Дайте генератор с частотой 0.3кГц по первому каналу полукомплекта А. Даю вам." Подчиненная станция: "Вас понял. Даю генератор".';
         EventFormName:='П-321 С';
         Time:= '';
+
+        MainTaskText:= 'Приступаем к измерению частотной характеристики.';
+        SubTaskText:='Вас понял. Даю генератор.';
    end;
 
 
@@ -3315,8 +3354,8 @@ uConstantsDM;
          else
          begin
 
-            if (TaskNetParams.GetBoolValue('MessageEndFrequencyMain1_1') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Старшая станция не отправила сообщение' + #10#13;
-            if (TaskNetParams.GetBoolValue('MessageEndFrequencySub1_1') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Подчиненная станция не отправила сообщение' + #10#13;
+            if (TaskNetParams.GetBoolValue('MessageEndFrequencyMain1_1') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Старшая станция не отправила сообщение' + #10#13;
+            if (TaskNetParams.GetBoolValue('MessageEndFrequencySub1_1') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Подчиненная станция не отправила сообщение' + #10#13;
            Result:=false;
          end;
    end;
@@ -3344,6 +3383,9 @@ uConstantsDM;
         Text:='Измерить частотную характеристику. Доложить корреспонденту. Старшая станция: "Отклонение ...". Подчиненная станция: "Отклонение ...".';
         EventFormName:='';
         Time:= '';
+
+        MainTaskText:= 'Отклонение ';
+        SubTaskText:='Отклонение ';
    end;
 
 
@@ -3362,9 +3404,9 @@ uConstantsDM;
          else
          begin
 
-            if (TaskNetParams.GetBoolValue('MessageStartFrequencyMain1_2') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Старшая станция не отправила сообщение' + #10#13;
-            if (TaskNetParams.GetBoolValue('MessageStartFrequencySub1_2') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Подчиненная станция не отправила сообщение' + #10#13;
-            if (Station.P321C.swFrequency <> 1) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Переключатель КГЦ не устанвлен в нужное положение' + #10#13;
+            if (TaskNetParams.GetBoolValue('MessageStartFrequencyMain1_2') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Старшая станция не отправила сообщение' + #10#13;
+            if (TaskNetParams.GetBoolValue('MessageStartFrequencySub1_2') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Подчиненная станция не отправила сообщение' + #10#13;
+            if (Station.P321C.swFrequency <> 1) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Переключатель КГЦ не устанвлен в нужное положение' + #10#13;
            Result:=false;
          end;
    end;
@@ -3395,13 +3437,16 @@ uConstantsDM;
         Text:=Text+' Дайте генератор с частотой 0.4кГц по первому каналу полукомплекта А. Даю вам." Подчиненная станция: "Вас понял. Даю генератор".';
         EventFormName:='П-321 С';
         Time:= '';
+
+        MainTaskText:= 'Приступаем к измерению частотной характеристики. Дайте генератор с частотой 0.4кГц по первому каналу полукомплекта А. Даю вам.';
+        SubTaskText:='Вас понял. Даю генератор.';
    end;
 
 
     //=============================
 
 
-       function TTaskTerminalModeSubTask31.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+   function TTaskTerminalModeSubTask31.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
          if (TaskNetParams.GetBoolValue('MessageEndFrequencyMain1_2') = True) and (TaskNetParams.GetBoolValue('MessageEndFrequencySub1_2') = True)
@@ -3412,8 +3457,8 @@ uConstantsDM;
          else
          begin
 
-            if (TaskNetParams.GetBoolValue('MessageEndFrequencyMain1_2') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Старшая станция не отправила сообщение' + #10#13;
-            if (TaskNetParams.GetBoolValue('MessageEndFrequencySub1_2') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + 'Подчиненная станция не отправила сообщение' + #10#13;
+            if (TaskNetParams.GetBoolValue('MessageEndFrequencyMain1_2') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Старшая станция не отправила сообщение' + #10#13;
+            if (TaskNetParams.GetBoolValue('MessageEndFrequencySub1_2') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Подчиненная станция не отправила сообщение' + #10#13;
            Result:=false;
          end;
    end;
@@ -3441,7 +3486,188 @@ uConstantsDM;
         Text:='Измерить частотную характеристику. Доложить корреспонденту. Старшая станция: "Отклонение ...". Подчиненная станция: "Отклонение ...".';
         EventFormName:='';
         Time:= '';
+
+        MainTaskText:= 'Отклонение ';
+        SubTaskText:='Отклонение ';
    end;
+
+
+
+   //===============================================
+
+
+ function TTaskTerminalModeSubTask32.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+   begin
+         if (Station.P323ISH.swResist = 2) and (Station.P323ISH.swLimits = 3) and (Station.P323ISH.swMode = 4)
+            and ((Station.CableWhite2.stKonez1.stState = csP323ISH) or (Station.CableWhite2.stKonez2.stState = csP323ISH))
+         then
+         begin
+           Result:=true;
+         end
+         else
+         begin
+
+            if (Station.P323ISH.swResist <> 2) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Перекючатель входного сопротивления не установлен в положение 600 Ом' + #10#13;
+            if (Station.P323ISH.swLimits <> 3) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Переключатель пределов измерения не установлен в положение -50' + #10#13;
+            if (Station.P323ISH.swMode <> 4) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Переключатель режима работы не установлен в положение ФТЛФ' + #10#13;
+            if ((Station.CableWhite2.stKonez1.stState <> csP323ISH) and (Station.CableWhite2.stKonez2.stState <> csP323ISH)) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Белый провод не подключен ко входу прибора' + #10#13;
+           Result:=false;
+         end;
+   end;
+
+
+   constructor TTaskTerminalModeSubTask32.Create;
+   begin
+   inherited Create;
+
+        Name:='ПОдготовка к измерению уровня шума';
+        Text:='Подготовить припор П-321ИШ к работе: переключатель входного сопротивления - 500 Ом, переключатель пределов измерения - -50 дБ,';
+        Text:=Text+' переключатель режима работы прибора - ФТЛФ, подключить белый провод к разъему ВХОД 2';
+        EventFormName:='П-323 ИШ';
+        Time:= '';
+
+   end;
+
+
+
+   //=============================
+
+
+   function TTaskTerminalModeSubTask33.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+   begin
+
+         if (TaskNetParams.GetBoolValue('MessageStartNoiseMain1') = True) and (TaskNetParams.GetBoolValue('MessageStartNoiseSub1') = True)
+         then
+         begin
+           Result:=true;
+         end
+         else
+         begin
+
+            if (TaskNetParams.GetBoolValue('MessageStartNoiseMain1') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Старшая станция не отправила сообщение' + #10#13;
+            if (TaskNetParams.GetBoolValue('MessageStartNoiseSub1') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Подчиненная станция не отправила сообщение' + #10#13;
+           Result:=false;
+         end;
+   end;
+
+   function TTaskTerminalModeSubTask33.NetCheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
+   begin
+                    if (NetWorker.ClientState.IsMainStation = True) then
+                    begin
+                      TaskNetParams.ChangeValue('MessageStartNoiseMain1', 'True');
+                        NetWorker.SendTaskParams('MessageStartNoiseMain1', 'True');
+                    end;
+                    if (NetWorker.ClientState.IsMainStation = False) and (TaskNetParams.GetBoolValue('MessageStartNoiseMain1') = True) then
+                    begin
+                    TaskNetParams.ChangeValue('MessageStartNoiseSub1', 'True');
+                        NetWorker.SendTaskParams('MessageStartNoiseSub1', 'True');
+               end;
+              Result:=True;
+   end;
+
+   constructor TTaskTerminalModeSubTask33.Create;
+   begin
+   inherited Create;
+
+        Name:='Доложить о начале измерения шума на канале 1 полукомплекта А';
+        Text:='Старшая станция: "Приступаю к измерению уровня шума в первом канале полукомплекта А. Нагрузите канал.". Подчиненная станция: "Вас понял. Выполняю.".';
+        EventFormName:='';
+        Time:= '';
+
+        MainTaskText:= 'Приступаю к измерению уровня шума в первом канале полукомплекта А. Нагрузите канал.';
+        SubTaskText:='Вас понял. Выполняю.';
+   end;
+
+
+      //===============================================
+
+
+ function TTaskTerminalModeSubTask34.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+   begin
+         if ((Station.CurrentChannel(Station.CableWhite2.stKonez1.stKonez) = 1) or (Station.CurrentChannel(Station.CableWhite2.stKonez2.stKonez) = 1))
+         and ((Station.CurrentChannel(Station.CableBlack1.stKonez1.stKonez) = 1) or (Station.CurrentChannel(Station.CableBlack1.stKonez2.stKonez) = 1))
+
+         and ((Station.CurrentPort(Station.CableWhite2.stKonez1.stKonez) = 4) or  (Station.CurrentPort(Station.CableWhite2.stKonez2.stKonez) = 4))
+             and ((Station.CurrentPort(Station.CableBlack1.stKonez1.stKonez) = 3) or  (Station.CurrentPort(Station.CableBlack1.stKonez2.stKonez) = 3))
+
+             and (((Station.CableBlack1.stKonez1.stKonez >=360) and (Station.CableBlack1.stKonez1.stKonez <=367)) or ((Station.CableBlack1.stKonez2.stKonez >=360) and (Station.CableBlack1.stKonez2.stKonez <=367)))
+         then
+         begin
+           Result:=true;
+         end
+         else
+         begin
+
+            if ((Station.CurrentChannel(Station.CableWhite2.stKonez1.stKonez) <> 1) and (Station.CurrentChannel(Station.CableWhite2.stKonez2.stKonez) <> 1)) or ((Station.CurrentPort(Station.CableWhite2.stKonez1.stKonez) <> 4) and  (Station.CurrentPort(Station.CableWhite2.stKonez2.stKonez) <> 4)) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Белый провод не подключен ко входу Д канала 1' + #10#13;
+            if ((Station.CurrentChannel(Station.CableBlack1.stKonez1.stKonez) <> 1) and (Station.CurrentChannel(Station.CableBlack1.stKonez2.stKonez) <> 1)) or ((Station.CurrentPort(Station.CableBlack1.stKonez1.stKonez) <> 3) and  (Station.CurrentPort(Station.CableBlack1.stKonez2.stKonez) <> 3)) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Черный провод не подключен ко входу М канала 1' + #10#13;
+            if not (((Station.CableBlack1.stKonez1.stKonez >=360) and (Station.CableBlack1.stKonez1.stKonez <=367)) or ((Station.CableBlack1.stKonez2.stKonez >=360) and (Station.CableBlack1.stKonez2.stKonez <=367))) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Черный провод не подключен к выходу 600 Ом' + #10#13;
+            Result:=false;
+         end;
+   end;
+
+
+   constructor TTaskTerminalModeSubTask34.Create;
+   begin
+   inherited Create;
+
+        Name:='Подготовка к измерению уровня шума';
+        Text:='Подготовить припор П-321ИШ к работе: переключатель входного сопротивления - 500 Ом, переключатель пределов измерения - -50 дБ,';
+        Text:=Text+' переключатель режима работы прибора - ФТЛФ, подключить белый провод к разъему ВХОД 2';
+        EventFormName:='П-323 ИШ';
+        Time:= '';
+
+   end;
+
+
+   //=============================
+
+
+   function TTaskTerminalModeSubTask35.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+   begin
+
+         if (TaskNetParams.GetBoolValue('MessageEndNoiseMain1') = True) and (TaskNetParams.GetBoolValue('MessageEndNoiseSub1') = True)
+         then
+         begin
+           Result:=true;
+         end
+         else
+         begin
+
+            if (TaskNetParams.GetBoolValue('MessageEndNoiseMain1') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Старшая станция не отправила сообщение' + #10#13;
+            if (TaskNetParams.GetBoolValue('MessageEndNoiseSub1') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Подчиненная станция не отправила сообщение' + #10#13;
+           Result:=false;
+         end;
+   end;
+
+   function TTaskTerminalModeSubTask35.NetCheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
+   begin
+                    if (NetWorker.ClientState.IsMainStation = True) then
+                    begin
+                      TaskNetParams.ChangeValue('MessageEndNoiseMain1', 'True');
+                        NetWorker.SendTaskParams('MessageEndNoiseMain1', 'True');
+                    end;
+                    if (NetWorker.ClientState.IsMainStation = False) and (TaskNetParams.GetBoolValue('MessageEndNoiseMain1') = True) then
+                    begin
+                    TaskNetParams.ChangeValue('MessageEndNoiseSub1', 'True');
+                        NetWorker.SendTaskParams('MessageEndNoiseSub1', 'True');
+               end;
+              Result:=True;
+   end;
+
+   constructor TTaskTerminalModeSubTask35.Create;
+   begin
+   inherited Create;
+
+        Name:='Измерение уровня шума на канале 1 полукомплекта А';
+        Text:='На приборе П-323 ИШ снять показания уровня шума для канала 1. Уровень шума = показания прибора оп нижней шкале + значение переключател предела изменения. ';
+        Text:=Text+ 'Доложить. Старшая станция: "Уровень шума -52 дБ". Подчиненная станция: "Вас понял. Уровень шума -52 дБ".';
+        EventFormName:='П-323 ИШ';
+        Time:= '';
+
+        MainTaskText:= 'Уровень шума ';
+        SubTaskText:='Вас понял. Уровень шума ';
+   end;
+
 
 
 {$ENDREGION}
