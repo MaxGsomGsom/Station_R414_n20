@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <namespace name="uPreparationToWorkForm">
-  <variable name="TStationR414Form" type="erroneous type" />
   <class name="TPreparationToWorkForm">
     <ancestor name="TForm" namespace="Forms">
       <methodref name="ArrangeIcons" visibility="public">
@@ -2353,7 +2352,7 @@
       <field name="NetworkSender" type="TNetworkSender" visibility="private" />
       <field name="TaskController" type="TTaskController" visibility="private" />
       <field name="Station" type="TStation" visibility="private" />
-      <field name="R414" type="erroneous type" visibility="private" />
+      <field name="R414" type="TStationR414Form" visibility="private" />
       <constructor name="CreateForm" visibility="public">
         <parameters>
           <parameter name="AOwner" type="TComponent" />

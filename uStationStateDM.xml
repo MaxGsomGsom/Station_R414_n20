@@ -280,6 +280,7 @@
   </struct>
   <struct name="pChannel" packed="true">
     <field name="stChannelState" type="Byte" visibility="public" />
+    <field name="stChannelNoise" type="Boolean" visibility="public" />
   </struct>
   <struct name="pCross" packed="true">
     <field name="AbonentPRD" type="pChannel" visibility="public" />
