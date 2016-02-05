@@ -2818,6 +2818,14 @@
       <field name="imgSpawn1200APrd" type="TImage" visibility="published" />
       <field name="pmSpawn1200BPrm" type="TImage" visibility="published" />
       <field name="pmSpawn1200BPrd" type="TImage" visibility="published" />
+      <field name="img4HoleSwitch1" type="TImage" visibility="published" />
+      <field name="img4HoleSwitch2" type="TImage" visibility="published" />
+      <field name="img4HoleSwitch3" type="TImage" visibility="published" />
+      <field name="img4HoleSwitch4" type="TImage" visibility="published" />
+      <field name="img4HoleSwitch5" type="TImage" visibility="published" />
+      <field name="img4HoleSwitch6" type="TImage" visibility="published" />
+      <field name="img4HoleSwitch7" type="TImage" visibility="published" />
+      <field name="img4HoleSwitch8" type="TImage" visibility="published" />
       <procedure name="FormMouseWheelDown" visibility="published">
         <parameters>
           <parameter name="Sender" type="TObject" />
@@ -3120,7 +3128,12 @@
           <parameter name="CanClose" type="Boolean" paramflags="var" />
         </parameters>
       </procedure>
-      <procedure name="White1Click" visibility="published">
+      <procedure name="img4HoleSwitch1Click" visibility="published">
+        <parameters>
+          <parameter name="Sender" type="TObject" />
+        </parameters>
+      </procedure>
+      <procedure name="White2Click" visibility="published">
         <parameters>
           <parameter name="Sender" type="TObject" />
         </parameters>

@@ -256,6 +256,46 @@
       $7
     </value>
   </const>
+  <const name="stcbl4HoleSwitch1" type="Integer">
+    <value>
+      $8
+    </value>
+  </const>
+  <const name="stcbl4HoleSwitch2" type="Integer">
+    <value>
+      $9
+    </value>
+  </const>
+  <const name="stcbl4HoleSwitch3" type="Integer">
+    <value>
+      $A
+    </value>
+  </const>
+  <const name="stcbl4HoleSwitch4" type="Integer">
+    <value>
+      $B
+    </value>
+  </const>
+  <const name="stcbl4HoleSwitch5" type="Integer">
+    <value>
+      $C
+    </value>
+  </const>
+  <const name="stcbl4HoleSwitch6" type="Integer">
+    <value>
+      $D
+    </value>
+  </const>
+  <const name="stcbl4HoleSwitch7" type="Integer">
+    <value>
+      $E
+    </value>
+  </const>
+  <const name="stcbl4HoleSwitch8" type="Integer">
+    <value>
+      $F
+    </value>
+  </const>
   <const name="cell_PVU_PRD" type="Integer">
     <value>
       $167

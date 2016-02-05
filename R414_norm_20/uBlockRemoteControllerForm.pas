@@ -572,6 +572,14 @@ type
     imgSpawn1200APrd: TImage;
     pmSpawn1200BPrm: TImage;
     pmSpawn1200BPrd: TImage;
+    img4HoleSwitch1: TImage;
+    img4HoleSwitch2: TImage;
+    img4HoleSwitch3: TImage;
+    img4HoleSwitch4: TImage;
+    img4HoleSwitch5: TImage;
+    img4HoleSwitch6: TImage;
+    img4HoleSwitch7: TImage;
+    img4HoleSwitch8: TImage;
     procedure FormMouseWheelDown(Sender: TObject; Shift: TShiftState;
       MousePos: TPoint; var Handled: Boolean);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -632,7 +640,8 @@ type
     procedure pmSpawn1200BPrmClick(Sender: TObject);
     procedure pmSpawn1200BPrdClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
-    procedure White1Click(Sender: TObject);
+    procedure img4HoleSwitch1Click(Sender: TObject);
+    procedure White2Click(Sender: TObject);
 
 
   private
@@ -652,6 +661,7 @@ type
 const
   stcblGenerator = 2;
   stcblInputYY = 3;
+
 
 var
   //_Pult: T_Pult;
@@ -769,6 +779,95 @@ begin
     Boolean(Station.CableWhite2.stKonez2.stKonez <> csDisconected);
   imgCable2_ST2.Invalidate;
   White2.Invalidate;
+
+    //=================================================================
+  if Station.RemoteController.st4HoleSwitch[1].stState <> csDisconected then
+  begin
+    img4HoleSwitch1.Left := Station.RemoteController.st4HoleSwitch[1].offsetLeft;
+    img4HoleSwitch1.Top := Station.RemoteController.st4HoleSwitch[1].offsetTop;
+  end
+  else
+  begin
+    img4HoleSwitch1.Left := 10;
+    img4HoleSwitch1.Top := 300;
+  end;
+
+  if Station.RemoteController.st4HoleSwitch[2].stState <> csDisconected then
+  begin
+    img4HoleSwitch2.Left := Station.RemoteController.st4HoleSwitch[2].offsetLeft;
+    img4HoleSwitch2.Top := Station.RemoteController.st4HoleSwitch[2].offsetTop;
+  end
+  else
+  begin
+    img4HoleSwitch2.Left := 10;
+    img4HoleSwitch2.Top := 300;
+  end;
+
+  if Station.RemoteController.st4HoleSwitch[3].stState <> csDisconected then
+  begin
+    img4HoleSwitch3.Left := Station.RemoteController.st4HoleSwitch[3].offsetLeft;
+    img4HoleSwitch3.Top := Station.RemoteController.st4HoleSwitch[3].offsetTop;
+  end
+  else
+  begin
+    img4HoleSwitch3.Left := 10;
+    img4HoleSwitch3.Top := 300;
+  end;
+
+  if Station.RemoteController.st4HoleSwitch[4].stState <> csDisconected then
+  begin
+    img4HoleSwitch4.Left := Station.RemoteController.st4HoleSwitch[4].offsetLeft;
+    img4HoleSwitch4.Top := Station.RemoteController.st4HoleSwitch[4].offsetTop;
+  end
+  else
+  begin
+    img4HoleSwitch4.Left := 10;
+    img4HoleSwitch4.Top := 300;
+  end;
+
+  if Station.RemoteController.st4HoleSwitch[5].stState <> csDisconected then
+  begin
+    img4HoleSwitch5.Left := Station.RemoteController.st4HoleSwitch[5].offsetLeft;
+    img4HoleSwitch5.Top := Station.RemoteController.st4HoleSwitch[5].offsetTop;
+  end
+  else
+  begin
+    img4HoleSwitch5.Left := 10;
+    img4HoleSwitch5.Top := 300;
+  end;
+
+  if Station.RemoteController.st4HoleSwitch[6].stState <> csDisconected then
+  begin
+    img4HoleSwitch6.Left := Station.RemoteController.st4HoleSwitch[6].offsetLeft;
+    img4HoleSwitch6.Top := Station.RemoteController.st4HoleSwitch[6].offsetTop;
+  end
+  else
+  begin
+    img4HoleSwitch6.Left := 10;
+    img4HoleSwitch6.Top := 300;
+  end;
+
+  if Station.RemoteController.st4HoleSwitch[7].stState <> csDisconected then
+  begin
+    img4HoleSwitch7.Left := Station.RemoteController.st4HoleSwitch[7].offsetLeft;
+    img4HoleSwitch7.Top := Station.RemoteController.st4HoleSwitch[7].offsetTop;
+  end
+  else
+  begin
+    img4HoleSwitch7.Left := 10;
+    img4HoleSwitch7.Top := 300;
+  end;
+
+  if Station.RemoteController.st4HoleSwitch[8].stState <> csDisconected then
+  begin
+    img4HoleSwitch8.Left := Station.RemoteController.st4HoleSwitch[8].offsetLeft;
+    img4HoleSwitch8.Top := Station.RemoteController.st4HoleSwitch[8].offsetTop;
+  end
+  else
+  begin
+    img4HoleSwitch8.Left := 10;
+    img4HoleSwitch8.Top := 300;
+  end;
 
 //  if Station.cbGenerator.stConnectedToPlaceId <> csDisconected then
 //  begin
@@ -1383,7 +1482,7 @@ begin
   end;
 end;
 
-procedure T_Pult.White1Click(Sender: TObject);
+procedure T_Pult.White2Click(Sender: TObject);
 begin
 
 end;
@@ -1612,7 +1711,9 @@ var
 begin
   btPlaceHolder := 0;
   if (SelectedCable <> stcblInputYY)
-      and (SelectedCable <> stcblGenerator) then
+      and (SelectedCable <> stcblGenerator)
+      and ((SelectedCable < 8)
+      or (SelectedCable > 15)) then
   begin
     //Если выбранный кабель - удлинитель
     imgTopOffset := imgTopOffsetA;
@@ -1683,6 +1784,86 @@ begin
             Station.P321C.cblVhYY := csConnected;
             end;
           end;
+          stcbl4HoleSwitch1:
+          begin
+            if Station.RemoteController.st4HoleSwitch[1].stState = csDisconected then
+            begin
+            Station.RemoteController.st4HoleSwitch[1].stKonez := btPlaceHolder;
+            Station.RemoteController.st4HoleSwitch[1].offsetLeft := btLeft;
+            Station.RemoteController.st4HoleSwitch[1].offsetTop := btTop - imgTopOffset;
+            Station.RemoteController.st4HoleSwitch[1].stState := csConnected;
+            end;
+          end;
+          stcbl4HoleSwitch2:
+          begin
+            if Station.RemoteController.st4HoleSwitch[2].stState = csDisconected then
+            begin
+            Station.RemoteController.st4HoleSwitch[2].stKonez := btPlaceHolder;
+            Station.RemoteController.st4HoleSwitch[2].offsetLeft := btLeft;
+            Station.RemoteController.st4HoleSwitch[2].offsetTop := btTop - imgTopOffset;
+            Station.RemoteController.st4HoleSwitch[2].stState := csConnected;
+            end;
+          end;
+          stcbl4HoleSwitch3:
+          begin
+            if Station.RemoteController.st4HoleSwitch[3].stState = csDisconected then
+            begin
+            Station.RemoteController.st4HoleSwitch[3].stKonez := btPlaceHolder;
+            Station.RemoteController.st4HoleSwitch[3].offsetLeft := btLeft;
+            Station.RemoteController.st4HoleSwitch[3].offsetTop := btTop - imgTopOffset;
+            Station.RemoteController.st4HoleSwitch[3].stState := csConnected;
+            end;
+          end;
+          stcbl4HoleSwitch4:
+          begin
+            if Station.RemoteController.st4HoleSwitch[4].stState = csDisconected then
+            begin
+            Station.RemoteController.st4HoleSwitch[4].stKonez := btPlaceHolder;
+            Station.RemoteController.st4HoleSwitch[4].offsetLeft := btLeft;
+            Station.RemoteController.st4HoleSwitch[4].offsetTop := btTop - imgTopOffset;
+            Station.RemoteController.st4HoleSwitch[4].stState := csConnected;
+            end;
+          end;
+          stcbl4HoleSwitch5:
+          begin
+            if Station.RemoteController.st4HoleSwitch[5].stState = csDisconected then
+            begin
+            Station.RemoteController.st4HoleSwitch[5].stKonez := btPlaceHolder;
+            Station.RemoteController.st4HoleSwitch[5].offsetLeft := btLeft;
+            Station.RemoteController.st4HoleSwitch[5].offsetTop := btTop - imgTopOffset;
+            Station.RemoteController.st4HoleSwitch[5].stState := csConnected;
+            end;
+          end;
+          stcbl4HoleSwitch6:
+          begin
+            if Station.RemoteController.st4HoleSwitch[6].stState = csDisconected then
+            begin
+            Station.RemoteController.st4HoleSwitch[6].stKonez := btPlaceHolder;
+            Station.RemoteController.st4HoleSwitch[6].offsetLeft := btLeft;
+            Station.RemoteController.st4HoleSwitch[6].offsetTop := btTop - imgTopOffset;
+            Station.RemoteController.st4HoleSwitch[6].stState := csConnected;
+            end;
+          end;
+          stcbl4HoleSwitch7:
+          begin
+            if Station.RemoteController.st4HoleSwitch[7].stState = csDisconected then
+            begin
+            Station.RemoteController.st4HoleSwitch[7].stKonez := btPlaceHolder;
+            Station.RemoteController.st4HoleSwitch[7].offsetLeft := btLeft;
+            Station.RemoteController.st4HoleSwitch[7].offsetTop := btTop - imgTopOffset;
+            Station.RemoteController.st4HoleSwitch[7].stState := csConnected;
+            end;
+          end;
+          stcbl4HoleSwitch8:
+          begin
+            if Station.RemoteController.st4HoleSwitch[8].stState = csDisconected then
+            begin
+            Station.RemoteController.st4HoleSwitch[8].stKonez := btPlaceHolder;
+            Station.RemoteController.st4HoleSwitch[8].offsetLeft := btLeft;
+            Station.RemoteController.st4HoleSwitch[8].offsetTop := btTop - imgTopOffset;
+            Station.RemoteController.st4HoleSwitch[8].stState := csConnected;
+            end;
+          end;
 //        stcblInputYY:
 //          begin
 //            if Station.cbInputYY.stConnectedToPlaceId = csDisconected then
@@ -1736,6 +1917,58 @@ begin
     btTop := (Sender as TImage).Top;
     imgTopOffset := imgTopOffset - (Sender as TImage).Height;
   end;
+end;
+
+procedure T_Pult.img4HoleSwitch1Click(Sender: TObject);
+var
+tag:integer;
+begin
+
+tag :=  (Sender as TImage).Tag;
+
+  if (Station.RemoteController.st4HoleSwitch[tag].stState = csConnected) then
+  begin
+
+      case SelectedCable of
+         stcblUdlinitel1ST1:
+         begin
+            Station.CableBlack1.stKonez1.stKonez := Station.RemoteController.st4HoleSwitch[tag].stKonez;
+            Station.CableBlack1.stKonez1.offsetLeft := Station.RemoteController.st4HoleSwitch[tag].offsetLeft;
+            Station.CableBlack1.stKonez1.offsetTop := Station.RemoteController.st4HoleSwitch[tag].offsetTop - 100;
+            Station.CableBlack1.stKonez1.stState := cs4HoleSwitch;
+         end;
+         stcblUdlinitel1ST2:
+         begin
+            Station.CableBlack1.stKonez2.stKonez := Station.RemoteController.st4HoleSwitch[tag].stKonez;
+            Station.CableBlack1.stKonez2.offsetLeft := Station.RemoteController.st4HoleSwitch[tag].offsetLeft;
+            Station.CableBlack1.stKonez2.offsetTop := Station.RemoteController.st4HoleSwitch[tag].offsetTop - 100;
+            Station.CableBlack1.stKonez2.stState := cs4HoleSwitch;
+         end;
+         stcblUdlinitel2ST1:
+         begin
+            Station.CableWhite2.stKonez1.stKonez := Station.RemoteController.st4HoleSwitch[tag].stKonez;
+            Station.CableWhite2.stKonez1.offsetLeft := Station.RemoteController.st4HoleSwitch[tag].offsetLeft;
+            Station.CableWhite2.stKonez1.offsetTop := Station.RemoteController.st4HoleSwitch[tag].offsetTop - 100;
+            Station.CableWhite2.stKonez1.stState := cs4HoleSwitch;
+         end;
+         stcblUdlinitel2ST2:
+         begin
+            Station.CableWhite2.stKonez2.stKonez := Station.RemoteController.st4HoleSwitch[tag].stKonez;
+            Station.CableWhite2.stKonez2.offsetLeft := Station.RemoteController.st4HoleSwitch[tag].offsetLeft;
+            Station.CableWhite2.stKonez2.offsetTop := Station.RemoteController.st4HoleSwitch[tag].offsetTop - 100;
+            Station.CableWhite2.stKonez2.stState := cs4HoleSwitch;
+         end
+         else
+         Station.RemoteController.st4HoleSwitch[tag].stState := csDisconected;
+
+      end;
+
+
+
+
+  end;
+  SelectedCable := tag+7;
+  Reload;
 end;
 
 procedure T_Pult.imgButCall1MouseDown(Sender: TObject; Button: TMouseButton;
@@ -1804,7 +2037,7 @@ procedure T_Pult.imgCable1_ST1Click(Sender: TObject);
 begin
   imgCable1_ST1.Visible := False;
   Station.CableBlack1.stKonez1.stKonez := csDisconected;
-  SelectedCable := stcblUdlinitel1ST1;
+  SelectedCable := 0;
   Station.CableBlack1.stKonez1.stState := csDisconected;
 
   Reload;
@@ -1815,7 +2048,7 @@ begin
   imgCable1_ST2.Visible := False;
   Station.CableBlack1.stKonez2.stState := csDisconected;
   Station.CableBlack1.stKonez2.stKonez := csDisconected;
-  SelectedCable := stcblUdlinitel1ST2;
+  SelectedCable := 0;
 
   Reload;
 end;
@@ -1824,7 +2057,7 @@ procedure T_Pult.imgCable2_ST1Click(Sender: TObject);
 begin
   imgCable2_ST1.Visible := False;
   Station.CableWhite2.stKonez1.stKonez := csDisconected;
-  SelectedCable := stcblUdlinitel2ST1;
+  SelectedCable := 0;
   Station.CableWhite2.stKonez1.stState := csDisconected;
 
   Reload;
@@ -1835,7 +2068,7 @@ begin
   imgCable2_ST2.Visible := False;
   Station.CableWhite2.stKonez2.stKonez := csDisconected;
   Station.CableWhite2.stKonez2.stState := csDisconected;
-  SelectedCable := stcblUdlinitel2ST2;
+  SelectedCable := 0;
 
   Reload;
 end;
