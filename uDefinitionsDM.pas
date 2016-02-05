@@ -135,6 +135,15 @@ unit uDefinitionsDM;
   stcblUdlinitel2ST1 = 6; //Один конец второго удлинительного кабеля
   stcblUdlinitel2ST2 = 7; //Другой конец второго удлинительного кабеля
 
+  stcbl4HoleSwitch1 = 8;
+  stcbl4HoleSwitch2 = 9;
+  stcbl4HoleSwitch3 = 10;
+  stcbl4HoleSwitch4 = 11;
+  stcbl4HoleSwitch5 = 12;
+  stcbl4HoleSwitch6 = 13;
+  stcbl4HoleSwitch7 = 14;
+  stcbl4HoleSwitch8 = 15;
+
   cell_PVU_PRD = 359;
   cell_PVU_PRM = 358;
 

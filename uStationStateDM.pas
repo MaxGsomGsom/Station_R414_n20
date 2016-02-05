@@ -314,6 +314,13 @@ const
     B: array [1..21] of pChannel;
   end;
 
+    type pUdlinitelKonez = packed record
+    stKonez: Integer;
+    offsetLeft: Integer;
+    offsetTop: Integer;
+    stState: Integer;
+  end;
+
   type pRemoteController = packed record
 
     SwPVU: Byte;
@@ -330,6 +337,7 @@ const
     stGeneratorCableBType: Byte;
     stInputYYCableAType: Byte;
     stInputYYCableBType: Byte;
+    st4HoleSwitch: array [1..8] of pUdlinitelKonez;
     indCallLineVisible: array [1..9] of Boolean;
 
     CrossA: array [1..21] of pCross;
@@ -413,12 +421,6 @@ const
     offsetTop: Integer;
   end;
 
-  type pUdlinitelKonez = packed record
-    stKonez: Integer;
-    offsetLeft: Integer;
-    offsetTop: Integer;
-    stState: Integer;
-  end;
 
   type pUdlinitelCable = packed record
     stKonez1: pUdlinitelKonez;

@@ -243,6 +243,8 @@ type TTaskType = (
   csConnectedAtPult=76;
 
   csP323ISH=77;
+
+  cs4HoleSwitch=78;
   {$ENDREGION}
 
   function GetWorkModeTitle(WorkMode: TWorkMode): string;

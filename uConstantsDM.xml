@@ -841,6 +841,11 @@
       $4D
     </value>
   </const>
+  <const name="cs4HoleSwitch" type="Integer">
+    <value>
+      $4E
+    </value>
+  </const>
   <const name="GeterodinWaves" type="Array" visibility="public" />
   <function name="GetWorkModeTitle" visibility="public">
     <devnotes>

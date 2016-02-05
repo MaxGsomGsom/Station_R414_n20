@@ -307,6 +307,12 @@
       </array>
     </field>
   </struct>
+  <struct name="pUdlinitelKonez" packed="true">
+    <field name="stKonez" type="Integer" visibility="public" />
+    <field name="offsetLeft" type="Integer" visibility="public" />
+    <field name="offsetTop" type="Integer" visibility="public" />
+    <field name="stState" type="Integer" visibility="public" />
+  </struct>
   <struct name="pRemoteController" packed="true">
     <field name="SwPVU" type="Byte" visibility="public" />
     <field name="butCall1" type="Byte" visibility="public" />
@@ -322,6 +328,11 @@
     <field name="stGeneratorCableBType" type="Byte" visibility="public" />
     <field name="stInputYYCableAType" type="Byte" visibility="public" />
     <field name="stInputYYCableBType" type="Byte" visibility="public" />
+    <field name="st4HoleSwitch" visibility="public">
+      <array name="st4HoleSwitch" visibility="public" low="1" high="8">
+        <element type="pUdlinitelKonez" />
+      </array>
+    </field>
     <field name="indCallLineVisible" visibility="public">
       <array name="indCallLineVisible" visibility="public" low="1" high="9">
         <element type="Boolean" />
@@ -406,12 +417,6 @@
     <field name="stConnectedToPlaceId" type="Integer" visibility="public" />
     <field name="offsetLeft" type="Integer" visibility="public" />
     <field name="offsetTop" type="Integer" visibility="public" />
-  </struct>
-  <struct name="pUdlinitelKonez" packed="true">
-    <field name="stKonez" type="Integer" visibility="public" />
-    <field name="offsetLeft" type="Integer" visibility="public" />
-    <field name="offsetTop" type="Integer" visibility="public" />
-    <field name="stState" type="Integer" visibility="public" />
   </struct>
   <struct name="pUdlinitelCable" packed="true">
     <field name="stKonez1" type="pUdlinitelKonez" visibility="public" />
