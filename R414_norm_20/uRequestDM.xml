@@ -45,9 +45,9 @@
       connected
     </value>
   </const>
-  <const name="KEY_MESSAGE" type="string">
+  <const name="KEY_MESSAGE_TEXT" type="string">
     <value>
-      messageText
+      txt
     </value>
   </const>
   <const name="KEY_STARTNETTASK" type="string">

@@ -2,7 +2,7 @@ object PreparationToWorkForm: TPreparationToWorkForm
   Left = 0
   Top = 0
   Caption = #1055#1086#1076#1075#1086#1090#1086#1074#1082#1072' '#1082' '#1088#1072#1073#1086#1090#1077
-  ClientHeight = 427
+  ClientHeight = 499
   ClientWidth = 634
   Color = clBtnFace
   Constraints.MinHeight = 400
@@ -17,7 +17,7 @@ object PreparationToWorkForm: TPreparationToWorkForm
   OnClose = FormClose
   DesignSize = (
     634
-    427)
+    499)
   PixelsPerInch = 96
   TextHeight = 13
   object lblWorkMode: TLabel
@@ -89,6 +89,32 @@ object PreparationToWorkForm: TPreparationToWorkForm
     Left = 136
     Top = 135
     Width = 5
+    Height = 18
+    Caption = '-'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -15
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+  end
+  object lblCross: TLabel
+    Left = 12
+    Top = 170
+    Width = 44
+    Height = 18
+    Caption = #1050#1088#1086#1089#1089':'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -15
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+  end
+  object lblCrossName: TLabel
+    Left = 136
+    Top = 170
+    Width = 204
     Height = 18
     Caption = '-'
     Font.Charset = DEFAULT_CHARSET
@@ -234,17 +260,18 @@ object PreparationToWorkForm: TPreparationToWorkForm
   end
   object btnStart: TButton
     Left = 496
-    Top = 379
+    Top = 451
     Width = 130
     Height = 40
     Anchors = [akRight, akBottom]
     Caption = #1055#1088#1080#1089#1090#1091#1087#1080#1090#1100
     TabOrder = 1
     OnClick = btnStartClick
+    ExplicitTop = 379
   end
   object btnCancel: TButton
     Left = 8
-    Top = 379
+    Top = 451
     Width = 130
     Height = 40
     Align = alCustom
@@ -252,6 +279,7 @@ object PreparationToWorkForm: TPreparationToWorkForm
     Caption = #1054#1090#1084#1077#1085#1072
     TabOrder = 2
     OnClick = btnCancelClick
+    ExplicitTop = 379
   end
   object cbbWorkMode: TComboBox
     Left = 136
@@ -272,9 +300,9 @@ object PreparationToWorkForm: TPreparationToWorkForm
   end
   object grpTaskChoice: TGroupBox
     Left = 8
-    Top = 171
+    Top = 220
     Width = 618
-    Height = 202
+    Height = 225
     Anchors = [akLeft, akTop, akRight, akBottom]
     Caption = #1042#1099#1073#1086#1088' '#1079#1072#1076#1072#1085#1080#1103
     Font.Charset = DEFAULT_CHARSET
@@ -286,18 +314,19 @@ object PreparationToWorkForm: TPreparationToWorkForm
     TabOrder = 4
     DesignSize = (
       618
-      202)
+      225)
     object lstTaskChoice: TListBox
       Left = 20
       Top = 29
       Width = 585
-      Height = 157
+      Height = 180
       Anchors = [akLeft, akTop, akRight, akBottom]
       ItemHeight = 18
       Items.Strings = (
         '')
       TabOrder = 0
       OnClick = lstTaskChoiceClick
+      ExplicitHeight = 157
     end
   end
   object edtUserName: TEdit

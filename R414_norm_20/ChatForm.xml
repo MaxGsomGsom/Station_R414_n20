@@ -2306,7 +2306,7 @@
       </procedure>
       <procedure name="LinkedNickSet" visibility="published">
         <parameters>
-          <parameter name="Sender" type="TObject" />
+          <parameter name="Sender" type="string" />
         </parameters>
       </procedure>
       <constructor name="Create" visibility="published">

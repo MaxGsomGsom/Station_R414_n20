@@ -144,6 +144,8 @@ unit uDefinitionsDM;
   stcbl4HoleSwitch7 = 14;
   stcbl4HoleSwitch8 = 15;
 
+  stcb600Om1 = 16;
+
   cell_PVU_PRD = 359;
   cell_PVU_PRM = 358;
 

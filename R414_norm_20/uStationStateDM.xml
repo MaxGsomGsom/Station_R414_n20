@@ -338,6 +338,7 @@
         <element type="Boolean" />
       </array>
     </field>
+    <field name="st600Om1" type="pUdlinitelKonez" visibility="public" />
     <field name="CrossA" visibility="public">
       <array name="CrossA" visibility="public" low="1" high="21">
         <element type="pCross" />

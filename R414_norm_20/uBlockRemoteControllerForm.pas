@@ -580,6 +580,7 @@ type
     img4HoleSwitch6: TImage;
     img4HoleSwitch7: TImage;
     img4HoleSwitch8: TImage;
+    img600Om1: TImage;
     procedure FormMouseWheelDown(Sender: TObject; Shift: TShiftState;
       MousePos: TPoint; var Handled: Boolean);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -642,6 +643,7 @@ type
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure img4HoleSwitch1Click(Sender: TObject);
     procedure White2Click(Sender: TObject);
+    procedure img600Om1Click(Sender: TObject);
 
 
   private
@@ -867,6 +869,18 @@ begin
   begin
     img4HoleSwitch8.Left := 10;
     img4HoleSwitch8.Top := 300;
+  end;
+
+
+    if Station.RemoteController.st600Om1.stState <> csDisconected then
+  begin
+    img600Om1.Left := Station.RemoteController.st600Om1.offsetLeft;
+    img600Om1.Top := Station.RemoteController.st600Om1.offsetTop;
+  end
+  else
+  begin
+    img600Om1.Left := 10;
+    img600Om1.Top := 400;
   end;
 
 //  if Station.cbGenerator.stConnectedToPlaceId <> csDisconected then
@@ -1713,7 +1727,8 @@ begin
   if (SelectedCable <> stcblInputYY)
       and (SelectedCable <> stcblGenerator)
       and ((SelectedCable < 8)
-      or (SelectedCable > 15)) then
+      or (SelectedCable > 15)
+      and (SelectedCable <> stcb600Om1)) then
   begin
     //Если выбранный кабель - удлинитель
     imgTopOffset := imgTopOffsetA;
@@ -1864,6 +1879,16 @@ begin
             Station.RemoteController.st4HoleSwitch[8].stState := csConnected;
             end;
           end;
+          stcb600Om1:
+          begin
+            if Station.RemoteController.st600Om1.stState = csDisconected then
+            begin
+            Station.RemoteController.st600Om1.stKonez := btPlaceHolder;
+            Station.RemoteController.st600Om1.offsetLeft := btLeft;
+            Station.RemoteController.st600Om1.offsetTop := btTop - imgTopOffset;
+            Station.RemoteController.st600Om1.stState := csConnected;
+            end;
+          end;
 //        stcblInputYY:
 //          begin
 //            if Station.cbInputYY.stConnectedToPlaceId = csDisconected then
@@ -1969,6 +1994,17 @@ tag :=  (Sender as TImage).Tag;
   end;
   SelectedCable := tag+7;
   Reload;
+end;
+
+procedure T_Pult.img600Om1Click(Sender: TObject);
+begin
+  if (Station.RemoteController.st600Om1.stState = csConnected) then
+  begin
+       Station.RemoteController.st600Om1.stState := csDisconected;
+  end;
+
+    SelectedCable := stcb600Om1;
+    Reload;
 end;
 
 procedure T_Pult.imgButCall1MouseDown(Sender: TObject; Button: TMouseButton;

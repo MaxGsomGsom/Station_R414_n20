@@ -68,10 +68,12 @@
     <members>
       <field name="FConnected" type="Boolean" visibility="private" />
       <field name="FLinkedR414Connected" type="Boolean" visibility="private" />
-      <field name="FR415Connected" type="Boolean" visibility="private" />
-      <field name="FCrossConnected" type="Boolean" visibility="private" />
+      <field name="FLinkedR415Connected" type="Boolean" visibility="private" />
+      <field name="FLinkedCrossConnected" type="Boolean" visibility="private" />
       <field name="FUserName" type="string" visibility="private" />
       <field name="FLinkedR414UserName" type="string" visibility="private" />
+      <field name="FLinkedR415UserName" type="string" visibility="private" />
+      <field name="FLinkedCrossUserName" type="string" visibility="private" />
       <field name="FMainStation" type="Boolean" visibility="private" />
       <field name="FWorkMode" type="TWorkMode" visibility="private" />
       <field name="FTaskID" type="TTaskType" visibility="private" />
@@ -119,10 +121,10 @@
         </parameters>
       </function>
       <field name="ErrorKepeer" type="TErrorKeeper" visibility="public" />
-      <field name="FConnectedEvent" type="TEvent" visibility="public" />
+      <field name="FConnectedEvent" type="TAddRemoveUpdateClientEvent" visibility="public" />
       <field name="FMessageEvent" type="TEvent" visibility="public" />
       <field name="FStartNetTask" type="TEvent" visibility="public" />
-      <field name="FDisconnect" type="TEvent" visibility="public" />
+      <field name="FDisconnect" type="TAddRemoveUpdateClientEvent" visibility="public" />
       <field name="FStartNetTaskOk" type="TEvent" visibility="public" />
       <field name="CanSendChatMessages" type="Boolean" visibility="public" />
       <field name="CanGetChatMessages" type="Boolean" visibility="public" />
@@ -192,8 +194,8 @@
       <property name="MainStation" visibility="public" read="FMainStation" write="FMainStation" type="Boolean" />
       <property name="Connected" visibility="public" read="FConnected" write="FConnected" type="Boolean" />
       <property name="LinkedR414Connected" visibility="public" read="FLinkedR414Connected" write="FLinkedR414Connected" type="Boolean" />
-      <property name="R415Connected" visibility="public" read="FR415Connected" write="FR415Connected" type="Boolean" />
-      <property name="CrossConnected" visibility="public" read="FCrossConnected" write="FCrossConnected" type="Boolean" />
+      <property name="LinkedR415Connected" visibility="public" read="FLinkedR415Connected" write="FLinkedR415Connected" type="Boolean" />
+      <property name="LinkedCrossConnected" visibility="public" read="FLinkedCrossConnected" write="FLinkedCrossConnected" type="Boolean" />
       <property name="UserName" visibility="public" read="FUserName" write="FUserName" type="string" />
       <property name="LinkedR414UserName" visibility="public" read="FLinkedR414UserName" write="FLinkedR414UserName" type="string" />
       <property name="WorkMode" visibility="public" read="FWorkMode" write="FWorkMode" type="TWorkMode" />
@@ -202,10 +204,12 @@
       <property name="TransmitterWaveB" visibility="public" read="FTransmitterWaveB" write="SetTransmitterWaveB" type="Integer" />
       <property name="ReceiverWaveA" visibility="public" read="FReceiverWaveA" write="SetReceiverWaveA" type="Integer" />
       <property name="ReceiverWaveB" visibility="public" read="FReceiverWaveB" write="SetReceiverWaveB" type="Integer" />
-      <event name="OnConnectedEvent" visibility="public" read="FConnectedEvent" write="FConnectedEvent" type="TEvent" />
+      <event name="OnConnectedEvent" visibility="public" read="FConnectedEvent" write="FConnectedEvent" type="TAddRemoveUpdateClientEvent" />
       <event name="OnMessageEvent" visibility="public" read="FMessageEvent" write="FMessageEvent" type="TEvent" />
       <event name="OnStartNetTask" visibility="public" read="FStartNetTask" write="FStartNetTask" type="TEvent" />
-      <event name="OnDisconnect" visibility="public" read="FDisconnect" write="FDisconnect" type="TEvent" />
+      <event name="OnDisconnect" visibility="public" read="FDisconnect" write="FDisconnect" type="TAddRemoveUpdateClientEvent" />
+      <property name="LinkedR415UserName" visibility="public" read="FLinkedR415UserName" write="FLinkedR415UserName" type="string" />
+      <property name="LinkedCrossUserName" visibility="public" read="FLinkedCrossUserName" write="FLinkedCrossUserName" type="string" />
     </members>
   </class>
 </namespace>

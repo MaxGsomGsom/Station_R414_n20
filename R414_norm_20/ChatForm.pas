@@ -20,7 +20,7 @@ type
     procedure ShowMessage(Sender: TObject);
     procedure img1OpenChatClick(Sender: TObject);
     procedure btn1SendMessageClick(Sender: TObject);
-    procedure LinkedNickSet(Sender: TObject);
+    procedure LinkedNickSet(Sender: string);
     constructor Create(AOwner:TComponent;  NetWorker0: TClientNetWorker; TaskController: TTaskController); reintroduce;
     procedure FormKeyPress(Sender: TObject; var Key: Char);
   private
@@ -123,20 +123,23 @@ else Self.Width:=500;
 
 end;
 
-procedure TTChatForm.LinkedNickSet(Sender: TObject);
+procedure TTChatForm.LinkedNickSet(Sender: string);
 var Req: TRequest;
 begin
-Self.Visible:= NetWorker.ClientState.LinkedR414Connected ;
-LinkedNick.Caption:='Связанная станция: '+NetWorker.ClientState.LinkedR414UserName;
-if (NetWorker.ClientState.MainStation = True) then
-begin
-lblRole.Caption := 'Главная';
-end
-else
-begin
-lblRole.Caption := 'Подчиненная';
-end;
+if (Sender = CLIENT_STATION_R414) then
+ begin
+    Self.Visible:= NetWorker.ClientState.LinkedR414Connected ;
+    LinkedNick.Caption:='Связанная станция: '+NetWorker.ClientState.LinkedR414UserName;
+    if (NetWorker.ClientState.MainStation = True) then
+    begin
+    lblRole.Caption := 'Главная';
+    end
+    else
+    begin
+    lblRole.Caption := 'Подчиненная';
+    end;
 
+ end;
 end;
 
 procedure TTChatForm.ShowMessage(Sender: TObject);
