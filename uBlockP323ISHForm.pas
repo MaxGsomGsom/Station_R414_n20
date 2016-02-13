@@ -177,22 +177,18 @@ begin
 
             if (Station.P323ISH.swResist = 2) and (Station.P323ISH.swMode = 4)
 
-            //если белый кабель подключен к П323, а черный к 600 Ом
+            //если белый кабель подключен к П323
             and ((Station.CableWhite2.stKonez1.stState = csP323ISH) or (Station.CableWhite2.stKonez2.stState = csP323ISH))
-            and (((Station.CableBlack1.stKonez1.stKonez >=360) and (Station.CableBlack1.stKonez1.stKonez <=367)) or ((Station.CableBlack1.stKonez2.stKonez >=360) and (Station.CableBlack1.stKonez2.stKonez <=367)))
             //если полукомплекты настроены
             and (Station.IsPolukomplektATuned) and (Station.IsPolukomplektBTuned)
-            //если каналы настроены и кабели к ним подключены
+            //если каналы настроен и кабель к ниму подключен
             and ((Station.IsChannelTuned(Station.CurrentChannel(Station.CableWhite2.stKonez1.stKonez))) or (Station.IsChannelTuned(Station.CurrentChannel(Station.CableWhite2.stKonez2.stKonez))) )
-            and ((Station.IsChannelTuned(Station.CurrentChannel(Station.CableBlack1.stKonez1.stKonez))) or (Station.IsChannelTuned(Station.CurrentChannel(Station.CableBlack1.stKonez2.stKonez))))
             //если кабели подключены к нужным раземам М и Д
              and ((Station.CurrentPort(Station.CableWhite2.stKonez1.stKonez) = 4) or  (Station.CurrentPort(Station.CableWhite2.stKonez2.stKonez) = 4))
-             and ((Station.CurrentPort(Station.CableBlack1.stKonez1.stKonez) = 3) or  (Station.CurrentPort(Station.CableBlack1.stKonez2.stKonez) = 3))
+             and (Station.CurrentPort(Station.RemoteController.st600Om1.stKonez) = 3)
 
-             and ((Station.CurrentChannel(Station.CableWhite2.stKonez1.stKonez) = Station.CurrentChannel(Station.CableBlack1.stKonez1.stKonez)) or
-                  (Station.CurrentChannel(Station.CableWhite2.stKonez2.stKonez) = Station.CurrentChannel(Station.CableBlack1.stKonez1.stKonez)) or
-                  (Station.CurrentChannel(Station.CableWhite2.stKonez1.stKonez) = Station.CurrentChannel(Station.CableBlack1.stKonez2.stKonez)) or
-                  (Station.CurrentChannel(Station.CableWhite2.stKonez2.stKonez) = Station.CurrentChannel(Station.CableBlack1.stKonez2.stKonez)))
+             and ((Station.CurrentChannel(Station.CableWhite2.stKonez1.stKonez) = Station.CurrentChannel(Station.RemoteController.st600Om1.stKonez)) or
+                  (Station.CurrentChannel(Station.CableWhite2.stKonez2.stKonez) = Station.CurrentChannel(Station.RemoteController.st600Om1.stKonez)))
             then
             begin
 

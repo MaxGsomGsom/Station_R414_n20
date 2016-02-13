@@ -36,14 +36,16 @@ type
     lblStationPriority: TLabel;
     lbl1: TLabel;
     lblLinkedR414: TLabel;
+    lblCross: TLabel;
+    lblCrossName: TLabel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnCancelClick(Sender: TObject);
     procedure btnStartClick(Sender: TObject);
     procedure lstTaskChoiceClick(Sender: TObject);
     procedure cbbWorkModeChange(Sender: TObject);
-    procedure ShowPriority(Sender: TObject);
+    procedure ShowPriorityAndLinkedName(Sender: string);
     procedure StartNetTask(Sender: TObject);
-    procedure Disconnect(Sender: TObject);
+    procedure Disconnect(Sender: string);
     //procedure FormHide(Sender: TObject);
 
   private
@@ -84,8 +86,8 @@ begin
   Self.NetWorker := NetWorker;
   Self.edtUserName.Text := NetWorker.ClientState.UserName;
   Self.NetworkSender := TNetworkSender.Create(NetWorker);
-  ShowPriority(Self);
-  NetWorker.ClientState.OnConnectedEvent:=ShowPriority;
+  ShowPriorityAndLinkedName(CLIENT_STATION_R414);
+  NetWorker.ClientState.OnConnectedEvent:=ShowPriorityAndLinkedName;
 
    NetWorker.ClientState.OnStartNetTask:=StartNetTask;
    NetWorker.ClientState.OnDisconnect:=Disconnect;
@@ -280,28 +282,46 @@ begin
     NetWorker.ClientState.TaskID := TTaskType(lstTaskChoice.ItemIndex + 1);
 end;
 
-procedure TPreparationToWorkForm.ShowPriority;
+procedure TPreparationToWorkForm.ShowPriorityAndLinkedName(Sender: string);
 begin
-if (NetWorker.ClientState.LinkedR414Connected) then begin
-  if (NetWorker.ClientState.IsMainStation) then
-  begin
-    lblStationPriority.Caption:= 'Главная станция';
-  end
-  else
-  begin
-     lblStationPriority.Caption:= 'Подчиненная станция';
-  end;
+if (Sender = CLIENT_STATION_R414) then
+ begin
+    if (NetWorker.ClientState.LinkedR414Connected) then begin
+      if (NetWorker.ClientState.IsMainStation) then
+      begin
+        lblStationPriority.Caption:= 'Главная станция';
+      end
+      else
+      begin
+         lblStationPriority.Caption:= 'Подчиненная станция';
+      end;
 
-  lblLinkedR414.Caption:=NetWorker.ClientState.LinkedR414UserName;
+      lblLinkedR414.Caption:=NetWorker.ClientState.LinkedR414UserName;
+    end;
+ end
+ else if (Sender = CLIENT_CROSS) then
+ begin
+    if (NetWorker.ClientState.LinkedCrossConnected) then begin
+      lblCrossName.Caption:=NetWorker.ClientState.LinkedCrossUserName;
+    end;
+ end;
 end;
-end;
 
 
-procedure TPreparationToWorkForm.Disconnect(Sender: TObject);
+procedure TPreparationToWorkForm.Disconnect(Sender: string);
 begin
+if (Sender = CLIENT_STATION_R414) then
+   begin
      NetWorker.ClientState.LinkedR414Connected := False;
-     lblLinkedR414.Caption:='';
-     lblStationPriority.Caption:='';
+     lblLinkedR414.Caption:='-';
+     lblStationPriority.Caption:='-';
+   end
+else if (Sender = CLIENT_CROSS) then
+begin
+  NetWorker.ClientState.LinkedCrossConnected := false;
+  lblCrossName.Caption:='-';
+end;
+
 end;
 
 

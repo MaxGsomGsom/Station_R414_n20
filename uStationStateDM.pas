@@ -339,6 +339,7 @@ const
     stInputYYCableBType: Byte;
     st4HoleSwitch: array [1..8] of pUdlinitelKonez;
     indCallLineVisible: array [1..9] of Boolean;
+    st600Om1: pUdlinitelKonez;
 
     CrossA: array [1..21] of pCross;
     CrossB: array [1..21] of pCross;

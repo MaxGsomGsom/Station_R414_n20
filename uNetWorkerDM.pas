@@ -59,6 +59,8 @@ end;
 
 const
   CLIENT_STATION_R414 = 'r414';
+  CLIENT_CROSS = 'cross';
+  CLIENT_STATION_R415 = 'r415';
   CLIENT_STATION_R414_TASK = 'r414_task';
   STATION_STATUS_MAIN = 'main';
   STATION_STATUS_SUBORDINATE = 'subordinate';
@@ -201,7 +203,7 @@ uses
     Request.Name := REQ_NAME_MESSAGE;
     Request.AddKeyValue(KEY_TYPE, CLIENT_STATION_R414);      // Тип клиента
 
-    Request.AddKeyValue(KEY_MESSAGE, Value);            // Наши ключ и значение
+    Request.AddKeyValue(KEY_MESSAGE_TEXT, Value);            // Наши ключ и значение
     //Request.AddKeyValue(KEY_NAME, ClientState.UserName);
     TCPClient.IOHandler.WriteLn(Request.ConvertToText);
     Request.Free;                               // Чистим мусор
@@ -255,7 +257,7 @@ uses
                                                   // главная или подчинённая
         ClientState.MainStation := (strValue = 'main'); // иначе подчинённая
       end else
-      if strValue = 'r414' then
+      if strValue = CLIENT_STATION_R414 then
       begin
         for i := 0 to Request.GetCountKeys - 1 do
         try
@@ -269,7 +271,7 @@ uses
             begin
               ClientState.LinkedR414Connected := True;
               ClientState.LinkedR414UserName := kvRecord.Value;
-              ClientState.OnConnectedEvent(Self);
+              ClientState.OnConnectedEvent(CLIENT_STATION_R414);
               //ClientStateChangedEvent;
             end
             else                                      // connected = false
@@ -283,8 +285,8 @@ uses
                                                   // ибо при отключенном втором клиенте
                                                   // она этого делать не будет
               ClientState.LinkedR414Connected := False;
-              ClientState.LinkedR414UserName := '';
-              ClientState.OnDisconnect(Self);
+              ClientState.LinkedR414UserName := '-';
+              ClientState.OnDisconnect(CLIENT_STATION_R414);
             end;
             //ClientStateChangedEvent;
             break;
@@ -325,6 +327,39 @@ uses
         end;                                    // (Ошибка конвертации strValue);
       end;
 
+
+
+      if strValue = CLIENT_CROSS then
+      begin
+        for i := 0 to Request.GetCountKeys - 1 do
+        try
+          kvRecord := Request.GetKeyValue(i);
+          if kvRecord.Key = KEY_NAME then             // Если связанная станция
+          begin                                       // прислала своё имя, то
+                                                      // она отключилась или подключилась
+            strValue := Request.GetValue(KEY_CONNECTED);
+
+            if strToBool(strValue) then               // Если connected = true
+            begin
+              ClientState.LinkedCrossConnected := True;
+              ClientState.LinkedCrossUserName := kvRecord.Value;
+              ClientState.OnConnectedEvent(CLIENT_CROSS);
+            end
+            else                                      // connected = false
+            begin
+              ClientState.LinkedCrossConnected := False;
+              ClientState.LinkedR414UserName := '-';
+              ClientState.OnDisconnect(CLIENT_CROSS);
+            end;
+            break;
+          end;
+        except
+          on E: Exception do;                   //Залогать, что серв прислал херню
+        end;                                    // (Ошибка конвертации strValue);
+      end;
+
+
+
       if strValue = CLIENT_STATION_R414_TASK then
       begin
         for i := 0 to Request.GetCountKeys - 1 do
@@ -342,7 +377,7 @@ uses
     end else
     if Request.Name = REQ_NAME_MESSAGE then
     begin
-    ClientState.LastMessage:= Request.GetValue(KEY_MESSAGE);
+    ClientState.LastMessage:= Request.GetValue(KEY_MESSAGE_TEXT);
          ClientState.OnMessageEvent(Self);
     end;
     Request.Free;                                  // Убираем мусор

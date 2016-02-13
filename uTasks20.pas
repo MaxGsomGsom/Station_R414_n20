@@ -3585,12 +3585,11 @@ uConstantsDM;
  function TTaskTerminalModeSubTask34.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
          if ((Station.CurrentChannel(Station.CableWhite2.stKonez1.stKonez) = 1) or (Station.CurrentChannel(Station.CableWhite2.stKonez2.stKonez) = 1))
-         and ((Station.CurrentChannel(Station.CableBlack1.stKonez1.stKonez) = 1) or (Station.CurrentChannel(Station.CableBlack1.stKonez2.stKonez) = 1))
+         and (Station.CurrentChannel(Station.RemoteController.st600Om1.stKonez) = 1)
 
          and ((Station.CurrentPort(Station.CableWhite2.stKonez1.stKonez) = 4) or  (Station.CurrentPort(Station.CableWhite2.stKonez2.stKonez) = 4))
-             and ((Station.CurrentPort(Station.CableBlack1.stKonez1.stKonez) = 3) or  (Station.CurrentPort(Station.CableBlack1.stKonez2.stKonez) = 3))
+         and (Station.CurrentPort(Station.RemoteController.st600Om1.stKonez) = 3)
 
-             and (((Station.CableBlack1.stKonez1.stKonez >=360) and (Station.CableBlack1.stKonez1.stKonez <=367)) or ((Station.CableBlack1.stKonez2.stKonez >=360) and (Station.CableBlack1.stKonez2.stKonez <=367)))
          then
          begin
            Result:=true;
@@ -3599,9 +3598,9 @@ uConstantsDM;
          begin
 
             if ((Station.CurrentChannel(Station.CableWhite2.stKonez1.stKonez) <> 1) and (Station.CurrentChannel(Station.CableWhite2.stKonez2.stKonez) <> 1)) or ((Station.CurrentPort(Station.CableWhite2.stKonez1.stKonez) <> 4) and  (Station.CurrentPort(Station.CableWhite2.stKonez2.stKonez) <> 4)) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Белый провод не подключен ко входу Д канала 1' + #10#13;
-            if ((Station.CurrentChannel(Station.CableBlack1.stKonez1.stKonez) <> 1) and (Station.CurrentChannel(Station.CableBlack1.stKonez2.stKonez) <> 1)) or ((Station.CurrentPort(Station.CableBlack1.stKonez1.stKonez) <> 3) and  (Station.CurrentPort(Station.CableBlack1.stKonez2.stKonez) <> 3)) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Черный провод не подключен ко входу М канала 1' + #10#13;
-            if not (((Station.CableBlack1.stKonez1.stKonez >=360) and (Station.CableBlack1.stKonez1.stKonez <=367)) or ((Station.CableBlack1.stKonez2.stKonez >=360) and (Station.CableBlack1.stKonez2.stKonez <=367))) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Черный провод не подключен к выходу 600 Ом' + #10#13;
-            Result:=false;
+            if (Station.CurrentChannel(Station.RemoteController.st600Om1.stKonez) <> 1) or (Station.CurrentPort(Station.RemoteController.st600Om1.stKonez) <> 3) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Нагрузка 600 Ом не подключена ко входу М канала 1' + #10#13;
+            if not ((Station.RemoteController.st600Om1.stKonez >=360) and (Station.RemoteController.st600Om1.stKonez <=367)) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Черный провод не подключен к выходу 600 Ом' + #10#13;
+          Result:=false;
          end;
    end;
 
@@ -3610,8 +3609,8 @@ uConstantsDM;
    begin
    inherited Create;
 
-        Name:='Подготовка к измерению уровня шума';
-        Text:='Подготовить припор П-321ИШ к работе: переключатель входного сопротивления - 500 Ом, переключатель пределов измерения - -50 дБ,';
+        Name:='Подать нагрузку на канал 1 полукомплекта А';
+        Text:='Подключить белый провод к гнездам КАН. Д канала 1 полукомплекта А, подключить нагрузку 600 Ом к гнездам КАН. М';
         Text:=Text+' переключатель режима работы прибора - ФТЛФ, подключить белый провод к разъему ВХОД 2';
         EventFormName:='П-323 ИШ';
         Time:= '';

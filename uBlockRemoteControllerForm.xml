@@ -2826,6 +2826,7 @@
       <field name="img4HoleSwitch6" type="TImage" visibility="published" />
       <field name="img4HoleSwitch7" type="TImage" visibility="published" />
       <field name="img4HoleSwitch8" type="TImage" visibility="published" />
+      <field name="img600Om1" type="TImage" visibility="published" />
       <procedure name="FormMouseWheelDown" visibility="published">
         <parameters>
           <parameter name="Sender" type="TObject" />
@@ -3134,6 +3135,11 @@
         </parameters>
       </procedure>
       <procedure name="White2Click" visibility="published">
+        <parameters>
+          <parameter name="Sender" type="TObject" />
+        </parameters>
+      </procedure>
+      <procedure name="img600Om1Click" visibility="published">
         <parameters>
           <parameter name="Sender" type="TObject" />
         </parameters>

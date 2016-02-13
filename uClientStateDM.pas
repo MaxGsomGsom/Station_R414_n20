@@ -6,6 +6,9 @@ uses
   uConstantsDM,
   uErrorKeeper;
 
+type TAddRemoveUpdateClientEvent =
+      procedure(Client: string) of object;
+
 type TEvent = procedure(Sender: TObject) of object;
 
 type TClientState = class
@@ -13,11 +16,13 @@ type TClientState = class
   private
     FConnected: Boolean;
     FLinkedR414Connected: Boolean;
-    FR415Connected: Boolean;
-    FCrossConnected: Boolean;
+    FLinkedR415Connected: Boolean;
+    FLinkedCrossConnected: Boolean;
 
     FUserName : string;
     FLinkedR414UserName: string;
+    FLinkedR415UserName: string;
+    FLinkedCrossUserName: string;
 
     FMainStation: Boolean;
 
@@ -41,10 +46,10 @@ type TClientState = class
 
   public
     ErrorKepeer: TErrorKeeper;
-      FConnectedEvent: TEvent;
+      FConnectedEvent: TAddRemoveUpdateClientEvent;
       FMessageEvent: TEvent;
       FStartNetTask: TEvent;
-      FDisconnect:  TEvent;
+      FDisconnect:  TAddRemoveUpdateClientEvent;
       FStartNetTaskOk: TEvent;
       CanSendChatMessages: Boolean;
       CanGetChatMessages: Boolean;
@@ -66,10 +71,10 @@ type TClientState = class
     property Connected: Boolean read FConnected write FConnected;
     property LinkedR414Connected: Boolean read FLinkedR414Connected
                                           write FLinkedR414Connected;
-    property R415Connected: Boolean read FR415Connected
-                                    write FR415Connected;
-    property CrossConnected: Boolean  read FCrossConnected
-                                      write FCrossConnected;
+    property LinkedR415Connected: Boolean read FLinkedR415Connected
+                                    write FLinkedR415Connected;
+    property LinkedCrossConnected: Boolean  read FLinkedCrossConnected
+                                      write FLinkedCrossConnected;
     property UserName: string read FUserName
                               write FUserName;
     property LinkedR414UserName: string read FLinkedR414UserName
@@ -86,10 +91,15 @@ type TClientState = class
                                     write SetReceiverWaveA;
     property ReceiverWaveB: Integer read FReceiverWaveB
                                     write SetReceiverWaveB;
-    property OnConnectedEvent: TEvent read FConnectedEvent write FConnectedEvent;
+    property OnConnectedEvent: TAddRemoveUpdateClientEvent read FConnectedEvent write FConnectedEvent;
     property OnMessageEvent: TEvent read FMessageEvent write FMessageEvent;
     property OnStartNetTask: TEvent read FStartNetTask write FStartNetTask;
-    property OnDisconnect: TEvent read FDisconnect write FDisconnect;
+    property OnDisconnect: TAddRemoveUpdateClientEvent read FDisconnect write FDisconnect;
+
+    property LinkedR415UserName: string read FLinkedR415UserName
+                                        write FLinkedR415UserName;
+    property LinkedCrossUserName: string read FLinkedCrossUserName
+                                        write FLinkedCrossUserName;
 
 end;
 
@@ -221,7 +231,7 @@ uses
   begin
     { TODO: сделать проверку, настроены все ли параметры! }
     Result := IsWavesTuned and Connected and LinkedR414Connected
-      and R415Connected and CrossConnected and IsTaskSelected;
+      and LinkedR415Connected and LinkedCrossConnected and IsTaskSelected;
   end;
 
   /// <summary>
@@ -229,8 +239,8 @@ uses
   /// </summary>
   function TClientState.IsAllClientsConnected: Boolean;
   begin
-    Result := Connected and LinkedR414Connected and R415Connected
-      and CrossConnected;
+    Result := Connected and LinkedR414Connected and LinkedR415Connected
+      and LinkedCrossConnected;
   end;
 
 end.

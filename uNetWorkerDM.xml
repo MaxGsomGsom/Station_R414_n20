@@ -272,6 +272,16 @@
       r414
     </value>
   </const>
+  <const name="CLIENT_CROSS" type="string">
+    <value>
+      cross
+    </value>
+  </const>
+  <const name="CLIENT_STATION_R415" type="string">
+    <value>
+      r415
+    </value>
+  </const>
   <const name="CLIENT_STATION_R414_TASK" type="string">
     <value>
       r414_task

@@ -16,7 +16,7 @@ const
   KEY_TYPE = 'type';              // Тип станции (cross/r414/r415/server)
   KEY_STATUS = 'status';          // Станция является подч-й или главной
   KEY_CONNECTED = 'connected';
-  KEY_MESSAGE = 'messageText';
+  KEY_MESSAGE_TEXT = 'txt';
   KEY_STARTNETTASK = 'startNetTask';
 
       // Статус подключения (true / false - при дисконнекте)

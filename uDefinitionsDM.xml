@@ -296,6 +296,11 @@
       $F
     </value>
   </const>
+  <const name="stcb600Om1" type="Integer">
+    <value>
+      $10
+    </value>
+  </const>
   <const name="cell_PVU_PRD" type="Integer">
     <value>
       $167
