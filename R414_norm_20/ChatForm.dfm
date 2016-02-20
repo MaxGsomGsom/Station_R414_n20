@@ -3,7 +3,7 @@ object TChatForm: TTChatForm
   Top = 0
   BorderStyle = bsNone
   Caption = 'ChatForm'
-  ClientHeight = 156
+  ClientHeight = 173
   ClientWidth = 500
   Color = clInactiveCaption
   Font.Charset = DEFAULT_CHARSET
@@ -7852,8 +7852,8 @@ object TChatForm: TTChatForm
     OnClick = img1OpenChatClick
   end
   object LinkedNick: TLabel
-    Left = 77
-    Top = 135
+    Left = 105
+    Top = 136
     Width = 117
     Height = 13
     Caption = #1057#1086#1087#1088#1103#1078#1077#1085#1085#1072#1103' '#1089#1090#1072#1085#1094#1080#1103':'
@@ -7866,11 +7866,18 @@ object TChatForm: TTChatForm
     Caption = #1055#1086#1079#1099#1074#1085#1086#1081':'
   end
   object lblRole: TLabel
-    Left = 403
-    Top = 137
+    Left = 414
+    Top = 135
     Width = 31
     Height = 13
     Caption = 'lblRole'
+  end
+  object lbl1cross: TLabel
+    Left = 105
+    Top = 155
+    Width = 33
+    Height = 13
+    Caption = #1050#1088#1086#1089#1089':'
   end
   object btn1SendMessage: TButton
     Left = 414
@@ -7897,5 +7904,21 @@ object TChatForm: TTChatForm
     Height = 90
     ItemHeight = 13
     TabOrder = 2
+  end
+  object rb1r414: TRadioButton
+    Left = 79
+    Top = 136
+    Width = 20
+    Height = 13
+    Checked = True
+    TabOrder = 3
+    TabStop = True
+  end
+  object rb1cross: TRadioButton
+    Left = 79
+    Top = 155
+    Width = 20
+    Height = 15
+    TabOrder = 4
   end
 end

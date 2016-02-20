@@ -15,9 +15,12 @@ type
     LinkedNick: TLabel;
     lblUserName: TLabel;
     lblRole: TLabel;
+    lbl1cross: TLabel;
+    rb1r414: TRadioButton;
+    rb1cross: TRadioButton;
     procedure FormShow(Sender: TObject);
     procedure ChangeChatInputText(SubTask: TSubTask);
-    procedure ShowMessage(Sender: TObject);
+    procedure ShowMessage(Sender: TObject; Text:string; Name: string);
     procedure img1OpenChatClick(Sender: TObject);
     procedure btn1SendMessageClick(Sender: TObject);
     procedure LinkedNickSet(Sender: string);
@@ -34,6 +37,7 @@ type
 
 implementation
 
+
 {$R *.dfm}
 
 constructor TTChatForm.Create(AOwner: TComponent;  NetWorker0: TClientNetWorker; TaskController: TTaskController);
@@ -41,7 +45,10 @@ begin
    inherited Create(AOwner);
    NetWorker:=NetWorker0;
      NetWorker.ClientState.OnConnectedEvent:= LinkedNickSet;
+     NetWorker.ClientState.OnDisconnect:=LinkedNickSet;
+
      LinkedNick.Caption:='Связанная станция: '+NetWorker.ClientState.LinkedR414UserName;
+     lbl1cross.Caption:='Кросс : '+NetWorker.ClientState.LinkedCrossUserName;
      NetWorker.ClientState.OnMessageEvent:= ShowMessage;
      Self.Visible:= NetWorker.ClientState.LinkedR414Connected ;
      NetWorker:=NetWorker0;
@@ -84,18 +91,30 @@ end;
 procedure TTChatForm.btn1SendMessageClick(Sender: TObject);
 var Req: TRequest;
 begin
-if (NetWorker.ClientState.CanSendChatMessages=True) then
+if (rb1r414.Checked) then
 begin
-  TaskController.NetCheckTask();
-  TaskController.CheckTask(nil, TMouseButton.mbLeft, [],0,0);
-  NetWorker.SendMessage(edt1MessageInput.Text);
-lst1AllMessages.AddItem(NetWorker.ClientState.UserName+': '+ edt1MessageInput.Text, TObject.Create);
- edt1MessageInput.Text:='';
- lst1AllMessages.ScrollBy(99999, 99999);
+  if (NetWorker.ClientState.CanSendChatMessages=True) or true then
+  begin
+    TaskController.NetCheckTask();
+    TaskController.CheckTask(nil, TMouseButton.mbLeft, [],0,0);
+    NetWorker.SendMessage(edt1MessageInput.Text, NetWorker.ClientState.LinkedR414UserName);
+    lst1AllMessages.AddItem(NetWorker.ClientState.UserName+': '+ edt1MessageInput.Text, TObject.Create);
+   edt1MessageInput.Text:='';
+   lst1AllMessages.ScrollBy(99999, 99999);
+  end
+  else
+  begin
+      lst1AllMessages.AddItem('Связь не настроена', TObject.Create);
+  end;
 end
 else
 begin
-    lst1AllMessages.AddItem('Связь не настроена', TObject.Create);
+      TaskController.NetCheckTask();
+    TaskController.CheckTask(nil, TMouseButton.mbLeft, [],0,0);
+    NetWorker.SendMessage(edt1MessageInput.Text, NetWorker.ClientState.LinkedCrossUserName);
+    lst1AllMessages.AddItem(NetWorker.ClientState.UserName+': '+ edt1MessageInput.Text, TObject.Create);
+   edt1MessageInput.Text:='';
+   lst1AllMessages.ScrollBy(99999, 99999);
 end;
 
 
@@ -139,14 +158,19 @@ if (Sender = CLIENT_STATION_R414) then
     lblRole.Caption := 'Подчиненная';
     end;
 
- end;
+ end
+ else if (Sender = CLIENT_CROSS) then
+      begin
+        lbl1cross.Caption:='Кросс : '+NetWorker.ClientState.LinkedCrossUserName;
+      end;
 end;
 
-procedure TTChatForm.ShowMessage(Sender: TObject);
+procedure TTChatForm.ShowMessage(Sender: TObject; Text:string; Name: string);
 begin
-if (NetWorker.ClientState.CanGetChatMessages=True) then
+//если сообщение прислал кросс или связь с другой 414 налажена, то показываем сообщение
+if (NetWorker.ClientState.CanGetChatMessages=True) or (Name = NetWorker.ClientState.LinkedCrossUserName) then
 begin
-  lst1AllMessages.AddItem(NetWorker.ClientState.LinkedR414UserName+': '+ NetWorker.ClientState.LastMessage, TObject.Create);
+  lst1AllMessages.AddItem(Name+': '+ Text, TObject.Create);
   lst1AllMessages.ScrollBy(99999, 99999);
 end
 else

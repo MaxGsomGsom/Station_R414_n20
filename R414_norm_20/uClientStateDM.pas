@@ -10,6 +10,7 @@ type TAddRemoveUpdateClientEvent =
       procedure(Client: string) of object;
 
 type TEvent = procedure(Sender: TObject) of object;
+type TMessageEvent = procedure(Sender: TObject; Text:string; Name: string) of object;
 
 type TClientState = class
 
@@ -47,13 +48,12 @@ type TClientState = class
   public
     ErrorKepeer: TErrorKeeper;
       FConnectedEvent: TAddRemoveUpdateClientEvent;
-      FMessageEvent: TEvent;
+      FMessageEvent: TMessageEvent;
       FStartNetTask: TEvent;
       FDisconnect:  TAddRemoveUpdateClientEvent;
       FStartNetTaskOk: TEvent;
       CanSendChatMessages: Boolean;
       CanGetChatMessages: Boolean;
-      LastMessage: string;
       NetStatus: string;
       LastNetCommand: string;
     constructor Create(); reintroduce;
@@ -92,7 +92,7 @@ type TClientState = class
     property ReceiverWaveB: Integer read FReceiverWaveB
                                     write SetReceiverWaveB;
     property OnConnectedEvent: TAddRemoveUpdateClientEvent read FConnectedEvent write FConnectedEvent;
-    property OnMessageEvent: TEvent read FMessageEvent write FMessageEvent;
+    property OnMessageEvent: TMessageEvent read FMessageEvent write FMessageEvent;
     property OnStartNetTask: TEvent read FStartNetTask write FStartNetTask;
     property OnDisconnect: TAddRemoveUpdateClientEvent read FDisconnect write FDisconnect;
 
@@ -114,7 +114,6 @@ uses
   begin
     //TaskID := ttPowerOn;
     ErrorKepeer:= TErrorKeeper.Create;
-    LastMessage:='';
     NetStatus:='open';
     LastNetCommand:='open';
     CanSendChatMessages:=False;

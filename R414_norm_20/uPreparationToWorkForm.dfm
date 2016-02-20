@@ -15,6 +15,7 @@ object PreparationToWorkForm: TPreparationToWorkForm
   OldCreateOrder = False
   Position = poScreenCenter
   OnClose = FormClose
+  OnShow = FormShow
   DesignSize = (
     634
     499)
@@ -114,7 +115,7 @@ object PreparationToWorkForm: TPreparationToWorkForm
   object lblCrossName: TLabel
     Left = 136
     Top = 170
-    Width = 204
+    Width = 5
     Height = 18
     Caption = '-'
     Font.Charset = DEFAULT_CHARSET
@@ -267,7 +268,6 @@ object PreparationToWorkForm: TPreparationToWorkForm
     Caption = #1055#1088#1080#1089#1090#1091#1087#1080#1090#1100
     TabOrder = 1
     OnClick = btnStartClick
-    ExplicitTop = 379
   end
   object btnCancel: TButton
     Left = 8
@@ -279,7 +279,6 @@ object PreparationToWorkForm: TPreparationToWorkForm
     Caption = #1054#1090#1084#1077#1085#1072
     TabOrder = 2
     OnClick = btnCancelClick
-    ExplicitTop = 379
   end
   object cbbWorkMode: TComboBox
     Left = 136
@@ -326,7 +325,6 @@ object PreparationToWorkForm: TPreparationToWorkForm
         '')
       TabOrder = 0
       OnClick = lstTaskChoiceClick
-      ExplicitHeight = 157
     end
   end
   object edtUserName: TEdit

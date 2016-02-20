@@ -122,13 +122,12 @@
       </function>
       <field name="ErrorKepeer" type="TErrorKeeper" visibility="public" />
       <field name="FConnectedEvent" type="TAddRemoveUpdateClientEvent" visibility="public" />
-      <field name="FMessageEvent" type="TEvent" visibility="public" />
+      <field name="FMessageEvent" type="TMessageEvent" visibility="public" />
       <field name="FStartNetTask" type="TEvent" visibility="public" />
       <field name="FDisconnect" type="TAddRemoveUpdateClientEvent" visibility="public" />
       <field name="FStartNetTaskOk" type="TEvent" visibility="public" />
       <field name="CanSendChatMessages" type="Boolean" visibility="public" />
       <field name="CanGetChatMessages" type="Boolean" visibility="public" />
-      <field name="LastMessage" type="string" visibility="public" />
       <field name="NetStatus" type="string" visibility="public" />
       <field name="LastNetCommand" type="string" visibility="public" />
       <constructor name="Create" visibility="public">
@@ -205,7 +204,7 @@
       <property name="ReceiverWaveA" visibility="public" read="FReceiverWaveA" write="SetReceiverWaveA" type="Integer" />
       <property name="ReceiverWaveB" visibility="public" read="FReceiverWaveB" write="SetReceiverWaveB" type="Integer" />
       <event name="OnConnectedEvent" visibility="public" read="FConnectedEvent" write="FConnectedEvent" type="TAddRemoveUpdateClientEvent" />
-      <event name="OnMessageEvent" visibility="public" read="FMessageEvent" write="FMessageEvent" type="TEvent" />
+      <event name="OnMessageEvent" visibility="public" read="FMessageEvent" write="FMessageEvent" type="TMessageEvent" />
       <event name="OnStartNetTask" visibility="public" read="FStartNetTask" write="FStartNetTask" type="TEvent" />
       <event name="OnDisconnect" visibility="public" read="FDisconnect" write="FDisconnect" type="TAddRemoveUpdateClientEvent" />
       <property name="LinkedR415UserName" visibility="public" read="FLinkedR415UserName" write="FLinkedR415UserName" type="string" />

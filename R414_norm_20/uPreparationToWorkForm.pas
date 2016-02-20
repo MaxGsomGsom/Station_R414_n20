@@ -46,6 +46,7 @@ type
     procedure ShowPriorityAndLinkedName(Sender: string);
     procedure StartNetTask(Sender: TObject);
     procedure Disconnect(Sender: string);
+    procedure FormShow(Sender: TObject);
     //procedure FormHide(Sender: TObject);
 
   private
@@ -87,10 +88,10 @@ begin
   Self.edtUserName.Text := NetWorker.ClientState.UserName;
   Self.NetworkSender := TNetworkSender.Create(NetWorker);
   ShowPriorityAndLinkedName(CLIENT_STATION_R414);
-  NetWorker.ClientState.OnConnectedEvent:=ShowPriorityAndLinkedName;
+
 
    NetWorker.ClientState.OnStartNetTask:=StartNetTask;
-   NetWorker.ClientState.OnDisconnect:=Disconnect;
+
            //временно
      edtTransmitterWaveA.Text:='11';
       edtTransmitterWaveB.Text :='10' ;
@@ -273,6 +274,16 @@ end;
 
 
 
+procedure TPreparationToWorkForm.FormShow(Sender: TObject);
+begin
+  ShowPriorityAndLinkedName(CLIENT_STATION_R414);
+  ShowPriorityAndLinkedName(CLIENT_CROSS);
+  Disconnect(CLIENT_STATION_R414);
+  Disconnect(CLIENT_CROSS);
+  NetWorker.ClientState.OnConnectedEvent:= ShowPriorityAndLinkedName;
+  NetWorker.ClientState.OnDisconnect:=Disconnect;
+end;
+
 /// <summary>
 ///   Изменяет номер выбранного задания в состоянии клиента
 /// </summary>
@@ -310,15 +321,15 @@ end;
 
 procedure TPreparationToWorkForm.Disconnect(Sender: string);
 begin
-if (Sender = CLIENT_STATION_R414) then
+if (Sender = CLIENT_STATION_R414) and (not NetWorker.ClientState.LinkedR414Connected) then
    begin
-     NetWorker.ClientState.LinkedR414Connected := False;
+     //NetWorker.ClientState.LinkedR414Connected := False;
      lblLinkedR414.Caption:='-';
      lblStationPriority.Caption:='-';
    end
-else if (Sender = CLIENT_CROSS) then
+else if (Sender = CLIENT_CROSS) and (not NetWorker.ClientState.LinkedCrossConnected) then
 begin
-  NetWorker.ClientState.LinkedCrossConnected := false;
+  //NetWorker.ClientState.LinkedCrossConnected := false;
   lblCrossName.Caption:='-';
 end;
 

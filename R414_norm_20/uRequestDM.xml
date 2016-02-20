@@ -55,6 +55,51 @@
       startNetTask
     </value>
   </const>
+  <const name="KEY_USERNAME_TO" type="string">
+    <value>
+      usernameto
+    </value>
+  </const>
+  <const name="KEY_USERNAME_FROM" type="string">
+    <value>
+      usernamefrom
+    </value>
+  </const>
+  <const name="CLIENT_STATION_R414" type="string">
+    <value>
+      r414
+    </value>
+  </const>
+  <const name="CLIENT_CROSS" type="string">
+    <value>
+      cross
+    </value>
+  </const>
+  <const name="CLIENT_STATION_R415" type="string">
+    <value>
+      r415
+    </value>
+  </const>
+  <const name="CLIENT_STATION_R414_TASK" type="string">
+    <value>
+      r414_task
+    </value>
+  </const>
+  <const name="STATION_STATUS_MAIN" type="string">
+    <value>
+      main
+    </value>
+  </const>
+  <const name="STATION_STATUS_SUBORDINATE" type="string">
+    <value>
+      subordinate
+    </value>
+  </const>
+  <const name="SERVER" type="string">
+    <value>
+      server
+    </value>
+  </const>
   <const name="KEY_TRANSMITTER_WAVE_A" type="string">
     <value>
       twavea
