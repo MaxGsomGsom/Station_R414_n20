@@ -2279,6 +2279,9 @@
       <field name="LinkedNick" type="TLabel" visibility="published" />
       <field name="lblUserName" type="TLabel" visibility="published" />
       <field name="lblRole" type="TLabel" visibility="published" />
+      <field name="lbl1cross" type="TLabel" visibility="published" />
+      <field name="rb1r414" type="TRadioButton" visibility="published" />
+      <field name="rb1cross" type="TRadioButton" visibility="published" />
       <procedure name="FormShow" visibility="published">
         <parameters>
           <parameter name="Sender" type="TObject" />
@@ -2292,6 +2295,8 @@
       <procedure name="ShowMessage" visibility="published">
         <parameters>
           <parameter name="Sender" type="TObject" />
+          <parameter name="Text" type="string" />
+          <parameter name="Name" type="string" />
         </parameters>
       </procedure>
       <procedure name="img1OpenChatClick" visibility="published">

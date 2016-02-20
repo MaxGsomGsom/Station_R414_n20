@@ -27,7 +27,7 @@ type IClientNetWorker = class
     function Disconnect(): Integer; virtual; abstract;
     function SendParams(Key: string; Value: string): Integer; virtual; abstract;
     function SendTaskParams(Key: string; Value: string): Integer; virtual; abstract;
-    function SendMessage(Value: string): Integer; virtual; abstract;
+    function SendMessage(Value: string; UserNameTo: string): Integer;  virtual; abstract;
 
     property ClientState: TClientState read FClientState write FClientState;
     property ClientStateChangedEvent: TClientStateChangedEvent
@@ -50,20 +50,13 @@ type TClientNetWorker = class(IClientNetWorker)
     function Disconnect: Integer; override;
     function SendParams(Key: string; Value: string): Integer; override;
     function SendTaskParams(Key: string; Value: string): Integer; override;
-    function SendMessage(Value: string): Integer; override;
+    function SendMessage(Value: string; UserNameTo: string): Integer; override;
     constructor Create(); reintroduce;
     destructor Destroy(); override;
 
     //property ClientState: TClientState read FClientState write FClientState;
 end;
 
-const
-  CLIENT_STATION_R414 = 'r414';
-  CLIENT_CROSS = 'cross';
-  CLIENT_STATION_R415 = 'r415';
-  CLIENT_STATION_R414_TASK = 'r414_task';
-  STATION_STATUS_MAIN = 'main';
-  STATION_STATUS_SUBORDINATE = 'subordinate';
 
 implementation
 
@@ -195,16 +188,17 @@ uses
     Request.Free;                               // Чистим мусор
   end;
 
-  function TClientNetWorker.SendMessage(Value: string): Integer;
+  function TClientNetWorker.SendMessage(Value: string; UserNameTo: string): Integer;
   var
     Request: TRequest;
   begin
     Request := TRequest.Create;                 // Создаём новый запрос
     Request.Name := REQ_NAME_MESSAGE;
-    Request.AddKeyValue(KEY_TYPE, CLIENT_STATION_R414);      // Тип клиента
+    //Request.AddKeyValue(KEY_TYPE, Client);      // Тип клиента которому шлем сообщение
 
     Request.AddKeyValue(KEY_MESSAGE_TEXT, Value);            // Наши ключ и значение
-    //Request.AddKeyValue(KEY_NAME, ClientState.UserName);
+    Request.AddKeyValue(KEY_USERNAME_FROM, ClientState.UserName);
+    Request.AddKeyValue(KEY_USERNAME_TO, UserNameTo);
     TCPClient.IOHandler.WriteLn(Request.ConvertToText);
     Request.Free;                               // Чистим мусор
   end;
@@ -251,7 +245,7 @@ uses
     if Request.Name = REQ_NAME_PARAMS then            {TODO: вынести тело в инлайн функцию }
     begin
       strValue := Request.GetValue(KEY_TYPE);
-      if strValue = 'server' then
+      if strValue = SERVER then
       begin
         strValue := Request.GetValue(KEY_STATUS); // Станция у данного пользователя
                                                   // главная или подчинённая
@@ -348,7 +342,7 @@ uses
             else                                      // connected = false
             begin
               ClientState.LinkedCrossConnected := False;
-              ClientState.LinkedR414UserName := '-';
+              ClientState.LinkedCrossUserName := '-';
               ClientState.OnDisconnect(CLIENT_CROSS);
             end;
             break;
@@ -377,8 +371,7 @@ uses
     end else
     if Request.Name = REQ_NAME_MESSAGE then
     begin
-    ClientState.LastMessage:= Request.GetValue(KEY_MESSAGE_TEXT);
-         ClientState.OnMessageEvent(Self);
+         ClientState.OnMessageEvent(Self, Request.GetValue(KEY_MESSAGE_TEXT), Request.GetValue(KEY_USERNAME_FROM));
     end;
     Request.Free;                                  // Убираем мусор
   end;

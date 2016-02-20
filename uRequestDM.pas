@@ -19,6 +19,18 @@ const
   KEY_MESSAGE_TEXT = 'txt';
   KEY_STARTNETTASK = 'startNetTask';
 
+  KEY_USERNAME_TO = 'usernameto';
+  KEY_USERNAME_FROM = 'usernamefrom';
+
+
+    CLIENT_STATION_R414 = 'r414';
+  CLIENT_CROSS = 'cross';
+  CLIENT_STATION_R415 = 'r415';
+  CLIENT_STATION_R414_TASK = 'r414_task';
+  STATION_STATUS_MAIN = 'main';
+  STATION_STATUS_SUBORDINATE = 'subordinate';
+  SERVER = 'server';
+
       // Статус подключения (true / false - при дисконнекте)
 
   KEY_TRANSMITTER_WAVE_A = 'twavea';

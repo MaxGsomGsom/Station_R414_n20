@@ -2350,6 +2350,11 @@
           <parameter name="Sender" type="string" />
         </parameters>
       </procedure>
+      <procedure name="FormShow" visibility="published">
+        <parameters>
+          <parameter name="Sender" type="TObject" />
+        </parameters>
+      </procedure>
       <field name="NetWorker" type="TClientNetWorker" visibility="private" />
       <field name="NetworkSender" type="TNetworkSender" visibility="private" />
       <field name="TaskController" type="TTaskController" visibility="private" />
