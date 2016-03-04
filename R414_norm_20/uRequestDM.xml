@@ -85,6 +85,11 @@
       r414_task
     </value>
   </const>
+  <const name="CLIENT_CROSS_TASK" type="string">
+    <value>
+      cross_task
+    </value>
+  </const>
   <const name="STATION_STATUS_MAIN" type="string">
     <value>
       main

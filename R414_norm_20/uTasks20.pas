@@ -28,6 +28,7 @@ uses
    Name: String;
    Time: String;
    IsComplete: Boolean;
+   NetSubTaskClientType: string;
 
    MainTaskText: string;
    SubTaskText: string;
@@ -587,12 +588,32 @@ end;
   end;
   {$ENDREGION}
 
+   {$REGION 'Установка связи с кроссом, заголовки'}
+   //================
+  type TTaskConnectToCross = class (TTask)
+    public
+   constructor Create(Station: TStation; NetWorker: TClientNetWorker;  ErrorKeeper: TErrorKeeper);  override;
+   procedure LastCheck(); override;
+  end;
+
+   type TTaskConnectToCrossSubTask1 = class (TSubTask)
+  public
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function NetCheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   constructor Create;  override;
+  end;
+  //=============
+ {$ENDREGION}
+
+
+
 implementation
 
 uses
 
 uBlockPowerPanelForm,
-uConstantsDM;
+uConstantsDM,
+uRequestDM;
 
  //создание задания
   constructor TTask.Create(Station: TStation; NetWorker: TClientNetWorker;  ErrorKeeper: TErrorKeeper);
@@ -616,6 +637,8 @@ uConstantsDM;
   begin
       SubTaskText:='';
       MainTaskText:='';
+
+      NetSubTaskClientType:= CLIENT_STATION_R414;
   end;
 
   function TSubTask.NetCheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
@@ -3670,6 +3693,114 @@ uConstantsDM;
 
 
 {$ENDREGION}
+
+
+
+{$REGION 'Установка связи с кроссом'}
+
+  constructor TTaskConnectToCross.Create(Station: TStation; NetWorker: TClientNetWorker;  ErrorKeeper: TErrorKeeper);
+     var
+  i:Integer;
+
+  begin
+  inherited Create(Station, NetWorker, ErrorKeeper);
+
+  Name:='Установка служебной связи с кроссом';
+
+    TaskNetParams:= TNetParamsList.Create;
+    TaskNetParams.AddKeyValue('Test414', 'False');
+  TaskNetParams.AddKeyValue('TestCross', 'False');
+
+
+
+
+  SetLength(SubTasks, 1);
+
+
+  SubTasks[0]:= TTaskConnectToCrossSubTask1.Create;
+
+
+
+  for I := 0 to Length(SubTasks) - 1 do
+  begin
+     SubTasks[I].NetSubTaskClientType:= CLIENT_CROSS;
+  end;
+
+
+
+  CurrentSubTask:=SubTasks[CurrentSubTaskNum];
+  end;
+
+
+ procedure TTaskConnectToCross.LastCheck;
+  var i: Integer;
+  var allRight: Boolean;
+  begin
+       allRight:= true;
+        ErrorKeeper.ErrorMsg := 'Общая проверка правильности настройки:' + #10#13;;
+    for I := 0 to Length(SubTasks) - 1 do
+     begin
+          if (SubTasks[i].CheckSubTask(Station, NetWorker, ErrorKeeper, Self.TaskNetParams) = False) then allRight := false;
+     end;
+
+    if (allRight = true) then
+      begin
+        IsTaskComplete:=true;
+        TimeEnd:=Time;
+      end
+      else
+      begin
+        ErrorKeeper.ShowError;
+      end;
+  end;
+
+
+//==============================
+
+
+   constructor TTaskConnectToCrossSubTask1.Create;
+   begin
+   inherited Create;
+
+        Name:='Свободный осмотр станции';
+        Text:='';
+        EventFormName:='nil';
+        Time:= '';
+   end;
+
+
+
+      function TTaskConnectToCrossSubTask1.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+   begin
+
+         if (TaskNetParams.GetBoolValue('Test414') = True) and (TaskNetParams.GetBoolValue('TestCross') = True)
+         then
+         begin
+           Result:=true;
+         end
+         else
+         begin
+
+            if (TaskNetParams.GetBoolValue('Test414') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Старшая станция не отправила сообщение' + #10#13;
+            if (TaskNetParams.GetBoolValue('TestCross') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Подчиненная станция не отправила сообщение' + #10#13;
+           Result:=false;
+         end;
+   end;
+
+   function TTaskConnectToCrossSubTask1.NetCheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
+   begin
+                      TaskNetParams.ChangeValue('Test414', 'True');
+                        NetWorker.SendTaskParamsCross('Test414', 'True');
+              Result:=True;
+   end;
+
+
+{$ENDREGION}
+
+
+
+
+
 
 end.
 

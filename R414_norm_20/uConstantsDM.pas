@@ -26,7 +26,7 @@ type TTaskType = (
   //ttWorkWithLowFrequency,             // –абота с низкочастотным оборудованием
   ttCheckStationInStandaloneControlMode,// ѕроверка станции в режиме автономного
                                         // контрол€
-                                        // ”становка служебной св€зи с кроссом
+  ttConnectToCross,                    // ”становка служебной св€зи с кроссом
   ttTransferToTerminalMode,
   ttSetConnectionWithCross);            // ѕеревод станции в оконечный режим
 
