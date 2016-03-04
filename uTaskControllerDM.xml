@@ -80,7 +80,7 @@
       <field name="FChangeText" type="TNotifyEvent" visibility="private" />
       <const name="Count_Tasks" visibility="private" type="Integer">
         <value>
-          $3
+          $4
         </value>
       </const>
       <function name="GetCountTasks" visibility="private">
@@ -99,6 +99,9 @@
         </parameters>
       </procedure>
       <procedure name="NetCheckTask" visibility="public">
+        <parameters>
+          <parameter name="ClientType" type="string" />
+        </parameters>
       </procedure>
       <procedure name="CheckRecievedParams" visibility="public">
         <parameters>

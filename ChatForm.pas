@@ -38,6 +38,8 @@ type
 implementation
 
 
+
+
 {$R *.dfm}
 
 constructor TTChatForm.Create(AOwner: TComponent;  NetWorker0: TClientNetWorker; TaskController: TTaskController);
@@ -93,9 +95,9 @@ var Req: TRequest;
 begin
 if (rb1r414.Checked) then
 begin
-  if (NetWorker.ClientState.CanSendChatMessages=True) or true then
+  if (NetWorker.ClientState.CanSendChatMessages=True) {or true} then
   begin
-    TaskController.NetCheckTask();
+    TaskController.NetCheckTask(CLIENT_STATION_R414);
     TaskController.CheckTask(nil, TMouseButton.mbLeft, [],0,0);
     NetWorker.SendMessage(edt1MessageInput.Text, NetWorker.ClientState.LinkedR414UserName);
     lst1AllMessages.AddItem(NetWorker.ClientState.UserName+': '+ edt1MessageInput.Text, TObject.Create);
@@ -109,7 +111,7 @@ begin
 end
 else
 begin
-      TaskController.NetCheckTask();
+      TaskController.NetCheckTask(CLIENT_CROSS);
     TaskController.CheckTask(nil, TMouseButton.mbLeft, [],0,0);
     NetWorker.SendMessage(edt1MessageInput.Text, NetWorker.ClientState.LinkedCrossUserName);
     lst1AllMessages.AddItem(NetWorker.ClientState.UserName+': '+ edt1MessageInput.Text, TObject.Create);
@@ -181,3 +183,4 @@ end;
 end;
 
 end.
+

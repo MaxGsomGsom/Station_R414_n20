@@ -284,11 +284,11 @@ CurrentTaskForm: TCurrentTaskForm;
      NetWorker:=NetWorker0;
      //CLientState.OnStartNetTask:= StartNetTaskError;
      AddSubTasks;
-     if (NetWorker.ClientState.TaskID = ttTransferToTerminalMode) then
+     if (NetWorker.ClientState.TaskID = ttTransferToTerminalMode) or (NetWorker.ClientState.TaskID = ttConnectToCross) then
       begin
          Chat:=TTChatForm.Create(Self, NetWorker, TaskController);
       Chat.Hide;
-      if (NetWorker0.ClientState.LinkedR414Connected) then Chat.Show;
+     { if (NetWorker0.ClientState.LinkedR414Connected) then} Chat.Show;
       end;
       TaskController.OnSubTaskComplete:=UpdSubTaskList;
       //UpdSubTaskList(nil);

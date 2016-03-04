@@ -27,6 +27,7 @@ type IClientNetWorker = class
     function Disconnect(): Integer; virtual; abstract;
     function SendParams(Key: string; Value: string): Integer; virtual; abstract;
     function SendTaskParams(Key: string; Value: string): Integer; virtual; abstract;
+    function SendTaskParamsCross(Key: string; Value: string): Integer; virtual; abstract;
     function SendMessage(Value: string; UserNameTo: string): Integer;  virtual; abstract;
 
     property ClientState: TClientState read FClientState write FClientState;
@@ -50,6 +51,7 @@ type TClientNetWorker = class(IClientNetWorker)
     function Disconnect: Integer; override;
     function SendParams(Key: string; Value: string): Integer; override;
     function SendTaskParams(Key: string; Value: string): Integer; override;
+    function SendTaskParamsCross(Key: string; Value: string): Integer; override;
     function SendMessage(Value: string; UserNameTo: string): Integer; override;
     constructor Create(); reintroduce;
     destructor Destroy(); override;
@@ -181,6 +183,20 @@ uses
     Request := TRequest.Create;                 // Создаём новый запрос
     Request.Name := REQ_NAME_PARAMS;
     Request.AddKeyValue(KEY_TYPE, CLIENT_STATION_R414_TASK);      // Тип клиента
+
+    Request.AddKeyValue(Key, Value);            // Наши ключ и значение
+
+    TCPClient.IOHandler.WriteLn(Request.ConvertToText);
+    Request.Free;                               // Чистим мусор
+  end;
+
+      function TClientNetWorker.SendTaskParamsCross(Key: string; Value: string): Integer;
+  var
+    Request: TRequest;
+  begin
+    Request := TRequest.Create;                 // Создаём новый запрос
+    Request.Name := REQ_NAME_PARAMS;
+    Request.AddKeyValue(KEY_TYPE, CLIENT_CROSS_TASK);      // Тип клиента
 
     Request.AddKeyValue(Key, Value);            // Наши ключ и значение
 
@@ -354,7 +370,7 @@ uses
 
 
 
-      if strValue = CLIENT_STATION_R414_TASK then
+      if (strValue = CLIENT_STATION_R414_TASK) then
       begin
         for i := 0 to Request.GetCountKeys - 1 do
         try
@@ -367,6 +383,7 @@ uses
           on E: Exception do;                   //Залогать, что серв прислал херню
         end;                                    // (Ошибка конвертации strValue);
       end;
+
 
     end else
     if Request.Name = REQ_NAME_MESSAGE then

@@ -238,6 +238,10 @@ begin
       begin
           InitForSingleCheckTask;
       end;
+      ttConnectToCross:
+      begin
+          InitForTerminalMode;
+      end;
     {ttWorkWithLowFrequency:
       begin
         InitForWorkWithLowFrequencyTask;

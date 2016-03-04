@@ -46,6 +46,11 @@
       ttCheckStationInStandaloneControlMode
     </value>
   </const>
+  <const name="ttConnectToCross" type="TTaskType">
+    <value>
+      ttConnectToCross
+    </value>
+  </const>
   <const name="ttTransferToTerminalMode" type="TTaskType">
     <value>
       ttTransferToTerminalMode
@@ -61,6 +66,7 @@
     <element name="ttNone" />
     <element name="ttPowerOn" />
     <element name="ttCheckStationInStandaloneControlMode" />
+    <element name="ttConnectToCross" />
     <element name="ttTransferToTerminalMode" />
     <element name="ttSetConnectionWithCross" />
   </enum>

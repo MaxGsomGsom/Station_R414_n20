@@ -27,6 +27,7 @@ const
   CLIENT_CROSS = 'cross';
   CLIENT_STATION_R415 = 'r415';
   CLIENT_STATION_R414_TASK = 'r414_task';
+  CLIENT_CROSS_TASK = 'cross_task';
   STATION_STATUS_MAIN = 'main';
   STATION_STATUS_SUBORDINATE = 'subordinate';
   SERVER = 'server';

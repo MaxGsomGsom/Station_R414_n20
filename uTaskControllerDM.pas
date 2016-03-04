@@ -42,7 +42,7 @@ type TTaskController = class
     
     const                       // Временно, пока нет самих заданий,
                                 // используем константы
-      Count_Tasks = 3;
+      Count_Tasks = 4;
 //      task_title_1 = 'Включение питания';
 //      task_title_2 =
 //        'Проверка работоспособности станции в режиме "Автономный контроль"';
@@ -66,7 +66,7 @@ type TTaskController = class
     procedure SetCurrentTask();
     procedure ShowHelp();
     procedure Subscribe (CurForm0: TForm);
-    procedure NetCheckTask();
+    procedure NetCheckTask(ClientType: string);
     procedure CheckRecievedParams(Param: string; Value: string);
     procedure CheckBeforeClose(Sender: TObject; var Action: TCloseAction);
 
@@ -182,7 +182,8 @@ function TTaskController.GetTaskTitle(TaskID: Integer): string;
     case TaskID of
       1: Result := 'Включение электропитания';
       2: Result := 'Проверка работоспособности станции в режиме "Автономный контроль"';
-      3: Result := 'Перевод станции в оконечный режим работы';
+      3: Result := 'Установка служебной связи с кроссом';
+      4: Result := 'Перевод станции в оконечный режим работы';
     end;
   end;
 
@@ -207,6 +208,7 @@ function TTaskController.GetTaskTitle(TaskID: Integer): string;
           ttPowerOn:  CurrentTask := TTaskPowerOn.Create(self.Station,self.NetWorker,self.ErrorKeeper);
           ttCheckStationInStandaloneControlMode:  CurrentTask := TTaskSingleCheck.Create(self.Station,self.NetWorker,Self.ErrorKeeper);
           ttTransferToTerminalMode: CurrentTask := TTaskTerminalMode.Create(self.Station,self.NetWorker,self.ErrorKeeper);
+          ttConnectToCross: CurrentTask := TTaskConnectToCross.Create(self.Station, self.NetWorker, self.ErrorKeeper);
         else   CurrentTask := TTaskNone.Create(self.Station,self.NetWorker,self.ErrorKeeper);
         end;
     end;
@@ -268,9 +270,12 @@ function TTaskController.GetTaskTitle(TaskID: Integer): string;
 
 
 
-   procedure TTaskController.NetCheckTask();
+   procedure TTaskController.NetCheckTask(ClientType: string);
    begin
-      CurrentTask.SubTasks[CurrentTask.CurrentSubTaskNum].NetCheckSubTask(self.Station, self.NetWorker, self.ErrorKeeper, Self.CurrentTask.TaskNetParams);
+       if (ClientType = CurrentTask.SubTasks[CurrentTask.CurrentSubTaskNum].NetSubTaskClientType) then
+       begin
+        CurrentTask.SubTasks[CurrentTask.CurrentSubTaskNum].NetCheckSubTask(self.Station, self.NetWorker, self.ErrorKeeper, Self.CurrentTask.TaskNetParams);
+       end;
    end;
 
 
