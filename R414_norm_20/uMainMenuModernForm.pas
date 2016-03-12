@@ -30,6 +30,7 @@ type
     btnExit: TButton;
     imgLogo: TImage;
 
+
     procedure btnExitClick(Sender: TObject);
     procedure btnSettingsClick(Sender: TObject);
     procedure btnAboutProgramClick(Sender: TObject);

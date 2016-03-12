@@ -93,10 +93,10 @@ begin
    NetWorker.ClientState.OnStartNetTask:=StartNetTask;
 
            //временно
-     edtTransmitterWaveA.Text:='11';
-      edtTransmitterWaveB.Text :='10' ;
-      edtReceiverWaveA.Text :='22' ;
-      edtReceiverWaveB.Text :='20' ;
+     edtTransmitterWaveA.Text:= IntToStr(Random(5)+5);
+     edtTransmitterWaveB.Text :=IntToStr(Random(5)+10);
+     edtReceiverWaveA.Text :=IntToStr(Random(5)+15);
+     edtReceiverWaveB.Text :=IntToStr(Random(5)+20);
   //Self.Station := TStation.Create;
   //Self.TaskController := TTaskController.Create(Station);
 
@@ -180,8 +180,6 @@ begin
       Exit;
     end;
 
-    NetworkSender.SendInitialStationParams(iTransmitterWaveA, iTransmitterWaveB,
-      iReceiverWaveA, iReceiverWaveB, TaskID, WorkMode);
 
     ////////////////////////////////////
     NetWorker.ClientState.NetStatus:='open';
@@ -194,6 +192,8 @@ begin
          Exit;
      end;
 
+     NetworkSender.SendInitialStationParams(iTransmitterWaveA, iTransmitterWaveB,
+      iReceiverWaveA, iReceiverWaveB, TaskID, WorkMode);
 
      NetWorker.SendParams(KEY_STARTNETTASK, 'call');
 
