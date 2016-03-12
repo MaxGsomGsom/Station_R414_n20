@@ -44,6 +44,8 @@ uses
   uSettingsDM;
 
 constructor TSettingsForm.Create(AOwner: TComponent);
+var
+txt:string;
 begin
   Inherited Create(AOwner);
   if Settings <> nil then
@@ -53,6 +55,8 @@ begin
   end
   else ;                      // Залогировать, что класс настроек не определён
   SettingsWasChanged := False;
+
+
 end;
 
 /// <summary>
@@ -65,6 +69,8 @@ begin
   begin
     Settings.HostName := edtHostName.Text;            // Сохраняем настройки
     Settings.HostPort := StrToInt(edtPort.Text);
+
+    Settings.SetHostName(edtHostName.Text);
   end;
   SettingsWasChanged := False;
 end;

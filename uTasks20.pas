@@ -3326,7 +3326,7 @@ uRequestDM;
 
             if (TaskNetParams.GetBoolValue('MessageStartFrequencyMain1_1') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Старшая станция не отправила сообщение' + #10#13;
             if (TaskNetParams.GetBoolValue('MessageStartFrequencySub1_1') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Подчиненная станция не отправила сообщение' + #10#13;
-            if (Station.P321C.swFrequency <> 1) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Переключатель КГЦ не устанвлен в нужное положение' + #10#13;
+            //if (Station.P321C.swFrequency <> 1) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Переключатель КГЦ не устанвлен в нужное положение' + #10#13;
            Result:=false;
          end;
    end;
@@ -3429,7 +3429,7 @@ uRequestDM;
 
             if (TaskNetParams.GetBoolValue('MessageStartFrequencyMain1_2') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Старшая станция не отправила сообщение' + #10#13;
             if (TaskNetParams.GetBoolValue('MessageStartFrequencySub1_2') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Подчиненная станция не отправила сообщение' + #10#13;
-            if (Station.P321C.swFrequency <> 1) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Переключатель КГЦ не устанвлен в нужное положение' + #10#13;
+            //if (Station.P321C.swFrequency <> 1) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Переключатель КГЦ не устанвлен в нужное положение' + #10#13;
            Result:=false;
          end;
    end;
@@ -3708,8 +3708,7 @@ uRequestDM;
   Name:='Установка служебной связи с кроссом';
 
     TaskNetParams:= TNetParamsList.Create;
-    TaskNetParams.AddKeyValue('Test414', 'False');
-  TaskNetParams.AddKeyValue('TestCross', 'False');
+    TaskNetParams.AddKeyValue('R414Connected', 'False');
 
 
 
@@ -3762,10 +3761,13 @@ uRequestDM;
    begin
    inherited Create;
 
-        Name:='Свободный осмотр станции';
-        Text:='';
-        EventFormName:='nil';
+        Name:='Подключение к кроссу';
+        Text:='Свяжитесь с кроссом: "БП310 я БП360 как меня слышите?"';
+        EventFormName:='';
         Time:= '';
+
+        MainTaskText:= 'БП310 я БП360 как меня слышите?';
+        SubTaskText := MainTaskText;
    end;
 
 
@@ -3773,25 +3775,23 @@ uRequestDM;
       function TTaskConnectToCrossSubTask1.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
-         if (TaskNetParams.GetBoolValue('Test414') = True) and (TaskNetParams.GetBoolValue('TestCross') = True)
+         if (TaskNetParams.GetBoolValue('R414Connected') = True)
          then
          begin
            Result:=true;
          end
          else
          begin
-
-            if (TaskNetParams.GetBoolValue('Test414') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Старшая станция не отправила сообщение' + #10#13;
-            if (TaskNetParams.GetBoolValue('TestCross') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Подчиненная станция не отправила сообщение' + #10#13;
-           Result:=false;
+            if (TaskNetParams.GetBoolValue('R414Connected') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Вы не отправили сообщение кроссу' + #10#13;
+            Result:=false;
          end;
    end;
 
    function TTaskConnectToCrossSubTask1.NetCheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
    begin
-                      TaskNetParams.ChangeValue('Test414', 'True');
-                        NetWorker.SendTaskParamsCross('Test414', 'True');
-              Result:=True;
+        TaskNetParams.ChangeValue('R414Connected', 'True');
+        NetWorker.SendTaskParamsCross('R414Connected', 'True');
+        Result:=True;
    end;
 
 

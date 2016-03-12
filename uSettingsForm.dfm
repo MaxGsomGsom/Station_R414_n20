@@ -3,7 +3,7 @@ object SettingsForm: TSettingsForm
   Top = 0
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = #1053#1072#1089#1090#1088#1086#1081#1082#1080
-  ClientHeight = 286
+  ClientHeight = 285
   ClientWidth = 354
   Color = clBtnFace
   Constraints.MaxHeight = 324
@@ -20,14 +20,14 @@ object SettingsForm: TSettingsForm
   OnClose = FormClose
   DesignSize = (
     354
-    286)
+    285)
   PixelsPerInch = 96
   TextHeight = 13
   object grp1: TGroupBox
     Left = 6
     Top = 8
     Width = 340
-    Height = 229
+    Height = 228
     Anchors = [akLeft, akTop, akRight, akBottom]
     Caption = #1053#1072#1089#1090#1088#1086#1081#1082#1080' '#1089#1077#1090#1080
     Font.Charset = DEFAULT_CHARSET
@@ -72,7 +72,7 @@ object SettingsForm: TSettingsForm
   end
   object btnApply: TButton
     Left = 246
-    Top = 248
+    Top = 247
     Width = 100
     Height = 30
     Anchors = [akRight, akBottom]
@@ -83,7 +83,7 @@ object SettingsForm: TSettingsForm
   end
   object btnCancel: TButton
     Left = 140
-    Top = 248
+    Top = 247
     Width = 100
     Height = 30
     Anchors = [akRight, akBottom]
@@ -93,7 +93,7 @@ object SettingsForm: TSettingsForm
   end
   object btnOK: TButton
     Left = 34
-    Top = 248
+    Top = 247
     Width = 100
     Height = 30
     Anchors = [akRight, akBottom]

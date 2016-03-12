@@ -73,12 +73,13 @@
     <members>
       <field name="FHostName" type="string" visibility="private" />
       <field name="FHostPort" type="Integer" visibility="private" />
-      <procedure name="SetHostName" visibility="private">
+      <field name="f" type="Text" visibility="private" />
+      <procedure name="SetHostName" visibility="public">
         <parameters>
           <parameter name="strHostName" type="string" paramflags="const" />
         </parameters>
       </procedure>
-      <procedure name="SetHostPort" visibility="private">
+      <procedure name="SetHostPort" visibility="public">
         <parameters>
           <parameter name="iHostPort" type="Integer" paramflags="const" />
         </parameters>

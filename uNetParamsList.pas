@@ -44,7 +44,7 @@ implementation
     for i := 0 to FKeyValueList.Count - 1 do
     begin
       if Key = FKeyValueList[i].Key then
-        if (FKeyValueList[i].Value='True') then
+        if (FKeyValueList[i].Value='True') or (FKeyValueList[i].Value='true') then
           Exit(True)
           else
           Exit(False);
