@@ -637,6 +637,65 @@ end;
    function NetCheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
    constructor Create;  override;
   end;
+
+
+
+
+     type TTaskConnectToCrossSubTask7 = class (TSubTask)
+  public
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function NetCheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   constructor Create;  override;
+  end;
+
+     type TTaskConnectToCrossSubTask8 = class (TSubTask)
+  public
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function NetCheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   constructor Create;  override;
+  end;
+
+     type TTaskConnectToCrossSubTask9 = class (TSubTask)
+  public
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function NetCheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   constructor Create;  override;
+  end;
+
+     type TTaskConnectToCrossSubTask10 = class (TSubTask)
+  public
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function NetCheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   constructor Create;  override;
+  end;
+
+       type TTaskConnectToCrossSubTask11 = class (TSubTask)
+  public
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function NetCheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   constructor Create;  override;
+  end;
+
+     type TTaskConnectToCrossSubTask12 = class (TSubTask)
+  public
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function NetCheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   constructor Create;  override;
+  end;
+
+     type TTaskConnectToCrossSubTask13 = class (TSubTask)
+  public
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function NetCheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   constructor Create;  override;
+  end;
+
+       type TTaskConnectToCrossSubTask14 = class (TSubTask)
+  public
+   function CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   function NetCheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean; override;
+   constructor Create;  override;
+  end;
   //=============
  {$ENDREGION}
 
@@ -3746,9 +3805,10 @@ uRequestDM;
     TaskNetParams.AddKeyValue('R414Connected', 'False');
     TaskNetParams.AddKeyValue('CrossVoiceGood', 'False');
     TaskNetParams.AddKeyValue('R414StartTestLines', 'False');
-    TaskNetParams.AddKeyValue('CrossStartTestLines', 'False');
-    TaskNetParams.AddKeyValue('R414Set1Line4Wire', 'False');
-    TaskNetParams.AddKeyValue('CrossAgreeSet1Line', 'False');
+
+    TaskNetParams.AddKeyValue('CrossStartTestLine1', 'False');
+    TaskNetParams.AddKeyValue('R414Set4WireLine1', 'False');
+    TaskNetParams.AddKeyValue('CrossAgreeSetLine1', 'False');
     TaskNetParams.AddKeyValue('CrossHowVoiceLine1', 'False');
     TaskNetParams.AddKeyValue('R414GiveCallLine1', 'False');
     TaskNetParams.AddKeyValue('CrossCallGivenLine1', 'False');
@@ -3756,10 +3816,24 @@ uRequestDM;
     TaskNetParams.AddKeyValue('R414CallGivenLine1', 'False');
     TaskNetParams.AddKeyValue('CrossCallGotLine1', 'False');
 
+    TaskNetParams.AddKeyValue('CrossStartTestLine2', 'False');
+    TaskNetParams.AddKeyValue('R414Set4WireLine2', 'False');
+    TaskNetParams.AddKeyValue('CrossAgreeSetLine2', 'False');
+    TaskNetParams.AddKeyValue('CrossHowVoiceLine2', 'False');
+    TaskNetParams.AddKeyValue('R414GiveCallLine2', 'False');
+    TaskNetParams.AddKeyValue('CrossCallGivenLine2', 'False');
+    TaskNetParams.AddKeyValue('R414CallGotLine2', 'False');
+    TaskNetParams.AddKeyValue('R414CallGivenLine2', 'False');
+    TaskNetParams.AddKeyValue('CrossCallGotLine2', 'False');
+
+    TaskNetParams.AddKeyValue('R414InstCheckLine1', 'False');
+    TaskNetParams.AddKeyValue('CrossInstCheckDoneLine1', 'False');
+    TaskNetParams.AddKeyValue('R414InstCheckLine2', 'False');
+    TaskNetParams.AddKeyValue('CrossInstCheckDoneLine2', 'False');
+    TaskNetParams.AddKeyValue('R414Wait', 'False');
 
 
-
-  SetLength(SubTasks, 5);
+  SetLength(SubTasks, 14);
 
 
   SubTasks[0]:= TTaskConnectToCrossSubTask1.Create;
@@ -3767,7 +3841,17 @@ uRequestDM;
   SubTasks[2]:= TTaskConnectToCrossSubTask3.Create;
   SubTasks[3]:= TTaskConnectToCrossSubTask4.Create;
   SubTasks[4]:= TTaskConnectToCrossSubTask5.Create;
-  SubTasks[6]:= TTaskConnectToCrossSubTask6.Create;
+  SubTasks[5]:= TTaskConnectToCrossSubTask6.Create;
+
+  SubTasks[6]:= TTaskConnectToCrossSubTask7.Create;
+  SubTasks[7]:= TTaskConnectToCrossSubTask8.Create;
+  SubTasks[8]:= TTaskConnectToCrossSubTask9.Create;
+  SubTasks[9]:= TTaskConnectToCrossSubTask10.Create;
+  SubTasks[10]:= TTaskConnectToCrossSubTask11.Create;
+
+  SubTasks[11]:= TTaskConnectToCrossSubTask12.Create;
+  SubTasks[12]:= TTaskConnectToCrossSubTask13.Create;
+  SubTasks[13]:= TTaskConnectToCrossSubTask14.Create;
 
 
 
@@ -3868,7 +3952,7 @@ uRequestDM;
       function TTaskConnectToCrossSubTask2.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
-         if ((TaskNetParams.GetBoolValue('R414StartTestLines') = True)  and (TaskNetParams.GetBoolValue('CrossStartTestLines') = True))
+         if ((TaskNetParams.GetBoolValue('R414StartTestLines') = True)  and (TaskNetParams.GetBoolValue('CrossStartTestLine1') = True))
          then
          begin
            Result:=true;
@@ -3876,7 +3960,7 @@ uRequestDM;
          else
          begin
             if (TaskNetParams.GetBoolValue('R414StartTestLines') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Вы не отправили сообщение кроссу' + #10#13;
-            if (TaskNetParams.GetBoolValue('CrossStartTestLines') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Вы не получили ответ от кросса' + #10#13;
+            if (TaskNetParams.GetBoolValue('CrossStartTestLine1') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Вы не получили ответ от кросса' + #10#13;
             Result:=false;
          end;
    end;
@@ -3896,7 +3980,7 @@ uRequestDM;
    begin
    inherited Create;
 
-        Name:='Встать на первую линию';
+        Name:='Встать на 1-ю линию';
         Text:='Свяжитесь с кроссом: "Встаньте разговором на первую соединительную линию в 4ПР режиме". Дождитесь ответа: "Понял. Становлюсь"';
         EventFormName:='';
         Time:= '';
@@ -3910,23 +3994,23 @@ uRequestDM;
       function TTaskConnectToCrossSubTask3.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
    begin
 
-         if ((TaskNetParams.GetBoolValue('R414Set1Line4Wire') = True)  and (TaskNetParams.GetBoolValue('CrossAgreeSet1Line') = True))
+         if ((TaskNetParams.GetBoolValue('R414Set4WireLine1') = True)  and (TaskNetParams.GetBoolValue('CrossAgreeSetLine1') = True))
          then
          begin
            Result:=true;
          end
          else
          begin
-            if (TaskNetParams.GetBoolValue('R414Set1Line4Wire') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Вы не отправили сообщение кроссу' + #10#13;
-            if (TaskNetParams.GetBoolValue('CrossAgreeSet1Line') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Вы не получили ответ от кросса' + #10#13;
+            if (TaskNetParams.GetBoolValue('R414Set4WireLine1') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Вы не отправили сообщение кроссу' + #10#13;
+            if (TaskNetParams.GetBoolValue('CrossAgreeSetLine1') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Вы не получили ответ от кросса' + #10#13;
             Result:=false;
          end;
    end;
 
    function TTaskConnectToCrossSubTask3.NetCheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
    begin
-        TaskNetParams.ChangeValue('R414Set1Line4Wire', 'True');
-        NetWorker.SendTaskParamsCross('R414Set1Line4Wire', 'True');
+        TaskNetParams.ChangeValue('R414Set4WireLine1', 'True');
+        NetWorker.SendTaskParamsCross('R414Set4WireLine1', 'True');
         Result:=True;
    end;
 
@@ -3938,12 +4022,12 @@ uRequestDM;
    begin
    inherited Create;
 
-        Name:='Запросить вызов по первой линии';
+        Name:='Запросить вызов по 1-й линии';
         Text:='Дождитесь ответа от кросса: "БП360, я БП310 как меня слышите ?" Свяжитесь с кроссом: "Слышу вас хорошо, дайте мне вызов".';
         EventFormName:='';
         Time:= '';
 
-        MainTaskText:= 'Слышу вас хорошо дайте мне вызов';
+        MainTaskText:= 'Слышу вас хорошо. Дайте мне вызов';
         SubTaskText := MainTaskText;
    end;
 
@@ -3971,8 +4055,8 @@ uRequestDM;
         begin
             TaskNetParams.ChangeValue('R414GiveCallLine1', 'True');
             NetWorker.SendTaskParamsCross('R414GiveCallLine1', 'True');
-            Result:=True;
         end;
+        Result:=True;
    end;
 
 
@@ -3983,12 +4067,12 @@ uRequestDM;
    begin
    inherited Create;
 
-        Name:='Принять вызов по первой линии';
-        Text:='Дождитесь ответа от кросса: "Даю вам вызов". Принять вызов .....';
+        Name:='Принять вызов по 1-й линии';
+        Text:='Дождитесь ответа от кросса: "Даю вам вызов". Принять вызов: "Ваш вызов получил"';
         EventFormName:='';
         Time:= '';
 
-        MainTaskText:= '';
+        MainTaskText:= 'Ваш вызов получил';
         SubTaskText := MainTaskText;
    end;
 
@@ -4016,8 +4100,8 @@ uRequestDM;
      begin
           TaskNetParams.ChangeValue('R414CallGotLine1', 'True');
           NetWorker.SendTaskParamsCross('R414CallGotLine1', 'True');
-          Result:=True;
      end;
+     Result:=True;
    end;
 
 
@@ -4027,12 +4111,12 @@ uRequestDM;
    begin
    inherited Create;
 
-        Name:='Дать вызов по первой линии';
-        Text:='Ответить кроссу: "Ваш вызов получил. Даю вызов вам". Дать вызов .....';
+        Name:='Дать вызов по 1-й линии';
+        Text:='Ответить кроссу: "Даю вызов вам". Дать вызов и дождаться ответа';
         EventFormName:='';
         Time:= '';
 
-        MainTaskText:= 'Ваш вызов получил. Даю вызов вам';
+        MainTaskText:= 'Даю вызов вам';
         SubTaskText := MainTaskText;
    end;
 
@@ -4062,6 +4146,351 @@ uRequestDM;
    end;
 
 
+
+
+
+
+
+
+//==============================
+
+
+   constructor TTaskConnectToCrossSubTask7.Create;
+   begin
+   inherited Create;
+
+        Name:='Начало проверки 2-й линии';
+        Text:='Дождитесь ответа: "К проверке соединительных линий готов"';
+        EventFormName:='';
+        Time:= '';
+
+        MainTaskText:= '';
+        SubTaskText := MainTaskText;
+   end;
+
+
+
+      function TTaskConnectToCrossSubTask7.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+   begin
+
+         if ((TaskNetParams.GetBoolValue('R414StartTestLines') = True)  and (TaskNetParams.GetBoolValue('CrossStartTestLine2') = True))
+         then
+         begin
+           Result:=true;
+         end
+         else
+         begin
+            if (TaskNetParams.GetBoolValue('R414StartTestLines') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Вы не отправили сообщение кроссу' + #10#13;
+            if (TaskNetParams.GetBoolValue('CrossStartTestLine2') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Вы не получили ответ от кросса' + #10#13;
+            Result:=false;
+         end;
+   end;
+
+   function TTaskConnectToCrossSubTask7.NetCheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
+   begin
+        TaskNetParams.ChangeValue('R414StartTestLines', 'True');
+        NetWorker.SendTaskParamsCross('R414StartTestLines', 'True');
+        Result:=True;
+   end;
+
+
+//==============================
+
+
+   constructor TTaskConnectToCrossSubTask8.Create;
+   begin
+   inherited Create;
+
+        Name:='Встать на 2-ю линию';
+        Text:='Свяжитесь с кроссом: "Встаньте разговором на 2-ю соединительную линию в 4ПР режиме". Дождитесь ответа: "Понял. Становлюсь"';
+        EventFormName:='';
+        Time:= '';
+
+        MainTaskText:= 'Встаньте разговором на 2-ю соединительную линию в 4ПР режиме';
+        SubTaskText := MainTaskText;
+   end;
+
+
+
+      function TTaskConnectToCrossSubTask8.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+   begin
+
+         if ((TaskNetParams.GetBoolValue('R414Set4WireLine2') = True)  and (TaskNetParams.GetBoolValue('CrossAgreeSetLine2') = True))
+         then
+         begin
+           Result:=true;
+         end
+         else
+         begin
+            if (TaskNetParams.GetBoolValue('R414Set4WireLine2') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Вы не отправили сообщение кроссу' + #10#13;
+            if (TaskNetParams.GetBoolValue('CrossAgreeSetLine2') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Вы не получили ответ от кросса' + #10#13;
+            Result:=false;
+         end;
+   end;
+
+   function TTaskConnectToCrossSubTask8.NetCheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
+   begin
+        TaskNetParams.ChangeValue('R414Set4WireLine2', 'True');
+        NetWorker.SendTaskParamsCross('R414Set4WireLine2', 'True');
+        Result:=True;
+   end;
+
+
+//==============================
+
+
+   constructor TTaskConnectToCrossSubTask9.Create;
+   begin
+   inherited Create;
+
+        Name:='Запросить вызов по 2-й линии';
+        Text:='Дождитесь ответа от кросса: "БП360, я БП310 как меня слышите ?" Свяжитесь с кроссом: "Слышу вас хорошо, дайте мне вызов".';
+        EventFormName:='';
+        Time:= '';
+
+        MainTaskText:= 'Слышу вас хорошо. Дайте мне вызов';
+        SubTaskText := MainTaskText;
+   end;
+
+
+
+      function TTaskConnectToCrossSubTask9.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+   begin
+
+         if ((TaskNetParams.GetBoolValue('CrossHowVoiceLine2') = True)  and (TaskNetParams.GetBoolValue('R414GiveCallLine2') = True))
+         then
+         begin
+           Result:=true;
+         end
+         else
+         begin
+            if (TaskNetParams.GetBoolValue('CrossHowVoiceLine2') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Вы не отправили сообщение кроссу' + #10#13;
+            if (TaskNetParams.GetBoolValue('R414GiveCallLine2') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Вы не получили ответ от кросса' + #10#13;
+            Result:=false;
+         end;
+   end;
+
+   function TTaskConnectToCrossSubTask9.NetCheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
+   begin
+        if (TaskNetParams.GetBoolValue('CrossHowVoiceLine2') = True) then
+        begin
+            TaskNetParams.ChangeValue('R414GiveCallLine2', 'True');
+            NetWorker.SendTaskParamsCross('R414GiveCallLine2', 'True');
+        end;
+        Result:=True;
+   end;
+
+
+//==============================
+
+
+   constructor TTaskConnectToCrossSubTask10.Create;
+   begin
+   inherited Create;
+
+        Name:='Принять вызов по 2-й линии';
+        Text:='Дождитесь ответа от кросса: "Даю вам вызов". Принять вызов: "Ваш вызов получил"';
+        EventFormName:='';
+        Time:= '';
+
+        MainTaskText:= 'Ваш вызов получил';
+        SubTaskText := MainTaskText;
+   end;
+
+
+
+      function TTaskConnectToCrossSubTask10.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+   begin
+
+         if ((TaskNetParams.GetBoolValue('CrossCallGivenLine2') = True)  and (TaskNetParams.GetBoolValue('R414CallGotLine2') = True))
+         then
+         begin
+           Result:=true;
+         end
+         else
+         begin
+            if (TaskNetParams.GetBoolValue('R414CallGotLine2') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Вы не отправили сообщение кроссу' + #10#13;
+            if (TaskNetParams.GetBoolValue('CrossCallGivenLine2') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Вы не получили ответ от кросса' + #10#13;
+            Result:=false;
+         end;
+   end;
+
+   function TTaskConnectToCrossSubTask10.NetCheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
+   begin
+   if (TaskNetParams.GetBoolValue('CrossCallGivenLine2') = True) then
+     begin
+          TaskNetParams.ChangeValue('R414CallGotLine2', 'True');
+          NetWorker.SendTaskParamsCross('R414CallGotLine2', 'True');
+     end;
+     Result:=True;
+   end;
+
+
+   //==============================
+
+   constructor TTaskConnectToCrossSubTask11.Create;
+   begin
+   inherited Create;
+
+        Name:='Дать вызов по 2-й линии';
+        Text:='Ответить кроссу: "Даю вызов вам". Дать вызов и дождаться ответа';
+        EventFormName:='';
+        Time:= '';
+
+        MainTaskText:= 'Даю вызов вам';
+        SubTaskText := MainTaskText;
+   end;
+
+
+
+      function TTaskConnectToCrossSubTask11.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+   begin
+
+         if ((TaskNetParams.GetBoolValue('R414CallGivenLine2') = True)  and (TaskNetParams.GetBoolValue('CrossCallGotLine2') = True))
+         then
+         begin
+           Result:=true;
+         end
+         else
+         begin
+            if (TaskNetParams.GetBoolValue('R414CallGivenLine2') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Вы не отправили сообщение кроссу' + #10#13;
+            if (TaskNetParams.GetBoolValue('CrossCallGotLine2') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Вы не получили ответ от кросса' + #10#13;
+            Result:=false;
+         end;
+   end;
+
+   function TTaskConnectToCrossSubTask11.NetCheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
+   begin
+        TaskNetParams.ChangeValue('R414CallGivenLine2', 'True');
+        NetWorker.SendTaskParamsCross('R414CallGivenLine2', 'True');
+        Result:=True;
+   end;
+
+
+
+   //==============================
+
+
+   constructor TTaskConnectToCrossSubTask12.Create;
+   begin
+   inherited Create;
+
+        Name:='Инструментальная проверка 1-й линии';
+        Text:='Сообщите кроссу: "Для инструментальной проверки включите шлейф по 1-й линии.". Проверьте линию 1';
+        EventFormName:='';
+        Time:= '';
+
+        MainTaskText:= 'Для инструментальной проверки включите шлейф по 1-й линии.';
+        SubTaskText := MainTaskText;
+   end;
+
+
+
+   function TTaskConnectToCrossSubTask12.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+   begin
+
+         if ((TaskNetParams.GetBoolValue('R414InstCheckLine1') = True)  and (TaskNetParams.GetBoolValue('CrossInstCheckDoneLine1') = True))
+         then
+         begin
+           Result:=true;
+         end
+         else
+         begin
+            if (TaskNetParams.GetBoolValue('R414InstCheckLine1') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Вы не отправили сообщение кроссу' + #10#13;
+            if (TaskNetParams.GetBoolValue('CrossInstCheckDoneLine1') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Вы не получили ответ от кросса' + #10#13;
+            Result:=false;
+         end;
+   end;
+
+   function TTaskConnectToCrossSubTask12.NetCheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
+   begin
+     TaskNetParams.ChangeValue('R414InstCheckLine1', 'True');
+     NetWorker.SendTaskParamsCross('R414InstCheckLine1', 'True');
+     Result:=True;
+   end;
+
+
+      //==============================
+
+
+   constructor TTaskConnectToCrossSubTask13.Create;
+   begin
+   inherited Create;
+
+        Name:='Инструментальная проверка 2-й линии';
+        Text:='Сообщите кроссу: "Для инструментальной проверки включите шлейф по 2-й линии.". Проверьте линию 2';
+        EventFormName:='';
+        Time:= '';
+
+        MainTaskText:= 'Для инструментальной проверки включите шлейф по 2-й линии.';
+        SubTaskText := MainTaskText;
+   end;
+
+
+
+   function TTaskConnectToCrossSubTask13.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+   begin
+
+         if ((TaskNetParams.GetBoolValue('R414InstCheckLine2') = True)  and (TaskNetParams.GetBoolValue('CrossInstCheckDoneLine2') = True))
+         then
+         begin
+           Result:=true;
+         end
+         else
+         begin
+            if (TaskNetParams.GetBoolValue('R414InstCheckLine2') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Вы не отправили сообщение кроссу' + #10#13;
+            if (TaskNetParams.GetBoolValue('CrossInstCheckDoneLine2') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Вы не получили ответ от кросса' + #10#13;
+            Result:=false;
+         end;
+   end;
+
+   function TTaskConnectToCrossSubTask13.NetCheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
+   begin
+     TaskNetParams.ChangeValue('R414InstCheckLine2', 'True');
+     NetWorker.SendTaskParamsCross('R414InstCheckLine2', 'True');
+     Result:=True;
+   end;
+
+
+      //==============================
+
+
+   constructor TTaskConnectToCrossSubTask14.Create;
+   begin
+   inherited Create;
+
+        Name:='Сообщить кроссу об ожидании';
+        Text:='Сообщите кроссу: "Ожидайте получения каналов."';
+        EventFormName:='';
+        Time:= '';
+
+        MainTaskText:= 'Ожидайте получения каналов';
+        SubTaskText := MainTaskText;
+   end;
+
+
+
+      function TTaskConnectToCrossSubTask14.CheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList): Boolean;
+   begin
+
+         if ((TaskNetParams.GetBoolValue('R414Wait') = True))
+         then
+         begin
+           Result:=true;
+         end
+         else
+         begin
+            if (TaskNetParams.GetBoolValue('R414Wait') <> True) then ErrorKeeper.ErrorMsg:= ErrorKeeper.ErrorMsg + EventFormName + ': ' + 'Вы не отправили сообщение кроссу' + #10#13;
+            Result:=false;
+         end;
+   end;
+
+   function TTaskConnectToCrossSubTask14.NetCheckSubTask(Station: TStation; NetWorker: TClientNetWorker; ErrorKeeper: TErrorKeeper; TaskNetParams: TNetParamsList):  Boolean;
+   begin
+      TaskNetParams.ChangeValue('R414Wait', 'True');
+      NetWorker.SendTaskParamsCross('R414Wait', 'True');
+      Result:=True;
+   end;
 
 {$ENDREGION}
 

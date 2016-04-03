@@ -97,12 +97,12 @@ if (rb1r414.Checked) then
 begin
   if (NetWorker.ClientState.CanSendChatMessages=True) {or true} then
   begin
-    TaskController.NetCheckTask(CLIENT_STATION_R414);
-    TaskController.CheckTask(nil, TMouseButton.mbLeft, [],0,0);
     NetWorker.SendMessage(edt1MessageInput.Text, NetWorker.ClientState.LinkedR414UserName);
     lst1AllMessages.AddItem(NetWorker.ClientState.UserName+': '+ edt1MessageInput.Text, TObject.Create);
    edt1MessageInput.Text:='';
    lst1AllMessages.ScrollBy(99999, 99999);
+       TaskController.NetCheckTask(CLIENT_STATION_R414);
+    TaskController.CheckTask(nil, TMouseButton.mbLeft, [],0,0);
   end
   else
   begin
@@ -111,12 +111,12 @@ begin
 end
 else
 begin
-      TaskController.NetCheckTask(CLIENT_CROSS);
-    TaskController.CheckTask(nil, TMouseButton.mbLeft, [],0,0);
     NetWorker.SendMessage(edt1MessageInput.Text, NetWorker.ClientState.LinkedCrossUserName);
     lst1AllMessages.AddItem(NetWorker.ClientState.UserName+': '+ edt1MessageInput.Text, TObject.Create);
    edt1MessageInput.Text:='';
    lst1AllMessages.ScrollBy(99999, 99999);
+   TaskController.NetCheckTask(CLIENT_CROSS);
+    TaskController.CheckTask(nil, TMouseButton.mbLeft, [],0,0);
 end;
 
 

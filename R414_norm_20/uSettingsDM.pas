@@ -58,7 +58,7 @@ uses
       AssignFile(f, 'setting');
       Rewrite(f);
       write(f, strHostName);
-      CloseFile(f);;
+      CloseFile(f);
     finally
     end;
 
