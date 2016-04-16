@@ -1,9 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <namespace name="StationR414">
-  <devnotes>
-    /  FormsArr[idRack1600Aback] := Rack1600BForm;
-    /  FormsArr[idRack1600Bback] := Rack1600BForm;
-  </devnotes>
   <contains name="JConsts" />
   <contains name="ComConst" />
   <contains name="IdGlobalCore" />
@@ -70,23 +66,6 @@
   <contains name="uPassWordForm" />
   <contains name="uMainMenuForm" />
   <contains name="uLoaderForm" />
-  <contains name="IdIPAddress" />
-  <contains name="IdTCPClient" />
-  <contains name="IdSocks" />
-  <contains name="IdIOHandlerSocket" />
-  <contains name="IdCustomTransparentProxy" />
-  <contains name="IdSocketHandle" />
-  <contains name="IdReply" />
-  <contains name="IdReplyRFC" />
-  <contains name="IdTCPConnection" />
-  <contains name="IdAntiFreezeBase" />
-  <contains name="IdExceptionCore" />
-  <contains name="IdBuffer" />
-  <contains name="IdIntercept" />
-  <contains name="IdStackBSDBase" />
-  <contains name="IdException" />
-  <contains name="IdStreamVCL" />
-  <contains name="IdBaseComponent" />
   <contains name="uHintForm" />
   <contains name="TpcShrd" />
   <contains name="Imm" />
@@ -114,6 +93,23 @@
   <contains name="CommCtrl" />
   <contains name="Dwmapi" />
   <contains name="StdCtrls" />
+  <contains name="IdIPAddress" />
+  <contains name="IdTCPClient" />
+  <contains name="IdSocks" />
+  <contains name="IdIOHandlerSocket" />
+  <contains name="IdCustomTransparentProxy" />
+  <contains name="IdSocketHandle" />
+  <contains name="IdReply" />
+  <contains name="IdReplyRFC" />
+  <contains name="IdTCPConnection" />
+  <contains name="IdAntiFreezeBase" />
+  <contains name="IdExceptionCore" />
+  <contains name="IdBuffer" />
+  <contains name="IdIntercept" />
+  <contains name="IdStackBSDBase" />
+  <contains name="IdException" />
+  <contains name="IdStreamVCL" />
+  <contains name="IdBaseComponent" />
   <contains name="Messages" />
   <contains name="ActiveX" />
   <contains name="Generics.Collections" />

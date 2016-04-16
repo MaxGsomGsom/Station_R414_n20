@@ -292,6 +292,8 @@ const
   type pChannel = packed record
     stChannelState: Byte;
     stChannelNoise: Boolean;
+    stChannelCallToCross: Boolean;
+    stChannelCallFromCross: Boolean;
   end;
 
   type pCross = packed record

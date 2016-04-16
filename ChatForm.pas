@@ -95,7 +95,7 @@ var Req: TRequest;
 begin
 if (rb1r414.Checked) then
 begin
-  if (NetWorker.ClientState.CanSendChatMessages=True) {or true} then
+  if (NetWorker.ClientState.CanSendChatMessagesR414=True) {or true} then
   begin
     NetWorker.SendMessage(edt1MessageInput.Text, NetWorker.ClientState.LinkedR414UserName);
     lst1AllMessages.AddItem(NetWorker.ClientState.UserName+': '+ edt1MessageInput.Text, TObject.Create);
@@ -106,19 +106,28 @@ begin
   end
   else
   begin
-      lst1AllMessages.AddItem('Связь не настроена', TObject.Create);
+      lst1AllMessages.AddItem('<Связь не настроена>', TObject.Create);
   end;
 end
-else
+else if (rb1cross.Checked) then
 begin
+  if ((NetWorker.ClientState.CanSendChatMessagesCross2PR=True) or (NetWorker.ClientState.CanSendChatMessagesCross4PR = true))
+  and (TaskController.NetCheckTask(CLIENT_CROSS) = True) then
+
+  begin
     NetWorker.SendMessage(edt1MessageInput.Text, NetWorker.ClientState.LinkedCrossUserName);
     lst1AllMessages.AddItem(NetWorker.ClientState.UserName+': '+ edt1MessageInput.Text, TObject.Create);
-   edt1MessageInput.Text:='';
-   lst1AllMessages.ScrollBy(99999, 99999);
-   TaskController.NetCheckTask(CLIENT_CROSS);
-    TaskController.CheckTask(nil, TMouseButton.mbLeft, [],0,0);
-end;
+     edt1MessageInput.Text:='';
+     lst1AllMessages.ScrollBy(99999, 99999);
 
+    TaskController.CheckTask(nil, TMouseButton.mbLeft, [],0,0);
+
+  end
+  else
+  begin
+      lst1AllMessages.AddItem('<Невозможно вызвать кросс>', TObject.Create);
+  end;
+end;
 
 end;
 
@@ -169,16 +178,36 @@ end;
 
 procedure TTChatForm.ShowMessage(Sender: TObject; Text:string; Name: string);
 begin
-//если сообщение прислал кросс или связь с другой 414 налажена, то показываем сообщение
-if (NetWorker.ClientState.CanGetChatMessages=True) or (Name = NetWorker.ClientState.LinkedCrossUserName) then
-begin
-  lst1AllMessages.AddItem(Name+': '+ Text, TObject.Create);
-  lst1AllMessages.ScrollBy(99999, 99999);
-end
-else
-begin
-  lst1AllMessages.AddItem('<Другая станция пытается с вами связаться>', TObject.Create);
-end;
+  //если сообщение прислал кросс или связь с другой 414 налажена, то показываем сообщение
+  if (Name = NetWorker.ClientState.LinkedR414UserName) then
+  begin
+      if (NetWorker.ClientState.CanGetChatMessagesR414=True)  then
+      begin
+        lst1AllMessages.AddItem(Name+': '+ Text, TObject.Create);
+        lst1AllMessages.ScrollBy(99999, 99999);
+      end
+      else
+      begin
+        lst1AllMessages.AddItem('<Другая станция пытается с вами связаться>', TObject.Create);
+      end;
+  end
+
+
+  else if (Name = NetWorker.ClientState.LinkedCrossUserName) then
+  begin
+      if ((NetWorker.ClientState.CanGetChatMessagesCross2PR=True))
+      or (NetWorker.ClientState.CanSendChatMessagesCross4PR = true) then
+      begin
+        lst1AllMessages.AddItem(Name+': '+ Text, TObject.Create);
+        lst1AllMessages.ScrollBy(99999, 99999);
+      end
+      else
+      begin
+        lst1AllMessages.AddItem('<Кросс вызывает вас. ГГС 1 не настроен на вызов>', TObject.Create);
+      end;
+
+
+  end;
 
 end;
 

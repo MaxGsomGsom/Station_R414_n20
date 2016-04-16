@@ -68,6 +68,7 @@
     <members>
       <field name="ErrorList" type="TList" visibility="public" />
       <field name="ErrorMsg" type="string" visibility="public" />
+      <field name="IsLastCheck" type="Boolean" visibility="public" />
       <procedure name="ShowError" visibility="public">
       </procedure>
       <procedure name="ShowHelp" visibility="public">

@@ -10,14 +10,13 @@ type TErrorKeeper = class
       public
         ErrorList: TList;
         ErrorMsg : String;
+        IsLastCheck: Boolean;
           procedure ShowError();
   procedure ShowHelp();
 end;
 
 
 implementation
-
-
 
 
       procedure TErrorKeeper.ShowError();

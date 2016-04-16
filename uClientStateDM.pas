@@ -52,8 +52,11 @@ type TClientState = class
       FStartNetTask: TEvent;
       FDisconnect:  TAddRemoveUpdateClientEvent;
       FStartNetTaskOk: TEvent;
-      CanSendChatMessages: Boolean;
-      CanGetChatMessages: Boolean;
+      CanSendChatMessagesR414: Boolean;
+      CanGetChatMessagesR414: Boolean;
+      CanSendChatMessagesCross2PR: Boolean;
+      CanGetChatMessagesCross2PR: Boolean;
+      CanSendChatMessagesCross4PR: Boolean;
       NetStatus: string;
       LastNetCommand: string;
     constructor Create(); reintroduce;
@@ -116,8 +119,11 @@ uses
     ErrorKepeer:= TErrorKeeper.Create;
     NetStatus:='open';
     LastNetCommand:='open';
-    CanSendChatMessages:=False;
-    CanGetChatMessages:=False;
+    CanSendChatMessagesR414:=False;
+    CanGetChatMessagesR414:=False;
+    CanSendChatMessagesCross2PR:=False;
+    CanGetChatMessagesCross2PR:=False;
+    CanSendChatMessagesCross4PR:=false;
   end;
 
   procedure TClientState.SetTaskID(const Value: TTaskType);

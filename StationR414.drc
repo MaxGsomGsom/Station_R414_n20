@@ -920,7 +920,6 @@ END
 /* c:\program files (x86)\embarcadero\rad studio\7.0\lib\controls.res */
 /* c:\program files (x86)\embarcadero\rad studio\7.0\lib\mplayer.res */
 /* c:\program files (x86)\embarcadero\rad studio\7.0\lib\keyboardLayouts.res */
-/* C:\Users\Max\Documents\RAD Studio\Projects\R414_norm_20\ChatForm.dfm */
 /* uCurrentTaskForm.dfm */
 /* c:\program files (x86)\embarcadero\rad studio\7.0\lib\buttons.res */
 /* uHintForm.dfm */
@@ -966,6 +965,7 @@ END
 /* uBlockOscillographMinForm.dfm */
 /* uRack1500MinForm.dfm */
 /* uWaveMeterPanelForm.dfm */
+/* ChatForm.dfm */
 /* uStationR414MinForm.dfm */
 /* uButtonBackForm.dfm */
 /* uBackgroundForm.dfm */

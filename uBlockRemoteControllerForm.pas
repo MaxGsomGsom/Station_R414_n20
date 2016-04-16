@@ -1494,6 +1494,38 @@ begin
 
 
   end;
+
+
+  //посылка вызовов кроссу
+  //правильно ли подключены провода
+  if ((Station.RemoteController.SwPVU = 2) and
+
+  ((Station.CurrentPort(Station.CableWhite2.stKonez1.stKonez) = 5)
+  or (Station.CurrentPort(Station.CableWhite2.stKonez2.stKonez) = 5))
+  and ((Station.CableWhite2.stKonez1.stKonez = 358)
+  or (Station.CableWhite2.stKonez2.stKonez = 358)) and
+
+  ((Station.CurrentPort(Station.CableBlack1.stKonez1.stKonez) = 6)
+  or (Station.CurrentPort(Station.CableBlack1.stKonez2.stKonez) = 6))
+  and ((Station.CableBlack1.stKonez1.stKonez = 359)
+  or (Station.CableBlack1.stKonez2.stKonez = 359))) then
+  begin
+        //совпадают ли каналы проводов
+        if (Station.CurrentChannel(Station.CableWhite2.stKonez1.stKonez) = Station.CurrentChannel(Station.CableBlack1.stKonez1.stKonez)) or
+           (Station.CurrentChannel(Station.CableWhite2.stKonez2.stKonez) = Station.CurrentChannel(Station.CableBlack1.stKonez1.stKonez)) or
+           (Station.CurrentChannel(Station.CableWhite2.stKonez1.stKonez) = Station.CurrentChannel(Station.CableBlack1.stKonez2.stKonez)) or
+           (Station.CurrentChannel(Station.CableWhite2.stKonez2.stKonez) = Station.CurrentChannel(Station.CableBlack1.stKonez2.stKonez))
+         then
+         begin
+              //посылка вызова кроссу по каналу
+             if (Station.CurrentChannel(Station.CableWhite2.stKonez1.stKonez)<22) then  Station.RemoteController.Channels.A[Station.CurrentChannel(Station.CableWhite2.stKonez1.stKonez)].stChannelCallToCross := True
+             else if (Station.CurrentChannel(Station.CableWhite2.stKonez2.stKonez)<22) then  Station.RemoteController.Channels.A[Station.CurrentChannel(Station.CableWhite2.stKonez2.stKonez)].stChannelCallToCross := True
+             else if (Station.CurrentChannel(Station.CableWhite2.stKonez1.stKonez)<43) then  Station.RemoteController.Channels.B[Station.CurrentChannel(Station.CableWhite2.stKonez1.stKonez)].stChannelCallToCross := True
+             else if (Station.CurrentChannel(Station.CableWhite2.stKonez2.stKonez)<43) then  Station.RemoteController.Channels.B[Station.CurrentChannel(Station.CableWhite2.stKonez2.stKonez)].stChannelCallToCross := True;
+         end;
+
+
+  end;
 end;
 
 procedure T_Pult.White2Click(Sender: TObject);
@@ -2010,10 +2042,34 @@ end;
 procedure T_Pult.imgButCall1MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
-  if Station.RemoteController.butCall1 = butPositionUp then
-    Station.RemoteController.butCall1 := butPositionDown
-  else
-    Station.RemoteController.butCall1 := butPositionUp;
+  if (Station.RemoteController.SwPVU = 1) and
+  ((Station.CableBlack1.stKonez1.stKonez <> csDisconected) or
+  (Station.CableBlack1.stKonez2.stKonez <> csDisconected) or
+  (Station.CableWhite2.stKonez1.stKonez <> csDisconected) or
+  (Station.CableWhite2.stKonez2.stKonez <> csDisconected)) then
+  begin
+
+    if Station.RemoteController.butCall1 = butPositionUp then
+    begin
+      Station.RemoteController.butCall1 := butPositionDown;
+      TaskController.NetWorker.ClientState.CanSendChatMessagesCross2PR:=False;
+      TaskController.NetWorker.ClientState.CanGetChatMessagesCross2PR:=True;
+    end
+    else
+    begin
+      Station.RemoteController.butCall1 := butPositionUp;
+      TaskController.NetWorker.ClientState.CanSendChatMessagesCross2PR:=True;
+      TaskController.NetWorker.ClientState.CanGetChatMessagesCross2PR:=False;
+    end;
+  end
+  else begin
+      if Station.RemoteController.butCall1 = butPositionUp then
+        Station.RemoteController.butCall1 :=  butPositionDown
+        else Station.RemoteController.butCall1 := butPositionUp;
+
+      TaskController.NetWorker.ClientState.CanSendChatMessagesCross2PR:=False;
+      TaskController.NetWorker.ClientState.CanGetChatMessagesCross2PR:=False;
+  end;
   Reload;
 end;
 
