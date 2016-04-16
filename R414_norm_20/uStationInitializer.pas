@@ -2255,7 +2255,7 @@ begin
   Station.HalfSetA.Rack1920.but1960_1 := butPositionUp;
   Station.HalfSetA.Rack1920.butHighOn := butPositionDown;
   Station.HalfSetA.Rack1920.butHighOff := butPositionUp;
-  Station.HalfSetA.Rack1920.butCurrent5MA := butPositionUp;
+  Station.HalfSetA.Rack1920.butCurrent5MA := butPositionDown;
   Station.HalfSetA.Rack1920.stLBV1_TurnedOn := True;
   Station.HalfSetA.Rack1920.stLBV2_TurnedOn := True;
   Station.HalfSetA.Rack1920.butHighOn2 := butPositionDown;
@@ -2277,7 +2277,7 @@ begin
   Station.HalfSetB.Rack1920.stLBV2_TurnedOn := True;
   Station.HalfSetB.Rack1920.butHighOn2 := butPositionDown;
   Station.HalfSetB.Rack1920.butHighOff2 := butPositionUp;
-  Station.HalfSetB.Rack1920.butCurrent5MA2 := butPositionUp;
+  Station.HalfSetB.Rack1920.butCurrent5MA2 := butPositionDown;
   Station.HalfSetB.Rack1920.butPower := butPositionUp;
   Station.HalfSetB.Rack1920.butPower2 := butPositionUp;
   Station.HalfSetB.Rack1920.stZamedleniePodano_LVB1 := True;
@@ -2327,10 +2327,10 @@ begin
   Station.P321C.swGradYY := Random(9) + 10;
 
   Station.RemoteController.SwPVU := GetRandomSwitcherState;
-  Station.RemoteController.butCall1 := GetRandomButtonState;
-  Station.RemoteController.butCall2 := GetRandomButtonState;
-  Station.RemoteController.butCall3 := GetRandomButtonState;
-  Station.RemoteController.butCall4 := GetRandomButtonState;
+  Station.RemoteController.butCall1 := butPositionDown;
+  Station.RemoteController.butCall2 := butPositionDown;
+  Station.RemoteController.butCall3 := butPositionDown;
+  Station.RemoteController.butCall4 := butPositionDown;
   Station.RemoteController.butForceMachine := GetRandomButtonState;
   for i := 1 to 21 do
   begin

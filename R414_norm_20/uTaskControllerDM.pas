@@ -66,7 +66,7 @@ type TTaskController = class
     procedure SetCurrentTask();
     procedure ShowHelp();
     procedure Subscribe (CurForm0: TForm);
-    procedure NetCheckTask(ClientType: string);
+    function NetCheckTask(ClientType: string): Boolean;
     procedure CheckRecievedParams(Param: string; Value: string);
     procedure CheckBeforeClose(Sender: TObject; var Action: TCloseAction);
 
@@ -270,12 +270,13 @@ function TTaskController.GetTaskTitle(TaskID: Integer): string;
 
 
 
-   procedure TTaskController.NetCheckTask(ClientType: string);
+   function TTaskController.NetCheckTask(ClientType: string): Boolean;
    begin
        if (ClientType = CurrentTask.SubTasks[CurrentTask.CurrentSubTaskNum].NetSubTaskClientType) then
        begin
-        CurrentTask.SubTasks[CurrentTask.CurrentSubTaskNum].NetCheckSubTask(self.Station, self.NetWorker, self.ErrorKeeper, Self.CurrentTask.TaskNetParams);
-       end;
+        Result:= CurrentTask.SubTasks[CurrentTask.CurrentSubTaskNum].NetCheckSubTask(self.Station, self.NetWorker, self.ErrorKeeper, Self.CurrentTask.TaskNetParams);
+       end
+       else Result:= true;
    end;
 
 

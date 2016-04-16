@@ -98,11 +98,12 @@
           <parameter name="CurForm0" type="TForm" />
         </parameters>
       </procedure>
-      <procedure name="NetCheckTask" visibility="public">
+      <function name="NetCheckTask" visibility="public">
         <parameters>
           <parameter name="ClientType" type="string" />
+          <retval type="Boolean" />
         </parameters>
-      </procedure>
+      </function>
       <procedure name="CheckRecievedParams" visibility="public">
         <parameters>
           <parameter name="Param" type="string" />

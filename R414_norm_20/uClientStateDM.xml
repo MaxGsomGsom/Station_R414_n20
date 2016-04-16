@@ -126,8 +126,11 @@
       <field name="FStartNetTask" type="TEvent" visibility="public" />
       <field name="FDisconnect" type="TAddRemoveUpdateClientEvent" visibility="public" />
       <field name="FStartNetTaskOk" type="TEvent" visibility="public" />
-      <field name="CanSendChatMessages" type="Boolean" visibility="public" />
-      <field name="CanGetChatMessages" type="Boolean" visibility="public" />
+      <field name="CanSendChatMessagesR414" type="Boolean" visibility="public" />
+      <field name="CanGetChatMessagesR414" type="Boolean" visibility="public" />
+      <field name="CanSendChatMessagesCross2PR" type="Boolean" visibility="public" />
+      <field name="CanGetChatMessagesCross2PR" type="Boolean" visibility="public" />
+      <field name="CanSendChatMessagesCross4PR" type="Boolean" visibility="public" />
       <field name="NetStatus" type="string" visibility="public" />
       <field name="LastNetCommand" type="string" visibility="public" />
       <constructor name="Create" visibility="public">
